@@ -1,11 +1,13 @@
 import * as SplashScreen from 'expo-splash-screen'
+import { useAtomValue } from 'jotai'
 import { Center, Spinner, View } from 'native-base'
 import { FC, PropsWithChildren, useCallback, useEffect } from 'react'
 import { StyleSheet } from 'react-native'
 
 import { AbsoluteFullFill } from './atoms'
 
-import { useAuth, useBoolean, useCachedResources } from '~hooks'
+import { useBoolean, useCachedResources } from '~hooks'
+import { isSignedInAtom } from '~store/auth'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -14,7 +16,8 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
 
   // Delay loading logic was made to prevent displaying empty screen after splash screen will hide
   const [isDelayLoading, setIsDelayLoading] = useBoolean(true)
-  const { isSignedIn } = useAuth()
+
+  const isSignedIn = useAtomValue(isSignedInAtom)
 
   useEffect(() => {
     async function prepare() {

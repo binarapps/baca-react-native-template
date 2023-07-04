@@ -4,8 +4,10 @@ import * as Notifications from 'expo-notifications'
 import { useCallback, useEffect } from 'react'
 
 import { ASYNC_STORAGE_KEYS } from '~constants'
-import { authContextRef, useNotificationContext } from '~contexts'
+import { useNotificationContext } from '~contexts'
 import { registerForPushNotificationsAsync } from '~services'
+import { store } from '~store'
+import { isSignedInAtom } from '~store/auth'
 import { alert } from '~utils'
 import { isAuthorizedLink } from '~utils/isAuthorizedLink'
 
@@ -35,8 +37,8 @@ export const useNotificationSetup = (opts?: Options) => {
       let finalDeeplink = deeplinkPath
 
       const isAuthorizedPath = isAuthorizedLink(deeplinkPath)
-
-      if (!authContextRef.current?.isSignedIn && isAuthorizedPath) {
+      const isSignedIn = store.get(isSignedInAtom)
+      if (!isSignedIn && isAuthorizedPath) {
         AsyncStorage.setItem(ASYNC_STORAGE_KEYS.NEXT_DEEP_LINK, deeplinkPath)
         finalDeeplink = '/sign-in'
       }

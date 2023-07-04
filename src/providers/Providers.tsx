@@ -1,11 +1,11 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+import { Provider } from 'jotai'
 import { NativeBaseProvider } from 'native-base'
 import { ReactNode } from 'react'
 import { StyleSheet } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { AuthProvider } from './AuthProvider'
 import { ColorSchemeProvider } from './ColorSchemeProvider'
 import { NotificationsProvider } from './NotificatedProvider'
 import { NotificationProvider as ExpoNotificationsProvider } from './NotificationProvider'
@@ -13,6 +13,8 @@ import { NotificationProvider as ExpoNotificationsProvider } from './Notificatio
 import { AppLoading } from '~components'
 import { theme, nativeBaseConfig } from '~constants'
 import { useAppStateActive } from '~hooks'
+import { AuthLogic } from '~logic/AuthLogic'
+import { store } from '~store'
 import { checkForUpdates } from '~utils'
 
 const queryClient = new QueryClient({})
@@ -26,8 +28,9 @@ export const Providers = ({ children }: { children: ReactNode }): JSX.Element =>
       <ExpoNotificationsProvider>
         {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
         <NotificationsProvider>
-          <QueryClientProvider client={queryClient}>
-            <AuthProvider>
+          <Provider store={store}>
+            <QueryClientProvider client={queryClient}>
+              <AuthLogic />
               <AppLoading>
                 <ColorSchemeProvider>
                   <GestureHandlerRootView style={styles.gestureHandlerRootView}>
@@ -35,8 +38,8 @@ export const Providers = ({ children }: { children: ReactNode }): JSX.Element =>
                   </GestureHandlerRootView>
                 </ColorSchemeProvider>
               </AppLoading>
-            </AuthProvider>
-          </QueryClientProvider>
+            </QueryClientProvider>
+          </Provider>
         </NotificationsProvider>
       </ExpoNotificationsProvider>
     </NativeBaseProvider>

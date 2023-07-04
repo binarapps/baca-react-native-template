@@ -1,4 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack'
+import { useAtomValue } from 'jotai'
 import { FC } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 
@@ -6,8 +7,9 @@ import { rootStackScreensData } from './config/screens'
 import { WebNavBar } from './webNavigator/WebNavBar'
 
 import { WEB_SCREEN_STYLES } from '~constants'
-import { useAuth, useNavigationTheme, useWeb } from '~hooks'
+import { useNavigationTheme, useWeb } from '~hooks'
 import { useNotificationSetup } from '~hooks/useNotificationSetup'
+import { isSignedInAtom } from '~store/auth'
 
 const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
 
@@ -24,7 +26,7 @@ const modalsScreens = rootStackScreensData.modals.map((props) => (
 ))
 
 const RootNavigatorMobile: FC = () => {
-  const { isSignedIn } = useAuth()
+  const isSignedIn = useAtomValue(isSignedInAtom)
 
   // CONFIG: Handle in app notification
   useNotificationSetup({
@@ -49,7 +51,7 @@ const RootNavigatorWeb: FC = () => {
   const { shouldApplyMobileStyles, webContentWidth } = useWeb()
   const { navigationTheme } = useNavigationTheme()
   const { width: windowWidth } = useWindowDimensions()
-  const { isSignedIn } = useAuth()
+  const isSignedIn = useAtomValue(isSignedInAtom)
 
   return (
     <>
