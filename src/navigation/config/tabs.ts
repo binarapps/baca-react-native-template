@@ -4,6 +4,7 @@ import { t } from 'i18next'
 import {
   BottomTabsScreens,
   ExamplesStackScreens,
+  SettingsStackScreens,
   HomeStackScreens,
   // StackEnums
 } from './enums'
@@ -16,6 +17,8 @@ import {
   ExamplesScreen,
   HomeScreen,
   TypographyScreen,
+  TestFormScreen,
+  SettingsScreen,
 } from '~screens'
 import { IconNames } from '~types/icon'
 
@@ -59,8 +62,26 @@ const examplesStackScreensData: ScreenType<keyof typeof ExamplesStackScreens>[] 
     options: { title: t('navigation.screen_titles.data_from_be_screen_example') },
     deeplink: '/data-example',
   },
+  {
+    name: ExamplesStackScreens.TestForm,
+    component: TestFormScreen,
+    // TODO: Add translation here
+    options: { title: 'TestForm' },
+    deeplink: '/testform',
+  },
   // ExamplesStack_SCREENS_END
 ]
+
+// SettingsStack_SCREENS_START
+const settingsStackScreensData: ScreenType<keyof typeof SettingsStackScreens>[] = [
+  {
+    name: SettingsStackScreens.Settings,
+    component: SettingsScreen,
+    options: { title: t('navigation.screen_titles.settings') },
+    deeplink: '/settings',
+  },
+]
+// SettingsStack_SCREENS_END
 
 // HomeStack_SCREENS_START
 const homeStackScreensData: ScreenType<keyof typeof HomeStackScreens>[] = [
@@ -102,6 +123,15 @@ export const bottomTabsScreensData = [
     name: BottomTabsScreens.ExamplesStack,
     screens: examplesStackScreensData,
     options: { title: t('navigation.screen_titles.examples_stack') },
+  },
+  {
+    icons: {
+      active: 'home-gear-fill',
+      inactive: 'home-gear-line',
+    } as BottomTabIcons,
+    name: BottomTabsScreens.SettingsStack,
+    screens: settingsStackScreensData,
+    options: { title: t('navigation.screen_titles.settings') },
   },
   // BottomTab_SCREENS_END
 ]

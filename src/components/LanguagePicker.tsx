@@ -1,12 +1,3 @@
-import {
-  HStack,
-  ChevronDownIcon,
-  Text,
-  Pressable,
-  useTheme,
-  Menu,
-  IPressableProps,
-} from 'native-base'
 import { StyleSheet } from 'react-native'
 import Animated, {
   useAnimatedStyle,
@@ -15,12 +6,20 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
+import { Icon } from './atoms/Icon'
+import { Row } from './atoms/Row'
+import { Text } from './atoms/Text'
+import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
+import { Menu } from './organisms/Menu'
 import languages from '../../assets/languages.json'
 
-import { useCallback, useTranslation } from '~hooks'
+import { useColorScheme } from '~contexts'
+import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
-  const { sizes } = useTheme()
+  const { size } = useTheme()
+
+  const { colorScheme } = useColorScheme()
   const { i18n } = useTranslation()
   const language = i18n.language.slice(0, 2).toUpperCase() as keyof typeof languages
   const isOpen = useSharedValue(false)
@@ -31,33 +30,35 @@ export const LanguagePicker: React.FC = () => {
   }))
 
   const styles = StyleSheet.create({
-    icon: { height: sizes[8], justifyContent: 'center' },
+    icon: { height: size['8'], justifyContent: 'center' },
   })
+
+  const iconColor = colorScheme === 'light' ? 'black' : 'white'
 
   const renderTrigger = useCallback(
     (
-      props: IPressableProps,
+      props: TouchableProps,
       state: {
-        open: boolean
+        isOpen: boolean
       }
     ) => {
       // Set animated value based on a `Menu` state
-      isOpen.value = state.open
+      isOpen.value = state.isOpen
 
       return (
-        <Pressable {...props}>
-          <HStack>
-            <Text fontSize="xl" pr="2">
+        <Touchable {...props}>
+          <Row alignItems="center">
+            <Text fontSize="xl" pr={2}>
               {languages[language].emoji}
             </Text>
             <Animated.View style={[animatedIconStyle, styles.icon]}>
-              <ChevronDownIcon />
+              <Icon size={24} name="arrow-down-s-line" color={iconColor} />
             </Animated.View>
-          </HStack>
-        </Pressable>
+          </Row>
+        </Touchable>
       )
     },
-    [animatedIconStyle, isOpen, language, styles.icon]
+    [animatedIconStyle, isOpen, language, styles.icon, iconColor]
   )
 
   const handleItemPress = useCallback(

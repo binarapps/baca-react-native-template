@@ -1,4 +1,3 @@
-import { Center } from 'native-base'
 import React, { useMemo } from 'react'
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native'
 
@@ -54,5 +53,5 @@ export const Loader = ({ type, ...props }: LoaderType): JSX.Element => {
     }
   }, [type, props])
 
-  return <Center flex={1}>{renderLoader}</Center>
+  return renderLoader
 }

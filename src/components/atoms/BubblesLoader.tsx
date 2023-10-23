@@ -1,6 +1,7 @@
-import { View } from 'native-base'
 import React from 'react'
 import Animated from 'react-native-reanimated'
+
+import { Box } from './Box'
 
 import { useBubblesLoader } from '~hooks/loaders'
 
@@ -10,7 +11,7 @@ export type BubblesLoaderType = {
 }
 
 const FullCircle = ({ size = 10, color = 'black' }: BubblesLoaderType): JSX.Element => (
-  <View style={{ backgroundColor: color, borderRadius: size / 2, width: size, height: size }} />
+  <Box style={{ backgroundColor: color, borderRadius: size / 2, width: size, height: size }} />
 )
 
 export const BubblesLoader = ({ size = 40, color = 'black' }: BubblesLoaderType): JSX.Element => {

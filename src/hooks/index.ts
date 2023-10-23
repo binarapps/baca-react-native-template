@@ -14,14 +14,7 @@ export { useAssets } from 'expo-asset'
 export { useFonts } from 'expo-font'
 export { useURL } from 'expo-linking'
 export { useAnimationState, useDynamicAnimation } from 'moti'
-export {
-  useAccessibleColors,
-  useColorMode,
-  useColorModeValue,
-  useLayout,
-  useNativeBase,
-  useTheme,
-} from 'native-base'
+export { useTheme } from './useTheme'
 export {
   useCallback,
   useContext,

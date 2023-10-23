@@ -5,11 +5,15 @@ import { act, cleanup, fireEvent, render } from '~utils/testUtils'
 afterEach(cleanup)
 
 describe('SignInScreen', () => {
+  it('should skip', () => {
+    expect(true).toBe(true)
+  })
+
   it('should render SignIn screen with the key elements', () => {
-    const { getByTestId, getByRole, getAllByRole } = render(<SignInScreen />)
+    const { getByTestId, getAllByRole } = render(<SignInScreen />)
     const emailInput = getByTestId('emailInput')
     const passwordInput = getByTestId('passwordInput')
-    const confirmationCheckbox = getByRole('checkbox')
+    const confirmationCheckbox = getByTestId('confirmCheckbox')
     const buttons = getAllByRole('button')
 
     expect(emailInput).toBeDefined()

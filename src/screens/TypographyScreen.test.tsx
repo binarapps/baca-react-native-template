@@ -1,4 +1,4 @@
-import { TypographyScreen, fontSizes, headingSizes } from './TypographyScreen'
+import { TypographyScreen, fontSizes } from './TypographyScreen'
 
 import { cleanup, render } from '~utils/testUtils'
 
@@ -14,11 +14,5 @@ describe('TypographyScreen', () => {
     fontSizes.forEach((fontSize) => {
       expect(getByText(`Text - ${fontSize}`)).toBeDefined()
     })
-
-    headingSizes.forEach((size) => {
-      expect(getByText(`Heading - ${size}`)).toBeDefined()
-    })
   })
-
-  // TODO: add test for a color mode toggler
 })

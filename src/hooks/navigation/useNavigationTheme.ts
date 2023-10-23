@@ -1,25 +1,27 @@
-import { useTheme, useColorMode } from 'native-base'
 import { useMemo } from 'react'
 
+import { useTheme } from '../useTheme'
+
 import { darkNavigationTheme, lightNavigationTheme } from '~constants'
+import { useColorScheme } from '~contexts'
 
 export const useNavigationTheme = () => {
-  const { colorMode } = useColorMode()
+  const { colorScheme } = useColorScheme()
   const { colors } = useTheme()
 
   const tabBarTheme = useMemo(
     () => ({
-      tabBarActiveTintColor: colors.primary[400],
+      tabBarActiveTintColor: colors.primary,
       tabBarInactiveTintColor: colors.gray[500],
       tabBarStyle: {
-        backgroundColor: colorMode === 'dark' ? colors.gray[900] : colors.light[100],
+        backgroundColor: colorScheme === 'dark' ? colors.gray[900] : colors.light,
         paddingTop: 4,
       },
     }),
-    [colors.primary, colors.gray, colors.light, colorMode]
+    [colors.primary, colors.gray, colors.light, colorScheme]
   )
 
-  const navigationTheme = colorMode === 'dark' ? darkNavigationTheme : lightNavigationTheme
+  const navigationTheme = colorScheme === 'dark' ? darkNavigationTheme : lightNavigationTheme
 
   return {
     navigationTheme,

@@ -1,4 +1,3 @@
-import { View } from 'native-base'
 import React from 'react'
 import Animated, {
   Extrapolate,
@@ -6,6 +5,8 @@ import Animated, {
   SharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated'
+
+import { Box } from './Box'
 
 import { useCircleLoader } from '~hooks/loaders'
 
@@ -69,7 +70,7 @@ const HalfCircle = ({
     }
   })
   return (
-    <View
+    <Box
       pointerEvents="none"
       style={{
         ...halfCircleContainerStyle,
@@ -85,17 +86,17 @@ const HalfCircle = ({
           animatedStyle,
         ]}
       >
-        <View style={halfCircleContainerStyle}>
-          <View
+        <Box style={halfCircleContainerStyle}>
+          <Box
             style={{
               ...fullCircleStyle,
               borderWidth: thickness,
               borderColor: color,
             }}
           />
-        </View>
+        </Box>
       </Animated.View>
-    </View>
+    </Box>
   )
 }
 

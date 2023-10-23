@@ -10,6 +10,7 @@ declare global {
   }
 
   type ExamplesStackParamList = {
+    TestForm: undefined
     Examples: undefined
     Components: undefined
     Colors: undefined
@@ -17,13 +18,18 @@ declare global {
     DataFromBeScreen_EXAMPLE: undefined
   }
 
+  type SettingsStackParamList = {
+    Settings: undefined
+  }
+
   type MainTabParamList = {
     HomeStack: NavigatorScreenParams<HomeStackParamList>
     ExamplesStack: NavigatorScreenParams<ExamplesStackParamList>
+    SettingsStack: NavigatorScreenParams<SettingsStackParamList>
     // MainTabParamList END
   }
 
-  type WebTabParamList = ExamplesStackParamList & HomeStackParamList
+  type WebTabParamList = ExamplesStackParamList & HomeStackParamList & SettingsStackParamList
   // WebTabParamListEnd
 
   type RootStackParamList = {
@@ -33,7 +39,6 @@ declare global {
 
     // Root_authorized
     MainTab: NavigatorScreenParams<MainTabParamList>
-    Settings: undefined
 
     // Root_modals
     ApplicationInfo: undefined
@@ -52,7 +57,7 @@ declare global {
 
   type BottomTabScreenProps = BaseBottomTabScreenProps<
     MainTabParamList,
-    'ExamplesStack' | 'HomeStack'
+    'ExamplesStack' | 'HomeStack' | 'SettingsStack'
     // BottomTabScreenProps END
   >
 
@@ -66,8 +71,12 @@ declare global {
   type DetailsScreenProps = ScreenComposite<'Details'>
 
   // ExamplesStack_SCREENS
+  type TestFormScreenProps = ScreenComposite<'TestForm'>
   type ExamplesScreenProps = ScreenComposite<'Examples'>
   type ComponentsScreenProps = ScreenComposite<'Components'>
+
+  // SettingsStack_SCREENS
+  type SettingsScreenProps = ScreenComposite<'Settings'>
 }
 
 // type ScreenHehe = ScreenComponent

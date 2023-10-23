@@ -14,55 +14,31 @@ This is a template to be used with expo. It includes all the necessary stuff to 
 
 Version in the `package.json` is one to one the latest expo on which the template was tested.
 
+## Why to use?
+
+We know there are a lot of project starters for react native, but we have some good features:
+
+- Fully works with **EXPO GO**
+  - Good for start the project and later you can switch to expo-dev-client
+- Fully works on **WEB**
+  - If you want to develop apps both on web and mobile this starter is good choice for you
+- **Code generators** (create new screen / create new component)
+- **Fully + Strong typed**
+- **App deployment documentation** (currently in progress, but it will be added in near future)
+
 ## Demo
 
-<p align="center">
-    <img src="assets/tutorials/demo-dark.png" alt="demo-dark" style="width: 45%;">
-    &nbsp; &nbsp;
-    <img src="assets/tutorials/demo-light.png" alt="demo-light" style="width: 45%;">
-</p>
+[![expo-ts-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
 ## Usage
 
-There are three types of usage:
+We have prepared a documentation for how to run project with this template - **[Bootstrap docs](./documentation/docs/BOOTSTRAP.md)**
 
-1. Init using this command (beaware that sometimes this template can't be updated on npm, in that case, clone this repository and reinitialize repozitory for yourself - check third type of setup)
+Quick steps:
 
-```bash
-npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app
-```
-
-2. Use this as template repo on GitHub
-   ![Github Repository Template](assets/tutorials/github-repository-template.png)
-
-3. Clone repository
-
-   This usage is usefull when npm code version is ot up to date, you can verify it by checking dates of last commit and last publish
-   ![Check last release date](assets/tutorials/check-last-release-date.png)
-
-```bash
-git clone git@github.com:binarapps/expo-ts-template.git
-cd expo-ts-template
-yarn
-yarn start
-```
-
-- in that case you can also reinitialize repozitory if you don't want to keep history of commits
-
-```bash
-rm -rg .git
-git commit -m "chore: initialize project"
-```
-
-### App setup
-
-After setting up repository you can run bootstrap command to setup everything you need:
-
-```bash
-yarn bootstrap:new_app
-```
-
-This command will ask you for some needed informations and then will overwrite your files in repository.
+- `npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app`
+- `cd name_of_your_app`
+- `yarn bootstrap` - the cli will ask you some questinos about your app (you can fill all this data later)
 
 ## Features
 
@@ -74,13 +50,13 @@ This command will ask you for some needed informations and then will overwrite y
 
 - TypeScript
   - app is fully typed
-- [Expo v47](https://github.com/expo/expo)
+- [Expo v49](https://github.com/expo/expo)
 - [React Navigation v6](https://github.com/react-navigation/react-navigation)
-- Native-base v3.4
 - Prettier and eslint
   - code formatting
   - code checking
 - Babel-module-resolver
+  - unified imports
 - jest and @testing-library/react-native
   - unit tests
 - i18next
@@ -92,7 +68,8 @@ This command will ask you for some needed informations and then will overwrite y
 - Reactotron
   - used for debugging
 - [Reanimated v2](https://github.com/software-mansion/react-native-reanimated)
-- Axios
+- Axios + React query
+  - Fetching data from backend
 
 ### Implemented custom features
 
@@ -119,23 +96,10 @@ This command will ask you for some needed informations and then will overwrite y
   - right now it has simple signIn/signOut flow
 - animations with `reanimated` and `moti`
 
-<!-- ## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here) -->
-
-## Working with designer in your project
-
-Expo template, you are going to use - bundles native-base ui lib out of the box.
-To have the best starting experience in your project - write a dm to your designer that they should use [NativeBase Figma Design Kit](https://www.figma.com/community/file/1050753649783931446)
-
-<!--
-  TODO: add documentation
-  ## Documentation
-  [Documentation](https://linktodocumentation)
--->
-
 ## Roadmap
 
+- add some state management tool - in progress
+- write docs (app deployment, app setup and more) - in progress
 - tutorial on how to use features
   - navigation
   - deeplinking
@@ -146,6 +110,7 @@ To have the best starting experience in your project - write a dm to your design
 - Add desings (figma) and redesing whole app
 - Updating expo versions (in future)
 - Deploy app to appstore and playstore
+  - Create sample app and document the process of deployment
 - Improve mock server logic
 - add commit lint
 - add script that display last update information (eas update)
@@ -160,7 +125,9 @@ To have the best starting experience in your project - write a dm to your design
 
 Contributions are always welcome!
 
-See `contributing.md` for ways to get started.
+<!-- TODO: Create such files and add hyperlinks to them. -->
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
@@ -250,6 +217,7 @@ If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.
 
 ### Outdated
 
+- https://github.com/kacgrzes/expo-typescript-template (our repo is for of this one)
 - https://github.com/codingki/react-native-expo-template
 - https://github.com/flatlogic/react-native-starter
 - https://github.com/mcnamee/react-native-expo-starter-kit

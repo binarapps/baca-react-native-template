@@ -1,4 +1,3 @@
-import { View } from 'native-base'
 import React, { useEffect } from 'react'
 import Animated, {
   Easing,
@@ -11,14 +10,16 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
+import { Box } from './Box'
+
 export type DiskLoaderType = {
-  circleColor?: string
+  circleColor?: ColorNames
   containerColor?: string
   size?: number
 }
 
 export const DiskLoader = ({
-  circleColor = '#4c5630',
+  circleColor = 'green.400',
   containerColor = '#b3c430',
   size = 40,
 }: DiskLoaderType): JSX.Element => {
@@ -57,10 +58,10 @@ export const DiskLoader = ({
           animatedStyle,
         ]}
       >
-        <View
+        <Box
           width={circleSize}
           height={circleSize}
-          borderRadius="full"
+          borderRadius={999}
           position="absolute"
           bg={circleColor}
         />

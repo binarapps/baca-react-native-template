@@ -1,11 +1,10 @@
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
-import { Text } from 'native-base'
 import { memo } from 'react'
 
 import { bottomTabsScreensData } from './config/tabs'
 
-import { Icon } from '~components'
+import { Text, Icon } from '~components/atoms'
 import { TAB_DEFAULT_ICON } from '~constants'
 import { useCallback, useNavigationTheme } from '~hooks'
 
@@ -35,7 +34,7 @@ export const BottomTabNavigator = () => {
         const iconToRender = (focused ? active : inactive) || TAB_DEFAULT_ICON
 
         // CONFIG: You can return any component that you like here!
-        return <Icon name={iconToRender} size={size} color={color} />
+        return <Icon name={iconToRender} size={size} color={color as ColorNames} />
       },
       tabBarLabel: ({ color, focused }) => {
         const title =
@@ -43,7 +42,7 @@ export const BottomTabNavigator = () => {
 
         // CONFIG: You can return any component that you like here!
         return (
-          <Text fontSize="xs" bold={focused} color={color}>
+          <Text fontSize="xs" bold={focused} color={color as ColorNames}>
             {title}
           </Text>
         )

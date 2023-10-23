@@ -1,15 +1,35 @@
-import { ICheckboxProps, IFormControlProps } from 'native-base'
+import { CheckboxProps, FormLabelProps, InputProps, RadioProps, SelectProps } from '~components'
 
-import { InputProps } from '~components'
+export type FieldInputProps = InputProps &
+  FormLabelProps & {
+    helperText?: string
+    errorMessage?: string
+    errorIcon?: JSX.Element
+    onFocus?: () => void
+  }
 
-export type FieldInputProps = InputProps & {
-  label?: string
-  helperText?: string
-  errorMessage?: string
-  errorIcon?: JSX.Element
-}
+export type FieldRadioProps = RadioProps &
+  FormLabelProps & {
+    radioOptions?: string[]
+    errorMessage?: string
+    isInvalid?: boolean
+    isDisabled?: boolean
+    name: string
+  }
 
-export type FieldCheckboxProps = ICheckboxProps &
-  IFormControlProps & {
-    label?: string
+export type FieldSelectProps<T> = SelectProps<T> &
+  FormLabelProps & {
+    helperText?: string
+    errorMessage?: string
+    errorIcon?: JSX.Element
+    isInvalid?: boolean
+  }
+
+export type FieldCheckboxProps = CheckboxProps &
+  FormLabelProps & {
+    checkboxes?: string[]
+    errorMessage?: string
+    isInvalid?: boolean
+    isDisabled?: boolean
+    name: string
   }

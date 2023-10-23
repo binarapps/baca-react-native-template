@@ -1,11 +1,9 @@
 import * as Linking from 'expo-linking'
-import { VStack, Heading, Divider, Button, ScrollView, View } from 'native-base'
 
-import { Icon, Loader } from '~components'
+import { Icon, Loader, Box, Text, Button, Center, ScrollView } from '~components'
 import { useCallback, useNotifications, useTranslation } from '~hooks'
 
 const headingSizes = ['xs', 'sm', 'md', 'lg', '2xl', '3xl', '4xl'] as const
-const buttonVariants = ['solid', 'outline', 'subtle', 'ghost'] as const
 const loaderVariants = [
   {
     type: 'circle',
@@ -47,43 +45,51 @@ export const ComponentsScreen = (): JSX.Element => {
   )
 
   return (
-    <ScrollView p={4}>
-      <Button alignSelf="center" variant="outline" onPress={testNotification}>
+    <ScrollView flexGrow={1} p={4}>
+      <Button.Primary alignSelf="center" onPress={testNotification}>
         {t('components_screen.test_notification')}
-      </Button>
-      <Divider my={4} />
-      <VStack alignItems="center">
-        <Heading mb={4}>{t('components_screen.typography.label')}</Heading>
+      </Button.Primary>
+      <Box alignItems="center">
+        <Text.H4 mt={8} mb={4}>
+          {t('components_screen.typography.label')}
+        </Text.H4>
         {headingSizes.map((size) => (
-          <Heading key={size} size={size}>
+          <Text key={size} fontSize={size}>
             {t(`components_screen.typography.${size}`)}
-          </Heading>
+          </Text>
         ))}
-        <Divider my={4} />
-        <Heading mb={4}>{t('components_screen.button_variants.header')}</Heading>
-        {buttonVariants.map((variant) => (
-          <Button key={variant} mb={2} variant={variant}>
-            {t(`components_screen.button_variants.${variant}`)}
-          </Button>
-        ))}
-        <Button mb={2} isLoading variant="link" />
-        <Icon name="account-box-fill" size={24} color={'amber.600'} />
-        <Button my={4} isDisabled>
+        <Text.H4 mt={8} mb={4}>
+          {t('components_screen.button_variants.header')}
+        </Text.H4>
+        <Button.Primary title={t('components_screen.button_variants.primary')} />
+        <Button.Primary
+          mt={4}
+          leftIcon={<Icon name="account-box-fill" size={24} color="red.400" />}
+          rightIcon={<Icon name="account-box-fill" size={24} color="modalBackground" />}
+          title={t('components_screen.button_variants.with_icons')}
+        />
+        <Button.Secondary mt={4} title={t('components_screen.button_variants.secondary')} />
+        <Button.Outline mt={4} title={t('components_screen.button_variants.outline')} />
+        <Button.Ghost mt={4} title={t('components_screen.button_variants.ghost')} />
+        <Button.Link mt={4} title={t('components_screen.button_variants.link')} />
+        <Button mt={4} disabled>
           {t('components_screen.button_variants.disabled')}
         </Button>
-        <Divider my={4} />
-        <Heading mb={4}>{t('components_screen.loader_variants.header')}</Heading>
+        <Button mt={4} loading size="lg" />
+        <Text.H4 mt={8} mb={4}>
+          {t('components_screen.loader_variants.header')}
+        </Text.H4>
         {loaderVariants?.map((loader) => (
-          <View flex={1} key={loader.type}>
-            <Heading mb={4} size="sm">
+          <Box flex={1} key={loader.type}>
+            <Text my={4} fontSize="sm">
               {t(loader?.headerText)}
-            </Heading>
-            <Loader type={loader?.type} />
-            <Divider my={4} backgroundColor="transparent" />
-          </View>
+            </Text>
+            <Center>
+              <Loader type={loader?.type} />
+            </Center>
+          </Box>
         ))}
-      </VStack>
-      <Divider my={4} />
+      </Box>
     </ScrollView>
   )
 }
