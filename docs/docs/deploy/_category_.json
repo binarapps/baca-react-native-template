@@ -1,6 +1,8 @@
 {
-  "label": "App deployment with EAS 🕐 / 📱",
-  "position": 5,
+  "label": "Deployment",
+  "position": 2,
+  "collapsible": true,
+  "collapsed": false,
   "link": {
     "type": "generated-index",
     "description": "Documentation for deploying your app with EAS"

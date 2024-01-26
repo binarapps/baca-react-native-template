@@ -47,7 +47,7 @@ yarn update:expo_go
 
 <ol type="a">
     <li>
-        Install the Expo Go app from Play Store (Android) or from App Store (iOS). <br>
+        Install the Expo Go app from Play Store (Android) or from App Store (iOS). **
         Your app will run in the Expo Go application as the wrapper to your original app.
     </li>
     <li>Log in to your Expo account in the Expo Go app.</li>

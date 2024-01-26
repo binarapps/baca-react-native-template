@@ -20,10 +20,7 @@ description: Intro to app deployment
 - Required to deploy an app - 📱
 - Nice to have - 🌈
 
-> **Note!** <br> If you encounter any troubles with building and publishing an app please add a comment and address it to <b>Michał Baumruck</b> or <b>Mateusz Rostkowski</b>
-
-<br>
-<br>
+> **Note!** If you encounter any troubles with building and publishing an app please add a comment and address it to **Michał Baumruck** or **Mateusz Rostkowski**
 
 ### When and how to: build, submit, and update an app
 
@@ -124,7 +121,6 @@ description: Intro to app deployment
         </td>
     </tr>
 </table>
-<br>
 
 ### Types of testing
 

@@ -1,6 +1,6 @@
 ---
 id: bootstrap-testing
-slug: /bootstrap-testing
+slug: /bootstrap/testing
 title: Bootstrap - testing
 sidebar_position: 2
 tags:
@@ -12,47 +12,37 @@ tags:
 description: Bootstrap project structure, that is needed to start testing your mobile app
 ---
 
+import Details from '@site/src/components/Details'
+
 # Bootstrap - testing
 
 After this step you will be ready to publish your app for testers, but first we need to make some steps to make everything working :)
 
 ## **What you need to prepare for testing?**
 
-<details>
-  <summary>1. App name</summary>
-  
+<Details title="1. App name">
   You need prepare some catchy name for you app, if not provided by client
-</details>
+</Details>
 
-<details>
-  <summary>2. App slug</summary>
-  
-  ![App slug in expo console](../../static/bootstrap_slug.png)
-  
-  You can find it in expo console
-</details>
+<Details title="2. App slug">
+  ![App slug in expo console](../../static/img/bootstrap_slug.png) You can find it in expo console
+</Details>
 
-<details>
-  <summary>3. Organziation owner (default to binarapps)</summary>
+<Details title="3. Organziation owner (default to binarapps)">
 
-![App slug in expo console](../../static/bootstrap_owner.png)
+![App slug in expo console](../../static/img/bootstrap_owner.png)
 
 You can find it in expo console
 
-</details>
+</Details>
 
-<details>
-  <summary>4. Eas project id</summary>
-  
-  ![App slug in expo console](../../static/bootstrap_eas_id.png)
-  
-  You can find it in expo console
-</details>
+<Details title="4. Eas project id">
+  ![App slug in expo console](../../static/img/bootstrap_eas_id.png) You can find it in expo console
+</Details>
 
-<details>
-  <summary>5. Provide necessary assets for your application (app icons and splash screen).</summary>
-  
-  [Expo recommendations about app icons and splash screen.](https://www.figma.com/file/gDLi6LNtNq50FycJ30t7rw/Expo-App-Icon-%26-Splash-(Community)?node-id=1-1357&t=VbJUpoye07JAuVLv-0)
+<Details title="5. Provide necessary assets for your application (app icons and splash screen).">
+
+[Expo recommendations about app icons and splash screen.](<https://www.figma.com/file/gDLi6LNtNq50FycJ30t7rw/Expo-App-Icon-%26-Splash-(Community)?node-id=1-1357&t=VbJUpoye07JAuVLv-0>)
 
 App icons for Android and iOS devices need to follow different requirements - all necessary requirements can be found here.
 Config inside the app is prepared that your icons will be named respectively:
@@ -93,11 +83,10 @@ adaptiveIconBackgroundColor: {
 },
 ```
 
-</details>
+</Details>
 
-<details>
-  <summary>6. App identifiers</summary>
-  
+<Details title="6. App identifiers">
+ 
 Your application should have unique identifiers of your app (they will be used in stores), they are respectively: 
   - for Android - app package name
   - for iOS - bundle identifier
@@ -107,17 +96,14 @@ They could have the same value for android and iOS, and normally they have a str
 
 If you have some domain, for example: example.com, your bundle id could be: `com.example`
 
-</details>
+</Details>
 
-<details>
-  <summary>7. URL scheme</summary>
-  
-URL scheme link into your app. For example, if we set this to 'demo', then `demo://` URLs would open your app when tapped.
-It is only available in standalone apps.
-</details>
+<Details title="7. URL scheme">
+  URL scheme link into your app. For example, if we set this to 'demo', then `demo://` URLs would
+  open your app when tapped. It is only available in standalone apps.
+</Details>
 
-<details>
-  <summary>You should have data like this:</summary>
+<Details title="You should have data like this:">
   
 You can generate this data and save it in some notepad or somewhere else.
 ```json
@@ -132,9 +118,9 @@ You can generate this data and save it in some notepad or somewhere else.
   "adaptiveIconBackgroundColor": "#2E7AF0CC"
 }
 ```
-</details>
+</Details>
 
-<hr>
+---
 
 ## Bootstraping project
 
