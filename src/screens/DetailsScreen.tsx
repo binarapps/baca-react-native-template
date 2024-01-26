@@ -1,10 +1,12 @@
 import { useBottomSheet, Center, Text, Button, Box } from '~components'
-import { useTranslation } from '~hooks'
+import { useState, useTranslation } from '~hooks'
 
 export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
   const {
     route: { params },
   } = props
+
+  const [items, setItems] = useState<string[]>([])
   const { bottomSheetComponentRenderFunction, presentBottomSheet } = useBottomSheet({
     title: 'Details bottom sheet',
   })
@@ -13,6 +15,12 @@ export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
   const bottomSheet = bottomSheetComponentRenderFunction(
     <Box px={4} py={10}>
       <Text color="text">{t('details_screen.awesome')}</Text>
+      {items.map((item, index) => (
+        <Text key={index} color="text">
+          {item}
+        </Text>
+      ))}
+      <Button onPress={() => setItems((prev) => [...prev, 'Item'])}>Text</Button>
     </Box>
   )
 
