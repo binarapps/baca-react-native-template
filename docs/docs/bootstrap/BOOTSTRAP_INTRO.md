@@ -12,11 +12,7 @@ description: Bootstrap project structure, that is needed to start development yo
 
 # BOOTSTRAP - start development 🕐
 
-**tl;dr:** Bootstrap project structure, that is needed to start development
-
-## Preparation
-
----
+Bootstrap project structure, that is needed to start development
 
 ### **What you need to do to start development?**
 
