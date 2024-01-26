@@ -17,6 +17,11 @@ const languageDetector: LanguageDetectorAsyncModule = {
         language = Localization?.getLocales?.()?.[0]?.languageCode
       }
     }
+
+    if (!language) {
+      return
+    }
+
     callback(language)
     return language
   },
