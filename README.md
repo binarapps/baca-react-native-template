@@ -42,7 +42,7 @@ Check this recording of how it look like:
 
 ## How to use?
 
-We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](./documentation/docs/BOOTSTRAP.md)**
+We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](https://baca-rn-docs.vercel.app/docs/bootstrap/intro)**
 
 It's great for production project, but if you want to just test it, you can follow the quick steps (on the bottom).
 
