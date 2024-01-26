@@ -12,6 +12,16 @@
 
 This is a template to be used with react native and expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included, so it's easier to start coding the app itself without all the necessary boilerplate setup.
 
+## Documentation
+
+Check out our [documentation page](https://baca-rn-docs.vercel.app/docs/bootstrap/intro), it contains:
+
+- Bootstraping project - tutorial how to easy setup from scrath
+- Deploying app
+- Tutorials
+  - How to manage environment variables
+  - Use jotai as state management tool
+
 ## Why to use?
 
 We know there are a lot of project starters for react native, but we have some good features:
