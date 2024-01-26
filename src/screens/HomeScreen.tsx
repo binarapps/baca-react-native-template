@@ -17,16 +17,16 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
   }, [navigate])
 
   return (
-    <Center flex={1}>
+    <Center flex={1} px={4}>
       <Image
         source={colorScheme === 'light' ? lightLogo : darkLogo}
         style={styles.logo}
         resizeMode="contain"
         resizeMethod="resize"
       />
-      <Text textAlign="center">{t('hello')}</Text>
-      <Text textAlign="center">{t('thanks')}</Text>
-      <Text textAlign="center">{t('app_information')}</Text>
+      <Text.H3Bold textAlign="center">{t('hello')}</Text.H3Bold>
+      <Text.Caption textAlign="center">{t('thanks')}</Text.Caption>
+      <Text.Caption textAlign="center">{t('app_information')}</Text.Caption>
       <Button mt={4} onPress={navigateToDetails}>
         {t('home_screen.details')}
       </Button>
