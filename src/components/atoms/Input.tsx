@@ -50,7 +50,7 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
 
   const fontSize = fontSizes[props.fontSize || 'xs']
   const fontWeight = fontWeights[props.fontWeight || 'normal']
-  const fontFamily = fonts[props.fontFamily || 'body']
+  const fontFamily = fonts[props.fontFamily || 'regular']
 
   const lineHeightStyle = useMemo<TextStyle>(
     () => ({
@@ -238,7 +238,7 @@ export const Input = forwardRef<TextInput, InputProps>(
           cursorColor={colors.primaryLight}
           editable={!isDisabled}
           flex={1}
-          fontFamily="body"
+          fontFamily="regular"
           fontSize="xs"
           fontWeight="bold"
           height="100%"
