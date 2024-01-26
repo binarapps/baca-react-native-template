@@ -11,15 +11,15 @@ import styles from './index.module.css'
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
+    <header className={clsx('hero hero--primary padding-vert--xl', styles.heroBanner)}>
+      <div className="container padding-vert--xl">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link className="button button--secondary button--lg" to="/docs/bootstrap/intro">
-            Start developing
+            See docs
           </Link>
         </div>
       </div>
