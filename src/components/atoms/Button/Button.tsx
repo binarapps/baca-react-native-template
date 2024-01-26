@@ -196,25 +196,25 @@ const RawButton = memo(
           }
           if (title) {
             return (
-              <Text.Bold
+              <Text.BodyBold
                 allowFontScaling={false}
                 style={pressableTextStyleFunction(props)}
                 textAlign="center"
               >
                 {title}
-              </Text.Bold>
+              </Text.BodyBold>
             )
           }
 
           if (typeof children === 'string') {
             return (
-              <Text.Bold
+              <Text.BodyBold
                 allowFontScaling={false}
                 style={pressableTextStyleFunction(props)}
                 textAlign="center"
               >
                 {children}
-              </Text.Bold>
+              </Text.BodyBold>
             )
           }
           return children

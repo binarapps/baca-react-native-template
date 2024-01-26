@@ -6,7 +6,7 @@ import { StyledProps } from '../types'
 
 import { textVariants } from '~constants/textVariants'
 import { useTheme } from '~hooks'
-import { getColorValue, convertEmToNumber, getFontWeight } from '~utils'
+import { getColorValue, convertEmToNumber } from '~utils'
 
 type TypographyProps = {
   fontSize?: FontSizes | number
@@ -54,11 +54,8 @@ const RawText = memo(
       ref
     ) => {
       const theme = useTheme()
-      const {
-        fontFamily: variantFontFamily,
-        fontSize: variantFontSize,
-        fontWeight: variantFontWeight,
-      } = (variant && textVariants[variant]) || {}
+      const { fontFamily: variantFontFamily, fontSize: variantFontSize } =
+        (variant && textVariants[variant]) || {}
 
       const fontFamily = props.fontFamily || variantFontFamily
       const fontSize = props.fontSize || variantFontSize
@@ -67,7 +64,6 @@ const RawText = memo(
           ? fontSize
           : theme.fontSizes[fontSize]
         : undefined
-      const fontWeight = props.fontWeight || variantFontWeight
 
       const lineHeightStyle = useMemo<TextStyle>(
         () => ({
@@ -127,13 +123,6 @@ const RawText = memo(
         [underline, strikeThrough, textDecoration]
       )
 
-      const fontWeightStyle = useMemo<TextStyle>(
-        () => ({
-          fontWeight: (bold && 'bold') || (fontWeight && getFontWeight(fontWeight)),
-        }),
-        [fontWeight, bold]
-      )
-
       const fontFamilyStyle = useMemo<TextStyle>(
         () => ({
           fontFamily: fontFamily ? theme.fonts[fontFamily] : undefined,
@@ -161,7 +150,6 @@ const RawText = memo(
             letterSpacingStyle,
             lineHeightStyle,
             textTransformStyle,
-            fontWeightStyle,
             style,
           ]),
         [
@@ -175,7 +163,6 @@ const RawText = memo(
           textColor,
           textDecorationStyle,
           textTransformStyle,
-          fontWeightStyle,
           style,
         ]
       )
@@ -207,11 +194,13 @@ export type TextVariant =
   | 'H6'
   | 'H6Bold'
   | 'Body'
-  | 'Bold'
+  | 'BodyBold'
   | 'Caption'
   | 'CaptionBold'
   | 'Subtitle'
   | 'SubtitleBold'
+  | 'NavLabel'
+  | 'NavLabelBold'
 type TextComposition = React.ForwardRefExoticComponent<
   PropsWithoutRef<TextProps> & RefAttributes<BaseText>
 > & {
@@ -237,10 +226,12 @@ Text.H5Bold = generateTextVariant('H5Bold')
 Text.H6 = generateTextVariant('H6')
 Text.H6Bold = generateTextVariant('H6Bold')
 Text.Body = generateTextVariant('Body')
-Text.Bold = generateTextVariant('Bold')
+Text.BodyBold = generateTextVariant('BodyBold')
 Text.Caption = generateTextVariant('Caption')
 Text.CaptionBold = generateTextVariant('CaptionBold')
 Text.Subtitle = generateTextVariant('Subtitle')
 Text.SubtitleBold = generateTextVariant('SubtitleBold')
+Text.NavLabel = generateTextVariant('NavLabel')
+Text.NavLabelBold = generateTextVariant('NavLabelBold')
 
 export { Text }
