@@ -7,7 +7,6 @@ export default function Collapse(props: { children: React.ReactNode; title?: str
   return (
     <Details>
       <summary mdxType="summary">{title}</summary>
-
       {children}
     </Details>
   )

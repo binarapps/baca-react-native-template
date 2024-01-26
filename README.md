@@ -235,7 +235,7 @@ If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.
 
 ### Outdated (not maintained anymore)
 
-- https://github.com/kacgrzes/expo-typescript-template (our repo is for of this one)
+- https://github.com/kacgrzes/expo-typescript-template (our repo is fork of this one - we keep maintaing this)
 - https://github.com/codingki/react-native-expo-template
 - https://github.com/flatlogic/react-native-starter
 - https://github.com/mcnamee/react-native-expo-starter-kit
