@@ -12,17 +12,20 @@ tags:
 description: Doppler - automatically manage environment variables
 ---
 
+import Details from '@site/src/components/Details'
+
 # Doppler configuration 🌈
 
 Thanks to doppler you will be able to autoamtically mange your environment varialbes.
 
-<details>
-    <summary>1.Sign up for the Doppler tool</summary>
+<Details title="1. Sign up for the Doppler tool">
+
 a. Ideally, the account will be created by the client, the developer will be invited to participate in a workspace
-</details>
-**
-<details>
-    <summary>2.Create a new workspace for the project.</summary>
+
+</Details>
+
+<Details title="2. Create a new workspace for the project.">
+
 a. Open a dropdown of the workspaces list:
 
 ![Open dropdown](../../static/img/doppler_open_dropdown.png)
@@ -36,10 +39,10 @@ c. Fill in the workspace name:
 d. Confirm <b>Create Workspace →</b> button
 ![Confirm workspace creation](../../static/img/doppler_workspace_button.png)
 
-</details>
-**
-<details>
-    <summary>3.Create new project</summary>
+</Details>
+
+<Details title="3. Create new project">
+
 a. In newly created workspace please click <b>Create Project</b> button
 
 ![Create project](../../static/img/doppler_project_button.png)
@@ -50,10 +53,10 @@ b. Provide project name
 c. Confirm with <b>Create Project →</b> button
 ![Confirm project creation](../../static/img/doppler_project_button.png)
 
-</details>
-**
-<details>
-    <summary>4.Adding environment variables.</summary>
+</Details>
+
+<Details title="4. Adding environment variables.">
+
 a. Enter the projects tab, and select a newly created project
 
 ![Select project](../../static/img/doppler_project_select.png)
@@ -77,18 +80,16 @@ e. Confirm with <b>Save</b> button:
 g. Make sure that you have consistent data in each environment. In these step, you can copy newly created variable to the rest environments (select checkboxes). When selected the necessary environments confirm with <b>Save</b> button:
 ![Confirm save secrets](../../static/img/doppler_secret_confirm.png)
 
-</details>
-**
-<details>
-    <summary>5.Implement Doppler tool onto the app.</summary>
+</Details>
+
+<Details title="5. Implement Doppler tool onto the app.">
 
 Use gist to go through the implementation of Doppler tool in the app. \*\*
 In doppler_variables.sh file, please use generated Access Tokens from the above.
 
-</details>
-**
-<details>
-    <summary>6.Get Access from your code level</summary>
+</Details>
+
+<Details title="6. Get Access from your code level">
 
 a. Enter <b>Access</b> tab:
 
@@ -113,10 +114,9 @@ Click <b>copy</b> button:
 
 f. To be able to use environment variables for different environments (qa/staging/production) you need to generate an access token for every environment.
 
-</details>
-**
-<details>
-    <summary>7.Check if everything works correctly.</summary>
+</Details>
+
+<Details title="7. Check if everything works correctly.">
 
 In project dir terminal run:
 
@@ -126,8 +126,9 @@ yarn prepare:(qa/staging/production)
 
 Choose the proper app version depending on the environment for which you want to generate env file.
 
-<b>.env</b> file should be generated and consist of variables passed to Doppler, and some extra doppler variables as DOPPLER_CONFIG.
+<b>.env</b> file should be generated and consist of variables passed to Doppler, and some extra doppler
+variables as DOPPLER_CONFIG.
 
 CONGRATULATION !! 🥳🥳 You have configured the Doppler tool for your project!
 
-</details>
+</Details>
