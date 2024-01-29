@@ -1,5 +1,5 @@
 {
-  "name": "@binarapps/expo-ts-template",
+  "name": "@binarapps/baca-react-native-template",
   "version": "2.1.0",
   "description": "Expo template ready to develop mobile apps",
   "keywords": [
@@ -14,10 +14,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/binarapps/expo-ts-template.git"
+    "url": "https://github.com/binarapps/baca-react-native-template.git"
   },
   "bugs": {
-    "url": "https://github.com/binarapps/expo-ts-template/issues"
+    "url": "https://github.com/binarapps/baca-react-native-template/issues"
   },
   "author": "BinarApps",
   "license": "MIT",

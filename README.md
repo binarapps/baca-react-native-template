@@ -8,7 +8,11 @@
 [![MIT License](https://img.shields.io/github/stars/binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/expo-ts-template?style=flat-square)
 [![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
-# @binarapps/expo-ts-template
+# @binarapps/baca-react-native-template
+
+> **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
+>
+> This repository is part of whole ecosystem, and it only contains React Native code
 
 This is a template to be used with react native and expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included, so it's easier to start coding the app itself without all the necessary boilerplate setup.
 
