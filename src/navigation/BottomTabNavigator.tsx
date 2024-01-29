@@ -41,11 +41,9 @@ export const BottomTabNavigator = () => {
           bottomTabsScreensData.find((screen) => screen.name === route.name)?.options?.title || ''
 
         // CONFIG: You can return any component that you like here!
-        return (
-          <Text fontSize="xs" bold={focused} color={color as ColorNames}>
-            {title}
-          </Text>
-        )
+
+        const TextComponent = focused ? Text.NavLabelBold : Text.NavLabel
+        return <TextComponent color={color as ColorNames}>{title}</TextComponent>
       },
       headerShown: false,
       ...tabBarTheme,

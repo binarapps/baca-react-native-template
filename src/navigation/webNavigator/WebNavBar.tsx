@@ -60,6 +60,7 @@ export const WebNavBar = (): JSX.Element => {
                       <Box
                         // MOBILE
                         flexDirection={shouldApplyMobileStyles ? 'column' : 'row'}
+                        alignItems="center"
                         style={
                           isPressed && shouldApplyMobileStyles ? styles.iconContainer : undefined
                         }
@@ -72,7 +73,7 @@ export const WebNavBar = (): JSX.Element => {
                       >
                         <Icon name={iconToRender} size={WEB_NAV_BAR_ICON_SIZE} color={color} />
                         {options.title ? (
-                          <Text bold={focused} color={color} ml="1">
+                          <Text variant={focused ? 'CaptionBold' : 'Caption'} color={color} ml="1">
                             {options.title}
                           </Text>
                         ) : null}

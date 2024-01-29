@@ -3,98 +3,87 @@ import { TextVariant } from '~components'
 type VariantStyle = {
   fontFamily: Fonts
   fontSize: FontSizes
-  fontWeight: FontWeights
 }
 
 export const textVariants: { [key in TextVariant]: VariantStyle } = {
   H1: {
-    fontFamily: 'heading',
+    fontFamily: 'regular',
     fontSize: '5xl',
-    fontWeight: 'normal',
   },
   H1Bold: {
-    fontFamily: 'heading',
+    fontFamily: 'bold',
     fontSize: '5xl',
-    fontWeight: 'bold',
   },
   H2: {
-    fontFamily: 'heading',
+    fontFamily: 'regular',
     fontSize: '4xl',
-    fontWeight: 'normal',
   },
   H2Bold: {
-    fontFamily: 'heading',
+    fontFamily: 'bold',
     fontSize: '4xl',
-    fontWeight: 'bold',
   },
   H3: {
-    fontFamily: 'heading',
+    fontFamily: 'regular',
     fontSize: '3xl',
-    fontWeight: 'normal',
   },
   H3Bold: {
-    fontFamily: 'heading',
+    fontFamily: 'bold',
     fontSize: '3xl',
-    fontWeight: 'bold',
   },
   H4: {
-    fontFamily: 'heading',
+    fontFamily: 'regular',
     fontSize: '2xl',
-    fontWeight: 'normal',
   },
   H4Bold: {
-    fontFamily: 'heading',
+    fontFamily: 'bold',
     fontSize: '2xl',
-    fontWeight: 'bold',
   },
   H5: {
-    fontFamily: 'heading',
+    fontFamily: 'regular',
     fontSize: 'xl',
-    fontWeight: 'normal',
   },
   H5Bold: {
-    fontFamily: 'heading',
+    fontFamily: 'bold',
     fontSize: 'xl',
-    fontWeight: 'bold',
   },
   H6: {
-    fontFamily: 'heading',
+    fontFamily: 'regular',
     fontSize: 'lg',
-    fontWeight: 'normal',
   },
   H6Bold: {
-    fontFamily: 'heading',
+    fontFamily: 'bold',
     fontSize: 'lg',
-    fontWeight: 'bold',
   },
   Subtitle: {
-    fontFamily: 'body',
+    fontFamily: 'regular',
     fontSize: 'lg',
-    fontWeight: 'normal',
   },
   SubtitleBold: {
-    fontFamily: 'body',
+    fontFamily: 'bold',
     fontSize: 'lg',
-    fontWeight: 'bold',
   },
   Body: {
-    fontFamily: 'body',
+    fontFamily: 'regular',
     fontSize: 'md',
-    fontWeight: 'normal',
   },
-  Bold: {
-    fontFamily: 'body',
+  BodyBold: {
+    fontFamily: 'bold',
     fontSize: 'md',
-    fontWeight: 'bold',
   },
   Caption: {
-    fontFamily: 'body',
+    fontFamily: 'regular',
     fontSize: 'sm',
-    fontWeight: 'normal',
   },
   CaptionBold: {
-    fontFamily: 'body',
+    fontFamily: 'bold',
     fontSize: 'sm',
-    fontWeight: 'bold',
+  },
+  NavLabel: {
+    fontFamily: 'regular',
+    fontSize: 'xs',
+  },
+  NavLabelBold: {
+    fontFamily: 'bold',
+    fontSize: 'xs',
   },
 }

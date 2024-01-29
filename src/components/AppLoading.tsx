@@ -1,7 +1,7 @@
 import * as SplashScreen from 'expo-splash-screen'
 import { useAtomValue } from 'jotai'
 import { FC, PropsWithChildren, useCallback, useEffect } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 import { AbsoluteFullFill, Loader, Center } from './atoms'
 
@@ -13,9 +13,12 @@ SplashScreen.preventAutoHideAsync()
 export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
   const isLoadingComplete = useCachedResources()
   const [fontsLoaded, fontError] = useFonts({
-    'Lato-Black': require('../../assets/fonts/Lato-Black.ttf'),
-    'Lato-Bold': require('../../assets/fonts/Lato-Bold.ttf'),
-    'Lato-Regular': require('../../assets/fonts/Lato-Regular.ttf'),
+    Lato_100Thin: require('../../assets/fonts/Lato_Thin.ttf'),
+    Lato_300Light: require('../../assets/fonts/Lato_Light.ttf'),
+    Lato_400Regular: require('../../assets/fonts/Lato_Regular.ttf'),
+    Lato_700Bold: require('../../assets/fonts/Lato_Bold.ttf'),
+    Lato_900Black: require('../../assets/fonts/Lato_Black.ttf'),
+    IcoMoon: require('../../assets/icomoon/icomoon.ttf'),
   })
 
   // Delay loading logic was made to prevent displaying empty screen after splash screen will hide

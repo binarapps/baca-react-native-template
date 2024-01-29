@@ -38,12 +38,6 @@ export {
 export { useSSR, useTranslation } from 'react-i18next'
 export { useWindowDimensions } from 'react-native'
 export { useNotificationController, useNotifications } from 'react-native-notificated'
-export {
-  useSpring,
-  useTiming,
-  useTranslation as useTranslationRedash,
-  useVector,
-} from 'react-native-redash'
 export { useSafeAreaFrame, useSafeAreaInsets } from 'react-native-safe-area-context'
 export {
   useHydrate,

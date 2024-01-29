@@ -1,3 +1,17 @@
+---
+id: expo-notifications
+slug: /expo-notofications
+title: Expo notifications
+sidebar_position: 4
+tags:
+  - Notifications
+  - Expo notifications
+  - Expo
+  - React
+  - React Native
+description: Expo notifications - check how to setup it from scratch
+---
+
 # Expo notifications configuration guide
 
 Expo notifications are already preconfigured in this template. However, you still have to provide some secrets and keys in order to use them across your applications that uses this template.

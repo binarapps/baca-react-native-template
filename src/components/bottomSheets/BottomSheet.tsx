@@ -1,17 +1,20 @@
 import {
   BottomSheetModal,
   BottomSheetScrollView,
-  useBottomSheetDynamicSnapPoints,
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
+  BottomSheetView,
 } from '@gorhom/bottom-sheet'
 import { RefObject, useCallback } from 'react'
+import { Dimensions } from 'react-native'
 
 import { BottomSheetHeader } from './BottomSheetHeader'
 
 import { Box } from '~components/atoms/Box'
 import { useColorScheme } from '~contexts'
-import { useMemo } from '~hooks'
+import { useSafeAreaInsets } from '~hooks'
+
+const screenHeight = Dimensions.get('screen').height
 
 type Props = {
   bottomSheetRef: RefObject<BottomSheetModal>
@@ -29,9 +32,7 @@ export const BottomSheet = ({
   numberOfTitleLines,
   bottomSheetRef,
 }: Props) => {
-  const snapPoints = useMemo(() => ['CONTENT_HEIGHT'], [])
-  const { animatedHandleHeight, animatedContentHeight, animatedSnapPoints, handleContentLayout } =
-    useBottomSheetDynamicSnapPoints(snapPoints)
+  const { top } = useSafeAreaInsets()
 
   const { colorScheme } = useColorScheme()
 
@@ -49,13 +50,11 @@ export const BottomSheet = ({
   return (
     <BottomSheetModal
       ref={bottomSheetRef}
-      index={0}
+      snapPoints={[screenHeight - top - 24]}
       backdropComponent={renderBackdrop}
-      snapPoints={animatedSnapPoints}
-      handleHeight={animatedHandleHeight}
-      contentHeight={animatedContentHeight}
+      enableDynamicSizing
     >
-      <Box bg="background" py={4} onLayout={handleContentLayout}>
+      <BottomSheetView>
         <BottomSheetHeader
           title={title}
           numberOfLines={numberOfTitleLines}
@@ -63,8 +62,9 @@ export const BottomSheet = ({
           onClose={handleClose}
         />
         <Box pb="1px" bg={colorScheme === 'dark' ? 'gray.900' : 'light'} />
+
         {children}
-      </Box>
+      </BottomSheetView>
     </BottomSheetModal>
   )
 }

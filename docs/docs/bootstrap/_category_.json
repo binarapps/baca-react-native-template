@@ -1,0 +1,10 @@
+{
+  "label": "Start development",
+  "position": 1,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Documentation for the development of the project"
+  }
+}

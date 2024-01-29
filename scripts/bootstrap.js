@@ -79,6 +79,11 @@ const removeIssueTemplates = () => {
   fs.rm('./.github/ISSUE_TEMPLATE', { recursive: true, force: true }, () => {})
 }
 
+// 7.
+const removeDocsFolder = () => {
+  fs.rm('./documentation', { recursive: true, force: true }, () => {})
+}
+
 const setUpProject = async (
   appName,
   bundleId,
@@ -115,6 +120,10 @@ const setUpProject = async (
   // 6. Remove issue templates
   logger.info('Remove issue templates')
   removeIssueTemplates()
+
+  // 7. Remove docs folder
+  logger.info('Remove docs folder')
+  removeDocsFolder()
 
   //Finish
   logger.success(`Config your project has been success`)
@@ -188,3 +197,4 @@ bootstrap()
 // 4. Setup app.json file
 // 5. Setup package.json file
 // 6. Remove issue templates
+// 7. Remove docs folder
