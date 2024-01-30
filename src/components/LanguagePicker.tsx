@@ -21,7 +21,7 @@ export const LanguagePicker: React.FC = () => {
 
   const { colorScheme } = useColorScheme()
   const { i18n } = useTranslation()
-  const language = i18n.language.slice(0, 2).toUpperCase() as keyof typeof languages
+  const language = i18n?.language?.slice?.(0, 2).toUpperCase() as keyof typeof languages
   const isOpen = useSharedValue(false)
 
   const rotateZ = useDerivedValue(() => withTiming(isOpen.value ? 180 : 0))
@@ -49,7 +49,7 @@ export const LanguagePicker: React.FC = () => {
         <Touchable {...props}>
           <Row alignItems="center">
             <Text fontSize="xl" pr={2}>
-              {languages[language].emoji}
+              {languages?.[language]?.emoji}
             </Text>
             <Animated.View style={[animatedIconStyle, styles.icon]}>
               <Icon size={24} name="arrow-down-s-line" color={iconColor} />
