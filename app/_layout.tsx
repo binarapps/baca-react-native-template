@@ -1,38 +1,34 @@
 import { ThemeProvider } from '@react-navigation/native'
-import { Stack, useRouter } from 'expo-router'
+import { Slot } from 'expo-router'
 
-import { useAuth, useEffect, useNavigationTheme } from '~hooks'
+import { AbsoluteFullFill, Loader } from '~components'
+import { useAuth, useNavigationTheme } from '~hooks'
 import { Providers } from '~providers'
 
 export const unstable_settings = {
-  initialRouteName: '(tabs)',
+  initialRouteName: 'index',
 }
 
-function Layout() {
+const Layout = () => {
+  const { isSignedIn } = useAuth()
   const { navigationTheme } = useNavigationTheme()
 
-  const { isSignedIn } = useAuth()
-  const { replace } = useRouter()
-
-  console.log('shit', isSignedIn)
-
-  useEffect(() => {
-    if (!isSignedIn) {
-      replace('/sign-in')
-    }
-  }, [isSignedIn, replace])
+  if (isSignedIn === null) {
+    return (
+      <AbsoluteFullFill w="full" h="full" justifyContent="center" alignItems="center">
+        <Loader type="bubbles" />
+      </AbsoluteFullFill>
+    )
+  }
 
   return (
     <ThemeProvider value={navigationTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
+      <Slot />
     </ThemeProvider>
   )
 }
 
-export default function AppLayout() {
+export default function RootLayout() {
   return (
     <Providers>
       <Layout />

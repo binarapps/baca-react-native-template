@@ -8,7 +8,8 @@ const ExamplesScreen = () => {
 
   const { t } = useTranslation()
 
-  const goToApplicationInfo = useCallback(() => push('/'), [push])
+  const goToAbout = useCallback(() => push('/about'), [push])
+  const goToApplicationInfo = useCallback(() => push('/application-info'), [push])
   const goToColors = useCallback(() => push('/example/colors'), [push])
   const goToComponents = useCallback(() => push('/example/components'), [push])
   const goToTypography = useCallback(() => push('/example/typography'), [push])
@@ -19,6 +20,9 @@ const ExamplesScreen = () => {
 
   return (
     <ScrollView p={4}>
+      <Button mb={2} onPress={goToAbout}>
+        Go to about
+      </Button>
       <Button mb={2} onPress={goToApplicationInfo}>
         {t('examples_screen.go_to_application_info')}
       </Button>

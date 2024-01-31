@@ -11,7 +11,7 @@ import { useCallback, usePreventGoBack, useScreenOptions, useTranslation } from 
 
 const projectId = Constants.expoConfig?.extra?.eas?.projectId
 
-export const ApplicationInfoScreen = (): JSX.Element => {
+const ApplicationInfoScreen = (): JSX.Element => {
   const { i18n, t } = useTranslation()
 
   useScreenOptions({
@@ -58,6 +58,8 @@ export const ApplicationInfoScreen = (): JSX.Element => {
     </ScrollView>
   )
 }
+
+export default ApplicationInfoScreen
 
 const styles = StyleSheet.create({
   container: {

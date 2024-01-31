@@ -19,6 +19,9 @@ export default function HomeScreen(): JSX.Element {
   const navigateToDetails = () => {
     router.push('/home/details')
   }
+  const navigateToModal = () => {
+    router.push('/modal')
+  }
 
   return (
     <Center flex={1} px={4}>
@@ -33,6 +36,9 @@ export default function HomeScreen(): JSX.Element {
       <Text.Caption textAlign="center">{t('app_information')}</Text.Caption>
       <Button mt={4} onPress={navigateToDetails}>
         {t('home_screen.details')}
+      </Button>
+      <Button mt={4} onPress={navigateToModal}>
+        Go to Modal
       </Button>
     </Center>
   )

@@ -3,12 +3,16 @@ import { useCallback, useEffect } from 'react'
 import { ControlledField, KeyboardAwareScrollView } from '~components'
 import { Button, Center, Spacer } from '~components/atoms'
 import { REGEX } from '~constants'
-import { useSignUpForm, useTranslation } from '~hooks'
+import { useScreenOptions, useSignUpForm, useTranslation } from '~hooks'
 
 const SignUpScreen = () => {
   const { t } = useTranslation()
 
   const { control, errors, submit, isSubmitting, setFocus } = useSignUpForm()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.sign_up'),
+  })
 
   useEffect(() => {
     setTimeout(() => {

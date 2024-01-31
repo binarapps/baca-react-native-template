@@ -1,4 +1,3 @@
-import { Slot } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { FC, PropsWithChildren, useCallback, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
@@ -63,11 +62,15 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [isLoading, setIsDelayLoading])
 
-  console.log({ isLoading, isDelayLoading, fontsLoaded, fontError })
-
   if (!fontsLoaded && !fontError) {
-    return <Slot />
+    return null
   }
+
+  return (
+    <View style={styles.container} onLayout={onLayoutRootView}>
+      {children}
+    </View>
+  )
 
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
