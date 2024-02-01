@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router'
 import { StyleSheet, Image } from 'react-native'
 
 import {
@@ -13,14 +14,18 @@ import {
 } from '~components'
 import { REGEX, darkLogo, lightLogo } from '~constants'
 import { useColorScheme } from '~contexts'
-import { useCallback, useSignInForm, useNavigation, useTranslation, useEffect } from '~hooks'
+import { useCallback, useSignInForm, useTranslation, useEffect, useScreenOptions } from '~hooks'
 
 export const SignInScreen = (): JSX.Element => {
-  const { navigate } = useNavigation()
   const { t } = useTranslation()
   const { colorScheme } = useColorScheme()
+  const { push } = useRouter()
 
   const { control, errors, submit, isSubmitting, setFocus } = useSignInForm()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.sign_in'),
+  })
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,8 +33,8 @@ export const SignInScreen = (): JSX.Element => {
     }, 500)
   }, [setFocus])
 
-  const navigateToSignUp = useCallback(() => navigate('SignUp'), [navigate])
-  const navigateToAppInfo = useCallback(() => navigate('ApplicationInfo'), [navigate])
+  const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
+  const navigateToAppInfo = useCallback(() => push('/application-info'), [push])
   const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (

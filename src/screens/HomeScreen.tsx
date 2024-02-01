@@ -1,20 +1,24 @@
+import { useRouter } from 'expo-router'
 import { Image, StyleSheet } from 'react-native'
 
 import { Button, Center, Text } from '~components/atoms'
 import { darkLogo, lightLogo } from '~constants'
 import { useColorScheme } from '~contexts'
-import { useCallback, useTranslation } from '~hooks'
+import { useScreenOptions, useTranslation } from '~hooks'
 
-export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
-  const {
-    navigation: { navigate },
-  } = props
+export const HomeScreen = () => {
   const { t } = useTranslation()
-  const { colorScheme } = useColorScheme()
 
-  const navigateToDetails = useCallback(() => {
-    navigate('Details', { id: 'home-id' })
-  }, [navigate])
+  useScreenOptions({
+    title: t('navigation.screen_titles.home'),
+  })
+
+  const { colorScheme } = useColorScheme()
+  const router = useRouter()
+
+  const navigateToDetails = () => {
+    router.push('/home/details')
+  }
 
   return (
     <Center flex={1} px={4}>

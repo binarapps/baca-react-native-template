@@ -68,12 +68,6 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-      {children}
-    </View>
-  )
-
-  return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
       {isLoading ? null : children}
       {isLoading || isDelayLoading ? (
         <AbsoluteFullFill bg="white">
