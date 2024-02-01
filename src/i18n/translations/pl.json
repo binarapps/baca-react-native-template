@@ -1,7 +1,9 @@
 {
   "errors": {
     "screen_not_found": "NotFound screen",
-    "something_went_wrong": "Coś poszło nie tak"
+    "something_went_wrong": "Coś poszło nie tak",
+    "token_expired": "Token wygasł",
+    "missing_auth": "Brak autoryzacji"
   },
   "form": {
     "invalid_email_format": "Zły adres e-mail",
