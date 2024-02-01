@@ -9,6 +9,11 @@
     "invalid_email_format": "Zły adres e-mail",
     "required": "Pole wymagane"
   },
+  "update": {
+    "alert_title": "Aktualizacja",
+    "alert_message": "Będziesz musiał zrestartować aplikację, żeby mieć lepsze doświadczenia podczas jej używania",
+    "restart": "Zrestartuj"
+  },
   "navigation": {
     "prevent_go_back_alert": {
       "title": "Anulować zmiany?",

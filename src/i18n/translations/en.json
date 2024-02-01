@@ -9,6 +9,11 @@
     "invalid_email_format": "Incorrect e-mail address",
     "required": "This field is required"
   },
+  "update": {
+    "alert_title": "New version available",
+    "alert_message": "You will have to restart the application to have better experiences while using it",
+    "restart": "Restart"
+  },
   "navigation": {
     "prevent_go_back_alert": {
       "title": "Discard changes?",
