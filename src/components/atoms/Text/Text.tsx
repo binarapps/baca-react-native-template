@@ -12,7 +12,7 @@ type TypographyProps = {
   fontSize?: FontSizes | number
   letterSpacing?: LetterSpacings
   lineHeight?: LineHeights
-  fontWeight?: FontWeights
+  fontWeight?: TextStyle['fontWeight']
   fontFamily?: Fonts
   color?: ColorNames
   noOfLines?: number
@@ -46,6 +46,7 @@ const RawText = memo(
         textTransform,
         underline,
         uppercase,
+        fontWeight,
         lowercase,
         style,
         variant,
@@ -140,7 +141,7 @@ const RawText = memo(
       const textStyle = useMemo(
         () =>
           generateStyleSheet<TextStyle>([
-            bold && { fontWeight: 'bold' },
+            (fontWeight || bold) && { fontWeight: fontWeight || 'bold' },
             italic && { fontStyle: 'italic' },
             fontFamilyStyle,
             fontSizeStyle,
@@ -153,15 +154,16 @@ const RawText = memo(
             style,
           ]),
         [
+          fontWeight,
           bold,
           italic,
           fontFamilyStyle,
           fontSizeStyle,
           textAlignmentStyle,
-          letterSpacingStyle,
-          lineHeightStyle,
           textColor,
           textDecorationStyle,
+          letterSpacingStyle,
+          lineHeightStyle,
           textTransformStyle,
           style,
         ]
