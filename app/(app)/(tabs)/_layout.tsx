@@ -8,8 +8,8 @@ export const unstable_settings = {
   initialRouteName: 'home',
 }
 
-function TabBarIcon(props: { name: IconNames; color: ColorNames }) {
-  return <Icon name={props.name} size={28} color={props.color} />
+function TabBarIcon(props: { color: ColorNames; name: IconNames }) {
+  return <Icon {...props} size={28} />
 }
 
 export default function TabLayout() {

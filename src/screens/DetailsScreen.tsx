@@ -1,8 +1,11 @@
+import { useLocalSearchParams } from 'expo-router'
+
 import { useBottomSheet, Center, Text, Button, Box } from '~components'
 import { useScreenOptions, useState, useTranslation } from '~hooks'
 
 export const DetailsScreen = (): JSX.Element => {
   const { t } = useTranslation()
+  const localParams = useLocalSearchParams<{ user: string }>()
 
   useScreenOptions({
     title: t('navigation.screen_titles.details'),
@@ -30,7 +33,7 @@ export const DetailsScreen = (): JSX.Element => {
       <Text>{t('details_screen.title')}</Text>
       <Button onPress={presentBottomSheet}>{t('details_screen.open_bottom_sheet')}</Button>
       <Text color="text">
-        {t('details_screen.screen_params', { params: JSON.stringify({ xd: 2 }) })}
+        {t('details_screen.screen_params', { params: JSON.stringify(localParams) })}
       </Text>
       {bottomSheet}
     </Center>

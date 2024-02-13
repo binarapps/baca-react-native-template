@@ -1,7 +1,7 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { PortalProvider } from '@gorhom/portal'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
-import { ReactNode } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import { StyleSheet } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -17,7 +17,7 @@ import { checkForUpdates } from '~utils'
 
 const queryClient = new QueryClient({})
 
-export const Providers = ({ children }: { children: ReactNode }): JSX.Element => {
+export const Providers: FC<PropsWithChildren> = ({ children }) => {
   useAppStateActive(checkForUpdates, false)
 
   return (
