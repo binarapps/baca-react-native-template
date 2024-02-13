@@ -1,12 +1,13 @@
 import { useRouter } from 'expo-router'
 import { Image, StyleSheet } from 'react-native'
 
-import { Button, Center, Text } from '~components/atoms'
+import { Button, Center, Text } from '~components'
 import { darkLogo, lightLogo } from '~constants'
 import { useColorScheme } from '~contexts'
-import { useScreenOptions, useTranslation } from '~hooks'
+import { useCallback, useScreenOptions, useTranslation } from '~hooks'
 
 export const HomeScreen = () => {
+  const { push } = useRouter()
   const { t } = useTranslation()
 
   useScreenOptions({
@@ -14,19 +15,18 @@ export const HomeScreen = () => {
   })
 
   const { colorScheme } = useColorScheme()
-  const router = useRouter()
 
-  const navigateToDetails = () => {
-    router.push('/home/details')
-  }
+  const navigateToDetails = useCallback(() => {
+    push('/home/details')
+  }, [push])
 
   return (
     <Center flex={1} px={4}>
       <Image
+        resizeMethod="resize"
+        resizeMode="contain"
         source={colorScheme === 'light' ? lightLogo : darkLogo}
         style={styles.logo}
-        resizeMode="contain"
-        resizeMethod="resize"
       />
       <Text.H3Bold textAlign="center">{t('hello')}</Text.H3Bold>
       <Text.Caption textAlign="center">{t('thanks')}</Text.Caption>

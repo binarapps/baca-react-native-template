@@ -24,7 +24,7 @@ export const ApplicationInfoScreen = (): JSX.Element => {
     try {
       if (!isExpoGo && !projectId) {
         throw new Error(
-          'You must set `projectId` in eas build then value will be avaliable from Constants?.expoConfig?.extra?.eas?.projectId'
+          'You must set `projectId` in eas build then value will be available from Constants?.expoConfig?.extra?.eas?.projectId'
         )
       }
       const token = (

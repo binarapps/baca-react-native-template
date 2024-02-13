@@ -1,11 +1,17 @@
 import React, { useCallback } from 'react'
 import { ListRenderItem, FlatList } from 'react-native'
 
-import { Loader, Center, Text, Box } from '~components'
-import { Spacer } from '~components/atoms'
+import { Loader, Center, Text, Box, Spacer } from '~components'
+import { useScreenOptions, useTranslation } from '~hooks'
 import { useGetCity_EXAMPLE } from '~query-hooks'
 import { TodoItem } from '~types/todos'
+
 export const DataFromBeScreen_EXAMPLE = () => {
+  const { t } = useTranslation()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.data_from_be_screen_example'),
+  })
   const { dataList, isFetchedDataAfterMount } = useGetCity_EXAMPLE()
 
   const renderItem: ListRenderItem<TodoItem> = useCallback(({ item: { title, id } }) => {

@@ -17,15 +17,15 @@ import { useColorScheme } from '~contexts'
 import { useCallback, useSignInForm, useTranslation, useEffect, useScreenOptions } from '~hooks'
 
 export const SignInScreen = (): JSX.Element => {
+  const { push } = useRouter()
   const { t } = useTranslation()
   const { colorScheme } = useColorScheme()
-  const { push } = useRouter()
-
-  const { control, errors, submit, isSubmitting, setFocus } = useSignInForm()
 
   useScreenOptions({
     title: t('navigation.screen_titles.sign_in'),
   })
+
+  const { control, errors, submit, isSubmitting, setFocus } = useSignInForm()
 
   useEffect(() => {
     setTimeout(() => {
@@ -51,9 +51,8 @@ export const SignInScreen = (): JSX.Element => {
         />
         <Spacer y="8" />
         <ControlledField.Input
+          {...{ control, errors }}
           autoCapitalize="none"
-          control={control}
-          errors={errors}
           isRequired
           keyboardType="email-address"
           label={t('common.email_label')}
@@ -71,9 +70,8 @@ export const SignInScreen = (): JSX.Element => {
           testID="emailInput"
         />
         <ControlledField.Input
+          {...{ control, errors }}
           autoCapitalize="none"
-          control={control}
-          errors={errors}
           isRequired
           label={t('sign_in_screen.password_label')}
           name="password"
@@ -88,10 +86,9 @@ export const SignInScreen = (): JSX.Element => {
         />
         <Center mt={8}>
           <ControlledField.Checkbox
-            control={control}
-            errors={errors}
-            name="confirm"
+            {...{ control, errors }}
             checkboxText={t('sign_in_screen.remember_me')}
+            name="confirm"
             size={18}
             testID="confirmCheckbox"
           />
@@ -105,7 +102,7 @@ export const SignInScreen = (): JSX.Element => {
             {t('sign_in_screen.sign_in')}
           </Button>
           <Text bold mb={4}>
-            {t('sign_in_screen.dont_have_an_account')}
+            {t('sign_in_screen.do_not_have_an_account')}
           </Text>
           <Button.Link onPress={navigateToSignUp}>{t('sign_in_screen.sign_up')}</Button.Link>
         </Center>

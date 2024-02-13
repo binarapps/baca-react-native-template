@@ -1,181 +1,4 @@
 {
-  "errors": {
-    "screen_not_found": "NotFound screen",
-    "something_went_wrong": "Coś poszło nie tak",
-    "token_expired": "Token wygasł",
-    "missing_auth": "Brak autoryzacji"
-  },
-  "form": {
-    "invalid_email_format": "Zły adres e-mail",
-    "required": "Pole wymagane"
-  },
-  "update": {
-    "alert_title": "Aktualizacja",
-    "alert_message": "Będziesz musiał zrestartować aplikację, żeby mieć lepsze doświadczenia podczas jej używania",
-    "restart": "Zrestartuj"
-  },
-  "navigation": {
-    "prevent_go_back_alert": {
-      "title": "Anulować zmiany?",
-      "description": "Masz niezapisane zmiany. Jesteś pewny, że chcesz je porzucić i wyjść?",
-      "dont_leave": "Nie wychodź",
-      "discard": "Porzuć"
-    },
-    "screen_titles": {
-      "home_stack": "Home",
-      "examples_stack": "Examples",
-      "examples": "Examples",
-      "components": "Components",
-      "colors": "Colors",
-      "typography": "Typography",
-      "home": "Home",
-      "details": "Details",
-      "sign_in": "Sign in",
-      "sign_up": "Sign up",
-      "main_tab": "MainTab",
-      "settings": "Settings",
-      "application_info": "ApplicationInfo",
-      "not_found": "NotFound",
-      "data_from_be_screen_example": "Dane z backendu"
-    }
-  },
-  "application_info_screen": {
-    "navigation_info": "Kiedy będziesz próbował cofnąć to zostaniesz podwójnie zapytany, czy na pewno tego chcesz \n"
-  },
-  "sign_in_screen": {
-    "sign_in": "Zaloguj",
-    "sign_up": "Zarejestruj",
-    "dont_have_an_account": "Nie masz konta?",
-    "forgot_password": "Zapomniałeś hasła?",
-    "or_pass": "lub wprowadź:",
-    "email_helper_text": "Email",
-    "password_label": "Hasło",
-    "password_helper_text": "Hasła muszą być takie same",
-    "password_placeholder": "hasło",
-    "remember_me": "Zapamiętaj mnie"
-  },
-  "sign_up_screen": {
-    "agree_terms_label": "Zgadzam się z warunkami użytkowania",
-    "newsletter_label": "Subskrybuj nasz newsletter",
-    "sign_up": "Zarejestruj"
-  },
-  "home_screen": {
-    "details": "Detale"
-  },
-  "colors_screen": {
-    "colors_label": "Kolory"
-  },
-  "typography_screen": {
-    "text_font_size": "Text.fontSize: ",
-    "heading_size": "Heading.size: "
-  },
-  "details_screen": {
-    "title": "To jest przykładowy widok",
-    "open_bottom_sheet": "Otwórz BottomSheetModal",
-    "screen_params": "Parametry widoku: {{params}}",
-    "awesome": "Wspaniale 🎉"
-  },
-  "examples_component": {
-    "example": "Przyklad"
-  },
-  "examples_screen": {
-    "header": "To jest przykładowy widok",
-    "go_to_application_info": "Idź do ApplicationInfo",
-    "go_to_colors": "Idź do Kolorów",
-    "go_to_components": "Idź do Komponentów",
-    "go_to_typography": "Idź do Typografii",
-    "go_to_home_stack_details": "Idź do HomeStackDetails",
-    "go_to_settings": "Idź do Ustawień",
-    "go_to_screen_with_BEdata": "Idź do widoku z danymi z backendu",
-    "go_to_screen_test_form": "Idź do formularza testowego"
-  },
-  "components_screen": {
-    "test_notification": "Test notification",
-    "typography": {
-      "label": "Typography",
-      "xs": "xs",
-      "sm": "sm",
-      "md": "md",
-      "lg": "lg",
-      "xl": "xl",
-      "2xl": "2xl",
-      "3xl": "3xl",
-      "4xl": "4xl"
-    },
-    "button_variants": {
-      "header": "Button variants",
-      "primary": "Button primary",
-      "secondary": "Button secondary",
-      "outline": "Button outline",
-      "ghost": "Button ghost",
-      "link": "Button link",
-      "disabled": "Button disabled",
-      "loading": "Button loading",
-      "with_icons": "Button with icons"
-    },
-    "loader_variants": {
-      "header": "Loader variants",
-      "circle": "Circle loader",
-      "bubbles": "Bubbles loader",
-      "bricks": "Bricks loader",
-      "disk": "Disk loader",
-      "default": "Default loader"
-    },
-    "notification": {
-      "title": "In-app notification example",
-      "description": "by react-native-notificated 🎉"
-    }
-  },
-  "settings_screen": {
-    "current_theme": "Current theme: {{theme}}",
-    "sign_out": "Wyloguj!",
-    "selected": " - wybrano"
-  },
-  "test_form": {
-    "interests": "Zainteresowania",
-    "cooking": "Gotowanie",
-    "sport": "Sport",
-    "games": "Gry",
-    "dancing": "Taniec",
-    "age": "Wiek",
-    "education": "Wykształcenie",
-    "primary": "Podstawowe",
-    "middle": "Gimnazjalne",
-    "secondary": "Zawodowe",
-    "postsecondary": "Wyzsze",
-    "contact_data": "Dane kontaktowe",
-    "name_placeholder": "Imie",
-    "surname_placeholder": "Nazwisko",
-    "email_placeholder": "E-mail",
-    "phone_placeholder": "Telefon",
-    "postalCode_placeholder": "Kod pocztowy",
-    "city_placeholder": "Miasto",
-    "sex": "Płeć",
-    "male": "Mezczyzna",
-    "female": "Kobieta",
-    "shoe_size": "Rozmiar buta",
-    "which_music": "Jakiej muzyki sluchasz ?",
-    "classic_music": "Muzyka klasyczna",
-    "additiona_comment": "Dodatkowy komentarz",
-    "comment": "Komentarz",
-    "submit": "Zatwierdź",
-    "errors": {
-      "name": "Imie jest wymagane",
-      "surname": "Nazwisko jest wymagane",
-      "email": "Email jest wymagany",
-      "city": "Miasto jest wymagane",
-      "postalCode": "Kod pocztowy jest wymagany",
-      "postalCode_format": "Kod pocztowy musi byc w formacie 00-000",
-      "phone": "Number telefonu jest wymagany",
-      "phone_format": "Numer telefonu musi byc w formacie 000-000-000",
-      "age": "Wiek jest wymagany",
-      "sex": "Płeć jest wymagana",
-      "education": "Wykształcenie jest wymagane",
-      "shoeSize": "Rozmiar buta jest wymagany",
-      "music": "Zaznacz przynajmniej 1 rodzaj muzyki",
-      "interests": "Zaznacz przynajmniej 1 zainteresowanie"
-    }
-  },
   "common": {
     "add": "Dodaj",
     "back": "Cofnij",
@@ -197,6 +20,183 @@
     "try_again": "Spróbuj ponownie",
     "user_label": "Użytkownik",
     "user_placeholder": "Użytkownik"
+  },
+  "errors": {
+    "missing_auth": "Brak autoryzacji",
+    "screen_not_found": "NotFound screen",
+    "something_went_wrong": "Coś poszło nie tak",
+    "token_expired": "Token wygasł"
+  },
+  "form": {
+    "invalid_email_format": "Zły adres e-mail",
+    "required": "Pole wymagane"
+  },
+  "navigation": {
+    "prevent_go_back_alert": {
+      "description": "Masz niezapisane zmiany. Jesteś pewny, że chcesz je porzucić i wyjść?",
+      "discard": "Porzuć",
+      "do_not_leave": "Nie wychodź",
+      "title": "Anulować zmiany?"
+    },
+    "screen_titles": {
+      "application_info": "ApplicationInfo",
+      "colors": "Colors",
+      "components": "Components",
+      "data_from_be_screen_example": "Dane z backend-u",
+      "details": "Details",
+      "examples_stack": "Examples",
+      "examples": "Examples",
+      "home_stack": "Home",
+      "home": "Home",
+      "main_tab": "MainTab",
+      "not_found": "NotFound",
+      "settings": "Settings",
+      "sign_in": "Sign in",
+      "sign_up": "Sign up",
+      "typography": "Typography"
+    }
+  },
+  "update": {
+    "alert_message": "Będziesz musiał zrestartować aplikację, żeby mieć lepsze doświadczenia podczas jej używania",
+    "alert_title": "Aktualizacja",
+    "restart": "Zrestartuj"
+  },
+  "examples_component": {
+    "example": "Przykład"
+  },
+  "application_info_screen": {
+    "navigation_info": "Kiedy będziesz próbował cofnąć to zostaniesz podwójnie zapytany, czy na pewno tego chcesz \n"
+  },
+  "colors_screen": {
+    "colors_label": "Kolory"
+  },
+  "components_screen": {
+    "test_notification": "Test notification",
+    "typography": {
+      "label": "Typography",
+      "xs": "xs",
+      "sm": "sm",
+      "md": "md",
+      "lg": "lg",
+      "xl": "xl",
+      "2xl": "2xl",
+      "3xl": "3xl",
+      "4xl": "4xl"
+    },
+    "button_variants": {
+      "disabled": "Button disabled",
+      "ghost": "Button ghost",
+      "header": "Button variants",
+      "link": "Button link",
+      "loading": "Button loading",
+      "outline": "Button outline",
+      "primary": "Button primary",
+      "secondary": "Button secondary",
+      "with_icons": "Button with icons"
+    },
+    "loader_variants": {
+      "bricks": "Bricks loader",
+      "bubbles": "Bubbles loader",
+      "circle": "Circle loader",
+      "default": "Default loader",
+      "disk": "Disk loader",
+      "header": "Loader variants"
+    },
+    "notification": {
+      "description": "by react-native-notificated 🎉",
+      "title": "In-app notification example"
+    }
+  },
+  "details_screen": {
+    "title": "To jest przykładowy widok",
+    "open_bottom_sheet": "Otwórz BottomSheetModal",
+    "screen_params": "Parametry widoku: {{params}}",
+    "awesome": "Wspaniale 🎉"
+  },
+  "examples_screen": {
+    "header": "To jest przykładowy widok",
+    "go_to_application_info": "Idź do ApplicationInfo",
+    "go_to_colors": "Idź do Kolorów",
+    "go_to_components": "Idź do Komponentów",
+    "go_to_typography": "Idź do Typografii",
+    "go_to_home_stack_details": "Idź do HomeStackDetails",
+    "go_to_settings": "Idź do Ustawień",
+    "go_to_screen_with_BEdata": "Idź do widoku z danymi z backend-u",
+    "go_to_screen_test_form": "Idź do formularza testowego"
+  },
+  "home_screen": {
+    "details": "Detale"
+  },
+  "settings_screen": {
+    "current_theme": "Current theme: {{theme}}",
+    "selected": " - wybrano",
+    "sign_out": "Wyloguj!"
+  },
+  "sign_in_screen": {
+    "do_not_have_an_account": "Nie masz konta?",
+    "email_helper_text": "Email",
+    "forgot_password": "Zapomniałeś hasła?",
+    "or_pass": "lub wprowadź:",
+    "password_helper_text": "Hasła muszą być takie same",
+    "password_label": "Hasło",
+    "password_placeholder": "hasło",
+    "remember_me": "Zapamiętaj mnie",
+    "sign_in": "Zaloguj",
+    "sign_up": "Zarejestruj"
+  },
+  "sign_up_screen": {
+    "agree_terms_label": "Zgadzam się z warunkami użytkowania",
+    "newsletter_label": "Subskrybuj nasz newsletter",
+    "sign_up": "Zarejestruj"
+  },
+  "test_form": {
+    "additional_comment": "Dodatkowy komentarz",
+    "age": "Wiek",
+    "city_placeholder": "Miasto",
+    "classic_music": "Muzyka klasyczna",
+    "comment": "Komentarz",
+    "contact_data": "Dane kontaktowe",
+    "cooking": "Gotowanie",
+    "dancing": "Taniec",
+    "education": "Wykształcenie",
+    "email_placeholder": "E-mail",
+    "errors": {
+      "age": "Wiek jest wymagany",
+      "city": "Miasto jest wymagane",
+      "education": "Wykształcenie jest wymagane",
+      "email": "Email jest wymagany",
+      "interests": "Zaznacz przynajmniej 1 zainteresowanie",
+      "music": "Zaznacz przynajmniej 1 rodzaj muzyki",
+      "name": "Imie jest wymagane",
+      "phone_format": "Numer telefonu musi byc w formacie 000-000-000",
+      "phone": "Number telefonu jest wymagany",
+      "postalCode_format": "Kod pocztowy musi byc w formacie 00-000",
+      "postalCode": "Kod pocztowy jest wymagany",
+      "sex": "Płeć jest wymagana",
+      "shoeSize": "Rozmiar buta jest wymagany",
+      "surname": "Nazwisko jest wymagane"
+    },
+    "female": "Kobieta",
+    "games": "Gry",
+    "interests": "Zainteresowania",
+    "male": "Mezczyzna",
+    "middle": "Gimnazjalne",
+    "name_placeholder": "Imie",
+    "phone_placeholder": "Telefon",
+    "postalCode_placeholder": "Kod pocztowy",
+    "postsecondary": "Wyższe",
+    "primary": "Podstawowe",
+    "secondary": "Zawodowe",
+    "sex": "Płeć",
+    "shoe_size": "Rozmiar buta",
+    "sport": "Sport",
+    "submit": "Zatwierdź",
+    "surname_placeholder": "Nazwisko",
+    "which_music": "Jakiej muzyki słuchasz ?"
+  },
+  "typography_screen": {
+    "text_font_size": "Text.fontSize: ",
+    "heading_size": "Heading.size: "
   },
   "hello": "Witaj",
   "thanks": "Dzięki za używanie najlepszej templatki dla aplikacji expo",

@@ -2,7 +2,7 @@ import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
 
 import { ControlledField, KeyboardAwareScrollView, TextArea, Button, Text } from '~components'
-import { useMemo, useTestForm, useTranslation } from '~hooks'
+import { useMemo, useScreenOptions, useTestForm, useTranslation } from '~hooks'
 
 const shoeSizes = [
   '34',
@@ -25,6 +25,11 @@ const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
 
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.colors'),
+  })
+
   const { control, errors, submit, VALIDATION, setFocus } = useTestForm()
 
   const INTERESTS = useMemo(
@@ -178,7 +183,7 @@ export const TestFormScreen = (): JSX.Element => {
         isRequired
       />
       <Text fontSize="xl" fontWeight="bold" py={2}>
-        {t('test_form.additiona_comment')}
+        {t('test_form.additional_comment')}
       </Text>
       <Controller
         control={control}
@@ -187,7 +192,7 @@ export const TestFormScreen = (): JSX.Element => {
           <TextArea
             placeholder={t('test_form.comment')}
             value={field.value}
-            onChangeText={(value) => field.onChange(value)}
+            onChangeText={field.onChange}
           />
         )}
       />

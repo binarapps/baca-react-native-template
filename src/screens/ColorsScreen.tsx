@@ -1,4 +1,5 @@
 import { Text, Center, ScrollView } from '~components'
+import { useScreenOptions, useTranslation } from '~hooks'
 
 const colorsVariants: NestedKeys<Colors>[] = [
   'primary',
@@ -11,19 +12,27 @@ const colorsVariants: NestedKeys<Colors>[] = [
   'light',
 ]
 
-export const ColorsScreen = (): JSX.Element => (
-  <ScrollView flexGrow={1} p={4}>
-    {colorsVariants.map((colorVariant) => (
-      <Center
-        mb={4}
-        key={colorVariant}
-        height={8}
-        width="full"
-        alignSelf="stretch"
-        backgroundColor={colorVariant}
-      >
-        <Text color="white">{colorVariant}</Text>
-      </Center>
-    ))}
-  </ScrollView>
-)
+export const ColorsScreen = (): JSX.Element => {
+  const { t } = useTranslation()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.colors'),
+  })
+
+  return (
+    <ScrollView flexGrow={1} p={4}>
+      {colorsVariants.map((colorVariant) => (
+        <Center
+          alignSelf="stretch"
+          backgroundColor={colorVariant}
+          height={8}
+          key={colorVariant}
+          mb={4}
+          width="full"
+        >
+          <Text color="white">{colorVariant}</Text>
+        </Center>
+      ))}
+    </ScrollView>
+  )
+}

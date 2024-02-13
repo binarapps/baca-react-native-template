@@ -1,14 +1,16 @@
 import { useRouter } from 'expo-router'
 
 import { Button, ScrollView } from '~components'
-import { useTranslation, useCallback } from '~hooks'
+import { useCallback, useTranslation, useScreenOptions } from '~hooks'
 
 export const ExamplesScreen = () => {
   const { push } = useRouter()
-
   const { t } = useTranslation()
 
-  const goToAbout = useCallback(() => push('/about'), [push])
+  useScreenOptions({
+    title: t('navigation.screen_titles.examples'),
+  })
+
   const goToApplicationInfo = useCallback(() => push('/application-info'), [push])
   const goToColors = useCallback(() => push('/example/colors'), [push])
   const goToComponents = useCallback(() => push('/example/components'), [push])
@@ -20,9 +22,6 @@ export const ExamplesScreen = () => {
 
   return (
     <ScrollView p={4}>
-      <Button mb={2} onPress={goToAbout}>
-        Go to about
-      </Button>
       <Button mb={2} onPress={goToApplicationInfo}>
         {t('examples_screen.go_to_application_info')}
       </Button>

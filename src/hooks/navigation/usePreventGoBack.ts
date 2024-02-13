@@ -46,7 +46,7 @@ export const usePreventGoBack = (preventRemove = true) => {
       t('navigation.prevent_go_back_alert.description'),
       [
         {
-          text: t('navigation.prevent_go_back_alert.dont_leave'),
+          text: t('navigation.prevent_go_back_alert.do_not_leave'),
           style: 'cancel',
           onPress: () => undefined,
         },
