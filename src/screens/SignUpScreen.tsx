@@ -28,18 +28,19 @@ export const SignUpScreen = () => {
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
+          enterKeyHint="next"
           label={t('common.user_label')}
           mb={2}
           name="user"
           onSubmitEditing={focusEmailInput}
           placeholder={t('common.user_placeholder')}
-          returnKeyType="next"
           rules={{
             required: t('form.required'),
           }}
         />
         <ControlledField.Input
           {...{ control, errors }}
+          enterKeyHint="next"
           autoCapitalize="none"
           isRequired
           keyboardType="email-address"
@@ -48,7 +49,6 @@ export const SignUpScreen = () => {
           name="email"
           onSubmitEditing={focusPasswordInput}
           placeholder={t('common.email_placeholder')}
-          returnKeyType="next"
           rules={{
             required: t('form.required'),
             pattern: {
@@ -59,6 +59,7 @@ export const SignUpScreen = () => {
         />
         <ControlledField.Input
           {...{ control, errors }}
+          enterKeyHint="next"
           autoCapitalize="none"
           isRequired
           label={t('sign_in_screen.password_label')}
@@ -66,7 +67,6 @@ export const SignUpScreen = () => {
           name="password"
           onSubmitEditing={submit}
           placeholder={t('sign_in_screen.password_placeholder')}
-          returnKeyType="next"
           rules={{
             required: t('form.required'),
           }}

@@ -61,7 +61,7 @@ import { Input, AbsoluteFullFill } from '~components'
 const MyComponent: React.FC = () => (
   <AbsoluteFullFill>
     <Input
-      returnKeyType="next"
+      enterKeyHint="next"
       label="E-mail"
       keyboardType="email-address"
       autoCapitalize="none"
@@ -107,7 +107,7 @@ import { Spacer, Input, Container } from '~components'
 const MyComponent: React.FC = () => (
   <Container>
     <Input
-      returnKeyType="next"
+      enterKeyHint="next"
       label="E-mail"
       keyboardType="email-address"
       autoCapitalize="none"
@@ -115,7 +115,7 @@ const MyComponent: React.FC = () => (
     />
     <Spacer y="8" flex={1} />
     <Input
-      returnKeyType="next"
+      enterKeyHint="next"
       label="Confirm e-mail"
       keyboardType="email-address"
       autoCapitalize="none"
@@ -200,7 +200,7 @@ const MyComponent: React.FC = () => (
     keyboardType="email-address"
     label="Email"
     placeholder="Email placeholder"
-    returnKeyType="next"
+    enterKeyHint="next"
   />
 )
 
@@ -294,7 +294,7 @@ const MyComponent: React.FC = () => {
       name="email"
       onSubmitEditing={passwordInputRef.current?.focus}
       placeholder="Email placeholder"
-      returnKeyType="next"
+      enterKeyHint="next"
       rules={{
         required: 'Required',
         pattern: {
