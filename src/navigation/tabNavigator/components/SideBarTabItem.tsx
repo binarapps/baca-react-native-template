@@ -56,7 +56,6 @@ export function SideBarTabItem({
           </View>
 
           <Text
-            selectable={false}
             style={[
               jsStyles.sidebarItemText,
               Platform.select({
