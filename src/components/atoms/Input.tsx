@@ -1,5 +1,11 @@
 import { forwardRef } from 'react'
-import { NativeSyntheticEvent, TextInput, TextInputFocusEventData, TextStyle } from 'react-native'
+import {
+  NativeSyntheticEvent,
+  Platform,
+  TextInput,
+  TextInputFocusEventData,
+  TextStyle,
+} from 'react-native'
 
 import { Box } from './Box'
 import { Icon } from './Icon'
@@ -191,11 +197,12 @@ export const Input = forwardRef<TextInput, InputProps>(
 
     const handleFocus = useCallback(
       (e?: NativeSyntheticEvent<TextInputFocusEventData>) => {
+        if (isDisabled) return
         _inputRef.current?.focus()
         setIsFocused(true)
         if (onFocus && e) onFocus(e)
       },
-      [setIsFocused, onFocus]
+      [isDisabled, onFocus]
     )
 
     const handleBlur = useCallback(
@@ -236,7 +243,10 @@ export const Input = forwardRef<TextInput, InputProps>(
           autoCapitalize="none"
           color={isInvalid ? 'danger' : 'text'}
           cursorColor={colors.primaryLight}
-          editable={!isDisabled}
+          {...Platform.select({
+            default: { editable: !isDisabled },
+            web: { disabled: isDisabled },
+          })}
           flex={1}
           fontFamily="regular"
           fontSize="xs"
