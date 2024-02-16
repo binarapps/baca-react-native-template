@@ -27,7 +27,7 @@ export function BottomBar({ visible }: { visible: boolean }) {
     >
       <View style={jsStyles.nav}>
         {bottomTabs.map((tab, i) => (
-          <TabBarItemWrapper key={i} name={tab.name} id={tab.id}>
+          <TabBarItemWrapper key={i} name={tab.name} id={tab.id} params={tab.params}>
             {({ focused, pressed, hovered }) => (
               <Icon
                 name={focused ? tab.iconFocused : tab.icon}

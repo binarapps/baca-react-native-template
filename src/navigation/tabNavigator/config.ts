@@ -52,8 +52,6 @@ export const bottomTabs: Tabs = [...upperSideTabs]
 export const Colors: Record<string, ColorNames> = {
   tabIconDark: 'gray.700',
   tabIconLight: 'gray.200',
-  tabSelectedDark: 'primary',
-  tabSelectedLight: 'secondaryLight',
 } as const
 
 export const ColorsStrings = {
