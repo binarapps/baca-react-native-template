@@ -42,8 +42,8 @@ export const SignUpScreen = () => {
           {...{ control, errors }}
           enterKeyHint="next"
           autoCapitalize="none"
+          inputMode="email"
           isRequired
-          keyboardType="email-address"
           label={t('common.email_label')}
           mb={2}
           name="email"

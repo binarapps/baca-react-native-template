@@ -54,8 +54,8 @@ export const SignInScreen = (): JSX.Element => {
           {...{ control, errors }}
           autoCapitalize="none"
           enterKeyHint="next"
+          inputMode="email"
           isRequired
-          keyboardType="email-address"
           label={t('common.email_label')}
           name="email"
           onSubmitEditing={focusPasswordInput}
