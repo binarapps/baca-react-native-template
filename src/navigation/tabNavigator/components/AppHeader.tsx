@@ -1,7 +1,7 @@
 import { Image, Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-import { ColorsStrings } from '../config'
+import { TabColorsStrings } from '../config'
 
 import { darkLogoFull, lightLogoFull } from '~constants'
 import { useColorScheme } from '~contexts'
@@ -32,7 +32,7 @@ export function AppHeader() {
 const jsStyles = StyleSheet.create({
   appHeader: {
     alignItems: 'center',
-    borderBottomColor: ColorsStrings.lightGray,
+    borderBottomColor: TabColorsStrings.lightGray,
     borderBottomWidth: 1,
     flexDirection: 'row',
     justifyContent: 'center',

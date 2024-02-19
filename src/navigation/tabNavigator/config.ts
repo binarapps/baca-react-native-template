@@ -49,12 +49,12 @@ export const bottomSideTabs: Tabs = []
 
 export const bottomTabs: Tabs = [...upperSideTabs]
 
-export const Colors: Record<string, ColorNames> = {
+export const TabColors: Record<string, ColorNames> = {
   tabIconDark: 'gray.700',
   tabIconLight: 'gray.200',
 } as const
 
-export const ColorsStrings = {
+export const TabColorsStrings = {
   lightGray: palette.gray['300'],
   lightGray50: hex2rgba(palette.gray['50'], 0.5),
   tabTextDark: palette.gray['700'],

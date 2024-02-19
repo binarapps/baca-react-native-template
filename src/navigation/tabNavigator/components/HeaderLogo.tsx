@@ -2,7 +2,7 @@ import { Pressable, Text } from '@bacons/react-views'
 import { Link } from 'expo-router'
 import { Image, Platform, StyleSheet, View } from 'react-native'
 
-import { ColorsStrings } from '../config'
+import { TabColorsStrings } from '../config'
 import { useWidth } from '../hooks'
 import { cns } from '../utils'
 
@@ -35,7 +35,9 @@ export function HeaderLogo() {
               style={[
                 jsStyles.headerLogo,
                 {
-                  backgroundColor: hovered ? ColorsStrings.lightGray50 : ColorsStrings.transparent,
+                  backgroundColor: hovered
+                    ? TabColorsStrings.lightGray50
+                    : TabColorsStrings.transparent,
                 },
               ]}
             >

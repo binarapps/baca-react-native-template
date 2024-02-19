@@ -2,7 +2,7 @@ import { Text } from '@bacons/react-views'
 import { Platform, StyleSheet, View } from 'react-native'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
-import { Colors, ColorsStrings } from '../config'
+import { TabColors, TabColorsStrings } from '../config'
 import { useWidth } from '../hooks'
 import { cns } from '../utils'
 
@@ -36,7 +36,7 @@ export function SideBarTabItem({
           style={[
             jsStyles.sidebarItemContainer,
             hovered && {
-              backgroundColor: ColorsStrings.lightGray50,
+              backgroundColor: TabColorsStrings.lightGray50,
             },
           ]}
         >
@@ -51,7 +51,7 @@ export function SideBarTabItem({
             <Icon
               name={focused ? iconFocused : icon}
               size={30}
-              color={colorScheme === 'light' ? Colors.tabIconDark : Colors.tabIconLight}
+              color={colorScheme === 'light' ? TabColors.tabIconDark : TabColors.tabIconLight}
             />
           </View>
 
@@ -66,7 +66,9 @@ export function SideBarTabItem({
               }),
               {
                 color:
-                  colorScheme === 'light' ? ColorsStrings.tabTextDark : ColorsStrings.tabTextLight,
+                  colorScheme === 'light'
+                    ? TabColorsStrings.tabTextDark
+                    : TabColorsStrings.tabTextLight,
               },
               focused && jsStyles.fontBold,
             ]}

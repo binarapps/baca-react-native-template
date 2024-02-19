@@ -2,7 +2,7 @@ import { Platform, StyleSheet, View } from 'react-native'
 
 import { HeaderLogo } from './HeaderLogo'
 import { SideBarTabItem } from './SideBarTabItem'
-import { ColorsStrings, upperSideTabs } from '../config'
+import { TabColorsStrings, upperSideTabs } from '../config'
 import { useWidth } from '../hooks'
 import { cns } from '../utils'
 
@@ -99,7 +99,7 @@ const jsStyles = StyleSheet.create({
 
   sidebarInner: {
     alignItems: 'stretch',
-    borderRightColor: ColorsStrings.lightGray,
+    borderRightColor: TabColorsStrings.lightGray,
     borderRightWidth: 1,
     height: '100%',
     maxHeight: '100%',

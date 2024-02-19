@@ -2,7 +2,7 @@ import { Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
-import { Colors, ColorsStrings, bottomTabs } from '../config'
+import { bottomTabs, TabColors, TabColorsStrings } from '../config'
 import { cns } from '../utils'
 
 import { Icon } from '~components'
@@ -32,7 +32,7 @@ export function BottomBar({ visible }: { visible: boolean }) {
               <Icon
                 name={focused ? tab.iconFocused : tab.icon}
                 size={40}
-                color={colorScheme === 'light' ? Colors.tabIconDark : Colors.tabIconLight}
+                color={colorScheme === 'light' ? TabColors.tabIconDark : TabColors.tabIconLight}
                 style={[
                   jsStyles.tabIcon,
                   pressed && jsStyles.tabIconPressed,
@@ -55,7 +55,7 @@ export function BottomBar({ visible }: { visible: boolean }) {
 const jsStyles = StyleSheet.create({
   nav: {
     alignItems: 'center',
-    borderTopColor: ColorsStrings.lightGray,
+    borderTopColor: TabColorsStrings.lightGray,
     borderTopWidth: 1,
     flexDirection: 'row',
     height: 49,
