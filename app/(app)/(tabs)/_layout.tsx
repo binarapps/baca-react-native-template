@@ -1,53 +1,18 @@
-import { Redirect, Tabs } from 'expo-router'
+import { Redirect } from 'expo-router'
 
-import { Icon } from '~components'
-import { useAuth, useNavigationTheme } from '~hooks'
-import { IconNames } from '~types/icon'
+import { useAuth } from '~hooks'
+import { ResponsiveNavigator } from '~navigation/tabNavigator/navigator'
 
 export const unstable_settings = {
   initialRouteName: 'home',
 }
 
-function TabBarIcon(props: { color: ColorNames; name: IconNames }) {
-  return <Icon {...props} size={28} />
-}
-
 export default function TabLayout() {
-  const { tabBarTheme } = useNavigationTheme()
   const { isSignedIn } = useAuth()
 
   if (isSignedIn === false) {
     return <Redirect href="/sign-in" />
   }
 
-  return (
-    <Tabs
-      screenOptions={{
-        ...tabBarTheme,
-        header: () => null,
-      }}
-    >
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code-line" color={color as ColorNames} />,
-        }}
-      />
-      <Tabs.Screen
-        name="example"
-        options={{
-          title: 'Example',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code-line" color={color as ColorNames} />,
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: 'Settings',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code-line" color={color as ColorNames} />,
-        }}
-      />
-    </Tabs>
-  )
+  return <ResponsiveNavigator />
 }

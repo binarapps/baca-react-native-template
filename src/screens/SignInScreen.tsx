@@ -53,13 +53,13 @@ export const SignInScreen = (): JSX.Element => {
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
+          enterKeyHint="next"
+          inputMode="email"
           isRequired
-          keyboardType="email-address"
           label={t('common.email_label')}
           name="email"
           onSubmitEditing={focusPasswordInput}
           placeholder={t('common.email_placeholder')}
-          returnKeyType="next"
           rules={{
             required: t('form.required'),
             pattern: {
@@ -72,12 +72,12 @@ export const SignInScreen = (): JSX.Element => {
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
+          enterKeyHint="send"
           isRequired
           label={t('sign_in_screen.password_label')}
           name="password"
           onSubmitEditing={submit}
           placeholder={t('sign_in_screen.password_placeholder')}
-          returnKeyType="send"
           rules={{
             required: t('form.required'),
           }}

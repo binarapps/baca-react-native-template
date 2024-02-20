@@ -20,6 +20,7 @@ type NavigationStatePersistenceReturn = {
 
 const { NAVIGATION_STATE } = ASYNC_STORAGE_KEYS
 
+// TODO: make this work on expo router
 export const useNavigationStatePersistence = (): NavigationStatePersistenceReturn => {
   const [isReady, setIsReady] = useState(isProduction)
   const [initialState, setInitialState] = useState<InitialState>()

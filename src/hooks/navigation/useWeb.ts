@@ -13,8 +13,6 @@ const { desktop, tablet } = breakpoints
 export const useWeb: () => ReturnType = () => {
   const [width, setWidth] = useState<number>(0)
 
-  console.log('useWeb', width)
-
   useEffect(() => {
     const setDimensions = (windowWidth: number, screenWidth: number) => {
       switch (true) {
