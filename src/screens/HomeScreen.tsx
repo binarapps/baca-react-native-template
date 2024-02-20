@@ -21,6 +21,12 @@ export const HomeScreen = () => {
       params: { user: 'example@example.com' },
     })
   }, [])
+  const navigateToBlog = useCallback(() => {
+    router.navigate('/blog')
+  }, [])
+  const navigateToBigForm = useCallback(() => {
+    router.navigate('/big-form')
+  }, [])
 
   return (
     <Center flex={1} px={4}>
@@ -34,6 +40,12 @@ export const HomeScreen = () => {
       <Text.Caption textAlign="center">{t('thanks')}</Text.Caption>
       <Text.Caption textAlign="center">{t('app_information')}</Text.Caption>
       <Button mt={4} onPress={navigateToDetails}>
+        {t('home_screen.details')}
+      </Button>
+      <Button mt={4} onPress={navigateToBigForm}>
+        Form full screen
+      </Button>
+      <Button mt={4} onPress={navigateToBlog}>
         {t('home_screen.details')}
       </Button>
     </Center>

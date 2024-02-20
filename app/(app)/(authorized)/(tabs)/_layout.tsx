@@ -1,6 +1,4 @@
-import { Redirect } from 'expo-router'
-
-import { useAuth } from '~hooks'
+import { useScreenOptions } from '~hooks'
 import { ResponsiveNavigator } from '~navigation/tabNavigator/navigator'
 
 export const unstable_settings = {
@@ -8,11 +6,8 @@ export const unstable_settings = {
 }
 
 export default function TabLayout() {
-  const { isSignedIn } = useAuth()
-
-  if (isSignedIn === false) {
-    return <Redirect href="/sign-in" />
-  }
-
+  useScreenOptions({
+    headerShown: false,
+  })
   return <ResponsiveNavigator />
 }

@@ -12,7 +12,7 @@
     "eslint",
     "prettier"
   ],
-  "main": "expo-router/entry",
+  "main": "./App",
   "repository": {
     "type": "git",
     "url": "https://github.com/binarapps/baca-react-native-template.git"
