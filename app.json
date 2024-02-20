@@ -22,6 +22,9 @@
     },
     "userInterfaceStyle": "automatic",
     "version": "2.1.0",
-    "plugins": ["expo-font", "expo-localization", "expo-secure-store"]
+    "plugins": ["expo-font", "expo-localization", "expo-secure-store", "expo-router"],
+    "web": {
+      "bundler": "metro"
+    }
   }
 }

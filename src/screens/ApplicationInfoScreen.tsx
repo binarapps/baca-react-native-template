@@ -7,19 +7,24 @@ import { ScrollView, StyleSheet } from 'react-native'
 
 import { Button, Text } from '~components'
 import { isExpoGo } from '~constants'
-import { useCallback, usePreventGoBack, useTranslation } from '~hooks'
+import { useCallback, usePreventGoBack, useScreenOptions, useTranslation } from '~hooks'
 
 const projectId = Constants.expoConfig?.extra?.eas?.projectId
 
 export const ApplicationInfoScreen = (): JSX.Element => {
   const { i18n, t } = useTranslation()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.application_info'),
+  })
+
   usePreventGoBack()
 
   const handleCopyPushToken = useCallback(async () => {
     try {
       if (!isExpoGo && !projectId) {
         throw new Error(
-          'You must set `projectId` in eas build then value will be avaliable from Constants?.expoConfig?.extra?.eas?.projectId'
+          'You must set `projectId` in eas build then value will be available from Constants?.expoConfig?.extra?.eas?.projectId'
         )
       }
       const token = (

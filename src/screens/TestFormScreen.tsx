@@ -2,7 +2,7 @@ import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
 
 import { ControlledField, KeyboardAwareScrollView, TextArea, Button, Text } from '~components'
-import { useMemo, useTestForm, useTranslation } from '~hooks'
+import { useMemo, useScreenOptions, useTestForm, useTranslation } from '~hooks'
 
 const shoeSizes = [
   '34',
@@ -25,6 +25,11 @@ const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
 
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.colors'),
+  })
+
   const { control, errors, submit, VALIDATION, setFocus } = useTestForm()
 
   const INTERESTS = useMemo(
@@ -69,125 +74,113 @@ export const TestFormScreen = (): JSX.Element => {
         {t('test_form.contact_data')}
       </Text>
       <ControlledField.Input
-        isRequired={true}
-        control={control}
-        errors={errors}
-        placeholder={t('test_form.name_placeholder')}
+        {...{ control, errors }}
+        enterKeyHint="next"
+        isRequired
         name="name"
-        returnKeyType="next"
         onSubmitEditing={setFocus('surname')}
+        placeholder={t('test_form.name_placeholder')}
       />
       <ControlledField.Input
-        control={control}
-        errors={errors}
-        placeholder={t('test_form.surname_placeholder')}
+        {...{ control, errors }}
+        enterKeyHint="next"
+        mt={2}
         name="surname"
-        returnKeyType="next"
-        mt={2}
         onSubmitEditing={setFocus('email')}
+        placeholder={t('test_form.surname_placeholder')}
       />
       <ControlledField.Input
-        control={control}
-        errors={errors}
-        placeholder={t('test_form.email_placeholder')}
+        {...{ control, errors }}
+        enterKeyHint="next"
+        mt={2}
         name="email"
-        returnKeyType="next"
-        mt={2}
         onSubmitEditing={setFocus('phone')}
+        placeholder={t('test_form.email_placeholder')}
       />
       <ControlledField.Input
-        control={control}
-        errors={errors}
-        placeholder={t('test_form.phone_placeholder')}
+        {...{ control, errors }}
+        enterKeyHint="next"
+        mt={2}
         name="phone"
-        returnKeyType="next"
-        mt={2}
         onSubmitEditing={setFocus('postalCode')}
+        placeholder={t('test_form.phone_placeholder')}
       />
       <ControlledField.Input
-        control={control}
-        errors={errors}
-        placeholder={t('test_form.postalCode_placeholder')}
+        {...{ control, errors }}
+        enterKeyHint="next"
+        mt={2}
         name="postalCode"
-        returnKeyType="next"
-        mt={2}
         onSubmitEditing={setFocus('city')}
+        placeholder={t('test_form.postalCode_placeholder')}
       />
       <ControlledField.Input
-        control={control}
-        errors={errors}
-        placeholder={t('test_form.city_placeholder')}
-        name="city"
-        returnKeyType="next"
+        {...{ control, errors }}
+        enterKeyHint="next"
         mt={2}
+        name="city"
+        placeholder={t('test_form.city_placeholder')}
       />
       <ControlledField.Radio
+        {...{ control, errors }}
         isRequired
-        control={control}
-        errors={errors}
         name="age"
         radioOptions={AGES}
         rules={VALIDATION.age}
         label={t('test_form.age')}
       />
       <ControlledField.Radio
+        {...{ control, errors }}
         isRequired
-        control={control}
-        errors={errors}
         name="sex"
         radioOptions={[t('test_form.male'), t('test_form.female')]}
         rules={VALIDATION.sex}
         label={t('test_form.sex')}
       />
       <ControlledField.Select
-        label={t('test_form.education')}
-        items={education}
-        control={control}
-        name="education"
-        errors={errors}
-        placeholder={t('test_form.education')}
+        {...{ control, errors }}
         isRequired
+        items={education}
+        label={t('test_form.education')}
+        name="education"
+        placeholder={t('test_form.education')}
         rules={VALIDATION.education}
       />
       <ControlledField.Select
+        {...{ control, errors }}
+        isRequired
         items={mappedShoeSizes}
-        control={control}
-        errors={errors}
+        label={t('test_form.shoe_size')}
         name="shoeSize"
         placeholder={t('test_form.shoe_size')}
         rules={VALIDATION.shoeSize}
-        isRequired
-        label={t('test_form.shoe_size')}
       />
       <ControlledField.Checkbox
+        {...{ control, errors }}
         checkboxes={MUSICS}
-        control={control}
-        errors={errors}
+        isRequired
+        label={t('test_form.which_music')}
         name="music"
         rules={VALIDATION.music}
-        label={t('test_form.which_music')}
-        isRequired
       />
       <ControlledField.Checkbox
-        control={control}
-        errors={errors}
-        name="interests"
+        {...{ control, errors }}
         checkboxes={INTERESTS}
-        rules={VALIDATION.interests}
-        label={t('test_form.interests')}
         isRequired
+        label={t('test_form.interests')}
+        name="interests"
+        rules={VALIDATION.interests}
       />
       <Text fontSize="xl" fontWeight="bold" py={2}>
-        {t('test_form.additiona_comment')}
+        {t('test_form.additional_comment')}
       </Text>
       <Controller
-        control={control}
+        {...{ control }}
         name="comment"
         render={({ field }) => (
           <TextArea
             placeholder={t('test_form.comment')}
             value={field.value}
-            onChangeText={(value) => field.onChange(value)}
+            onChangeText={field.onChange}
           />
         )}
       />

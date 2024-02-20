@@ -22,9 +22,8 @@ export const fontSizes = [
 const isWeb = Platform.OS === 'web'
 
 export const TypographyScreen = (): JSX.Element => {
-  const { setColorSchemeSetting, colorScheme } = useColorScheme()
-
   const { t } = useTranslation()
+  const { setColorSchemeSetting, colorScheme } = useColorScheme()
 
   return (
     <ScrollView>
