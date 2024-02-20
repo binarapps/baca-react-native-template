@@ -6,7 +6,7 @@ export const unstable_settings = {
   initialRouteName: '(tabs)',
 }
 
-export default function TabLayout() {
+export default function AuthorizedLayout() {
   const { isSignedIn } = useAuth()
 
   if (isSignedIn === false) {
