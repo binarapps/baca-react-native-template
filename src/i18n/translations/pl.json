@@ -53,7 +53,9 @@
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
-      "typography": "Typography"
+      "typography": "Typography",
+      "test_form": "Formularz testowy",
+      "blog": "Blog"
     }
   },
   "update": {

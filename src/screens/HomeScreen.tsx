@@ -24,6 +24,7 @@ export const HomeScreen = () => {
   const navigateToBlog = useCallback(() => {
     router.navigate('/blog')
   }, [])
+
   const navigateToBigForm = useCallback(() => {
     router.navigate('/big-form')
   }, [])
@@ -43,10 +44,10 @@ export const HomeScreen = () => {
         {t('home_screen.details')}
       </Button>
       <Button mt={4} onPress={navigateToBigForm}>
-        Form full screen
+        Form - full screen
       </Button>
       <Button mt={4} onPress={navigateToBlog}>
-        {t('home_screen.details')}
+        Blog - full screen
       </Button>
     </Center>
   )
