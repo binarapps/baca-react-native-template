@@ -8,7 +8,7 @@ export const useScreenOptions = ({
 }: {
   title?: string
   presentation?: string
-  headerShown: boolean
+  headerShown?: boolean
 }) => {
   const navigation = useNavigation()
 
