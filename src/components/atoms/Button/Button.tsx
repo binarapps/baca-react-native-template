@@ -26,6 +26,7 @@ import { StyledProps } from '../types'
 
 import { theme } from '~constants'
 import { buttonVariants } from '~constants/buttonVariants'
+import { useColorScheme } from '~contexts'
 import { getColorValue } from '~utils'
 
 export type ButtonProps = StyledProps &
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   baseText: {
-    color: theme.light.colors.white,
+    color: theme.light.colors.text.primary,
     fontStyle: 'normal',
     fontWeight: '400',
     letterSpacing: 0,
@@ -77,6 +78,7 @@ const RawButton = memo(
       },
       ref
     ) => {
+      const { colorScheme } = useColorScheme()
       const { pressedStyle, notPressedStyle, disabledStyle } = useMemo(
         () => buttonVariants[variant],
         [variant]
@@ -86,75 +88,90 @@ const RawButton = memo(
         () => ({
           backgroundColor: getColorValue({
             color: pressedStyle.backgroundColor,
-            colors: theme.light.colors,
+            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderColor: getColorValue({
             color: pressedStyle.borderColor!,
-            colors: theme.light.colors,
+            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderWidth: pressedStyle.borderWidth,
         }),
-        [pressedStyle]
+        [
+          colorScheme,
+          pressedStyle.backgroundColor,
+          pressedStyle.borderColor,
+          pressedStyle.borderWidth,
+        ]
       )
 
       const pressedColorStyle = useMemo<TextStyle>(
         () => ({
           color: getColorValue({
             color: pressedStyle.color!,
-            colors: theme.light.colors,
+            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
         }),
-        [pressedStyle]
+        [colorScheme, pressedStyle.color]
       )
 
       const notPressedStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
             color: notPressedStyle.backgroundColor,
-            colors: theme.light.colors,
+            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderColor: getColorValue({
             color: notPressedStyle.borderColor!,
-            colors: theme.light.colors,
+            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderWidth: notPressedStyle.borderWidth,
         }),
-        [notPressedStyle]
+        [
+          colorScheme,
+          notPressedStyle.backgroundColor,
+          notPressedStyle.borderColor,
+          notPressedStyle.borderWidth,
+        ]
       )
 
       const notPressedColorStyle = useMemo<TextStyle>(
         () => ({
           color: getColorValue({
             color: notPressedStyle.color!,
-            colors: theme.light.colors,
+            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
         }),
-        [notPressedStyle]
+        [colorScheme, notPressedStyle.color]
       )
 
       const disabledStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
             color: disabledStyle.backgroundColor,
-            colors: theme.light.colors,
+            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderColor: getColorValue({
             color: disabledStyle.borderColor!,
-            colors: theme.light.colors,
+            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderWidth: disabledStyle.borderWidth,
         }),
-        [disabledStyle]
+        [
+          colorScheme,
+          disabledStyle.backgroundColor,
+          disabledStyle.borderColor,
+          disabledStyle.borderWidth,
+        ]
       )
 
       const disabledColorStyle = useMemo<TextStyle>(
         () => ({
           color: getColorValue({
             color: disabledStyle.color!,
-            colors: theme.light.colors,
+            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
         }),
-        [disabledStyle]
+        [colorScheme, disabledStyle.color]
       )
 
       const buttonSizeStyle = useMemo<ViewStyle>(

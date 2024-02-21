@@ -23,7 +23,7 @@ export const Icon = ({ color, name, size, style }: IconProps) => {
     <IconFont
       name={name}
       size={size}
-      color={getColorValue({ color: color || colors.text, colors })}
+      color={getColorValue({ color: color || colors.text.primary, colors })}
       style={style}
     />
   )

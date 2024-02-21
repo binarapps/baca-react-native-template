@@ -30,25 +30,25 @@ export const Checkbox = forwardRef<View, CheckboxProps>(
 
     const iconColor = useMemo(() => {
       if (disabled && value) {
-        return 'gray.500'
+        return 'icon.fg.brand'
       }
 
-      return 'text'
+      return 'text.primary'
     }, [disabled, value])
 
     const bgColor = useMemo(() => {
       if (!value) {
-        return colors.white
+        return colors.text.white
       }
       if (disabled) {
-        return colors.gray['200']
+        return colors.text.placeholder
       }
 
-      return 'transparent'
+      return colors.alpha.black[10]
     }, [disabled, value, colors])
 
     const borderColor = useMemo(
-      () => (isError ? 'red.500' : disabled ? 'gray.500' : 'inputBorder'),
+      () => (isError ? 'border.error' : disabled ? 'border.disabled' : 'border.primary'),
       [isError, disabled]
     )
 

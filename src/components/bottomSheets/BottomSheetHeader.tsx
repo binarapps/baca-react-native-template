@@ -28,7 +28,7 @@ export const BottomSheetHeader = ({
       </Box>
       {showCloseButton && (
         <Touchable onPress={onClose} hitSlop={10} p={4} pl={8}>
-          <Icon name="close-line" size={24} color="text" />
+          <Icon name="close-line" size={24} color="text.brand.primary" />
         </Touchable>
       )}
     </Row>
