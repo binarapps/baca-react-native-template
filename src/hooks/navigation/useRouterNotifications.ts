@@ -1,8 +1,9 @@
 import * as Notifications from 'expo-notifications'
 import { useRouter } from 'expo-router'
 import React from 'react'
+import { Platform } from 'react-native'
 
-export function useRouterNotifications() {
+function useRouterNotificationsNative() {
   const router = useRouter()
 
   React.useEffect(() => {
@@ -37,3 +38,6 @@ export function useRouterNotifications() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }
+
+export const useRouterNotifications =
+  Platform.OS !== 'web' ? useRouterNotificationsNative : () => null
