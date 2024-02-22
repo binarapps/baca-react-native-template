@@ -66,6 +66,9 @@
   "examples_component": {
     "example": "Example"
   },
+  "landing_screen": {
+    "login_cta": "Login to app"
+  },
   "application_info_screen": {
     "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
   },

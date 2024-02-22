@@ -66,6 +66,9 @@
   "examples_component": {
     "example": "Przykład"
   },
+  "landing_screen": {
+    "login_cta": "Zaloguj się"
+  },
   "application_info_screen": {
     "navigation_info": "Kiedy będziesz próbował cofnąć to zostaniesz podwójnie zapytany, czy na pewno tego chcesz \n"
   },
