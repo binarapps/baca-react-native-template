@@ -33,7 +33,6 @@ export const SignInScreen = (): JSX.Element => {
     }, 500)
   }, [setFocus])
 
-  const navigateToBlog = useCallback(() => push('/blog'), [push])
   const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
   const navigateToAppInfo = useCallback(() => push('/application-info'), [push])
   const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
@@ -105,7 +104,6 @@ export const SignInScreen = (): JSX.Element => {
           <Text bold mb={4}>
             {t('sign_in_screen.do_not_have_an_account')}
           </Text>
-          <Button.Link onPress={navigateToBlog}>{t('sign_in_screen.sign_up')}</Button.Link>
           <Button.Link onPress={navigateToSignUp}>{t('sign_in_screen.sign_up')}</Button.Link>
         </Center>
 
