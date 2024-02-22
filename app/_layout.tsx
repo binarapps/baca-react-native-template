@@ -2,7 +2,7 @@ import { ThemeProvider } from '@react-navigation/native'
 import { Slot } from 'expo-router'
 
 import { AbsoluteFullFill, Loader, StatusBar } from '~components'
-import { useAuth, useNavigationTheme } from '~hooks'
+import { useAuth, useNavigationTheme, useRouterNotifications } from '~hooks'
 import { Providers } from '~providers'
 
 export const unstable_settings = {
@@ -12,6 +12,8 @@ export const unstable_settings = {
 const Layout = () => {
   const { isSignedIn } = useAuth()
   const { navigationTheme } = useNavigationTheme()
+
+  useRouterNotifications() // TODO: check if handling notification deeplinks works correctly
 
   if (isSignedIn === null) {
     return (
