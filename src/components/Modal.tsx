@@ -43,13 +43,13 @@ export const Modal = ({
         <SafeAreaView
           style={[
             styles.modal,
-            { backgroundColor: colors.modalBackground },
+            { backgroundColor: colors.alpha.black[30] },
             additionalWrapperStyle,
           ]}
         >
           <ScrollableComponent
             style={styles.scroll}
-            contentContainerStyle={[styles.scrollContent, { background: colors.transparent }]}
+            contentContainerStyle={[styles.scrollContent, { background: colors.bg.overlay }]}
             showsVerticalScrollIndicator={false}
           >
             <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>

@@ -50,8 +50,8 @@ export const bottomSideTabs: Tabs = []
 export const bottomTabs: Tabs = [...upperSideTabs]
 
 export const TabColors: Record<string, ColorNames> = {
-  tabIconDark: 'gray.700',
-  tabIconLight: 'gray.200',
+  tabIconDark: 'text.brand.tertiary',
+  tabIconLight: 'text.success.primary',
 } as const
 
 export const TabColorsStrings = {

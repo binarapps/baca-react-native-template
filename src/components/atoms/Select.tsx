@@ -55,7 +55,7 @@ const SelectItem = <T extends SelectKey>({
   }, [closeDropdown, item.value, maxSelectedItems, setValue, value])
 
   const color = useMemo(
-    () => (disabled && !selected ? colors.gray['500'] : colors.black),
+    () => (disabled && !selected ? colors.bg.brand.primary : colors.bg.active),
     [disabled, selected, colors]
   )
 
@@ -70,7 +70,7 @@ const SelectItem = <T extends SelectKey>({
         <Row mb={4}>
           <Box
             borderRadius={5}
-            borderColor={disabled && !selected ? 'gray.500' : 'inputBorder'}
+            borderColor={disabled && !selected ? 'border.disabled' : 'border.brand'}
             borderWidth={1}
             width={5}
             height={5}
@@ -78,7 +78,7 @@ const SelectItem = <T extends SelectKey>({
             justifyContent="center"
             alignItems="center"
           >
-            {selected ? <Icon color="gray.500" name="check-fill" size={18} /> : null}
+            {selected ? <Icon color="icon.fg.brand" name="check-fill" size={18} /> : null}
           </Box>
           <Row flex={1} alignItems="center">
             <Text style={{ color }}>{item.labelInDropdown ?? item.label}</Text>
@@ -157,7 +157,7 @@ export const Select = <T extends SelectKey>({
   )
 
   const inputColor = useMemo(() => {
-    return isError ? 'red.500' : dropdownDisabled ? 'gray.500' : 'text'
+    return isError ? 'text.error.primary' : dropdownDisabled ? 'utility.gray.500' : 'text.primary'
   }, [dropdownDisabled, isError])
 
   return (
@@ -167,7 +167,9 @@ export const Select = <T extends SelectKey>({
           numberOfLines={1}
           style={[
             styles.textInput,
-            isError ? { borderColor: colors.red['500'] } : { borderColor: colors.inputBorder },
+            isError
+              ? { borderColor: colors.text.error.primary }
+              : { borderColor: colors.border.brand },
           ]}
           color={inputColor}
         >

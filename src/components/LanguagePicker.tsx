@@ -13,13 +13,11 @@ import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
 import { Menu } from './organisms/Menu'
 import languages from '../../assets/languages.json'
 
-import { useColorScheme } from '~contexts'
 import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
   const { size } = useTheme()
 
-  const { colorScheme } = useColorScheme()
   const { i18n } = useTranslation()
   const language = i18n?.language?.slice?.(0, 2).toUpperCase() as keyof typeof languages
   const isOpen = useSharedValue(false)
@@ -33,7 +31,7 @@ export const LanguagePicker: React.FC = () => {
     icon: { height: size['8'], justifyContent: 'center' },
   })
 
-  const iconColor = colorScheme === 'light' ? 'black' : 'white'
+  const iconColor = 'text.brand.primary'
 
   const renderTrigger = useCallback(
     (

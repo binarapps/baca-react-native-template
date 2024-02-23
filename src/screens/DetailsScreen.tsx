@@ -18,9 +18,9 @@ export const DetailsScreen = (): JSX.Element => {
 
   const bottomSheet = bottomSheetComponentRenderFunction(
     <Box px={4} py={10}>
-      <Text color="text">{t('details_screen.awesome')}</Text>
+      <Text color="text.brand.primary">{t('details_screen.awesome')}</Text>
       {items.map((item, index) => (
-        <Text key={index} color="text">
+        <Text key={index} color="text.brand.primary">
           {item}
         </Text>
       ))}
@@ -32,7 +32,7 @@ export const DetailsScreen = (): JSX.Element => {
     <Center>
       <Text>{t('details_screen.title')}</Text>
       <Button onPress={presentBottomSheet}>{t('details_screen.open_bottom_sheet')}</Button>
-      <Text color="text">
+      <Text color="text.brand.primary">
         {t('details_screen.screen_params', { params: JSON.stringify(localParams) })}
       </Text>
       {bottomSheet}

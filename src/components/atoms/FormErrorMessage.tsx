@@ -6,7 +6,9 @@ import { useTheme } from '~hooks'
 export const FormErrorMessage = ({ errorMessage }: { errorMessage?: string }) => {
   const { colors } = useTheme()
   return (
-    errorMessage && <Text style={[styles.text, { color: colors.red['500'] }]}>{errorMessage}</Text>
+    errorMessage && (
+      <Text style={[styles.text, { color: colors.text.error.primary }]}>{errorMessage}</Text>
+    )
   )
 }
 
