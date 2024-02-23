@@ -67,7 +67,9 @@
     "example": "Przykład"
   },
   "landing_screen": {
-    "login_cta": "Zaloguj się"
+    "login_cta": "Zaloguj się",
+    "go_to_blog": "Otwórz blog",
+    "go_to_form": "Otwórz pełno ekranowy formularz full"
   },
   "application_info_screen": {
     "navigation_info": "Kiedy będziesz próbował cofnąć to zostaniesz podwójnie zapytany, czy na pewno tego chcesz \n"

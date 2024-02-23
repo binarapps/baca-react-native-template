@@ -12,13 +12,11 @@ export function LandingHeader() {
   const { colorScheme } = useColorScheme()
   const { top } = useSafeAreaInsets()
   const { t } = useTranslation()
-  const router = useRouter()
+  const { push, canGoBack, back } = useRouter()
 
   const { isSignedIn } = useAuth()
 
-  const navigateToLogin = () => router.push('/sign-in')
-
-  const canGoBack = router.canGoBack()
+  const navigateToLogin = () => push('/sign-in')
 
   const height = 60 + top
   return (
@@ -29,8 +27,8 @@ export function LandingHeader() {
         Platform.select({ default: {}, web: { display: 'flex' } }),
       ]}
     >
-      {canGoBack ? (
-        <Pressable onPress={router.back}>
+      {canGoBack() ? (
+        <Pressable onPress={back}>
           <Icon name="arrow-left-line" size={20} />
         </Pressable>
       ) : (

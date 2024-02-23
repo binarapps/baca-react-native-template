@@ -44,10 +44,10 @@ export const HomeScreen = () => {
         {t('home_screen.details')}
       </Button>
       <Button mt={4} onPress={navigateToBigForm}>
-        Form - full screen
+        {t('landing_screen.go_to_form')}
       </Button>
       <Button mt={4} onPress={navigateToBlog}>
-        Blog - full screen
+        {t('landing_screen.go_to_blog')}
       </Button>
     </Center>
   )

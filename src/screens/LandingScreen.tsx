@@ -16,12 +16,6 @@ export const LandingScreen = () => {
 
   const { colorScheme } = useColorScheme()
 
-  const navigateToDetails = useCallback(() => {
-    router.navigate({
-      pathname: 'home/details',
-      params: { user: 'example@example.com' },
-    })
-  }, [])
   const navigateToBlog = useCallback(() => {
     router.navigate('/blog')
   }, [])
@@ -43,14 +37,11 @@ export const LandingScreen = () => {
         <Text.H3Bold textAlign="center">{t('hello')}</Text.H3Bold>
         <Text.Caption textAlign="center">{t('thanks')}</Text.Caption>
         <Text.Caption textAlign="center">{t('app_information')}</Text.Caption>
-        <Button mt={4} onPress={navigateToDetails}>
-          {t('home_screen.details')}
-        </Button>
         <Button mt={4} onPress={navigateToBigForm}>
-          Form - full screen
+          {t('landing_screen.go_to_form')}
         </Button>
         <Button mt={4} onPress={navigateToBlog}>
-          Blog - full screen
+          {t('landing_screen.go_to_blog')}
         </Button>
       </Center>
     </>
