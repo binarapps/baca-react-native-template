@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 import { Button } from './Button'
 
-import { _appTheme } from '~constants'
+import { theme } from '~constants'
 import { cleanup, render, fireEvent, act } from '~utils/testUtils'
 
 afterEach(cleanup)
@@ -16,7 +16,7 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Primary title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
-      backgroundColor: _appTheme.colors.primary,
+      backgroundColor: theme.light.colors.button.primary.bg,
       borderColor: 'transparent',
       borderRadius: 4,
       borderWidth: undefined,
@@ -32,7 +32,7 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Secondary title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
-      backgroundColor: _appTheme.colors.secondary,
+      backgroundColor: theme.light.colors.button.secondary.bg,
       borderColor: 'transparent',
       borderRadius: 4,
       borderWidth: undefined,
@@ -48,8 +48,8 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Outline title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
-      backgroundColor: 'transparent',
-      borderColor: _appTheme.colors.primary,
+      backgroundColor: theme.light.colors.button.tertiary.fg,
+      borderColor: theme.light.colors.border.primary,
       borderRadius: 4,
       borderWidth: StyleSheet.hairlineWidth,
       flexDirection: 'row',
@@ -64,7 +64,7 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Ghost title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
-      backgroundColor: 'transparent',
+      backgroundColor: theme.light.colors.button.tertiary.fg,
       borderColor: 'transparent',
       borderRadius: 4,
       borderWidth: undefined,
@@ -80,7 +80,7 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Link title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
-      backgroundColor: 'transparent',
+      backgroundColor: theme.light.colors.button.tertiary.fg,
       borderColor: 'transparent',
       borderRadius: 4,
       borderWidth: undefined,

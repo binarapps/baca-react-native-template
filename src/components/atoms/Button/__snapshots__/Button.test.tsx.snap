@@ -36,7 +36,7 @@ exports[`Button renders correctly 1`] = `
   style={
     {
       "alignItems": "center",
-      "backgroundColor": "#3b82f6",
+      "backgroundColor": "#7F56D9",
       "borderColor": "transparent",
       "borderRadius": 4,
       "borderWidth": undefined,
@@ -53,7 +53,7 @@ exports[`Button renders correctly 1`] = `
     allowFontScaling={false}
     style={
       {
-        "color": "#ffffff",
+        "color": "#FFFFFF",
         "fontFamily": "Lato_700Bold",
         "fontSize": 16,
         "fontStyle": "normal",

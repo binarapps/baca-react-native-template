@@ -110,7 +110,7 @@ export const SignInScreen = (): JSX.Element => {
         <Box mt={12} />
         {/* TODO: Remove this after implementing signing in with backend  */}
         <Text bold>Correct credentials</Text>
-        <Text color="gray.500" textAlign="center">
+        <Text color="text.primary" textAlign="center">
           Email: test@example.com{'\n'}Password: 123456
         </Text>
         <Version onPress={navigateToAppInfo} />

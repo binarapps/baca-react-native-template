@@ -10,7 +10,7 @@ console.warn = jest.fn()
 
 const defaultTextStyles = {
   textTransform: 'none',
-  color: theme.light.colors.text,
+  color: theme.light.colors.text.brand.primary,
 }
 
 describe('Text', () => {
@@ -78,10 +78,10 @@ describe('Text', () => {
   })
 
   it('renders correctly with a custom color', () => {
-    const { getByText } = render(<Text color="red.400">Hello World</Text>)
+    const { getByText } = render(<Text color="text.error.primary">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      color: theme.light.colors.red[400],
+      color: theme.light.colors.text.error.primary,
       textTransform: 'none',
     })
   })
@@ -112,7 +112,7 @@ describe('Text', () => {
 
   it('renders correctly with multiple styles', () => {
     const { getByText } = render(
-      <Text bold italic color="red.400" textDecoration="underline">
+      <Text bold italic color="text.error.primary" textDecoration="underline">
         Hello World
       </Text>
     )
@@ -120,7 +120,7 @@ describe('Text', () => {
       ...defaultTextStyles,
       fontStyle: 'italic',
       fontWeight: 'bold',
-      color: theme.light.colors.red[400],
+      color: theme.light.colors.text.error.primary,
       textDecorationLine: 'underline',
     })
   })
@@ -332,7 +332,7 @@ describe('Text', () => {
     })
   })
 
-  it('renders correctly compound Text.H6Bold', () => {
+  it('renders correctly compound Text.H6Bold', async () => {
     const { getByText } = render(<Text.H6Bold>Hello World</Text.H6Bold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,

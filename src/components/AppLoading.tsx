@@ -70,7 +70,7 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
     <View style={styles.container} onLayout={onLayoutRootView}>
       {isLoading ? null : children}
       {isLoading || isDelayLoading ? (
-        <AbsoluteFullFill bg="white">
+        <AbsoluteFullFill bg="fg.white">
           <Center flex={1}>
             <Loader type="bubbles" />
           </Center>

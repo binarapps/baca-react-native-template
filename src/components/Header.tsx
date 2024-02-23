@@ -19,12 +19,12 @@ export const Header = ({ options, ...rest }: NativeStackHeaderProps) => {
   })
 
   return (
-    <Column bg="white">
-      <Row bg="white" zIndex={3} justifyContent="space-between" alignItems="center">
+    <Column bg="fg.white">
+      <Row bg="fg.white" zIndex={3} justifyContent="space-between" alignItems="center">
         <Box ml={4} width={24}>
           {router.canGoBack() && (
             <Touchable onPress={router.back}>
-              <Icon name="arrow-left-line" size={24} color="text" />
+              <Icon name="arrow-left-line" size={24} color="text.brand.primary" />
             </Touchable>
           )}
         </Box>
@@ -32,7 +32,7 @@ export const Header = ({ options, ...rest }: NativeStackHeaderProps) => {
           <>
             <Box height={logoHeight} />
             <Row ml={8} flex={1}>
-              <Text.H4Bold numberOfLines={1} color="text">
+              <Text.H4Bold numberOfLines={1} color="text.brand.primary">
                 {options.title}
               </Text.H4Bold>
             </Row>

@@ -5,7 +5,6 @@ import { ScrollView } from 'react-native'
 import { BottomSheetHeader } from './BottomSheetHeader'
 
 import { Box, Modal } from '~components'
-import { useColorScheme } from '~contexts'
 import { useBoolean, useWeb } from '~hooks'
 
 type Props = {
@@ -26,7 +25,6 @@ export const BottomSheet = ({
 }: Props) => {
   const [isOpen, setIsOpen] = useBoolean(false)
   const { webContentWidth } = useWeb()
-  const { colorScheme } = useColorScheme()
 
   useImperativeHandle(bottomSheetRef, () => ({
     snapToPosition: (index: string | number) => {
@@ -54,9 +52,9 @@ export const BottomSheet = ({
     <Modal transparent visible={isOpen} onRequestClose={closeModalHandler}>
       <Box
         mx="auto"
-        bg="background"
+        bg="bg.brand.primary"
         borderRadius={8}
-        borderColor={colorScheme === 'dark' ? 'gray.900' : 'light'}
+        borderColor={'border.primary'}
         borderWidth={1}
         maxW={webContentWidth}
       >
@@ -66,7 +64,7 @@ export const BottomSheet = ({
           showCloseButton={showCloseButton}
           onClose={setIsOpen.off}
         />
-        <Box pb="1px" bg={colorScheme === 'dark' ? 'gray.900' : 'light'} />
+        <Box pb="1px" bg="bg.brand.primary" />
         {children}
       </Box>
     </Modal>

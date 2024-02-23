@@ -25,78 +25,78 @@ type VariantStyle = {
 export const buttonVariants: { [key in ButtonVariant]: VariantStyle } = {
   Primary: {
     pressedStyle: {
-      backgroundColor: 'primaryDark',
-      color: 'white',
+      backgroundColor: 'button.primary.bg',
+      color: 'button.primary.fg',
     },
     notPressedStyle: {
-      backgroundColor: 'primary',
-      color: 'white',
+      backgroundColor: 'button.primary.bg',
+      color: 'button.primary.fg',
     },
     disabledStyle: {
-      backgroundColor: 'primaryLight',
-      color: 'white',
+      backgroundColor: 'toggle.button.fg_disabled',
+      color: 'text.white',
     },
   },
   Secondary: {
     pressedStyle: {
-      backgroundColor: 'secondaryDark',
-      color: 'white',
+      backgroundColor: 'button.secondary.bg',
+      color: 'text.brand.tertiary',
     },
     notPressedStyle: {
-      backgroundColor: 'secondary',
-      color: 'white',
+      backgroundColor: 'button.secondary.bg',
+      color: 'text.brand.tertiary',
     },
     disabledStyle: {
-      backgroundColor: 'secondaryLight',
-      color: 'white',
+      backgroundColor: 'toggle.button.fg_disabled',
+      color: 'text.brand.secondary',
     },
   },
   Outline: {
     pressedStyle: {
-      backgroundColor: 'transparent',
-      borderColor: 'primaryLight',
+      backgroundColor: 'button.tertiary.fg',
+      borderColor: 'border.primary',
       borderWidth: StyleSheet.hairlineWidth,
-      color: 'primaryLight',
+      color: 'text.brand.primary',
     },
     notPressedStyle: {
-      backgroundColor: 'transparent',
-      borderColor: 'primary',
+      backgroundColor: 'button.tertiary.fg',
+      borderColor: 'border.primary',
       borderWidth: StyleSheet.hairlineWidth,
-      color: 'primary',
+      color: 'text.brand.secondary',
     },
     disabledStyle: {
-      backgroundColor: 'transparent',
-      borderColor: 'gray.200',
+      backgroundColor: 'button.tertiary.fg',
+      borderColor: 'border.disabled',
       borderWidth: StyleSheet.hairlineWidth,
-      color: 'gray.200',
+      color: 'text.disabled',
     },
   },
   Ghost: {
     pressedStyle: {
-      backgroundColor: 'primary',
-      color: 'white',
+      backgroundColor: 'button.primary.bg',
+      color: 'text.primary',
     },
     notPressedStyle: {
-      backgroundColor: 'transparent',
-      color: 'primary',
+      backgroundColor: 'button.tertiary.fg',
+      color: 'text.primary',
     },
     disabledStyle: {
-      backgroundColor: 'transparent',
-      color: 'black',
+      backgroundColor: 'button.tertiary.fg',
+      color: 'text.brand.secondary',
     },
   },
   Link: {
     pressedStyle: {
-      backgroundColor: 'transparent',
-      color: 'blue.800',
+      backgroundColor: 'button.tertiary.fg',
+      color: 'text.brand.primary',
     },
     notPressedStyle: {
-      backgroundColor: 'transparent',
-      color: 'blue.500',
+      backgroundColor: 'button.tertiary.fg',
+      color: 'text.brand.secondary',
     },
     disabledStyle: {
-      backgroundColor: 'transparent',
-      color: 'gray.200',
+      backgroundColor: 'button.tertiary.fg',
+      color: 'text.disabled',
     },
   },
 }

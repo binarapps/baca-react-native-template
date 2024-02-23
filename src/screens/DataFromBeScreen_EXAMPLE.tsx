@@ -16,7 +16,7 @@ export const DataFromBeScreen_EXAMPLE = () => {
 
   const renderItem: ListRenderItem<TodoItem> = useCallback(({ item: { title, id } }) => {
     return (
-      <Box mb="1" bg="gray.200" borderRadius={2} m={2}>
+      <Box mb="1" bg="fg.brand.primary" borderRadius={2} m={2}>
         <Text>{'title:' + title}</Text>
         <Text>{'id: ' + id}</Text>
       </Box>
