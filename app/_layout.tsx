@@ -1,16 +1,18 @@
 import { ThemeProvider } from '@react-navigation/native'
 import { Slot } from 'expo-router'
+import { useAtomValue } from 'jotai'
 
 import { AbsoluteFullFill, Loader, StatusBar } from '~components'
-import { useAuth, useNavigationTheme, useRouterNotifications } from '~hooks'
+import { useNavigationTheme, useRouterNotifications } from '~hooks'
 import { Providers } from '~providers'
+import { isSignedInAtom } from '~store/auth'
 
 export const unstable_settings = {
   initialRouteName: 'index',
 }
 
 const Layout = () => {
-  const { isSignedIn } = useAuth()
+  const isSignedIn = useAtomValue(isSignedInAtom)
   const { navigationTheme } = useNavigationTheme()
 
   useRouterNotifications() // TODO: check if handling notification deeplinks works correctly

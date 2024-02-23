@@ -1,11 +1,12 @@
 import { Redirect } from 'expo-router'
+import { useAtomValue } from 'jotai'
 import { Platform } from 'react-native'
 
-import { useAuth } from '~hooks'
 import { LandingScreen } from '~screens/LandingScreen'
+import { isSignedInAtom } from '~store/auth'
 
 export default function Root() {
-  const { isSignedIn } = useAuth()
+  const isSignedIn = useAtomValue(isSignedInAtom)
 
   if (isSignedIn === true) {
     return <Redirect href="/home" />

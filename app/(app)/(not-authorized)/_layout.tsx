@@ -1,13 +1,13 @@
 import { Redirect, Stack } from 'expo-router'
+import { useAtomValue } from 'jotai'
 
-import { useAuth } from '~hooks'
-
+import { isSignedInAtom } from '~store/auth'
 export const unstable_settings = {
   initialRouteName: 'sign-in',
 }
 
 export default function NotAuthorizedLayout() {
-  const { isSignedIn } = useAuth()
+  const isSignedIn = useAtomValue(isSignedInAtom)
 
   if (isSignedIn === true) {
     return <Redirect href="/home" />

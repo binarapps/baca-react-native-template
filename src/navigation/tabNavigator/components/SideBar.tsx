@@ -6,14 +6,13 @@ import { TabColorsStrings, upperSideTabs } from '../config'
 import { useWidth } from '../hooks'
 import { cns } from '../utils'
 
-import { useAuth } from '~hooks'
+import { signOut } from '~store/auth'
 import cssStyles from '~styles'
 
 const NAV_MEDIUM_WIDTH = 244
 
 export function SideBar({ visible }: { visible: boolean }) {
   const isLarge = useWidth(1264)
-  const { signOut } = useAuth()
 
   return (
     <View
