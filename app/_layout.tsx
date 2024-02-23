@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@react-navigation/native'
 import { Slot } from 'expo-router'
 
-import { AbsoluteFullFill, Loader } from '~components'
+import { AbsoluteFullFill, Loader, StatusBar } from '~components'
 import { useAuth, useNavigationTheme, useRouterNotifications } from '~hooks'
 import { Providers } from '~providers'
 
@@ -33,6 +33,7 @@ const Layout = () => {
 export default function RootLayout() {
   return (
     <Providers>
+      <StatusBar />
       <Layout />
     </Providers>
   )

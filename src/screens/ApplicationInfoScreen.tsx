@@ -3,16 +3,25 @@ import * as Application from 'expo-application'
 import * as Clipboard from 'expo-clipboard'
 import Constants from 'expo-constants'
 import * as Notifications from 'expo-notifications'
+import { useRouter } from 'expo-router'
 import { ScrollView, StyleSheet } from 'react-native'
 
-import { Button, Text } from '~components'
+import { Box, Button, Text } from '~components'
 import { isExpoGo } from '~constants'
-import { useCallback, usePreventGoBack, useScreenOptions, useTranslation } from '~hooks'
+import {
+  useCallback,
+  usePreventGoBack,
+  useSafeAreaInsets,
+  useScreenOptions,
+  useTranslation,
+} from '~hooks'
 
 const projectId = Constants.expoConfig?.extra?.eas?.projectId
 
 export const ApplicationInfoScreen = (): JSX.Element => {
   const { i18n, t } = useTranslation()
+  const { bottom } = useSafeAreaInsets()
+  const { canGoBack, back } = useRouter()
 
   useScreenOptions({
     title: t('navigation.screen_titles.application_info'),
@@ -55,12 +64,22 @@ export const ApplicationInfoScreen = (): JSX.Element => {
       <Text>{Application.nativeApplicationVersion}</Text>
       <Text>{Application.nativeBuildVersion}</Text>
       <Text>{i18n.languages.join(', ')}</Text>
+      {canGoBack() && (
+        <>
+          <Box flexGrow={1} />
+          <Button my={2} onPress={back}>
+            {t('common.go_back')}
+          </Button>
+          <Box pb={`${bottom}px`} />
+        </>
+      )}
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
+    flexGrow: 1,
     padding: 16,
   },
 })

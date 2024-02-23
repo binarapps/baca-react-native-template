@@ -53,7 +53,9 @@
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
-      "typography": "Typography"
+      "typography": "Typography",
+      "test_form": "Test form",
+      "blog": "Blog"
     }
   },
   "update": {
@@ -63,6 +65,11 @@
   },
   "examples_component": {
     "example": "Example"
+  },
+  "landing_screen": {
+    "login_cta": "Login to app",
+    "go_to_blog": "Open blog",
+    "go_to_form": "Open full screen form"
   },
   "application_info_screen": {
     "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"

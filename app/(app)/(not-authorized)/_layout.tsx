@@ -6,7 +6,7 @@ export const unstable_settings = {
   initialRouteName: 'sign-in',
 }
 
-export default function AuthLayout() {
+export default function NotAuthorizedLayout() {
   const { isSignedIn } = useAuth()
 
   if (isSignedIn === true) {

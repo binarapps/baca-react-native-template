@@ -27,7 +27,7 @@ export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
 
   useScreenOptions({
-    title: t('navigation.screen_titles.colors'),
+    title: t('navigation.screen_titles.test_form'),
   })
 
   const { control, errors, submit, VALIDATION, setFocus } = useTestForm()
