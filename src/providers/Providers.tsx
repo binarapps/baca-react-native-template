@@ -33,11 +33,9 @@ export const Providers: FC<PropsWithChildren> = ({ children }) => {
                 <NotificationsProvider>
                   <QueryClientProvider client={queryClient}>
                     <AppLoading>
-                      <BottomSheetModalProvider>
-                        {children}
-                        <AuthLogic />
-                      </BottomSheetModalProvider>
+                      <BottomSheetModalProvider>{children}</BottomSheetModalProvider>
                     </AppLoading>
+                    <AuthLogic />
                   </QueryClientProvider>
                 </NotificationsProvider>
               </ExpoNotificationsProvider>
