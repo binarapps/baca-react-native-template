@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router'
 import { StyleSheet, Image } from 'react-native'
 
 import {
@@ -13,12 +14,16 @@ import {
 } from '~components'
 import { REGEX, darkLogo, lightLogo } from '~constants'
 import { useColorScheme } from '~contexts'
-import { useCallback, useSignInForm, useNavigation, useTranslation, useEffect } from '~hooks'
+import { useCallback, useSignInForm, useTranslation, useEffect, useScreenOptions } from '~hooks'
 
 export const SignInScreen = (): JSX.Element => {
-  const { navigate } = useNavigation()
+  const { push } = useRouter()
   const { t } = useTranslation()
   const { colorScheme } = useColorScheme()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.sign_in'),
+  })
 
   const { control, errors, submit, isSubmitting, setFocus } = useSignInForm()
 
@@ -28,8 +33,8 @@ export const SignInScreen = (): JSX.Element => {
     }, 500)
   }, [setFocus])
 
-  const navigateToSignUp = useCallback(() => navigate('SignUp'), [navigate])
-  const navigateToAppInfo = useCallback(() => navigate('ApplicationInfo'), [navigate])
+  const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
+  const navigateToAppInfo = useCallback(() => push('/application-info'), [push])
   const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (
@@ -46,16 +51,15 @@ export const SignInScreen = (): JSX.Element => {
         />
         <Spacer y="8" />
         <ControlledField.Input
+          {...{ control, errors }}
           autoCapitalize="none"
-          control={control}
-          errors={errors}
+          enterKeyHint="next"
+          inputMode="email"
           isRequired
-          keyboardType="email-address"
           label={t('common.email_label')}
           name="email"
           onSubmitEditing={focusPasswordInput}
           placeholder={t('common.email_placeholder')}
-          returnKeyType="next"
           rules={{
             required: t('form.required'),
             pattern: {
@@ -66,15 +70,14 @@ export const SignInScreen = (): JSX.Element => {
           testID="emailInput"
         />
         <ControlledField.Input
+          {...{ control, errors }}
           autoCapitalize="none"
-          control={control}
-          errors={errors}
+          enterKeyHint="send"
           isRequired
           label={t('sign_in_screen.password_label')}
           name="password"
           onSubmitEditing={submit}
           placeholder={t('sign_in_screen.password_placeholder')}
-          returnKeyType="send"
           rules={{
             required: t('form.required'),
           }}
@@ -83,10 +86,9 @@ export const SignInScreen = (): JSX.Element => {
         />
         <Center mt={8}>
           <ControlledField.Checkbox
-            control={control}
-            errors={errors}
-            name="confirm"
+            {...{ control, errors }}
             checkboxText={t('sign_in_screen.remember_me')}
+            name="confirm"
             size={18}
             testID="confirmCheckbox"
           />
@@ -100,7 +102,7 @@ export const SignInScreen = (): JSX.Element => {
             {t('sign_in_screen.sign_in')}
           </Button>
           <Text bold mb={4}>
-            {t('sign_in_screen.dont_have_an_account')}
+            {t('sign_in_screen.do_not_have_an_account')}
           </Text>
           <Button.Link onPress={navigateToSignUp}>{t('sign_in_screen.sign_up')}</Button.Link>
         </Center>
@@ -108,7 +110,7 @@ export const SignInScreen = (): JSX.Element => {
         <Box mt={12} />
         {/* TODO: Remove this after implementing signing in with backend  */}
         <Text bold>Correct credentials</Text>
-        <Text color="gray.500" textAlign="center">
+        <Text color="text.primary" textAlign="center">
           Email: test@example.com{'\n'}Password: 123456
         </Text>
         <Version onPress={navigateToAppInfo} />

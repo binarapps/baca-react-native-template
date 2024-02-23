@@ -11,7 +11,6 @@ import { Dimensions } from 'react-native'
 import { BottomSheetHeader } from './BottomSheetHeader'
 
 import { Box } from '~components/atoms/Box'
-import { useColorScheme } from '~contexts'
 import { useSafeAreaInsets } from '~hooks'
 
 const screenHeight = Dimensions.get('screen').height
@@ -33,8 +32,6 @@ export const BottomSheet = ({
   bottomSheetRef,
 }: Props) => {
   const { top } = useSafeAreaInsets()
-
-  const { colorScheme } = useColorScheme()
 
   const handleClose = useCallback(() => {
     bottomSheetRef?.current?.snapToPosition(-1)
@@ -61,7 +58,7 @@ export const BottomSheet = ({
           showCloseButton={showCloseButton}
           onClose={handleClose}
         />
-        <Box pb="1px" bg={colorScheme === 'dark' ? 'gray.900' : 'light'} />
+        <Box pb="1px" bg="bg.brand.primary" />
 
         {children}
       </BottomSheetView>

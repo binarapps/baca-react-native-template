@@ -122,7 +122,7 @@ const Menu = memo<MenuProps>(
             onRequestClose={handleClose}
           >
             <TouchableWithoutFeedback onPress={handleClose}>
-              <AbsoluteFullFill backgroundColor="black" bgOpacity={0.1} />
+              <AbsoluteFullFill backgroundColor="bg.active" bgOpacity={0.1} />
             </TouchableWithoutFeedback>
             {triggerPosition && (
               <Box
@@ -130,7 +130,7 @@ const Menu = memo<MenuProps>(
                 top={triggerPosition?.y}
                 left={triggerPosition?.x}
                 p={2}
-                backgroundColor="white"
+                backgroundColor="fg.white"
                 borderRadius={4}
                 {...shadows['4']}
               >

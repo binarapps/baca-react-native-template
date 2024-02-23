@@ -19,12 +19,12 @@ export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
     },
     ref
   ) => {
-    const borderColor = useMemo(
-      () => (isError ? 'red.500' : isDisabled ? 'gray.400' : 'inputBorder'),
+    const borderColor: ColorNames = useMemo(
+      () => (isError ? 'border.error' : isDisabled ? 'border.disabled' : 'border.brand'),
       [isError, isDisabled]
     )
     const bgColor = useCallback(
-      (item: string) => (item === value ? 'blue.500' : 'gray.500'),
+      (item: string): ColorNames => (item === value ? 'bg.brand.primary' : 'bg.tertiary'),
       [value]
     )
 

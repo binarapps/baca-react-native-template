@@ -1,5 +1,7 @@
 import type { Theme } from '@react-navigation/native'
 
+import { themeColors } from './colors'
+
 export const palette = {
   black: '#000000',
   white: '#ffffff',
@@ -336,11 +338,6 @@ export const _appTheme = {
   fontSizes,
   lineHeights,
   fontWeights,
-  colors: {
-    ...palette,
-    ...colors,
-    ...ProjectColors,
-  },
   size,
   shadows,
 }
@@ -348,37 +345,35 @@ export const _appTheme = {
 export const theme = {
   light: {
     ..._appTheme,
-    colors: {
-      ..._appTheme.colors,
-      background: _appTheme.colors.white,
-      border: _appTheme.colors.white,
-      card: _appTheme.colors.white,
-      text: _appTheme.colors.dark,
-      notification: _appTheme.colors.secondaryLight,
-      inputBorder: _appTheme.colors.gray['700'],
-    },
+    colors: themeColors.lightMode,
   },
   dark: {
     ..._appTheme,
-    colors: {
-      ..._appTheme.colors,
-      background: _appTheme.colors.dark,
-      border: _appTheme.colors.dark,
-      card: _appTheme.colors.dark,
-      text: _appTheme.colors.white,
-      notification: _appTheme.colors.secondaryLight,
-      inputBorder: _appTheme.colors.gray['200'],
-    },
+    colors: themeColors.darkMode,
   },
 }
 
 export const lightNavigationTheme: Theme = {
-  colors: theme.light.colors,
+  colors: {
+    background: themeColors.lightMode.bg.primary,
+    border: themeColors.lightMode.border.primary,
+    card: themeColors.lightMode.button.primary.bg,
+    text: themeColors.lightMode.alpha.black[70],
+    notification: themeColors.lightMode.avatar.bg,
+    primary: themeColors.lightMode.utility.purple[500],
+  },
   dark: false,
 }
 
 export const darkNavigationTheme: Theme = {
-  colors: theme.dark.colors,
+  colors: {
+    background: themeColors.darkMode.bg.primary,
+    border: themeColors.darkMode.border.primary,
+    card: themeColors.darkMode.button.primary.bg,
+    text: themeColors.darkMode.alpha.black[70],
+    notification: themeColors.darkMode.avatar.bg,
+    primary: themeColors.darkMode.utility.purple[500],
+  },
   dark: true,
 }
 

@@ -1,4 +1,5 @@
 import { theme } from '~constants/theme'
+import { themeColors } from '~constants/colors'
 
 declare global {
   // THEME
@@ -12,8 +13,9 @@ declare global {
   type Fonts = keyof AppTheme['fonts']
 
   // COLORS
-  type Colors = AppTheme['colors']
-  type ColorNames = NestedKeys<Colors>
+  type Colors = typeof themeColors.lightMode | typeof themeColors.darkMode
+
+  export type ColorNames = NestedKeys<Colors>
 
   type Sizes = AppTheme['sizes']
   type SizeKeys = keyof Sizes

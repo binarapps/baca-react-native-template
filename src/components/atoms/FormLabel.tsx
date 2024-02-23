@@ -4,12 +4,11 @@ import { StyleSheet, View } from 'react-native'
 import { Text } from './Text'
 import { FormLabelProps } from './types'
 
-import { useColorScheme } from '~contexts'
 import { useTheme } from '~hooks'
 
 export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => {
   const { colors } = useTheme()
-  const { colorScheme } = useColorScheme()
+
   const stylesForRequired =
     labelStyle &&
     Object.fromEntries(
@@ -21,14 +20,11 @@ export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => 
   return (
     <View style={[styles.wrapper, { ...(label && styles.wrapperWithLabel) }]}>
       {label && (
-        <Text
-          style={[
-            labelStyle,
-            { color: labelStyle?.color || (colorScheme === 'light' ? colors.black : colors.white) },
-          ]}
-        >
+        <Text style={[labelStyle, { color: labelStyle?.color || colors.text.brand.primary }]}>
           {label}
-          {isRequired && <Text style={[stylesForRequired, { color: colors.red['500'] }]}>*</Text>}
+          {isRequired && (
+            <Text style={[stylesForRequired, { color: colors.text.error.primary }]}>*</Text>
+          )}
         </Text>
       )}
     </View>

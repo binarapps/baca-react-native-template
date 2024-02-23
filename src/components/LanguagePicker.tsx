@@ -13,15 +13,13 @@ import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
 import { Menu } from './organisms/Menu'
 import languages from '../../assets/languages.json'
 
-import { useColorScheme } from '~contexts'
 import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
   const { size } = useTheme()
 
-  const { colorScheme } = useColorScheme()
   const { i18n } = useTranslation()
-  const language = i18n.language.slice(0, 2).toUpperCase() as keyof typeof languages
+  const language = i18n?.language?.slice?.(0, 2).toUpperCase() as keyof typeof languages
   const isOpen = useSharedValue(false)
 
   const rotateZ = useDerivedValue(() => withTiming(isOpen.value ? 180 : 0))
@@ -33,7 +31,7 @@ export const LanguagePicker: React.FC = () => {
     icon: { height: size['8'], justifyContent: 'center' },
   })
 
-  const iconColor = colorScheme === 'light' ? 'black' : 'white'
+  const iconColor = 'text.brand.primary'
 
   const renderTrigger = useCallback(
     (
@@ -49,7 +47,7 @@ export const LanguagePicker: React.FC = () => {
         <Touchable {...props}>
           <Row alignItems="center">
             <Text fontSize="xl" pr={2}>
-              {languages[language].emoji}
+              {languages?.[language]?.emoji}
             </Text>
             <Animated.View style={[animatedIconStyle, styles.icon]}>
               <Icon size={24} name="arrow-down-s-line" color={iconColor} />

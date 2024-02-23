@@ -1,5 +1,4 @@
 import { PortalProvider } from '@gorhom/portal'
-import { NavigationContainer } from '@react-navigation/native'
 import { render, RenderAPI } from '@testing-library/react-native'
 import { PropsWithChildren, ReactElement } from 'react'
 import { I18nextProvider } from 'react-i18next'
@@ -11,11 +10,9 @@ type RenderOptions = Parameters<typeof render>[1]
 
 const ProvidersWrapper: React.FC<PropsWithChildren> = ({ children }) => (
   <PortalProvider>
-    <NavigationContainer>
-      <ColorSchemeProvider>
-        <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
-      </ColorSchemeProvider>
-    </NavigationContainer>
+    <ColorSchemeProvider>
+      <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+    </ColorSchemeProvider>
   </PortalProvider>
 )
 

@@ -34,7 +34,6 @@ const layoutPropsKeys = [
 export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
   (
     {
-      isDisabled,
       isRequired,
       isInvalid,
       label,

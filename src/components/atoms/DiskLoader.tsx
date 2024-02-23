@@ -19,7 +19,7 @@ export type DiskLoaderType = {
 }
 
 export const DiskLoader = ({
-  circleColor = 'green.400',
+  circleColor = 'bg.success.primary',
   containerColor = '#b3c430',
   size = 40,
 }: DiskLoaderType): JSX.Element => {

@@ -11,14 +11,18 @@ export const useNavigationTheme = () => {
 
   const tabBarTheme = useMemo(
     () => ({
-      tabBarActiveTintColor: colors.primary,
-      tabBarInactiveTintColor: colors.gray[500],
+      tabBarActiveTintColor: colors.button.primary.bg,
+      tabBarInactiveTintColor: colors.button.primary.fg,
       tabBarStyle: {
-        backgroundColor: colorScheme === 'dark' ? colors.gray[900] : colors.light,
+        backgroundColor:
+          colorScheme === 'dark' ? colors.button.primary.bg : colors.button.primary.fg,
         paddingTop: 4,
       },
+      tabBarIconStyle: {
+        marginTop: 0,
+      },
     }),
-    [colors.primary, colors.gray, colors.light, colorScheme]
+    [colors.button.primary.bg, colors.button.primary.fg, colorScheme]
   )
 
   const navigationTheme = colorScheme === 'dark' ? darkNavigationTheme : lightNavigationTheme

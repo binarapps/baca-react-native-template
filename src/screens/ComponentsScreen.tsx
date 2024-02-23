@@ -1,7 +1,7 @@
 import * as Linking from 'expo-linking'
 
 import { Icon, Loader, Box, Text, Button, Center, ScrollView } from '~components'
-import { useCallback, useNotifications, useTranslation } from '~hooks'
+import { useCallback, useNotifications, useScreenOptions, useTranslation } from '~hooks'
 
 const headingSizes = ['xs', 'sm', 'md', 'lg', '2xl', '3xl', '4xl'] as const
 const loaderVariants = [
@@ -28,8 +28,13 @@ const loaderVariants = [
 ] as const
 
 export const ComponentsScreen = (): JSX.Element => {
-  const { notify } = useNotifications()
   const { t } = useTranslation()
+  const { notify } = useNotifications()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.components'),
+  })
+
   const testNotification = useCallback(
     () =>
       notify('info', {
@@ -64,8 +69,8 @@ export const ComponentsScreen = (): JSX.Element => {
         <Button.Primary title={t('components_screen.button_variants.primary')} />
         <Button.Primary
           mt={4}
-          leftIcon={<Icon name="account-box-fill" size={24} color="red.400" />}
-          rightIcon={<Icon name="account-box-fill" size={24} color="modalBackground" />}
+          leftIcon={<Icon name="account-box-fill" size={24} color="fg.error.secondary" />}
+          rightIcon={<Icon name="account-box-fill" size={24} color="alpha.black.100" />}
           title={t('components_screen.button_variants.with_icons')}
         />
         <Button.Secondary mt={4} title={t('components_screen.button_variants.secondary')} />

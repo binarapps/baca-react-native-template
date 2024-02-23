@@ -1,5 +1,11 @@
 import { forwardRef } from 'react'
-import { NativeSyntheticEvent, TextInput, TextInputFocusEventData, TextStyle } from 'react-native'
+import {
+  NativeSyntheticEvent,
+  Platform,
+  TextInput,
+  TextInputFocusEventData,
+  TextStyle,
+} from 'react-native'
 
 import { Box } from './Box'
 import { Icon } from './Icon'
@@ -63,7 +69,7 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
 
   const textColorStyle = useMemo<TextStyle>(
     () => ({
-      color: props.color ? getColorValue({ color: props.color, colors }) : colors.text,
+      color: props.color ? getColorValue({ color: props.color, colors }) : colors.text.primary,
     }),
     [colors, props.color]
   )
@@ -191,11 +197,12 @@ export const Input = forwardRef<TextInput, InputProps>(
 
     const handleFocus = useCallback(
       (e?: NativeSyntheticEvent<TextInputFocusEventData>) => {
+        if (isDisabled) return
         _inputRef.current?.focus()
         setIsFocused(true)
         if (onFocus && e) onFocus(e)
       },
-      [setIsFocused, onFocus]
+      [isDisabled, onFocus]
     )
 
     const handleBlur = useCallback(
@@ -223,10 +230,12 @@ export const Input = forwardRef<TextInput, InputProps>(
         flexDirection="row"
         alignItems="center"
         overflow="hidden"
-        borderColor={isInvalid ? 'danger' : isFocused ? 'primaryLight' : 'inputBorder'}
+        borderColor={isInvalid ? 'border.error' : isFocused ? 'border.primary' : 'border.brand'}
         borderRadius={4}
         borderWidth={1}
-        backgroundColor={isInvalid ? 'danger' : isFocused ? 'primaryLight' : 'background'}
+        backgroundColor={
+          isInvalid ? 'bg.error.primary' : isFocused ? 'bg.brand.primary' : 'bg.active'
+        }
         bgOpacity={isFocused ? 0.1 : 1}
         {...inputShadow}
         {...layoutProps}
@@ -234,9 +243,12 @@ export const Input = forwardRef<TextInput, InputProps>(
         <StyledInput
           ref={_inputRef}
           autoCapitalize="none"
-          color={isInvalid ? 'danger' : 'text'}
-          cursorColor={colors.primaryLight}
-          editable={!isDisabled}
+          color={isInvalid ? 'text.error.primary' : 'text.primary'}
+          cursorColor={colors.text.placeholder}
+          {...Platform.select({
+            default: { editable: !isDisabled },
+            web: { disabled: isDisabled },
+          })}
           flex={1}
           fontFamily="regular"
           fontSize="xs"
@@ -246,7 +258,7 @@ export const Input = forwardRef<TextInput, InputProps>(
           px={3}
           py={2}
           secureTextEntry={securePassword}
-          selectionColor={colors.primaryLight}
+          selectionColor={colors.text.secondary}
           width="100%"
           {...inputProps}
           onFocus={handleFocus}
@@ -256,7 +268,7 @@ export const Input = forwardRef<TextInput, InputProps>(
           <Touchable mr={2} onPress={toggleSecurePassword}>
             <Icon
               name={secureTextIconName || iconName}
-              color={secureTextIconColor || 'gray.400'}
+              color={secureTextIconColor || 'icon.fg.brand'}
               size={secureTextIconSize}
             />
           </Touchable>

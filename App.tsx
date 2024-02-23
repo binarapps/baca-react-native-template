@@ -1,12 +1,15 @@
 // FIXME: see how why did you render works
 // import './wdyr'
+
+// This is added to support web for reaniamted: https://github.com/software-mansion/react-native-reanimated/issues/4140#issuecomment-1455209588
 import 'setimmediate'
 import 'react-native-reanimated'
+
+// Rest imports
 import '~i18n'
 import * as Device from 'expo-device'
+import 'expo-router/entry'
 
-import { Navigation } from '~navigation'
-import { Providers } from '~providers'
 import { enableAndroidBackgroundNotificationListener, startMockedServer } from '~services'
 
 // FIXME: there is some issue with miragejs that causes console.log to not work
@@ -27,13 +30,3 @@ if (DISABLE_CONSOLE_ENABLE_MOCKED_SERVER) {
 if (Device.isDevice) {
   enableAndroidBackgroundNotificationListener()
 }
-
-const App = (): JSX.Element => {
-  return (
-    <Providers>
-      <Navigation />
-    </Providers>
-  )
-}
-
-export default App

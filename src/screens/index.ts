@@ -9,6 +9,5 @@ export * from './NotFoundScreen'
 export * from './SettingsScreen'
 export * from './SignInScreen'
 export * from './SignUpScreen'
-export * from './TypographyScreen'
-
 export * from './TestFormScreen'
+export * from './TypographyScreen'

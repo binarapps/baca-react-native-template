@@ -1,175 +1,4 @@
 {
-  "errors": {
-    "screen_not_found": "NotFound screen",
-    "something_went_wrong": "Something went wrong"
-  },
-  "form": {
-    "invalid_email_format": "Incorrect e-mail address",
-    "required": "This field is required"
-  },
-  "navigation": {
-    "prevent_go_back_alert": {
-      "title": "Discard changes?",
-      "description": "You have unsaved changes. Are you sure to discard them and leave the screen?",
-      "dont_leave": "Don't leave",
-      "discard": "Discard"
-    },
-    "screen_titles": {
-      "home_stack": "Home",
-      "examples_stack": "Examples",
-      "examples": "Examples",
-      "components": "Components",
-      "colors": "Colors",
-      "typography": "Typography",
-      "home": "Home",
-      "details": "Details",
-      "sign_in": "Sign in",
-      "sign_up": "Sign up",
-      "main_tab": "MainTab",
-      "settings": "Settings",
-      "application_info": "ApplicationInfo",
-      "not_found": "NotFound",
-      "data_from_be_screen_example": "Data from BE"
-    }
-  },
-  "application_info_screen": {
-    "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
-  },
-  "sign_in_screen": {
-    "sign_in": "Sign in",
-    "sign_up": "Sign up",
-    "dont_have_an_account": "Don't have an account?",
-    "forgot_password": "Forgot your password?",
-    "or_pass": "or enter:",
-    "email_helper_text": "Email must be here",
-    "password_label": "Password",
-    "password_helper_text": "Password must be here",
-    "password_placeholder": "password",
-    "remember_me": "Remember me"
-  },
-  "sign_up_screen": {
-    "agree_terms_label": "I agree to the Terms and Conditions",
-    "newsletter_label": "Subscribe to our newsletter",
-    "sign_up": "Sign up"
-  },
-  "home_screen": {
-    "details": "Details"
-  },
-  "colors_screen": {
-    "colors_label": "Colors"
-  },
-  "typography_screen": {
-    "text_font_size": "Text.fontSize: ",
-    "heading_size": "Heading.size: "
-  },
-  "details_screen": {
-    "title": "This is details screen",
-    "open_bottom_sheet": "Open BottomSheetModal",
-    "screen_params": "Screen params: {{params}}",
-    "awesome": "Awesome 🎉"
-  },
-  "examples_component": {
-    "example": "Example"
-  },
-  "examples_screen": {
-    "header": "This is Example screen",
-    "go_to_application_info": "Go to ApplicationInfo",
-    "go_to_colors": "Go to Colors",
-    "go_to_components": "Go to Components",
-    "go_to_typography": "Go to Typography",
-    "go_to_home_stack_details": "Go to HomeStackDetails",
-    "go_to_settings": "Go to Settings",
-    "go_to_screen_with_BEdata": "Go to screen with data from BE",
-    "go_to_screen_test_form": "Go to test form"
-  },
-  "components_screen": {
-    "test_notification": "Test notification",
-    "typography": {
-      "label": "Typography",
-      "xs": "xs",
-      "sm": "sm",
-      "md": "md",
-      "lg": "lg",
-      "xl": "xl",
-      "2xl": "2xl",
-      "3xl": "3xl",
-      "4xl": "4xl"
-    },
-    "button_variants": {
-      "header": "Button variants",
-      "primary": "Button primary",
-      "secondary": "Button secondary",
-      "outline": "Button outline",
-      "ghost": "Button ghost",
-      "link": "Button link",
-      "disabled": "Button disabled",
-      "loading": "Button loading",
-      "with_icons": "Button with icons"
-    },
-    "loader_variants": {
-      "header": "Loader variants",
-      "circle": "Circle loader",
-      "bubbles": "Bubbles loader",
-      "bricks": "Bricks loader",
-      "disk": "Disk loader",
-      "default": "Default loader"
-    },
-    "notification": {
-      "title": "In-app notification example",
-      "description": "by react-native-notificated 🎉"
-    }
-  },
-  "settings_screen": {
-    "copy_push_token": "Copy push token",
-    "current_theme": "Current theme: {{theme}}",
-    "sign_out": "Sign out!",
-    "selected": " - selected"
-  },
-  "test_form": {
-    "interests": "Interests",
-    "cooking": "Cooking",
-    "sport": "Sport",
-    "games": "Games",
-    "dancing": "Dancing",
-    "age": "Age",
-    "education": "Education",
-    "primary": "Primary",
-    "middle": "Middle",
-    "secondary": "Secondary",
-    "postsecondary": "Postsecondary",
-    "contact_data": "Contact data",
-    "name_placeholder": "Name",
-    "surname_placeholder": "Surname",
-    "email_placeholder": "E-mail",
-    "phone_placeholder": "Phone number",
-    "postalCode_placeholder": "Postal code",
-    "city_placeholder": "City",
-    "sex": "Sex",
-    "male": "Male",
-    "female": "Female",
-    "shoe_size": "Shoe size",
-    "which_music": "what kind of music do you listen ?",
-    "classic_music": "Classic music",
-    "additiona_comment": "Additional comment",
-    "comment": "Comment",
-    "submit": "Submit",
-    "errors": {
-      "name": "Name is required",
-      "surname": "Surname is required",
-      "email": "Email is required",
-      "city": "City is required",
-      "postalCode": "Postal code is required",
-      "postalCode_format": "Postal code must be in form 00-000",
-      "phone": "Phone is required",
-      "phone_format": "Phone number must be in form 000-000-000",
-      "age": "Age is required",
-      "sex": "Sex is is required",
-      "education": "Education is required",
-      "shoeSize": "Shoe size is required",
-      "music": "Atleast 1 music is needed",
-      "interests": "Atleast 1 interest is needed"
-    }
-  },
   "common": {
     "add": "Add",
     "back": "Back",
@@ -191,6 +20,191 @@
     "try_again": "Try again",
     "user_label": "User",
     "user_placeholder": "user"
+  },
+  "errors": {
+    "screen_not_found": "NotFound screen",
+    "something_went_wrong": "Something went wrong",
+    "token_expired": "Token expired",
+    "missing_auth": "Missing auth"
+  },
+  "form": {
+    "invalid_email_format": "Incorrect e-mail address",
+    "required": "This field is required"
+  },
+  "navigation": {
+    "prevent_go_back_alert": {
+      "title": "Discard changes?",
+      "description": "You have unsaved changes. Are you sure to discard them and leave the screen?",
+      "do_not_leave": "Don't leave",
+      "discard": "Discard"
+    },
+    "screen_titles": {
+      "application_info": "ApplicationInfo",
+      "colors": "Colors",
+      "components": "Components",
+      "data_from_be_screen_example": "Data from BE",
+      "details": "Details",
+      "examples_stack": "Examples",
+      "examples": "Examples",
+      "home_stack": "Home",
+      "home": "Home",
+      "main_tab": "MainTab",
+      "not_found": "Not Found",
+      "settings": "Settings",
+      "sign_in": "Sign in",
+      "sign_up": "Sign up",
+      "typography": "Typography",
+      "test_form": "Test form",
+      "blog": "Blog"
+    }
+  },
+  "update": {
+    "alert_title": "New version available",
+    "alert_message": "You will have to restart the application to have better experiences while using it",
+    "restart": "Restart"
+  },
+  "examples_component": {
+    "example": "Example"
+  },
+  "landing_screen": {
+    "login_cta": "Login to app",
+    "go_to_blog": "Open blog",
+    "go_to_form": "Open full screen form"
+  },
+  "application_info_screen": {
+    "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
+  },
+  "colors_screen": {
+    "colors_label": "Colors"
+  },
+  "components_screen": {
+    "test_notification": "Test notification",
+    "typography": {
+      "label": "Typography",
+      "xs": "xs",
+      "sm": "sm",
+      "md": "md",
+      "lg": "lg",
+      "xl": "xl",
+      "2xl": "2xl",
+      "3xl": "3xl",
+      "4xl": "4xl"
+    },
+    "button_variants": {
+      "disabled": "Button disabled",
+      "ghost": "Button ghost",
+      "header": "Button variants",
+      "link": "Button link",
+      "loading": "Button loading",
+      "outline": "Button outline",
+      "primary": "Button primary",
+      "secondary": "Button secondary",
+      "with_icons": "Button with icons"
+    },
+    "loader_variants": {
+      "bricks": "Bricks loader",
+      "bubbles": "Bubbles loader",
+      "circle": "Circle loader",
+      "default": "Default loader",
+      "disk": "Disk loader",
+      "header": "Loader variants"
+    },
+    "notification": {
+      "description": "by react-native-notificated 🎉",
+      "title": "In-app notification example"
+    }
+  },
+  "details_screen": {
+    "awesome": "Awesome 🎉",
+    "open_bottom_sheet": "Open BottomSheetModal",
+    "screen_params": "Screen params: {{params}}",
+    "title": "This is details screen"
+  },
+  "examples_screen": {
+    "go_to_application_info": "Go to ApplicationInfo",
+    "go_to_colors": "Go to Colors",
+    "go_to_components": "Go to Components",
+    "go_to_home_stack_details": "Go to HomeStackDetails",
+    "go_to_screen_test_form": "Go to test form",
+    "go_to_screen_with_BEdata": "Go to screen with data from BE",
+    "go_to_settings": "Go to Settings",
+    "go_to_typography": "Go to Typography",
+    "header": "This is Example screen"
+  },
+  "home_screen": {
+    "details": "Details"
+  },
+  "settings_screen": {
+    "copy_push_token": "Copy push token",
+    "current_theme": "Current theme: {{theme}}",
+    "sign_out": "Sign out!",
+    "selected": " - selected"
+  },
+  "sign_in_screen": {
+    "do_not_have_an_account": "Don't have an account?",
+    "email_helper_text": "Email must be here",
+    "forgot_password": "Forgot your password?",
+    "or_pass": "or enter:",
+    "password_helper_text": "Password must be here",
+    "password_label": "Password",
+    "password_placeholder": "password",
+    "remember_me": "Remember me",
+    "sign_in": "Sign in",
+    "sign_up": "Sign up"
+  },
+  "sign_up_screen": {
+    "agree_terms_label": "I agree to the Terms and Conditions",
+    "newsletter_label": "Subscribe to our newsletter",
+    "sign_up": "Sign up"
+  },
+  "test_form": {
+    "additional_comment": "Additional comment",
+    "age": "Age",
+    "city_placeholder": "City",
+    "classic_music": "Classic music",
+    "comment": "Comment",
+    "contact_data": "Contact data",
+    "cooking": "Cooking",
+    "dancing": "Dancing",
+    "education": "Education",
+    "email_placeholder": "E-mail",
+    "errors": {
+      "age": "Age is required",
+      "city": "City is required",
+      "education": "Education is required",
+      "email": "Email is required",
+      "interests": "At least 1 interest is needed",
+      "music": "At least 1 music is needed",
+      "name": "Name is required",
+      "phone_format": "Phone number must be in form 000-000-000",
+      "phone": "Phone is required",
+      "postalCode_format": "Postal code must be in form 00-000",
+      "postalCode": "Postal code is required",
+      "sex": "Sex is is required",
+      "shoeSize": "Shoe size is required",
+      "surname": "Surname is required"
+    },
+    "female": "Female",
+    "games": "Games",
+    "interests": "Interests",
+    "male": "Male",
+    "middle": "Middle",
+    "name_placeholder": "Name",
+    "phone_placeholder": "Phone number",
+    "postalCode_placeholder": "Postal code",
+    "postsecondary": "Postsecondary",
+    "primary": "Primary",
+    "secondary": "Secondary",
+    "sex": "Sex",
+    "shoe_size": "Shoe size",
+    "sport": "Sport",
+    "submit": "Submit",
+    "surname_placeholder": "Surname",
+    "which_music": "what kind of music do you listen ?"
+  },
+  "typography_screen": {
+    "heading_size": "Heading.size: ",
+    "text_font_size": "Text.fontSize: "
   },
   "hello": "Welcome",
   "thanks": "Thank you for using the best template for expo apps",

@@ -1,8 +1,13 @@
 import { Center, Text } from '~components/atoms'
-import { useTranslation } from '~hooks'
+import { useScreenOptions, useTranslation } from '~hooks'
 
 export const NotFoundScreen = (): JSX.Element => {
   const { t } = useTranslation()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.not_found'),
+  })
+
   return (
     <Center>
       <Text>{t('errors.screen_not_found')}</Text>

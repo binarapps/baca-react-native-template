@@ -16,6 +16,7 @@ type ScreenTrackerReturn = {
   onStateChange: () => Promise<void>
 }
 
+// TODO: make this work on expo router
 export const useScreenTracker = (callback = defaultCallback): ScreenTrackerReturn => {
   const routeNameRef = useRef<string>()
 

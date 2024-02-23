@@ -1,12 +1,15 @@
 import { useCallback, useEffect } from 'react'
 
-import { ControlledField, KeyboardAwareScrollView } from '~components'
-import { Button, Center, Spacer } from '~components/atoms'
+import { Button, Center, Spacer, ControlledField, KeyboardAwareScrollView } from '~components'
 import { REGEX } from '~constants'
-import { useSignUpForm, useTranslation } from '~hooks'
+import { useScreenOptions, useSignUpForm, useTranslation } from '~hooks'
 
 export const SignUpScreen = () => {
   const { t } = useTranslation()
+
+  useScreenOptions({
+    title: t('navigation.screen_titles.sign_up'),
+  })
 
   const { control, errors, submit, isSubmitting, setFocus } = useSignUpForm()
 
@@ -23,29 +26,29 @@ export const SignUpScreen = () => {
     <KeyboardAwareScrollView>
       <Center px={8} flex={1} flexGrow={1}>
         <ControlledField.Input
-          mb={2}
+          {...{ control, errors }}
           autoCapitalize="none"
-          control={control}
-          errors={errors}
-          name="user"
+          enterKeyHint="next"
           label={t('common.user_label')}
+          mb={2}
+          name="user"
+          onSubmitEditing={focusEmailInput}
           placeholder={t('common.user_placeholder')}
           rules={{
             required: t('form.required'),
           }}
-          returnKeyType="next"
-          onSubmitEditing={focusEmailInput}
         />
         <ControlledField.Input
+          {...{ control, errors }}
+          enterKeyHint="next"
           autoCapitalize="none"
+          inputMode="email"
+          isRequired
           label={t('common.email_label')}
-          control={control}
-          errors={errors}
-          keyboardType="email-address"
-          placeholder={t('common.email_placeholder')}
+          mb={2}
           name="email"
-          returnKeyType="next"
           onSubmitEditing={focusPasswordInput}
+          placeholder={t('common.email_placeholder')}
           rules={{
             required: t('form.required'),
             pattern: {
@@ -53,45 +56,40 @@ export const SignUpScreen = () => {
               message: t('form.invalid_email_format'),
             },
           }}
-          isRequired
-          mb={2}
         />
         <ControlledField.Input
-          isRequired
-          mb={16}
-          returnKeyType="next"
-          onSubmitEditing={submit}
-          label={t('sign_in_screen.password_label')}
-          control={control}
-          errors={errors}
-          name="password"
-          type="password"
+          {...{ control, errors }}
+          enterKeyHint="next"
           autoCapitalize="none"
+          isRequired
+          label={t('sign_in_screen.password_label')}
+          mb={16}
+          name="password"
+          onSubmitEditing={submit}
           placeholder={t('sign_in_screen.password_placeholder')}
           rules={{
             required: t('form.required'),
           }}
+          type="password"
         />
         <Spacer y={2} />
         <ControlledField.Checkbox
+          {...{ control, errors }}
+          checkboxText={t('sign_up_screen.agree_terms_label')}
           isRequired
-          control={control}
-          errors={errors}
           name="agree"
           size={18}
-          checkboxText={t('sign_up_screen.agree_terms_label')}
         />
         <Spacer y={2} />
         <ControlledField.Checkbox
+          {...{ control, errors }}
+          checkboxText={t('sign_up_screen.newsletter_label')}
           isRequired
-          control={control}
-          errors={errors}
           name="newsletter"
           size={18}
-          checkboxText={t('sign_up_screen.newsletter_label')}
         />
         <Spacer y={2} />
-        <Button onPress={submit} loading={isSubmitting} disabled={isSubmitting}>
+        <Button disabled={isSubmitting} loading={isSubmitting} onPress={submit}>
           {t('sign_up_screen.sign_up')}
         </Button>
       </Center>

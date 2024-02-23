@@ -10,10 +10,19 @@ export const getColorValue = ({ color, colors }: GetColorValueProps): string => 
 
   if (!color || typeof color === 'object') return 'transparent'
 
-  const [main, number] = (color as string).split('.') as unknown as [string, string]
+  const keys = color.split('.')
 
-  // @ts-expect-error: native base color literal
-  const colorToReturn = number ? colors[main][number] : colors[main]
+  const colorToReturn = getPropertyByKeys(colors, keys)
 
   return colorToReturn || color
+}
+
+interface NestedObject {
+  [key: string]: NestedObject | number | string | boolean
+}
+
+function getPropertyByKeys<T extends NestedObject>(obj: T, keys: string[]): string {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //  @ts-expect-error, hopefully the following will return color as string
+  return keys.reduce((acc, key) => acc && acc[key], obj)
 }

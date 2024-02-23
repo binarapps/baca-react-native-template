@@ -3,6 +3,7 @@ import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/asy
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage)
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+jest.mock('expo-router/entry', () => jest.fn())
 
 jest.mock('react-native-keyboard-aware-scroll-view', () => {
   const KeyboardAwareScrollView = ({ children }) => children

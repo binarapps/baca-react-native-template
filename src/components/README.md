@@ -61,9 +61,9 @@ import { Input, AbsoluteFullFill } from '~components'
 const MyComponent: React.FC = () => (
   <AbsoluteFullFill>
     <Input
-      returnKeyType="next"
+      enterKeyHint="next"
       label="E-mail"
-      keyboardType="email-address"
+      inputMode="email"
       autoCapitalize="none"
       placeholder="E-mail placeholder"
     />
@@ -107,18 +107,18 @@ import { Spacer, Input, Container } from '~components'
 const MyComponent: React.FC = () => (
   <Container>
     <Input
-      returnKeyType="next"
-      label="E-mail"
-      keyboardType="email-address"
       autoCapitalize="none"
+      enterKeyHint="next"
+      inputMode="email"
+      label="E-mail"
       placeholder="E-mail placeholder"
     />
     <Spacer y="8" flex={1} />
     <Input
-      returnKeyType="next"
-      label="Confirm e-mail"
-      keyboardType="email-address"
       autoCapitalize="none"
+      enterKeyHint="next"
+      inputMode="email"
+      label="Confirm e-mail"
       placeholder="Confirm e-mail placeholder"
     />
   </Container>
@@ -195,12 +195,12 @@ import { Field } from '~components'
 
 const MyComponent: React.FC = () => (
   <Field.Input
-    isRequired
     autoCapitalize="none"
-    keyboardType="email-address"
+    enterKeyHint="next"
+    inputMode="email"
+    isRequired
     label="Email"
     placeholder="Email placeholder"
-    returnKeyType="next"
   />
 )
 
@@ -285,16 +285,15 @@ const MyComponent: React.FC = () => {
 
   return (
     <ControlledField.Input
+      {...{ control, errors }}
       autoCapitalize="none"
-      control={control}
-      errors={errors}
+      enterKeyHint="next"
+      inputMode="email"
       isRequired
-      keyboardType="email-address"
       label="Email"
       name="email"
       onSubmitEditing={passwordInputRef.current?.focus}
       placeholder="Email placeholder"
-      returnKeyType="next"
       rules={{
         required: 'Required',
         pattern: {
