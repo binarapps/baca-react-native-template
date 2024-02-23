@@ -1,4 +1,4 @@
-import { Text } from '.'
+import { Text } from './Text'
 
 import { theme } from '~constants'
 import { cleanup, render } from '~utils/testUtils'

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { Button } from '.'
+import { Button } from './Button'
 
 import { _appTheme } from '~constants'
 import { cleanup, render, fireEvent, act } from '~utils/testUtils'
