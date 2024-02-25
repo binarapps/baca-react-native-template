@@ -356,8 +356,8 @@ export const theme = {
 export const lightNavigationTheme: Theme = {
   colors: {
     background: themeColors.lightMode.bg.primary,
-    border: themeColors.lightMode.border.primary,
-    card: themeColors.lightMode.button.primary.bg,
+    border: 'transparent',
+    card: themeColors.lightMode.bg.primary,
     text: themeColors.lightMode.alpha.black[70],
     notification: themeColors.lightMode.avatar.bg,
     primary: themeColors.lightMode.utility.purple[500],
@@ -368,8 +368,8 @@ export const lightNavigationTheme: Theme = {
 export const darkNavigationTheme: Theme = {
   colors: {
     background: themeColors.darkMode.bg.primary,
-    border: themeColors.darkMode.border.primary,
-    card: themeColors.darkMode.button.primary.bg,
+    border: 'transparent',
+    card: themeColors.darkMode.bg.primary,
     text: themeColors.darkMode.alpha.black[70],
     notification: themeColors.darkMode.avatar.bg,
     primary: themeColors.darkMode.utility.purple[500],
