@@ -57,7 +57,6 @@ export * from './navigation'
 
 // Custom hooks implemented in app
 export * from './useAppStateActive'
-export * from './useAuth'
 export * from './useBoolean'
 export * from './useCachedResources'
 export * from './useKeyboardHeight'

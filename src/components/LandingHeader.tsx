@@ -1,20 +1,21 @@
 import { useRouter } from 'expo-router'
+import { useAtomValue } from 'jotai'
 import { Image, StyleSheet, Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { Box, Button, Icon, Pressable } from '~components'
 import { darkLogoFull, lightLogoFull } from '~constants'
 import { useColorScheme } from '~contexts'
-import { useAuth, useTranslation } from '~hooks'
+import { useTranslation } from '~hooks'
 import { TabColorsStrings } from '~navigation/tabNavigator/config'
-
+import { isSignedInAtom } from '~store/auth'
 export function LandingHeader() {
   const { colorScheme } = useColorScheme()
   const { top } = useSafeAreaInsets()
   const { t } = useTranslation()
   const { push, canGoBack, back } = useRouter()
 
-  const { isSignedIn } = useAuth()
+  const isSignedIn = useAtomValue(isSignedInAtom)
 
   const navigateToLogin = () => push('/sign-in')
 
