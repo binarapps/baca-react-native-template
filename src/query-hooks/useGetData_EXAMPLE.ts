@@ -1,8 +1,7 @@
+import { QueryKeys } from '@baca/enums'
+import { getData } from '@baca/services'
+import { TodoList } from '@baca/types/todos'
 import { useQuery } from '@tanstack/react-query'
-
-import { QueryKeys } from '~enums'
-import { getData } from '~services'
-import { TodoList } from '~types/todos'
 
 export const useGetCity_EXAMPLE = () => {
   const {

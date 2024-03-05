@@ -1,7 +1,6 @@
+import { breakpoints } from '@baca/constants'
 import { useState, useEffect } from 'react'
 import { Dimensions } from 'react-native'
-
-import { breakpoints } from '~constants'
 
 type ReturnType = {
   webContentWidth: number

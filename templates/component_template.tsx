@@ -1,7 +1,6 @@
+import { Center, Text } from '@baca/components/atoms'
+import { useTranslation } from '@baca/hooks'
 import { FC } from 'react'
-
-import { Center, Text } from '~components/atoms'
-import { useTranslation } from '~hooks'
 
 type _NAME_Props = {
   example: string

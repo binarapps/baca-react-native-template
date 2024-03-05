@@ -1,3 +1,3 @@
-import { ColorsScreen } from '~screens'
+import { ColorsScreen } from '@baca/screens'
 
 export default ColorsScreen

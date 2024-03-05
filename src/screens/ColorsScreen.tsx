@@ -1,5 +1,5 @@
-import { Text, Center, ScrollView } from '~components'
-import { useScreenOptions, useTranslation } from '~hooks'
+import { Text, Center, ScrollView } from '@baca/components'
+import { useScreenOptions, useTranslation } from '@baca/hooks'
 
 const colorsVariants: NestedKeys<Colors>[] = [
   'utility.success.500',

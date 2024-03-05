@@ -1,10 +1,9 @@
+import { ASYNC_STORAGE_KEYS, isProduction } from '@baca/constants'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { InitialState, NavigationState } from '@react-navigation/native'
 import { getInitialURL } from 'expo-linking'
 import { useCallback, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
-
-import { ASYNC_STORAGE_KEYS, isProduction } from '~constants'
 
 const EXPO_LINK_REGEXP = /^exp:\/\/\d+\.\d+\.\d+\.\d+:\d*$/
 

@@ -1,3 +1,3 @@
-import { BlogScreen } from '~screens/BlogScreen'
+import { BlogScreen } from '@baca/screens/BlogScreen'
 
 export default BlogScreen

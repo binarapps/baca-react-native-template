@@ -1,6 +1,3 @@
-import { useRouter } from 'expo-router'
-import { StyleSheet, Image } from 'react-native'
-
 import {
   ControlledField,
   KeyboardAwareScrollView,
@@ -11,10 +8,18 @@ import {
   Center,
   Button,
   Text,
-} from '~components'
-import { REGEX, darkLogo, lightLogo } from '~constants'
-import { useColorScheme } from '~contexts'
-import { useCallback, useSignInForm, useTranslation, useEffect, useScreenOptions } from '~hooks'
+} from '@baca/components'
+import { REGEX, darkLogo, lightLogo } from '@baca/constants'
+import { useColorScheme } from '@baca/contexts'
+import {
+  useCallback,
+  useSignInForm,
+  useTranslation,
+  useEffect,
+  useScreenOptions,
+} from '@baca/hooks'
+import { useRouter } from 'expo-router'
+import { StyleSheet, Image } from 'react-native'
 
 export const SignInScreen = (): JSX.Element => {
   const { push } = useRouter()

@@ -1,12 +1,11 @@
+import { isSignedInAtom } from '@baca/store/auth'
+import { SignUpFormValues } from '@baca/types/authForms'
+import { hapticImpact, wait } from '@baca/utils'
 import { isError } from '@tanstack/react-query'
 import { useSetAtom } from 'jotai'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-
-import { isSignedInAtom } from '~store/auth'
-import { SignUpFormValues } from '~types/authForms'
-import { hapticImpact, wait } from '~utils'
 
 const defaultValues: SignUpFormValues = {
   user: '',

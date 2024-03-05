@@ -1,3 +1,4 @@
+import { hex2rgba, getColorValue, removeFalsyProperties } from '@baca/utils'
 import { ImageStyle, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 
 import { generateSize } from './generateSize'
@@ -11,8 +12,6 @@ import {
   EffectsProps,
   BackgroundProps,
 } from '../atoms/types'
-
-import { hex2rgba, getColorValue, removeFalsyProperties } from '~utils'
 
 const generateFlexStyle = ({
   flex,

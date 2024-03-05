@@ -1,7 +1,6 @@
+import { useTheme } from '@baca/hooks'
 import React from 'react'
 import { StyleSheet, Text } from 'react-native'
-
-import { useTheme } from '~hooks'
 
 export const FormErrorMessage = ({ errorMessage }: { errorMessage?: string }) => {
   const { colors } = useTheme()

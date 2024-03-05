@@ -1,7 +1,6 @@
+import { noop } from '@baca/utils'
 import { useCallback, useEffect, useRef } from 'react'
 import { AppState, AppStateStatus } from 'react-native'
-
-import { noop } from '~utils'
 
 /**
  * This hook will run on every app state change from background to foreground

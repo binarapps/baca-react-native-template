@@ -1,9 +1,8 @@
+import { useTheme } from '@baca/hooks'
 import React, { forwardRef, ComponentType } from 'react'
 
 import { generateStyledSystem } from './generateStyledSystem'
 import { StyledProps } from '../atoms/types'
-
-import { useTheme } from '~hooks'
 
 type StylePropKeys = 'style' | 'contentContainerStyle'
 
@@ -16,7 +15,7 @@ type StylePropKeys = 'style' | 'contentContainerStyle'
  * @returns {FunctionComponent<P>} A styled component with styled-system props.
  * @example
  * import { Text } from 'react-native'
- * import { generateStyledComponent } from '~components/utils'
+ * import { generateStyledComponent } from '@baca/components/utils'
  *
  * const StyledText = generateStyledComponent(Text)
  *

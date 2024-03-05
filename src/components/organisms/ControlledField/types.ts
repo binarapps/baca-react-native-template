@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
+  FieldCheckboxProps,
+  FieldInputProps,
+  FieldRadioProps,
+  FieldSelectProps,
+} from '@baca/components/molecules'
+import {
   Control,
   ControllerRenderProps,
   FieldErrors,
@@ -7,13 +13,6 @@ import {
   Path,
   RegisterOptions,
 } from 'react-hook-form'
-
-import {
-  FieldCheckboxProps,
-  FieldInputProps,
-  FieldRadioProps,
-  FieldSelectProps,
-} from '~components/molecules'
 
 export type ControlledCheckboxProps = Omit<FieldCheckboxProps, 'onChange' | 'value'> & {
   // TODO: Think how to change this to proper type

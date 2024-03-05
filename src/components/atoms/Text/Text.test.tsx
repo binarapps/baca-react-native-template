@@ -1,7 +1,7 @@
-import { Text } from './Text'
+import { theme } from '@baca/constants'
+import { cleanup, render } from '@baca/utils/testUtils'
 
-import { theme } from '~constants'
-import { cleanup, render } from '~utils/testUtils'
+import { Text } from './Text'
 
 afterEach(cleanup)
 

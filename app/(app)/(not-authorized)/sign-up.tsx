@@ -1,3 +1,3 @@
-import { SignUpScreen } from '~screens'
+import { SignUpScreen } from '@baca/screens'
 
 export default SignUpScreen

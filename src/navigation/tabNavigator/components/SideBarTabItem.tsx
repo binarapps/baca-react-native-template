@@ -1,3 +1,7 @@
+import { Icon } from '@baca/components'
+import { useColorScheme } from '@baca/contexts'
+import cssStyles from '@baca/styles'
+import { IconNames } from '@baca/types/icon'
 import { Text } from '@bacons/react-views'
 import { Platform, StyleSheet, View } from 'react-native'
 
@@ -5,11 +9,6 @@ import { TabBarItemWrapper } from './TabBarItemWrapper'
 import { TabColors, TabColorsStrings } from '../config'
 import { useWidth } from '../hooks'
 import { cns } from '../utils'
-
-import { Icon } from '~components'
-import { useColorScheme } from '~contexts'
-import cssStyles from '~styles'
-import { IconNames } from '~types/icon'
 
 export function SideBarTabItem({
   children,

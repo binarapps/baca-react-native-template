@@ -1,3 +1,7 @@
+import { theme } from '@baca/constants'
+import { buttonVariants } from '@baca/constants/buttonVariants'
+import { useColorScheme } from '@baca/contexts'
+import { getColorValue } from '@baca/utils'
 import {
   useMemo,
   memo,
@@ -23,11 +27,6 @@ import { Box } from '../Box'
 import { Loader } from '../Loader'
 import { Text } from '../Text'
 import { StyledProps } from '../types'
-
-import { theme } from '~constants'
-import { buttonVariants } from '~constants/buttonVariants'
-import { useColorScheme } from '~contexts'
-import { getColorValue } from '~utils'
 
 export type ButtonProps = StyledProps &
   PressableProps & {

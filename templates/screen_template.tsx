@@ -1,5 +1,5 @@
-import { Button, Center, Text } from '~components/atoms'
-import { useCallback, useTranslation } from '~hooks'
+import { Button, Center, Text } from '@baca/components/atoms'
+import { useCallback, useTranslation } from '@baca/hooks'
 
 // @ts-expect-error: it's a template and will be removed
 export const _NAME_Screen = (props: _NAME_ScreenProps): JSX.Element => {

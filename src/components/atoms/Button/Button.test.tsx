@@ -1,9 +1,8 @@
+import { theme } from '@baca/constants'
+import { cleanup, render, fireEvent, act } from '@baca/utils/testUtils'
 import { StyleSheet } from 'react-native'
 
 import { Button } from './Button'
-
-import { theme } from '~constants'
-import { cleanup, render, fireEvent, act } from '~utils/testUtils'
 
 afterEach(cleanup)
 describe('Button', () => {

@@ -1,20 +1,19 @@
 // TODO: there are tons of more interesting methods there!
-import * as Application from 'expo-application'
-import * as Clipboard from 'expo-clipboard'
-import Constants from 'expo-constants'
-import * as Notifications from 'expo-notifications'
-import { useRouter } from 'expo-router'
-import { ScrollView, StyleSheet } from 'react-native'
-
-import { Box, Button, Text } from '~components'
-import { isExpoGo } from '~constants'
+import { Box, Button, Text } from '@baca/components'
+import { isExpoGo } from '@baca/constants'
 import {
   useCallback,
   usePreventGoBack,
   useSafeAreaInsets,
   useScreenOptions,
   useTranslation,
-} from '~hooks'
+} from '@baca/hooks'
+import * as Application from 'expo-application'
+import * as Clipboard from 'expo-clipboard'
+import Constants from 'expo-constants'
+import * as Notifications from 'expo-notifications'
+import { useRouter } from 'expo-router'
+import { ScrollView, StyleSheet } from 'react-native'
 
 const projectId = Constants.expoConfig?.extra?.eas?.projectId
 

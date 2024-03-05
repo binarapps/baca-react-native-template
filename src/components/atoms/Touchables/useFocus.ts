@@ -1,4 +1,4 @@
-import { useState } from '~hooks'
+import { useState } from '@baca/hooks'
 
 export const useFocus = () => {
   const [isFocused, setFocused] = useState(false)

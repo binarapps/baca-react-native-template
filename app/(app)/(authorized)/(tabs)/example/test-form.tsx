@@ -1,3 +1,3 @@
-import { TestFormScreen } from '~screens'
+import { TestFormScreen } from '@baca/screens'
 
 export default TestFormScreen

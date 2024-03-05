@@ -1,9 +1,8 @@
+import { useCallback } from '@baca/hooks'
 import { Controller, ControllerProps, get } from 'react-hook-form'
 
 import type { ControlledCheckboxProps } from './types'
 import { Field } from '../../molecules'
-
-import { useCallback } from '~hooks'
 
 export const Checkbox: React.FC<ControlledCheckboxProps> = ({
   name,

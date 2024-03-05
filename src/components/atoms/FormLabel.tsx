@@ -1,10 +1,9 @@
+import { useTheme } from '@baca/hooks'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { Text } from './Text'
 import { FormLabelProps } from './types'
-
-import { useTheme } from '~hooks'
 
 export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => {
   const { colors } = useTheme()

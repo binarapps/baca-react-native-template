@@ -1,9 +1,8 @@
+import { _appTheme } from '@baca/constants'
+import { IconNames } from '@baca/types/icon'
 import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 'react-native'
 
 import { BoxProps } from './Box'
-
-import { _appTheme } from '~constants'
-import { IconNames } from '~types/icon'
 
 type Sizing =
   | 'w'

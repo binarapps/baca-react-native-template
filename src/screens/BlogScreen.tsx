@@ -1,5 +1,5 @@
-import { Center, Text } from '~components'
-import { LandingHeader } from '~components/LandingHeader'
+import { Center, Text } from '@baca/components'
+import { LandingHeader } from '@baca/components/LandingHeader'
 
 export const BlogScreen = () => {
   return (

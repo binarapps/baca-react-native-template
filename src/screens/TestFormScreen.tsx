@@ -1,8 +1,7 @@
+import { ControlledField, KeyboardAwareScrollView, TextArea, Button, Text } from '@baca/components'
+import { useMemo, useScreenOptions, useTestForm, useTranslation } from '@baca/hooks'
 import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
-
-import { ControlledField, KeyboardAwareScrollView, TextArea, Button, Text } from '~components'
-import { useMemo, useScreenOptions, useTestForm, useTranslation } from '~hooks'
 
 const shoeSizes = [
   '34',

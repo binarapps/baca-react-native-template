@@ -1,3 +1,4 @@
+import { useCallback, useTranslation, useTheme } from '@baca/hooks'
 import { StyleSheet } from 'react-native'
 import Animated, {
   useAnimatedStyle,
@@ -12,8 +13,6 @@ import { Text } from './atoms/Text'
 import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
 import { Menu } from './organisms/Menu'
 import languages from '../../assets/languages.json'
-
-import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
   const { size } = useTheme()

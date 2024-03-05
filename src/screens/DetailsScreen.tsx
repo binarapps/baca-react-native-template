@@ -1,7 +1,6 @@
+import { useBottomSheet, Center, Text, Button, Box } from '@baca/components'
+import { useScreenOptions, useState, useTranslation } from '@baca/hooks'
 import { useLocalSearchParams } from 'expo-router'
-
-import { useBottomSheet, Center, Text, Button, Box } from '~components'
-import { useScreenOptions, useState, useTranslation } from '~hooks'
 
 export const DetailsScreen = (): JSX.Element => {
   const { t } = useTranslation()

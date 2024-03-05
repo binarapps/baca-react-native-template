@@ -1,10 +1,9 @@
+import { useTheme } from '@baca/hooks'
+import { IconNames } from '@baca/types/icon'
+import { getColorValue } from '@baca/utils'
 import { createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconJson from 'assets/icomoon/selection.json'
 import { StyleProp, ViewStyle } from 'react-native'
-
-import { useTheme } from '~hooks'
-import { IconNames } from '~types/icon'
-import { getColorValue } from '~utils'
 
 export type IconProps = {
   style?: StyleProp<ViewStyle>

@@ -1,3 +1,3 @@
-import { DataFromBeScreen_EXAMPLE } from '~screens'
+import { DataFromBeScreen_EXAMPLE } from '@baca/screens'
 
 export default DataFromBeScreen_EXAMPLE

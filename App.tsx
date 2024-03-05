@@ -6,11 +6,12 @@ import 'setimmediate'
 import 'react-native-reanimated'
 
 // Rest imports
-import '~i18n'
+import '@baca/i18n'
+
 import * as Device from 'expo-device'
 import 'expo-router/entry'
 
-import { enableAndroidBackgroundNotificationListener, startMockedServer } from '~services'
+import { enableAndroidBackgroundNotificationListener, startMockedServer } from '@baca/services'
 
 // FIXME: there is some issue with miragejs that causes console.log to not work
 const DISABLE_CONSOLE_ENABLE_MOCKED_SERVER = false

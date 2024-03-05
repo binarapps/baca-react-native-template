@@ -1,3 +1,4 @@
+import { useTheme } from '@baca/hooks'
 import { forwardRef, useCallback, useMemo } from 'react'
 import { View, Pressable, StyleSheet } from 'react-native'
 
@@ -5,8 +6,6 @@ import { Box } from './Box'
 import { Icon } from './Icon'
 import { Text } from './Text'
 import { CheckboxProps } from './types'
-
-import { useTheme } from '~hooks'
 
 export const Checkbox = forwardRef<View, CheckboxProps>(
   (

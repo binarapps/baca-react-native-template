@@ -1,10 +1,9 @@
+import { Loader, Center, Text, Box, Spacer } from '@baca/components'
+import { useScreenOptions, useTranslation } from '@baca/hooks'
+import { useGetCity_EXAMPLE } from '@baca/query-hooks'
+import { TodoItem } from '@baca/types/todos'
 import React, { useCallback } from 'react'
 import { ListRenderItem, FlatList } from 'react-native'
-
-import { Loader, Center, Text, Box, Spacer } from '~components'
-import { useScreenOptions, useTranslation } from '~hooks'
-import { useGetCity_EXAMPLE } from '~query-hooks'
-import { TodoItem } from '~types/todos'
 
 export const DataFromBeScreen_EXAMPLE = () => {
   const { t } = useTranslation()

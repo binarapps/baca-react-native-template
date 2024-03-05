@@ -1,13 +1,12 @@
-import * as Notifications from 'expo-notifications'
-import { PropsWithChildren, FC } from 'react'
-
-import { NotificationContextProvider, NotificationContextType } from '~contexts'
-import { useState, useMemo, useEffect } from '~hooks'
+import { NotificationContextProvider, NotificationContextType } from '@baca/contexts'
+import { useState, useMemo, useEffect } from '@baca/hooks'
 import {
   disableAndroidBackgroundNotificationListener,
   getNotificationFromStack,
   getNotificationStackLength,
-} from '~services'
+} from '@baca/services'
+import * as Notifications from 'expo-notifications'
+import { PropsWithChildren, FC } from 'react'
 
 export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   const [permissionStatus, setPermissionStatus] =

@@ -1,8 +1,7 @@
+import { Column, Row, Box, Text } from '@baca/components'
+import { useColorScheme } from '@baca/contexts'
+import { useTranslation } from '@baca/hooks'
 import { ScrollView, Switch, Platform } from 'react-native'
-
-import { Column, Row, Box, Text } from '~components'
-import { useColorScheme } from '~contexts'
-import { useTranslation } from '~hooks'
 
 export const fontSizes = [
   'xs',

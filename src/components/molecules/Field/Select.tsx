@@ -1,10 +1,9 @@
+import { useMemo } from '@baca/hooks'
 import React from 'react'
 import { Pressable } from 'react-native'
 
 import type { FieldSelectProps } from './types'
 import { Select as CustomSelect, Box, FormErrorMessage, FormLabel, SelectKey } from '../../atoms'
-
-import { useMemo } from '~hooks'
 
 const layoutPropsKeys = [
   'm',

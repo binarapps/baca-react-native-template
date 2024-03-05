@@ -1,0 +1,1730 @@
+{
+  "version": "6.0",
+  "nxVersion": "18.0.5",
+  "deps": {
+    "@bacons/react-views": "^1.1.3",
+    "@expo/config-plugins": "~7.8.0",
+    "@expo/prebuild-config": "~6.7.0",
+    "@expo/vector-icons": "^14.0.0",
+    "@gorhom/bottom-sheet": "^4.6.0",
+    "@motify/interactions": "^0.17.1",
+    "@motify/skeleton": "^0.18.0",
+    "@react-native-async-storage/async-storage": "1.21.0",
+    "@react-native-community/netinfo": "11.1.0",
+    "@react-navigation/bottom-tabs": "^6.5.11",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
+    "@react-navigation/stack": "^6.3.20",
+    "@tanstack/react-query": "^4.29.19",
+    "axios": "^0.27.2",
+    "expo": "^50.0.3",
+    "expo-app-loading": "^2.1.1",
+    "expo-application": "~5.8.3",
+    "expo-asset": "~9.0.2",
+    "expo-clipboard": "~5.0.1",
+    "expo-constants": "~15.4.5",
+    "expo-crypto": "~12.8.0",
+    "expo-dev-client": "~3.3.7",
+    "expo-device": "~5.9.3",
+    "expo-font": "~11.10.2",
+    "expo-haptics": "~12.8.1",
+    "expo-linear-gradient": "~12.7.1",
+    "expo-linking": "~6.2.2",
+    "expo-local-authentication": "~13.8.0",
+    "expo-localization": "~14.8.3",
+    "expo-network": "~5.8.0",
+    "expo-notifications": "~0.27.5",
+    "expo-router": "~3.4.6",
+    "expo-screen-orientation": "~6.4.1",
+    "expo-secure-store": "~12.8.1",
+    "expo-splash-screen": "~0.26.4",
+    "expo-status-bar": "~1.11.1",
+    "expo-system-ui": "~2.9.3",
+    "expo-updates": "~0.24.8",
+    "expo-web-browser": "~12.8.2",
+    "i18next": "^23.7.20",
+    "jotai": "^2.4.3",
+    "moti": "^0.25.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.49.3",
+    "react-i18next": "^14.0.1",
+    "react-native": "0.73.2",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
+    "react-native-notificated": "^0.0.1-beta.2",
+    "react-native-pager-view": "6.2.3",
+    "react-native-reanimated": "~3.6.2",
+    "react-native-safe-area-context": "4.8.2",
+    "react-native-screens": "~3.29.0",
+    "react-native-svg": "14.1.0",
+    "react-native-web": "~0.19.6",
+    "reactotron-react-native": "^5.0.3",
+    "sass": "^1.70.0",
+    "setimmediate": "^1.0.5",
+    "use-debounce": "^9.0.4",
+    "@babel/core": "^7.20.0",
+    "@babel/plugin-transform-export-namespace-from": "^7.23.4",
+    "@babel/preset-react": "^7.23.3",
+    "@expo/config": "~8.5.0",
+    "@expo/webpack-config": "~19.0.1",
+    "@testing-library/jest-native": "^5.4.2",
+    "@testing-library/react-native": "^12.4.3",
+    "@types/jest": "^29.5.3",
+    "@types/react": "~18.2.45",
+    "@types/react-native": "^0.72.2",
+    "@types/react-test-renderer": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@welldone-software/why-did-you-render": "^7.0.1",
+    "babel-loader": "^9.1.3",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "babel-preset-expo": "^10.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-universe": "^11.2.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "eslint-plugin-react-native-globals": "^0.1.2",
+    "husky": "^8.0.3",
+    "jest": "^29.6.1",
+    "jest-expo": "~50.0.1",
+    "lint-staged": "^13.2.3",
+    "miragejs": "^0.1.48",
+    "patch-package": "^7.0.1",
+    "prettier": "^2.8.8",
+    "pretty-quick": "^4.0.0",
+    "prompt-sync": "^4.2.0",
+    "react-test-renderer": "^18.2.0",
+    "readline": "^1.3.0",
+    "select-prompt": "^0.3.2",
+    "typescript": "^5.3.0",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "pathMappings": {
+    "@baca/*": ["src/*"],
+    "@baca/assets": ["assets"]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".env",
+        "hash": "8941937231948495185"
+      },
+      {
+        "file": ".env.production",
+        "hash": "15051416829832645510"
+      },
+      {
+        "file": ".env.qa",
+        "hash": "8941937231948495185"
+      },
+      {
+        "file": ".env.staging",
+        "hash": "16943473544490898149"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "6362453565095005619"
+      },
+      {
+        "file": ".eslintrc.js",
+        "hash": "15515311826055747163"
+      },
+      {
+        "file": ".expo-shared/assets.json",
+        "hash": "14366155298413333343"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/BUG-REPORT.yml",
+        "hash": "15017482256175696537"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/FEATURE-REQUEST.yml",
+        "hash": "12548442114824159194"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/config.yml",
+        "hash": "17858606678031151155"
+      },
+      {
+        "file": ".github/pull_request_template.md",
+        "hash": "5459460039162421041"
+      },
+      {
+        "file": ".github/workflows/nodejs.yml",
+        "hash": "7014902562553630567"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "16118499907584407224"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "2583450222814972446"
+      },
+      {
+        "file": ".prettierrc.json",
+        "hash": "603439696811686289"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "8912310731745577745"
+      },
+      {
+        "file": "App.tsx",
+        "hash": "3432125951128798835"
+      },
+      {
+        "file": "CONTRIBUTING.md",
+        "hash": "1133974508887394371"
+      },
+      {
+        "file": "README.md",
+        "hash": "2010667023079277963"
+      },
+      {
+        "file": "ReactotronConfig.ts",
+        "hash": "5543399854263958242"
+      },
+      {
+        "file": "__mocks__/moti.ts",
+        "hash": "26788166116207504"
+      },
+      {
+        "file": "app.config.ts",
+        "hash": "7509822783014014241"
+      },
+      {
+        "file": "app.json",
+        "hash": "15782984755317767525"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/_layout.tsx",
+        "hash": "16775937341385365892"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/example/_layout.tsx",
+        "hash": "12039244030940678028"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/example/colors.tsx",
+        "hash": "9222055008911336953"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/example/components.tsx",
+        "hash": "517220493687429902"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/example/data-from-be.tsx",
+        "hash": "15027638579828332511"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/example/index.tsx",
+        "hash": "5962902535356252777"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/example/test-form.tsx",
+        "hash": "8243729862376180640"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/example/typography.tsx",
+        "hash": "8936806035251389752"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/home/_layout.tsx",
+        "hash": "12039244030940678028"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/home/details.tsx",
+        "hash": "4483067426556258949"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/home/index.tsx",
+        "hash": "10151636406867198793"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/settings/_layout.tsx",
+        "hash": "12039244030940678028"
+      },
+      {
+        "file": "app/(app)/(authorized)/(tabs)/settings/index.tsx",
+        "hash": "14078863721716229184"
+      },
+      {
+        "file": "app/(app)/(authorized)/_layout.tsx",
+        "hash": "13495600574558907509"
+      },
+      {
+        "file": "app/(app)/(authorized)/big-form.tsx",
+        "hash": "8243729862376180640"
+      },
+      {
+        "file": "app/(app)/(common)/blog.tsx",
+        "hash": "2111459794174140336"
+      },
+      {
+        "file": "app/(app)/(modals)/_layout.tsx",
+        "hash": "9497547590693834669"
+      },
+      {
+        "file": "app/(app)/(modals)/application-info.tsx",
+        "hash": "10808360863473583457"
+      },
+      {
+        "file": "app/(app)/(not-authorized)/_layout.tsx",
+        "hash": "13176451877109339936"
+      },
+      {
+        "file": "app/(app)/(not-authorized)/sign-in.tsx",
+        "hash": "5112874984883597760"
+      },
+      {
+        "file": "app/(app)/(not-authorized)/sign-up.tsx",
+        "hash": "8158307425873478482"
+      },
+      {
+        "file": "app/(app)/_layout.tsx",
+        "hash": "17929842024264486116"
+      },
+      {
+        "file": "app/+html.tsx",
+        "hash": "17244293808408072149"
+      },
+      {
+        "file": "app/[...unmatched].tsx",
+        "hash": "12233292659150683715"
+      },
+      {
+        "file": "app/_layout.tsx",
+        "hash": "10639769468827773526"
+      },
+      {
+        "file": "app/index.tsx",
+        "hash": "13198455955292342476"
+      },
+      {
+        "file": "assets/figma/variables.json",
+        "hash": "10207225446290554705"
+      },
+      {
+        "file": "assets/fonts/Lato_Black.ttf",
+        "hash": "7554918420529320063"
+      },
+      {
+        "file": "assets/fonts/Lato_Bold.ttf",
+        "hash": "3297032094754642625"
+      },
+      {
+        "file": "assets/fonts/Lato_Light.ttf",
+        "hash": "11662692782042457121"
+      },
+      {
+        "file": "assets/fonts/Lato_Regular.ttf",
+        "hash": "3318709706417761337"
+      },
+      {
+        "file": "assets/fonts/Lato_Thin.ttf",
+        "hash": "10106614687229089345"
+      },
+      {
+        "file": "assets/icomoon/icomoon.ttf",
+        "hash": "607006765776686889"
+      },
+      {
+        "file": "assets/icomoon/selection.json",
+        "hash": "10726602406530237231"
+      },
+      {
+        "file": "assets/icons/android/adaptive-icon-production.png",
+        "hash": "16328803799443571359"
+      },
+      {
+        "file": "assets/icons/android/adaptive-icon-qa.png",
+        "hash": "16328803799443571359"
+      },
+      {
+        "file": "assets/icons/android/adaptive-icon-staging.png",
+        "hash": "16328803799443571359"
+      },
+      {
+        "file": "assets/icons/ios/icon-production.png",
+        "hash": "3705425919829894958"
+      },
+      {
+        "file": "assets/icons/ios/icon-qa.png",
+        "hash": "3705425919829894958"
+      },
+      {
+        "file": "assets/icons/ios/icon-staging.png",
+        "hash": "3705425919829894958"
+      },
+      {
+        "file": "assets/icons/web/favicon-production.png",
+        "hash": "10556792184362654649"
+      },
+      {
+        "file": "assets/icons/web/favicon-qa.png",
+        "hash": "10556792184362654649"
+      },
+      {
+        "file": "assets/icons/web/favicon-staging.png",
+        "hash": "10556792184362654649"
+      },
+      {
+        "file": "assets/languages.json",
+        "hash": "12362774187921168980"
+      },
+      {
+        "file": "assets/logo-dark.png",
+        "hash": "13514093848832008410"
+      },
+      {
+        "file": "assets/logo-light.png",
+        "hash": "15112035124529429355"
+      },
+      {
+        "file": "assets/logo/logo-full-dark.png",
+        "hash": "15578919071920371328"
+      },
+      {
+        "file": "assets/logo/logo-full-light.png",
+        "hash": "14451461565546478129"
+      },
+      {
+        "file": "assets/logo/logo-sygnet-dark.png",
+        "hash": "9290399853222058284"
+      },
+      {
+        "file": "assets/logo/logo-sygnet-light.png",
+        "hash": "9798056798915001847"
+      },
+      {
+        "file": "assets/splash.png",
+        "hash": "6261865686403574905"
+      },
+      {
+        "file": "assets/tutorials/demo-dark.png",
+        "hash": "11372818248951908104"
+      },
+      {
+        "file": "assets/tutorials/demo-light.png",
+        "hash": "9357227069134945412"
+      },
+      {
+        "file": "assets/tutorials/demo-web-dark.png",
+        "hash": "5916620377625467470"
+      },
+      {
+        "file": "assets/tutorials/demo-web-light.png",
+        "hash": "2227645904507164850"
+      },
+      {
+        "file": "assets/tutorials/demo.mp4",
+        "hash": "10464491032565430919"
+      },
+      {
+        "file": "babel.config.js",
+        "hash": "17665124311381491054"
+      },
+      {
+        "file": "declaration.d.ts",
+        "hash": "8020384496060713473"
+      },
+      {
+        "file": "docs/.gitignore",
+        "hash": "16129839563478165234"
+      },
+      {
+        "file": "docs/README.md",
+        "hash": "1980246878577320622"
+      },
+      {
+        "file": "docs/babel.config.js",
+        "hash": "12603636193646100930"
+      },
+      {
+        "file": "docs/docs/bootstrap/BOOTSTRAP_INTRO.md",
+        "hash": "4484937867077512180"
+      },
+      {
+        "file": "docs/docs/bootstrap/BOOTSTRAP_TESTING.mdx",
+        "hash": "1350098321983269063"
+      },
+      {
+        "file": "docs/docs/bootstrap/_category_.json",
+        "hash": "13240284551415435057"
+      },
+      {
+        "file": "docs/docs/deploy/DEPLOY_ANDROID.md",
+        "hash": "2986211801325424892"
+      },
+      {
+        "file": "docs/docs/deploy/DEPLOY_BOTH.md",
+        "hash": "13067729267896144606"
+      },
+      {
+        "file": "docs/docs/deploy/DEPLOY_EXPO_GO.md",
+        "hash": "10583554073010044387"
+      },
+      {
+        "file": "docs/docs/deploy/DEPLOY_INTRO.md",
+        "hash": "11886934227619605334"
+      },
+      {
+        "file": "docs/docs/deploy/DEPLOY_IOS.md",
+        "hash": "15340626339076892401"
+      },
+      {
+        "file": "docs/docs/deploy/DEPLOY_UPDATE.md",
+        "hash": "5956395428756511226"
+      },
+      {
+        "file": "docs/docs/deploy/_category_.json",
+        "hash": "17751302214829613621"
+      },
+      {
+        "file": "docs/docs/tutorials/DOPPLER_CONFIG.mdx",
+        "hash": "13965575952127238790"
+      },
+      {
+        "file": "docs/docs/tutorials/ICONS.md",
+        "hash": "3237544788124598942"
+      },
+      {
+        "file": "docs/docs/tutorials/JOTAI.md",
+        "hash": "15447829528394957174"
+      },
+      {
+        "file": "docs/docs/tutorials/NOTIFICATIONS_SETUP.md",
+        "hash": "152614396336684863"
+      },
+      {
+        "file": "docs/docs/tutorials/_category_.json",
+        "hash": "7760577911856148779"
+      },
+      {
+        "file": "docs/docusaurus.config.ts",
+        "hash": "94846999672700562"
+      },
+      {
+        "file": "docs/package.json",
+        "hash": "5396909740897104622"
+      },
+      {
+        "file": "docs/sidebars.ts",
+        "hash": "13566122366347499334"
+      },
+      {
+        "file": "docs/src/components/Details.tsx",
+        "hash": "4972155526725104325"
+      },
+      {
+        "file": "docs/src/components/HomepageFeatures/index.tsx",
+        "hash": "150496967724314727"
+      },
+      {
+        "file": "docs/src/components/HomepageFeatures/styles.module.css",
+        "hash": "14149773169115351739"
+      },
+      {
+        "file": "docs/src/css/custom.css",
+        "hash": "9203620918389163801"
+      },
+      {
+        "file": "docs/src/pages/index.module.css",
+        "hash": "2272732276868299116"
+      },
+      {
+        "file": "docs/src/pages/index.tsx",
+        "hash": "1201541901040548810"
+      },
+      {
+        "file": "docs/src/pages/markdown-page.md",
+        "hash": "2637912770613796076"
+      },
+      {
+        "file": "docs/static/.nojekyll",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "docs/static/img/android_accept_invite.png",
+        "hash": "15006715016788752032"
+      },
+      {
+        "file": "docs/static/img/android_account.png",
+        "hash": "1792977879323533070"
+      },
+      {
+        "file": "docs/static/img/android_builds.png",
+        "hash": "13343318192199550595"
+      },
+      {
+        "file": "docs/static/img/android_choose_testers.png",
+        "hash": "13787676269497787839"
+      },
+      {
+        "file": "docs/static/img/android_confirm_rollout.png",
+        "hash": "2014629161281800031"
+      },
+      {
+        "file": "docs/static/img/android_copy_link.png",
+        "hash": "18012515418866719694"
+      },
+      {
+        "file": "docs/static/img/android_create_button.png",
+        "hash": "15827610770391758952"
+      },
+      {
+        "file": "docs/static/img/android_create_form.png",
+        "hash": "16163694221239684758"
+      },
+      {
+        "file": "docs/static/img/android_download.png",
+        "hash": "15290388595532032567"
+      },
+      {
+        "file": "docs/static/img/android_install_app.png",
+        "hash": "18307443302547338546"
+      },
+      {
+        "file": "docs/static/img/android_new_release.png",
+        "hash": "7146021066903146323"
+      },
+      {
+        "file": "docs/static/img/android_pick_build.png",
+        "hash": "4428540443733486555"
+      },
+      {
+        "file": "docs/static/img/android_review_release.png",
+        "hash": "15866338507015279430"
+      },
+      {
+        "file": "docs/static/img/android_start_rollout.png",
+        "hash": "5853161308600097681"
+      },
+      {
+        "file": "docs/static/img/android_testers_tab.png",
+        "hash": "13680480268630284692"
+      },
+      {
+        "file": "docs/static/img/android_upload_binary.png",
+        "hash": "16422790610867316287"
+      },
+      {
+        "file": "docs/static/img/androind_internal_testing.png",
+        "hash": "15376765401758944890"
+      },
+      {
+        "file": "docs/static/img/bootstrap_eas_id.png",
+        "hash": "4362398687102136271"
+      },
+      {
+        "file": "docs/static/img/bootstrap_owner.png",
+        "hash": "1674509474584214180"
+      },
+      {
+        "file": "docs/static/img/bootstrap_slug.png",
+        "hash": "11176851495548021733"
+      },
+      {
+        "file": "docs/static/img/check-last-release-date.png",
+        "hash": "7915502638987240509"
+      },
+      {
+        "file": "docs/static/img/deploy_add_button.png",
+        "hash": "17770846762481172581"
+      },
+      {
+        "file": "docs/static/img/deploy_apps.png",
+        "hash": "567558839155423744"
+      },
+      {
+        "file": "docs/static/img/deploy_new_app.png",
+        "hash": "10854539621982586537"
+      },
+      {
+        "file": "docs/static/img/deploy_new_form.png",
+        "hash": "11973629579023909705"
+      },
+      {
+        "file": "docs/static/img/docusaurus-social-card.jpg",
+        "hash": "11663222046504176426"
+      },
+      {
+        "file": "docs/static/img/docusaurus.png",
+        "hash": "11805897491343913808"
+      },
+      {
+        "file": "docs/static/img/doppler_access_confirm.png",
+        "hash": "7385558227572301296"
+      },
+      {
+        "file": "docs/static/img/doppler_access_copy.png",
+        "hash": "8455686693359253463"
+      },
+      {
+        "file": "docs/static/img/doppler_access_generate.png",
+        "hash": "11308716166852131036"
+      },
+      {
+        "file": "docs/static/img/doppler_access_name.png",
+        "hash": "4373948471998351844"
+      },
+      {
+        "file": "docs/static/img/doppler_access_tab.png",
+        "hash": "14600252940533528347"
+      },
+      {
+        "file": "docs/static/img/doppler_create_workspace.png",
+        "hash": "10871064069389164357"
+      },
+      {
+        "file": "docs/static/img/doppler_envirnoments.png",
+        "hash": "7008817338073770528"
+      },
+      {
+        "file": "docs/static/img/doppler_open_dropdown.png",
+        "hash": "10890199977916883965"
+      },
+      {
+        "file": "docs/static/img/doppler_project_button.png",
+        "hash": "17770548224784006611"
+      },
+      {
+        "file": "docs/static/img/doppler_project_confirm.jpg",
+        "hash": "7457495518769740177"
+      },
+      {
+        "file": "docs/static/img/doppler_project_name.png",
+        "hash": "11113195125055716063"
+      },
+      {
+        "file": "docs/static/img/doppler_project_select.png",
+        "hash": "7412289783462138044"
+      },
+      {
+        "file": "docs/static/img/doppler_secret_add.png",
+        "hash": "4959334712072025888"
+      },
+      {
+        "file": "docs/static/img/doppler_secret_confirm.png",
+        "hash": "7355368474016303434"
+      },
+      {
+        "file": "docs/static/img/doppler_secret_list.png",
+        "hash": "14145228324317888126"
+      },
+      {
+        "file": "docs/static/img/doppler_secret_more.png",
+        "hash": "6688005562919132833"
+      },
+      {
+        "file": "docs/static/img/doppler_secrets_save.png",
+        "hash": "9916111659479849719"
+      },
+      {
+        "file": "docs/static/img/doppler_workspace_button.png",
+        "hash": "16753907838694160833"
+      },
+      {
+        "file": "docs/static/img/doppler_workspace_name.jpg",
+        "hash": "16909953108456155117"
+      },
+      {
+        "file": "docs/static/img/expo_all.png",
+        "hash": "16933781359282221891"
+      },
+      {
+        "file": "docs/static/img/expo_create.png",
+        "hash": "9477563108672055439"
+      },
+      {
+        "file": "docs/static/img/expo_new.png",
+        "hash": "5138242439308194062"
+      },
+      {
+        "file": "docs/static/img/expo_select.jpg",
+        "hash": "7874643677978894073"
+      },
+      {
+        "file": "docs/static/img/favicon.ico",
+        "hash": "12887840092079912286"
+      },
+      {
+        "file": "docs/static/img/github-repository-template.png",
+        "hash": "8564193000062028816"
+      },
+      {
+        "file": "docs/static/img/logo-dark.png",
+        "hash": "13514093848832008410"
+      },
+      {
+        "file": "docs/static/img/logo-light.png",
+        "hash": "15112035124529429355"
+      },
+      {
+        "file": "docs/static/img/logo.svg",
+        "hash": "15756779054106865036"
+      },
+      {
+        "file": "docs/static/img/undraw_docusaurus_mountain.svg",
+        "hash": "14081778507541877421"
+      },
+      {
+        "file": "docs/static/img/undraw_docusaurus_react.svg",
+        "hash": "17162343818337932230"
+      },
+      {
+        "file": "docs/static/img/undraw_docusaurus_tree.svg",
+        "hash": "12684630426846910715"
+      },
+      {
+        "file": "docs/tsconfig.json",
+        "hash": "6554115139338757959"
+      },
+      {
+        "file": "docs/yarn.lock",
+        "hash": "1344615037763403702"
+      },
+      {
+        "file": "eas.json",
+        "hash": "12069267315941841789"
+      },
+      {
+        "file": "jest.config.json",
+        "hash": "15973312349008245544"
+      },
+      {
+        "file": "jest.setup.js",
+        "hash": "10976856620478355139"
+      },
+      {
+        "file": "package.json",
+        "hash": "16184325745217966966"
+      },
+      {
+        "file": "patches/react-native-keyboard-aware-scroll-view+0.9.5.patch",
+        "hash": "17037331704880684500"
+      },
+      {
+        "file": "scripts/README.md",
+        "hash": "1676246788836216293"
+      },
+      {
+        "file": "scripts/bootstrap.js",
+        "hash": "8658370276024427710"
+      },
+      {
+        "file": "scripts/contents/content.js",
+        "hash": "2461807724915314375"
+      },
+      {
+        "file": "scripts/create_new_component.js",
+        "hash": "9183614266748780974"
+      },
+      {
+        "file": "scripts/create_new_screen.js",
+        "hash": "7677799887541583668"
+      },
+      {
+        "file": "scripts/generate_dotenv.sh",
+        "hash": "11294477836839082733"
+      },
+      {
+        "file": "scripts/generate_icon_types.js",
+        "hash": "654432155340022283"
+      },
+      {
+        "file": "scripts/generate_theme.js",
+        "hash": "8997467211765449347"
+      },
+      {
+        "file": "scripts/upload_env.sh",
+        "hash": "5059767885715405099"
+      },
+      {
+        "file": "scripts/utils.js",
+        "hash": "1598072878137162150"
+      },
+      {
+        "file": "src/components/AppLoading.tsx",
+        "hash": "16957027588722365148"
+      },
+      {
+        "file": "src/components/COMPONENTS.md",
+        "hash": "6011268020999452912"
+      },
+      {
+        "file": "src/components/Header.tsx",
+        "hash": "9449303751552189110"
+      },
+      {
+        "file": "src/components/KeyboardAwareScrollView.tsx",
+        "hash": "10641172719546107373"
+      },
+      {
+        "file": "src/components/LandingHeader.tsx",
+        "hash": "15930464234146003677"
+      },
+      {
+        "file": "src/components/LanguagePicker.tsx",
+        "hash": "1005226961279146695"
+      },
+      {
+        "file": "src/components/Modal.tsx",
+        "hash": "4809490722064940886"
+      },
+      {
+        "file": "src/components/README.md",
+        "hash": "5503919720339567747"
+      },
+      {
+        "file": "src/components/StatusBar.tsx",
+        "hash": "4122253449852050734"
+      },
+      {
+        "file": "src/components/Version.tsx",
+        "hash": "5818484172636431138"
+      },
+      {
+        "file": "src/components/atoms/Absolute.tsx",
+        "hash": "15082349672358232284"
+      },
+      {
+        "file": "src/components/atoms/Box.tsx",
+        "hash": "2209749632546129938"
+      },
+      {
+        "file": "src/components/atoms/BricksLoader.tsx",
+        "hash": "12716640090634482544"
+      },
+      {
+        "file": "src/components/atoms/BubblesLoader.tsx",
+        "hash": "9496402640470220190"
+      },
+      {
+        "file": "src/components/atoms/Button/Button.test.tsx",
+        "hash": "1754326576086755288"
+      },
+      {
+        "file": "src/components/atoms/Button/Button.tsx",
+        "hash": "15406773606074306271"
+      },
+      {
+        "file": "src/components/atoms/Button/__snapshots__/Button.test.tsx.snap",
+        "hash": "13036643887006940581"
+      },
+      {
+        "file": "src/components/atoms/Button/index.ts",
+        "hash": "11936205126108115086"
+      },
+      {
+        "file": "src/components/atoms/Center.tsx",
+        "hash": "3682428934238380040"
+      },
+      {
+        "file": "src/components/atoms/Checkbox.tsx",
+        "hash": "9862373001395780173"
+      },
+      {
+        "file": "src/components/atoms/CircleLoader.tsx",
+        "hash": "5121887556815852972"
+      },
+      {
+        "file": "src/components/atoms/Column.tsx",
+        "hash": "18281641675047479893"
+      },
+      {
+        "file": "src/components/atoms/DiskLoader.tsx",
+        "hash": "15004111668246313188"
+      },
+      {
+        "file": "src/components/atoms/FormErrorMessage.tsx",
+        "hash": "8166068283668867839"
+      },
+      {
+        "file": "src/components/atoms/FormLabel.tsx",
+        "hash": "15265558975048493660"
+      },
+      {
+        "file": "src/components/atoms/GradientBox.tsx",
+        "hash": "16645400007287825470"
+      },
+      {
+        "file": "src/components/atoms/Icon.tsx",
+        "hash": "726707270198572327"
+      },
+      {
+        "file": "src/components/atoms/Input.tsx",
+        "hash": "6579095480279518141"
+      },
+      {
+        "file": "src/components/atoms/Loader.tsx",
+        "hash": "4165066725013499724"
+      },
+      {
+        "file": "src/components/atoms/Row.tsx",
+        "hash": "4797531319416598820"
+      },
+      {
+        "file": "src/components/atoms/ScrollView.tsx",
+        "hash": "16842807677653704023"
+      },
+      {
+        "file": "src/components/atoms/Select.tsx",
+        "hash": "14864352869405059625"
+      },
+      {
+        "file": "src/components/atoms/Spacer.tsx",
+        "hash": "2958601898866063681"
+      },
+      {
+        "file": "src/components/atoms/Text/Text.test.tsx",
+        "hash": "4070838192421154686"
+      },
+      {
+        "file": "src/components/atoms/Text/Text.tsx",
+        "hash": "8239194005027975136"
+      },
+      {
+        "file": "src/components/atoms/Text/index.ts",
+        "hash": "13696411482562354027"
+      },
+      {
+        "file": "src/components/atoms/Touchables/Pressable.tsx",
+        "hash": "4745640857051940509"
+      },
+      {
+        "file": "src/components/atoms/Touchables/Touchable.tsx",
+        "hash": "15476864584972792645"
+      },
+      {
+        "file": "src/components/atoms/Touchables/index.ts",
+        "hash": "13481069130617450418"
+      },
+      {
+        "file": "src/components/atoms/Touchables/useFocus.ts",
+        "hash": "845933541372790663"
+      },
+      {
+        "file": "src/components/atoms/Touchables/useHover.ts",
+        "hash": "12035457070430245906"
+      },
+      {
+        "file": "src/components/atoms/Touchables/useIsPressed.ts",
+        "hash": "4387371735535821645"
+      },
+      {
+        "file": "src/components/atoms/index.ts",
+        "hash": "15710350753459796208"
+      },
+      {
+        "file": "src/components/atoms/types.ts",
+        "hash": "3486614015438132425"
+      },
+      {
+        "file": "src/components/bottomSheets/BottomSheet.tsx",
+        "hash": "3454253101716571605"
+      },
+      {
+        "file": "src/components/bottomSheets/BottomSheet.web.tsx",
+        "hash": "9028090935835934306"
+      },
+      {
+        "file": "src/components/bottomSheets/BottomSheetFlatList.tsx",
+        "hash": "403466135632793510"
+      },
+      {
+        "file": "src/components/bottomSheets/BottomSheetFlatList.web.tsx",
+        "hash": "2184984987472540579"
+      },
+      {
+        "file": "src/components/bottomSheets/BottomSheetHeader.tsx",
+        "hash": "5791280130042782721"
+      },
+      {
+        "file": "src/components/bottomSheets/index.tsx",
+        "hash": "7549245674089521705"
+      },
+      {
+        "file": "src/components/bottomSheets/useBottomSheets.tsx",
+        "hash": "17016893928484498332"
+      },
+      {
+        "file": "src/components/index.ts",
+        "hash": "10157556475702070247"
+      },
+      {
+        "file": "src/components/molecules/Field/Checkbox.tsx",
+        "hash": "9460852231745840142"
+      },
+      {
+        "file": "src/components/molecules/Field/Input.tsx",
+        "hash": "14292870419888248000"
+      },
+      {
+        "file": "src/components/molecules/Field/Radio.tsx",
+        "hash": "3977126159990026348"
+      },
+      {
+        "file": "src/components/molecules/Field/Select.tsx",
+        "hash": "605225748308942294"
+      },
+      {
+        "file": "src/components/molecules/Field/index.tsx",
+        "hash": "187339777244965983"
+      },
+      {
+        "file": "src/components/molecules/Field/types.ts",
+        "hash": "6414120266795182693"
+      },
+      {
+        "file": "src/components/molecules/MenuItem.tsx",
+        "hash": "9095027106494854145"
+      },
+      {
+        "file": "src/components/molecules/TextArea.tsx",
+        "hash": "14733098802128805733"
+      },
+      {
+        "file": "src/components/molecules/index.ts",
+        "hash": "5360256293546580689"
+      },
+      {
+        "file": "src/components/organisms/ControlledField/Checkbox.tsx",
+        "hash": "1524884679124226168"
+      },
+      {
+        "file": "src/components/organisms/ControlledField/Input.tsx",
+        "hash": "13278847575248279830"
+      },
+      {
+        "file": "src/components/organisms/ControlledField/Radio.tsx",
+        "hash": "18393524301091813263"
+      },
+      {
+        "file": "src/components/organisms/ControlledField/Select.tsx",
+        "hash": "14026946301869219292"
+      },
+      {
+        "file": "src/components/organisms/ControlledField/index.tsx",
+        "hash": "1079826559500969069"
+      },
+      {
+        "file": "src/components/organisms/ControlledField/types.ts",
+        "hash": "9957489760953806839"
+      },
+      {
+        "file": "src/components/organisms/Menu/index.tsx",
+        "hash": "10544061452708431200"
+      },
+      {
+        "file": "src/components/organisms/index.ts",
+        "hash": "16675575206616089652"
+      },
+      {
+        "file": "src/components/utils/generateSize.test.ts",
+        "hash": "15084989583075556243"
+      },
+      {
+        "file": "src/components/utils/generateSize.ts",
+        "hash": "7625013241353024001"
+      },
+      {
+        "file": "src/components/utils/generateStyledComponent.tsx",
+        "hash": "12382388355550177584"
+      },
+      {
+        "file": "src/components/utils/generateStyledSystem.ts",
+        "hash": "15180469589750946925"
+      },
+      {
+        "file": "src/components/utils/index.ts",
+        "hash": "15227454944847285333"
+      },
+      {
+        "file": "src/constants/asyncStorageKeys.test.ts",
+        "hash": "4471249081264990977"
+      },
+      {
+        "file": "src/constants/asyncStorageKeys.ts",
+        "hash": "7530999383319886295"
+      },
+      {
+        "file": "src/constants/breakpoints.ts",
+        "hash": "5932455886761320177"
+      },
+      {
+        "file": "src/constants/buttonVariants.ts",
+        "hash": "17278881127761522230"
+      },
+      {
+        "file": "src/constants/colorSchemes.ts",
+        "hash": "8311404195254594842"
+      },
+      {
+        "file": "src/constants/colors.ts",
+        "hash": "7703790479813226526"
+      },
+      {
+        "file": "src/constants/env.ts",
+        "hash": "15694237031158292113"
+      },
+      {
+        "file": "src/constants/environments.ts",
+        "hash": "6462925094621866783"
+      },
+      {
+        "file": "src/constants/images.ts",
+        "hash": "15863656951953578488"
+      },
+      {
+        "file": "src/constants/index.ts",
+        "hash": "11357346957528778797"
+      },
+      {
+        "file": "src/constants/navigation.ts",
+        "hash": "10166447341881299191"
+      },
+      {
+        "file": "src/constants/regex.ts",
+        "hash": "642166028200098242"
+      },
+      {
+        "file": "src/constants/textVariants.ts",
+        "hash": "11986419058060264126"
+      },
+      {
+        "file": "src/constants/theme.ts",
+        "hash": "15380751935719025447"
+      },
+      {
+        "file": "src/constants/time.ts",
+        "hash": "1339200255929519859"
+      },
+      {
+        "file": "src/contexts/ColorSchemeContext.ts",
+        "hash": "8868644817397954028"
+      },
+      {
+        "file": "src/contexts/NotificationContext.ts",
+        "hash": "17378180327217406818"
+      },
+      {
+        "file": "src/contexts/index.ts",
+        "hash": "9071452686146101800"
+      },
+      {
+        "file": "src/enums/index.ts",
+        "hash": "6171415267444698980"
+      },
+      {
+        "file": "src/enums/queryKeys.ts",
+        "hash": "11356421190365898588"
+      },
+      {
+        "file": "src/hooks/forms/index.ts",
+        "hash": "17271927819339279123"
+      },
+      {
+        "file": "src/hooks/forms/useSignInForm.ts",
+        "hash": "13333952302054271000"
+      },
+      {
+        "file": "src/hooks/forms/useSignUpForm.ts",
+        "hash": "15595907409574925197"
+      },
+      {
+        "file": "src/hooks/forms/useTestForm.ts",
+        "hash": "15264830886587295728"
+      },
+      {
+        "file": "src/hooks/index.ts",
+        "hash": "7560712131694712327"
+      },
+      {
+        "file": "src/hooks/loaders/index.ts",
+        "hash": "13806526488025589789"
+      },
+      {
+        "file": "src/hooks/loaders/useBricksLoader.ts",
+        "hash": "13177841413020729291"
+      },
+      {
+        "file": "src/hooks/loaders/useBubblesLoader.ts",
+        "hash": "10158714878564656459"
+      },
+      {
+        "file": "src/hooks/loaders/useCircleLoader.ts",
+        "hash": "17952711721268113104"
+      },
+      {
+        "file": "src/hooks/navigation/index.ts",
+        "hash": "10796279288091477437"
+      },
+      {
+        "file": "src/hooks/navigation/useNavigationStatePersistence.ts",
+        "hash": "1513941764225445974"
+      },
+      {
+        "file": "src/hooks/navigation/useNavigationTheme.ts",
+        "hash": "6501358688836046348"
+      },
+      {
+        "file": "src/hooks/navigation/usePreventGoBack.ts",
+        "hash": "5328265897035839152"
+      },
+      {
+        "file": "src/hooks/navigation/useRouterNotifications.ts",
+        "hash": "18117056565988349538"
+      },
+      {
+        "file": "src/hooks/navigation/useScreenOptions.ts",
+        "hash": "5785238465622711283"
+      },
+      {
+        "file": "src/hooks/navigation/useScreenTracker.ts",
+        "hash": "17428313843311903069"
+      },
+      {
+        "file": "src/hooks/navigation/useWeb.ts",
+        "hash": "3322673041542335890"
+      },
+      {
+        "file": "src/hooks/useAppStateActive.ts",
+        "hash": "7592725653435242278"
+      },
+      {
+        "file": "src/hooks/useBoolean.ts",
+        "hash": "15064134222257154647"
+      },
+      {
+        "file": "src/hooks/useCachedResources.ts",
+        "hash": "3101295520434892053"
+      },
+      {
+        "file": "src/hooks/useKeyboardHeight.ts",
+        "hash": "1053054474544428777"
+      },
+      {
+        "file": "src/hooks/useSafeAreaInsetsStyle.ts",
+        "hash": "8852044882753298993"
+      },
+      {
+        "file": "src/hooks/useSecurePassword.ts",
+        "hash": "857331871247482477"
+      },
+      {
+        "file": "src/hooks/useTheme.ts",
+        "hash": "6901636005813436918"
+      },
+      {
+        "file": "src/hooks/useTimestamp.ts",
+        "hash": "15240857280726995402"
+      },
+      {
+        "file": "src/hooks/useToggle.ts",
+        "hash": "11461537781491476290"
+      },
+      {
+        "file": "src/i18n/i18nForTests.ts",
+        "hash": "4666672696951147844"
+      },
+      {
+        "file": "src/i18n/index.ts",
+        "hash": "18299406002291098741"
+      },
+      {
+        "file": "src/i18n/languageDetector.ts",
+        "hash": "463775853539731425"
+      },
+      {
+        "file": "src/i18n/translations/en.json",
+        "hash": "1608814946585324347"
+      },
+      {
+        "file": "src/i18n/translations/pl.json",
+        "hash": "4869622452139388861"
+      },
+      {
+        "file": "src/logic/AuthLogic.tsx",
+        "hash": "16049493280559033942"
+      },
+      {
+        "file": "src/logic/index.ts",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/navigation/tabNavigator/components/AppHeader.tsx",
+        "hash": "7715869571813526605"
+      },
+      {
+        "file": "src/navigation/tabNavigator/components/BottomBar.tsx",
+        "hash": "14073665193417913684"
+      },
+      {
+        "file": "src/navigation/tabNavigator/components/HeaderLogo.tsx",
+        "hash": "2864502147417342306"
+      },
+      {
+        "file": "src/navigation/tabNavigator/components/SideBar.tsx",
+        "hash": "12045534224905606366"
+      },
+      {
+        "file": "src/navigation/tabNavigator/components/SideBarTabItem.tsx",
+        "hash": "16392445940914216663"
+      },
+      {
+        "file": "src/navigation/tabNavigator/components/TabBarItemWrapper.tsx",
+        "hash": "5590993292478114218"
+      },
+      {
+        "file": "src/navigation/tabNavigator/components/index.ts",
+        "hash": "4213473592452267957"
+      },
+      {
+        "file": "src/navigation/tabNavigator/config.ts",
+        "hash": "11795598356857279134"
+      },
+      {
+        "file": "src/navigation/tabNavigator/hooks/index.ts",
+        "hash": "12338499285074412974"
+      },
+      {
+        "file": "src/navigation/tabNavigator/hooks/useContextRoute.ts",
+        "hash": "9217256906281357223"
+      },
+      {
+        "file": "src/navigation/tabNavigator/hooks/useIsTabSelected.ts",
+        "hash": "13458514500615389471"
+      },
+      {
+        "file": "src/navigation/tabNavigator/hooks/useLinkBuilder.tsx",
+        "hash": "1525764324240210019"
+      },
+      {
+        "file": "src/navigation/tabNavigator/hooks/useNavigatorContext.ts",
+        "hash": "1588641436443923639"
+      },
+      {
+        "file": "src/navigation/tabNavigator/hooks/useWidth.ts",
+        "hash": "2858017802317839026"
+      },
+      {
+        "file": "src/navigation/tabNavigator/navigator.tsx",
+        "hash": "1860831050691747412"
+      },
+      {
+        "file": "src/navigation/tabNavigator/tab-slot.tsx",
+        "hash": "10731003404175489325"
+      },
+      {
+        "file": "src/navigation/tabNavigator/utils/cns.ts",
+        "hash": "7193914733798713423"
+      },
+      {
+        "file": "src/navigation/tabNavigator/utils/index.ts",
+        "hash": "1781913147302345443"
+      },
+      {
+        "file": "src/providers/ColorSchemeProvider.tsx",
+        "hash": "16444078799372466057"
+      },
+      {
+        "file": "src/providers/NotificatedProvider.tsx",
+        "hash": "11207403325919307749"
+      },
+      {
+        "file": "src/providers/NotificationProvider.tsx",
+        "hash": "5349318008092754176"
+      },
+      {
+        "file": "src/providers/Providers.tsx",
+        "hash": "4762181393690134386"
+      },
+      {
+        "file": "src/providers/index.ts",
+        "hash": "10523175739397548776"
+      },
+      {
+        "file": "src/query-hooks/index.ts",
+        "hash": "15602501319673947274"
+      },
+      {
+        "file": "src/query-hooks/useGetData_EXAMPLE.ts",
+        "hash": "14130072731168168391"
+      },
+      {
+        "file": "src/screens/ApplicationInfoScreen.tsx",
+        "hash": "5492842909904945749"
+      },
+      {
+        "file": "src/screens/BlogScreen.tsx",
+        "hash": "11952207058013874274"
+      },
+      {
+        "file": "src/screens/ColorsScreen.tsx",
+        "hash": "9053424676138748193"
+      },
+      {
+        "file": "src/screens/ComponentsScreen.tsx",
+        "hash": "15924000592874024465"
+      },
+      {
+        "file": "src/screens/DataFromBeScreen_EXAMPLE.tsx",
+        "hash": "634309004082714263"
+      },
+      {
+        "file": "src/screens/DetailsScreen.tsx",
+        "hash": "3745291865829972765"
+      },
+      {
+        "file": "src/screens/ExamplesScreen.tsx",
+        "hash": "10947535736371494888"
+      },
+      {
+        "file": "src/screens/HomeScreen.tsx",
+        "hash": "9754377687014910402"
+      },
+      {
+        "file": "src/screens/LandingScreen.tsx",
+        "hash": "9801184363626554005"
+      },
+      {
+        "file": "src/screens/NotFoundScreen.tsx",
+        "hash": "977280752402402679"
+      },
+      {
+        "file": "src/screens/SettingsScreen.tsx",
+        "hash": "13834686244739681171"
+      },
+      {
+        "file": "src/screens/SignInScreen.tsx",
+        "hash": "15952768680106274392"
+      },
+      {
+        "file": "src/screens/SignUpScreen.tsx",
+        "hash": "3527040121555083461"
+      },
+      {
+        "file": "src/screens/TestFormScreen.tsx",
+        "hash": "15783836185900241475"
+      },
+      {
+        "file": "src/screens/TypographyScreen.tsx",
+        "hash": "3228241379119583240"
+      },
+      {
+        "file": "src/screens/index.ts",
+        "hash": "8543781507251895919"
+      },
+      {
+        "file": "src/services/MockedServerService.ts",
+        "hash": "9060057850251722088"
+      },
+      {
+        "file": "src/services/NotificationService.ts",
+        "hash": "12211015062274649953"
+      },
+      {
+        "file": "src/services/TokenService.ts",
+        "hash": "2655877949019559655"
+      },
+      {
+        "file": "src/services/api/apiClient.ts",
+        "hash": "11240390962543035049"
+      },
+      {
+        "file": "src/services/api/index.ts",
+        "hash": "12235305835072896869"
+      },
+      {
+        "file": "src/services/index.ts",
+        "hash": "10875047377727947788"
+      },
+      {
+        "file": "src/services/interceptors/injectToken.ts",
+        "hash": "8658116713546351419"
+      },
+      {
+        "file": "src/services/requests/AnyService_EXAMPLE.ts",
+        "hash": "3559154686510975631"
+      },
+      {
+        "file": "src/services/requests/index.ts",
+        "hash": "16798303174629640789"
+      },
+      {
+        "file": "src/store/auth/authActions.ts",
+        "hash": "2386712367715131347"
+      },
+      {
+        "file": "src/store/auth/authState.ts",
+        "hash": "8456598002970636079"
+      },
+      {
+        "file": "src/store/auth/index.ts",
+        "hash": "16642586777905033591"
+      },
+      {
+        "file": "src/store/index.ts",
+        "hash": "5029109546585808742"
+      },
+      {
+        "file": "src/store/store.ts",
+        "hash": "10294035652390588528"
+      },
+      {
+        "file": "src/styles/index.ts",
+        "hash": "8008331729337354469"
+      },
+      {
+        "file": "src/styles/root-layout.module.scss",
+        "hash": "2060547991753715075"
+      },
+      {
+        "file": "src/types/authForms.ts",
+        "hash": "386774086284532835"
+      },
+      {
+        "file": "src/types/global.d.ts",
+        "hash": "635318313691600830"
+      },
+      {
+        "file": "src/types/i18next.d.ts",
+        "hash": "13996001322736385261"
+      },
+      {
+        "file": "src/types/icon.d.ts",
+        "hash": "911054344008657768"
+      },
+      {
+        "file": "src/types/react-i18next.d.ts",
+        "hash": "4951087371925837478"
+      },
+      {
+        "file": "src/types/testForm.ts",
+        "hash": "302751465239627241"
+      },
+      {
+        "file": "src/types/theme.d.ts",
+        "hash": "17374553206506145675"
+      },
+      {
+        "file": "src/types/todos.ts",
+        "hash": "14691166469154891111"
+      },
+      {
+        "file": "src/utils/alert.ts",
+        "hash": "14971819840630424802"
+      },
+      {
+        "file": "src/utils/checkForUpdates.ts",
+        "hash": "2803043772072222879"
+      },
+      {
+        "file": "src/utils/convertEmToNumber.ts",
+        "hash": "11529947235485843624"
+      },
+      {
+        "file": "src/utils/createGenericContext.ts",
+        "hash": "7541142818533258904"
+      },
+      {
+        "file": "src/utils/getApiError.ts",
+        "hash": "4855170982144469794"
+      },
+      {
+        "file": "src/utils/getColorValue.ts",
+        "hash": "10729707445928438651"
+      },
+      {
+        "file": "src/utils/getFontWeight.ts",
+        "hash": "15653122983671892311"
+      },
+      {
+        "file": "src/utils/getNavigator.ts",
+        "hash": "7357839614603048214"
+      },
+      {
+        "file": "src/utils/hapticImpact.ts",
+        "hash": "13981120877608165312"
+      },
+      {
+        "file": "src/utils/hex2rgba.ts",
+        "hash": "2958889430405488106"
+      },
+      {
+        "file": "src/utils/index.ts",
+        "hash": "15356218109072174571"
+      },
+      {
+        "file": "src/utils/noop.ts",
+        "hash": "7191457754250985784"
+      },
+      {
+        "file": "src/utils/removeFalsyProperties.test.ts",
+        "hash": "18325594995088514473"
+      },
+      {
+        "file": "src/utils/removeFalsyProperties.ts",
+        "hash": "14967616767506612799"
+      },
+      {
+        "file": "src/utils/secureStore.tsx",
+        "hash": "6414282529903447870"
+      },
+      {
+        "file": "src/utils/testUtils.tsx",
+        "hash": "17851167488228739794"
+      },
+      {
+        "file": "src/utils/wait.ts",
+        "hash": "8105682325221601677"
+      },
+      {
+        "file": "src/wdyr.ts",
+        "hash": "15734091208795798433"
+      },
+      {
+        "file": "templates/component_template.tsx",
+        "hash": "8999961463816009022"
+      },
+      {
+        "file": "templates/pull_request_template.md",
+        "hash": "17152142272450741057"
+      },
+      {
+        "file": "templates/readme_template.md",
+        "hash": "101331792217002585"
+      },
+      {
+        "file": "templates/screen_template.tsx",
+        "hash": "4023492766610837178"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "14701674480042683090"
+      },
+      {
+        "file": "web/_redirects",
+        "hash": "7930790779227108493"
+      },
+      {
+        "file": "webpack.config.js",
+        "hash": "465218852528784385"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "8936136592604700"
+      }
+    ]
+  }
+}

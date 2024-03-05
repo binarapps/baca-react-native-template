@@ -1,5 +1,5 @@
-import { theme } from '~constants'
-import { useColorScheme } from '~contexts'
+import { theme } from '@baca/constants'
+import { useColorScheme } from '@baca/contexts'
 
 export const useTheme = (): AppTheme => {
   const { colorScheme } = useColorScheme()
