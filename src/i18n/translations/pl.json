@@ -29,6 +29,7 @@
   },
   "form": {
     "invalid_email_format": "Zły adres e-mail",
+    "invalid_password": "Niepoprawne hasło",
     "required": "Pole wymagane"
   },
   "navigation": {

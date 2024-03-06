@@ -35,10 +35,10 @@ This template uses this packages to keep connection with backend:
 - As you can see the config file is `orval.config.ts`, there are a lot options that we can modify, but the most important for us are:
   - target - where typescript types should be placed
   - schemas - where query hooks and moks should be placed
-  - override-header - additionaly turning off `no-explicity-any` eslint rule
+  - override-header - additionally turning off `no-explicit-any` eslint rule
   - mutator - where is api instance placed
-  - afterAllFilesWrite - what should happended when the script will run - we are running liter with fix flag
-- Orval is very flexible and you can do a lot modifications, please check (their docs)[https://orval.dev/overview] for refference
+  - afterAllFilesWrite - what should happened when the script will run - we are running liter with fix flag
+- Orval is very flexible and you can do a lot modifications, please check (their docs)[https://orval.dev/overview] for reference
 
 2. How to do changes to axios instance
 

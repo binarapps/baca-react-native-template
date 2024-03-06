@@ -1,3 +1,4 @@
+import { useArticlesControllerFindAll } from '@baca/api/query/articles/articles'
 import { Button, Center, Text } from '@baca/components'
 import { darkLogo, lightLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
@@ -13,6 +14,8 @@ export const HomeScreen = () => {
   })
 
   const { colorScheme } = useColorScheme()
+
+  useArticlesControllerFindAll({ page: 1, pageSize: 10 })
 
   const navigateToDetails = useCallback(() => {
     router.navigate({
