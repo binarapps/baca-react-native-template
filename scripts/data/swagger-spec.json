@@ -1,0 +1,1039 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1/articles": {
+      "post": {
+        "operationId": "ArticlesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/CreateArticleDto" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ArticleEntity" } }
+            }
+          }
+        },
+        "tags": ["articles"]
+      },
+      "get": {
+        "operationId": "ArticlesController_findAll",
+        "parameters": [
+          { "name": "page", "required": true, "in": "query", "schema": { "type": "number" } },
+          { "name": "pageSize", "required": true, "in": "query", "schema": { "type": "number" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ArticleEntity" }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["articles"]
+      }
+    },
+    "/api/v1/articles/drafts": {
+      "get": {
+        "operationId": "ArticlesController_findDrafts",
+        "parameters": [
+          { "name": "page", "required": true, "in": "query", "schema": { "type": "number" } },
+          { "name": "pageSize", "required": true, "in": "query", "schema": { "type": "number" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ArticleEntity" }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["articles"]
+      }
+    },
+    "/api/v1/articles/{id}": {
+      "get": {
+        "operationId": "ArticlesController_findOne",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ArticleEntity" } }
+            }
+          }
+        },
+        "tags": ["articles"]
+      },
+      "patch": {
+        "operationId": "ArticlesController_update",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateArticleDto" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ArticleEntity" } }
+            }
+          }
+        },
+        "tags": ["articles"]
+      },
+      "delete": {
+        "operationId": "ArticlesController_remove",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+        ],
+        "responses": { "204": { "description": "" } },
+        "tags": ["articles"]
+      }
+    },
+    "/api/v1/users": {
+      "post": {
+        "operationId": "UsersController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/CreateUserDto" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+            }
+          }
+        },
+        "tags": ["users"],
+        "security": [{ "bearer": [] }]
+      },
+      "get": {
+        "operationId": "UsersController_findAll",
+        "parameters": [
+          { "name": "page", "required": true, "in": "query", "schema": { "type": "number" } },
+          { "name": "pageSize", "required": true, "in": "query", "schema": { "type": "number" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserEntity" }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["users"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/api/v1/users/{id}": {
+      "get": {
+        "operationId": "UsersController_findOne",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+            }
+          }
+        },
+        "tags": ["users"],
+        "security": [{ "bearer": [] }]
+      },
+      "patch": {
+        "operationId": "UsersController_update",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateUserDto" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+            }
+          }
+        },
+        "tags": ["users"],
+        "security": [{ "bearer": [] }]
+      },
+      "delete": {
+        "operationId": "UsersController_remove",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+            }
+          }
+        },
+        "tags": ["users"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/api/v1/auth/email/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AuthEmailLoginDto" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AuthEntity" } }
+            }
+          }
+        },
+        "tags": ["auth"]
+      }
+    },
+    "/api/v1/auth/email/register": {
+      "post": {
+        "operationId": "AuthController_register",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Specifies the preferred language for API responses. Supported values are: en (English), de (German), pl (Polish)",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AuthRegisterLoginDto" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+            }
+          }
+        },
+        "tags": ["auth"]
+      }
+    },
+    "/api/v1/auth/email/confirm": {
+      "post": {
+        "operationId": "AuthController_confirmEmail",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Specifies the preferred language for API responses. Supported values are: en (English), de (German), pl (Polish)",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AuthConfirmEmailDto" } }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/api/v1/auth/forgot/password": {
+      "post": {
+        "operationId": "AuthController_forgotPassword",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Specifies the preferred language for API responses. Supported values are: en (English), de (German), pl (Polish)",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AuthForgotPasswordDto" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/api/v1/auth/reset/password": {
+      "post": {
+        "operationId": "AuthController_resetPassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AuthResetPasswordDto" }
+            }
+          }
+        },
+        "responses": { "204": { "description": "" } },
+        "tags": ["auth"]
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "AuthController_me",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+            }
+          }
+        },
+        "tags": ["auth"],
+        "security": [{ "bearer": [] }]
+      },
+      "patch": {
+        "operationId": "AuthController_update",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AuthUpdateDto" } }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["auth"],
+        "security": [{ "bearer": [] }]
+      },
+      "delete": {
+        "operationId": "AuthController_delete",
+        "parameters": [],
+        "responses": { "204": { "description": "" } },
+        "tags": ["auth"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "operationId": "AuthController_refresh",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RefreshEntity" } }
+            }
+          }
+        },
+        "tags": ["auth"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "AuthController_logout",
+        "parameters": [],
+        "responses": { "204": { "description": "" } },
+        "tags": ["auth"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/api/v1/files/upload": {
+      "post": {
+        "operationId": "FilesController_uploadFile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": { "type": "string", "format": "binary" },
+                  "category": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FileEntity" } }
+            }
+          }
+        },
+        "tags": ["files"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/api/v1/files/{fileName}": {
+      "get": {
+        "operationId": "FilesController_download",
+        "parameters": [
+          { "name": "fileName", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["files"],
+        "security": [{ "bearer": [] }]
+      },
+      "delete": {
+        "operationId": "FilesController_deleteFile",
+        "parameters": [
+          { "name": "fileName", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["files"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/api/v1/auth/google/login": {
+      "post": {
+        "operationId": "AuthGoogleController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AuthGoogleLoginDto" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AuthEntity" } }
+            }
+          }
+        },
+        "tags": ["auth-social"]
+      }
+    },
+    "/api/v1/auth/facebook/login": {
+      "post": {
+        "operationId": "AuthFacebookController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AuthFacebookLoginDto" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AuthEntity" } }
+            }
+          }
+        },
+        "tags": ["auth-social"]
+      }
+    },
+    "/api/v1/auth/apple/login": {
+      "post": {
+        "operationId": "AuthAppleController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AuthAppleLoginDto" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AuthEntity" } }
+            }
+          }
+        },
+        "tags": ["auth-social"]
+      }
+    }
+  },
+  "info": {
+    "title": "API",
+    "description": "API documentation for the starter-kit project in NestJS by BinarApps. The API allows management of users, sessions and offers various functions for logged in users. Contains examples of authentication, authorization, and CRUD for selected resources.",
+    "version": "1.0",
+    "contact": {
+      "name": "BinarApps",
+      "url": "https://binarapps.com",
+      "email": "l.jeziorski@binarapps.com"
+    }
+  },
+  "tags": [],
+  "servers": [
+    { "url": "http://localhost:3000", "description": "Local environment" },
+    { "url": "https://production.api.com/", "description": "Production" },
+    { "url": "https://staging.api.com/", "description": "Staging" }
+  ],
+  "components": {
+    "securitySchemes": { "bearer": { "scheme": "bearer", "bearerFormat": "JWT", "type": "http" } },
+    "schemas": {
+      "CreateArticleDto": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "body": { "type": "string" },
+          "published": { "type": "boolean", "default": false }
+        },
+        "required": ["title", "body"]
+      },
+      "AuthorPublicDto": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" }
+        },
+        "required": ["email", "firstName", "lastName"]
+      },
+      "ArticleEntity": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "number" },
+          "title": { "type": "string" },
+          "description": { "type": "string", "nullable": true },
+          "body": { "type": "string" },
+          "published": { "type": "boolean" },
+          "createdAt": { "format": "date-time", "type": "string" },
+          "updatedAt": { "format": "date-time", "type": "string" },
+          "deletedAt": { "format": "date-time", "type": "string" },
+          "authorId": { "type": "string", "nullable": true },
+          "author": { "$ref": "#/components/schemas/AuthorPublicDto" }
+        },
+        "required": [
+          "id",
+          "title",
+          "body",
+          "published",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "author"
+        ]
+      },
+      "UpdateArticleDto": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "body": { "type": "string" },
+          "published": { "type": "boolean", "default": false }
+        }
+      },
+      "RoleDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1,
+            "description": "The unique identifier of the role."
+          }
+        },
+        "required": ["id"]
+      },
+      "StatusDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1,
+            "description": "The unique identifier of the status."
+          }
+        },
+        "required": ["id"]
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "example@binarapps.com",
+            "description": "The email address of the user."
+          },
+          "password": {
+            "type": "string",
+            "example": "NewSecurePassword123!",
+            "description": "The password for the user account."
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John",
+            "description": "The first name of the user."
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe",
+            "description": "The last name of the user."
+          },
+          "locale": {
+            "type": "string",
+            "example": "en-US",
+            "description": "IETF language tags (e.g., en-US)."
+          },
+          "role": {
+            "description": "The role assigned to the user.",
+            "allOf": [{ "$ref": "#/components/schemas/RoleDto" }]
+          },
+          "status": {
+            "description": "The status of the user account.",
+            "allOf": [{ "$ref": "#/components/schemas/StatusDto" }]
+          }
+        },
+        "required": ["email", "password", "firstName", "lastName", "locale", "role", "status"]
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 2,
+            "description": "Role ID, where 1 is for User and 2 is for Admin",
+            "enum": [1, 2]
+          },
+          "name": {
+            "type": "string",
+            "example": "USER",
+            "description": "Role name, which can be either user or admin",
+            "enum": ["ADMIN", "USER"]
+          }
+        },
+        "required": ["id", "name"]
+      },
+      "Status": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1,
+            "description": "The unique identifier of the status."
+          },
+          "name": {
+            "type": "string",
+            "example": "active",
+            "description": "The name of the status."
+          }
+        },
+        "required": ["id", "name"]
+      },
+      "LastConsentProperties": {
+        "type": "object",
+        "properties": {
+          "termsAccepted": {
+            "type": "boolean",
+            "example": true,
+            "description": "Whether the terms were accepted."
+          },
+          "privacyPolicyAccepted": {
+            "type": "boolean",
+            "example": true,
+            "description": "Whether the privacy policy was accepted."
+          }
+        },
+        "required": ["termsAccepted", "privacyPolicyAccepted"]
+      },
+      "UserEntity": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n8" },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-01-01T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-02-01T00:00:00.000Z"
+          },
+          "deletedAt": { "format": "date-time", "type": "string", "example": null },
+          "email": { "type": "string", "example": "user@example.com" },
+          "firstName": { "type": "string", "example": "John" },
+          "lastName": { "type": "string", "example": "Doe" },
+          "provider": { "type": "string", "example": "google" },
+          "socialId": { "type": "string", "example": "102209777480561953757" },
+          "locale": { "type": "string", "example": "en-US" },
+          "role": {
+            "example": { "id": 2, "name": "USER" },
+            "allOf": [{ "$ref": "#/components/schemas/Role" }]
+          },
+          "status": {
+            "example": { "id": 1, "name": "ACTIVE" },
+            "allOf": [{ "$ref": "#/components/schemas/Status" }]
+          },
+          "consent": {
+            "example": { "termsAccepted": true, "privacyPolicyAccepted": true },
+            "allOf": [{ "$ref": "#/components/schemas/LastConsentProperties" }]
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+          "email",
+          "firstName",
+          "lastName",
+          "provider",
+          "socialId",
+          "locale",
+          "role",
+          "status"
+        ]
+      },
+      "UpdateUserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "example@binarapps.com",
+            "description": "The updated email address of the user."
+          },
+          "password": {
+            "type": "string",
+            "example": "NewSecurePassword123!",
+            "description": "The updated password for the user account."
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John",
+            "description": "The updated first name of the user."
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe",
+            "description": "The updated last name of the user."
+          },
+          "locale": {
+            "type": "string",
+            "example": "en-US",
+            "description": "IETF language tags (e.g., en-US)."
+          },
+          "role": {
+            "description": "The updated role assigned to the user.",
+            "allOf": [{ "$ref": "#/components/schemas/RoleDto" }]
+          },
+          "status": {
+            "description": "The updated status of the user account.",
+            "allOf": [{ "$ref": "#/components/schemas/StatusDto" }]
+          },
+          "provider": {
+            "type": "string",
+            "description": "The provider associated with the user account."
+          },
+          "socialId": {
+            "type": "string",
+            "description": "The social ID associated with the user account."
+          },
+          "hash": {
+            "type": "string",
+            "description": "The updated hash associated with the user account."
+          }
+        },
+        "required": ["provider", "socialId", "hash"]
+      },
+      "AuthEmailLoginDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "example@binarapps.com",
+            "description": "The email address used for logging in."
+          },
+          "password": {
+            "type": "string",
+            "example": "YourSecurePassword123!",
+            "description": "The password used for logging in."
+          }
+        },
+        "required": ["email", "password"]
+      },
+      "AuthEntity": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "The access token for authentication.",
+            "example": "eyJhb...adQssw5c"
+          },
+          "refreshToken": {
+            "type": "string",
+            "description": "The refresh token for refreshing the access token.",
+            "example": "eyJhb...adQssw5c"
+          },
+          "tokenExpires": {
+            "type": "string",
+            "description": "The expiry timestamp of the access token.",
+            "example": 1708531622031
+          },
+          "user": {
+            "description": "The user entity associated with the authentication.",
+            "allOf": [{ "$ref": "#/components/schemas/UserEntity" }]
+          }
+        },
+        "required": ["accessToken", "refreshToken", "tokenExpires", "user"]
+      },
+      "AuthRegisterLoginDto": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "example": "example@binarapps.com" },
+          "password": { "type": "string", "example": "NewSecurePassword123!" },
+          "firstName": { "type": "string", "example": "Jon" },
+          "lastName": { "type": "string", "example": "Doe" },
+          "locale": {
+            "type": "string",
+            "example": "en-US",
+            "description": "IETF language tags (e.g., en-US)."
+          },
+          "termsAccepted": { "type": "boolean", "example": true },
+          "privacyPolicyAccepted": { "type": "boolean", "example": true }
+        },
+        "required": [
+          "email",
+          "password",
+          "firstName",
+          "lastName",
+          "locale",
+          "termsAccepted",
+          "privacyPolicyAccepted"
+        ]
+      },
+      "AuthConfirmEmailDto": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string",
+            "example": "a1b2c3d4e5f6g7h8i9j0",
+            "description": "The confirmation hash received in the email."
+          }
+        },
+        "required": ["hash"]
+      },
+      "AuthForgotPasswordDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "example@binarapps.com",
+            "description": "The email address associated with the user account."
+          }
+        },
+        "required": ["email"]
+      },
+      "AuthResetPasswordDto": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "example": "NewSecurePassword123!",
+            "description": "The new password for resetting the user's password."
+          },
+          "hash": {
+            "type": "string",
+            "example": "a1b2c3d4e5f6g7h8i9j0",
+            "description": "The hash token required for resetting the user's password."
+          }
+        },
+        "required": ["password", "hash"]
+      },
+      "AuthUpdateDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "example": "John",
+            "description": "The first name of the user."
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe",
+            "description": "The last name of the user."
+          },
+          "locale": {
+            "type": "string",
+            "example": "en-US",
+            "description": "IETF language tags (e.g., en-US)."
+          },
+          "password": {
+            "type": "string",
+            "example": "NewSecurePassword123!",
+            "description": "The new password for updating user credentials."
+          },
+          "oldPassword": {
+            "type": "string",
+            "example": "OldSecurePassword123!",
+            "description": "The old password required for security verification when updating user credentials."
+          }
+        },
+        "required": ["firstName", "lastName", "locale", "password", "oldPassword"]
+      },
+      "RefreshEntity": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "example": "eyJhb...adQssw5c",
+            "description": "The access token for authentication."
+          },
+          "refreshToken": {
+            "type": "string",
+            "example": "eyJhb...adQssw5c",
+            "description": "The refresh token for refreshing the access token."
+          },
+          "tokenExpires": {
+            "type": "string",
+            "example": 1708531622031,
+            "description": "The expiry date of the access token."
+          }
+        },
+        "required": ["accessToken", "refreshToken", "tokenExpires"]
+      },
+      "FileEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "cbcfa8b8-3a25-4adb-a9c6-e325f0d0f3ae",
+            "description": "Unique identifier of the file"
+          },
+          "path": {
+            "type": "string",
+            "example": "/uploads/avatars/cbcfa8b8-3a25-4adb-a9c6-e325f0d0f3ae.png",
+            "description": "Path to access the file"
+          },
+          "category": {
+            "type": "string",
+            "example": "avatar",
+            "description": "Category of the file",
+            "nullable": true
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2024-02-27T12:34:56.789Z",
+            "description": "Creation date of the file"
+          },
+          "mimeType": {
+            "type": "string",
+            "example": "image/png",
+            "description": "MIME type of the file"
+          },
+          "name": {
+            "type": "string",
+            "example": "profile-picture.png",
+            "description": "Name of the file"
+          },
+          "size": {
+            "type": "number",
+            "example": 102400,
+            "description": "Size of the file in bytes"
+          },
+          "userId": {
+            "type": "string",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "description": "Identifier of the user who owns the file"
+          }
+        },
+        "required": ["id", "path", "category", "createdAt", "mimeType", "name", "size", "userId"]
+      },
+      "AuthGoogleLoginDto": {
+        "type": "object",
+        "properties": {
+          "idToken": {
+            "type": "string",
+            "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOGI2ZTFlYTI1Y2I2M2Q0ZTI5YWI1Y2M2ZDZmODBlZjRmNDY2NjciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiIxMjM0NTY3ODkwMTIzNDU2Nzg5MC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjEyMzQ1Njc4OTAxMjM0NTY3ODkwLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiZXhwIjoxNjUxNTc2MDAwLCJpYXQiOjE2NTE1NzI0MDAsImlzcyI6ImFjY291bnRzLmdvb2dsZS5jb20iLCJzdWIiOiIxMjM0NTY3ODkwMTIzNDU2Nzg5MCIsImVtYWlsIjoianVzdHVzZXJAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJKdXN0IFVzZXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9qdXN0dXNlci9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiSnVzdCIsImZhbWlseV9uYW1lIjoiVXNlciJ9.QWxsYWtoemF0aGtqZGxza2FqaGRsa2FqZGxza2FqZGhza2FqaGRrc2FqaGtqZHNhbGtqZHNhbGtqZGhsYWtqZHNhbGtqaGRsYWtqaGRza2FqaGRrc2FqaGRrc2FqaGRrc2Fq",
+            "description": "Google ID token obtained after user authentication using Google OAuth. Use this token to authenticate the request to the application."
+          }
+        },
+        "required": ["idToken"]
+      },
+      "AuthFacebookLoginDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "example": "EAAJ3MZA...ZDZD",
+            "description": "Access token obtained from Facebook after successful authentication."
+          }
+        },
+        "required": ["accessToken"]
+      },
+      "AuthAppleLoginDto": {
+        "type": "object",
+        "properties": {
+          "idToken": {
+            "type": "string",
+            "example": "eyJra...vbmNlIn0",
+            "description": "The identity token issued by Apple, encoded in JWT format."
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John",
+            "description": "The first name of the user. This field is optional and can be provided by Apple during the first sign-in."
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe",
+            "description": "The last name of the user. This field is optional and can be provided by Apple during the first sign-in."
+          }
+        },
+        "required": ["idToken"]
+      }
+    }
+  },
+  "externalDocs": { "description": "JSON", "url": "/docs-json" }
+}

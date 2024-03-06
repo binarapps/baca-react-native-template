@@ -1,10 +1,12 @@
+// custom-instance.ts
+
 import { ENV, SECOND_IN_MS } from '@baca/constants'
 import { getApiError } from '@baca/utils'
-import axios, { AxiosError } from 'axios'
+import Axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import i18n from 'i18next'
 import qs from 'qs'
 
-import { injectTokenToRequest } from '../interceptors/injectToken'
+import { injectTokenToRequest } from './interceptors'
 
 export type ApiError = {
   message: string
@@ -15,22 +17,22 @@ export type ApiError = {
 
 export const baseURL = ENV.API_URL
 
-export const apiClient = axios.create({
+export const AXIOS_INSTANCE = Axios.create({
   baseURL,
   timeout: 30 * SECOND_IN_MS,
   paramsSerializer: (params) => qs.stringify(params),
 })
 
-apiClient.interceptors.request.use(injectTokenToRequest, (error) => {
+AXIOS_INSTANCE.interceptors.request.use(injectTokenToRequest, (error) => {
   console.log('Error while sending request', JSON.stringify(error, null, 2))
   return Promise.reject(error)
 })
 
-apiClient.interceptors.response.use(
+AXIOS_INSTANCE.interceptors.response.use(
   async (response) => {
     // CONFIG: Verify what response is your backend returning
     // Sometimes it's response.data.data
-    return response?.data
+    return response
   },
   async (error: AxiosError<ApiError>) => {
     const errorMessage = error?.response?.data?.message
@@ -50,3 +52,28 @@ apiClient.interceptors.response.use(
     return Promise.reject(new Error(i18n.t('errors.something_went_wrong')))
   }
 )
+
+// add a second `options` argument here if you want to pass extra options to each generated query
+export const customInstance = <T>(
+  config: AxiosRequestConfig,
+  options?: AxiosRequestConfig
+): Promise<T> => {
+  const source = Axios.CancelToken.source()
+  const promise = AXIOS_INSTANCE({
+    ...config,
+    ...options,
+    cancelToken: source.token,
+  }).then(({ data }) => data)
+
+  // @ts-expect-error: ??
+  promise.cancel = () => {
+    source.cancel('Query was cancelled')
+  }
+
+  return promise
+}
+
+// In some case with react-query and swr you want to be able to override the return error type so you can also do it here like this
+export type ErrorType<Error> = AxiosError<Error>
+
+export type BodyType<BodyData> = BodyData

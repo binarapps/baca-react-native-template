@@ -1,6 +1,5 @@
+import { getToken } from '@baca/services'
 import { AxiosRequestConfig } from 'axios'
-
-import { getToken } from '../TokenService'
 
 export const injectTokenToRequest = async (config: AxiosRequestConfig<object>) => {
   const token = await getToken()
