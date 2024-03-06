@@ -1,5 +1,3 @@
-import { BottomSheet } from '@baca/components/bottomSheets/BottomSheet'
-import { BottomSheetFlatList } from '@baca/components/bottomSheets/BottomSheetFlatList'
 import { useTheme } from '@baca/hooks'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { useCallback, useMemo, useRef } from 'react'
@@ -12,6 +10,8 @@ import { Row } from './Row'
 import { Text } from './Text'
 import { Touchable } from './Touchables/Touchable'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
+import { BottomSheet } from '../bottomSheets/BottomSheet'
+import { BottomSheetFlatList } from '../bottomSheets/BottomSheetFlatList'
 
 const ITEM_HEIGHT = 56
 const BOTTOM_SHEET_CONTENT_HEIGHT = Dimensions.get('screen').height / 1.5

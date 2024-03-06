@@ -1,4 +1,4 @@
-import { Center, Text } from '@baca/components/atoms'
+import { Center, Text } from '@baca/design-system'
 import { useScreenOptions, useTranslation } from '@baca/hooks'
 
 export const NotFoundScreen = (): JSX.Element => {

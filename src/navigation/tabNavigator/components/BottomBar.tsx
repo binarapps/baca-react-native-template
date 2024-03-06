@@ -1,5 +1,5 @@
-import { Icon } from '@baca/components'
 import { useColorScheme } from '@baca/contexts'
+import { Icon } from '@baca/design-system'
 import cssStyles from '@baca/styles'
 import { Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'

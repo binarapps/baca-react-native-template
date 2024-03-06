@@ -1,4 +1,5 @@
-import { AbsoluteFullFill, Loader, StatusBar } from '@baca/components'
+import { StatusBar } from '@baca/components'
+import { AbsoluteFullFill, Loader } from '@baca/design-system'
 import { useNavigationTheme, useRouterNotifications } from '@baca/hooks'
 import { Providers } from '@baca/providers'
 import { isSignedInAtom } from '@baca/store/auth'

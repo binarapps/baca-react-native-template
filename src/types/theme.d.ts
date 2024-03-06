@@ -1,5 +1,4 @@
-import { theme } from '@baca/constants/theme'
-import { themeColors } from '@baca/constants/colors'
+import { theme, themeColors } from '@baca/design-system'
 
 declare global {
   // THEME

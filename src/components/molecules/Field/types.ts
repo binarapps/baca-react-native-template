@@ -4,7 +4,7 @@ import {
   InputProps,
   RadioProps,
   SelectProps,
-} from '@baca/components'
+} from '@baca/design-system'
 
 export type FieldInputProps = InputProps &
   FormLabelProps & {

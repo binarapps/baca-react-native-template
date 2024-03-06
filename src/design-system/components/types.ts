@@ -1,4 +1,4 @@
-import { _appTheme } from '@baca/constants'
+import { _appTheme } from '@baca/design-system'
 import { IconNames } from '@baca/types/icon'
 import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 'react-native'
 

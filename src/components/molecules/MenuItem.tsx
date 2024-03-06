@@ -1,4 +1,4 @@
-import { Box, Touchable, Text } from '../atoms'
+import { Box, Touchable, Text } from '@baca/design-system/components'
 
 type MenuItemProps = {
   onPress: () => void

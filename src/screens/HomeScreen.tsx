@@ -1,7 +1,7 @@
 import { useArticlesControllerFindAll } from '@baca/api/query/articles/articles'
-import { Button, Center, Text } from '@baca/components'
 import { darkLogo, lightLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
+import { Button, Center, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
 import { Image, StyleSheet } from 'react-native'

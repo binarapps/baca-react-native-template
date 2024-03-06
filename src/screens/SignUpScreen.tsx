@@ -1,5 +1,6 @@
-import { Button, Center, Spacer, ControlledField, KeyboardAwareScrollView } from '@baca/components'
+import { ControlledField, KeyboardAwareScrollView } from '@baca/components'
 import { REGEX } from '@baca/constants'
+import { Button, Center, Spacer } from '@baca/design-system'
 import { useScreenOptions, useSignUpForm, useTranslation } from '@baca/hooks'
 import { useCallback, useEffect } from 'react'
 

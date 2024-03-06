@@ -1,8 +1,8 @@
-import { Box } from '@baca/components/atoms/Box'
-import { Icon } from '@baca/components/atoms/Icon'
-import { Row } from '@baca/components/atoms/Row'
-import { Text } from '@baca/components/atoms/Text'
-import { Touchable } from '@baca/components/atoms/Touchables/Touchable'
+import { Box } from '../components/Box'
+import { Icon } from '../components/Icon'
+import { Row } from '../components/Row'
+import { Text } from '../components/Text'
+import { Touchable } from '../components/Touchables/Touchable'
 
 export const BottomSheetHeader = ({
   title,

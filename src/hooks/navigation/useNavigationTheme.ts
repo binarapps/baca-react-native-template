@@ -1,5 +1,5 @@
-import { darkNavigationTheme, lightNavigationTheme } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
+import { darkNavigationTheme, lightNavigationTheme } from '@baca/design-system/config'
 import { useMemo } from 'react'
 
 import { useTheme } from '../useTheme'

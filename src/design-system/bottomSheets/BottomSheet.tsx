@@ -1,4 +1,4 @@
-import { Box } from '@baca/components/atoms/Box'
+import { Box } from '@baca/design-system/components/Box'
 import { useSafeAreaInsets } from '@baca/hooks'
 import {
   BottomSheetModal,

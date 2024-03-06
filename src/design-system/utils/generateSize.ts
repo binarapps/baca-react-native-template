@@ -1,5 +1,5 @@
-import { SizingValue } from '@baca/components'
-import { size, scale } from '@baca/constants'
+import { SizingValue } from '@baca/design-system'
+import { scale, size } from '@baca/design-system/config'
 import { ViewStyle, DimensionValue, Animated } from 'react-native'
 
 const isDimensionValue = (value?: DimensionValue) => {

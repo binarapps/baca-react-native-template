@@ -1,6 +1,6 @@
 import { useArticlesControllerFindAll } from '@baca/api/query/articles/articles'
 import { ArticleEntity } from '@baca/api/types'
-import { Loader, Center, Text, Box, Spacer } from '@baca/components'
+import { Loader, Center, Text, Box, Spacer } from '@baca/design-system'
 import { useScreenOptions, useTranslation } from '@baca/hooks'
 import { useCallback } from 'react'
 import { ListRenderItem, FlatList } from 'react-native'

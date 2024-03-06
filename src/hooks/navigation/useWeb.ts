@@ -1,4 +1,4 @@
-import { breakpoints } from '@baca/constants'
+import { breakpoints } from '@baca/design-system/config'
 import { useState, useEffect } from 'react'
 import { Dimensions } from 'react-native'
 

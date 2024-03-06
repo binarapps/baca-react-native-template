@@ -1,5 +1,5 @@
-import { Icon } from '@baca/components'
 import { useColorScheme } from '@baca/contexts'
+import { Icon } from '@baca/design-system'
 import cssStyles from '@baca/styles'
 import { IconNames } from '@baca/types/icon'
 import { Text } from '@bacons/react-views'

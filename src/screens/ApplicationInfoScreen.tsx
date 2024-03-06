@@ -1,6 +1,5 @@
-// TODO: there are tons of more interesting methods there!
-import { Box, Button, Text } from '@baca/components'
 import { isExpoGo } from '@baca/constants'
+import { Box, Button, Text } from '@baca/design-system'
 import {
   useCallback,
   usePreventGoBack,
@@ -8,6 +7,7 @@ import {
   useScreenOptions,
   useTranslation,
 } from '@baca/hooks'
+// TODO: there are tons of more interesting methods there!
 import * as Application from 'expo-application'
 import * as Clipboard from 'expo-clipboard'
 import Constants from 'expo-constants'
