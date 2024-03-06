@@ -1,4 +1,4 @@
-import { palette } from '@baca/constants'
+import { palette } from '@baca/design-system'
 import { IconNames } from '@baca/types/icon'
 import { hex2rgba } from '@baca/utils'
 

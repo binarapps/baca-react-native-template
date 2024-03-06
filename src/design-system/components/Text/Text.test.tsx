@@ -1,4 +1,4 @@
-import { theme } from '@baca/constants'
+import { theme } from '@baca/design-system'
 import { cleanup, render } from '@baca/utils/testUtils'
 
 import { Text } from './Text'

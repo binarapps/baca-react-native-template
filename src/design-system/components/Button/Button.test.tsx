@@ -1,4 +1,4 @@
-import { theme } from '@baca/constants'
+import { theme } from '@baca/design-system'
 import { cleanup, render, fireEvent, act } from '@baca/utils/testUtils'
 import { StyleSheet } from 'react-native'
 

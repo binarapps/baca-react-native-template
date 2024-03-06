@@ -1,4 +1,4 @@
-import { _appTheme } from '@baca/constants'
+import { _appTheme } from '@baca/design-system'
 import { TextStyle } from 'react-native'
 
 type FontWeights = NonNullable<keyof (typeof _appTheme)['fontWeights'] | TextStyle['fontWeight']>
