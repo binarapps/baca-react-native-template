@@ -1,4 +1,4 @@
-import { Icon, Loader, Box, Text, Button, Center, ScrollView } from '@baca/components'
+import { Icon, Loader, Box, Text, Button, Center, ScrollView } from '@baca/design-system'
 import { useCallback, useNotifications, useScreenOptions, useTranslation } from '@baca/hooks'
 import * as Linking from 'expo-linking'
 

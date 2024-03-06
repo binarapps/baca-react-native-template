@@ -1,4 +1,4 @@
-import { Button, ScrollView } from '@baca/components'
+import { Button, ScrollView } from '@baca/design-system'
 import { useCallback, useTranslation, useScreenOptions } from '@baca/hooks'
 import { useRouter } from 'expo-router'
 

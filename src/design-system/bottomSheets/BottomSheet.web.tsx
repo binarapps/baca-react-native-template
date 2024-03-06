@@ -1,10 +1,11 @@
-import { Box, Modal } from '@baca/components'
+import { Modal } from '@baca/components/Modal'
 import { useBoolean, useWeb } from '@baca/hooks'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { RefObject, useCallback, useImperativeHandle } from 'react'
 import { ScrollView } from 'react-native'
 
 import { BottomSheetHeader } from './BottomSheetHeader'
+import { Box } from '../components/Box'
 
 type Props = {
   bottomSheetRef: RefObject<BottomSheetModal>

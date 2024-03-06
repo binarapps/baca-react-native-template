@@ -1,6 +1,7 @@
-import { Version, Spacer, Button, Center, Text, ScrollView } from '@baca/components'
+import { Version } from '@baca/components'
 import { colorSchemesList } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
+import { Spacer, Button, Center, Text, ScrollView } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { signOut } from '@baca/store/auth'
 import { noop } from '@baca/utils'

@@ -1,4 +1,4 @@
-import { Loader, Center, Text, Box, Spacer } from '@baca/components'
+import { Loader, Center, Text, Box, Spacer } from '@baca/design-system'
 import { useScreenOptions, useTranslation } from '@baca/hooks'
 import { useGetCity_EXAMPLE } from '@baca/query-hooks'
 import { TodoItem } from '@baca/types/todos'

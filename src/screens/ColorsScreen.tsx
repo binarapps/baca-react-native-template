@@ -1,4 +1,4 @@
-import { Text, Center, ScrollView } from '@baca/components'
+import { Text, Center, ScrollView } from '@baca/design-system'
 import { useScreenOptions, useTranslation } from '@baca/hooks'
 
 const colorsVariants: NestedKeys<Colors>[] = [

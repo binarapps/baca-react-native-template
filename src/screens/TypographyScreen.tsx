@@ -1,5 +1,5 @@
-import { Column, Row, Box, Text } from '@baca/components'
 import { useColorScheme } from '@baca/contexts'
+import { Column, Row, Box, Text } from '@baca/design-system'
 import { useTranslation } from '@baca/hooks'
 import { ScrollView, Switch, Platform } from 'react-native'
 

@@ -1,4 +1,4 @@
-import { Center, Text } from '@baca/components/atoms'
+import { Center, Text } from '@baca/design-system'
 import { useTranslation } from '@baca/hooks'
 import { FC } from 'react'
 

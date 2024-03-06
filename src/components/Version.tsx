@@ -1,11 +1,10 @@
+import { Spacer, Text } from '@baca/design-system/components'
 import * as Application from 'expo-application'
 import * as Clipboard from 'expo-clipboard'
 import Constants from 'expo-constants'
 import * as Updates from 'expo-updates'
 import { useCallback } from 'react'
 import { Pressable } from 'react-native'
-
-import { Spacer, Text } from './atoms'
 
 const appName = Application?.applicationName ?? Constants?.expoConfig?.name
 const appVersion = Application?.nativeApplicationVersion ?? Constants?.expoConfig?.version

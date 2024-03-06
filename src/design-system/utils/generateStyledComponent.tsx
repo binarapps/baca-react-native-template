@@ -2,7 +2,7 @@ import { useTheme } from '@baca/hooks'
 import React, { forwardRef, ComponentType } from 'react'
 
 import { generateStyledSystem } from './generateStyledSystem'
-import { StyledProps } from '../atoms/types'
+import { StyledProps } from '../components/types'
 
 type StylePropKeys = 'style' | 'contentContainerStyle'
 

@@ -1,4 +1,4 @@
-import { Button, Center, Text } from '@baca/components/atoms'
+import { Button, Center, Text } from '@baca/design-system'
 import { useCallback, useTranslation } from '@baca/hooks'
 
 // @ts-expect-error: it's a template and will be removed

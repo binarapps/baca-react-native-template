@@ -11,7 +11,7 @@ import {
   SizingProps,
   EffectsProps,
   BackgroundProps,
-} from '../atoms/types'
+} from '../components/types'
 
 const generateFlexStyle = ({
   flex,

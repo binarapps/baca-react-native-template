@@ -1,6 +1,6 @@
-import { Box, Button, Icon, Pressable } from '@baca/components'
 import { darkLogoFull, lightLogoFull } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
+import { Box, Button, Icon, Pressable } from '@baca/design-system'
 import { useTranslation } from '@baca/hooks'
 import { TabColorsStrings } from '@baca/navigation/tabNavigator/config'
 import { isSignedInAtom } from '@baca/store/auth'

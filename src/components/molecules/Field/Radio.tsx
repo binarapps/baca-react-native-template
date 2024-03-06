@@ -1,8 +1,14 @@
+import {
+  FormErrorMessage,
+  FormLabel,
+  Box,
+  Touchable,
+  Text,
+  TouchableRef,
+} from '@baca/design-system/components'
 import { forwardRef, useCallback, useMemo } from 'react'
 
 import { FieldRadioProps } from './types'
-import { FormErrorMessage, FormLabel, Box, Touchable, Text } from '../../atoms'
-import type { TouchableRef } from '../../atoms/Touchables/Touchable'
 
 export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
   (

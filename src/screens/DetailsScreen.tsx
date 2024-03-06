@@ -1,4 +1,4 @@
-import { useBottomSheet, Center, Text, Button, Box } from '@baca/components'
+import { useBottomSheet, Center, Text, Button, Box } from '@baca/design-system'
 import { useScreenOptions, useState, useTranslation } from '@baca/hooks'
 import { useLocalSearchParams } from 'expo-router'
 

@@ -1,4 +1,4 @@
-import { TextVariant } from '@baca/components'
+import { TextVariant } from '@baca/design-system'
 
 type VariantStyle = {
   fontFamily: Fonts

@@ -1,4 +1,4 @@
-import { SelectKey } from '@baca/components/atoms'
+import { SelectKey } from '@baca/design-system'
 import { useCallback } from 'react'
 import { Controller, get, ControllerProps } from 'react-hook-form'
 
