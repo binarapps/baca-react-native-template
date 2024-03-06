@@ -1,7 +1,7 @@
 //THIS IS EXAMPLE REQUEST
-import { apiClient } from '../api'
+import { TodoList } from '@baca/types/todos'
 
-import { TodoList } from '~types/todos'
+import { apiClient } from '../api'
 
 export const getData = async () => {
   return apiClient.get<TodoList, TodoList>(`/todos`)

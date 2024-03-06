@@ -1,3 +1,6 @@
+import { darkLogoFull, darkLogoSygnet, lightLogoFull, lightLogoSygnet } from '@baca/constants'
+import { useColorScheme } from '@baca/contexts'
+import cssStyles from '@baca/styles'
 import { Pressable, Text } from '@bacons/react-views'
 import { Link } from 'expo-router'
 import { Image, Platform, StyleSheet, View } from 'react-native'
@@ -5,10 +8,6 @@ import { Image, Platform, StyleSheet, View } from 'react-native'
 import { TabColorsStrings } from '../config'
 import { useWidth } from '../hooks'
 import { cns } from '../utils'
-
-import { darkLogoFull, darkLogoSygnet, lightLogoFull, lightLogoSygnet } from '~constants'
-import { useColorScheme } from '~contexts'
-import cssStyles from '~styles'
 
 export function HeaderLogo() {
   const { colorScheme } = useColorScheme()

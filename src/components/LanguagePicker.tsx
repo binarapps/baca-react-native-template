@@ -1,3 +1,6 @@
+import { Icon, Row, Text } from '@baca/design-system/components'
+import { Touchable, TouchableProps } from '@baca/design-system/components/Touchables/Touchable'
+import { useCallback, useTranslation, useTheme } from '@baca/hooks'
 import { StyleSheet } from 'react-native'
 import Animated, {
   useAnimatedStyle,
@@ -6,14 +9,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
-import { Icon } from './atoms/Icon'
-import { Row } from './atoms/Row'
-import { Text } from './atoms/Text'
-import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
 import { Menu } from './organisms/Menu'
 import languages from '../../assets/languages.json'
-
-import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
   const { size } = useTheme()

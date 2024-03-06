@@ -14,7 +14,7 @@ On the other hand, below you can find documentation of the implemented component
 ### Usage
 
 ```tsx
-import { Absolute } from '~components'
+import { Absolute } from '@baca/components'
 
 const MyComponent: React.FC<React.PropsWithChildren> = ({ children }) => (
   <Absolute>{children}</Absolute>
@@ -36,7 +36,7 @@ export default MyComponent
 ### Usage
 
 ```tsx
-import { AbsoluteFullFill } from '~components'
+import { AbsoluteFullFill } from '@baca/components'
 
 const MyComponent: React.FC<React.PropsWithChildren> = ({ children }) => (
   <AbsoluteFullFill>{children}</AbsoluteFullFill>
@@ -56,7 +56,7 @@ The **Input** component allows user to provide input in a text field.
 ### Usage
 
 ```tsx
-import { Input, AbsoluteFullFill } from '~components'
+import { Input, AbsoluteFullFill } from '@baca/components'
 
 const MyComponent: React.FC = () => (
   <AbsoluteFullFill>
@@ -102,7 +102,7 @@ The **Spacer** component is used to pass space between components in a render tr
 ### Usage
 
 ```tsx
-import { Spacer, Input, Container } from '~components'
+import { Spacer, Input, Container } from '@baca/components'
 
 const MyComponent: React.FC = () => (
   <Container>
@@ -191,7 +191,7 @@ _type_: `JSX.Element` | `undefined`
 ### Usage
 
 ```tsx
-import { Field } from '~components'
+import { Field } from '@baca/components'
 
 const MyComponent: React.FC = () => (
   <Field.Input
@@ -224,7 +224,7 @@ _type_: `string` | `undefined`
 ### Usage
 
 ```tsx
-import { Field } from '~components'
+import { Field } from '@baca/components'
 
 const MyComponent: React.FC = () => (
   <Field.Checkbox isRequired autoCapitalize="none" label="Confirm" />
@@ -271,7 +271,7 @@ _type_: `FieldErrors<any>`
 ```tsx
 import { useForm } from 'react-hook-form'
 
-import { ControlledField } from '~components'
+import { ControlledField } from '@baca/components'
 
 const MyComponent: React.FC = () => {
   const {
@@ -340,7 +340,7 @@ _type_: `FieldErrors<any>` | `undefined`
 ```tsx
 import { useForm } from 'react-hook-form'
 
-import { ControlledField } from '~components'
+import { ControlledField } from '@baca/components'
 
 const MyComponent: React.FC = () => {
   const {

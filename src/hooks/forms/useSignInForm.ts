@@ -1,13 +1,12 @@
+import { setToken } from '@baca/services'
+import { isSignedInAtom } from '@baca/store/auth'
+import { SignInFormValues } from '@baca/types/authForms'
+import { hapticImpact, wait } from '@baca/utils'
 import { isError } from '@tanstack/react-query'
 import { useSetAtom } from 'jotai'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-
-import { setToken } from '~services'
-import { isSignedInAtom } from '~store/auth'
-import { SignInFormValues } from '~types/authForms'
-import { hapticImpact, wait } from '~utils'
 
 const defaultValues: SignInFormValues = {
   // TODO: Reset this values when building production app

@@ -100,7 +100,7 @@ const theme = {
 const objectString = `export const themeColors = ${JSON.stringify(theme, null, 2)}`
 
 // Specify the file path
-const filePath = './src/constants/colors.ts'
+const filePath = './src/design-system/config/colors.ts'
 
 fs.writeFileSync(filePath, objectString, 'utf-8')
 

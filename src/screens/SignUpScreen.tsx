@@ -1,8 +1,8 @@
+import { ControlledField, KeyboardAwareScrollView } from '@baca/components'
+import { REGEX } from '@baca/constants'
+import { Button, Center, Spacer } from '@baca/design-system'
+import { useScreenOptions, useSignUpForm, useTranslation } from '@baca/hooks'
 import { useCallback, useEffect } from 'react'
-
-import { Button, Center, Spacer, ControlledField, KeyboardAwareScrollView } from '~components'
-import { REGEX } from '~constants'
-import { useScreenOptions, useSignUpForm, useTranslation } from '~hooks'
 
 export const SignUpScreen = () => {
   const { t } = useTranslation()

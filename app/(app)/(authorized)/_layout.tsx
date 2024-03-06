@@ -1,7 +1,6 @@
+import { isSignedInAtom } from '@baca/store/auth'
 import { Redirect, Stack } from 'expo-router'
 import { useAtomValue } from 'jotai'
-
-import { isSignedInAtom } from '~store/auth'
 
 export const unstable_settings = {
   initialRouteName: '(tabs)',

@@ -1,6 +1,5 @@
+import { alert } from '@baca/utils'
 import { useEffect } from 'react'
-
-import { alert } from '~utils'
 
 export const useTimestamp = (): void => {
   useEffect(() => {

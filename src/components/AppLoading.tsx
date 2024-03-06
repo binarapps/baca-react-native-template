@@ -1,12 +1,10 @@
+import { AbsoluteFullFill, Loader, Center } from '@baca/design-system/components'
+import { useBoolean, useCachedResources, useFonts } from '@baca/hooks'
+import { isSignedInAtom } from '@baca/store/auth'
 import * as SplashScreen from 'expo-splash-screen'
 import { useAtomValue } from 'jotai'
 import { FC, PropsWithChildren, useCallback, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
-
-import { AbsoluteFullFill, Loader, Center } from './atoms'
-
-import { useBoolean, useCachedResources, useFonts } from '~hooks'
-import { isSignedInAtom } from '~store/auth'
 
 SplashScreen.preventAutoHideAsync()
 

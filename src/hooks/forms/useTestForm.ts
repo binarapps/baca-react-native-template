@@ -1,9 +1,8 @@
+import { TestFormValues } from '@baca/types/testForm'
 import { isError } from '@tanstack/react-query'
 import { useState } from 'react'
 import { FieldPath, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-
-import { TestFormValues } from '~types/testForm'
 
 const defaultValues: TestFormValues = {
   name: '',

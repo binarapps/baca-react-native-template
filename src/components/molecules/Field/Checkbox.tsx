@@ -1,11 +1,13 @@
+import {
+  Box,
+  Checkbox as CustomCheckbox,
+  FormErrorMessage,
+  FormLabel,
+  Spacer,
+} from '@baca/design-system/components'
 import { Fragment, useMemo } from 'react'
 
 import { FieldCheckboxProps } from './types'
-import { Box } from '../../atoms/Box'
-import { Checkbox as CustomCheckbox } from '../../atoms/Checkbox'
-import { FormErrorMessage } from '../../atoms/FormErrorMessage'
-import { FormLabel } from '../../atoms/FormLabel'
-import { Spacer } from '../../atoms/Spacer'
 
 export const Checkbox = ({
   isInvalid,

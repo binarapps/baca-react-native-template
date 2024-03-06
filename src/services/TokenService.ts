@@ -1,5 +1,5 @@
-import { ASYNC_STORAGE_KEYS } from '~constants'
-import { secureStore } from '~utils'
+import { ASYNC_STORAGE_KEYS } from '@baca/constants'
+import { secureStore } from '@baca/utils'
 
 const { USER_TOKEN } = ASYNC_STORAGE_KEYS
 

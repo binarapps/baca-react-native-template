@@ -111,7 +111,7 @@ const addToScreens = (name, screenType) => {
   if (screenType.type === 'tabs_new') {
     // 3. c) Add new tab to bottomTabs and create stack with screen
     contents = addBefore(contents, '// StackEnums', Content.screenEnumImport(screenType.value))
-    contents = addBefore(contents, "} from '~screens'", Content.screenNameImport(name))
+    contents = addBefore(contents, "} from '@baca/screens'", Content.screenNameImport(name))
     contents = addBefore(
       contents,
       '// ExamplesStack_SCREENS_START',
@@ -124,7 +124,7 @@ const addToScreens = (name, screenType) => {
 
     typeToSearch.replace(screenType.value, screenType.value)
     contents = addBefore(contents, typeToSearch, newScreen)
-    contents = addBefore(contents, "} from '~screens'", Content.screenNameImport(name))
+    contents = addBefore(contents, "} from '@baca/screens'", Content.screenNameImport(name))
   }
 
   const path = screenType.type === 'root' ? screensFileSrc : tabsFileSrc

@@ -1,3 +1,3 @@
-import { ApplicationInfoScreen } from '~screens'
+import { ApplicationInfoScreen } from '@baca/screens'
 
 export default ApplicationInfoScreen

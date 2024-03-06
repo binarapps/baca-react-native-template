@@ -1,6 +1,6 @@
-import { palette } from '~constants'
-import { IconNames } from '~types/icon'
-import { hex2rgba } from '~utils'
+import { palette } from '@baca/design-system'
+import { IconNames } from '@baca/types/icon'
+import { hex2rgba } from '@baca/utils'
 
 type Tab = {
   displayedName: string

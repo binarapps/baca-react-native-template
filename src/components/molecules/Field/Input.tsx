@@ -1,8 +1,13 @@
+import {
+  FormErrorMessage,
+  FormLabel,
+  Input as BaseInput,
+  Box,
+} from '@baca/design-system/components'
 import { forwardRef, useCallback, useImperativeHandle, useRef, useMemo } from 'react'
 import { NativeSyntheticEvent, Pressable, TextInput, TextInputFocusEventData } from 'react-native'
 
 import type { FieldInputProps } from './types'
-import { FormErrorMessage, FormLabel, Input as BaseInput, Box } from '../../atoms'
 
 const layoutPropsKeys = [
   'm',

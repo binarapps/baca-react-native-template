@@ -1,11 +1,10 @@
+import { ENV, SECOND_IN_MS } from '@baca/constants'
+import { getApiError } from '@baca/utils'
 import axios, { AxiosError } from 'axios'
 import i18n from 'i18next'
 import qs from 'qs'
 
 import { injectTokenToRequest } from '../interceptors/injectToken'
-
-import { ENV, SECOND_IN_MS } from '~constants'
-import { getApiError } from '~utils'
 
 export type ApiError = {
   message: string

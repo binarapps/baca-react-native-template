@@ -1,11 +1,11 @@
+import { StatusBar } from '@baca/components'
+import { AbsoluteFullFill, Loader } from '@baca/design-system'
+import { useNavigationTheme, useRouterNotifications } from '@baca/hooks'
+import { Providers } from '@baca/providers'
+import { isSignedInAtom } from '@baca/store/auth'
 import { ThemeProvider } from '@react-navigation/native'
 import { Slot } from 'expo-router'
 import { useAtomValue } from 'jotai'
-
-import { AbsoluteFullFill, Loader, StatusBar } from '~components'
-import { useNavigationTheme, useRouterNotifications } from '~hooks'
-import { Providers } from '~providers'
-import { isSignedInAtom } from '~store/auth'
 
 export const unstable_settings = {
   initialRouteName: 'index',

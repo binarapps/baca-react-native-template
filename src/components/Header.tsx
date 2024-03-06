@@ -1,7 +1,6 @@
+import { Box, Column, Row, Icon, Text, Touchable } from '@baca/design-system'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 import { useRouter } from 'expo-router'
-
-import { Box, Column, Row, Icon, Text, Touchable } from '~components/atoms'
 
 const logoHeight = 24
 

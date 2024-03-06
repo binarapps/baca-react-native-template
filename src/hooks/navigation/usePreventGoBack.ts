@@ -1,3 +1,4 @@
+import { alert } from '@baca/utils'
 import {
   EventListenerCallback,
   EventMapCore,
@@ -9,8 +10,6 @@ import { nanoid } from 'nanoid/non-secure'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import useLatestCallback from 'use-latest-callback'
-
-import { alert } from '~utils'
 
 // This is copy of this hook: usePreventRemove
 // https://github.com/react-navigation/react-navigation/blob/90cfbf23bcc5259f3262691a9eec6c5b906e5262/packages/core/src/usePreventRemove.tsx#L17

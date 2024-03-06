@@ -1,7 +1,7 @@
-import { isSignedInAtom } from './authState'
+import { deleteToken } from '@baca/services'
+import { store } from '@baca/store/store'
 
-import { deleteToken } from '~services'
-import { store } from '~store/store'
+import { isSignedInAtom } from './authState'
 
 export async function signOut() {
   await deleteToken()

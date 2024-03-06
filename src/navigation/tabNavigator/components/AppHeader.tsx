@@ -1,10 +1,9 @@
+import { darkLogoFull, lightLogoFull } from '@baca/constants'
+import { useColorScheme } from '@baca/contexts'
 import { Image, Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TabColorsStrings } from '../config'
-
-import { darkLogoFull, lightLogoFull } from '~constants'
-import { useColorScheme } from '~contexts'
 
 export function AppHeader() {
   const { colorScheme } = useColorScheme()
