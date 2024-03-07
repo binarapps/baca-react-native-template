@@ -16,10 +16,16 @@ import type {
   AuthEntity,
   AuthFacebookLoginDto,
   AuthGoogleLoginDto,
+  ErrorEntity,
+  ErrorServerEntity,
 } from '../../types'
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
 
+/**
+ * Logs the user into the system using Google authentication
+ * @summary Login with Google
+ */
 export const authGoogleControllerLogin = (
   authGoogleLoginDto: BodyType<AuthGoogleLoginDto>,
   options?: SecondParameter<typeof customInstance>
@@ -36,7 +42,7 @@ export const authGoogleControllerLogin = (
 }
 
 export const getAuthGoogleControllerLoginMutationOptions = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -70,10 +76,13 @@ export type AuthGoogleControllerLoginMutationResult = NonNullable<
   Awaited<ReturnType<typeof authGoogleControllerLogin>>
 >
 export type AuthGoogleControllerLoginMutationBody = BodyType<AuthGoogleLoginDto>
-export type AuthGoogleControllerLoginMutationError = ErrorType<unknown>
+export type AuthGoogleControllerLoginMutationError = ErrorType<ErrorEntity | ErrorServerEntity>
 
+/**
+ * @summary Login with Google
+ */
 export const useAuthGoogleControllerLogin = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -88,6 +97,10 @@ export const useAuthGoogleControllerLogin = <
 
   return useMutation(mutationOptions)
 }
+/**
+ * Logs the user into the system using Facebook authentication
+ * @summary Login with Facebook
+ */
 export const authFacebookControllerLogin = (
   authFacebookLoginDto: BodyType<AuthFacebookLoginDto>,
   options?: SecondParameter<typeof customInstance>
@@ -104,7 +117,7 @@ export const authFacebookControllerLogin = (
 }
 
 export const getAuthFacebookControllerLoginMutationOptions = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -138,10 +151,13 @@ export type AuthFacebookControllerLoginMutationResult = NonNullable<
   Awaited<ReturnType<typeof authFacebookControllerLogin>>
 >
 export type AuthFacebookControllerLoginMutationBody = BodyType<AuthFacebookLoginDto>
-export type AuthFacebookControllerLoginMutationError = ErrorType<unknown>
+export type AuthFacebookControllerLoginMutationError = ErrorType<ErrorEntity | ErrorServerEntity>
 
+/**
+ * @summary Login with Facebook
+ */
 export const useAuthFacebookControllerLogin = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -156,6 +172,10 @@ export const useAuthFacebookControllerLogin = <
 
   return useMutation(mutationOptions)
 }
+/**
+ * Logs the user into the system using Apple authentication
+ * @summary Login with Apple
+ */
 export const authAppleControllerLogin = (
   authAppleLoginDto: BodyType<AuthAppleLoginDto>,
   options?: SecondParameter<typeof customInstance>
@@ -172,7 +192,7 @@ export const authAppleControllerLogin = (
 }
 
 export const getAuthAppleControllerLoginMutationOptions = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -206,10 +226,13 @@ export type AuthAppleControllerLoginMutationResult = NonNullable<
   Awaited<ReturnType<typeof authAppleControllerLogin>>
 >
 export type AuthAppleControllerLoginMutationBody = BodyType<AuthAppleLoginDto>
-export type AuthAppleControllerLoginMutationError = ErrorType<unknown>
+export type AuthAppleControllerLoginMutationError = ErrorType<ErrorEntity | ErrorServerEntity>
 
+/**
+ * @summary Login with Apple
+ */
 export const useAuthAppleControllerLogin = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<

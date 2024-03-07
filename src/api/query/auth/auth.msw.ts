@@ -14,7 +14,7 @@ import type { AuthEntity, RefreshEntity, UserEntity } from '../../types'
 export const getAuthControllerLoginResponseMock = (overrideResponse: any = {}): AuthEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
-  tokenExpires: faker.word.sample(),
+  tokenExpires: faker.number.int({ min: undefined, max: undefined }),
   user: {
     consent: faker.helpers.arrayElement([
       {
@@ -164,6 +164,18 @@ export const getAuthControllerConfirmEmailMockHandler = () => {
   })
 }
 
+export const getAuthControllerResendVerificationEmailMockHandler = () => {
+  return http.post('*/api/v1/auth/email/resend', async () => {
+    await delay(1000)
+    return new HttpResponse(null, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  })
+}
+
 export const getAuthControllerForgotPasswordMockHandler = () => {
   return http.post('*/api/v1/auth/forgot/password', async () => {
     await delay(1000)
@@ -253,10 +265,23 @@ export const getAuthControllerLogoutMockHandler = () => {
     })
   })
 }
+
+export const getAuthControllerLogoutAllMockHandler = () => {
+  return http.post('*/api/v1/auth/logout/all', async () => {
+    await delay(1000)
+    return new HttpResponse(null, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  })
+}
 export const getAuthMock = () => [
   getAuthControllerLoginMockHandler(),
   getAuthControllerRegisterMockHandler(),
   getAuthControllerConfirmEmailMockHandler(),
+  getAuthControllerResendVerificationEmailMockHandler(),
   getAuthControllerForgotPasswordMockHandler(),
   getAuthControllerResetPasswordMockHandler(),
   getAuthControllerMeMockHandler(),
@@ -264,4 +289,5 @@ export const getAuthMock = () => [
   getAuthControllerDeleteMockHandler(),
   getAuthControllerRefreshMockHandler(),
   getAuthControllerLogoutMockHandler(),
+  getAuthControllerLogoutAllMockHandler(),
 ]

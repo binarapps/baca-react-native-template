@@ -16,7 +16,7 @@ export const getAuthGoogleControllerLoginResponseMock = (
 ): AuthEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
-  tokenExpires: faker.word.sample(),
+  tokenExpires: faker.number.int({ min: undefined, max: undefined }),
   user: {
     consent: faker.helpers.arrayElement([
       {
@@ -56,7 +56,7 @@ export const getAuthFacebookControllerLoginResponseMock = (
 ): AuthEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
-  tokenExpires: faker.word.sample(),
+  tokenExpires: faker.number.int({ min: undefined, max: undefined }),
   user: {
     consent: faker.helpers.arrayElement([
       {
@@ -96,7 +96,7 @@ export const getAuthAppleControllerLoginResponseMock = (
 ): AuthEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
-  tokenExpires: faker.word.sample(),
+  tokenExpires: faker.number.int({ min: undefined, max: undefined }),
   user: {
     consent: faker.helpers.arrayElement([
       {
