@@ -4,8 +4,8 @@ import { Platform, StyleSheet, View } from 'react-native'
 
 import { HeaderLogo } from './HeaderLogo'
 import { SideBarTabItem } from './SideBarTabItem'
-import { TabColorsStrings, upperSideTabs } from '../config'
 import { useWidth } from '../hooks'
+import { TabColorsStrings, upperSideTabs } from '../navigation-config'
 import { cns } from '../utils'
 
 const NAV_MEDIUM_WIDTH = 244

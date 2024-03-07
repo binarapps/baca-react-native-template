@@ -6,8 +6,8 @@ import { Text } from '@bacons/react-views'
 import { Platform, StyleSheet, View } from 'react-native'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
-import { TabColors, TabColorsStrings } from '../config'
 import { useWidth } from '../hooks'
+import { TabColors, TabColorsStrings } from '../navigation-config'
 import { cns } from '../utils'
 
 export function SideBarTabItem({
