@@ -1,4 +1,6 @@
-import { Server } from 'miragejs'
+import { setupServer } from 'msw/native'
+
+type Server = ReturnType<typeof setupServer>
 
 declare global {
   interface Window {
