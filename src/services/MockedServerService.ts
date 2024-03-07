@@ -1,22 +1,18 @@
-import { createServer } from 'miragejs'
+import { getArticlesMock } from '@baca/api/query/articles/articles.msw'
+import { getAuthMock } from '@baca/api/query/auth/auth.msw'
+import { getAuthSocialMock } from '@baca/api/query/auth-social/auth-social.msw'
+import { getFilesMock } from '@baca/api/query/files/files.msw'
+import { getUsersMock } from '@baca/api/query/users/users.msw'
+import { setupServer } from 'msw/native'
 
 export const startMockedServer = (): void => {
-  if (window.server) {
-    server.shutdown()
-  }
+  const server = setupServer(
+    ...getAuthMock(),
+    ...getUsersMock(),
+    ...getFilesMock(),
+    ...getAuthSocialMock(),
+    ...getArticlesMock()
+  )
 
-  window.server = createServer({
-    environment: 'development',
-    namespace: '/api',
-    timing: 400,
-    logging: true,
-    useDefaultPassthroughs: true,
-    routes() {
-      this.get('/timestamp', () => {
-        return {
-          timestamp: new Date().toISOString(),
-        }
-      })
-    },
-  })
+  server.listen({ onUnhandledRequest: 'bypass' })
 }
