@@ -23,11 +23,16 @@ import type {
   ArticlesControllerFindAllParams,
   ArticlesControllerFindDraftsParams,
   CreateArticleDto,
+  ErrorServerEntity,
   UpdateArticleDto,
 } from '../../types'
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
 
+/**
+ * Creates a new article with the provided details.
+ * @summary Create Article
+ */
 export const articlesControllerCreate = (
   createArticleDto: BodyType<CreateArticleDto>,
   options?: SecondParameter<typeof customInstance>
@@ -44,7 +49,7 @@ export const articlesControllerCreate = (
 }
 
 export const getArticlesControllerCreateMutationOptions = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -78,10 +83,13 @@ export type ArticlesControllerCreateMutationResult = NonNullable<
   Awaited<ReturnType<typeof articlesControllerCreate>>
 >
 export type ArticlesControllerCreateMutationBody = BodyType<CreateArticleDto>
-export type ArticlesControllerCreateMutationError = ErrorType<unknown>
+export type ArticlesControllerCreateMutationError = ErrorType<ErrorServerEntity>
 
+/**
+ * @summary Create Article
+ */
 export const useArticlesControllerCreate = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -96,6 +104,10 @@ export const useArticlesControllerCreate = <
 
   return useMutation(mutationOptions)
 }
+/**
+ * Retrieves a list of all articles with pagination support.
+ * @summary Find All Articles
+ */
 export const articlesControllerFindAll = (
   params: ArticlesControllerFindAllParams,
   options?: SecondParameter<typeof customInstance>,
@@ -113,7 +125,7 @@ export const getArticlesControllerFindAllQueryKey = (params: ArticlesControllerF
 
 export const getArticlesControllerFindAllQueryOptions = <
   TData = Awaited<ReturnType<typeof articlesControllerFindAll>>,
-  TError = ErrorType<unknown>
+  TError = ErrorType<ErrorServerEntity>
 >(
   params: ArticlesControllerFindAllParams,
   options?: {
@@ -139,11 +151,14 @@ export const getArticlesControllerFindAllQueryOptions = <
 export type ArticlesControllerFindAllQueryResult = NonNullable<
   Awaited<ReturnType<typeof articlesControllerFindAll>>
 >
-export type ArticlesControllerFindAllQueryError = ErrorType<unknown>
+export type ArticlesControllerFindAllQueryError = ErrorType<ErrorServerEntity>
 
+/**
+ * @summary Find All Articles
+ */
 export const useArticlesControllerFindAll = <
   TData = Awaited<ReturnType<typeof articlesControllerFindAll>>,
-  TError = ErrorType<unknown>
+  TError = ErrorType<ErrorServerEntity>
 >(
   params: ArticlesControllerFindAllParams,
   options?: {
@@ -160,6 +175,10 @@ export const useArticlesControllerFindAll = <
   return query
 }
 
+/**
+ * Retrieves a list of draft articles with pagination support.
+ * @summary Find Draft Articles
+ */
 export const articlesControllerFindDrafts = (
   params: ArticlesControllerFindDraftsParams,
   options?: SecondParameter<typeof customInstance>,
@@ -179,7 +198,7 @@ export const getArticlesControllerFindDraftsQueryKey = (
 
 export const getArticlesControllerFindDraftsQueryOptions = <
   TData = Awaited<ReturnType<typeof articlesControllerFindDrafts>>,
-  TError = ErrorType<unknown>
+  TError = ErrorType<ErrorServerEntity>
 >(
   params: ArticlesControllerFindDraftsParams,
   options?: {
@@ -205,11 +224,14 @@ export const getArticlesControllerFindDraftsQueryOptions = <
 export type ArticlesControllerFindDraftsQueryResult = NonNullable<
   Awaited<ReturnType<typeof articlesControllerFindDrafts>>
 >
-export type ArticlesControllerFindDraftsQueryError = ErrorType<unknown>
+export type ArticlesControllerFindDraftsQueryError = ErrorType<ErrorServerEntity>
 
+/**
+ * @summary Find Draft Articles
+ */
 export const useArticlesControllerFindDrafts = <
   TData = Awaited<ReturnType<typeof articlesControllerFindDrafts>>,
-  TError = ErrorType<unknown>
+  TError = ErrorType<ErrorServerEntity>
 >(
   params: ArticlesControllerFindDraftsParams,
   options?: {
@@ -226,6 +248,10 @@ export const useArticlesControllerFindDrafts = <
   return query
 }
 
+/**
+ * Retrieves an article by its unique identifier.
+ * @summary Find Article by ID
+ */
 export const articlesControllerFindOne = (
   id: number,
   options?: SecondParameter<typeof customInstance>,
@@ -243,7 +269,7 @@ export const getArticlesControllerFindOneQueryKey = (id: number) => {
 
 export const getArticlesControllerFindOneQueryOptions = <
   TData = Awaited<ReturnType<typeof articlesControllerFindOne>>,
-  TError = ErrorType<unknown>
+  TError = ErrorType<ErrorServerEntity>
 >(
   id: number,
   options?: {
@@ -269,11 +295,14 @@ export const getArticlesControllerFindOneQueryOptions = <
 export type ArticlesControllerFindOneQueryResult = NonNullable<
   Awaited<ReturnType<typeof articlesControllerFindOne>>
 >
-export type ArticlesControllerFindOneQueryError = ErrorType<unknown>
+export type ArticlesControllerFindOneQueryError = ErrorType<ErrorServerEntity>
 
+/**
+ * @summary Find Article by ID
+ */
 export const useArticlesControllerFindOne = <
   TData = Awaited<ReturnType<typeof articlesControllerFindOne>>,
-  TError = ErrorType<unknown>
+  TError = ErrorType<ErrorServerEntity>
 >(
   id: number,
   options?: {
@@ -290,6 +319,10 @@ export const useArticlesControllerFindOne = <
   return query
 }
 
+/**
+ * Updates an article with the provided details.
+ * @summary Update Article
+ */
 export const articlesControllerUpdate = (
   id: number,
   updateArticleDto: BodyType<UpdateArticleDto>,
@@ -307,7 +340,7 @@ export const articlesControllerUpdate = (
 }
 
 export const getArticlesControllerUpdateMutationOptions = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -341,10 +374,13 @@ export type ArticlesControllerUpdateMutationResult = NonNullable<
   Awaited<ReturnType<typeof articlesControllerUpdate>>
 >
 export type ArticlesControllerUpdateMutationBody = BodyType<UpdateArticleDto>
-export type ArticlesControllerUpdateMutationError = ErrorType<unknown>
+export type ArticlesControllerUpdateMutationError = ErrorType<ErrorServerEntity>
 
+/**
+ * @summary Update Article
+ */
 export const useArticlesControllerUpdate = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -359,6 +395,10 @@ export const useArticlesControllerUpdate = <
 
   return useMutation(mutationOptions)
 }
+/**
+ * Deletes an article by its unique identifier.
+ * @summary Remove Article
+ */
 export const articlesControllerRemove = (
   id: number,
   options?: SecondParameter<typeof customInstance>
@@ -367,7 +407,7 @@ export const articlesControllerRemove = (
 }
 
 export const getArticlesControllerRemoveMutationOptions = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -401,10 +441,13 @@ export type ArticlesControllerRemoveMutationResult = NonNullable<
   Awaited<ReturnType<typeof articlesControllerRemove>>
 >
 
-export type ArticlesControllerRemoveMutationError = ErrorType<unknown>
+export type ArticlesControllerRemoveMutationError = ErrorType<ErrorServerEntity>
 
+/**
+ * @summary Remove Article
+ */
 export const useArticlesControllerRemove = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<

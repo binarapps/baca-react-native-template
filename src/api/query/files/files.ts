@@ -22,6 +22,10 @@ import type { FileEntity, FilesControllerUploadFileBody } from '../../types'
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
 
+/**
+ * Uploads a file with a specified category.
+ * @summary Upload File
+ */
 export const filesControllerUploadFile = (
   filesControllerUploadFileBody: BodyType<FilesControllerUploadFileBody>,
   options?: SecondParameter<typeof customInstance>
@@ -46,7 +50,7 @@ export const filesControllerUploadFile = (
 }
 
 export const getFilesControllerUploadFileMutationOptions = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<void>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -80,10 +84,13 @@ export type FilesControllerUploadFileMutationResult = NonNullable<
   Awaited<ReturnType<typeof filesControllerUploadFile>>
 >
 export type FilesControllerUploadFileMutationBody = BodyType<FilesControllerUploadFileBody>
-export type FilesControllerUploadFileMutationError = ErrorType<unknown>
+export type FilesControllerUploadFileMutationError = ErrorType<void>
 
+/**
+ * @summary Upload File
+ */
 export const useFilesControllerUploadFile = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<void>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -98,12 +105,19 @@ export const useFilesControllerUploadFile = <
 
   return useMutation(mutationOptions)
 }
+/**
+ * Downloads the specified file.
+ * @summary Download File
+ */
 export const filesControllerDownload = (
   fileName: string,
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal
 ) => {
-  return customInstance<void>({ url: `/api/v1/files/${fileName}`, method: 'GET', signal }, options)
+  return customInstance<unknown>(
+    { url: `/api/v1/files/${fileName}`, method: 'GET', signal },
+    options
+  )
 }
 
 export const getFilesControllerDownloadQueryKey = (fileName: string) => {
@@ -112,7 +126,7 @@ export const getFilesControllerDownloadQueryKey = (fileName: string) => {
 
 export const getFilesControllerDownloadQueryOptions = <
   TData = Awaited<ReturnType<typeof filesControllerDownload>>,
-  TError = ErrorType<unknown>
+  TError = ErrorType<void>
 >(
   fileName: string,
   options?: {
@@ -138,11 +152,14 @@ export const getFilesControllerDownloadQueryOptions = <
 export type FilesControllerDownloadQueryResult = NonNullable<
   Awaited<ReturnType<typeof filesControllerDownload>>
 >
-export type FilesControllerDownloadQueryError = ErrorType<unknown>
+export type FilesControllerDownloadQueryError = ErrorType<void>
 
+/**
+ * @summary Download File
+ */
 export const useFilesControllerDownload = <
   TData = Awaited<ReturnType<typeof filesControllerDownload>>,
-  TError = ErrorType<unknown>
+  TError = ErrorType<void>
 >(
   fileName: string,
   options?: {
@@ -159,15 +176,19 @@ export const useFilesControllerDownload = <
   return query
 }
 
+/**
+ * Deletes the specified file.
+ * @summary Delete File
+ */
 export const filesControllerDeleteFile = (
   fileName: string,
   options?: SecondParameter<typeof customInstance>
 ) => {
-  return customInstance<void>({ url: `/api/v1/files/${fileName}`, method: 'DELETE' }, options)
+  return customInstance<unknown>({ url: `/api/v1/files/${fileName}`, method: 'DELETE' }, options)
 }
 
 export const getFilesControllerDeleteFileMutationOptions = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<void>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -201,10 +222,13 @@ export type FilesControllerDeleteFileMutationResult = NonNullable<
   Awaited<ReturnType<typeof filesControllerDeleteFile>>
 >
 
-export type FilesControllerDeleteFileMutationError = ErrorType<unknown>
+export type FilesControllerDeleteFileMutationError = ErrorType<void>
 
+/**
+ * @summary Delete File
+ */
 export const useFilesControllerDeleteFile = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<void>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
