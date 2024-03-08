@@ -5,8 +5,8 @@ import { Pressable, Text } from '@bacons/react-views'
 import { Link } from 'expo-router'
 import { Image, Platform, StyleSheet, View } from 'react-native'
 
-import { TabColorsStrings } from '../config'
 import { useWidth } from '../hooks'
+import { TabColorsStrings } from '../navigation-config'
 import { cns } from '../utils'
 
 export function HeaderLogo() {

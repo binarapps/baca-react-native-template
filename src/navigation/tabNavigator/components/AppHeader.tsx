@@ -3,7 +3,7 @@ import { useColorScheme } from '@baca/contexts'
 import { Image, Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-import { TabColorsStrings } from '../config'
+import { TabColorsStrings } from '../navigation-config'
 
 export function AppHeader() {
   const { colorScheme } = useColorScheme()
