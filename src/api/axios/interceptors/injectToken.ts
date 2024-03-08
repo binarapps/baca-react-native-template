@@ -1,18 +1,14 @@
 import { getToken } from '@baca/services'
-import { AxiosRequestConfig } from 'axios'
+import { InternalAxiosRequestConfig } from 'axios'
 
-export const injectTokenToRequest = async (config: AxiosRequestConfig<object>) => {
+export const injectTokenToRequest = async (
+  config: InternalAxiosRequestConfig<object>
+): Promise<InternalAxiosRequestConfig<object>> => {
   const token = await getToken()
 
-  let Authorization = ''
   if (token) {
-    Authorization = `Bearer ${token}`
+    config.headers['Authorization'] = `Bearer ${token}`
   }
-  return {
-    ...config,
-    headers: {
-      ...config?.headers,
-      Authorization,
-    },
-  }
+
+  return config
 }
