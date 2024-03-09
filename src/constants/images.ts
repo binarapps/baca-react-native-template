@@ -7,3 +7,5 @@ export const lightLogoFull = require('@baca/assets/logo/logo-full-light.png')
 
 export const darkLogoSygnet = require('@baca/assets/logo/logo-sygnet-dark.png')
 export const lightLogoSygnet = require('@baca/assets/logo/logo-sygnet-light.png')
+
+export const googleIcon = require('@baca/assets/google-icon.png')

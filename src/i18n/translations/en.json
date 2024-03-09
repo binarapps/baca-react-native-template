@@ -25,7 +25,8 @@
     "screen_not_found": "NotFound screen",
     "something_went_wrong": "Something went wrong",
     "token_expired": "Token expired",
-    "missing_auth": "Missing auth"
+    "missing_auth": "Missing auth",
+    "play_services_not_available": "Usługi play są niedostępne."
   },
   "form": {
     "invalid_email_format": "Incorrect e-mail address",
@@ -151,7 +152,8 @@
     "password_placeholder": "password",
     "remember_me": "Remember me",
     "sign_in": "Sign in",
-    "sign_up": "Sign up"
+    "sign_up": "Sign up",
+    "sign_in_by_google": "Log in with Google"
   },
   "sign_up_screen": {
     "agree_terms_label": "I agree to the Terms and Conditions",
