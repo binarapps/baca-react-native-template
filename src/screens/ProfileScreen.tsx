@@ -1,5 +1,5 @@
 import { ControlledField } from '@baca/components'
-import { FieldTypes } from '@baca/constants'
+import { FieldTypes, Input } from '@baca/constants'
 import { Button, Text, Spacer, palette, size } from '@baca/design-system'
 import {
   useMemo,
@@ -23,7 +23,7 @@ export const ProfileScreen = () => {
 
   const focusLastNameInput = useCallback(() => setFocus('lastName'), [setFocus])
 
-  const inputs = useMemo(
+  const inputs: Input[] = useMemo(
     () => [
       {
         inputMode: 'text',
@@ -89,7 +89,6 @@ export const ProfileScreen = () => {
       <Text.Subtitle>Update your personal details here.</Text.Subtitle>
 
       <View style={styles.sectionContainer}>{renderInputs()}</View>
-      {/* <Spacer y="8" /> */}
 
       <View style={styles.buttonsContainer}>
         <Button
