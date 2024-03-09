@@ -5,12 +5,13 @@ import { getApiError } from '@baca/utils'
 import Axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import i18n from 'i18next'
 import qs from 'qs'
+import { notify } from 'react-native-notificated'
 
 import { injectTokenToRequest } from './interceptors'
 
 export type ApiError = {
-  message: string
-  errors: {
+  error?: string
+  errors?: {
     [key: string]: string[]
   }
 }
@@ -35,9 +36,18 @@ AXIOS_INSTANCE.interceptors.response.use(
     return response
   },
   async (error: AxiosError<ApiError>) => {
-    const errorMessage = error?.response?.data?.message
+    const errorMessage = error?.response?.data?.error
+    const formErrors = error?.response?.data?.errors
 
+    if (formErrors) {
+      throw formErrors
+    }
+
+    // TODO: we should handle certain error type
     if (errorMessage) {
+      notify('error', {
+        params: { title: 'ERROR', description: i18n.t('errors.something_went_wrong') },
+      })
       //CONFIG: Add errors in getApiError
       const api_error = getApiError(errorMessage)
 

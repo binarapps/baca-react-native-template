@@ -1,6 +1,7 @@
 import { useAuthControllerRegister } from '@baca/api/query/auth/auth'
 import { AuthRegisterLoginDto } from '@baca/api/types'
 import { hapticImpact } from '@baca/utils'
+import { handleFormError } from '@baca/utils/handleFormErrors'
 import { isError } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -20,14 +21,14 @@ const defaultValues: AuthRegisterLoginDto = {
 export const useSignUpForm = () => {
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const { mutate } = useAuthControllerRegister()
-
+  const { mutateAsync } = useAuthControllerRegister()
   const { t } = useTranslation()
 
   const {
     control,
     formState: { errors },
     handleSubmit,
+    setError: setFormError,
     setFocus,
   } = useForm<AuthRegisterLoginDto>({
     mode: 'onTouched',
@@ -39,13 +40,21 @@ export const useSignUpForm = () => {
       setIsSubmitting(true)
       setError('')
 
-      mutate({ data })
+      await mutateAsync({ data })
     } catch (e) {
       if (isError(e)) {
         setError(e.message)
       } else {
         setError(t('errors.something_went_wrong'))
       }
+
+      handleFormError<keyof AuthRegisterLoginDto>(
+        e as keyof AuthRegisterLoginDto,
+        ({ field, description }) => {
+          setFormError(field as keyof AuthRegisterLoginDto, { message: description })
+        }
+      )
+
       hapticImpact()
     } finally {
       setIsSubmitting(false)
