@@ -81,6 +81,16 @@
   "application_info_screen": {
     "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
   },
+  "profile_screen": {
+    "first_name": "First name",
+    "first_name_placeholder": "Enter your first name",
+    "last_name": "Last name",
+    "last_name_placeholder": "Enter your last name",
+    "email_label": "Email address",
+    "email_placeholder": "Enter your email",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
   "colors_screen": {
     "colors_label": "Colors"
   },

@@ -27,33 +27,33 @@ export const ProfileScreen = () => {
     () => [
       {
         inputMode: 'text',
-        label: t('common.first_name'),
+        label: t('profile_screen.first_name'),
         name: FIRST_NAME,
         onFocuse: focusLastNameInput,
-        testID: 'firstNameInput',
-        placeholder: t('common.first_name_placeholder'),
+        testID: `${FIRST_NAME}Input`,
+        placeholder: t('profile_screen.first_name_placeholder'),
       },
       {
         inputMode: 'text',
-        label: t('common.last_name'),
+        label: t('profile_screen.last_name'),
         name: LAST_NAME,
-        testID: 'firstNameInput',
-        placeholder: t('common.last_name_placeholder'),
+        testID: `${LAST_NAME}Input`,
+        placeholder: t('profile_screen.last_name_placeholder'),
       },
       {
         inputMode: 'email',
         isDisabled: true,
-        label: t('common.email_label'),
+        label: t('profile_screen.email_label'),
         name: EMAIL,
-        testID: 'emailInput',
-        placeholder: t('common.email_placeholder'),
+        testID: `${EMAIL}Input`,
+        placeholder: t('profile_screen.email_placeholder'),
       },
       // {
       //   inputMode: 'password',
       //   isDisabled: true,
-      //   label: t('common.password'),
-      //   name: 'password',
-      //   testID: 'passwordInput',
+      //   label: t('profile_screen.password'),
+      //   name: PASSWORD,
+      //   testID: `${PASSWORD}Input`,
       //   type: 'password',
       // },
     ],
@@ -102,7 +102,7 @@ export const ProfileScreen = () => {
           borderWidth={1}
           testID="backProfileButton"
         >
-          {t('common.cancel')}
+          {t('profile_screen.cancel')}
         </Button>
         <Spacer x="4" />
         <Button
@@ -112,7 +112,7 @@ export const ProfileScreen = () => {
           onPress={submit}
           testID="saveProfileUpdateButton"
         >
-          {t('common.save')}
+          {t('profile_screen.save')}
         </Button>
       </View>
     </View>
