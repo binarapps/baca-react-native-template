@@ -3,4 +3,4 @@ node_modules/
 babel.config.js
 webpack.config.js
 docs
-
+scripts/cli/build/
