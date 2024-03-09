@@ -1,4 +1,5 @@
 import { ControlledField } from '@baca/components'
+import { FieldTypes } from '@baca/constants'
 import { Button, Text, Spacer, palette, size } from '@baca/design-system'
 import {
   useMemo,
@@ -9,6 +10,8 @@ import {
 } from '@baca/hooks'
 import { useRouter } from 'expo-router'
 import { InputModeOptions, StyleSheet, View } from 'react-native'
+
+const { FIRST_NAME, LAST_NAME, EMAIL } = FieldTypes
 
 export const ProfileScreen = () => {
   useScreenOptions({ headerShown: false })
@@ -25,25 +28,25 @@ export const ProfileScreen = () => {
       {
         inputMode: 'text',
         label: t('common.first_name'),
-        name: 'firstName',
+        name: FIRST_NAME,
         onFocuse: focusLastNameInput,
         testID: 'firstNameInput',
-        placeholder: '',
+        placeholder: t('common.first_name_placeholder'),
       },
       {
         inputMode: 'text',
         label: t('common.last_name'),
-        name: 'lastName',
+        name: LAST_NAME,
         testID: 'firstNameInput',
-        placeholder: '',
+        placeholder: t('common.last_name_placeholder'),
       },
       {
         inputMode: 'email',
         isDisabled: true,
         label: t('common.email_label'),
-        name: 'email',
+        name: EMAIL,
         testID: 'emailInput',
-        placeholder: '',
+        placeholder: t('common.email_placeholder'),
       },
       // {
       //   inputMode: 'password',
@@ -74,7 +77,6 @@ export const ProfileScreen = () => {
             testID={testID}
             isDisabled={isDisabled}
             placeholder={placeholder}
-            // rules={}
           />
         </View>
       )),
