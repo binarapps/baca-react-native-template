@@ -7,7 +7,9 @@
       },
       "channel": "production",
       "distribution": "store",
-      "ios": { "autoIncrement": "buildNumber" }
+      "ios": {
+        "autoIncrement": "buildNumber"
+      }
     },
     "staging": {
       "android": {
@@ -16,7 +18,9 @@
       },
       "channel": "staging",
       "distribution": "store",
-      "ios": { "autoIncrement": "buildNumber" }
+      "ios": {
+        "autoIncrement": "buildNumber"
+      }
     },
     "qa": {
       "android": {
@@ -25,11 +29,13 @@
       },
       "channel": "qa",
       "distribution": "store",
-      "ios": { "autoIncrement": "buildNumber" }
+      "ios": {
+        "autoIncrement": "buildNumber"
+      }
     }
   },
   "cli": {
-    "appVersionSource": "remote",
+    "appVersionSource": "local",
     "version": ">= 0.53.1"
   },
   // CONFIG: Add submitting to store logic - more info (https://docs.expo.dev/submit/eas-json/)
