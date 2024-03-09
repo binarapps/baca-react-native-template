@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "online.binarapps",
+      "sha256_cert_fingerprints": [
+        "B9:77:35:F2:94:7B:EC:53:F9:60:5F:32:1C:12:5C:E9:4E:27:9E:E2:A7:EE:6F:62:A4:77:21:98:AD:11:2A:B1"
+      ]
+    }
+  }
+]
