@@ -72,6 +72,10 @@ export const ComponentsScreen = (): JSX.Element => {
           rightIcon={<Icon name="account-box-fill" size={24} color="alpha.black.100" />}
           title={t('components_screen.button_variants.with_icons')}
         />
+        <Button.PrimaryDestructive
+          mt={4}
+          title={t('components_screen.button_variants.primary_destructive')}
+        />
         <Button.SecondaryColor
           mt={4}
           title={t('components_screen.button_variants.secondary_color')}
@@ -80,13 +84,25 @@ export const ComponentsScreen = (): JSX.Element => {
           mt={4}
           title={t('components_screen.button_variants.secondary_gray')}
         />
+        <Button.SecondaryDestructive
+          mt={4}
+          title={t('components_screen.button_variants.secondary_destructive')}
+        />
         <Button.TertiaryColor
           mt={4}
           title={t('components_screen.button_variants.tertiary_color')}
         />
         <Button.TertiaryGray mt={4} title={t('components_screen.button_variants.tertiary_gray')} />
+        <Button.TertiaryDestructive
+          mt={4}
+          title={t('components_screen.button_variants.tertiary_destructive')}
+        />
         <Button.LinkColor mt={4} title={t('components_screen.button_variants.link_color')} />
         <Button.LinkGray mt={4} title={t('components_screen.button_variants.link_gray')} />
+        <Button.LinkDestructive
+          mt={4}
+          title={t('components_screen.button_variants.link_destructive')}
+        />
         <Button mt={4} disabled>
           {t('components_screen.button_variants.disabled')}
         </Button>

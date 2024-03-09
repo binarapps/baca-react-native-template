@@ -25,6 +25,7 @@ import { generateStyledComponent } from '../../utils'
 import { Box } from '../Box'
 import { Loader } from '../Loader'
 import { Text } from '../Text'
+import { useHover } from '../Touchables/useHover'
 import { StyledProps } from '../types'
 
 export type ButtonProps = StyledProps &
@@ -50,7 +51,6 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   baseText: {
-    color: theme.light.colors.text.primary,
     fontStyle: 'normal',
     fontWeight: '400',
     letterSpacing: 0,
@@ -77,6 +77,7 @@ const RawButton = memo(
       ref
     ) => {
       const { colorScheme } = useColorScheme()
+      const { hoverProps, isHovered } = useHover()
       const { hoveredStyle, defaultStyle, disabledStyle } = useMemo(
         () => buttonVariants[variant],
         [variant]
@@ -85,7 +86,7 @@ const RawButton = memo(
       const hoveredStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
-            color: hoveredStyle.backgroundColor || 'transparent',
+            color: hoveredStyle.backgroundColor,
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderColor: getColorValue({
@@ -115,7 +116,7 @@ const RawButton = memo(
       const defaultStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
-            color: defaultStyle.backgroundColor || 'transparent',
+            color: defaultStyle.backgroundColor,
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderColor: getColorValue({
@@ -145,7 +146,7 @@ const RawButton = memo(
       const disabledStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
-            color: disabledStyle.backgroundColor || 'transparent',
+            color: disabledStyle.backgroundColor,
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderColor: getColorValue({
@@ -184,13 +185,22 @@ const RawButton = memo(
         ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
           StyleSheet.flatten<ViewStyle>([
             styles.baseButton,
-            pressed ? hoveredStyles : defaultStyles,
+            pressed || isHovered ? hoveredStyles : defaultStyles,
             disabled && disabledStyles,
             loading && disabledStyles,
             buttonSizeStyle,
             typeof style === 'function' ? style({ pressed }) : style,
           ]),
-        [hoveredStyles, defaultStyles, disabled, disabledStyles, loading, buttonSizeStyle, style]
+        [
+          buttonSizeStyle,
+          defaultStyles,
+          disabled,
+          disabledStyles,
+          hoveredStyles,
+          isHovered,
+          loading,
+          style,
+        ]
       )
 
       const pressableTextStyleFunction = useCallback(
@@ -243,6 +253,8 @@ const RawButton = memo(
           accessibilityRole="button"
           style={pressableStyleFunction}
           testID="baseButton"
+          onHoverIn={hoverProps.onHoverIn}
+          onHoverOut={hoverProps.onHoverOut}
           {...{ disabled, ref, ...props }}
         >
           {(props: PressableStateCallbackType) => (
@@ -273,11 +285,15 @@ const generateButtonVariant = (variant: ButtonVariant) =>
   forwardRef<View, ButtonProps>((props, ref) => <Button variant={variant} {...props} ref={ref} />)
 
 Button.Primary = generateButtonVariant('Primary')
+Button.PrimaryDestructive = generateButtonVariant('PrimaryDestructive')
 Button.SecondaryColor = generateButtonVariant('SecondaryColor')
 Button.SecondaryGray = generateButtonVariant('SecondaryGray')
+Button.SecondaryDestructive = generateButtonVariant('SecondaryDestructive')
 Button.TertiaryColor = generateButtonVariant('TertiaryColor')
 Button.TertiaryGray = generateButtonVariant('TertiaryGray')
+Button.TertiaryDestructive = generateButtonVariant('TertiaryDestructive')
 Button.LinkColor = generateButtonVariant('LinkColor')
 Button.LinkGray = generateButtonVariant('LinkGray')
+Button.LinkDestructive = generateButtonVariant('LinkDestructive')
 
 export { Button }

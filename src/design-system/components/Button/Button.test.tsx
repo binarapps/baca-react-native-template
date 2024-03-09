@@ -31,6 +31,17 @@ describe('Button', () => {
     })
   })
 
+  it('renders correctly Button.PrimaryDestructive', () => {
+    const { getByTestId } = render(<Button.PrimaryDestructive title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      alignItems: 'center',
+      backgroundColor: theme.light.colors.button.primary.error.bg,
+      borderColor: theme.light.colors.button.primary.error.border,
+      borderWidth: 1,
+    })
+  })
+
   it('renders correctly Button.SecondaryColor', () => {
     const { getByTestId } = render(<Button.SecondaryColor title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
@@ -49,6 +60,17 @@ describe('Button', () => {
       alignItems: 'center',
       backgroundColor: theme.light.colors.button.secondary.bg,
       borderColor: theme.light.colors.button.secondary.border,
+      borderWidth: 1,
+    })
+  })
+
+  it('renders correctly Button.SecondaryDestructive', () => {
+    const { getByTestId } = render(<Button.SecondaryDestructive title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      alignItems: 'center',
+      backgroundColor: theme.light.colors.button.secondary.error.bg,
+      borderColor: theme.light.colors.button.secondary.error.border,
       borderWidth: 1,
     })
   })
@@ -73,6 +95,16 @@ describe('Button', () => {
     })
   })
 
+  it('renders correctly Button.TertiaryDestructive', () => {
+    const { getByTestId } = render(<Button.TertiaryDestructive title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+      borderWidth: undefined,
+    })
+  })
+
   it('renders correctly Button.LinkColor', () => {
     const { getByTestId } = render(<Button.LinkColor title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
@@ -85,6 +117,16 @@ describe('Button', () => {
 
   it('renders correctly Button.LinkGray', () => {
     const { getByTestId } = render(<Button.LinkGray title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+      borderWidth: undefined,
+    })
+  })
+
+  it('renders correctly Button.LinkDestructive', () => {
+    const { getByTestId } = render(<Button.LinkDestructive title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
       backgroundColor: 'transparent',
