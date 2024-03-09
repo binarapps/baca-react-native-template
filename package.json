@@ -23,6 +23,7 @@
   "author": "BinarApps",
   "license": "MIT",
   "scripts": {
+    "eas-build-pre-install": "base64 --help && echo $ANDROID_FIREBASE_CONFIG | base64 --decode > google-services.json  && cat google-services.json && echo $IOS_FIREBASE_CONFIG | base64 --decode > GoogleService-Info.plist && cat GoogleService-Info.plist",
     "android:dev-client": "IS_DEV=1 npx expo run:android",
     "android": "expo run:android",
     "bootstrap:new_app": "yarn && node ./scripts/bootstrap.js",
@@ -51,6 +52,7 @@
     "generate:env:qa": "scripts/generate_dotenv.sh qa",
     "generate:env:staging": "scripts/generate_dotenv.sh staging",
     "generate:icon:types": "node ./scripts/generate_icon_types.js",
+    "generate:google-services-config": "./scripts/generate_firebase_config.sh",
     "generate:screen": "node ./scripts/create_new_screen.js && yarn eslint src --fix && yarn tsc",
     "ios": "expo run:ios",
     "lint": "eslint src && yarn tsc",
@@ -97,6 +99,7 @@
     "@motify/skeleton": "^0.18.0",
     "@react-native-async-storage/async-storage": "1.21.0",
     "@react-native-community/netinfo": "11.1.0",
+    "@react-native-google-signin/google-signin": "^11.0.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
