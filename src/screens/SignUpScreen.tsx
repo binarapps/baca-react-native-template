@@ -1,5 +1,4 @@
 import { ControlledField, KeyboardAwareScrollView } from '@baca/components'
-import { REGEX } from '@baca/constants'
 import { Button, Center, Spacer } from '@baca/design-system'
 import { useScreenOptions, useSignUpForm, useTranslation } from '@baca/hooks'
 import { useCallback, useEffect } from 'react'
@@ -67,10 +66,6 @@ export const SignUpScreen = () => {
           placeholder={t('sign_up_screen.email_placeholder')}
           rules={{
             required: t('form.required'),
-            pattern: {
-              value: REGEX.EMAIL,
-              message: t('form.invalid_email_format'),
-            },
           }}
         />
         <ControlledField.Input
@@ -85,10 +80,6 @@ export const SignUpScreen = () => {
           placeholder={t('sign_up_screen.password_placeholder')}
           rules={{
             required: t('form.required'),
-            pattern: {
-              value: REGEX.REGISTRATION_PASSWORD,
-              message: t('form.invalid_password_format'),
-            },
           }}
           type="password"
         />
