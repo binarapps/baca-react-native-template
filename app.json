@@ -1,12 +1,17 @@
 {
   "expo": {
     "android": {
-      "jsEngine": "hermes"
+      "jsEngine": "hermes",
+      "versionCode": 10,
+      "softwareKeyboardLayoutMode": "pan",
+      "googleServicesFile": "./google-services.json"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "jsEngine": "hermes",
-      "supportsTablet": true
+      "buildNumber": "10",
+      "supportsTablet": true,
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "name": "Template",
     "orientation": "portrait",
