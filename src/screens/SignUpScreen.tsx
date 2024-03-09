@@ -1,5 +1,4 @@
 import { ControlledField, KeyboardAwareScrollView } from '@baca/components'
-import { REGEX } from '@baca/constants'
 import { Button, Center, Spacer } from '@baca/design-system'
 import { useScreenOptions, useSignUpForm, useTranslation } from '@baca/hooks'
 import { useCallback, useEffect } from 'react'
@@ -11,62 +10,74 @@ export const SignUpScreen = () => {
     title: t('navigation.screen_titles.sign_up'),
   })
 
-  const { control, errors, submit, isSubmitting, setFocus } = useSignUpForm()
+  const { control, errors, register, isRegisterLoading, setFocus } = useSignUpForm()
 
   useEffect(() => {
     setTimeout(() => {
-      setFocus('user')
+      setFocus('firstName')
     }, 500)
   }, [setFocus])
 
+  const focusLastNameInput = useCallback(() => setFocus('lastName'), [setFocus])
   const focusEmailInput = useCallback(() => setFocus('email'), [setFocus])
   const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (
     <KeyboardAwareScrollView>
-      <Center px={8} flex={1} flexGrow={1}>
+      <Center flex={1} flexGrow={1} px={8}>
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
           enterKeyHint="next"
-          label={t('common.user_label')}
+          isRequired
+          label={t('sign_up_screen.first_name_label')}
           mb={2}
-          name="user"
-          onSubmitEditing={focusEmailInput}
-          placeholder={t('common.user_placeholder')}
+          name="firstName"
+          onSubmitEditing={focusLastNameInput}
+          placeholder={t('sign_up_screen.first_name_placeholder')}
           rules={{
             required: t('form.required'),
           }}
         />
         <ControlledField.Input
           {...{ control, errors }}
-          enterKeyHint="next"
           autoCapitalize="none"
+          enterKeyHint="next"
+          isRequired
+          label={t('sign_up_screen.last_name_label')}
+          mb={2}
+          name="lastName"
+          onSubmitEditing={focusEmailInput}
+          placeholder={t('sign_up_screen.last_name_placeholder')}
+          rules={{
+            required: t('form.required'),
+          }}
+        />
+        <ControlledField.Input
+          {...{ control, errors }}
+          autoCapitalize="none"
+          enterKeyHint="next"
           inputMode="email"
           isRequired
-          label={t('common.email_label')}
+          label={t('sign_up_screen.email_label')}
           mb={2}
           name="email"
           onSubmitEditing={focusPasswordInput}
-          placeholder={t('common.email_placeholder')}
+          placeholder={t('sign_up_screen.email_placeholder')}
           rules={{
             required: t('form.required'),
-            pattern: {
-              value: REGEX.EMAIL,
-              message: t('form.invalid_email_format'),
-            },
           }}
         />
         <ControlledField.Input
           {...{ control, errors }}
-          enterKeyHint="next"
           autoCapitalize="none"
+          enterKeyHint="next"
           isRequired
-          label={t('sign_in_screen.password_label')}
+          label={t('sign_up_screen.password_label')}
           mb={16}
           name="password"
-          onSubmitEditing={submit}
-          placeholder={t('sign_in_screen.password_placeholder')}
+          onSubmitEditing={register}
+          placeholder={t('sign_up_screen.password_placeholder')}
           rules={{
             required: t('form.required'),
           }}
@@ -75,21 +86,27 @@ export const SignUpScreen = () => {
         <Spacer y={2} />
         <ControlledField.Checkbox
           {...{ control, errors }}
-          checkboxText={t('sign_up_screen.agree_terms_label')}
+          checkboxText={t('sign_up_screen.privacy_policy_label')}
           isRequired
-          name="agree"
+          name="privacyPolicyAccepted"
+          rules={{
+            required: t('form.required'),
+          }}
           size={18}
         />
-        <Spacer y={2} />
         <ControlledField.Checkbox
           {...{ control, errors }}
-          checkboxText={t('sign_up_screen.newsletter_label')}
+          checkboxText={t('sign_up_screen.terms_accepted_label')}
           isRequired
-          name="newsletter"
+          name="termsAccepted"
+          rules={{
+            required: t('form.required'),
+          }}
           size={18}
         />
         <Spacer y={2} />
-        <Button disabled={isSubmitting} loading={isSubmitting} onPress={submit}>
+        <Spacer y={2} />
+        <Button disabled={isRegisterLoading} loading={isRegisterLoading} onPress={register}>
           {t('sign_up_screen.sign_up')}
         </Button>
       </Center>

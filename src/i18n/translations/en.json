@@ -29,6 +29,7 @@
   },
   "form": {
     "invalid_email_format": "Incorrect e-mail address",
+    "invalid_password_format": "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
     "invalid_password": "Incorrect password",
     "required": "This field is required"
   },
@@ -154,9 +155,19 @@
     "sign_up": "Sign up"
   },
   "sign_up_screen": {
-    "agree_terms_label": "I agree to the Terms and Conditions",
+    "email_label": "Email",
+    "email_placeholder": "Enter your email",
+    "first_name_label": "First name",
+    "first_name_placeholder": "Enter your first name",
+    "last_name_label": "Last name",
+    "last_name_placeholder": "Enter your last name",
     "newsletter_label": "Subscribe to our newsletter",
-    "sign_up": "Sign up"
+    "password_placeholder": "Create a password",
+    "password_label": "Password",
+    "privacy_policy_label": "I’ve read and accept Privacy Policy",
+    "sign_up": "Sign up",
+    "trail_descirption": "Start your 30-day free trial.",
+    "terms_accepted_label": "I agree to the Terms and Conditions"
   },
   "test_form": {
     "additional_comment": "Additional comment",
