@@ -6,6 +6,7 @@ import { isError } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { notify } from 'react-native-notificated'
 
 const defaultValues: AuthRegisterLoginDto = {
   email: '',
@@ -41,6 +42,13 @@ export const useSignUpForm = () => {
       setError('')
 
       await mutateAsync({ data })
+      notify('success', {
+        params: {
+          style: { multiline: 100 },
+          title: 'SUCCESS',
+          description: t('sign_up_screen.created_new_account', { userEmail: data.email }),
+        },
+      })
     } catch (e) {
       if (isError(e)) {
         setError(e.message)

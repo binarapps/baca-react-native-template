@@ -154,7 +154,7 @@
     "sign_up": "Zarejestruj"
   },
   "sign_up_screen": {
-    "agree_terms_label": "Zgadzam się z warunkami użytkowania",
+    "created_new_account": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
     "newsletter_label": "Subskrybuj nasz newsletter",
     "sign_up": "Zarejestruj",
     "email_label": "E-mail",
