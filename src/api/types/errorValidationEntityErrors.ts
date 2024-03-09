@@ -7,15 +7,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface AuthUpdateDto {
-  /** The first name of the user. */
-  firstName?: string
-  /** The last name of the user. */
-  lastName?: string
-  /** IETF language tags (e.g., en-US). */
-  locale?: string
-  /** The old password required for security verification when updating user credentials. */
-  oldPassword?: string
-  /** The new password for updating user credentials. */
-  password?: string
-}
+/**
+ * Object containing field-specific validation errors
+ */
+export type ErrorValidationEntityErrors = { [key: string]: string }
