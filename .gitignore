@@ -33,3 +33,6 @@ dist/
 # native files
 /android
 /ios
+
+google-services.json
+GoogleService-Info.plist
