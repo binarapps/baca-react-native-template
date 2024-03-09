@@ -1,4 +1,10 @@
-import { CheckboxProps, FormLabelProps, InputProps, RadioProps, SelectProps } from '~components'
+import {
+  CheckboxProps,
+  FormLabelProps,
+  InputProps,
+  RadioProps,
+  SelectProps,
+} from '@baca/design-system'
 
 export type FieldInputProps = InputProps &
   FormLabelProps & {

@@ -1,10 +1,9 @@
+import { isDevelopment } from '@baca/constants'
 import * as Updates from 'expo-updates'
 import i18n from 'i18next'
 
 import { alert } from './alert'
 import { wait } from './wait'
-
-import { isDevelopment } from '~constants'
 
 let isAlertOpened = false
 

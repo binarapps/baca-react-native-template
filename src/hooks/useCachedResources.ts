@@ -1,6 +1,6 @@
+import { checkForUpdates } from '@baca/utils'
 import { useEffect, useState } from 'react'
 
-import { checkForUpdates } from '~utils'
 export const useCachedResources = (): boolean => {
   const [isLoadingComplete, setLoadingComplete] = useState(false)
 

@@ -1,7 +1,6 @@
+import { Icon, Loader, Box, Text, Button, Center, ScrollView } from '@baca/design-system'
+import { useCallback, useNotifications, useScreenOptions, useTranslation } from '@baca/hooks'
 import * as Linking from 'expo-linking'
-
-import { Icon, Loader, Box, Text, Button, Center, ScrollView } from '~components'
-import { useCallback, useNotifications, useScreenOptions, useTranslation } from '~hooks'
 
 const headingSizes = ['xs', 'sm', 'md', 'lg', '2xl', '3xl', '4xl'] as const
 const loaderVariants = [

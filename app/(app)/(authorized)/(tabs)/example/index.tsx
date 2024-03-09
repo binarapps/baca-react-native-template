@@ -1,3 +1,3 @@
-import { ExamplesScreen } from '~screens'
+import { ExamplesScreen } from '@baca/screens'
 
 export default ExamplesScreen

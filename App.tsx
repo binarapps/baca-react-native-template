@@ -5,17 +5,19 @@
 import 'setimmediate'
 import 'react-native-reanimated'
 
+import 'fast-text-encoding'
+import 'react-native-url-polyfill/auto'
+
 // Rest imports
-import '~i18n'
+import '@baca/i18n'
+import { enableAndroidBackgroundNotificationListener, startMockedServer } from '@baca/services'
 import * as Device from 'expo-device'
 import 'expo-router/entry'
 
-import { enableAndroidBackgroundNotificationListener, startMockedServer } from '~services'
+// FIXME: moking not working on mobile app - follow this discussion https://github.com/mswjs/msw/issues/2026
+const ENABLE_MOCKED_SERVER = false
 
-// FIXME: there is some issue with miragejs that causes console.log to not work
-const DISABLE_CONSOLE_ENABLE_MOCKED_SERVER = false
-
-if (DISABLE_CONSOLE_ENABLE_MOCKED_SERVER) {
+if (ENABLE_MOCKED_SERVER) {
   startMockedServer()
 }
 

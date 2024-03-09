@@ -1,22 +1,11 @@
+import { Box, Column, Row, Icon, Text, Touchable } from '@baca/design-system'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 import { useRouter } from 'expo-router'
 
-import { Touchable } from './atoms'
-
-import { Box, Column, Row, Icon, Text } from '~components/atoms'
-
 const logoHeight = 24
 
-export const Header = ({ options, ...rest }: NativeStackHeaderProps) => {
+export const Header = ({ options }: NativeStackHeaderProps) => {
   const router = useRouter()
-
-  console.log('options', {
-    options,
-    rest,
-    canGoBack: router.canGoBack(),
-    restxd: rest.navigation.getState(),
-    canGoBack2: rest.navigation.canGoBack(),
-  })
 
   return (
     <Column bg="fg.white">

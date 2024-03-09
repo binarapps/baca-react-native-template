@@ -1,8 +1,10 @@
-import { Version, Spacer, Button, Center, Text, ScrollView } from '~components'
-import { colorSchemesList } from '~constants'
-import { useColorScheme } from '~contexts'
-import { useAuth, useCallback, useScreenOptions, useTranslation } from '~hooks'
-import { noop } from '~utils'
+import { Version } from '@baca/components'
+import { colorSchemesList } from '@baca/constants'
+import { useColorScheme } from '@baca/contexts'
+import { Spacer, Button, Center, Text, ScrollView } from '@baca/design-system'
+import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
+import { signOut } from '@baca/store/auth'
+import { noop } from '@baca/utils'
 
 export const SettingsScreen = (): JSX.Element => {
   const { t } = useTranslation()
@@ -11,8 +13,6 @@ export const SettingsScreen = (): JSX.Element => {
   useScreenOptions({
     title: t('navigation.screen_titles.settings'),
   })
-
-  const { signOut } = useAuth()
 
   const handleColorSchemeSettingChange = useCallback(
     (scheme: typeof colorSchemeSetting) => () => {

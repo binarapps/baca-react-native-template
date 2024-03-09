@@ -1,3 +1,3 @@
-import { SettingsScreen } from '~screens'
+import { SettingsScreen } from '@baca/screens'
 
 export default SettingsScreen

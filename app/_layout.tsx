@@ -1,16 +1,18 @@
+import { StatusBar } from '@baca/components'
+import { AbsoluteFullFill, Loader } from '@baca/design-system'
+import { useNavigationTheme, useRouterNotifications } from '@baca/hooks'
+import { Providers } from '@baca/providers'
+import { isSignedInAtom } from '@baca/store/auth'
 import { ThemeProvider } from '@react-navigation/native'
 import { Slot } from 'expo-router'
-
-import { AbsoluteFullFill, Loader, StatusBar } from '~components'
-import { useAuth, useNavigationTheme, useRouterNotifications } from '~hooks'
-import { Providers } from '~providers'
+import { useAtomValue } from 'jotai'
 
 export const unstable_settings = {
   initialRouteName: 'index',
 }
 
 const Layout = () => {
-  const { isSignedIn } = useAuth()
+  const isSignedIn = useAtomValue(isSignedInAtom)
   const { navigationTheme } = useNavigationTheme()
 
   useRouterNotifications() // TODO: check if handling notification deeplinks works correctly

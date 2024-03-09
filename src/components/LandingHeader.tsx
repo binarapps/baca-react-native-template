@@ -1,20 +1,20 @@
+import { darkLogoFull, lightLogoFull } from '@baca/constants'
+import { useColorScheme } from '@baca/contexts'
+import { Box, Button, Icon, Pressable } from '@baca/design-system'
+import { useTranslation } from '@baca/hooks'
+import { TabColorsStrings } from '@baca/navigation/tabNavigator/navigation-config'
+import { isSignedInAtom } from '@baca/store/auth'
 import { useRouter } from 'expo-router'
+import { useAtomValue } from 'jotai'
 import { Image, StyleSheet, Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-
-import { Box, Button, Icon, Pressable } from '~components'
-import { darkLogoFull, lightLogoFull } from '~constants'
-import { useColorScheme } from '~contexts'
-import { useAuth, useTranslation } from '~hooks'
-import { TabColorsStrings } from '~navigation/tabNavigator/config'
-
 export function LandingHeader() {
   const { colorScheme } = useColorScheme()
   const { top } = useSafeAreaInsets()
   const { t } = useTranslation()
   const { push, canGoBack, back } = useRouter()
 
-  const { isSignedIn } = useAuth()
+  const isSignedIn = useAtomValue(isSignedInAtom)
 
   const navigateToLogin = () => push('/sign-in')
 

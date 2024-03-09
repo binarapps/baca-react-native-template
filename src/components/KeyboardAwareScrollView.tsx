@@ -1,11 +1,10 @@
+import { useNavigationTheme } from '@baca/hooks'
 import { forwardRef, useMemo } from 'react'
 import { Platform, StyleProp, ViewStyle } from 'react-native'
 import {
   KeyboardAwareScrollView as KeyboardAwareScroll,
   KeyboardAwareScrollViewProps,
 } from 'react-native-keyboard-aware-scroll-view'
-
-import { useNavigationTheme } from '~hooks'
 
 const keyboardDismissMode = Platform.OS === 'android' ? 'on-drag' : 'interactive'
 

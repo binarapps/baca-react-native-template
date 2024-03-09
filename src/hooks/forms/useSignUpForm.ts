@@ -1,12 +1,11 @@
+import { isSignedInAtom } from '@baca/store/auth'
+import { SignUpFormValues } from '@baca/types/authForms'
+import { hapticImpact, wait } from '@baca/utils'
 import { isError } from '@tanstack/react-query'
+import { useSetAtom } from 'jotai'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-
-import { useAuth } from '../useAuth'
-
-import { SignUpFormValues } from '~types/authForms'
-import { hapticImpact } from '~utils'
 
 const defaultValues: SignUpFormValues = {
   user: '',
@@ -17,10 +16,12 @@ const defaultValues: SignUpFormValues = {
 }
 
 export const useSignUpForm = () => {
-  const { signUp } = useAuth()
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+
   const { t } = useTranslation()
+
+  const setIsSignedIn = useSetAtom(isSignedInAtom)
 
   const {
     control,
@@ -36,7 +37,9 @@ export const useSignUpForm = () => {
     try {
       setIsSubmitting(true)
       setError('')
-      await signUp(data)
+      await wait(500)
+      // TODO: Add some backend call here, you can use react query for this
+      setIsSignedIn(true)
     } catch (e) {
       if (isError(e)) {
         setError(e.message)

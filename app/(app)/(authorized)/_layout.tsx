@@ -1,13 +1,13 @@
+import { isSignedInAtom } from '@baca/store/auth'
 import { Redirect, Stack } from 'expo-router'
-
-import { useAuth } from '~hooks'
+import { useAtomValue } from 'jotai'
 
 export const unstable_settings = {
   initialRouteName: '(tabs)',
 }
 
 export default function AuthorizedLayout() {
-  const { isSignedIn } = useAuth()
+  const isSignedIn = useAtomValue(isSignedInAtom)
 
   if (isSignedIn === false) {
     return <Redirect href="/sign-in" />

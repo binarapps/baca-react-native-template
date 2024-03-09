@@ -1,10 +1,10 @@
+import { useArticlesControllerFindAll } from '@baca/api/query/articles/articles'
+import { darkLogo, lightLogo } from '@baca/constants'
+import { useColorScheme } from '@baca/contexts'
+import { Button, Center, Text } from '@baca/design-system'
+import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
 import { Image, StyleSheet } from 'react-native'
-
-import { Button, Center, Text } from '~components'
-import { darkLogo, lightLogo } from '~constants'
-import { useColorScheme } from '~contexts'
-import { useCallback, useScreenOptions, useTranslation } from '~hooks'
 
 export const HomeScreen = () => {
   const { t } = useTranslation()
@@ -14,6 +14,8 @@ export const HomeScreen = () => {
   })
 
   const { colorScheme } = useColorScheme()
+
+  useArticlesControllerFindAll({ page: 1, pageSize: 10 })
 
   const navigateToDetails = useCallback(() => {
     router.navigate({

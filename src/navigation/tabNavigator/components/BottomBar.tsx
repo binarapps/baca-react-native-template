@@ -1,13 +1,12 @@
+import { useColorScheme } from '@baca/contexts'
+import { Icon } from '@baca/design-system'
+import cssStyles from '@baca/styles'
 import { Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
-import { bottomTabs, TabColors, TabColorsStrings } from '../config'
+import { bottomTabs, TabColors, TabColorsStrings } from '../navigation-config'
 import { cns } from '../utils'
-
-import { Icon } from '~components'
-import { useColorScheme } from '~contexts'
-import cssStyles from '~styles'
 
 export function BottomBar({ visible }: { visible: boolean }) {
   const { colorScheme } = useColorScheme()

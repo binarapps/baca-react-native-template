@@ -1,10 +1,10 @@
+import { AbsoluteFullFill, Loader, Center } from '@baca/design-system/components'
+import { useBoolean, useCachedResources, useFonts } from '@baca/hooks'
+import { isSignedInAtom } from '@baca/store/auth'
 import * as SplashScreen from 'expo-splash-screen'
+import { useAtomValue } from 'jotai'
 import { FC, PropsWithChildren, useCallback, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
-
-import { AbsoluteFullFill, Loader, Center } from './atoms'
-
-import { useAuth, useBoolean, useCachedResources, useFonts } from '~hooks'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -21,7 +21,8 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
 
   // Delay loading logic was made to prevent displaying empty screen after splash screen will hide
   const [isDelayLoading, setIsDelayLoading] = useBoolean(true)
-  const { isSignedIn } = useAuth()
+
+  const isSignedIn = useAtomValue(isSignedInAtom)
 
   useEffect(() => {
     async function prepare() {

@@ -1,9 +1,8 @@
+import { useCallback } from '@baca/hooks'
 import { Controller, get, ControllerProps } from 'react-hook-form'
 
 import type { ControlledRadioProps } from './types'
 import { Field } from '../../molecules'
-
-import { useCallback } from '~hooks'
 
 export const Radio = ({
   name,
