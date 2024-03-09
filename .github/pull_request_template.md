@@ -1,44 +1,11 @@
-# Description
+# Describe your changes
 
-Please include a summary of the changes and the related issue. Please also include relevant motivation and context. List any dependencies that are required for this change.
+# Issue ticket number or link
 
-Fixes # (issue)
+# Checklist before requesting a review
 
-## Type of change
+- [ ] I did self-review of my code.
+- [ ] Do the tests work ?
+- [ ] Does lint work ?, it doesn't find any bugs or problems.
 
-Please delete options that are not relevant.
-
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
-
-# How Has This Been Tested?
-
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
-
-- [ ] Test A
-- [ ] Test B
-
-# Screenshot(s)
-
-Please attach some screenshot or a movie if provided changes affects UI.
-
-**Test Configuration**:
-
-- Firmware version:
-- Hardware:
-- Toolchain:
-- SDK:
-
-# Checklist:
-
-- [ ] Add correct label to your pull request
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
+# Do any blockers exist ? if yes, describe it below.
