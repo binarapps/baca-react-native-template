@@ -5,7 +5,7 @@ import { Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
-import { bottomTabs, TabColors, TabColorsStrings } from '../config'
+import { bottomTabs, TabColors, TabColorsStrings } from '../navigation-config'
 import { cns } from '../utils'
 
 export function BottomBar({ visible }: { visible: boolean }) {

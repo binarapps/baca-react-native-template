@@ -22,6 +22,13 @@ export const upperSideTabs: Tabs = [
     name: 'home',
   },
   {
+    displayedName: 'Categories',
+    icon: 'stack-line',
+    iconFocused: 'stack-fill',
+    id: 'categories',
+    name: 'categories',
+  },
+  {
     displayedName: 'Example',
     icon: 'aliens-line',
     iconFocused: 'aliens-fill',
@@ -36,13 +43,22 @@ export const upperSideTabs: Tabs = [
     name: 'settings',
   },
   {
-    displayedName: 'Details',
-    icon: 'baidu-line',
-    iconFocused: 'baidu-fill',
-    id: 'details',
-    name: '/home/details',
-    params: { user: 'example@test.com' },
+    displayedName: 'Profile',
+    icon: 'user-3-line',
+    iconFocused: 'user-3-fill',
+    id: 'profile',
+    name: 'profile',
   },
+
+  // In case you want to navigate to screen with params you can do this like this
+  // {
+  //   displayedName: 'Details',
+  //   icon: 'baidu-line',
+  //   iconFocused: 'baidu-fill',
+  //   id: 'details',
+  //   name: '/home/details',
+  //   params: { user: 'example@test.com' },
+  // },
 ]
 
 export const bottomSideTabs: Tabs = []
