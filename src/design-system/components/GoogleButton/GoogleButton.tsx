@@ -1,9 +1,8 @@
+import { googleIcon } from '@baca/constants'
 import { Image } from 'react-native'
 
 import { Button } from '../Button'
 import { Text } from '../Text'
-
-import { googleIcon } from '@baca/constants'
 
 type GoogleButtonProps = {
   onPress: () => void
