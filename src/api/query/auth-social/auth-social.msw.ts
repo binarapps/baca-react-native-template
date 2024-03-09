@@ -20,8 +20,12 @@ export const getAuthGoogleControllerLoginResponseMock = (
   user: {
     consent: faker.helpers.arrayElement([
       {
+        createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
         privacyPolicyAccepted: faker.datatype.boolean(),
+        privacyPolicyVersion: faker.word.sample(),
         termsAccepted: faker.datatype.boolean(),
+        termsVersion: faker.word.sample(),
+        updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
         ...overrideResponse,
       },
       undefined,
@@ -60,8 +64,12 @@ export const getAuthFacebookControllerLoginResponseMock = (
   user: {
     consent: faker.helpers.arrayElement([
       {
+        createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
         privacyPolicyAccepted: faker.datatype.boolean(),
+        privacyPolicyVersion: faker.word.sample(),
         termsAccepted: faker.datatype.boolean(),
+        termsVersion: faker.word.sample(),
+        updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
         ...overrideResponse,
       },
       undefined,
@@ -100,8 +108,12 @@ export const getAuthAppleControllerLoginResponseMock = (
   user: {
     consent: faker.helpers.arrayElement([
       {
+        createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
         privacyPolicyAccepted: faker.datatype.boolean(),
+        privacyPolicyVersion: faker.word.sample(),
         termsAccepted: faker.datatype.boolean(),
+        termsVersion: faker.word.sample(),
+        updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
         ...overrideResponse,
       },
       undefined,

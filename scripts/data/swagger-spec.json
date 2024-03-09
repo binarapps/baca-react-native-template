@@ -1051,7 +1051,7 @@
   },
   "tags": [],
   "servers": [
-    { "url": "http://localhost:3000", "description": "Local environment" },
+    { "url": "undefined", "description": "Local environment" },
     { "url": "https://production.api.com/", "description": "Production" },
     { "url": "https://staging.api.com/", "description": "Staging" }
   ],
@@ -1259,9 +1259,28 @@
             "type": "boolean",
             "example": true,
             "description": "Whether the privacy policy was accepted."
-          }
+          },
+          "termsVersion": {
+            "type": "string",
+            "example": "1.0",
+            "description": "Version of terms."
+          },
+          "privacyPolicyVersion": {
+            "type": "string",
+            "example": "1.0",
+            "description": "Version of privacy policy."
+          },
+          "createdAt": { "format": "date-time", "type": "string" },
+          "updatedAt": { "format": "date-time", "type": "string" }
         },
-        "required": ["termsAccepted", "privacyPolicyAccepted"]
+        "required": [
+          "termsAccepted",
+          "privacyPolicyAccepted",
+          "termsVersion",
+          "privacyPolicyVersion",
+          "createdAt",
+          "updatedAt"
+        ]
       },
       "UserEntity": {
         "type": "object",

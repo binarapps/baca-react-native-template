@@ -8,8 +8,14 @@
  */
 
 export interface LastConsentProperties {
+  createdAt: string
   /** Whether the privacy policy was accepted. */
   privacyPolicyAccepted: boolean
+  /** Version of privacy policy. */
+  privacyPolicyVersion: string
   /** Whether the terms were accepted. */
   termsAccepted: boolean
+  /** Version of terms. */
+  termsVersion: string
+  updatedAt: string
 }

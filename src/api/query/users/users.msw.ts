@@ -14,8 +14,12 @@ import type { UserEntity } from '../../types'
 export const getUsersControllerCreateResponseMock = (overrideResponse: any = {}): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
+      createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
       privacyPolicyAccepted: faker.datatype.boolean(),
+      privacyPolicyVersion: faker.word.sample(),
       termsAccepted: faker.datatype.boolean(),
+      termsVersion: faker.word.sample(),
+      updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
       ...overrideResponse,
     },
     undefined,
@@ -47,8 +51,12 @@ export const getUsersControllerFindAllResponseMock = (overrideResponse: any = {}
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     consent: faker.helpers.arrayElement([
       {
+        createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
         privacyPolicyAccepted: faker.datatype.boolean(),
+        privacyPolicyVersion: faker.word.sample(),
         termsAccepted: faker.datatype.boolean(),
+        termsVersion: faker.word.sample(),
+        updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
         ...overrideResponse,
       },
       undefined,
@@ -79,8 +87,12 @@ export const getUsersControllerFindAllResponseMock = (overrideResponse: any = {}
 export const getUsersControllerFindOneResponseMock = (overrideResponse: any = {}): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
+      createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
       privacyPolicyAccepted: faker.datatype.boolean(),
+      privacyPolicyVersion: faker.word.sample(),
       termsAccepted: faker.datatype.boolean(),
+      termsVersion: faker.word.sample(),
+      updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
       ...overrideResponse,
     },
     undefined,
@@ -111,8 +123,12 @@ export const getUsersControllerFindOneResponseMock = (overrideResponse: any = {}
 export const getUsersControllerUpdateResponseMock = (overrideResponse: any = {}): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
+      createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
       privacyPolicyAccepted: faker.datatype.boolean(),
+      privacyPolicyVersion: faker.word.sample(),
       termsAccepted: faker.datatype.boolean(),
+      termsVersion: faker.word.sample(),
+      updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
       ...overrideResponse,
     },
     undefined,
@@ -143,8 +159,12 @@ export const getUsersControllerUpdateResponseMock = (overrideResponse: any = {})
 export const getUsersControllerRemoveResponseMock = (overrideResponse: any = {}): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
+      createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
       privacyPolicyAccepted: faker.datatype.boolean(),
+      privacyPolicyVersion: faker.word.sample(),
       termsAccepted: faker.datatype.boolean(),
+      termsVersion: faker.word.sample(),
+      updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
       ...overrideResponse,
     },
     undefined,
