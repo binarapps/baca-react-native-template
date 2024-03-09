@@ -3,7 +3,9 @@
     "android": {
       "jsEngine": "hermes"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "jsEngine": "hermes",
       "supportsTablet": true
@@ -23,6 +25,7 @@
     "userInterfaceStyle": "automatic",
     "version": "2.1.0",
     "plugins": [
+      "@react-native-google-signin/google-signin",
       "expo-font",
       "expo-localization",
       "expo-secure-store",
