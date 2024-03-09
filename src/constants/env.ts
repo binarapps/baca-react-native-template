@@ -1,6 +1,6 @@
 import Constants from 'expo-constants'
 
 export const ENV = {
-  API_URL: 'https://api.binarapps.online/', // TODO: create env for dev/staging/prod and keep it there
+  API_URL: Constants?.expoConfig?.extra?.API_URL,
   ENVIRONMENT: Constants?.expoConfig?.extra?.ENVIRONMENT,
 }
