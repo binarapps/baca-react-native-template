@@ -1,102 +1,161 @@
-import { StyleSheet } from 'react-native'
+export type ButtonVariant =
+  | 'Primary'
+  | 'SecondaryColor'
+  | 'SecondaryGray'
+  | 'TertiaryColor'
+  | 'TertiaryGray'
+  | 'LinkColor'
+  | 'LinkGray'
 
-type ButtonVariant = 'Primary' | 'Secondary' | 'Outline' | 'Ghost' | 'Link'
+type BtnStyle = {
+  backgroundColor?: ColorNames
+  borderColor?: ColorNames
+  borderWidth?: number
+  color?: ColorNames
+}
+
 type VariantStyle = {
-  pressedStyle: {
-    backgroundColor: ColorNames
-    color?: ColorNames
-    borderColor?: ColorNames
-    borderWidth?: number
-  }
-  notPressedStyle: {
-    backgroundColor: ColorNames
-    color?: ColorNames
-    borderColor?: ColorNames
-    borderWidth?: number
-  }
-  disabledStyle: {
-    backgroundColor: ColorNames
-    color?: ColorNames
-    borderColor?: ColorNames
-    borderWidth?: number
-  }
+  defaultStyle: BtnStyle
+  disabledStyle: BtnStyle
+  focusedStyle: BtnStyle
+  hoveredStyle: BtnStyle
 }
 
 export const buttonVariants: { [key in ButtonVariant]: VariantStyle } = {
   Primary: {
-    pressedStyle: {
-      backgroundColor: 'button.primary.bg',
-      color: 'button.primary.fg',
+    hoveredStyle: {
+      backgroundColor: 'button.primary.bg_hover',
+      color: 'button.primary.fg_hover',
+      borderColor: 'button.primary.border',
+      borderWidth: 1,
     },
-    notPressedStyle: {
+    focusedStyle: {
       backgroundColor: 'button.primary.bg',
       color: 'button.primary.fg',
+      borderColor: 'button.primary.border',
+      borderWidth: 1,
+    },
+    defaultStyle: {
+      backgroundColor: 'button.primary.bg',
+      color: 'button.primary.fg',
+      borderColor: 'button.primary.border',
+      borderWidth: 1,
+    },
+    disabledStyle: {
+      backgroundColor: 'bg.disabled',
+      color: 'fg.disabled',
+      borderWidth: 1,
+      borderColor: 'border.disabled_subtle',
+    },
+  },
+  SecondaryColor: {
+    hoveredStyle: {
+      backgroundColor: 'button.secondary.bg_hover',
+      color: 'button.secondary.fg_hover',
+      borderColor: 'button.secondary.border_hover',
+      borderWidth: 1,
+    },
+    focusedStyle: {
+      backgroundColor: 'button.secondary.bg',
+      color: 'button.secondary.fg',
+      borderColor: 'button.secondary.border',
+      borderWidth: 1,
+    },
+    defaultStyle: {
+      backgroundColor: 'button.secondary.bg',
+      color: 'button.secondary.fg',
+      borderColor: 'button.secondary.border',
+      borderWidth: 1,
+    },
+    disabledStyle: {
+      backgroundColor: 'bg.primary',
+      color: 'fg.disabled',
+      borderColor: 'bg.disabled_subtle',
+      borderWidth: 1,
+    },
+  },
+  SecondaryGray: {
+    hoveredStyle: {
+      backgroundColor: 'button.secondary.bg_hover',
+      color: 'button.secondary.fg_hover',
+      borderColor: 'button.secondary.border_hover',
+      borderWidth: 1,
+    },
+    focusedStyle: {
+      backgroundColor: 'button.secondary.bg',
+      color: 'button.secondary.fg',
+      borderColor: 'button.secondary.border',
+      borderWidth: 1,
+    },
+    defaultStyle: {
+      backgroundColor: 'button.secondary.bg',
+      color: 'button.secondary.fg',
+      borderColor: 'button.secondary.border',
+      borderWidth: 1,
     },
     disabledStyle: {
       backgroundColor: 'toggle.button.fg_disabled',
-      color: 'text.white',
+      color: 'fg.disabled',
+      borderColor: 'border.disabled_subtle',
+      borderWidth: 1,
     },
   },
-  Secondary: {
-    pressedStyle: {
-      backgroundColor: 'button.secondary.bg',
-      color: 'text.brand.tertiary',
+  TertiaryGray: {
+    hoveredStyle: {
+      backgroundColor: 'button.tertiary.bg_hover',
+      color: 'button.tertiary.fg_hover',
     },
-    notPressedStyle: {
-      backgroundColor: 'button.secondary.bg',
-      color: 'text.brand.tertiary',
+    focusedStyle: {
+      color: 'button.tertiary.fg',
+    },
+    defaultStyle: {
+      color: 'button.tertiary.fg',
     },
     disabledStyle: {
-      backgroundColor: 'toggle.button.fg_disabled',
-      color: 'text.brand.secondary',
+      color: 'fg.disabled',
     },
   },
-  Outline: {
-    pressedStyle: {
-      backgroundColor: 'button.tertiary.fg',
-      borderColor: 'border.primary',
-      borderWidth: StyleSheet.hairlineWidth,
-      color: 'text.brand.primary',
+  TertiaryColor: {
+    hoveredStyle: {
+      backgroundColor: 'button.tertiary.bg_hover',
+      color: 'button.tertiary.color.fg_hover',
     },
-    notPressedStyle: {
-      backgroundColor: 'button.tertiary.fg',
-      borderColor: 'border.primary',
-      borderWidth: StyleSheet.hairlineWidth,
-      color: 'text.brand.secondary',
+    focusedStyle: {
+      color: 'button.tertiary.color.fg',
+    },
+    defaultStyle: {
+      color: 'button.tertiary.color.fg',
     },
     disabledStyle: {
-      backgroundColor: 'button.tertiary.fg',
-      borderColor: 'border.disabled',
-      borderWidth: StyleSheet.hairlineWidth,
-      color: 'text.disabled',
+      color: 'fg.disabled',
     },
   },
-  Ghost: {
-    pressedStyle: {
-      backgroundColor: 'button.primary.bg',
-      color: 'text.primary',
+  LinkGray: {
+    hoveredStyle: {
+      color: 'button.tertiary.fg_hover',
     },
-    notPressedStyle: {
-      backgroundColor: 'button.tertiary.fg',
-      color: 'text.primary',
+    focusedStyle: {
+      color: 'button.tertiary.fg',
+    },
+    defaultStyle: {
+      color: 'button.tertiary.fg',
     },
     disabledStyle: {
-      backgroundColor: 'button.tertiary.fg',
-      color: 'text.brand.secondary',
+      color: 'fg.disabled',
     },
   },
-  Link: {
-    pressedStyle: {
-      backgroundColor: 'button.tertiary.fg',
-      color: 'text.brand.primary',
+  LinkColor: {
+    hoveredStyle: {
+      color: 'button.tertiary.color.fg_hover',
     },
-    notPressedStyle: {
-      backgroundColor: 'button.tertiary.fg',
-      color: 'text.brand.secondary',
+    focusedStyle: {
+      color: 'button.tertiary.color.fg',
+    },
+    defaultStyle: {
+      color: 'button.tertiary.color.fg',
     },
     disabledStyle: {
-      backgroundColor: 'button.tertiary.fg',
-      color: 'text.disabled',
+      color: 'fg.disabled',
     },
   },
 }

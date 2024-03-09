@@ -37,9 +37,9 @@ export const SettingsScreen = (): JSX.Element => {
           )
         })}
 
-        <Button.Secondary mt={8} size="lg" onPress={signOut}>
+        <Button.SecondaryColor mt={8} size="lg" onPress={signOut}>
           {t('settings_screen.sign_out')}
-        </Button.Secondary>
+        </Button.SecondaryColor>
         <Spacer y={10} />
         <Version onPress={noop} />
       </Center>

@@ -93,13 +93,15 @@
     },
     "button_variants": {
       "disabled": "Button disabled",
-      "ghost": "Button ghost",
       "header": "Button variants",
-      "link": "Button link",
+      "link_color": "Button link color",
+      "link_gray": "Button link gray",
       "loading": "Button loading",
-      "outline": "Button outline",
       "primary": "Button primary",
-      "secondary": "Button secondary",
+      "secondary_color": "Button secondary color",
+      "secondary_gray": "Button secondary gray",
+      "tertiary_color": "Button tertiary color",
+      "tertiary_gray": "Button tertiary gray",
       "with_icons": "Button with icons"
     },
     "loader_variants": {

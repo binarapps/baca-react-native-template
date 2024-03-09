@@ -72,10 +72,21 @@ export const ComponentsScreen = (): JSX.Element => {
           rightIcon={<Icon name="account-box-fill" size={24} color="alpha.black.100" />}
           title={t('components_screen.button_variants.with_icons')}
         />
-        <Button.Secondary mt={4} title={t('components_screen.button_variants.secondary')} />
-        <Button.Outline mt={4} title={t('components_screen.button_variants.outline')} />
-        <Button.Ghost mt={4} title={t('components_screen.button_variants.ghost')} />
-        <Button.Link mt={4} title={t('components_screen.button_variants.link')} />
+        <Button.SecondaryColor
+          mt={4}
+          title={t('components_screen.button_variants.secondary_color')}
+        />
+        <Button.SecondaryGray
+          mt={4}
+          title={t('components_screen.button_variants.secondary_gray')}
+        />
+        <Button.TertiaryColor
+          mt={4}
+          title={t('components_screen.button_variants.tertiary_color')}
+        />
+        <Button.TertiaryGray mt={4} title={t('components_screen.button_variants.tertiary_gray')} />
+        <Button.LinkColor mt={4} title={t('components_screen.button_variants.link_color')} />
+        <Button.LinkGray mt={4} title={t('components_screen.button_variants.link_gray')} />
         <Button mt={4} disabled>
           {t('components_screen.button_variants.disabled')}
         </Button>

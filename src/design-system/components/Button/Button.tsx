@@ -20,7 +20,7 @@ import {
   View,
 } from 'react-native'
 
-import { buttonVariants, theme } from '../../config'
+import { ButtonVariant, buttonVariants, theme } from '../../config'
 import { generateStyledComponent } from '../../utils'
 import { Box } from '../Box'
 import { Loader } from '../Loader'
@@ -77,75 +77,75 @@ const RawButton = memo(
       ref
     ) => {
       const { colorScheme } = useColorScheme()
-      const { pressedStyle, notPressedStyle, disabledStyle } = useMemo(
+      const { hoveredStyle, defaultStyle, disabledStyle } = useMemo(
         () => buttonVariants[variant],
         [variant]
       )
 
-      const pressedStyles = useMemo<ViewStyle>(
+      const hoveredStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
-            color: pressedStyle.backgroundColor,
+            color: hoveredStyle.backgroundColor || 'transparent',
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderColor: getColorValue({
-            color: pressedStyle.borderColor!,
+            color: hoveredStyle.borderColor!,
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
-          borderWidth: pressedStyle.borderWidth,
+          borderWidth: hoveredStyle.borderWidth,
         }),
         [
           colorScheme,
-          pressedStyle.backgroundColor,
-          pressedStyle.borderColor,
-          pressedStyle.borderWidth,
+          hoveredStyle.backgroundColor,
+          hoveredStyle.borderColor,
+          hoveredStyle.borderWidth,
         ]
       )
 
-      const pressedColorStyle = useMemo<TextStyle>(
+      const hoverColorStyle = useMemo<TextStyle>(
         () => ({
           color: getColorValue({
-            color: pressedStyle.color!,
+            color: hoveredStyle.color!,
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
         }),
-        [colorScheme, pressedStyle.color]
+        [colorScheme, hoveredStyle.color]
       )
 
-      const notPressedStyles = useMemo<ViewStyle>(
+      const defaultStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
-            color: notPressedStyle.backgroundColor,
+            color: defaultStyle.backgroundColor || 'transparent',
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderColor: getColorValue({
-            color: notPressedStyle.borderColor!,
+            color: defaultStyle.borderColor!,
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
-          borderWidth: notPressedStyle.borderWidth,
+          borderWidth: defaultStyle.borderWidth,
         }),
         [
           colorScheme,
-          notPressedStyle.backgroundColor,
-          notPressedStyle.borderColor,
-          notPressedStyle.borderWidth,
+          defaultStyle.backgroundColor,
+          defaultStyle.borderColor,
+          defaultStyle.borderWidth,
         ]
       )
 
-      const notPressedColorStyle = useMemo<TextStyle>(
+      const defaultColorStyle = useMemo<TextStyle>(
         () => ({
           color: getColorValue({
-            color: notPressedStyle.color!,
+            color: defaultStyle.color!,
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
         }),
-        [colorScheme, notPressedStyle.color]
+        [colorScheme, defaultStyle.color]
       )
 
       const disabledStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
-            color: disabledStyle.backgroundColor,
+            color: disabledStyle.backgroundColor || 'transparent',
             colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
           }),
           borderColor: getColorValue({
@@ -184,24 +184,24 @@ const RawButton = memo(
         ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
           StyleSheet.flatten<ViewStyle>([
             styles.baseButton,
-            pressed ? pressedStyles : notPressedStyles,
+            pressed ? hoveredStyles : defaultStyles,
             disabled && disabledStyles,
             loading && disabledStyles,
             buttonSizeStyle,
             typeof style === 'function' ? style({ pressed }) : style,
           ]),
-        [pressedStyles, notPressedStyles, loading, buttonSizeStyle, disabled, disabledStyles, style]
+        [hoveredStyles, defaultStyles, disabled, disabledStyles, loading, buttonSizeStyle, style]
       )
 
       const pressableTextStyleFunction = useCallback(
         ({ pressed }: PressableStateCallbackType) =>
           StyleSheet.flatten([
             styles.baseText,
-            pressed ? pressedColorStyle : notPressedColorStyle,
+            pressed ? hoverColorStyle : defaultColorStyle,
             disabled && disabledColorStyle,
             textStyle,
           ]),
-        [pressedColorStyle, notPressedColorStyle, disabled, disabledColorStyle, textStyle]
+        [hoverColorStyle, defaultColorStyle, disabled, disabledColorStyle, textStyle]
       )
 
       const childrenElement = useCallback(
@@ -239,13 +239,11 @@ const RawButton = memo(
 
       return (
         <Pressable
-          ref={ref}
           role="button"
           accessibilityRole="button"
           style={pressableStyleFunction}
-          disabled={disabled}
           testID="baseButton"
-          {...props}
+          {...{ disabled, ref, ...props }}
         >
           {(props: PressableStateCallbackType) => (
             <>
@@ -259,7 +257,7 @@ const RawButton = memo(
     }
   )
 )
-export type ButtonVariant = 'Primary' | 'Secondary' | 'Outline' | 'Ghost' | 'Link'
+
 type ButtonComposition = ForwardRefExoticComponent<
   PropsWithoutRef<ButtonProps> & RefAttributes<View>
 > & {
@@ -275,9 +273,11 @@ const generateButtonVariant = (variant: ButtonVariant) =>
   forwardRef<View, ButtonProps>((props, ref) => <Button variant={variant} {...props} ref={ref} />)
 
 Button.Primary = generateButtonVariant('Primary')
-Button.Secondary = generateButtonVariant('Secondary')
-Button.Outline = generateButtonVariant('Outline')
-Button.Ghost = generateButtonVariant('Ghost')
-Button.Link = generateButtonVariant('Link')
+Button.SecondaryColor = generateButtonVariant('SecondaryColor')
+Button.SecondaryGray = generateButtonVariant('SecondaryGray')
+Button.TertiaryColor = generateButtonVariant('TertiaryColor')
+Button.TertiaryGray = generateButtonVariant('TertiaryGray')
+Button.LinkColor = generateButtonVariant('LinkColor')
+Button.LinkGray = generateButtonVariant('LinkGray')
 
 export { Button }

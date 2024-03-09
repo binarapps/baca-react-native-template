@@ -37,9 +37,9 @@ exports[`Button renders correctly 1`] = `
     {
       "alignItems": "center",
       "backgroundColor": "#7F56D9",
-      "borderColor": "transparent",
+      "borderColor": "#7F56D9",
       "borderRadius": 4,
-      "borderWidth": undefined,
+      "borderWidth": 1,
       "flexDirection": "row",
       "justifyContent": "center",
       "minWidth": 128,
