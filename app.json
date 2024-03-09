@@ -22,7 +22,13 @@
     },
     "userInterfaceStyle": "automatic",
     "version": "2.1.0",
-    "plugins": ["expo-font", "expo-localization", "expo-secure-store", "expo-router"],
+    "plugins": [
+      "expo-font",
+      "expo-localization",
+      "expo-secure-store",
+      "expo-router",
+      "./plugin/withDebugKeystore.js"
+    ],
     "web": {
       "bundler": "metro"
     }
