@@ -1,5 +1,7 @@
 import fs from 'fs'
 
+import { logger } from './logger'
+
 /**
  * Retrieves the names of all sub-directories in the specified directory.
  *
@@ -8,6 +10,7 @@ import fs from 'fs'
  */
 export const getDirectoryNames = (directoryPath: string): string[] => {
   try {
+    if (directoryPath.includes('new-tab')) return []
     // Read the contents of the directory
     const contents = fs.readdirSync(directoryPath)
 
@@ -19,7 +22,7 @@ export const getDirectoryNames = (directoryPath: string): string[] => {
 
     return folderNames
   } catch (err) {
-    console.error(`Error reading directory: ${err}`)
+    logger.error(`Error reading directory: ${err}`)
     return []
   }
 }

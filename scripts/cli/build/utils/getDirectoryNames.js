@@ -7,6 +7,7 @@ var __importDefault =
 Object.defineProperty(exports, '__esModule', { value: true })
 exports.getDirectoryNames = void 0
 const fs_1 = __importDefault(require('fs'))
+const logger_1 = require('./logger')
 /**
  * Retrieves the names of all sub-directories in the specified directory.
  *
@@ -15,6 +16,7 @@ const fs_1 = __importDefault(require('fs'))
  */
 const getDirectoryNames = (directoryPath) => {
   try {
+    if (directoryPath.includes('new-tab')) return []
     // Read the contents of the directory
     const contents = fs_1.default.readdirSync(directoryPath)
     // Filter out only directories
@@ -24,7 +26,7 @@ const getDirectoryNames = (directoryPath) => {
     })
     return folderNames
   } catch (err) {
-    console.error(`Error reading directory: ${err}`)
+    logger_1.logger.error(`Error reading directory: ${err}`)
     return []
   }
 }

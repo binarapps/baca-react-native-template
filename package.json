@@ -44,6 +44,8 @@
     "deploy:staging:ios": "yarn prepare:staging && eas build --platform ios --profile staging --auto-submit --non-interactive",
     "deploy:staging": "yarn prepare:staging && eas build --platform all --profile staging --auto-submit --non-interactive",
     "eas-build-pre-install": "base64 --help && echo $ANDROID_FIREBASE_CONFIG | base64 --decode > google-services.json  && cat google-services.json && echo $IOS_FIREBASE_CONFIG | base64 --decode > GoogleService-Info.plist && cat GoogleService-Info.plist",
+    "baca:generate": "node ./scripts/cli/build generate",
+    "generate:query": "yarn orval --config ./orval.config.ts",
     "generate:component": "node ./scripts/create_new_component.js && yarn eslint src --fix && yarn tsc",
     "generate:env:production": "scripts/generate_dotenv.sh production",
     "generate:env:qa": "scripts/generate_dotenv.sh qa",

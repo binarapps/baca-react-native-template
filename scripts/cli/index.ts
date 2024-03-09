@@ -1,14 +1,11 @@
 import { Command } from 'commander'
 
-import { parseAction } from './actions'
+import { executeAction } from './actions'
 
 const program = new Command()
 
-program
-  .argument('<action>')
-  .option('-d, --debug', 'Set the debug level')
-  .action((action, options, command) => {
-    parseAction(action)
-  })
+program.argument('<action>').action((action) => {
+  executeAction(action)
+})
 
 program.parse()

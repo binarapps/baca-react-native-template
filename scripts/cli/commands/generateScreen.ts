@@ -5,7 +5,7 @@ import prompt from 'prompt-sync'
 import selectPrompt from 'select-prompt'
 
 import { APP_ROUTER_DIRECTORY, SCREENS_DIRECTORY } from '../constants'
-import { getDirectoryNames } from '../utils'
+import { getDirectoryNames, logger } from '../utils'
 
 const addAfter = (content: string, searchText: string, textToAdd: string) => {
   return content.replace(searchText, searchText + textToAdd)
@@ -19,37 +19,40 @@ const addAfter = (content: string, searchText: string, textToAdd: string) => {
 const selectPath = (basePath: string) =>
   new Promise<string>((resolve) => {
     const subDirectories = getDirectoryNames(basePath)
-    if (subDirectories.length) {
-      const subDirectoryPrompt = subDirectories.map((directoryName) => ({
-        title: directoryName,
-        value: directoryName,
-      }))
+    const hasSubDirectories = subDirectories.length > 0
 
-      if (basePath.includes('tabs')) {
-        subDirectoryPrompt.unshift({ title: '_New Tab_', value: 'new-tab' })
-      }
-
-      if (basePath !== APP_ROUTER_DIRECTORY) {
-        subDirectoryPrompt.unshift({ title: '.', value: '.' })
-      }
-
-      selectPrompt(`Select a directory (${basePath.split(process.cwd())[1]})`, subDirectoryPrompt, {
-        cursor: 0,
-      }).on('submit', (subValue: string) => {
-        // Return the result when subValue is '.'
-        if (subValue === '.') {
-          resolve(basePath)
-          return
-        }
-        // Return the result when subValue is not '.'
-        selectPath(`${basePath}/${subValue}`).then((subResult) => {
-          resolve(subResult)
-        })
-      })
-      // Return the result when there are no subdirectories
-    } else {
+    // Return the result when there are no subdirectories
+    if (!hasSubDirectories) {
       resolve(basePath)
+      return
     }
+
+    const subDirectoryPrompt = subDirectories.map((directoryName) => ({
+      title: directoryName,
+      value: directoryName,
+    }))
+
+    if (basePath.includes('tabs')) {
+      subDirectoryPrompt.unshift({ title: '_New Tab_', value: 'new-tab' })
+    }
+
+    if (basePath !== APP_ROUTER_DIRECTORY) {
+      subDirectoryPrompt.unshift({ title: '.', value: '.' })
+    }
+
+    selectPrompt(`Select a directory (${basePath})`, subDirectoryPrompt, {
+      cursor: 0,
+    }).on('submit', (subValue: string) => {
+      // Return the result when user selects current directory
+      if (subValue === '.') {
+        resolve(basePath)
+        return
+      }
+      // Recursively execute path selection when subValue is not the current directory
+      selectPath(`${basePath}/${subValue}`).then((subResult) => {
+        resolve(subResult)
+      })
+    })
   })
 
 /**
@@ -61,7 +64,7 @@ const selectPath = (basePath: string) =>
 const validateRoute = (routeName: string, routePath: string) => {
   const filePath = `${routePath}/${routeName}.tsx`
   if (fs.existsSync(filePath)) {
-    throw new Error(`Route ${routeName} already exists in ${routePath}`)
+    logger.error(`Route ${routeName} already exists in ${routePath}`)
   }
 }
 
@@ -77,11 +80,7 @@ const createRouteFile = (routeName: string, routePath: string) => {
     `import { ${screenName} } from '@baca/screens'
 
 export default ${screenName}
-`,
-    {
-      encoding: 'utf-8',
-      flag: 'w',
-    }
+`
   )
 }
 
@@ -93,7 +92,7 @@ export default ${screenName}
 const validateScreen = (screenName: string) => {
   const filePath = `${SCREENS_DIRECTORY}/${screenName}.tsx`
   if (fs.existsSync(filePath)) {
-    throw new Error(`Screen ${screenName} already exists in ${SCREENS_DIRECTORY}`)
+    logger.error(`Screen ${screenName} already exists`)
   }
 }
 
@@ -118,12 +117,15 @@ const addToScreensIndex = (screenName: string) => {
   fs.writeFileSync(indexFilePath, newIndexFile)
 }
 
-const createNewNavTab = () => {
+const promptTabName = () => {
   const tabName = prompt()('Enter tab name: ')
   if (!tabName) {
     throw new Error('Tab name is required')
   }
+  return tabName
+}
 
+const createNewNavTab = (tabName: string) => {
   const navigationConfigFile = fs.readFileSync(
     './src/navigation/tabNavigator/navigation-config.ts',
     'utf8'
@@ -149,15 +151,17 @@ const createNewNavTab = () => {
  */
 export const generateScreen = async () => {
   const routeName = prompt()('Enter screen name: ')
-  if (!routeName) {
-    throw new Error('Screen name is required')
-  }
+  let routePath = await selectPath(APP_ROUTER_DIRECTORY)
 
-  const routePath = await selectPath(APP_ROUTER_DIRECTORY)
-
-  const isNewTab = routePath.includes('tabs') && routePath.includes('new-tab')
+  const isNewTab = routePath.includes('(tabs)') && routePath.includes('new-tab')
   if (isNewTab) {
-    createNewNavTab()
+    const tabName = promptTabName()
+    createNewNavTab(tabName)
+
+    const newTabPath = routePath.replace('/new-tab', `/${tabName}`)
+    routePath = newTabPath
+    console.log({ newTabPath, routePath })
+    fs.mkdirSync(newTabPath)
   }
 
   validateRoute(routeName, routePath)

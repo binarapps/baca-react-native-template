@@ -1,7 +1,7 @@
 import { bootstrap } from './bootstrap'
 import { generate } from './generate'
 import { CLI_ACTIONS } from '../constants'
-import { CliActions } from '../types'
+import { logger } from '../utils'
 
 const actions = {
   generate,
@@ -15,9 +15,9 @@ const actions = {
  *
  * @param action - The CLI action to parse and execute.
  */
-export const parseAction = (action: CliActions) => {
+export const executeAction = (action: keyof typeof actions) => {
   if (!CLI_ACTIONS.includes(action)) {
-    console.error('\x1b[31m%s\x1b[0m', `Invalid action ${action}`)
+    logger.error(`Action ${action} is not supported.`)
     return
   }
   actions[action]()
