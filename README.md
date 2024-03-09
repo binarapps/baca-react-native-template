@@ -172,11 +172,23 @@ Start the expo server
   yarn start
 ```
 
-## Adding jotai as state management tool
+Environment variables instruction:
 
-This starter doesn't go with any state management tool, but we have created separate branch with jotai setup, maybe in the future we will add more tools support.
+1. Create empty file `scripts/doppler_variables.sh` and add this script to new created file.
 
-To use jotai with this starter you can check docs: **[Jotai docs](./documentation/docs/tutorials/JOTAI.md)**
+- run `yarn prepare:env_file` - this will copy template and plase it in `scripts/doppler_variables.sh`
+
+2. Add correct values to variables (ask one of the developers for that), example:
+
+```bash
+export DOPPLER_TOKEN_DEVELOPMENT=dp.st.alpha.XXXXxxxxXXXXxxxxXXXXxxxx
+```
+
+Start the expo server
+
+```bash
+  yarn start
+```
 
 ## License
 
