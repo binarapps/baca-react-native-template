@@ -18,10 +18,10 @@ const faviconPath = './assets/icons/web/favicon-'
 
 // APP_CONFIG_START
 export const APP_CONFIG = {
-  androidPackageName: 'your_android_package_name', // CONFIG: Add your android package name here
+  androidPackageName: 'online.binarapps', // CONFIG: Add your android package name here
   appName: 'Template', // CONFIG: Add your app name here
   easProjectId: 'ac562c27-4a4e-4532-869f-fe6f9447bee6', // CONFIG: Add your eas project ID here
-  iosBundleIdentifier: 'your.ios.bundle.identifier', // CONFIG: Add your ios bundle identifier here
+  iosBundleIdentifier: 'online.binarapps', // CONFIG: Add your ios bundle identifier here
   scheme: 'yourUrlScheme', // CONFIG: Add your url scheme to link to your app
   adaptiveIconBackgroundColor: '#2E7AF0CC', // CONFIG: Add your android adaptive icon background color here
 } as const

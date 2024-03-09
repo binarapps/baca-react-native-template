@@ -1,12 +1,19 @@
 {
   "expo": {
     "android": {
-      "jsEngine": "hermes"
+      "jsEngine": "hermes",
+      "versionCode": 10,
+      "softwareKeyboardLayoutMode": "pan",
+      "googleServicesFile": "./google-services.json"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "jsEngine": "hermes",
-      "supportsTablet": true
+      "buildNumber": "10",
+      "supportsTablet": true,
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "name": "Template",
     "orientation": "portrait",
@@ -22,7 +29,14 @@
     },
     "userInterfaceStyle": "automatic",
     "version": "2.1.0",
-    "plugins": ["expo-font", "expo-localization", "expo-secure-store", "expo-router"],
+    "plugins": [
+      "@react-native-google-signin/google-signin",
+      "expo-font",
+      "expo-localization",
+      "expo-secure-store",
+      "expo-router",
+      "./plugin/withDebugKeystore.js"
+    ],
     "web": {
       "bundler": "metro"
     }
