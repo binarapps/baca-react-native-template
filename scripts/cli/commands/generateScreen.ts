@@ -160,7 +160,7 @@ export const generateScreen = async () => {
 
     const newTabPath = routePath.replace('/new-tab', `/${tabName}`)
     routePath = newTabPath
-    console.log({ newTabPath, routePath })
+
     fs.mkdirSync(newTabPath)
   }
 

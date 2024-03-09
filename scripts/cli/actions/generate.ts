@@ -4,6 +4,7 @@ import selectPrompt from 'select-prompt'
 
 import { generateIconTypes } from '../commands/generateIconTypes'
 import { generateScreen } from '../commands/generateScreen'
+import { logger } from '../utils'
 
 const generatePrompts = [
   {
@@ -11,7 +12,7 @@ const generatePrompts = [
     value: 'screen',
   },
   {
-    title: 'Component',
+    title: 'Component TBD',
     value: 'component',
   },
   {
@@ -23,7 +24,8 @@ const generatePrompts = [
 const commands = {
   screen: generateScreen,
   component: () => {
-    console.log('Generate Component')
+    logger.info('Not implemented yet.')
+    logger.info('Please use the `yarn generate:component` command.')
   },
   'icon-types': generateIconTypes,
 }

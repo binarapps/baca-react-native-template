@@ -40,3 +40,6 @@ GoogleService-Info.plist
 scripts/doppler_variables.sh
 .env
 env.json
+
+# baca-cli build
+scripts/cli/build/
