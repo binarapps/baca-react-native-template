@@ -17,6 +17,5 @@ const generateIconTypes = () => {
     .concat('\n')
   const content = prefix + types
   fs_1.default.writeFileSync('./src/types/icon.d.ts', content)
-  console.log('Icon types generated')
 }
 exports.generateIconTypes = generateIconTypes

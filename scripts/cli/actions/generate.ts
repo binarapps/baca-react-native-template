@@ -3,6 +3,7 @@
 import selectPrompt from 'select-prompt'
 
 import { generateIconTypes } from '../commands/generateIconTypes'
+import { generateScreen } from '../commands/generateScreen'
 
 const generatePrompts = [
   {
@@ -20,9 +21,7 @@ const generatePrompts = [
 ]
 
 const commands = {
-  screen: () => {
-    console.log('Generate Screen')
-  },
+  screen: generateScreen,
   component: () => {
     console.log('Generate Component')
   },

@@ -3,6 +3,7 @@
     "rootDir": ".",
     "outDir": "build",
     "strict": true,
+    "lib": ["ESNext"],
     "target": "es6",
     "module": "commonjs",
     "sourceMap": false,

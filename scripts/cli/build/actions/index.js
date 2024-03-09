@@ -10,6 +10,11 @@ const actions = {
   bootstrap: bootstrap_1.bootstrap,
   b: bootstrap_1.bootstrap,
 }
+/**
+ * Parses and executes the specified CLI action.
+ *
+ * @param action - The CLI action to parse and execute.
+ */
 const parseAction = (action) => {
   if (!constants_1.CLI_ACTIONS.includes(action)) {
     console.error('\x1b[31m%s\x1b[0m', `Invalid action ${action}`)

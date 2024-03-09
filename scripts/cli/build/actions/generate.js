@@ -41,6 +41,7 @@ exports.generate = void 0
 // @ts-ignore
 const select_prompt_1 = __importDefault(require('select-prompt'))
 const generateIconTypes_1 = require('../commands/generateIconTypes')
+const generateScreen_1 = require('../commands/generateScreen')
 const generatePrompts = [
   {
     title: 'Screen',
@@ -56,9 +57,7 @@ const generatePrompts = [
   },
 ]
 const commands = {
-  screen: () => {
-    console.log('Generate Screen')
-  },
+  screen: generateScreen_1.generateScreen,
   component: () => {
     console.log('Generate Component')
   },
