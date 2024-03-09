@@ -249,13 +249,11 @@ const RawButton = memo(
 
       return (
         <Pressable
-          role="button"
           accessibilityRole="button"
+          role="button"
           style={pressableStyleFunction}
           testID="baseButton"
-          onHoverIn={hoverProps.onHoverIn}
-          onHoverOut={hoverProps.onHoverOut}
-          {...{ disabled, ref, ...props }}
+          {...{ disabled, ...hoverProps, ref, ...props }}
         >
           {(props: PressableStateCallbackType) => (
             <>
