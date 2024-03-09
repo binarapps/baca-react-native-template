@@ -7,6 +7,10 @@ import selectPrompt from 'select-prompt'
 import { APP_ROUTER_DIRECTORY, SCREENS_DIRECTORY } from '../constants'
 import { getDirectoryNames } from '../utils'
 
+const addAfter = (content: string, searchText: string, textToAdd: string) => {
+  return content.replace(searchText, searchText + textToAdd)
+}
+
 /**
  * Recursively prompts the user to select a subdirectory and calls itself with the selected subdirectory path.
  *
@@ -14,13 +18,16 @@ import { getDirectoryNames } from '../utils'
  */
 const selectPath = (basePath: string) =>
   new Promise<string>((resolve) => {
-    let result = basePath
     const subDirectories = getDirectoryNames(basePath)
     if (subDirectories.length) {
       const subDirectoryPrompt = subDirectories.map((directoryName) => ({
         title: directoryName,
         value: directoryName,
       }))
+
+      if (basePath.includes('tabs')) {
+        subDirectoryPrompt.unshift({ title: '_New Tab_', value: 'new-tab' })
+      }
 
       if (basePath !== APP_ROUTER_DIRECTORY) {
         subDirectoryPrompt.unshift({ title: '.', value: '.' })
@@ -29,18 +36,19 @@ const selectPath = (basePath: string) =>
       selectPrompt(`Select a directory (${basePath.split(process.cwd())[1]})`, subDirectoryPrompt, {
         cursor: 0,
       }).on('submit', (subValue: string) => {
+        // Return the result when subValue is '.'
         if (subValue === '.') {
-          result = basePath
-          resolve(result) // Return the result when subValue is '.'
+          resolve(basePath)
           return
         }
+        // Return the result when subValue is not '.'
         selectPath(`${basePath}/${subValue}`).then((subResult) => {
-          result = subResult
-          resolve(result) // Return the result when subValue is not '.'
+          resolve(subResult)
         })
       })
+      // Return the result when there are no subdirectories
     } else {
-      resolve(result) // Return the result when there are no subdirectories
+      resolve(basePath)
     }
   })
 
@@ -63,14 +71,17 @@ const validateRoute = (routeName: string, routePath: string) => {
  * @param {string} routePath - The path where the route file will be created.
  */
 const createRouteFile = (routeName: string, routePath: string) => {
-  // TODO: Check if its the tab - if so - add under new directory
   const screenName = `${routeName.charAt(0).toUpperCase() + routeName.slice(1)}Screen`
   fs.writeFileSync(
     `${routePath}/${routeName.toLowerCase()}.tsx`,
     `import { ${screenName} } from '@baca/screens'
 
 export default ${screenName}
-`
+`,
+    {
+      encoding: 'utf-8',
+      flag: 'w',
+    }
   )
 }
 
@@ -90,28 +101,45 @@ const validateScreen = (screenName: string) => {
  * Creates a screen file with the given screen name.
  * @param {string} screenName - The name of the screen.
  */
-const createScreenFile = (baseName: string) => {
-  const screenName = `${baseName.charAt(0).toUpperCase() + baseName.slice(1)}Screen`
+const createScreenFile = (screenName: string) => {
   const screenFromFile = fs.readFileSync('./templates/screen_template.tsx', 'utf8')
   const screenContent = screenFromFile
     .replaceAll('_NAME_', screenName)
     .replace("// @ts-expect-error: it's a template and will be removed", '')
 
-  fs.writeFileSync(`${SCREENS_DIRECTORY}/${screenName}.tsx`, screenContent, {
-    encoding: 'utf-8',
-    flag: 'w',
-  })
+  fs.writeFileSync(`${SCREENS_DIRECTORY}/${screenName}.tsx`, screenContent)
 }
 
-const addToScreensIndex = (baseName: string) => {
-  const screenName = `${baseName.charAt(0).toUpperCase() + baseName.slice(1)}Screen`
+const addToScreensIndex = (screenName: string) => {
   const indexFilePath = `${SCREENS_DIRECTORY}/index.ts`
   const indexFile = fs.readFileSync(indexFilePath, 'utf8')
   const newIndexFile = indexFile.padEnd(indexFile.length) + `export * from './${screenName}'\n`
 
-  console.log({ indexFile, newIndexFile })
-
   fs.writeFileSync(indexFilePath, newIndexFile)
+}
+
+const createNewNavTab = () => {
+  const tabName = prompt()('Enter tab name: ')
+  if (!tabName) {
+    throw new Error('Tab name is required')
+  }
+
+  const navigationConfigFile = fs.readFileSync(
+    './src/navigation/tabNavigator/navigation-config.ts',
+    'utf8'
+  )
+
+  const tabContent = `
+  {
+    displayedName: '${tabName.charAt(0).toUpperCase() + tabName.slice(1)}',
+    icon: 'zzz-line', // CONFIG: Add your icon name here
+    iconFocused: 'zzz-fill', // CONFIG: Add your icon name here
+    id: '${tabName}',
+    name: '${tabName}',
+  },`
+
+  const newContent = addAfter(navigationConfigFile, '// UPPER SIDE TABS', tabContent)
+  fs.writeFileSync('./src/navigation/tabNavigator/navigation-config.ts', newContent)
 }
 
 /**
@@ -120,12 +148,22 @@ const addToScreensIndex = (baseName: string) => {
  * Validates the screen name and path.
  */
 export const generateScreen = async () => {
-  const screenName = prompt()('Enter screen name: ')
+  const routeName = prompt()('Enter screen name: ')
+  if (!routeName) {
+    throw new Error('Screen name is required')
+  }
+
   const routePath = await selectPath(APP_ROUTER_DIRECTORY)
 
-  validateRoute(screenName, routePath)
-  createRouteFile(screenName, routePath)
+  const isNewTab = routePath.includes('tabs') && routePath.includes('new-tab')
+  if (isNewTab) {
+    createNewNavTab()
+  }
 
+  validateRoute(routeName, routePath)
+  createRouteFile(routeName, routePath)
+
+  const screenName = `${routeName.charAt(0).toUpperCase() + routeName.slice(1)}Screen`
   validateScreen(screenName)
   createScreenFile(screenName)
 
