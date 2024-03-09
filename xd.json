@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "363534133095",
+    "project_id": "schoolpilot-development",
+    "storage_bucket": "schoolpilot-development.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363534133095:android:53a6082666d3782c9331c2",
+        "android_client_info": {
+          "package_name": "online.binarapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "363534133095-3dgo2dg6r4o3ft920p4u4mhb0tmo3nlm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAc3eoQ1xgTqHs_fgSHvsHiXxnPvwh5X8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363534133095-3dgo2dg6r4o3ft920p4u4mhb0tmo3nlm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "363534133095-bmfhom3ck27iudrfbg2r71cee50078m2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "online.binarapps"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
