@@ -69,9 +69,10 @@
     "example": "Example"
   },
   "landing_screen": {
-    "login_cta": "Login to app",
     "go_to_blog": "Open blog",
-    "go_to_form": "Open full screen form"
+    "go_to_form": "Open full screen form",
+    "login_cta": "Log in",
+    "sign_up": "Sign up"
   },
   "application_info_screen": {
     "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
@@ -155,6 +156,7 @@
     "sign_up": "Sign up"
   },
   "sign_up_screen": {
+    "created_new_account": "A new account has been created. An email with an activation link was sent to {{userEmail}}.",
     "email_label": "Email",
     "email_placeholder": "Enter your email",
     "first_name_label": "First name",
