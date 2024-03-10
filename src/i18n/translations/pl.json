@@ -25,7 +25,8 @@
     "missing_auth": "Brak autoryzacji",
     "screen_not_found": "NotFound screen",
     "something_went_wrong": "Coś poszło nie tak",
-    "token_expired": "Token wygasł"
+    "token_expired": "Token wygasł",
+    "play_services_not_available": "Usługi play są niedostępne."
   },
   "form": {
     "invalid_email_format": "Zły adres e-mail",
@@ -152,7 +153,8 @@
     "password_placeholder": "hasło",
     "remember_me": "Zapamiętaj mnie",
     "sign_in": "Zaloguj",
-    "sign_up": "Zarejestruj"
+    "sign_up": "Zarejestruj",
+    "sign_in_by_google": "Zaloguj się przez Google"
   },
   "sign_up_screen": {
     "created_new_account": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",

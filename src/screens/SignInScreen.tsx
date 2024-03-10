@@ -1,7 +1,7 @@
 import { ControlledField, KeyboardAwareScrollView, LanguagePicker, Version } from '@baca/components'
 import { REGEX, darkLogo, lightLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
-import { Box, Button, Center, Spacer, Text } from '@baca/design-system'
+import { Box, Button, Center, SignInWithGoogle, Spacer, Text } from '@baca/design-system'
 import {
   useCallback,
   useSignInForm,
@@ -91,12 +91,14 @@ export const SignInScreen = (): JSX.Element => {
           <Button
             disabled={isSubmitting}
             loading={isSubmitting}
-            my={8}
+            mt={8}
+            mb={4}
             onPress={submit}
             testID="signInButton"
           >
             {t('sign_in_screen.sign_in')}
           </Button>
+          <SignInWithGoogle />
           <Text bold mb={4}>
             {t('sign_in_screen.do_not_have_an_account')}
           </Text>
