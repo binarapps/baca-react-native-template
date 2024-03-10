@@ -1,30 +1,51 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const fs = require('fs')
-const prompt = require('prompt-sync')()
+import fs from 'fs'
+import promptSync from 'prompt-sync'
 
-const { logger, addAfter } = require('./utils')
+import {
+  README_PATH,
+  APP_CONFIG_PATH,
+  NEW_PULL_REQUEST_TEMPLATE_PATH,
+  PULL_REQUEST_TEMPLATE_PATH,
+  APP_JSON_PATH,
+} from '../constants'
+import { logger, addAfter } from '../utils'
 
-const paths = {
-  appJson: './app.json',
-  appConfig: './app.config.ts',
-  readme: './README.md',
-  readmeTemplate: './templates/readme_template.md',
-  pullRequestTemplate: './.github/pull_request_template.md',
-  newPullReuestTemplate: './templates/pull_request_template.md',
-}
+const prompt = promptSync()
 
-// 1.
-const replaceReadme = (appName, organizationOwner) => {
-  let contents = fs.readFileSync(paths.readmeTemplate, 'utf8')
+/**
+ * Replaces placeholders in the README file with the provided app name and organization owner.
+ *
+ * @param appName - The name of the app.
+ * @param organizationOwner - The owner of the organization.
+ */
+const replaceReadme = (appName: string, organizationOwner: string) => {
+  let contents = fs.readFileSync(README_PATH, 'utf-8')
+
   contents = contents.replaceAll('_NAME_', appName)
   contents = contents.replaceAll('_OWNER_', organizationOwner)
 
-  fs.writeFileSync(paths.readme, contents)
+  fs.writeFileSync(README_PATH, contents)
 }
 
-// 2.
-const setUpAppConfig = (appName, bundleId, androidPackageName, scheme, easId, androidIconColor) => {
-  let contents = fs.readFileSync(paths.appConfig, 'utf8')
+/**
+ * Sets up the app configuration by updating the contents of the app config file.
+ *
+ * @param appName - The name of the app.
+ * @param bundleId - The bundle identifier for iOS.
+ * @param androidPackageName - The package name for Android.
+ * @param scheme - The URL scheme to link to the app.
+ * @param easId - The EAS project ID.
+ * @param androidIconColor - The background color for the adaptive icon on Android.
+ */
+const setUpAppConfig = (
+  appName: string,
+  bundleId: string,
+  androidPackageName: string,
+  scheme: string,
+  easId: string,
+  androidIconColor: string
+) => {
+  let contents = fs.readFileSync(APP_CONFIG_PATH, 'utf8')
 
   const appConfig = `
 export const APP_CONFIG = {
@@ -40,28 +61,28 @@ export const APP_CONFIG = {
   contents = contents.replace(/(\/\/ APP_CONFIG_START)[\s\S]*?(\/\/ APP_CONFIG_END)/g, '$1$2')
 
   contents = addAfter(contents, '// APP_CONFIG_START', `${appConfig}`)
-  fs.writeFileSync(paths.appConfig, contents)
+  fs.writeFileSync(APP_CONFIG_PATH, contents)
 }
 
-// 3.
-const replatePullRequestTemplate = () => {
-  const contents = fs.readFileSync(paths.newPullReuestTemplate, 'utf8')
+/**
+ * Replaces the contents of the pull request template file with the contents of a new pull request template file.
+ */
+const replacePullRequestTemplate = () => {
+  const contents = fs.readFileSync(NEW_PULL_REQUEST_TEMPLATE_PATH, 'utf8')
 
-  fs.writeFileSync(paths.pullRequestTemplate, contents)
+  fs.writeFileSync(PULL_REQUEST_TEMPLATE_PATH, contents)
 }
 
-// 4.
-const changeAppJson = (appName, appSlug, organizationOwner) => {
-  const newAppJson = JSON.parse(fs.readFileSync(paths.appJson, 'utf8'))
+const changeAppJson = (appName: string, appSlug: string, organizationOwner: string) => {
+  const newAppJson = JSON.parse(fs.readFileSync(APP_JSON_PATH, 'utf8'))
   newAppJson.expo.slug = appSlug
   newAppJson.expo.name = appName
   newAppJson.expo.owner = organizationOwner
   newAppJson.version = '1.0.0'
-  fs.writeFileSync(paths.appJson, JSON.stringify(newAppJson, null, 2))
+  fs.writeFileSync(APP_JSON_PATH, JSON.stringify(newAppJson, null, 2))
 }
 
-// 5.
-const changePackageJson = (appName, organizationOwner) => {
+const changePackageJson = (appName: string, organizationOwner: string) => {
   const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
   packageJson.name = `@${organizationOwner}/${appName}`
   packageJson.description = `App created from expo-template powered by binarapps`
@@ -74,25 +95,23 @@ const changePackageJson = (appName, organizationOwner) => {
   fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2))
 }
 
-// 6.
 const removeIssueTemplates = () => {
   fs.rm('./.github/ISSUE_TEMPLATE', { recursive: true, force: true }, () => {})
 }
 
-// 7.
 const removeDocsFolder = () => {
   fs.rm('./documentation', { recursive: true, force: true }, () => {})
 }
 
 const setUpProject = async (
-  appName,
-  bundleId,
-  androidPackageName,
-  scheme,
-  easId,
-  organizationOwner,
-  androidIconColor,
-  appSlug
+  appName: string,
+  bundleId: string,
+  androidPackageName: string,
+  scheme: string,
+  easId: string,
+  organizationOwner: string,
+  androidIconColor: string,
+  appSlug: string
 ) => {
   // START
   logger.success('Start ...')
@@ -107,7 +126,7 @@ const setUpProject = async (
 
   // 3. Delete exist pull request template -> generate the new
   logger.info('Generating new pull request template file')
-  replatePullRequestTemplate()
+  replacePullRequestTemplate()
 
   // 4. Change app.json file
   logger.info('Change app.json file')
@@ -129,7 +148,7 @@ const setUpProject = async (
   logger.success(`Config your project has been success`)
 }
 
-const bootstrap = () => {
+export const bootstrap = () => {
   logger.info('Please give me this information to setup your project:')
   const appName = prompt('App name: ')
   if (!appName) {
@@ -170,7 +189,6 @@ const bootstrap = () => {
     return logger.error('Please write correct scheme')
   }
 
-  // 1. Setup project -> set ( appName, bundleId, androidPackageName, appScheme, easProjectId, organizationOwner, androidIconColor )
   setUpProject(
     appName,
     bundleId,
@@ -187,14 +205,3 @@ const bootstrap = () => {
   )
   logger.info('\nPlease verify the changes made by this script and commit it to your repository \n')
 }
-
-bootstrap()
-
-// INSTRUCTION:
-// 1. Delete readme and write the new one
-// 2. Setup app.config.ts file
-// 3. Setup pull_request_template.md
-// 4. Setup app.json file
-// 5. Setup package.json file
-// 6. Remove issue templates
-// 7. Remove docs folder
