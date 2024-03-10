@@ -156,6 +156,7 @@
     "sign_up": "Sign up"
   },
   "sign_up_screen": {
+    "created_new_account": "A new account has been created. An email with an activation link was sent to {{userEmail}}.",
     "email_label": "Email",
     "email_placeholder": "Enter your email",
     "first_name_label": "First name",
