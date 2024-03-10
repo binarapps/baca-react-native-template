@@ -69,9 +69,10 @@
     "example": "Example"
   },
   "landing_screen": {
-    "login_cta": "Login to app",
     "go_to_blog": "Open blog",
-    "go_to_form": "Open full screen form"
+    "go_to_form": "Open full screen form",
+    "login_cta": "Log in",
+    "sign_up": "Sign up"
   },
   "application_info_screen": {
     "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
