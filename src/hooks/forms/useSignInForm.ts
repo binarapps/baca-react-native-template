@@ -1,11 +1,15 @@
 import { useAuthControllerLogin } from '@baca/api/query/auth/auth'
+import { AuthEmailLoginDto } from '@baca/api/types'
 import { setToken } from '@baca/services'
 import { isSignedInAtom } from '@baca/store/auth'
-import { SignInFormValues } from '@baca/types/authForms'
 import { hapticImpact } from '@baca/utils'
+import { handleFormError } from '@baca/utils/handleFormErrors'
 import { useSetAtom } from 'jotai'
 import { useForm } from 'react-hook-form'
-import { notify } from 'react-native-notificated'
+
+type SignInFormValues = AuthEmailLoginDto & {
+  confirm: boolean
+}
 
 const defaultValues: SignInFormValues = {
   // TODO: Reset this values when building production app
@@ -24,8 +28,9 @@ export const useSignInForm = () => {
   const {
     control,
     formState: { errors },
-    setFocus,
     handleSubmit,
+    setError: setFormError,
+    setFocus,
   } = useForm<SignInFormValues>({
     mode: 'onTouched',
     defaultValues,
@@ -40,7 +45,13 @@ export const useSignInForm = () => {
       // FIXME: add proper notification handling, generate some global config
       {
         onError: (e) => {
-          notify('error', { params: { title: 'ERROR', description: e?.message } })
+          handleFormError<keyof AuthEmailLoginDto>(
+            e as unknown as keyof AuthEmailLoginDto,
+            ({ field, description }) => {
+              setFormError(field as keyof AuthEmailLoginDto, { message: description })
+            }
+          )
+
           hapticImpact()
         },
         onSuccess: async (response) => {
