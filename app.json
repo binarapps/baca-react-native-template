@@ -1,14 +1,14 @@
 {
   "expo": {
+    "owner": "binarapps",
+    "slug": "expo-typescript-template",
     "android": {
       "jsEngine": "hermes",
       "versionCode": 10,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "jsEngine": "hermes",
       "buildNumber": "10",
@@ -17,8 +17,6 @@
     },
     "name": "Template",
     "orientation": "portrait",
-    "owner": "binarapps",
-    "slug": "expo-typescript-template",
     "splash": {
       "backgroundColor": "#ffffff",
       "image": "./assets/splash.png",
