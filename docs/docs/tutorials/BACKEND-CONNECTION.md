@@ -16,9 +16,9 @@ description: Backend connection - check how to fetch data from backend and displ
 
 This template uses this packages to keep connection with backend:
 
-- (axios)[https://axios-http.com/docs/intro] - direct calls to backend
-- (react-query)[https://tanstack.com/query/latest/docs/framework/react/overview] - use hooks that helps displaying data on UI
-- (orval)[https://orval.dev/overview] - generating query hooks based on swagger (provided by backend)
+- [axios](https://axios-http.com/docs/intro) - direct calls to backend
+- [react-query](https://tanstack.com/query/latest/docs/framework/react/overview) - use hooks that helps displaying data on UI
+- [orval](https://orval.dev/overview) - generating query hooks based on swagger (provided by backend)
 
 ## Generate new query
 
