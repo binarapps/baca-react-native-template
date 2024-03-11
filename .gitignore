@@ -40,3 +40,4 @@ GoogleService-Info.plist
 scripts/doppler_variables.sh
 .env
 env.json
+.vercel
