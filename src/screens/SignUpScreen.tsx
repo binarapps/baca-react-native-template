@@ -10,7 +10,7 @@ export const SignUpScreen = () => {
     title: t('navigation.screen_titles.sign_up'),
   })
 
-  const { control, errors, register, isRegisterLoading, setFocus } = useSignUpForm()
+  const { control, errors, register, isSubmitting, setFocus } = useSignUpForm()
 
   useEffect(() => {
     setTimeout(() => {
@@ -106,7 +106,7 @@ export const SignUpScreen = () => {
         />
         <Spacer y={2} />
         <Spacer y={2} />
-        <Button disabled={isRegisterLoading} loading={isRegisterLoading} onPress={register}>
+        <Button disabled={isSubmitting} loading={isSubmitting} onPress={register}>
           {t('sign_up_screen.sign_up')}
         </Button>
       </Center>
