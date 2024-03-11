@@ -91,7 +91,7 @@
     "email_placeholder": "Enter your email",
     "save": "Save",
     "cancel": "Cancel",
-    "update_profile_success": "Poprawnie zaktualizowano dane osobowe."
+    "update_profile_success": "Successfuly updated your data."
   },
   "colors_screen": {
     "colors_label": "Colors"
