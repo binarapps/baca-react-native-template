@@ -90,7 +90,8 @@
     "email_label": "Email address",
     "email_placeholder": "Enter your email",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "update_profile_success": "Poprawnie zaktualizowano dane osobowe."
   },
   "colors_screen": {
     "colors_label": "Colors"

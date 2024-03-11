@@ -77,6 +77,17 @@
   "application_info_screen": {
     "navigation_info": "Kiedy będziesz próbował cofnąć to zostaniesz podwójnie zapytany, czy na pewno tego chcesz \n"
   },
+  "profile_screen": {
+    "first_name": "Imię",
+    "first_name_placeholder": "Podaj swoje imię",
+    "last_name": "Nazwisko",
+    "last_name_placeholder": "Podaj swoje nazwisko",
+    "email_label": "Adres mailowy",
+    "email_placeholder": "Podaj swój e-mail",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "update_profile_success": "Poprawnie zaktualizowano Twoje dane."
+  },
   "colors_screen": {
     "colors_label": "Kolory"
   },
