@@ -79,9 +79,10 @@ const RawText = memo(
       const fontFamily = props.fontFamily || variantFontWeight
       const fontWeight = bold ? 'bold' : props.fontWeight || fontWeights[variantFontWeight]
       const fontSize =
-        props.fontSize || type === 'text'
+        props.fontSize ||
+        (type === 'text'
           ? fontTextSize[variantFontSize as keyof typeof fontTextSize]
-          : fontDisplaySize[variantFontSize]
+          : fontDisplaySize[variantFontSize])
 
       const fontFamilyStyle = useMemo<TextStyle>(
         () => ({
