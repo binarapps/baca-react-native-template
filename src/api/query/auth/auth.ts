@@ -19,7 +19,9 @@ import type {
 import { customInstance } from '../../axios/custom-instance'
 import type { ErrorType, BodyType } from '../../axios/custom-instance'
 import type {
+  AuthConfirmEmailChangeDto,
   AuthConfirmEmailDto,
+  AuthEmailChangeDto,
   AuthEmailLoginDto,
   AuthEntity,
   AuthForgotPasswordDto,
@@ -31,6 +33,7 @@ import type {
   ErrorServerEntity,
   ErrorTooManyRequestsEntity,
   ErrorUnauthorizedEntity,
+  ErrorValidationEntity,
   RefreshEntity,
   UserEntity,
 } from '../../types'
@@ -58,7 +61,11 @@ export const authControllerLogin = (
 
 export const getAuthControllerLoginMutationOptions = <
   TError = ErrorType<
-    ErrorUnauthorizedEntity | ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+    | ErrorUnauthorizedEntity
+    | ErrorEntity
+    | ErrorValidationEntity
+    | ErrorTooManyRequestsEntity
+    | ErrorServerEntity
   >,
   TContext = unknown
 >(options?: {
@@ -94,7 +101,11 @@ export type AuthControllerLoginMutationResult = NonNullable<
 >
 export type AuthControllerLoginMutationBody = BodyType<AuthEmailLoginDto>
 export type AuthControllerLoginMutationError = ErrorType<
-  ErrorUnauthorizedEntity | ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  | ErrorUnauthorizedEntity
+  | ErrorEntity
+  | ErrorValidationEntity
+  | ErrorTooManyRequestsEntity
+  | ErrorServerEntity
 >
 
 /**
@@ -102,7 +113,11 @@ export type AuthControllerLoginMutationError = ErrorType<
  */
 export const useAuthControllerLogin = <
   TError = ErrorType<
-    ErrorUnauthorizedEntity | ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+    | ErrorUnauthorizedEntity
+    | ErrorEntity
+    | ErrorValidationEntity
+    | ErrorTooManyRequestsEntity
+    | ErrorServerEntity
   >,
   TContext = unknown
 >(options?: {
@@ -138,7 +153,7 @@ export const authControllerRegister = (
 }
 
 export const getAuthControllerRegisterMutationOptions = <
-  TError = ErrorType<void | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -173,14 +188,14 @@ export type AuthControllerRegisterMutationResult = NonNullable<
 >
 export type AuthControllerRegisterMutationBody = BodyType<AuthRegisterLoginDto>
 export type AuthControllerRegisterMutationError = ErrorType<
-  void | ErrorTooManyRequestsEntity | ErrorServerEntity
+  void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
 >
 
 /**
  * @summary User Registration
  */
 export const useAuthControllerRegister = <
-  TError = ErrorType<void | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -215,7 +230,7 @@ export const authControllerConfirmEmail = (
 }
 
 export const getAuthControllerConfirmEmailMutationOptions = <
-  TError = ErrorType<void | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -250,14 +265,14 @@ export type AuthControllerConfirmEmailMutationResult = NonNullable<
 >
 export type AuthControllerConfirmEmailMutationBody = BodyType<AuthConfirmEmailDto>
 export type AuthControllerConfirmEmailMutationError = ErrorType<
-  void | ErrorTooManyRequestsEntity | ErrorServerEntity
+  void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
 >
 
 /**
  * @summary Confirm Email
  */
 export const useAuthControllerConfirmEmail = <
-  TError = ErrorType<void | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -292,7 +307,9 @@ export const authControllerResendVerificationEmail = (
 }
 
 export const getAuthControllerResendVerificationEmailMutationOptions = <
-  TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<
+    ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  >,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -328,14 +345,16 @@ export type AuthControllerResendVerificationEmailMutationResult = NonNullable<
 export type AuthControllerResendVerificationEmailMutationBody =
   BodyType<AuthResendVerificationEmailDto>
 export type AuthControllerResendVerificationEmailMutationError = ErrorType<
-  ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
 >
 
 /**
  * @summary Resend Verification Email
  */
 export const useAuthControllerResendVerificationEmail = <
-  TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<
+    ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  >,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -370,7 +389,9 @@ export const authControllerForgotPassword = (
 }
 
 export const getAuthControllerForgotPasswordMutationOptions = <
-  TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<
+    ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  >,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -405,14 +426,16 @@ export type AuthControllerForgotPasswordMutationResult = NonNullable<
 >
 export type AuthControllerForgotPasswordMutationBody = BodyType<AuthForgotPasswordDto>
 export type AuthControllerForgotPasswordMutationError = ErrorType<
-  ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
 >
 
 /**
  * @summary Forgot Password
  */
 export const useAuthControllerForgotPassword = <
-  TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<
+    ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  >,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -447,7 +470,9 @@ export const authControllerResetPassword = (
 }
 
 export const getAuthControllerResetPasswordMutationOptions = <
-  TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<
+    ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  >,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -482,14 +507,16 @@ export type AuthControllerResetPasswordMutationResult = NonNullable<
 >
 export type AuthControllerResetPasswordMutationBody = BodyType<AuthResetPasswordDto>
 export type AuthControllerResetPasswordMutationError = ErrorType<
-  ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
 >
 
 /**
  * @summary Reset Password
  */
 export const useAuthControllerResetPassword = <
-  TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TError = ErrorType<
+    ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  >,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -501,6 +528,164 @@ export const useAuthControllerResetPassword = <
   request?: SecondParameter<typeof customInstance>
 }) => {
   const mutationOptions = getAuthControllerResetPasswordMutationOptions(options)
+
+  return useMutation(mutationOptions)
+}
+/**
+ * Initiates the process to change the user's email address. After initialization, the user must confirm the email address change through another endpoint.
+ * @summary Initialize Email Change
+ */
+export const authControllerEmailChange = (
+  authEmailChangeDto: BodyType<AuthEmailChangeDto>,
+  options?: SecondParameter<typeof customInstance>
+) => {
+  return customInstance<unknown>(
+    {
+      url: `/api/v1/auth/email/change`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: authEmailChangeDto,
+    },
+    options
+  )
+}
+
+export const getAuthControllerEmailChangeMutationOptions = <
+  TError = ErrorType<
+    ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  >,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof authControllerEmailChange>>,
+    TError,
+    { data: BodyType<AuthEmailChangeDto> },
+    TContext
+  >
+  request?: SecondParameter<typeof customInstance>
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof authControllerEmailChange>>,
+  TError,
+  { data: BodyType<AuthEmailChangeDto> },
+  TContext
+> => {
+  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof authControllerEmailChange>>,
+    { data: BodyType<AuthEmailChangeDto> }
+  > = (props) => {
+    const { data } = props ?? {}
+
+    return authControllerEmailChange(data, requestOptions)
+  }
+
+  return { mutationFn, ...mutationOptions }
+}
+
+export type AuthControllerEmailChangeMutationResult = NonNullable<
+  Awaited<ReturnType<typeof authControllerEmailChange>>
+>
+export type AuthControllerEmailChangeMutationBody = BodyType<AuthEmailChangeDto>
+export type AuthControllerEmailChangeMutationError = ErrorType<
+  ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+>
+
+/**
+ * @summary Initialize Email Change
+ */
+export const useAuthControllerEmailChange = <
+  TError = ErrorType<
+    ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+  >,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof authControllerEmailChange>>,
+    TError,
+    { data: BodyType<AuthEmailChangeDto> },
+    TContext
+  >
+  request?: SecondParameter<typeof customInstance>
+}) => {
+  const mutationOptions = getAuthControllerEmailChangeMutationOptions(options)
+
+  return useMutation(mutationOptions)
+}
+/**
+ * Confirms the change of a user's email address using a verification code sent to the new email. This endpoint validates the verification code (hash) received by the user to complete the email address change process.
+ * @summary Confirm Email Change
+ */
+export const authControllerConfirmEmailChange = (
+  authConfirmEmailChangeDto: BodyType<AuthConfirmEmailChangeDto>,
+  options?: SecondParameter<typeof customInstance>
+) => {
+  return customInstance<unknown>(
+    {
+      url: `/api/v1/auth/email/change-confirm`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: authConfirmEmailChangeDto,
+    },
+    options
+  )
+}
+
+export const getAuthControllerConfirmEmailChangeMutationOptions = <
+  TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
+    TError,
+    { data: BodyType<AuthConfirmEmailChangeDto> },
+    TContext
+  >
+  request?: SecondParameter<typeof customInstance>
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
+  TError,
+  { data: BodyType<AuthConfirmEmailChangeDto> },
+  TContext
+> => {
+  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
+    { data: BodyType<AuthConfirmEmailChangeDto> }
+  > = (props) => {
+    const { data } = props ?? {}
+
+    return authControllerConfirmEmailChange(data, requestOptions)
+  }
+
+  return { mutationFn, ...mutationOptions }
+}
+
+export type AuthControllerConfirmEmailChangeMutationResult = NonNullable<
+  Awaited<ReturnType<typeof authControllerConfirmEmailChange>>
+>
+export type AuthControllerConfirmEmailChangeMutationBody = BodyType<AuthConfirmEmailChangeDto>
+export type AuthControllerConfirmEmailChangeMutationError = ErrorType<
+  ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+>
+
+/**
+ * @summary Confirm Email Change
+ */
+export const useAuthControllerConfirmEmailChange = <
+  TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
+    TError,
+    { data: BodyType<AuthConfirmEmailChangeDto> },
+    TContext
+  >
+  request?: SecondParameter<typeof customInstance>
+}) => {
+  const mutationOptions = getAuthControllerConfirmEmailChangeMutationOptions(options)
 
   return useMutation(mutationOptions)
 }

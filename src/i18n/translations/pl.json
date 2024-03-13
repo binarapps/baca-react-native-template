@@ -29,6 +29,7 @@
   },
   "form": {
     "invalid_email_format": "Zły adres e-mail",
+    "invalid_password_format": "Hasło musi zawierać minimum: 8 znaków, jedną wielką literę, jedną malą literę, jedną cyfrę i jeden znak specjalny",
     "invalid_password": "Niepoprawne hasło",
     "required": "Pole wymagane"
   },
@@ -69,6 +70,7 @@
   },
   "landing_screen": {
     "login_cta": "Zaloguj się",
+    "sign_up": "Zarejestruj się",
     "go_to_blog": "Otwórz blog",
     "go_to_form": "Otwórz pełno ekranowy formularz full"
   },
@@ -159,9 +161,20 @@
     "sign_up": "Zarejestruj"
   },
   "sign_up_screen": {
-    "agree_terms_label": "Zgadzam się z warunkami użytkowania",
+    "created_new_account": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
     "newsletter_label": "Subskrybuj nasz newsletter",
-    "sign_up": "Zarejestruj"
+    "sign_up": "Zarejestruj",
+    "email_label": "E-mail",
+    "email_placeholder": "Podaj swój e-mail",
+    "first_name_label": "Imię",
+    "first_name_placeholder": "Wprowadź imię",
+    "last_name_label": "Nazwisko",
+    "last_name_placeholder": "Wprowadź nazwisko",
+    "password_placeholder": "Nowe hasło",
+    "password_label": "Hasło",
+    "privacy_policy_label": "Zapoznałem się i akceptuję politykę prywatności",
+    "trail_descirption": "Rozpocznij darmowy 30 dniowy okres próbny.",
+    "terms_accepted_label": "Zgadzam się z warunkami użytkowania"
   },
   "test_form": {
     "additional_comment": "Dodatkowy komentarz",
