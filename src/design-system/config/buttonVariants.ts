@@ -1,3 +1,5 @@
+import { TextVariant } from './textVariants'
+
 export type ButtonVariant =
   | 'Primary'
   | 'PrimaryDestructive'
@@ -244,3 +246,52 @@ export const buttonVariants: { [key in ButtonVariant]: VariantStyle } = {
     },
   },
 }
+
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+
+type SizeStyle = {
+  textVariant: TextVariant
+  // FIXME: add untitled ui theme sizing dimensions here instead of number
+  paddingHorizontal: number
+  paddingVertical: number
+  iconGap: number
+  iconSize: number
+}
+
+export const buttonSizeVariants: { [key in ButtonSize]: SizeStyle } = {
+  sm: {
+    textVariant: 'SmSemibold',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    iconGap: 4,
+    iconSize: 20,
+  },
+  md: {
+    textVariant: 'SmSemibold',
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    iconGap: 4,
+    iconSize: 20,
+  },
+  lg: {
+    textVariant: 'MdSemibold',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    iconGap: 6,
+    iconSize: 20,
+  },
+  xl: {
+    textVariant: 'MdSemibold',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    iconGap: 6,
+    iconSize: 20,
+  },
+  '2xl': {
+    textVariant: 'LgSemibold',
+    paddingHorizontal: 22,
+    paddingVertical: 18,
+    iconGap: 10,
+    iconSize: 24,
+  },
+} as const

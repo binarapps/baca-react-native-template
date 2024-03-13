@@ -70,7 +70,7 @@ export const TestFormScreen = (): JSX.Element => {
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-      <Text fontSize="xl" fontWeight="bold" py={2}>
+      <Text type="display" variant="2xlBold" fontWeight="bold" py={2}>
         {t('test_form.contact_data')}
       </Text>
       <ControlledField.Input
@@ -170,7 +170,7 @@ export const TestFormScreen = (): JSX.Element => {
         name="interests"
         rules={VALIDATION.interests}
       />
-      <Text fontSize="xl" fontWeight="bold" py={2}>
+      <Text fontWeight="bold" py={2}>
         {t('test_form.additional_comment')}
       </Text>
       <Controller

@@ -8,9 +8,8 @@ const baseStyles = {
   borderRadius: 4,
   flexDirection: 'row',
   justifyContent: 'center',
-  minWidth: 128,
-  paddingHorizontal: 24,
-  paddingVertical: 8,
+  paddingHorizontal: 14,
+  paddingVertical: 10,
 }
 
 afterEach(cleanup)

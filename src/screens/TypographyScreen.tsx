@@ -1,22 +1,56 @@
 import { useColorScheme } from '@baca/contexts'
-import { Column, Row, Box, Text } from '@baca/design-system'
+import { Column, Row, Box, Text, Display, DisplayVariant, TextVariant } from '@baca/design-system'
 import { useTranslation } from '@baca/hooks'
 import { ScrollView, Switch, Platform } from 'react-native'
 
-export const fontSizes = [
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-  '2xl',
-  '3xl',
-  '4xl',
-  '5xl',
-  '6xl',
-  '7xl',
-  '8xl',
-  '9xl',
+export const textVariants: TextVariant[] = [
+  'XlBold',
+  'XlSemibold',
+  'XlMedium',
+  'XlRegular',
+  'LgBold',
+  'LgSemibold',
+  'LgMedium',
+  'LgRegular',
+  'MdBold',
+  'MdSemibold',
+  'MdMedium',
+  'MdRegular',
+  'SmBold',
+  'SmSemibold',
+  'SmMedium',
+  'SmRegular',
+  'XsBold',
+  'XsSemibold',
+  'XsMedium',
+  'XsRegular',
+] as const
+
+const displayTextVariants: DisplayVariant[] = [
+  '2xlBold',
+  '2xlSemibold',
+  '2xlMedium',
+  '2xlRegular',
+  'XlBold',
+  'XlSemibold',
+  'XlMedium',
+  'XlRegular',
+  'LgBold',
+  'LgSemibold',
+  'LgMedium',
+  'LgRegular',
+  'MdBold',
+  'MdSemibold',
+  'MdMedium',
+  'MdRegular',
+  'SmBold',
+  'SmSemibold',
+  'SmMedium',
+  'SmRegular',
+  'XsBold',
+  'XsSemibold',
+  'XsMedium',
+  'XsRegular',
 ] as const
 const isWeb = Platform.OS === 'web'
 
@@ -50,11 +84,20 @@ export const TypographyScreen = (): JSX.Element => {
             </Box>
             <Text>🌚</Text>
           </Row>
-          <Text fontSize="4xl">{t('typography_screen.text_font_size')}</Text>
-          <Text.H4>{t('typography_screen.text_font_size')}</Text.H4>
-          {fontSizes.map((fontSize) => (
-            <Text key={fontSize} p={8} fontSize={fontSize}>
-              Text - {fontSize}
+          <Text color="text.error.primary" variant="XlBold">
+            {t('typography_screen.display_font_size')}
+          </Text>
+          {displayTextVariants.map((variant) => (
+            <Display type="display" key={variant} p={8} variant={variant}>
+              Display - {variant}
+            </Display>
+          ))}
+          <Text color="text.error.primary" my={4} variant="XlBold">
+            {t('typography_screen.text_font_size')}
+          </Text>
+          {textVariants.map((variant) => (
+            <Text key={variant} p={8} variant={variant}>
+              Text - {variant}
             </Text>
           ))}
         </Column>

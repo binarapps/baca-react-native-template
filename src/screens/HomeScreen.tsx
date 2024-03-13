@@ -39,9 +39,9 @@ export const HomeScreen = () => {
         source={colorScheme === 'light' ? lightLogo : darkLogo}
         style={styles.logo}
       />
-      <Text.H3Bold textAlign="center">{t('hello')}</Text.H3Bold>
-      <Text.Caption textAlign="center">{t('thanks')}</Text.Caption>
-      <Text.Caption textAlign="center">{t('app_information')}</Text.Caption>
+      <Text.MdBold textAlign="center">{t('hello')}</Text.MdBold>
+      <Text.MdRegular textAlign="center">{t('thanks')}</Text.MdRegular>
+      <Text.MdRegular textAlign="center">{t('app_information')}</Text.MdRegular>
       <Button mt={4} onPress={navigateToDetails}>
         {t('home_screen.details')}
       </Button>

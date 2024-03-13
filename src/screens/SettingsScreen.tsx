@@ -24,7 +24,7 @@ export const SettingsScreen = (): JSX.Element => {
   return (
     <ScrollView mt={4}>
       <Center flex={1}>
-        <Text fontSize="2xl" bold mb={2}>
+        <Text bold mb={2}>
           {t('settings_screen.current_theme', { theme: colorSchemeSetting })}
         </Text>
         {colorSchemesList.map((scheme) => {

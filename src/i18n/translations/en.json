@@ -210,8 +210,8 @@
     "which_music": "what kind of music do you listen ?"
   },
   "typography_screen": {
-    "heading_size": "Heading.size: ",
-    "text_font_size": "Text.fontSize: "
+    "display_font_size": "Display fontSize: ",
+    "text_font_size": "Text fontSize: "
   },
   "hello": "Welcome",
   "thanks": "Thank you for using the best template for expo apps",

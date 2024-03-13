@@ -3,16 +3,34 @@ import { getColorValue, convertEmToNumber } from '@baca/utils'
 import { useMemo, memo, forwardRef, PropsWithoutRef, RefAttributes } from 'react'
 import { TextProps as BaseTextProps, Text as BaseText, TextStyle } from 'react-native'
 
-import { textVariants } from '../../config'
+import {
+  DisplayVariant,
+  displayVariants,
+  fontDisplaySize,
+  fontTextSize,
+  fontWeights,
+  TextVariant,
+  textVariants,
+} from '../../config'
 import { generateStyledComponent, generateStyleSheet } from '../../utils'
 import { StyledProps } from '../types'
 
+type ConditionalTextProps =
+  | {
+      type?: 'text' | never
+      variant?: TextVariant
+    }
+  | {
+      type: 'display'
+      variant?: DisplayVariant
+    }
+
 type TypographyProps = {
-  fontSize?: FontSizes | number
+  fontSize?: TextStyle['fontSize']
   letterSpacing?: LetterSpacings
   lineHeight?: LineHeights
-  fontWeight?: TextStyle['fontWeight']
   fontFamily?: Fonts
+  fontWeight?: TextStyle['fontWeight']
   color?: ColorNames
   noOfLines?: number
   textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify'
@@ -25,9 +43,9 @@ type TypographyProps = {
   capitalize?: boolean
   uppercase?: boolean
   lowercase?: boolean
-  variant?: TextVariant
 }
-type TextProps = StyledProps & BaseTextProps & TypographyProps
+
+type TextProps = StyledProps & BaseTextProps & TypographyProps & ConditionalTextProps
 
 const RawText = memo(
   forwardRef<BaseText, TextProps>(
@@ -45,25 +63,34 @@ const RawText = memo(
         textTransform,
         underline,
         uppercase,
-        fontWeight,
         lowercase,
         style,
-        variant,
+        type = 'text',
+        variant = 'MdRegular',
         ...props
       },
       ref
     ) => {
       const theme = useTheme()
-      const { fontFamily: variantFontFamily, fontSize: variantFontSize } =
-        (variant && textVariants[variant]) || {}
 
-      const fontFamily = props.fontFamily || variantFontFamily
-      const fontSize = props.fontSize || variantFontSize
-      const finalFontSize = fontSize
-        ? typeof fontSize === 'number'
-          ? fontSize
-          : theme.fontSizes[fontSize]
-        : undefined
+      const { fontWeight: variantFontWeight, fontSize: variantFontSize } =
+        type === 'text' ? textVariants[variant as TextVariant] : displayVariants[variant]
+
+      const fontFamily = props.fontFamily || variantFontWeight
+      const fontWeight = bold ? 'bold' : props.fontWeight || fontWeights[variantFontWeight]
+      const fontSize =
+        props.fontSize || type === 'text'
+          ? fontTextSize[variantFontSize as keyof typeof fontTextSize]
+          : fontDisplaySize[variantFontSize]
+
+      const fontFamilyStyle = useMemo<TextStyle>(
+        () => ({
+          fontFamily: fontFamily ? theme.fonts[fontFamily] : undefined,
+        }),
+        [theme, fontFamily]
+      )
+
+      const finalFontSize = fontSize && typeof fontSize === 'number' ? fontSize : undefined
 
       const lineHeightStyle = useMemo<TextStyle>(
         () => ({
@@ -81,6 +108,13 @@ const RawText = memo(
             : undefined,
         }),
         [theme, letterSpacing, finalFontSize]
+      )
+
+      const fontSizeStyle = useMemo<TextStyle>(
+        () => ({
+          fontSize: finalFontSize,
+        }),
+        [finalFontSize]
       )
 
       const textColor = useMemo<TextStyle>(
@@ -125,48 +159,33 @@ const RawText = memo(
         [underline, strikeThrough, textDecoration]
       )
 
-      const fontFamilyStyle = useMemo<TextStyle>(
-        () => ({
-          fontFamily: fontFamily ? theme.fonts[fontFamily] : undefined,
-        }),
-        [theme, fontFamily]
-      )
-
-      const fontSizeStyle = useMemo<TextStyle>(
-        () => ({
-          fontSize: finalFontSize,
-        }),
-        [finalFontSize]
-      )
-
       const textStyle = useMemo(
         () =>
           generateStyleSheet<TextStyle>([
-            (fontWeight || bold) && { fontWeight: fontWeight || 'bold' },
+            { fontWeight },
             italic && { fontStyle: 'italic' },
             fontFamilyStyle,
             fontSizeStyle,
+            letterSpacingStyle,
+            lineHeightStyle,
             textAlignmentStyle,
             textColor,
             textDecorationStyle,
-            letterSpacingStyle,
-            lineHeightStyle,
             textTransformStyle,
             style,
           ]),
         [
-          fontWeight,
-          bold,
-          italic,
           fontFamilyStyle,
           fontSizeStyle,
+          fontWeight,
+          italic,
+          letterSpacingStyle,
+          lineHeightStyle,
+          style,
           textAlignmentStyle,
           textColor,
           textDecorationStyle,
-          letterSpacingStyle,
-          lineHeightStyle,
           textTransformStyle,
-          style,
         ]
       )
 
@@ -183,58 +202,71 @@ const RawText = memo(
   )
 )
 
-export type TextVariant =
-  | 'H1'
-  | 'H1Bold'
-  | 'H2'
-  | 'H2Bold'
-  | 'H3'
-  | 'H3Bold'
-  | 'H4'
-  | 'H4Bold'
-  | 'H5'
-  | 'H5Bold'
-  | 'H6'
-  | 'H6Bold'
-  | 'Body'
-  | 'BodyBold'
-  | 'Caption'
-  | 'CaptionBold'
-  | 'Subtitle'
-  | 'SubtitleBold'
-  | 'NavLabel'
-  | 'NavLabelBold'
-type TextComposition = React.ForwardRefExoticComponent<
+type TextComposition<T extends string> = React.ForwardRefExoticComponent<
   PropsWithoutRef<TextProps> & RefAttributes<BaseText>
 > & {
-  [key in TextVariant]: React.ForwardRefExoticComponent<
-    PropsWithoutRef<TextProps> & RefAttributes<BaseText>
-  >
+  [key in T]: React.ForwardRefExoticComponent<PropsWithoutRef<TextProps> & RefAttributes<BaseText>>
 }
 
-const Text = generateStyledComponent(RawText) as TextComposition
+const Text = generateStyledComponent(RawText) as TextComposition<TextVariant>
+
 const generateTextVariant = (variant: TextVariant) =>
-  forwardRef<BaseText, TextProps>((props, ref) => <Text variant={variant} {...props} ref={ref} />)
+  forwardRef<BaseText, TextProps>((props, ref) => <Text {...{ ...props, ref, variant }} />)
 
-Text.H1 = generateTextVariant('H1')
-Text.H1Bold = generateTextVariant('H1Bold')
-Text.H2 = generateTextVariant('H2')
-Text.H2Bold = generateTextVariant('H2Bold')
-Text.H3 = generateTextVariant('H3')
-Text.H3Bold = generateTextVariant('H3Bold')
-Text.H4 = generateTextVariant('H4')
-Text.H4Bold = generateTextVariant('H4Bold')
-Text.H5 = generateTextVariant('H5')
-Text.H5Bold = generateTextVariant('H5Bold')
-Text.H6 = generateTextVariant('H6')
-Text.H6Bold = generateTextVariant('H6Bold')
-Text.Body = generateTextVariant('Body')
-Text.BodyBold = generateTextVariant('BodyBold')
-Text.Caption = generateTextVariant('Caption')
-Text.CaptionBold = generateTextVariant('CaptionBold')
-Text.Subtitle = generateTextVariant('Subtitle')
-Text.SubtitleBold = generateTextVariant('SubtitleBold')
-Text.NavLabel = generateTextVariant('NavLabel')
-Text.NavLabelBold = generateTextVariant('NavLabelBold')
+Text.LgBold = generateTextVariant('LgBold')
+Text.LgMedium = generateTextVariant('LgMedium')
+Text.LgRegular = generateTextVariant('LgRegular')
+Text.LgSemibold = generateTextVariant('LgSemibold')
+Text.MdBold = generateTextVariant('MdBold')
+Text.MdMedium = generateTextVariant('MdMedium')
+Text.MdRegular = generateTextVariant('MdRegular')
+Text.MdSemibold = generateTextVariant('MdSemibold')
+Text.SmBold = generateTextVariant('SmBold')
+Text.SmMedium = generateTextVariant('SmMedium')
+Text.SmRegular = generateTextVariant('SmRegular')
+Text.SmSemibold = generateTextVariant('SmSemibold')
+Text.XsBold = generateTextVariant('XsBold')
+Text.XsMedium = generateTextVariant('XsMedium')
+Text.XsRegular = generateTextVariant('XsRegular')
+Text.XsSemibold = generateTextVariant('XsSemibold')
+Text.XlBold = generateTextVariant('XlBold')
+Text.XlMedium = generateTextVariant('XlMedium')
+Text.XlRegular = generateTextVariant('XlRegular')
+Text.XlSemibold = generateTextVariant('XlSemibold')
 
-export { Text }
+export { Display, Text }
+
+const Display = generateStyledComponent(RawText) as TextComposition<DisplayVariant>
+
+const generateDisplayVariant = (variant: DisplayVariant = 'MdRegular') =>
+  forwardRef<BaseText, TextProps>((props, ref) => {
+    return <Display {...{ ...props, ref, variant }} type="display" />
+  })
+
+Display['2xlBold'] = generateDisplayVariant('2xlBold')
+Display['2xlMedium'] = generateDisplayVariant('2xlMedium')
+Display['2xlRegular'] = generateDisplayVariant('2xlRegular')
+Display['2xlSemibold'] = generateDisplayVariant('2xlSemibold')
+Display.LgMedium = generateDisplayVariant('LgMedium')
+Display.LgRegular = generateDisplayVariant('LgRegular')
+Display.LgSemibold = generateDisplayVariant('LgSemibold')
+Display.LgBold = generateDisplayVariant('LgBold')
+Display.LgMedium = generateDisplayVariant('LgMedium')
+Display.LgRegular = generateDisplayVariant('LgRegular')
+Display.LgSemibold = generateDisplayVariant('LgSemibold')
+Display.MdBold = generateDisplayVariant('MdBold')
+Display.MdMedium = generateDisplayVariant('MdMedium')
+Display.MdRegular = generateDisplayVariant('MdRegular')
+Display.MdSemibold = generateDisplayVariant('MdSemibold')
+Display.SmBold = generateDisplayVariant('SmBold')
+Display.SmMedium = generateDisplayVariant('SmMedium')
+Display.SmRegular = generateDisplayVariant('SmRegular')
+Display.SmSemibold = generateDisplayVariant('SmSemibold')
+Display.XsBold = generateDisplayVariant('XsBold')
+Display.XsMedium = generateDisplayVariant('XsMedium')
+Display.XsRegular = generateDisplayVariant('XsRegular')
+Display.XsSemibold = generateDisplayVariant('XsSemibold')
+Display.XlBold = generateDisplayVariant('XlBold')
+Display.XlMedium = generateDisplayVariant('XlMedium')
+Display.XlRegular = generateDisplayVariant('XlRegular')
+Display.XlSemibold = generateDisplayVariant('XlSemibold')

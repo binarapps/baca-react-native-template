@@ -19,7 +19,7 @@ export const ProfileScreen = () => {
         source={colorScheme === 'light' ? lightLogo : darkLogo}
         style={styles.logo}
       />
-      <Text.H1Bold textAlign="center">Profile screen</Text.H1Bold>
+      <Text.LgBold textAlign="center">Profile screen</Text.LgBold>
     </Center>
   )
 }

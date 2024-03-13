@@ -20,7 +20,7 @@ import {
   View,
 } from 'react-native'
 
-import { ButtonVariant, buttonVariants, theme } from '../../config'
+import { ButtonVariant, buttonSizeVariants, buttonVariants, theme } from '../../config'
 import { generateStyledComponent } from '../../utils'
 import { Box } from '../Box'
 import { Loader } from '../Loader'
@@ -32,7 +32,7 @@ export type ButtonProps = StyledProps &
   PressableProps & {
     title?: string
     variant?: ButtonVariant
-    size?: 'sm' | 'md' | 'lg'
+    size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl'
     loading?: boolean
     disabled?: boolean
     leftIcon?: JSX.Element
@@ -47,8 +47,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
   },
   baseText: {
     fontStyle: 'normal',
@@ -172,13 +170,14 @@ const RawButton = memo(
         }),
         [colorScheme, disabledStyle.color]
       )
+      const buttonSizeVariant = buttonSizeVariants[size]
 
       const buttonSizeStyle = useMemo<ViewStyle>(
         () => ({
-          paddingHorizontal: size === 'sm' ? 12 : size === 'md' ? 24 : 48,
-          minWidth: size === 'sm' ? 64 : size === 'md' ? 128 : 256,
+          paddingHorizontal: buttonSizeVariant.paddingHorizontal,
+          paddingVertical: buttonSizeVariant.paddingVertical,
         }),
-        [size]
+        [buttonSizeVariant.paddingHorizontal, buttonSizeVariant.paddingVertical]
       )
 
       const pressableStyleFunction = useCallback(
@@ -221,30 +220,32 @@ const RawButton = memo(
           }
           if (title) {
             return (
-              <Text.BodyBold
+              <Text
+                variant={buttonSizeVariant.textVariant}
                 allowFontScaling={false}
                 style={pressableTextStyleFunction(props)}
                 textAlign="center"
               >
                 {title}
-              </Text.BodyBold>
+              </Text>
             )
           }
 
           if (typeof children === 'string') {
             return (
-              <Text.BodyBold
+              <Text
+                variant={buttonSizeVariant.textVariant}
                 allowFontScaling={false}
                 style={pressableTextStyleFunction(props)}
                 textAlign="center"
               >
                 {children}
-              </Text.BodyBold>
+              </Text>
             )
           }
           return children
         },
-        [children, loading, pressableTextStyleFunction, title]
+        [buttonSizeVariant.textVariant, children, loading, pressableTextStyleFunction, title]
       )
 
       return (
@@ -257,9 +258,9 @@ const RawButton = memo(
         >
           {(props: PressableStateCallbackType) => (
             <>
-              {leftIcon && <Box mr={8}>{leftIcon}</Box>}
+              {leftIcon && <Box mr={buttonSizeVariant.iconGap}>{leftIcon}</Box>}
               {childrenElement(props)}
-              {rightIcon && <Box ml={8}>{rightIcon}</Box>}
+              {rightIcon && <Box ml={buttonSizeVariant.iconGap}>{rightIcon}</Box>}
             </>
           )}
         </Pressable>

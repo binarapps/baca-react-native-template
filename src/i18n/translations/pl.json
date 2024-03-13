@@ -209,8 +209,8 @@
     "which_music": "Jakiej muzyki słuchasz ?"
   },
   "typography_screen": {
-    "text_font_size": "Text.fontSize: ",
-    "heading_size": "Heading.size: "
+    "display_font_size": "Display fontSize: ",
+    "text_font_size": "Text fontSize: "
   },
   "hello": "Witaj",
   "thanks": "Dzięki za używanie najlepszej templatki dla aplikacji expo",

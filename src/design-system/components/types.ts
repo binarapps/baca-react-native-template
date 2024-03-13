@@ -1,4 +1,4 @@
-import { _appTheme } from '@baca/design-system'
+import { FontWeight, TextFontSize, _appTheme } from '@baca/design-system'
 import { IconNames } from '@baca/types/icon'
 import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 'react-native'
 
@@ -123,10 +123,10 @@ export type BordersProps = {
 
 export type TextProps = {
   color?: ColorNames
-  fontSize?: FontSizes
+  fontSize?: TextFontSize
   letterSpacing?: LetterSpacings
   lineHeight?: LineHeights
-  fontWeight?: FontWeights
+  fontWeight?: FontWeight
   fontFamily?: Fonts
   bold?: boolean
   italic?: boolean

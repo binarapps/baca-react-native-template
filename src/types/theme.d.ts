@@ -5,7 +5,6 @@ declare global {
   type AppTheme = typeof theme.light
 
   // FONTS
-  type FontSizes = keyof AppTheme['fontSizes']
   type LetterSpacings = keyof AppTheme['letterSpacings']
   type LineHeights = keyof AppTheme['lineHeights']
   type FontWeights = keyof AppTheme['fontWeights']

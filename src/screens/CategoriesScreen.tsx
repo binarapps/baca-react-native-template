@@ -19,7 +19,7 @@ export const CategoriesScreen = () => {
         source={colorScheme === 'light' ? lightLogo : darkLogo}
         style={styles.logo}
       />
-      <Text.H1Bold textAlign="center">Categories screen</Text.H1Bold>
+      <Text.LgBold textAlign="center">Categories screen</Text.LgBold>
     </Center>
   )
 }
