@@ -18,7 +18,7 @@ const defaultValues: AuthRegisterLoginDto = {
 }
 
 export const useSignUpForm = () => {
-  const { mutate: loginMutation, isLoading } = useAuthControllerRegister()
+  const { mutate: signUpMutation, isLoading } = useAuthControllerRegister()
   const { t } = useTranslation()
 
   const {
@@ -33,7 +33,7 @@ export const useSignUpForm = () => {
   })
 
   const onSubmit = (data: AuthRegisterLoginDto) => {
-    loginMutation(
+    signUpMutation(
       {
         data,
       },
