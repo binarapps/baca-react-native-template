@@ -6,9 +6,7 @@
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "jsEngine": "hermes",
       "buildNumber": "10",
@@ -38,6 +36,7 @@
       "./plugin/withDebugKeystore.js"
     ],
     "web": {
+      "output": "single",
       "bundler": "metro"
     }
   }
