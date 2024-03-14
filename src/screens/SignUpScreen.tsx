@@ -30,13 +30,13 @@ export const SignUpScreen = () => {
           autoCapitalize="none"
           enterKeyHint="next"
           isRequired
-          label={t('sign_up_screen.first_name_label')}
+          label={t('form.labels.first_name')}
           mb={2}
           name="firstName"
           onSubmitEditing={focusLastNameInput}
-          placeholder={t('sign_up_screen.first_name_placeholder')}
+          placeholder={t('form.placeholders.first_name')}
           rules={{
-            required: t('form.required'),
+            required: t('form.validation.required'),
           }}
         />
         <ControlledField.Input
@@ -44,13 +44,13 @@ export const SignUpScreen = () => {
           autoCapitalize="none"
           enterKeyHint="next"
           isRequired
-          label={t('sign_up_screen.last_name_label')}
+          label={t('form.labels.last_name')}
           mb={2}
           name="lastName"
           onSubmitEditing={focusEmailInput}
-          placeholder={t('sign_up_screen.last_name_placeholder')}
+          placeholder={t('form.placeholders.last_name')}
           rules={{
-            required: t('form.required'),
+            required: t('form.validation.required'),
           }}
         />
         <ControlledField.Input
@@ -59,13 +59,13 @@ export const SignUpScreen = () => {
           enterKeyHint="next"
           inputMode="email"
           isRequired
-          label={t('sign_up_screen.email_label')}
+          label={t('form.labels.email')}
           mb={2}
           name="email"
           onSubmitEditing={focusPasswordInput}
-          placeholder={t('sign_up_screen.email_placeholder')}
+          placeholder={t('form.placeholders.email')}
           rules={{
-            required: t('form.required'),
+            required: t('form.validation.required'),
           }}
         />
         <ControlledField.Input
@@ -73,13 +73,13 @@ export const SignUpScreen = () => {
           autoCapitalize="none"
           enterKeyHint="next"
           isRequired
-          label={t('sign_up_screen.password_label')}
+          label={t('form.labels.password')}
           mb={16}
           name="password"
           onSubmitEditing={register}
-          placeholder={t('sign_up_screen.password_placeholder')}
+          placeholder={t('form.placeholders.create_password')}
           rules={{
-            required: t('form.required'),
+            required: t('form.validation.required'),
           }}
           type="password"
         />
@@ -90,7 +90,7 @@ export const SignUpScreen = () => {
           isRequired
           name="privacyPolicyAccepted"
           rules={{
-            required: t('form.required'),
+            required: t('form.validation.required'),
           }}
           size={18}
         />
@@ -100,7 +100,7 @@ export const SignUpScreen = () => {
           isRequired
           name="termsAccepted"
           rules={{
-            required: t('form.required'),
+            required: t('form.validation.required'),
           }}
           size={18}
         />

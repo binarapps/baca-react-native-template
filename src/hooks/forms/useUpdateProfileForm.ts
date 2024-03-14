@@ -37,8 +37,8 @@ export const useUpdateProfileForm = () => {
     reset(defaultValues)
   }, [reset, defaultValues])
 
-  const onSubmit = async (data: AuthUpdateDto) => {
-    await updateUserMutation(
+  const onSubmit = (data: AuthUpdateDto) => {
+    updateUserMutation(
       { data },
       {
         onSuccess: () => {
@@ -54,7 +54,7 @@ export const useUpdateProfileForm = () => {
           handleFormError<keyof AuthUpdateDto>(
             e as unknown as keyof AuthUpdateDto,
             ({ field, description }) => {
-              setFormError(field as keyof AuthUpdateDto, { message: description })
+              setFormError(field, { message: description })
             }
           )
 

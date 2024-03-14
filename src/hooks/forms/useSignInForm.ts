@@ -48,7 +48,7 @@ export const useSignInForm = () => {
           handleFormError<keyof AuthEmailLoginDto>(
             e as unknown as keyof AuthEmailLoginDto,
             ({ field, description }) => {
-              setFormError(field as keyof AuthEmailLoginDto, { message: description })
+              setFormError(field, { message: description })
             }
           )
 

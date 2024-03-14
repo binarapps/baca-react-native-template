@@ -18,7 +18,7 @@ const defaultValues: AuthRegisterLoginDto = {
 }
 
 export const useSignUpForm = () => {
-  const { mutateAsync: loginMutation, isLoading } = useAuthControllerRegister()
+  const { mutate: loginMutation, isLoading } = useAuthControllerRegister()
   const { t } = useTranslation()
 
   const {
@@ -32,8 +32,8 @@ export const useSignUpForm = () => {
     defaultValues,
   })
 
-  const onSubmit = async (data: AuthRegisterLoginDto) => {
-    await loginMutation(
+  const onSubmit = (data: AuthRegisterLoginDto) => {
+    loginMutation(
       {
         data,
       },
@@ -51,7 +51,7 @@ export const useSignUpForm = () => {
           handleFormError<keyof AuthRegisterLoginDto>(
             e as unknown as keyof AuthRegisterLoginDto,
             ({ field, description }) => {
-              setFormError(field as keyof AuthRegisterLoginDto, { message: description })
+              setFormError(field, { message: description })
             }
           )
           hapticImpact()

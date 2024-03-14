@@ -3,50 +3,55 @@
     "add": "Add",
     "back": "Back",
     "cancel": "Cancel",
-    "email_label": "Email address",
-    "email_placeholder": "john@doe.com",
-    "empty_list": "The list is empty",
-    "first_name_placeholder": "John",
-    "first_name": "First name",
     "go_back": "Go back",
-    "last_name_placeholder": "Doe",
-    "last_name": "Last name",
-    "log_in": "Login",
-    "password": "Password",
-    "phone_label": "Telephone",
     "remove": "Remove",
     "save": "Save",
     "search": "Search",
-    "send_again": "Send again",
-    "show_on_map": "Show on map",
-    "sign_in": "Sign in",
-    "sign_up": "Register",
     "try_again_later": "Please try again later",
-    "try_again": "Try again",
-    "user_label": "User",
-    "user_placeholder": "user"
+    "try_again": "Try again"
   },
   "errors": {
+    "invalid_email": "Niepoprawny adres e-mail",
+    "invalid_password": "Niepoprawne hasło",
+    "missing_auth": "Missing auth",
     "screen_not_found": "NotFound screen",
     "something_went_wrong": "Something went wrong",
-    "token_expired": "Token expired",
-    "missing_auth": "Missing auth"
+    "token_expired": "Token expired"
+  },
+  "examples_component": {
+    "example": "Example"
   },
   "form": {
-    "invalid_email_format": "Incorrect e-mail address",
-    "invalid_password_format": "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
-    "invalid_password": "Incorrect password",
-    "required": "This field is required"
+    "errors": {},
+    "labels": {
+      "email": "E-mail address",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "password": "Password"
+    },
+    "placeholders": {
+      "create_password": "Create a password",
+      "email": "Enter your email",
+      "first_name": "Enter your first name",
+      "last_name": "Enter your last name",
+      "password": "Password"
+    },
+    "validation": {
+      "invalid_email_format": "Incorrect e-mail address format",
+      "invalid_password_format": "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+      "required": "This field is required"
+    }
   },
   "navigation": {
     "prevent_go_back_alert": {
-      "title": "Discard changes?",
       "description": "You have unsaved changes. Are you sure to discard them and leave the screen?",
+      "discard": "Discard",
       "do_not_leave": "Don't leave",
-      "discard": "Discard"
+      "title": "Discard changes?"
     },
     "screen_titles": {
       "application_info": "ApplicationInfo",
+      "blog": "Blog",
       "colors": "Colors",
       "components": "Components",
       "data_from_be_screen_example": "Data from BE",
@@ -60,55 +65,23 @@
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
-      "typography": "Typography",
       "test_form": "Test form",
-      "blog": "Blog"
+      "typography": "Typography"
     }
   },
   "update": {
-    "alert_title": "New version available",
     "alert_message": "You will have to restart the application to have better experiences while using it",
+    "alert_title": "New version available",
     "restart": "Restart"
   },
-  "examples_component": {
-    "example": "Example"
-  },
-  "landing_screen": {
-    "go_to_blog": "Open blog",
-    "go_to_form": "Open full screen form",
-    "login_cta": "Log in",
-    "sign_up": "Sign up"
-  },
+
   "application_info_screen": {
     "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
-  },
-  "profile_screen": {
-    "first_name": "First name",
-    "first_name_placeholder": "Enter your first name",
-    "last_name": "Last name",
-    "last_name_placeholder": "Enter your last name",
-    "email_label": "Email address",
-    "email_placeholder": "Enter your email",
-    "save": "Save",
-    "cancel": "Cancel",
-    "update_profile_success": "Successfuly updated your data."
   },
   "colors_screen": {
     "colors_label": "Colors"
   },
   "components_screen": {
-    "test_notification": "Test notification",
-    "typography": {
-      "label": "Typography",
-      "xs": "xs",
-      "sm": "sm",
-      "md": "md",
-      "lg": "lg",
-      "xl": "xl",
-      "2xl": "2xl",
-      "3xl": "3xl",
-      "4xl": "4xl"
-    },
     "button_variants": {
       "disabled": "Button disabled",
       "ghost": "Button ghost",
@@ -120,6 +93,7 @@
       "secondary": "Button secondary",
       "with_icons": "Button with icons"
     },
+
     "loader_variants": {
       "bricks": "Bricks loader",
       "bubbles": "Bubbles loader",
@@ -131,6 +105,18 @@
     "notification": {
       "description": "by react-native-notificated 🎉",
       "title": "In-app notification example"
+    },
+    "test_notification": "Test notification",
+    "typography": {
+      "label": "Typography",
+      "xs": "xs",
+      "sm": "sm",
+      "md": "md",
+      "lg": "lg",
+      "xl": "xl",
+      "2xl": "2xl",
+      "3xl": "3xl",
+      "4xl": "4xl"
     }
   },
   "details_screen": {
@@ -153,6 +139,15 @@
   "home_screen": {
     "details": "Details"
   },
+  "landing_screen": {
+    "go_to_blog": "Open blog",
+    "go_to_form": "Open full screen form",
+    "login_cta": "Log in",
+    "sign_up": "Sign up"
+  },
+  "profile_screen": {
+    "update_profile_success": "Successfully updated your data."
+  },
   "settings_screen": {
     "copy_push_token": "Copy push token",
     "current_theme": "Current theme: {{theme}}",
@@ -165,27 +160,17 @@
     "forgot_password": "Forgot your password?",
     "or_pass": "or enter:",
     "password_helper_text": "Password must be here",
-    "password_label": "Password",
-    "password_placeholder": "password",
     "remember_me": "Remember me",
     "sign_in": "Sign in",
     "sign_up": "Sign up"
   },
   "sign_up_screen": {
     "created_new_account": "A new account has been created. An email with an activation link was sent to {{userEmail}}.",
-    "email_label": "Email",
-    "email_placeholder": "Enter your email",
-    "first_name_label": "First name",
-    "first_name_placeholder": "Enter your first name",
-    "last_name_label": "Last name",
-    "last_name_placeholder": "Enter your last name",
     "newsletter_label": "Subscribe to our newsletter",
-    "password_placeholder": "Create a password",
-    "password_label": "Password",
     "privacy_policy_label": "I’ve read and accept Privacy Policy",
     "sign_up": "Sign up",
-    "trail_descirption": "Start your 30-day free trial.",
-    "terms_accepted_label": "I agree to the Terms and Conditions"
+    "terms_accepted_label": "I agree to the Terms and Conditions",
+    "trail_description": "Start your 30-day free trial."
   },
   "test_form": {
     "additional_comment": "Additional comment",
