@@ -86,7 +86,7 @@ export const SignUpScreen = () => {
         <Spacer y={2} />
         <ControlledField.Checkbox
           {...{ control, errors }}
-          checkboxText={t('sign_up_screen.privacy_policy_label')}
+          checkboxText={t('form.checkbox.privacy_policy')}
           isRequired
           name="privacyPolicyAccepted"
           rules={{
@@ -96,7 +96,7 @@ export const SignUpScreen = () => {
         />
         <ControlledField.Checkbox
           {...{ control, errors }}
-          checkboxText={t('sign_up_screen.terms_accepted_label')}
+          checkboxText={t('form.checkbox.terms_accepted')}
           isRequired
           name="termsAccepted"
           rules={{

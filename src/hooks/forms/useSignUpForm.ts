@@ -43,7 +43,7 @@ export const useSignUpForm = () => {
             params: {
               style: { multiline: 100 },
               title: 'SUCCESS',
-              description: t('sign_up_screen.created_new_account', { userEmail: data.email }),
+              description: t('toast.success.new_account_created', { userEmail: data.email }),
             },
           })
         },

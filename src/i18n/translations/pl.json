@@ -22,6 +22,11 @@
     "example": "Przykład"
   },
   "form": {
+    "checkbox": {
+      "privacy_policy": "Zapoznałem się i akceptuję politykę prywatności",
+      "remember_me": "Zapamiętaj mnie",
+      "terms_accepted": "Zgadzam się z warunkami użytkowania"
+    },
     "errors": {},
     "labels": {
       "email": "Adres e-mail",
@@ -36,6 +41,7 @@
       "last_name": "Podaj swoje nazwisko",
       "password": "Hasło"
     },
+    "select": {},
     "validation": {
       "invalid_email_format": "Niepoprawny format adresu e-mail",
       "invalid_password_format": "Hasło musi zawierać minimum: 8 znaków, jedną wielką literę, jedną małą literę, jedną cyfrę i jeden znak specjalny",
@@ -68,6 +74,14 @@
       "test_form": "Formularz testowy",
       "typography": "Typography"
     }
+  },
+  "toast": {
+    "error": {},
+    "success": {
+      "new_account_created": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
+      "profile_updated": "Zaktualizowano Twoje dane."
+    },
+    "warning": {}
   },
   "update": {
     "alert_message": "Będziesz musiał zrestartować aplikację, żeby mieć lepsze doświadczenia podczas jej używania",
@@ -144,9 +158,6 @@
     "go_to_blog": "Otwórz blog",
     "go_to_form": "Otwórz pełno ekranowy formularz full"
   },
-  "profile_screen": {
-    "update_profile_success": "Poprawnie zaktualizowano Twoje dane."
-  },
   "settings_screen": {
     "current_theme": "Current theme: {{theme}}",
     "selected": " - wybrano",
@@ -154,22 +165,12 @@
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",
-    "email_helper_text": "Email",
-    "forgot_password": "Zapomniałeś hasła?",
-    "or_pass": "lub wprowadź:",
-    "password_helper_text": "Hasła muszą być takie same",
-    "remember_me": "Zapamiętaj mnie",
     "sign_in": "Zaloguj",
     "sign_up": "Zarejestruj"
   },
   "sign_up_screen": {
     "created_new_account": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
-    "newsletter_label": "Subskrybuj nasz newsletter",
-    "password_label": "Hasło",
-    "privacy_policy_label": "Zapoznałem się i akceptuję politykę prywatności",
-    "sign_up": "Zarejestruj",
-    "terms_accepted_label": "Zgadzam się z warunkami użytkowania",
-    "trail_description": "Rozpocznij darmowy 30 dniowy okres próbny."
+    "sign_up": "Zarejestruj"
   },
   "test_form": {
     "additional_comment": "Dodatkowy komentarz",

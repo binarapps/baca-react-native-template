@@ -83,7 +83,7 @@ export const SignInScreen = (): JSX.Element => {
         <Center mt={8}>
           <ControlledField.Checkbox
             {...{ control, errors }}
-            checkboxText={t('sign_in_screen.remember_me')}
+            checkboxText={t('form.checkbox.remember_me')}
             name="confirm"
             size={18}
             testID="confirmCheckbox"

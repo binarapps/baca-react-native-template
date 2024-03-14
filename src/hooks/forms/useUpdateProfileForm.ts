@@ -46,7 +46,7 @@ export const useUpdateProfileForm = () => {
             params: {
               style: { multiline: 100 },
               title: 'SUCCESS',
-              description: t('profile_screen.update_profile_success'),
+              description: t('toast.success.profile_updated'),
             },
           })
         },

@@ -22,6 +22,11 @@
     "example": "Example"
   },
   "form": {
+    "checkbox": {
+      "privacy_policy": "I’ve read and accept Privacy Policy",
+      "remember_me": "Remember me",
+      "terms_accepted": "I agree to the Terms and Conditions"
+    },
     "errors": {},
     "labels": {
       "email": "E-mail address",
@@ -36,6 +41,7 @@
       "last_name": "Enter your last name",
       "password": "Password"
     },
+    "select": {},
     "validation": {
       "invalid_email_format": "Incorrect e-mail address format",
       "invalid_password_format": "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
@@ -68,6 +74,14 @@
       "test_form": "Test form",
       "typography": "Typography"
     }
+  },
+  "toast": {
+    "error": {},
+    "success": {
+      "new_account_created": "A new account has been created. An email with an activation link was sent to {{userEmail}}.",
+      "profile_updated": "Successfully updated your profile data."
+    },
+    "warning": {}
   },
   "update": {
     "alert_message": "You will have to restart the application to have better experiences while using it",
@@ -145,9 +159,6 @@
     "login_cta": "Log in",
     "sign_up": "Sign up"
   },
-  "profile_screen": {
-    "update_profile_success": "Successfully updated your data."
-  },
   "settings_screen": {
     "copy_push_token": "Copy push token",
     "current_theme": "Current theme: {{theme}}",
@@ -156,21 +167,11 @@
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Don't have an account?",
-    "email_helper_text": "Email must be here",
-    "forgot_password": "Forgot your password?",
-    "or_pass": "or enter:",
-    "password_helper_text": "Password must be here",
-    "remember_me": "Remember me",
     "sign_in": "Sign in",
     "sign_up": "Sign up"
   },
   "sign_up_screen": {
-    "created_new_account": "A new account has been created. An email with an activation link was sent to {{userEmail}}.",
-    "newsletter_label": "Subscribe to our newsletter",
-    "privacy_policy_label": "I’ve read and accept Privacy Policy",
-    "sign_up": "Sign up",
-    "terms_accepted_label": "I agree to the Terms and Conditions",
-    "trail_description": "Start your 30-day free trial."
+    "sign_up": "Sign up"
   },
   "test_form": {
     "additional_comment": "Additional comment",
