@@ -1,6 +1,6 @@
 ---
 id: expo-notifications
-slug: /expo-notofications
+slug: /expo-notifications
 title: Expo notifications
 sidebar_position: 4
 tags:
@@ -50,10 +50,10 @@ Expo notifications are already preconfigured in this template. However, you stil
   "expo": {
     ...,
     "owner": "@binarapps",
-    "slug": "expo-typescript-template",
+    "slug": "baca-react-native-template",
     ...,
     "extra": {
-      "experienceid": "@binarapps/expo-typescript-template"
+      "experienceId": "@binarapps/baca-react-native-template"
     }
   }
 }

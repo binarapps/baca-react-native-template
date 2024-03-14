@@ -13,6 +13,6 @@ description: Doppler - automatically manage environment variables
 
 ## Jotai
 
-This starter comes with jotai state management tool. Please check documentation on how it work in deatils:
+This starter comes with jotai state management tool. Please check documentation on how it work in details:
 
 - https://jotai.org/docs/introduction

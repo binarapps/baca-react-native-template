@@ -1,7 +1,5 @@
 {
   "expo": {
-    "owner": "binarapps",
-    "slug": "expo-typescript-template",
     "android": {
       "jsEngine": "hermes",
       "versionCode": 10,
@@ -17,6 +15,8 @@
     },
     "name": "Template",
     "orientation": "portrait",
+    "owner": "binarapps",
+    "slug": "expo-typescript-template",
     "splash": {
       "backgroundColor": "#ffffff",
       "image": "./assets/splash.png",

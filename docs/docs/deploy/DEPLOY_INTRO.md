@@ -141,7 +141,7 @@ description: Intro to app deployment
         </td>
         <td>
             <ul>
-                <li>Can't test native modules that are not supported by expo go like: firebase analytics,  onesignal</li>
+                <li>Can't test native modules that are not supported by expo go like: Firebase Analytics,  OneSignal</li>
                 <li>It's little different than native app, will need additional tests after testing in expo go</li>
             </ul>
         </td>

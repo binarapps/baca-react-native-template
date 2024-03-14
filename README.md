@@ -20,18 +20,18 @@ This is a template to be used with react native and expo. It includes all the ne
 
 Check out our [documentation page](https://baca-rn-docs.vercel.app/docs/bootstrap/intro), it contains:
 
-- Bootstraping project - tutorial how to easy setup from scrath
+- Bootstrapping project - tutorial how to easy setup from scratch
 - Deploying app
-- Tutorials
-  - How to manage environment variables
-  - Use jotai as state management tool
+- Tutorials how to:
+  - manage environment variables
+  - use jotai as state management tool
 
 ## Why to use?
 
 We know there are a lot of project starters for react native, but we have some good features:
 
 - Fully works with **EXPO GO**
-  - Good for start the project and later you can switch to expo-dev-client
+  - Good for start of the project, later you can switch to expo-dev-client
 - Fully works on **WEB**
   - If you want to develop apps both on web and mobile this starter is good choice for you
 - **Code generators** (create new screen / create new component)
@@ -54,7 +54,7 @@ It's great for production project, but if you want to just test it, you can foll
 
 - `npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app`
 - `cd name_of_your_app`
-- `yarn bootstrap` - the cli will ask you some questinos about your app (you can fill all this data later)
+- `yarn bootstrap` - the cli will ask you some questions about your app (you can fill all this data later)
 
 ## What's inside?
 
@@ -118,15 +118,15 @@ It's great for production project, but if you want to just test it, you can foll
 - write docs (app deployment, app setup and more) - in progress
 - tutorial on how to use features
   - navigation
-  - deeplinking
+  - deepLinking
   - auth flows
   - components
   - react query
   - api calls
   - state management tool
-- Add desings (figma) and redesing whole app
+- Add designs (figma) and redesign whole app
 - Updating expo versions (in future)
-- Deploy app to appstore and playstore
+- Deploy app to App Store and Play Store
   - Create sample app and document the process of deployment
 - Improve mock server logic
 - add commit lint
@@ -176,7 +176,7 @@ Environment variables instruction:
 
 1. Create empty file `scripts/doppler_variables.sh` and add this script to new created file.
 
-- run `yarn prepare:env_file` - this will copy template and plase it in `scripts/doppler_variables.sh`
+- run `yarn prepare:env_file` - this will copy template and place it in `scripts/doppler_variables.sh`
 
 2. Add correct values to variables (ask one of the developers for that), example:
 
@@ -221,7 +221,7 @@ If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.
 
 ### Outdated (not maintained anymore)
 
-- https://github.com/kacgrzes/expo-typescript-template (our repo is fork of this one - we keep maintaing this)
+- https://github.com/kacgrzes/expo-typescript-template (our repo is fork of this one - we keep maintaining this)
 - https://github.com/codingki/react-native-expo-template
 - https://github.com/flatlogic/react-native-starter
 - https://github.com/mcnamee/react-native-expo-starter-kit
