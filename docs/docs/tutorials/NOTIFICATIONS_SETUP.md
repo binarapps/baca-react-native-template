@@ -1,6 +1,6 @@
 ---
 id: expo-notifications
-slug: /expo-notofications
+slug: /expo-notifications
 title: Expo notifications
 sidebar_position: 4
 tags:
@@ -49,11 +49,11 @@ Expo notifications are already preconfigured in this template. However, you stil
 {
   "expo": {
     ...,
-    "owner": "@binarapps",
-    "slug": "expo-typescript-template",
+    "owner": "your_owner_name",
+    "slug": "your_app_slug",
     ...,
     "extra": {
-      "experienceid": "@binarapps/expo-typescript-template"
+      "experienceId": "your_owner_name/your_app_slug"
     }
   }
 }

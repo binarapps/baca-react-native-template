@@ -1,3 +1,4 @@
+import { KeyboardAwareScrollView } from '@baca/components'
 import { LandingHeader } from '@baca/components/LandingHeader'
 import { darkLogo, lightLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
@@ -24,7 +25,7 @@ export const LandingScreen = () => {
   }, [])
 
   return (
-    <>
+    <KeyboardAwareScrollView>
       <LandingHeader />
       <Center flex={1} px={4}>
         <Image
@@ -43,7 +44,7 @@ export const LandingScreen = () => {
           {t('landing_screen.go_to_blog')}
         </Button>
       </Center>
-    </>
+    </KeyboardAwareScrollView>
   )
 }
 

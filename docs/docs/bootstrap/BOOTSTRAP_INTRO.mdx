@@ -10,45 +10,49 @@ tags:
 description: Bootstrap project structure, that is needed to start development your new project
 ---
 
+import Details from '@site/src/components/Details'
+
 # BOOTSTRAP - start development 🕐
 
 Bootstrap project structure, that is needed to start development
 
-### **What you need to do to start development?**
+## **What you need to do to start development?**
 
-#### 1. Clone this repository
+---
 
-There are three types that you can clone the repo:
-
-1. Init using this command (beaware that sometimes this template can't be updated on npm, in that case, clone this repository and reinitialize repozitory for yourself - check third type of setup)
+### 1. Setup repository
 
 ```bash
-npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app
+git clone git@github.com:binarapps/baca-react-native-template.git name_of_your_app
+cd name_of_your_app
+```
+
+> Removing git history **(not recommended)**
+>
+> - do it only if you don't want to keep history of commits - maybe client doesn't want this
+> - when you will get rid of git history it could be hard to apply changes made in the starter file
+>
+> ```bash
+> rm -r .git
+> git init
+> git commit -m "chore: initialize project"
+> ```
+
+<Details title="Other options to setup repository">
+1. Init using this command (be aware that sometimes this template can't be updated on npm, in that case, clone this repository and reinitialize repository for yourself - check third type of setup)
+
+```bash
+npx create-expo-app --template=@binarapps/baca-react-native-template name_of_your_app
 ```
 
 2. Use this as template repo on GitHub
    ![Github Repository Template](../../static/img/github-repository-template.png)
 
-3. Clone repository
+</Details>
 
-   This usage is usefull when you want to keep git history, thanks to this you can sync incomming changes in this template
+---
 
-```bash
-git clone git@github.com:binarapps/expo-ts-template.git
-cd expo-ts-template
-yarn
-yarn start
-```
-
-- in that case you can also reinitialize repozitory if you don't want to keep history of commits
-
-```bash
-rm -r .git
-git init
-git commit -m "chore: initialize project"
-```
-
-#### 2. Login / register to expo
+### 2. Login / register to expo
 
 If you have expo account → go login with it
 
@@ -76,7 +80,9 @@ eas login
 eas whoami
 ```
 
-#### 3. Create project on expo.dev
+---
+
+### 3. Create project on expo.dev
 
 a. Sign in to the expo dev console (account created in the first step of repo configuration).
 
@@ -102,24 +108,26 @@ Display name is a name that will be visible in the Expo Dev Console.
 
 Slug is the name that will link your Expo application with your code.
 
-![Project create](../../static/img/expo_create.png)
+## ![Project create](../../static/img/expo_create.png)
 
-#### 4.Sync project with code.
+### 4.Sync project with code.
 
 Synchronize the newly created Expo Project to your app.
 
-In app.json file please insert the following:
+In `app.json` file please insert the following:
 
-a. **slug name** - created in 1-st point.
-b. **owner** - organization picked from the list in 1-st point
-
-<!-- TODO: This should be better documented - we should update app.config.ts instead not app.json -->
+1. **slug name** - created in 1-st point.
+2. **owner** - organization picked from the list in 1-st point
 
 ```json
 {
   "expo": {
     "owner": "your_organization_name",
-    "slug": "example-app-name"
+    "slug": "your_app_name"
   }
 }
 ```
+
+---
+
+### 5. Make environment setup - [tutorial](/docs/doppler-config)
