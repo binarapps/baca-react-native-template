@@ -247,7 +247,7 @@ export const buttonVariants: { [key in ButtonVariant]: VariantStyle } = {
   },
 }
 
-export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
 
 type SizeStyle = {
   textVariant: TextVariant
@@ -287,7 +287,7 @@ export const buttonSizeVariants: { [key in ButtonSize]: SizeStyle } = {
     iconGap: 6,
     iconSize: 20,
   },
-  '2xl': {
+  xxl: {
     textVariant: 'LgSemibold',
     paddingHorizontal: 22,
     paddingVertical: 18,

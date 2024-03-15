@@ -94,7 +94,7 @@ export const ProjectColors = {
   modalBackground: 'rgba(0, 0, 0, 0.5)',
 }
 export type TextFontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-export type DisplayFontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type DisplayFontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
 export type FontWeight = 'Regular' | 'Medium' | 'Semibold' | 'Bold'
 
 export const fontTextSize: { [key in TextFontSize]: number } = {
@@ -111,7 +111,7 @@ export const fontDisplaySize: { [key in DisplayFontSize]: number } = {
   md: 36,
   lg: 48,
   xl: 60,
-  '2xl': 72,
+  xxl: 72,
 } as const
 
 export const fontWeights: { [key in FontWeight]: '400' | '500' | '600' | '700' } = {

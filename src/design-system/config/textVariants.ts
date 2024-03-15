@@ -48,10 +48,6 @@ export const textVariants: {
 }
 
 export type DisplayVariant =
-  | '2xlBold'
-  | '2xlMedium'
-  | '2xlRegular'
-  | '2xlSemibold'
   | 'LgBold'
   | 'LgMedium'
   | 'LgRegular'
@@ -72,14 +68,14 @@ export type DisplayVariant =
   | 'XsMedium'
   | 'XsRegular'
   | 'XsSemibold'
+  | 'XxlBold'
+  | 'XxlMedium'
+  | 'XxlRegular'
+  | 'XxlSemibold'
 
 export const displayVariants: {
   [key in DisplayVariant]: { fontWeight: FontWeight; fontSize: keyof typeof fontDisplaySize }
 } = {
-  '2xlBold': { fontWeight: 'Bold', fontSize: '2xl' },
-  '2xlMedium': { fontWeight: 'Medium', fontSize: '2xl' },
-  '2xlRegular': { fontWeight: 'Regular', fontSize: '2xl' },
-  '2xlSemibold': { fontWeight: 'Semibold', fontSize: '2xl' },
   LgBold: { fontWeight: 'Bold', fontSize: 'lg' },
   LgMedium: { fontWeight: 'Medium', fontSize: 'lg' },
   LgRegular: { fontWeight: 'Regular', fontSize: 'lg' },
@@ -100,4 +96,8 @@ export const displayVariants: {
   XsMedium: { fontWeight: 'Medium', fontSize: 'xs' },
   XsRegular: { fontWeight: 'Regular', fontSize: 'xs' },
   XsSemibold: { fontWeight: 'Semibold', fontSize: 'xs' },
+  XxlBold: { fontWeight: 'Bold', fontSize: 'xxl' },
+  XxlMedium: { fontWeight: 'Medium', fontSize: 'xxl' },
+  XxlRegular: { fontWeight: 'Regular', fontSize: 'xxl' },
+  XxlSemibold: { fontWeight: 'Semibold', fontSize: 'xxl' },
 }

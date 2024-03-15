@@ -27,10 +27,10 @@ export const textVariants: TextVariant[] = [
 ] as const
 
 const displayTextVariants: DisplayVariant[] = [
-  '2xlBold',
-  '2xlSemibold',
-  '2xlMedium',
-  '2xlRegular',
+  'XxlBold',
+  'XxlSemibold',
+  'XxlMedium',
+  'XxlRegular',
   'XlBold',
   'XlSemibold',
   'XlMedium',

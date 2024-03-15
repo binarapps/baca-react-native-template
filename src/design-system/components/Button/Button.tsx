@@ -20,7 +20,7 @@ import {
   View,
 } from 'react-native'
 
-import { ButtonVariant, buttonSizeVariants, buttonVariants, theme } from '../../config'
+import { ButtonSize, ButtonVariant, buttonSizeVariants, buttonVariants, theme } from '../../config'
 import { generateStyledComponent } from '../../utils'
 import { Box } from '../Box'
 import { Loader } from '../Loader'
@@ -32,7 +32,7 @@ export type ButtonProps = StyledProps &
   PressableProps & {
     title?: string
     variant?: ButtonVariant
-    size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+    size?: ButtonSize
     loading?: boolean
     disabled?: boolean
     leftIcon?: JSX.Element

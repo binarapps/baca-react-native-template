@@ -244,10 +244,6 @@ const generateDisplayVariant = (variant: DisplayVariant = 'MdRegular') =>
     return <Display {...{ ...props, ref, variant }} type="display" />
   })
 
-Display['2xlBold'] = generateDisplayVariant('2xlBold')
-Display['2xlMedium'] = generateDisplayVariant('2xlMedium')
-Display['2xlRegular'] = generateDisplayVariant('2xlRegular')
-Display['2xlSemibold'] = generateDisplayVariant('2xlSemibold')
 Display.LgMedium = generateDisplayVariant('LgMedium')
 Display.LgRegular = generateDisplayVariant('LgRegular')
 Display.LgSemibold = generateDisplayVariant('LgSemibold')
@@ -271,3 +267,7 @@ Display.XlBold = generateDisplayVariant('XlBold')
 Display.XlMedium = generateDisplayVariant('XlMedium')
 Display.XlRegular = generateDisplayVariant('XlRegular')
 Display.XlSemibold = generateDisplayVariant('XlSemibold')
+Display.XxlBold = generateDisplayVariant('XxlBold')
+Display.XxlMedium = generateDisplayVariant('XxlMedium')
+Display.XxlRegular = generateDisplayVariant('XxlRegular')
+Display.XxlSemibold = generateDisplayVariant('XxlSemibold')
