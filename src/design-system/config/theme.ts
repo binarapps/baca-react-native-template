@@ -122,10 +122,10 @@ export const fontWeights: { [key in FontWeight]: '400' | '500' | '600' | '700' }
 } as const
 
 export const fonts: { [key in FontWeight]: string } = {
-  Regular: 'Lato_400Regular',
-  Medium: 'Lato_500Medium',
-  Semibold: 'Lato_600Semibold',
-  Bold: 'Lato_700Bold',
+  Regular: 'Inter_Regular',
+  Medium: 'Inter_Medium',
+  Semibold: 'Inter_Semibold',
+  Bold: 'Inter_Bold',
 } as const
 
 export const scale = fontTextSize.md
