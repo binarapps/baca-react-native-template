@@ -33,9 +33,9 @@ export const LandingScreen = () => {
           source={colorScheme === 'light' ? lightLogo : darkLogo}
           style={styles.logo}
         />
-        <Text.H3Bold textAlign="center">{t('hello')}</Text.H3Bold>
-        <Text.Caption textAlign="center">{t('thanks')}</Text.Caption>
-        <Text.Caption textAlign="center">{t('app_information')}</Text.Caption>
+        <Text.LgBold textAlign="center">{t('hello')}</Text.LgBold>
+        <Text.MdRegular textAlign="center">{t('thanks')}</Text.MdRegular>
+        <Text.MdRegular textAlign="center">{t('app_information')}</Text.MdRegular>
         <Button mt={4} onPress={navigateToBigForm}>
           {t('landing_screen.go_to_form')}
         </Button>

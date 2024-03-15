@@ -15,8 +15,8 @@ export const ProfileScreen = () => {
 
   return (
     <Box m={8}>
-      <Text.H1Bold>Profile</Text.H1Bold>
-      <Text.Subtitle>Update your personal details here.</Text.Subtitle>
+      <Text.LgBold>Profile</Text.LgBold>
+      <Text.MdRegular>Update your personal details here.</Text.MdRegular>
 
       <Box borderColor="utility.gray.300" borderBottomWidth={2} borderTopWidth={2} my={4} py={4}>
         <ControlledField.Input
@@ -52,7 +52,7 @@ export const ProfileScreen = () => {
       </Box>
 
       <Row justifyContent="flex-end">
-        <Button.Secondary
+        <Button.SecondaryColor
           disabled={isSubmitting}
           loading={isSubmitting}
           my={8}
@@ -60,7 +60,7 @@ export const ProfileScreen = () => {
           testID="backProfileButton"
         >
           {t('common.cancel')}
-        </Button.Secondary>
+        </Button.SecondaryColor>
         <Spacer x="4" />
         <Button
           disabled={isSubmitting}

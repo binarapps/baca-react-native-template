@@ -98,13 +98,19 @@
   "components_screen": {
     "button_variants": {
       "disabled": "Button disabled",
-      "ghost": "Button ghost",
       "header": "Button variants",
-      "link": "Button link",
+      "link_color": "Button link color",
+      "link_destructive": "Button link destructive",
+      "link_gray": "Button link gray",
       "loading": "Button loading",
-      "outline": "Button outline",
       "primary": "Button primary",
-      "secondary": "Button secondary",
+      "primary_destructive": "Button primary destructive",
+      "secondary_color": "Button secondary color",
+      "secondary_destructive": "Button secondary destructive",
+      "secondary_gray": "Button secondary gray",
+      "tertiary_color": "Button tertiary color",
+      "tertiary_destructive": "Button tertiary destructive",
+      "tertiary_gray": "Button tertiary gray",
       "with_icons": "Button with icons"
     },
 
@@ -219,8 +225,8 @@
     "which_music": "what kind of music do you listen ?"
   },
   "typography_screen": {
-    "heading_size": "Heading.size: ",
-    "text_font_size": "Text.fontSize: "
+    "display_font_size": "Display fontSize: ",
+    "text_font_size": "Text fontSize: "
   },
   "hello": "Welcome",
   "thanks": "Thank you for using the best template for expo apps",

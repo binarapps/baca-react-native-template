@@ -7,7 +7,7 @@ import {
   useImperativeHandle,
   useMemo,
 } from '@baca/hooks'
-import { convertEmToNumber, getColorValue, getFontWeight } from '@baca/utils'
+import { convertEmToNumber, getColorValue } from '@baca/utils'
 import { forwardRef } from 'react'
 import {
   NativeSyntheticEvent,
@@ -21,6 +21,7 @@ import { Box } from './Box'
 import { Icon } from './Icon'
 import { Touchable } from './Touchables/Touchable'
 import type { InputProps } from './types'
+import { fontTextSize, fontWeights } from '../config'
 import { generateStyleSheet, generateStyledSystem } from '../utils'
 
 const layoutPropsKeys = [
@@ -51,11 +52,11 @@ const layoutPropsKeys = [
 ]
 
 const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
-  const { colors, fontSizes, fontWeights, fonts, lineHeights } = useTheme()
+  const { colors, fonts, lineHeights } = useTheme()
 
-  const fontSize = fontSizes[props.fontSize || 'xs']
-  const fontWeight = fontWeights[props.fontWeight || 'normal']
-  const fontFamily = fonts[props.fontFamily || 'regular']
+  const fontSize = fontTextSize[props.fontSize || 'sm']
+  const fontWeight = fontWeights[props.fontWeight || 'Regular']
+  const fontFamily = fonts[props.fontFamily || 'Regular']
 
   const lineHeightStyle = useMemo<TextStyle>(
     () => ({
@@ -108,7 +109,7 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
 
   const fontWeightStyle = useMemo<TextStyle>(
     () => ({
-      fontWeight: (props.bold && 'bold') || (fontWeight && getFontWeight(fontWeight)),
+      fontWeight: (props.bold && fontWeights.Bold) || fontWeight,
     }),
     [fontWeight, props.bold]
   )
@@ -130,7 +131,6 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
   const inputTextStyle = useMemo<TextStyle>(
     () =>
       generateStyleSheet<TextStyle>([
-        props.bold && { fontWeight: '500' },
         props.italic && { fontStyle: 'italic' },
         fontFamilyStyle,
         fontSizeStyle,
@@ -146,7 +146,6 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
       fontSizeStyle,
       fontWeightStyle,
       lineHeightStyle,
-      props.bold,
       props.italic,
       textAlignmentStyle,
       textColorStyle,
@@ -249,9 +248,9 @@ export const Input = forwardRef<TextInput, InputProps>(
             web: { disabled: isDisabled },
           })}
           flex={1}
-          fontFamily="regular"
+          fontFamily="Regular"
           fontSize="xs"
-          fontWeight="bold"
+          // fontWeight="bold"
           height="100%"
           placeholder="Enter your email"
           px={3}

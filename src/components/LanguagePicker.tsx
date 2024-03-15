@@ -43,9 +43,7 @@ export const LanguagePicker: React.FC = () => {
       return (
         <Touchable {...props}>
           <Row alignItems="center">
-            <Text fontSize="xl" pr={2}>
-              {languages?.[language]?.emoji}
-            </Text>
+            <Text.XlRegular pr={2}>{languages?.[language]?.emoji}</Text.XlRegular>
             <Animated.View style={[animatedIconStyle, styles.icon]}>
               <Icon size={24} name="arrow-down-s-line" color={iconColor} />
             </Animated.View>

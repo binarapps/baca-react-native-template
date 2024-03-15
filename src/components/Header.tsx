@@ -21,9 +21,9 @@ export const Header = ({ options }: NativeStackHeaderProps) => {
           <>
             <Box height={logoHeight} />
             <Row ml={8} flex={1}>
-              <Text.H4Bold numberOfLines={1} color="text.brand.primary">
+              <Text.LgBold numberOfLines={1} color="text.brand.primary">
                 {options.title}
-              </Text.H4Bold>
+              </Text.LgBold>
             </Row>
           </>
         ) : (
