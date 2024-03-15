@@ -52,15 +52,15 @@ export const SignInScreen = (): JSX.Element => {
           enterKeyHint="next"
           inputMode="email"
           isRequired
-          label={t('common.email_label')}
+          label={t('form.labels.email')}
           name="email"
           onSubmitEditing={focusPasswordInput}
-          placeholder={t('common.email_placeholder')}
+          placeholder={t('form.placeholders.email')}
           rules={{
-            required: t('form.required'),
+            required: t('form.validation.required'),
             pattern: {
               value: REGEX.EMAIL,
-              message: t('form.invalid_email_format'),
+              message: t('form.validation.invalid_email_format'),
             },
           }}
           testID="emailInput"
@@ -70,12 +70,12 @@ export const SignInScreen = (): JSX.Element => {
           autoCapitalize="none"
           enterKeyHint="send"
           isRequired
-          label={t('sign_in_screen.password_label')}
+          label={t('form.labels.password')}
           name="password"
           onSubmitEditing={submit}
-          placeholder={t('sign_in_screen.password_placeholder')}
+          placeholder={t('form.placeholders.password')}
           rules={{
-            required: t('form.required'),
+            required: t('form.validation.required'),
           }}
           testID="passwordInput"
           type="password"
@@ -83,7 +83,7 @@ export const SignInScreen = (): JSX.Element => {
         <Center mt={8}>
           <ControlledField.Checkbox
             {...{ control, errors }}
-            checkboxText={t('sign_in_screen.remember_me')}
+            checkboxText={t('form.checkbox.remember_me')}
             name="confirm"
             size={18}
             testID="confirmCheckbox"

@@ -3,35 +3,50 @@
     "add": "Dodaj",
     "back": "Cofnij",
     "cancel": "Anuluj",
-    "email_label": "E-mail",
-    "email_placeholder": "john@doe.com",
-    "empty_list": "Lista jest pusta",
     "go_back": "Cofnij",
-    "log_in": "Login",
-    "phone_label": "Telefon",
     "remove": "Usuń",
     "save": "Zapisz",
     "search": "Szukaj",
-    "send_again": "Wyślij ponownie",
-    "show_on_map": "Pokaż na mapie",
-    "sign_in": "Zaloguj",
-    "sign_up": "Zarejestruj",
     "try_again_later": "Proszę spróbuj ponownie później",
-    "try_again": "Spróbuj ponownie",
-    "user_label": "Użytkownik",
-    "user_placeholder": "Użytkownik"
+    "try_again": "Spróbuj ponownie"
   },
   "errors": {
+    "invalid_email": "Niepoprawny adres e-mail",
+    "invalid_password": "Niepoprawne hasło",
     "missing_auth": "Brak autoryzacji",
     "screen_not_found": "NotFound screen",
     "something_went_wrong": "Coś poszło nie tak",
     "token_expired": "Token wygasł"
   },
+  "examples_component": {
+    "example": "Przykład"
+  },
   "form": {
-    "invalid_email_format": "Zły adres e-mail",
-    "invalid_password_format": "Hasło musi zawierać minimum: 8 znaków, jedną wielką literę, jedną malą literę, jedną cyfrę i jeden znak specjalny",
-    "invalid_password": "Niepoprawne hasło",
-    "required": "Pole wymagane"
+    "checkbox": {
+      "privacy_policy": "Zapoznałem się i akceptuję politykę prywatności",
+      "remember_me": "Zapamiętaj mnie",
+      "terms_accepted": "Zgadzam się z warunkami użytkowania"
+    },
+    "errors": {},
+    "labels": {
+      "email": "Adres e-mail",
+      "first_name": "Imię",
+      "last_name": "Nazwisko",
+      "password": "Hasło"
+    },
+    "placeholders": {
+      "create_password": "Utwórz nowe hasło",
+      "email": "Podaj adres e-mail",
+      "first_name": "Podaj swoje imię",
+      "last_name": "Podaj swoje nazwisko",
+      "password": "Hasło"
+    },
+    "select": {},
+    "validation": {
+      "invalid_email_format": "Niepoprawny format adresu e-mail",
+      "invalid_password_format": "Hasło musi zawierać minimum: 8 znaków, jedną wielką literę, jedną małą literę, jedną cyfrę i jeden znak specjalny",
+      "required": "Pole wymagane"
+    }
   },
   "navigation": {
     "prevent_go_back_alert": {
@@ -42,6 +57,7 @@
     },
     "screen_titles": {
       "application_info": "ApplicationInfo",
+      "blog": "Blog",
       "colors": "Colors",
       "components": "Components",
       "data_from_be_screen_example": "Dane z backend-u",
@@ -55,25 +71,24 @@
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
-      "typography": "Typography",
       "test_form": "Formularz testowy",
-      "blog": "Blog"
+      "typography": "Typography"
     }
+  },
+  "toast": {
+    "error": {},
+    "success": {
+      "new_account_created": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
+      "profile_updated": "Zaktualizowano Twoje dane."
+    },
+    "warning": {}
   },
   "update": {
     "alert_message": "Będziesz musiał zrestartować aplikację, żeby mieć lepsze doświadczenia podczas jej używania",
     "alert_title": "Aktualizacja",
     "restart": "Zrestartuj"
   },
-  "examples_component": {
-    "example": "Przykład"
-  },
-  "landing_screen": {
-    "login_cta": "Zaloguj się",
-    "sign_up": "Zarejestruj się",
-    "go_to_blog": "Otwórz blog",
-    "go_to_form": "Otwórz pełno ekranowy formularz full"
-  },
+
   "application_info_screen": {
     "navigation_info": "Kiedy będziesz próbował cofnąć to zostaniesz podwójnie zapytany, czy na pewno tego chcesz \n"
   },
@@ -143,6 +158,12 @@
   "home_screen": {
     "details": "Detale"
   },
+  "landing_screen": {
+    "login_cta": "Zaloguj się",
+    "sign_up": "Zarejestruj się",
+    "go_to_blog": "Otwórz blog",
+    "go_to_form": "Otwórz pełno ekranowy formularz full"
+  },
   "settings_screen": {
     "current_theme": "Current theme: {{theme}}",
     "selected": " - wybrano",
@@ -150,31 +171,12 @@
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",
-    "email_helper_text": "Email",
-    "forgot_password": "Zapomniałeś hasła?",
-    "or_pass": "lub wprowadź:",
-    "password_helper_text": "Hasła muszą być takie same",
-    "password_label": "Hasło",
-    "password_placeholder": "hasło",
-    "remember_me": "Zapamiętaj mnie",
     "sign_in": "Zaloguj",
     "sign_up": "Zarejestruj"
   },
   "sign_up_screen": {
     "created_new_account": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
-    "newsletter_label": "Subskrybuj nasz newsletter",
-    "sign_up": "Zarejestruj",
-    "email_label": "E-mail",
-    "email_placeholder": "Podaj swój e-mail",
-    "first_name_label": "Imię",
-    "first_name_placeholder": "Wprowadź imię",
-    "last_name_label": "Nazwisko",
-    "last_name_placeholder": "Wprowadź nazwisko",
-    "password_placeholder": "Nowe hasło",
-    "password_label": "Hasło",
-    "privacy_policy_label": "Zapoznałem się i akceptuję politykę prywatności",
-    "trail_descirption": "Rozpocznij darmowy 30 dniowy okres próbny.",
-    "terms_accepted_label": "Zgadzam się z warunkami użytkowania"
+    "sign_up": "Zarejestruj"
   },
   "test_form": {
     "additional_comment": "Dodatkowy komentarz",
