@@ -49,11 +49,11 @@ Expo notifications are already preconfigured in this template. However, you stil
 {
   "expo": {
     ...,
-    "owner": "@binarapps",
-    "slug": "baca-react-native-template",
+    "owner": "your_owner_name",
+    "slug": "your_app_slug",
     ...,
     "extra": {
-      "experienceId": "@binarapps/baca-react-native-template"
+      "experienceId": "your_owner_name/your_app_slug"
     }
   }
 }
