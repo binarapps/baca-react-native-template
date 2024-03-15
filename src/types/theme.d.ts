@@ -11,7 +11,8 @@ declare global {
   type Fonts = keyof AppTheme['fonts']
 
   // COLORS
-  type Colors = typeof themeColors.lightMode | typeof themeColors.darkMode
+  type Colors = typeof themeColors.primitives &
+    (typeof themeColors.lightMode | typeof themeColors.darkMode)
 
   export type ColorNames = NestedKeys<Colors>
 
