@@ -1,5 +1,5 @@
 type GetColorValueProps = {
-  color: ColorNames | string
+  color?: ColorNames | string
   colors: Colors
 }
 

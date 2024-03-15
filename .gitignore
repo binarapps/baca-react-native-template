@@ -23,10 +23,11 @@ dist/
 # project files
 
 # CONFIG: uncomment following lines
-# .env
-# .env.qa
-# .env.production
-# .env.staging
+.env
+.env.qa
+.env.production
+.env.staging
+env.json
 # Local Netlify folder
 .netlify
 

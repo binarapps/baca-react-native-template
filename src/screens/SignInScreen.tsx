@@ -100,7 +100,9 @@ export const SignInScreen = (): JSX.Element => {
           <Text bold mb={4}>
             {t('sign_in_screen.do_not_have_an_account')}
           </Text>
-          <Button.Link onPress={navigateToSignUp}>{t('sign_in_screen.sign_up')}</Button.Link>
+          <Button.LinkColor onPress={navigateToSignUp}>
+            {t('sign_in_screen.sign_up')}
+          </Button.LinkColor>
         </Center>
 
         <Box mt={12} />

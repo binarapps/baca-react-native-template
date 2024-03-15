@@ -5,9 +5,6 @@
 import 'setimmediate'
 import 'react-native-reanimated'
 
-import 'fast-text-encoding'
-import 'react-native-url-polyfill/auto'
-
 // Rest imports
 import '@baca/i18n'
 import { enableAndroidBackgroundNotificationListener, startMockedServer } from '@baca/services'
