@@ -10,6 +10,8 @@
 
 # @binarapps/baca-react-native-template
 
+- [WEB DEMO APP](https://baca-six.vercel.app)
+
 > **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
 >
 > This repository is part of whole ecosystem, and it only contains React Native code
@@ -18,7 +20,7 @@ This is a template to be used with react native and expo. It includes all the ne
 
 ## Documentation
 
-Check out our [documentation page](https://baca-rn-docs.vercel.app/docs/bootstrap/intro), it contains:
+Check out our [documentation page](https://baca-docs.vercel.app/docs/bootstrap/intro), it contains:
 
 - Bootstrapping project - tutorial how to easy setup from scratch
 - Deploying app
@@ -46,7 +48,7 @@ Check this recording of how it look like:
 
 ## How to use?
 
-We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](https://baca-rn-docs.vercel.app/docs/bootstrap/intro)**
+We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](https://baca-docs.vercel.app/docs/bootstrap/intro)**
 
 It's great for production project, but if you want to just test it, you can follow the quick steps (on the bottom).
 
