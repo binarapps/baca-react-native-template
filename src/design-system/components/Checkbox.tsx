@@ -1,4 +1,3 @@
-import { useTheme } from '@baca/hooks'
 import { forwardRef, useCallback, useMemo } from 'react'
 import { View, Pressable, StyleSheet } from 'react-native'
 
@@ -7,76 +6,96 @@ import { Icon } from './Icon'
 import { Text } from './Text'
 import { CheckboxProps } from './types'
 
+const hitSlop = {
+  top: 5,
+  left: 5,
+  bottom: 5,
+}
+
+const checkboxSizes = {
+  sm: {
+    boxSize: 16,
+    iconSize: 12,
+  },
+  md: {
+    boxSize: 20,
+    iconSize: 14,
+  },
+} as const
+
 export const Checkbox = forwardRef<View, CheckboxProps>(
   (
     {
-      disabled,
-      value,
-      onChange,
-      checkboxText,
-      size = 22,
-      isError,
-      isChecked,
       checkboxes,
+      checkboxText,
+      disabled,
+      isChecked,
+      isError,
+      onChange,
+      size = 'sm',
+      value,
       ...props
     },
     ref
   ) => {
-    const { colors } = useTheme()
+    const checkboxSize = useMemo(() => checkboxSizes[size], [size])
+
     const handleValueChange = useCallback(() => {
       return checkboxes ? onChange(value) : onChange(!value)
     }, [onChange, value, checkboxes])
 
-    const iconColor = useMemo(() => {
+    const iconColor = useMemo<ColorNames>(() => {
       if (disabled && value) {
-        return 'icon.fg.brand'
+        return 'fg.disabled_subtle'
       }
 
-      return 'text.primary'
+      return 'fg.white'
     }, [disabled, value])
 
-    const bgColor = useMemo(() => {
+    const bgColor = useMemo<ColorNames>(() => {
       if (!value) {
-        return colors.text.white
+        return 'fg.white'
       }
       if (disabled) {
-        return colors.text.placeholder
+        return 'bg.disabled_subtle'
       }
 
-      return colors.alpha.black[10]
-    }, [disabled, value, colors])
+      return 'bg.brand.solid'
+    }, [disabled, value])
 
-    const borderColor = useMemo(
-      () => (isError ? 'border.error' : disabled ? 'border.disabled' : 'border.primary'),
-      [isError, disabled]
+    const borderColor = useMemo<ColorNames>(
+      () =>
+        disabled
+          ? 'border.disabled'
+          : isError
+          ? 'border.error'
+          : value
+          ? 'bg.brand.solid'
+          : 'border.primary',
+      [value, isError, disabled]
     )
 
     return (
       <Pressable
-        ref={ref}
+        {...{ disabled, hitSlop, ref }}
         onPress={handleValueChange}
-        hitSlop={{
-          top: 5,
-          left: 5,
-          bottom: 5,
-        }}
         style={styles.mainContainer}
-        disabled={disabled}
       >
         <View style={styles.row}>
           <Box
             style={[
               styles.checkbox,
               {
-                backgroundColor: bgColor,
-                height: size,
-                width: size,
+                height: checkboxSize.boxSize,
+                width: checkboxSize.boxSize,
               },
             ]}
-            borderColor={borderColor}
-            {...props}
+            bg={bgColor}
+            {...{ ...props, borderColor }}
           >
-            {isChecked ? <Icon color={iconColor} name="check-line" size={18} /> : null}
+            {isChecked ? (
+              <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
+            ) : null}
           </Box>
           <Text>{checkboxText}</Text>
         </View>

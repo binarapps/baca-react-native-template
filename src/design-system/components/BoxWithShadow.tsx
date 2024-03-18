@@ -10,13 +10,13 @@ type BoxWithShadowProps = {
   isFocused?: boolean
 } & BoxProps
 
-export const BoxWithShadow: FC<PropsWithChildren> = ({
+export const BoxWithShadow: FC<PropsWithChildren<BoxWithShadowProps>> = ({
   children,
   isInvalid,
   isFocused,
   style,
   ...rest
-}: BoxWithShadowProps) => {
+}) => {
   const shadowProps = useMemo(
     () => (isInvalid ? errorShadow : isFocused ? focusShadow : {}),
     [isInvalid, isFocused]

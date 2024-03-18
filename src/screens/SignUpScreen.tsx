@@ -92,7 +92,6 @@ export const SignUpScreen = () => {
           rules={{
             required: t('form.validation.required'),
           }}
-          size={18}
         />
         <ControlledField.Checkbox
           {...{ control, errors }}
@@ -102,10 +101,8 @@ export const SignUpScreen = () => {
           rules={{
             required: t('form.validation.required'),
           }}
-          size={18}
         />
-        <Spacer y={2} />
-        <Spacer y={2} />
+        <Spacer y={4} />
         <Button disabled={isSubmitting} loading={isSubmitting} onPress={register}>
           {t('sign_up_screen.sign_up')}
         </Button>
