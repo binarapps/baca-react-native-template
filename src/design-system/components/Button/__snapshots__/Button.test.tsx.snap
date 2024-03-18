@@ -36,7 +36,7 @@ exports[`Button renders correctly 1`] = `
   style={
     {
       "alignItems": "center",
-      "backgroundColor": "#7F56D9",
+      "backgroundColor": "#7A271A",
       "borderColor": "#7F56D9",
       "borderRadius": 4,
       "borderWidth": 1,

@@ -43,8 +43,8 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.SecondaryColor title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      backgroundColor: theme.light.colors.button.secondary.bg,
-      borderColor: theme.light.colors.button.secondary.border,
+      backgroundColor: theme.light.colors.button.secondary.color.bg,
+      borderColor: theme.light.colors.button.secondary.color.border,
       borderWidth: 1,
     })
   })
