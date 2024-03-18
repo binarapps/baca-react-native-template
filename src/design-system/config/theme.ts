@@ -316,10 +316,25 @@ export const shadows = {
     shadowRadius: 0,
     elevation: 0,
   },
-  inputShadow: {
-    shadowOffset: { width: 0, height: 2 },
-    shadowColor: colors.primary,
-    shadowOpacity: 0.16,
+  errorShadow: {
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: themeColors.primitives.Error[500],
+    shadowOpacity: 1,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  focusShadow: {
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: themeColors.primitives.Brand[500],
+    shadowOpacity: 1,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  grayShadow: {
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: themeColors.primitives['Gray (light mode)'][400],
+    shadowOpacity: 1,
+    shadowRadius: 8,
     elevation: 3,
   },
 }
