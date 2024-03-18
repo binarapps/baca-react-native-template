@@ -356,11 +356,11 @@ export const _appTheme = {
 export const theme = {
   light: {
     ..._appTheme,
-    colors: themeColors.lightMode,
+    colors: { ...themeColors.primitives, ...themeColors.lightMode },
   },
   dark: {
     ..._appTheme,
-    colors: themeColors.darkMode,
+    colors: { ...themeColors.primitives, ...themeColors.darkMode },
   },
 }
 

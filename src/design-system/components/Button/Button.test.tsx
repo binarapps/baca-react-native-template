@@ -23,7 +23,6 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Primary title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      alignItems: 'center',
       backgroundColor: theme.light.colors.button.primary.bg,
       borderColor: theme.light.colors.button.primary.border,
       borderWidth: 1,
@@ -34,7 +33,6 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.PrimaryDestructive title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      alignItems: 'center',
       backgroundColor: theme.light.colors.button.primary.error.bg,
       borderColor: theme.light.colors.button.primary.error.border,
       borderWidth: 1,
@@ -45,7 +43,6 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.SecondaryColor title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      alignItems: 'center',
       backgroundColor: theme.light.colors.button.secondary.bg,
       borderColor: theme.light.colors.button.secondary.border,
       borderWidth: 1,
@@ -67,7 +64,6 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.SecondaryDestructive title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      alignItems: 'center',
       backgroundColor: theme.light.colors.button.secondary.error.bg,
       borderColor: theme.light.colors.button.secondary.error.border,
       borderWidth: 1,
@@ -78,8 +74,8 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.TertiaryColor title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
       borderWidth: undefined,
     })
   })
@@ -88,8 +84,8 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.TertiaryGray title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
       borderWidth: undefined,
     })
   })
@@ -98,8 +94,8 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.TertiaryDestructive title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
       borderWidth: undefined,
     })
   })
@@ -108,8 +104,8 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.LinkColor title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
       borderWidth: undefined,
     })
   })
@@ -118,8 +114,8 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.LinkGray title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
       borderWidth: undefined,
     })
   })
@@ -128,8 +124,8 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.LinkDestructive title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       ...baseStyles,
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
       borderWidth: undefined,
     })
   })
