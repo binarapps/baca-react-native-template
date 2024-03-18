@@ -1,12 +1,17 @@
+import { ASYNC_STORAGE_KEYS } from '@baca/constants'
 import { NotificationContextProvider, NotificationContextType } from '@baca/contexts'
-import { useState, useMemo, useEffect } from '@baca/hooks'
+import { useState, useMemo, useEffect, useAppStateActive } from '@baca/hooks'
 import {
+  assignPushToken,
   disableAndroidBackgroundNotificationListener,
   getNotificationFromStack,
   getNotificationStackLength,
 } from '@baca/services'
+import { store } from '@baca/store'
+import { isSignedInAtom } from '@baca/store/auth'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Notifications from 'expo-notifications'
-import { PropsWithChildren, FC } from 'react'
+import { PropsWithChildren, FC, useCallback } from 'react'
 
 export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   const [permissionStatus, setPermissionStatus] =
@@ -14,6 +19,37 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   const [notification, setNotification] = useState<NotificationContextType['notification']>()
   const [inAppNotification, setInAppNotification] =
     useState<NotificationContextType['inAppNotification']>()
+
+  const tryToRegisterPushToken = useCallback(async () => {
+    const wasPushTokenSendStrigified = await AsyncStorage.getItem(
+      ASYNC_STORAGE_KEYS.WAS_PUSH_TOKEN_SEND
+    )
+    const wasPushTokenSend: boolean = JSON.parse(wasPushTokenSendStrigified ?? 'false')
+
+    if (wasPushTokenSend) {
+      return
+    }
+
+    const isSignedIn = store.get(isSignedInAtom)
+
+    if (!isSignedIn) {
+      return
+    }
+
+    // This function will also be executed after first instalation of app
+    // It's used like that because we want to ask user for permissions
+    // this function have logic inside that will prevent sending token to backend when user is logged out
+    const status = await assignPushToken()
+
+    if (!status) {
+      return
+    }
+
+    setPermissionStatus(status)
+  }, [])
+
+  // to update immediately permission status
+  useAppStateActive(tryToRegisterPushToken, true)
 
   useEffect(() => {
     const getPermissionStatus = async () => {

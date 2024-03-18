@@ -1,3 +1,4 @@
+import { registerForPushNotificationsAsync as registerForPushNotifications } from '@baca/services'
 import * as Notifications from 'expo-notifications'
 import { useRouter } from 'expo-router'
 import React from 'react'
@@ -37,6 +38,10 @@ function useRouterNotificationsNative() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+}
+
+if (Platform.OS !== 'web') {
+  registerForPushNotifications()
 }
 
 export const useRouterNotifications =

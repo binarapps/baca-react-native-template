@@ -1,6 +1,6 @@
 import { useAuthControllerLogin } from '@baca/api/query/auth/auth'
 import { AuthEmailLoginDto } from '@baca/api/types'
-import { setToken } from '@baca/services'
+import { assignPushToken, setToken } from '@baca/services'
 import { isSignedInAtom } from '@baca/store/auth'
 import { hapticImpact } from '@baca/utils'
 import { handleFormError } from '@baca/utils/handleFormErrors'
@@ -57,6 +57,9 @@ export const useSignInForm = () => {
         onSuccess: async (response) => {
           await setToken(response.accessToken)
           setIsSignedIn(true)
+
+          // Send push token to backend
+          await assignPushToken()
         },
       }
     )
