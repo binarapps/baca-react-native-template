@@ -53,7 +53,7 @@ exports[`Button renders correctly 1`] = `
     style={
       {
         "color": "#FFFFFF",
-        "fontFamily": "Lato_600Semibold",
+        "fontFamily": "Inter_Semibold",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "400",
