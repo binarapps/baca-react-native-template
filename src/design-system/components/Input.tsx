@@ -224,23 +224,26 @@ export const Input = forwardRef<TextInput, InputProps>(
     return (
       <BoxWithShadow {...{ isFocused, isInvalid }}>
         <Box
-          flexDirection="row"
           alignItems="center"
-          overflow="hidden"
-          borderColor={isInvalid ? 'border.error' : isFocused ? 'border.brand' : 'border.primary'}
+          borderColor={
+            isDisabled
+              ? 'border.disabled'
+              : isInvalid
+              ? 'border.error'
+              : isFocused
+              ? 'border.brand'
+              : 'border.primary'
+          }
+          bg={isDisabled ? 'bg.disabled_subtle' : 'bg.primary'}
           borderRadius={8}
           borderWidth={1}
-          backgroundColor={
-            isInvalid ? 'bg.error.primary' : isFocused ? 'bg.brand.primary' : 'bg.active'
-          }
-          bgOpacity={isFocused ? 0.1 : 1}
+          flexDirection="row"
+          overflow="hidden"
           {...layoutProps}
         >
           <StyledInput
-            ref={_inputRef}
             autoCapitalize="none"
-            bg="bg.primary"
-            color={isDisabled ? 'text.disabled' : isInvalid ? 'text.error.primary' : 'text.primary'}
+            color={isDisabled ? 'text.disabled' : 'text.primary'}
             cursorColor={colors.text.placeholder}
             {...Platform.select({
               default: { editable: !isDisabled },
@@ -254,6 +257,7 @@ export const Input = forwardRef<TextInput, InputProps>(
             placeholderTextColor={colors.text.placeholder}
             px={3}
             py={2}
+            ref={_inputRef}
             secureTextEntry={securePassword}
             selectionColor={colors.text.secondary}
             width="100%"

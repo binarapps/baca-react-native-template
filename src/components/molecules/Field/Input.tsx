@@ -39,14 +39,14 @@ const layoutPropsKeys = [
 export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
   (
     {
-      isRequired,
-      isInvalid,
-      label,
-      helperText,
       errorMessage,
-      onFocus,
-      onBlur,
+      helperText,
+      isInvalid,
+      isRequired,
+      label,
       labelStyle,
+      onBlur,
+      onFocus,
       ...props
     },
     ref
@@ -90,13 +90,13 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
     return (
       <Box {...layoutProps} width="100%" mb="2">
         <Pressable onPress={handleFocus}>
-          <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
+          <FormLabel {...{ isRequired, label, labelStyle }} />
           <BaseInput
             isInvalid={isInvalid || Boolean(errorMessage)}
             {...inputProps}
             ref={_inputRef}
           />
-          <FormErrorMessage errorMessage={errorMessage} />
+          <FormErrorMessage {...{ errorMessage }} />
         </Pressable>
       </Box>
     )
