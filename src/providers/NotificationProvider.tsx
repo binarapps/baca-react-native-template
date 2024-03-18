@@ -38,7 +38,6 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
 
     // This function will also be executed after first instalation of app
     // It's used like that because we want to ask user for permissions
-    // this function have logic inside that will prevent sending token to backend when user is logged out
     const status = await assignPushToken()
 
     if (!status) {
@@ -48,16 +47,8 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
     setPermissionStatus(status)
   }, [])
 
-  // to update immediately permission status
+  // To update immediately permission status
   useAppStateActive(tryToRegisterPushToken, true)
-
-  useEffect(() => {
-    const getPermissionStatus = async () => {
-      const { status } = await Notifications.getPermissionsAsync()
-      setPermissionStatus(status)
-    }
-    getPermissionStatus()
-  }, [])
 
   useEffect(() => {
     while (getNotificationStackLength() > 0) {
