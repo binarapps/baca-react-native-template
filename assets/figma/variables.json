@@ -4242,7 +4242,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/Brand/600"
+                "name": "Colors/Error/900"
               }
             },
             {
@@ -4314,7 +4314,7 @@
               "isAlias": true,
               "value": {
                 "collection": "1. Color modes",
-                "name": "Colors/Text/text-brand-secondary (700)"
+                "name": "Colors/Text/text-error-primary (600)"
               }
             },
             {

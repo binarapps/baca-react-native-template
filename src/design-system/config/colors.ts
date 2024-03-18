@@ -656,7 +656,7 @@ export const themeColors = {
     },
     button: {
       primary: {
-        bg: '#7F56D9',
+        bg: '#7A271A',
         bg_hover: '#6941C6',
         border: '#7F56D9',
         border_hover: '#6941C6',
@@ -674,7 +674,7 @@ export const themeColors = {
       secondary: {
         bg: '#FFFFFF',
         bg_hover: '#F9FAFB',
-        border: '#6941C6',
+        border: '#D92D20',
         border_hover: '#D0D5DD',
         color: {
           bg: '#FFFFFF',
