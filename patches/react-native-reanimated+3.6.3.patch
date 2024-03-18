@@ -1,0 +1,20 @@
+diff --git a/node_modules/react-native-reanimated/src/reanimated2/animation/util.ts b/node_modules/react-native-reanimated/src/reanimated2/animation/util.ts
+index f634ac7..c734a34 100644
+--- a/node_modules/react-native-reanimated/src/reanimated2/animation/util.ts
++++ b/node_modules/react-native-reanimated/src/reanimated2/animation/util.ts
+@@ -87,13 +87,9 @@ export function getReduceMotionFromConfig(config?: ReduceMotion) {
+  */
+ export function getReduceMotionForAnimation(config?: ReduceMotion) {
+   'worklet';
+-  // if the config is not defined, we want `reduceMotion` to be undefined,
+-  // so the parent animation knows if it should overwrite it
+-  if (!config) {
+-    return undefined;
+-  }
+   
+-  return getReduceMotionFromConfig(config);
++  // we must always return false here in order to prevent bottomsheets from crash on devices with 'reduce motion/animation' setting turned on
++  return false;
+ }
+ 
+ function applyProgressToMatrix(

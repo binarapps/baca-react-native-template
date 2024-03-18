@@ -11,10 +11,10 @@ SplashScreen.preventAutoHideAsync()
 export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
   const isLoadingComplete = useCachedResources()
   const [fontsLoaded, fontError] = useFonts({
-    Lato_400Regular: require('../../assets/fonts/Lato_Regular.ttf'),
-    Lato_500Medium: require('../../assets/fonts/Lato_Medium.ttf'),
-    Lato_600SemiBold: require('../../assets/fonts/Lato_SemiBold.ttf'),
-    Lato_700Bold: require('../../assets/fonts/Lato_Bold.ttf'),
+    Inter_Regular: require('../../assets/fonts/Inter-Regular.ttf'),
+    Inter_Medium: require('../../assets/fonts/Inter-Medium.ttf'),
+    Inter_SemiBold: require('../../assets/fonts/Inter-SemiBold.ttf'),
+    Inter_Bold: require('../../assets/fonts/Inter-Bold.ttf'),
     IcoMoon: require('../../assets/icomoon/icomoon.ttf'),
   })
 

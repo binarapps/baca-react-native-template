@@ -10,7 +10,7 @@ console.warn = jest.fn()
 
 const defaultTextStyles = {
   color: theme.light.colors.text.brand.primary,
-  fontFamily: 'Lato_400Regular',
+  fontFamily: 'Inter_Regular',
   fontSize: 16,
   fontWeight: '400',
   textTransform: 'none',
@@ -136,7 +136,7 @@ describe('Text', () => {
     )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 48,
       fontWeight: '400',
     })
@@ -146,7 +146,7 @@ describe('Text', () => {
     const { getByText } = render(<Display.LgRegular>Hello World</Display.LgRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 48,
       fontWeight: '400',
     })
@@ -160,7 +160,7 @@ describe('Text', () => {
     )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 48,
       fontWeight: '700',
     })
@@ -170,7 +170,7 @@ describe('Text', () => {
     const { getByText } = render(<Display.LgBold>Hello World</Display.LgBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 48,
       fontWeight: '700',
     })
@@ -184,7 +184,7 @@ describe('Text', () => {
     )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 36,
       fontWeight: '400',
     })
@@ -194,7 +194,7 @@ describe('Text', () => {
     const { getByText } = render(<Display.MdRegular>Hello World</Display.MdRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 36,
       fontWeight: '400',
     })
@@ -208,7 +208,7 @@ describe('Text', () => {
     )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 36,
       fontWeight: '700',
     })
@@ -218,7 +218,7 @@ describe('Text', () => {
     const { getByText } = render(<Display.MdBold>Hello World</Display.MdBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 36,
       fontWeight: '700',
     })
@@ -232,7 +232,7 @@ describe('Text', () => {
     )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 30,
       fontWeight: '400',
     })
@@ -242,7 +242,7 @@ describe('Text', () => {
     const { getByText } = render(<Display.SmRegular>Hello World</Display.SmRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 30,
       fontWeight: '400',
     })
@@ -256,7 +256,7 @@ describe('Text', () => {
     )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 30,
       fontWeight: '700',
     })
@@ -266,7 +266,7 @@ describe('Text', () => {
     const { getByText } = render(<Display.SmBold>Hello World</Display.SmBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 30,
       fontWeight: '700',
     })
@@ -280,7 +280,7 @@ describe('Text', () => {
     )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 24,
       fontWeight: '400',
     })
@@ -290,7 +290,7 @@ describe('Text', () => {
     const { getByText } = render(<Display.XsRegular>Hello World</Display.XsRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 24,
       fontWeight: '400',
     })
@@ -304,7 +304,7 @@ describe('Text', () => {
     )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 24,
       fontWeight: '700',
     })
@@ -314,7 +314,7 @@ describe('Text', () => {
     const { getByText } = render(<Display.XsBold>Hello World</Display.XsBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 24,
       fontWeight: '700',
     })
@@ -324,7 +324,7 @@ describe('Text', () => {
     const { getByText } = render(<Text variant="XlRegular">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 20,
       fontWeight: '400',
     })
@@ -334,7 +334,7 @@ describe('Text', () => {
     const { getByText } = render(<Text.XlRegular>Hello World</Text.XlRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 20,
       fontWeight: '400',
     })
@@ -344,7 +344,7 @@ describe('Text', () => {
     const { getByText } = render(<Text variant="XlBold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 20,
       fontWeight: '700',
     })
@@ -354,7 +354,7 @@ describe('Text', () => {
     const { getByText } = render(<Text.XlBold>Hello World</Text.XlBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 20,
       fontWeight: '700',
     })
@@ -364,7 +364,7 @@ describe('Text', () => {
     const { getByText } = render(<Text variant="LgRegular">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 18,
       fontWeight: '400',
     })
@@ -374,7 +374,7 @@ describe('Text', () => {
     const { getByText } = render(<Text.LgRegular>Hello World</Text.LgRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 18,
       fontWeight: '400',
     })
@@ -384,7 +384,7 @@ describe('Text', () => {
     const { getByText } = render(<Text variant="LgBold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 18,
       fontWeight: '700',
     })
@@ -394,7 +394,7 @@ describe('Text', () => {
     const { getByText } = render(<Text.LgBold>Hello World</Text.LgBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 18,
       fontWeight: '700',
     })
