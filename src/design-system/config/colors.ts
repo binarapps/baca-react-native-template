@@ -656,7 +656,7 @@ export const themeColors = {
     },
     button: {
       primary: {
-        bg: '#7A271A',
+        bg: '#7F56D9',
         bg_hover: '#6941C6',
         border: '#7F56D9',
         border_hover: '#6941C6',
@@ -674,7 +674,7 @@ export const themeColors = {
       secondary: {
         bg: '#FFFFFF',
         bg_hover: '#F9FAFB',
-        border: '#D92D20',
+        border: '#D0D5DD',
         border_hover: '#D0D5DD',
         color: {
           bg: '#FFFFFF',
@@ -1105,7 +1105,7 @@ export const themeColors = {
       '900': '#194185',
       '950': '#102A56',
     },
-    BlueDark: {
+    'Blue dark': {
       '25': '#F5F8FF',
       '50': '#EFF4FF',
       '100': '#D1E0FF',
@@ -1119,7 +1119,7 @@ export const themeColors = {
       '900': '#00359E',
       '950': '#002266',
     },
-    BlueLight: {
+    'Blue light': {
       '25': '#F5FBFF',
       '50': '#F0F9FF',
       '100': '#E0F2FE',
@@ -1441,7 +1441,7 @@ export const themeColors = {
       '900': '#3E1C96',
       '950': '#27115F',
     },
-    Rose: {
+    Rosé: {
       '25': '#FFF5F6',
       '50': '#FFF1F3',
       '100': '#FFE4E8',

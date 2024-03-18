@@ -1395,73 +1395,73 @@
               "value": "#0D2D3A"
             },
             {
-              "name": "Colors/BlueLight/25",
+              "name": "Colors/Blue light/25",
               "type": "color",
               "isAlias": false,
               "value": "#F5FBFF"
             },
             {
-              "name": "Colors/BlueLight/50",
+              "name": "Colors/Blue light/50",
               "type": "color",
               "isAlias": false,
               "value": "#F0F9FF"
             },
             {
-              "name": "Colors/BlueLight/100",
+              "name": "Colors/Blue light/100",
               "type": "color",
               "isAlias": false,
               "value": "#E0F2FE"
             },
             {
-              "name": "Colors/BlueLight/200",
+              "name": "Colors/Blue light/200",
               "type": "color",
               "isAlias": false,
               "value": "#B9E6FE"
             },
             {
-              "name": "Colors/BlueLight/300",
+              "name": "Colors/Blue light/300",
               "type": "color",
               "isAlias": false,
               "value": "#7CD4FD"
             },
             {
-              "name": "Colors/BlueLight/400",
+              "name": "Colors/Blue light/400",
               "type": "color",
               "isAlias": false,
               "value": "#36BFFA"
             },
             {
-              "name": "Colors/BlueLight/500",
+              "name": "Colors/Blue light/500",
               "type": "color",
               "isAlias": false,
               "value": "#0BA5EC"
             },
             {
-              "name": "Colors/BlueLight/600",
+              "name": "Colors/Blue light/600",
               "type": "color",
               "isAlias": false,
               "value": "#0086C9"
             },
             {
-              "name": "Colors/BlueLight/700",
+              "name": "Colors/Blue light/700",
               "type": "color",
               "isAlias": false,
               "value": "#026AA2"
             },
             {
-              "name": "Colors/BlueLight/800",
+              "name": "Colors/Blue light/800",
               "type": "color",
               "isAlias": false,
               "value": "#065986"
             },
             {
-              "name": "Colors/BlueLight/900",
+              "name": "Colors/Blue light/900",
               "type": "color",
               "isAlias": false,
               "value": "#0B4A6F"
             },
             {
-              "name": "Colors/BlueLight/950",
+              "name": "Colors/Blue light/950",
               "type": "color",
               "isAlias": false,
               "value": "#062C41"
@@ -1539,73 +1539,73 @@
               "value": "#102A56"
             },
             {
-              "name": "Colors/BlueDark/25",
+              "name": "Colors/Blue dark/25",
               "type": "color",
               "isAlias": false,
               "value": "#F5F8FF"
             },
             {
-              "name": "Colors/BlueDark/50",
+              "name": "Colors/Blue dark/50",
               "type": "color",
               "isAlias": false,
               "value": "#EFF4FF"
             },
             {
-              "name": "Colors/BlueDark/100",
+              "name": "Colors/Blue dark/100",
               "type": "color",
               "isAlias": false,
               "value": "#D1E0FF"
             },
             {
-              "name": "Colors/BlueDark/200",
+              "name": "Colors/Blue dark/200",
               "type": "color",
               "isAlias": false,
               "value": "#B2CCFF"
             },
             {
-              "name": "Colors/BlueDark/300",
+              "name": "Colors/Blue dark/300",
               "type": "color",
               "isAlias": false,
               "value": "#84ADFF"
             },
             {
-              "name": "Colors/BlueDark/400",
+              "name": "Colors/Blue dark/400",
               "type": "color",
               "isAlias": false,
               "value": "#528BFF"
             },
             {
-              "name": "Colors/BlueDark/500",
+              "name": "Colors/Blue dark/500",
               "type": "color",
               "isAlias": false,
               "value": "#2970FF"
             },
             {
-              "name": "Colors/BlueDark/600",
+              "name": "Colors/Blue dark/600",
               "type": "color",
               "isAlias": false,
               "value": "#155EEF"
             },
             {
-              "name": "Colors/BlueDark/700",
+              "name": "Colors/Blue dark/700",
               "type": "color",
               "isAlias": false,
               "value": "#004EEB"
             },
             {
-              "name": "Colors/BlueDark/800",
+              "name": "Colors/Blue dark/800",
               "type": "color",
               "isAlias": false,
               "value": "#0040C1"
             },
             {
-              "name": "Colors/BlueDark/900",
+              "name": "Colors/Blue dark/900",
               "type": "color",
               "isAlias": false,
               "value": "#00359E"
             },
             {
-              "name": "Colors/BlueDark/950",
+              "name": "Colors/Blue dark/950",
               "type": "color",
               "isAlias": false,
               "value": "#002266"
@@ -1971,73 +1971,73 @@
               "value": "#4E0D30"
             },
             {
-              "name": "Colors/Rose/25",
+              "name": "Colors/Rosé/25",
               "type": "color",
               "isAlias": false,
               "value": "#FFF5F6"
             },
             {
-              "name": "Colors/Rose/50",
+              "name": "Colors/Rosé/50",
               "type": "color",
               "isAlias": false,
               "value": "#FFF1F3"
             },
             {
-              "name": "Colors/Rose/100",
+              "name": "Colors/Rosé/100",
               "type": "color",
               "isAlias": false,
               "value": "#FFE4E8"
             },
             {
-              "name": "Colors/Rose/200",
+              "name": "Colors/Rosé/200",
               "type": "color",
               "isAlias": false,
               "value": "#FECDD6"
             },
             {
-              "name": "Colors/Rose/300",
+              "name": "Colors/Rosé/300",
               "type": "color",
               "isAlias": false,
               "value": "#FEA3B4"
             },
             {
-              "name": "Colors/Rose/400",
+              "name": "Colors/Rosé/400",
               "type": "color",
               "isAlias": false,
               "value": "#FD6F8E"
             },
             {
-              "name": "Colors/Rose/500",
+              "name": "Colors/Rosé/500",
               "type": "color",
               "isAlias": false,
               "value": "#F63D68"
             },
             {
-              "name": "Colors/Rose/600",
+              "name": "Colors/Rosé/600",
               "type": "color",
               "isAlias": false,
               "value": "#E31B54"
             },
             {
-              "name": "Colors/Rose/700",
+              "name": "Colors/Rosé/700",
               "type": "color",
               "isAlias": false,
               "value": "#C01048"
             },
             {
-              "name": "Colors/Rose/800",
+              "name": "Colors/Rosé/800",
               "type": "color",
               "isAlias": false,
               "value": "#A11043"
             },
             {
-              "name": "Colors/Rose/900",
+              "name": "Colors/Rosé/900",
               "type": "color",
               "isAlias": false,
               "value": "#89123E"
             },
             {
-              "name": "Colors/Rose/950",
+              "name": "Colors/Rosé/950",
               "type": "color",
               "isAlias": false,
               "value": "#510B24"
@@ -3432,7 +3432,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/50"
+                "name": "Colors/Blue light/50"
               }
             },
             {
@@ -3441,7 +3441,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/100"
+                "name": "Colors/Blue light/100"
               }
             },
             {
@@ -3450,7 +3450,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/200"
+                "name": "Colors/Blue light/200"
               }
             },
             {
@@ -3459,7 +3459,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/300"
+                "name": "Colors/Blue light/300"
               }
             },
             {
@@ -3468,7 +3468,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/400"
+                "name": "Colors/Blue light/400"
               }
             },
             {
@@ -3477,7 +3477,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/500"
+                "name": "Colors/Blue light/500"
               }
             },
             {
@@ -3486,7 +3486,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/600"
+                "name": "Colors/Blue light/600"
               }
             },
             {
@@ -3495,7 +3495,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/700"
+                "name": "Colors/Blue light/700"
               }
             },
             {
@@ -3576,7 +3576,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/50"
+                "name": "Colors/Blue dark/50"
               }
             },
             {
@@ -3585,7 +3585,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/100"
+                "name": "Colors/Blue dark/100"
               }
             },
             {
@@ -3594,7 +3594,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/200"
+                "name": "Colors/Blue dark/200"
               }
             },
             {
@@ -3603,7 +3603,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/300"
+                "name": "Colors/Blue dark/300"
               }
             },
             {
@@ -3612,7 +3612,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/400"
+                "name": "Colors/Blue dark/400"
               }
             },
             {
@@ -3621,7 +3621,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/500"
+                "name": "Colors/Blue dark/500"
               }
             },
             {
@@ -3630,7 +3630,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/600"
+                "name": "Colors/Blue dark/600"
               }
             },
             {
@@ -3639,7 +3639,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/700"
+                "name": "Colors/Blue dark/700"
               }
             },
             {
@@ -4242,7 +4242,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/Error/900"
+                "name": "Colors/Brand/600"
               }
             },
             {
@@ -4313,8 +4313,8 @@
               "type": "color",
               "isAlias": true,
               "value": {
-                "collection": "1. Color modes",
-                "name": "Colors/Text/text-error-primary (600)"
+                "collection": "_Primitives",
+                "name": "Colors/Gray (light mode)/300"
               }
             },
             {
@@ -6389,7 +6389,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/950"
+                "name": "Colors/Blue light/950"
               }
             },
             {
@@ -6398,7 +6398,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/900"
+                "name": "Colors/Blue light/900"
               }
             },
             {
@@ -6407,7 +6407,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/800"
+                "name": "Colors/Blue light/800"
               }
             },
             {
@@ -6416,7 +6416,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/700"
+                "name": "Colors/Blue light/700"
               }
             },
             {
@@ -6425,7 +6425,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/600"
+                "name": "Colors/Blue light/600"
               }
             },
             {
@@ -6434,7 +6434,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/500"
+                "name": "Colors/Blue light/500"
               }
             },
             {
@@ -6443,7 +6443,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/400"
+                "name": "Colors/Blue light/400"
               }
             },
             {
@@ -6452,7 +6452,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueLight/300"
+                "name": "Colors/Blue light/300"
               }
             },
             {
@@ -6533,7 +6533,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/950"
+                "name": "Colors/Blue dark/950"
               }
             },
             {
@@ -6542,7 +6542,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/900"
+                "name": "Colors/Blue dark/900"
               }
             },
             {
@@ -6551,7 +6551,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/800"
+                "name": "Colors/Blue dark/800"
               }
             },
             {
@@ -6560,7 +6560,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/700"
+                "name": "Colors/Blue dark/700"
               }
             },
             {
@@ -6569,7 +6569,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/600"
+                "name": "Colors/Blue dark/600"
               }
             },
             {
@@ -6578,7 +6578,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/500"
+                "name": "Colors/Blue dark/500"
               }
             },
             {
@@ -6587,7 +6587,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/400"
+                "name": "Colors/Blue dark/400"
               }
             },
             {
@@ -6596,7 +6596,7 @@
               "isAlias": true,
               "value": {
                 "collection": "_Primitives",
-                "name": "Colors/BlueDark/300"
+                "name": "Colors/Blue dark/300"
               }
             },
             {
