@@ -81,6 +81,12 @@
       "new_account_created": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
       "profile_updated": "Zaktualizowano Twoje dane."
     },
+    "title": {
+      "error": "Wystąpił błąd",
+      "info": "Dodatkowe info",
+      "success": "Udało się",
+      "warning": "Uwaga"
+    },
     "warning": {}
   },
   "update": {

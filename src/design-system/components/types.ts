@@ -17,6 +17,7 @@ type Sizing =
   | 'minHeight'
   | 'maxH'
   | 'maxHeight'
+
 export type SizingValue =
   | keyof typeof _appTheme.size
   | DimensionValue
@@ -49,6 +50,8 @@ export type Spacing =
   | 'pb'
   | 'px'
   | 'py'
+  | 'gap'
+
 export type SpacingProps = {
   [key in Spacing]?: SizingValue
 }

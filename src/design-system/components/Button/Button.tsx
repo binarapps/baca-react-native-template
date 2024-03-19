@@ -1,4 +1,5 @@
 import { useColorScheme } from '@baca/contexts'
+import { IconNames } from '@baca/types/icon'
 import { getColorValue } from '@baca/utils'
 import {
   useMemo,
@@ -7,6 +8,7 @@ import {
   forwardRef,
   ForwardRefExoticComponent,
   PropsWithoutRef,
+  ReactNode,
   RefAttributes,
 } from 'react'
 import {
@@ -22,23 +24,24 @@ import {
 
 import { ButtonSize, ButtonVariant, buttonSizeVariants, buttonVariants, theme } from '../../config'
 import { generateStyledComponent } from '../../utils'
-import { Box } from '../Box'
+import { Icon } from '../Icon'
 import { Loader } from '../Loader'
+import { Row } from '../Row'
 import { Text } from '../Text'
 import { useHover } from '../Touchables/useHover'
 import { StyledProps } from '../types'
 
 export type ButtonProps = StyledProps &
   PressableProps & {
+    disabled?: boolean
+    leftIconName?: IconNames
+    loaderElement?: JSX.Element
+    loading?: boolean
+    rightIconName?: IconNames
+    size?: ButtonSize
+    textStyle?: StyleProp<TextStyle>
     title?: string
     variant?: ButtonVariant
-    size?: ButtonSize
-    loading?: boolean
-    disabled?: boolean
-    leftIcon?: JSX.Element
-    rightIcon?: JSX.Element
-    loaderElement?: JSX.Element
-    textStyle?: StyleProp<TextStyle>
   }
 
 const styles = StyleSheet.create({
@@ -60,16 +63,16 @@ const RawButton = memo(
   forwardRef<View, ButtonProps>(
     (
       {
-        variant = 'Primary',
-        size = 'md',
-        loading,
-        disabled,
-        leftIcon,
-        rightIcon,
-        style,
-        title,
         children,
+        disabled,
+        leftIconName,
+        loading,
+        rightIconName,
+        size = 'md',
+        style,
         textStyle,
+        title,
+        variant = 'Primary',
         ...props
       },
       ref
@@ -202,6 +205,15 @@ const RawButton = memo(
         ]
       )
 
+      const getIconColor = useCallback(
+        ({ pressed }: PressableStateCallbackType): ColorNames | undefined => {
+          if (disabled) return disabledStyle.color
+          if (pressed || isHovered) return hoveredStyle.color
+          return defaultStyle.color
+        },
+        [defaultStyle.color, disabled, disabledStyle.color, hoveredStyle.color, isHovered]
+      )
+
       const pressableTextStyleFunction = useCallback(
         ({ pressed }: PressableStateCallbackType) =>
           StyleSheet.flatten([
@@ -215,37 +227,64 @@ const RawButton = memo(
 
       const childrenElement = useCallback(
         (props: PressableStateCallbackType) => {
-          if (loading) {
-            return <Loader type="default" size={24} />
-          }
-          if (title) {
-            return (
-              <Text
-                variant={buttonSizeVariant.textVariant}
-                allowFontScaling={false}
-                style={pressableTextStyleFunction(props)}
-                textAlign="center"
-              >
-                {title}
-              </Text>
-            )
-          }
-
-          if (typeof children === 'string') {
-            return (
-              <Text
-                variant={buttonSizeVariant.textVariant}
-                allowFontScaling={false}
-                style={pressableTextStyleFunction(props)}
-                textAlign="center"
-              >
-                {children}
-              </Text>
-            )
-          }
-          return children
+          return (
+            <>
+              {loading ? (
+                <Loader type="default" size={24} />
+              ) : (
+                <Row gap={buttonSizeVariant.iconGap}>
+                  {leftIconName && (
+                    <Icon
+                      name={leftIconName}
+                      size={buttonSizeVariant.iconSize}
+                      color={getIconColor(props)}
+                    />
+                  )}
+                  {title ? (
+                    <Text
+                      variant={buttonSizeVariant.textVariant}
+                      allowFontScaling={false}
+                      style={pressableTextStyleFunction(props)}
+                      textAlign="center"
+                    >
+                      {title}
+                    </Text>
+                  ) : typeof children === 'string' ? (
+                    <Text
+                      variant={buttonSizeVariant.textVariant}
+                      allowFontScaling={false}
+                      style={pressableTextStyleFunction(props)}
+                      textAlign="center"
+                    >
+                      {children}
+                    </Text>
+                  ) : (
+                    (children as ReactNode)
+                  )}
+                  {rightIconName && (
+                    <Icon
+                      color={getIconColor(props)}
+                      name={rightIconName}
+                      size={buttonSizeVariant.iconSize}
+                    />
+                  )}
+                </Row>
+              )}
+            </>
+          )
         },
-        [buttonSizeVariant.textVariant, children, loading, pressableTextStyleFunction, title]
+        [
+          buttonSizeVariant.iconGap,
+          buttonSizeVariant.iconSize,
+          buttonSizeVariant.textVariant,
+          children,
+          getIconColor,
+          leftIconName,
+          loading,
+          pressableTextStyleFunction,
+          rightIconName,
+          title,
+        ]
       )
 
       return (
@@ -256,13 +295,7 @@ const RawButton = memo(
           testID="baseButton"
           {...{ disabled, ...hoverProps, ref, ...props }}
         >
-          {(props: PressableStateCallbackType) => (
-            <>
-              {leftIcon && <Box mr={buttonSizeVariant.iconGap}>{leftIcon}</Box>}
-              {childrenElement(props)}
-              {rightIcon && <Box ml={buttonSizeVariant.iconGap}>{rightIcon}</Box>}
-            </>
-          )}
+          {(props: PressableStateCallbackType) => <>{childrenElement(props)}</>}
         </Pressable>
       )
     }

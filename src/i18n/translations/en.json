@@ -81,6 +81,12 @@
       "new_account_created": "A new account has been created. An email with an activation link was sent to {{userEmail}}.",
       "profile_updated": "Successfully updated your profile data."
     },
+    "title": {
+      "error": "An error occurred",
+      "info": "Additional info",
+      "success": "Success",
+      "warning": "Attention"
+    },
     "warning": {}
   },
   "update": {
