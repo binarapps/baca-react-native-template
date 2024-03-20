@@ -16,7 +16,7 @@ export async function signOut() {
   const pushTokenStorage = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.PUSH_TOKEN)
 
   if (pushTokenStorage) {
-    // FIXME: Remove push token from backend
+    // CONFIG: Remove push token from backend
     console.log('REMOVE ME from BACKEND', pushTokenStorage)
   }
 
