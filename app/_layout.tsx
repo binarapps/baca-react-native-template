@@ -7,15 +7,12 @@ import { isSignedInAtom } from '@baca/store/auth'
 import { ThemeProvider } from '@react-navigation/native'
 import { Slot } from 'expo-router'
 import { useAtomValue } from 'jotai'
-import { Platform } from 'react-native'
 
 export const unstable_settings = {
   initialRouteName: 'index',
 }
 
-if (Platform.OS !== 'web') {
-  registerForPushNotificationsAsync()
-}
+registerForPushNotificationsAsync()
 
 const Layout = () => {
   const isSignedIn = useAtomValue(isSignedInAtom)
