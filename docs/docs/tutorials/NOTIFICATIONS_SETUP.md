@@ -74,14 +74,16 @@ When working with expo push notifications, probably you will not need to do any 
 - `NotificationsProvider`
   - assign push token when opening the app (thanks to that push token will be send every time user will change their push permissions outside the app)
   - setup push listeners
+  - navigate to screens when push is pressed
 - `NotificationService`
   - Register push - ask for permissions
   - Assign push token - send push token to backend
-- `useRouterNotifications`
-  - connect push notiications listeners with react logic
-
-<!-- TODO: Think about removing Notification provider or useRouterNotifications -->
 
 ## Sending push token to backend
 
-This starter comes with support to send expo push token to backend.
+This starter comes with support to send expo push token to backend, you will just need to add your api calls in this two files (replace console.logs with api calls):
+
+- `NotificationService`
+  - `console.log('SEND ME TO BACKEND', pushExpoToken)`
+- `authActions`
+  - `console.log('REMOVE ME from BACKEND', pushTokenStorage)`
