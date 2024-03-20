@@ -11,7 +11,26 @@ import { store } from '@baca/store'
 import { isSignedInAtom } from '@baca/store/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Notifications from 'expo-notifications'
+import { router } from 'expo-router'
 import { PropsWithChildren, FC, useCallback } from 'react'
+import { Alert, AlertButton } from 'react-native'
+
+const deeplinkWhenNotificationRecieved = async (
+  notification: Notifications.Notification,
+  deeplink?: string
+) => {
+  const { data: payload } = notification?.request?.content || {}
+  const deeplinkPath: string | undefined = deeplink || (payload?.deeplink as string)
+
+  // CONFIG: Authenticated routes not working when user is logged out
+  // It will not work properly when we will try to navigate to routes where user needs authentication
+  // We need to find some way to look for this routes, and later delay navigating to this routes when user will log in
+  // Alernativly we can prevent navigating to this routes when user is not logged in
+
+  if (deeplinkPath) {
+    router.push(deeplinkPath)
+  }
+}
 
 export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   const [permissionStatus, setPermissionStatus] =
@@ -50,24 +69,53 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   // To update immediately permission status
   useAppStateActive(tryToRegisterPushToken, true)
 
+  // ----------------------------------------------
+  // fix notifications on android when app is killed
+  // ----------------------------------------------
   useEffect(() => {
     while (getNotificationStackLength() > 0) {
       const androidBackgroundNotification = getNotificationFromStack()
       if (androidBackgroundNotification) {
         setNotification(androidBackgroundNotification)
+        deeplinkWhenNotificationRecieved(androidBackgroundNotification)
       }
     }
     disableAndroidBackgroundNotificationListener()
 
+    // -------------------------------------------------------------
+    // Listener for notifications when app is killed and backgrounded
+    // -------------------------------------------------------------
     const notificationResponseReceived = Notifications.addNotificationResponseReceivedListener(
       ({ notification }) => {
         setNotification(notification)
+        deeplinkWhenNotificationRecieved(notification)
       }
     )
 
+    // --------------------------------------------------
+    // listener for notifications when app is backgrounded
+    // --------------------------------------------------
     const notificationReceived = Notifications.addNotificationReceivedListener((notification) => {
-      setNotification(notification)
-      setInAppNotification(notification)
+      // This notification will be recieved when user have opened app in current moment
+      // We need to display some UI component and this component should handle presses
+      const { title, body, data } = notification?.request?.content || {}
+
+      // TODO: Add translations here
+      const buttons: AlertButton[] = [
+        {
+          text: 'Ok',
+          style: 'default',
+          onPress: () => deeplinkWhenNotificationRecieved(notification),
+        },
+      ]
+
+      // TODO: Add translations here
+      if (data?.deeplink) {
+        buttons.unshift({ text: 'Anuluj', style: 'cancel', onPress: () => undefined })
+      }
+
+      // TODO: Add translations here
+      Alert.alert(title || 'Otrzymałeś powiadomienie', body || 'Przejdź dalej', buttons)
     })
 
     return () => {
