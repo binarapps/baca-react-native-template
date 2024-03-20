@@ -1,7 +1,5 @@
-import { ASYNC_STORAGE_KEYS } from '@baca/constants'
-import { deleteToken } from '@baca/services'
+import { deleteToken, removePushToken } from '@baca/services'
 import { store } from '@baca/store/store'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { isSignedInAtom } from './authState'
 
@@ -13,12 +11,5 @@ export async function signOut() {
   await deleteToken()
 
   // remove push token from backend
-  const pushTokenStorage = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.PUSH_TOKEN)
-
-  if (pushTokenStorage) {
-    // CONFIG: Remove push token from backend
-    console.log('REMOVE ME from BACKEND', pushTokenStorage)
-  }
-
-  await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.WAS_PUSH_TOKEN_SEND, 'false')
+  await removePushToken()
 }

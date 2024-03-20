@@ -13,6 +13,10 @@ export const schedulePushNotification = async (request: Notifications.Notificati
 // 1. registerForPushNotificationsAsync - this function ask for permission and is setting necessary notifications settings
 // 2. assignPushToken - this sends push token to backend - additionaly checking if noitifaction permissions are granted
 export async function registerForPushNotificationsAsync() {
+  if (Platform.OS === 'web') {
+    return
+  }
+
   try {
     let token
     if (!Device.isDevice) {
@@ -53,6 +57,10 @@ export async function registerForPushNotificationsAsync() {
 }
 
 export const assignPushToken = async (): Promise<Notifications.PermissionStatus | undefined> => {
+  if (Platform.OS === 'web') {
+    return
+  }
+
   let finalStatus: Notifications.PermissionStatus
 
   try {
@@ -87,6 +95,22 @@ export const assignPushToken = async (): Promise<Notifications.PermissionStatus 
     console.log('e', e)
     await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.WAS_PUSH_TOKEN_SEND, 'false')
   }
+}
+
+export const removePushToken = async () => {
+  if (Platform.OS === 'web') {
+    return
+  }
+
+  // remove push token from backend
+  const pushTokenStorage = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.PUSH_TOKEN)
+
+  if (pushTokenStorage) {
+    // CONFIG: Remove push token from backend
+    console.log('REMOVE ME from BACKEND', pushTokenStorage)
+  }
+
+  await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.WAS_PUSH_TOKEN_SEND, 'false')
 }
 
 // Android notifications helpers
