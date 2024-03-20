@@ -31,7 +31,7 @@ export const ApplicationInfoScreen = (): JSX.Element => {
   const checkNotificationPermissionStatus = useCallback(async () => {
     const permissions = await Notifications.getPermissionsAsync()
 
-    alert('Copied push token to clipboard.' + JSON.stringify(permissions, null, 2))
+    alert('Permission status' + JSON.stringify(permissions, null, 2))
   }, [])
 
   const handleCopyPushToken = useCallback(async () => {
