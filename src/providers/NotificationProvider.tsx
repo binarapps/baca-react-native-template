@@ -22,7 +22,7 @@ const deeplinkWhenNotificationRecieved = async (
   const { data: payload } = notification?.request?.content || {}
   const deeplinkPath: string | undefined = deeplink || (payload?.deeplink as string)
 
-  // CONFIG: Authenticated routes not working when user is logged out
+  // FIXME: Authenticated routes not working when user is logged out
   // It will not work properly when we will try to navigate to routes where user needs authentication
   // We need to find some way to look for this routes, and later delay navigating to this routes when user will log in
   // Alernativly we can prevent navigating to this routes when user is not logged in
