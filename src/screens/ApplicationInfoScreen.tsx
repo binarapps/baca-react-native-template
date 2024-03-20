@@ -28,6 +28,12 @@ export const ApplicationInfoScreen = (): JSX.Element => {
 
   usePreventGoBack()
 
+  const checkNotificationPermissionStatus = useCallback(async () => {
+    const permissions = await Notifications.getPermissionsAsync()
+
+    alert('Copied push token to clipboard.' + JSON.stringify(permissions, null, 2))
+  }, [])
+
   const handleCopyPushToken = useCallback(async () => {
     try {
       if (!isExpoGo && !projectId) {
@@ -54,6 +60,9 @@ export const ApplicationInfoScreen = (): JSX.Element => {
   }, [])
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Button my={2} onPress={checkNotificationPermissionStatus}>
+        Check notification perfmission status
+      </Button>
       <Button my={2} onPress={handleCopyPushToken}>
         {t('settings_screen.copy_push_token')}
       </Button>
