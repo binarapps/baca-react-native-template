@@ -1,4 +1,4 @@
-import { AbsoluteFullFill, Loader, Center } from '@baca/design-system/components'
+import { Loader, Center } from '@baca/design-system/components'
 import { useBoolean, useCachedResources, useFonts } from '@baca/hooks'
 import { isSignedInAtom } from '@baca/store/auth'
 import * as SplashScreen from 'expo-splash-screen'
@@ -68,14 +68,13 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-      {isLoading ? null : children}
       {isLoading || isDelayLoading ? (
-        <AbsoluteFullFill bg="fg.white">
-          <Center flex={1}>
-            <Loader type="bubbles" />
-          </Center>
-        </AbsoluteFullFill>
-      ) : null}
+        <Center bg="bg.primary" flexGrow={1}>
+          <Loader type="bubbles" />
+        </Center>
+      ) : (
+        children
+      )}
     </View>
   )
 }
