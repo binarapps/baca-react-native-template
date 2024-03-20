@@ -18,9 +18,17 @@ import {
   TextStyle,
   StyleProp,
   View,
+  Platform,
 } from 'react-native'
 
-import { ButtonSize, ButtonVariant, buttonSizeVariants, buttonVariants, theme } from '../../config'
+import {
+  ButtonSize,
+  ButtonVariant,
+  buttonSizeVariants,
+  buttonVariants,
+  getButtonShadowStyle,
+  theme,
+} from '../../config'
 import { generateStyledComponent } from '../../utils'
 import { Box } from '../Box'
 import { Loader } from '../Loader'
@@ -80,6 +88,10 @@ const RawButton = memo(
         () => buttonVariants[variant],
         [variant]
       )
+
+      const pressedStyles = useMemo<ViewStyle>(() => {
+        return getButtonShadowStyle({ variant })
+      }, [variant])
 
       const hoveredStyles = useMemo<ViewStyle>(
         () => ({
@@ -184,7 +196,17 @@ const RawButton = memo(
         ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
           StyleSheet.flatten<ViewStyle>([
             styles.baseButton,
-            pressed || isHovered ? hoveredStyles : defaultStyles,
+            {
+              ...Platform.select({
+                default:
+                  pressed || isHovered ? { ...hoveredStyles, ...pressedStyles } : defaultStyles,
+                web: pressed
+                  ? { ...defaultStyles, ...pressedStyles }
+                  : isHovered
+                  ? hoveredStyles
+                  : defaultStyles,
+              }),
+            },
             disabled && disabledStyles,
             loading && disabledStyles,
             buttonSizeStyle,
@@ -198,6 +220,7 @@ const RawButton = memo(
           hoveredStyles,
           isHovered,
           loading,
+          pressedStyles,
           style,
         ]
       )

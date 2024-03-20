@@ -2,6 +2,10 @@ $size-xs: 768px;
 $size-l: 1264px;
 $ui-sidebar: 244px;
 
+*:focus {
+  outline: none;
+}
+
 .container {
   flex-direction: column;
   @media (min-width: $size-xs) {

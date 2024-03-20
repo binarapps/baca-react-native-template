@@ -1,4 +1,5 @@
 import { TextVariant } from './textVariants'
+import { theme } from './theme'
 
 export type ButtonVariant =
   | 'Primary'
@@ -82,21 +83,21 @@ export const buttonVariants: { [key in ButtonVariant]: VariantStyle } = {
   },
   SecondaryColor: {
     defaultStyle: {
-      backgroundColor: 'button.secondary.bg',
-      color: 'button.secondary.fg',
-      borderColor: 'button.secondary.border',
+      backgroundColor: 'button.secondary.color.bg',
+      color: 'button.secondary.color.fg',
+      borderColor: 'button.secondary.color.border',
       borderWidth: 1,
     },
     hoveredStyle: {
-      backgroundColor: 'button.secondary.bg_hover',
-      color: 'button.secondary.fg_hover',
-      borderColor: 'button.secondary.border_hover',
+      backgroundColor: 'button.secondary.color.bg_hover',
+      color: 'button.secondary.color.fg_hover',
+      borderColor: 'button.secondary.color.border_hover',
       borderWidth: 1,
     },
     focusedStyle: {
-      backgroundColor: 'button.secondary.bg',
-      color: 'button.secondary.fg',
-      borderColor: 'button.secondary.border',
+      backgroundColor: 'button.secondary.color.bg',
+      color: 'button.secondary.color.fg',
+      borderColor: 'button.secondary.color.border',
       borderWidth: 1,
     },
     disabledStyle: {
@@ -295,3 +296,20 @@ export const buttonSizeVariants: { [key in ButtonSize]: SizeStyle } = {
     iconSize: 24,
   },
 } as const
+
+const { errorShadow, focusShadow, grayShadow } = theme.dark.shadows
+
+export const getButtonShadowStyle = ({ variant }: { variant: ButtonVariant }) => {
+  switch (variant) {
+    case 'Primary':
+    case 'SecondaryColor':
+      return focusShadow
+    case 'PrimaryDestructive':
+    case 'SecondaryDestructive':
+      return errorShadow
+    case 'SecondaryGray':
+      return grayShadow
+    default:
+      return {}
+  }
+}
