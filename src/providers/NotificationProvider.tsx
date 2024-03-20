@@ -15,7 +15,7 @@ import { router } from 'expo-router'
 import { PropsWithChildren, FC, useCallback } from 'react'
 import { Alert, AlertButton } from 'react-native'
 
-const deeplinkWhenNotificationRecieved = async (
+const deeplinkWhenNotificationReceived = async (
   notification: Notifications.Notification,
   deeplink?: string
 ) => {
@@ -25,7 +25,7 @@ const deeplinkWhenNotificationRecieved = async (
   // FIXME: Authenticated routes not working when user is logged out
   // It will not work properly when we will try to navigate to routes where user needs authentication
   // We need to find some way to look for this routes, and later delay navigating to this routes when user will log in
-  // Alernativly we can prevent navigating to this routes when user is not logged in
+  // Alternatively we can prevent navigating to this routes when user is not logged in
 
   if (deeplinkPath) {
     router.push(deeplinkPath)
@@ -40,10 +40,10 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
     useState<NotificationContextType['inAppNotification']>()
 
   const tryToRegisterPushToken = useCallback(async () => {
-    const wasPushTokenSendStrigified = await AsyncStorage.getItem(
+    const wasPushTokenSendStringified = await AsyncStorage.getItem(
       ASYNC_STORAGE_KEYS.WAS_PUSH_TOKEN_SEND
     )
-    const wasPushTokenSend: boolean = JSON.parse(wasPushTokenSendStrigified ?? 'false')
+    const wasPushTokenSend: boolean = JSON.parse(wasPushTokenSendStringified ?? 'false')
 
     if (wasPushTokenSend) {
       return
@@ -55,7 +55,7 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
       return
     }
 
-    // This function will also be executed after first instalation of app
+    // This function will also be executed after first installation of app
     // It's used like that because we want to ask user for permissions
     const status = await assignPushToken()
 
@@ -77,26 +77,26 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
       const androidBackgroundNotification = getNotificationFromStack()
       if (androidBackgroundNotification) {
         setNotification(androidBackgroundNotification)
-        deeplinkWhenNotificationRecieved(androidBackgroundNotification)
+        deeplinkWhenNotificationReceived(androidBackgroundNotification)
       }
     }
     disableAndroidBackgroundNotificationListener()
 
     // -------------------------------------------------------------
-    // Listener for notifications when app is killed and backgrounded
+    // Listener for notifications when app is killed and in background
     // -------------------------------------------------------------
     const notificationResponseReceived = Notifications.addNotificationResponseReceivedListener(
       ({ notification }) => {
         setNotification(notification)
-        deeplinkWhenNotificationRecieved(notification)
+        deeplinkWhenNotificationReceived(notification)
       }
     )
 
     // --------------------------------------------------
-    // listener for notifications when app is backgrounded
+    // listener for notifications when app is in background
     // --------------------------------------------------
     const notificationReceived = Notifications.addNotificationReceivedListener((notification) => {
-      // This notification will be recieved when user have opened app in current moment
+      // This notification will be received when user have opened app in current moment
       // We need to display some UI component and this component should handle presses
       const { title, body, data } = notification?.request?.content || {}
 
@@ -105,7 +105,7 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
         {
           text: 'Ok',
           style: 'default',
-          onPress: () => deeplinkWhenNotificationRecieved(notification),
+          onPress: () => deeplinkWhenNotificationReceived(notification),
         },
       ]
 
