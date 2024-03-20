@@ -165,7 +165,6 @@
     "@testing-library/react-native": "^12.4.3",
     "@types/jest": "^29.5.3",
     "@types/react": "~18.2.45",
-    "@types/react-native": "^0.72.2",
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
