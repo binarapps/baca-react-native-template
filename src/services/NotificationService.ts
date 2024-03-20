@@ -79,7 +79,7 @@ export const assignPushToken = async (): Promise<Notifications.PermissionStatus 
       return finalStatus
     }
 
-    // TODO: Send push token to backend
+    // FIXME: Send push token to backend
     console.log('SEND ME TO BACKEND', pushExpoToken)
 
     await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.WAS_PUSH_TOKEN_SEND, 'true')
