@@ -1,8 +1,7 @@
-import { hex2rgba, removeFalsyProperties } from '@baca/utils'
+import { getColorValue, hex2rgba, removeFalsyProperties } from '@baca/utils'
 import { ImageStyle, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 
 import { generateSize } from './generateSize'
-import { getColorValue } from './getColorValue'
 import {
   FlexProps,
   SpacingProps,
