@@ -8,7 +8,7 @@ const defaultValues: AuthForgotPasswordDto = {
   email: '',
 }
 
-export const useForgotPasswordForm = () => {
+export const useForgotPasswordForm = ({ onSuccess }: { onSuccess?: () => void }) => {
   const { mutate: forgotPasswordMutate, isLoading: isSubmitting } =
     useAuthControllerForgotPassword()
 
@@ -27,8 +27,9 @@ export const useForgotPasswordForm = () => {
     forgotPasswordMutate(
       { data },
       {
-        onSuccess: () => {
-          router.replace('/reset-password-sent')
+        onSuccess: (_, { data: { email } }) => {
+          if (onSuccess) onSuccess()
+          else router.replace(`/reset-password-link-sent?email=${encodeURIComponent(email)}`)
         },
         onError: (e) => {
           handleFormError<keyof AuthForgotPasswordDto>(

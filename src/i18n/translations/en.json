@@ -69,6 +69,7 @@
       "home": "Home",
       "main_tab": "MainTab",
       "not_found": "Not Found",
+      "resetLinkSent": "Reset link sent",
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
@@ -183,6 +184,13 @@
     "go_to_form": "Open full screen form",
     "login_cta": "Log in",
     "sign_up": "Sign up"
+  },
+  "reset_password_link_sent_screen": {
+    "check_email": "Check your email",
+    "click_to_resend": "Click to resend",
+    "did_not_receive": "Didn’t receive the email?",
+    "open_email_app": "Open email app",
+    "we_sent_link": "We sent a password reset link to"
   },
   "settings_screen": {
     "copy_push_token": "Copy push token",

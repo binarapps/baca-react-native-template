@@ -19,7 +19,7 @@ export const ForgotPasswordScreen = () => {
 
   const { email } = useLocalSearchParams<{ email?: string }>()
 
-  const { control, errors, reset, submit } = useForgotPasswordForm()
+  const { control, errors, reset, submit } = useForgotPasswordForm({})
 
   useEffect(() => {
     if (email) {

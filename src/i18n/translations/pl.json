@@ -69,6 +69,7 @@
       "home": "Home",
       "main_tab": "MainTab",
       "not_found": "NotFound",
+      "resetLinkSent": "Link wysłany",
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
@@ -182,6 +183,13 @@
     "sign_up": "Zarejestruj się",
     "go_to_blog": "Otwórz blog",
     "go_to_form": "Otwórz pełno ekranowy formularz full"
+  },
+  "reset_password_link_sent_screen": {
+    "check_email": "Sprawdź skrzynkę e-mail",
+    "click_to_resend": "Wyślij ponownie",
+    "did_not_receive": "Nie otrzymałeś wiadomości e-mail?",
+    "open_email_app": "Otwórz aplikację e-mail",
+    "we_sent_link": "Wysłaliśmy link resetujący hasło na"
   },
   "settings_screen": {
     "current_theme": "Current theme: {{theme}}",
