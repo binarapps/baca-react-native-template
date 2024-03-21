@@ -52,7 +52,7 @@ export const Checkbox = ({
   }, [checkboxes, value, props, onChange])
 
   return (
-    <Box width="100%" mb={2}>
+    <Box>
       <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
       {checkboxes ? (
         renderCheckboxes

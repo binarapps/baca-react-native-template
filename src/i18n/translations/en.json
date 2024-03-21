@@ -64,6 +64,7 @@
       "details": "Details",
       "examples_stack": "Examples",
       "examples": "Examples",
+      "forgot_password": "Forgot password",
       "home_stack": "Home",
       "home": "Home",
       "main_tab": "MainTab",
@@ -185,6 +186,7 @@
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Don't have an account?",
+    "forgot_password": "Forgot password",
     "sign_in": "Sign in",
     "sign_up": "Sign up"
   },

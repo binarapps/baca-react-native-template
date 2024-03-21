@@ -1,7 +1,7 @@
 import { ControlledField, KeyboardAwareScrollView, LanguagePicker, Version } from '@baca/components'
 import { REGEX, darkLogo, lightLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
-import { Box, Button, Center, Spacer, Text } from '@baca/design-system'
+import { Box, Button, Center, Row, Spacer, Text } from '@baca/design-system'
 import {
   useCallback,
   useSignInForm,
@@ -31,6 +31,7 @@ export const SignInScreen = (): JSX.Element => {
 
   const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
   const navigateToAppInfo = useCallback(() => push('/application-info'), [push])
+  const navigateToForgotPassword = useCallback(() => push('/forgot-password'), [push])
   const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (
@@ -38,7 +39,7 @@ export const SignInScreen = (): JSX.Element => {
       <Box alignItems="flex-end" pr={8}>
         <LanguagePicker />
       </Box>
-      <Center p={16}>
+      <Center p={8}>
         <Image
           style={styles.logo}
           resizeMethod="resize"
@@ -80,29 +81,32 @@ export const SignInScreen = (): JSX.Element => {
           testID="passwordInput"
           type="password"
         />
-        <Center mt={8}>
+        <Row alignItems="center" mt={8} w="full" justifyContent="space-between">
           <ControlledField.Checkbox
             {...{ control, errors }}
             checkboxText={t('form.checkbox.remember_me')}
             name="confirm"
             testID="confirmCheckbox"
           />
-          <Button
-            disabled={isSubmitting}
-            loading={isSubmitting}
-            my={8}
-            onPress={submit}
-            testID="signInButton"
-          >
-            {t('sign_in_screen.sign_in')}
-          </Button>
-          <Text bold mb={4}>
-            {t('sign_in_screen.do_not_have_an_account')}
-          </Text>
-          <Button.LinkColor onPress={navigateToSignUp}>
-            {t('sign_in_screen.sign_up')}
+          <Button.LinkColor onPress={navigateToForgotPassword}>
+            {t('sign_in_screen.forgot_password')}
           </Button.LinkColor>
-        </Center>
+        </Row>
+        <Button
+          disabled={isSubmitting}
+          loading={isSubmitting}
+          my={8}
+          onPress={submit}
+          testID="signInButton"
+        >
+          {t('sign_in_screen.sign_in')}
+        </Button>
+        <Text bold mb={4}>
+          {t('sign_in_screen.do_not_have_an_account')}
+        </Text>
+        <Button.LinkColor onPress={navigateToSignUp}>
+          {t('sign_in_screen.sign_up')}
+        </Button.LinkColor>
 
         <Box mt={12} />
         {/* TODO: Remove this after implementing signing in with backend  */}

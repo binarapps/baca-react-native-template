@@ -64,6 +64,7 @@
       "details": "Details",
       "examples_stack": "Examples",
       "examples": "Examples",
+      "forgot_password": "Nie pamiętam hasła",
       "home_stack": "Home",
       "home": "Home",
       "main_tab": "MainTab",
@@ -183,6 +184,7 @@
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",
+    "forgot_password": "Nie pamiętam hasła",
     "sign_in": "Zaloguj",
     "sign_up": "Zarejestruj"
   },
