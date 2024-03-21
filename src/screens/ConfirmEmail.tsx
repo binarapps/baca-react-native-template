@@ -1,5 +1,6 @@
 import { useAuthControllerConfirmEmail } from '@baca/api/query/auth/auth'
 import { Button, Center, Loader, Spacer, Text } from '@baca/design-system'
+import { useTranslation } from '@baca/hooks'
 import { isSignedInAtom, signOut } from '@baca/store/auth'
 import { router, useLocalSearchParams } from 'expo-router'
 import { useEffect } from 'react'
@@ -7,6 +8,7 @@ import { useEffect } from 'react'
 const navigateToSignIn = () => router.replace('/sign-in')
 
 export const ConfirmEmail = () => {
+  const { t } = useTranslation()
   const { code } = useLocalSearchParams<{ code: string }>()
 
   const {
@@ -17,11 +19,18 @@ export const ConfirmEmail = () => {
   } = useAuthControllerConfirmEmail()
 
   useEffect(() => {
-    if (code) {
-      if (isSignedInAtom) {
-        signOut()
+    const confirmFn = async (hash?: string) => {
+      if (hash) {
+        try {
+          if (isSignedInAtom) {
+            await signOut()
+          }
+        } finally {
+          confirmEmailMutation({ data: { hash } })
+        }
       }
     }
+    confirmFn(code)
   }, [code, confirmEmailMutation])
 
   return (
@@ -29,21 +38,21 @@ export const ConfirmEmail = () => {
       {isLoading && (
         <Center gap={6}>
           <Loader type="bubbles" />
-          <Text>Trwa weryfikowanie adresu e-mail ...</Text>
+          <Text>{t('confirm_email_screen.verification_in_progress')}</Text>
         </Center>
       )}
       {isError && (
         <Center>
-          <Text>Ups nie udało się zweryfikować adresu email.</Text>
+          <Text>{t('confirm_email_screen.verification_failed')}</Text>
           <Spacer y={4} />
-          <Button onPress={navigateToSignIn}>Wróć na stronę logowania</Button>
+          <Button onPress={navigateToSignIn}>{t('confirm_email_screen.go_back_login')}</Button>
         </Center>
       )}
       {isSuccess && (
         <Center>
-          <Text>Adres e-mail został pomyślnie potwierdzony.</Text>
+          <Text>{t('confirm_email_screen.verification_succeed')}</Text>
           <Spacer y={4} />
-          <Button onPress={navigateToSignIn}>Wróć na stronę logowania</Button>
+          <Button onPress={navigateToSignIn}>{t('confirm_email_screen.go_back_login')}</Button>
         </Center>
       )}
     </Center>

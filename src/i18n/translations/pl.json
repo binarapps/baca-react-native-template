@@ -144,6 +144,12 @@
       "title": "In-app notification example"
     }
   },
+  "confirm_email_screen": {
+    "go_back_login": "Wróć na stronę logowania",
+    "verification_failed": "Ups, nie udało się zweryfikować adresu email.",
+    "verification_in_progress": "Trwa weryfikowanie adresu e-mail ...",
+    "verification_succeed": "Adres e-mail został pomyślnie potwierdzony."
+  },
   "details_screen": {
     "title": "To jest przykładowy widok",
     "open_bottom_sheet": "Otwórz BottomSheetModal",

@@ -145,6 +145,12 @@
       "4xl": "4xl"
     }
   },
+  "confirm_email_screen": {
+    "go_back_login": "Go back to login screen",
+    "verification_failed": "Ops, we could not verify your e-mail address.",
+    "verification_in_progress": "E-mail verification in progress ...",
+    "verification_succeed": "E-mail address has been confirmed successfully."
+  },
   "details_screen": {
     "awesome": "Awesome 🎉",
     "open_bottom_sheet": "Open BottomSheetModal",
