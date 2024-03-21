@@ -8,6 +8,7 @@ import {
   displayVariants,
   fontDisplaySize,
   fontTextSize,
+  FontWeight,
   fontWeights,
   TextVariant,
   textVariants,
@@ -73,25 +74,40 @@ const RawText = memo(
     ) => {
       const theme = useTheme()
 
-      const { fontWeight: variantFontWeight, fontSize: variantFontSize } =
-        type === 'text' ? textVariants[variant as TextVariant] : displayVariants[variant]
+      const { fontWeight: variantFontWeight, fontSize: variantFontSize } = useMemo(
+        () => (type === 'text' ? textVariants[variant as TextVariant] : displayVariants[variant]),
+        [type, variant]
+      )
 
-      const fontFamily = props.fontFamily || variantFontWeight
-      const fontWeight = bold ? 'bold' : props.fontWeight || fontWeights[variantFontWeight]
-      const fontSize =
-        props.fontSize ||
-        (type === 'text'
-          ? fontTextSize[variantFontSize as keyof typeof fontTextSize]
-          : fontDisplaySize[variantFontSize])
+      const fontFamily = useMemo(
+        (): FontWeight => props.fontFamily || variantFontWeight,
+        [props.fontFamily, variantFontWeight]
+      )
+      const fontWeight = useMemo(
+        (): TextStyle['fontWeight'] =>
+          bold ? 'bold' : props.fontWeight || fontWeights[variantFontWeight],
+        [bold, props.fontWeight, variantFontWeight]
+      )
+      const fontSize = useMemo(
+        (): number =>
+          props.fontSize ||
+          (type === 'text'
+            ? fontTextSize[variantFontSize as keyof typeof fontTextSize]
+            : fontDisplaySize[variantFontSize]),
+        [props.fontSize, type, variantFontSize]
+      )
 
       const fontFamilyStyle = useMemo<TextStyle>(
         () => ({
-          fontFamily: fontFamily ? theme.fonts[fontFamily] : undefined,
+          fontFamily: fontFamily ? theme.fonts[variantFontWeight] : undefined,
         }),
-        [theme, fontFamily]
+        [fontFamily, theme.fonts, variantFontWeight]
       )
 
-      const finalFontSize = fontSize && typeof fontSize === 'number' ? fontSize : undefined
+      const finalFontSize = useMemo(
+        () => (fontSize && typeof fontSize === 'number' ? fontSize : undefined),
+        [fontSize]
+      )
 
       const lineHeightStyle = useMemo<TextStyle>(
         () => ({

@@ -1,2 +1,2 @@
 // export { BottomSheetFlatList } from '@gorhom/bottom-sheet'
-export { BottomSheetFlatList } from '../../components/molecules'
+export { BottomSheetFlatList } from './BootomSheetScrollables'
