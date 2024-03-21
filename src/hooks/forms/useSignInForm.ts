@@ -65,10 +65,10 @@ export const useSignInForm = () => {
   }
 
   return {
-    submit: handleSubmit(onSubmit),
-    isSubmitting,
     control,
     errors,
+    isSubmitting,
     setFocus,
+    submit: handleSubmit(onSubmit),
   }
 }

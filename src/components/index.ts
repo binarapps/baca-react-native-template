@@ -2,6 +2,8 @@ export * from './molecules'
 export * from './organisms'
 
 export * from './AppLoading'
+export * from './CompanyLogo'
+export * from './FeaturedIcon'
 export * from './KeyboardAwareScrollView'
 export * from './LanguagePicker'
 export * from './Modal'

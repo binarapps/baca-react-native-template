@@ -1,6 +1,11 @@
-import { ControlledField, KeyboardAwareScrollView, LanguagePicker, Version } from '@baca/components'
-import { REGEX, darkLogo, lightLogo } from '@baca/constants'
-import { useColorScheme } from '@baca/contexts'
+import {
+  CompanyLogo,
+  ControlledField,
+  KeyboardAwareScrollView,
+  LanguagePicker,
+  Version,
+} from '@baca/components'
+import { REGEX } from '@baca/constants'
 import { Box, Button, Center, Row, Spacer, Text } from '@baca/design-system'
 import {
   useCallback,
@@ -10,12 +15,10 @@ import {
   useScreenOptions,
 } from '@baca/hooks'
 import { useRouter } from 'expo-router'
-import { StyleSheet, Image } from 'react-native'
 
 export const SignInScreen = (): JSX.Element => {
   const { push } = useRouter()
   const { t } = useTranslation()
-  const { colorScheme } = useColorScheme()
 
   useScreenOptions({
     title: t('navigation.screen_titles.sign_in'),
@@ -40,13 +43,9 @@ export const SignInScreen = (): JSX.Element => {
         <LanguagePicker />
       </Box>
       <Center p={8}>
-        <Image
-          style={styles.logo}
-          resizeMethod="resize"
-          resizeMode="contain"
-          source={colorScheme === 'light' ? lightLogo : darkLogo}
-        />
-        <Spacer y="8" />
+        <Spacer y={16} />
+        <CompanyLogo height={50} type="binar" />
+        <Spacer y={8} />
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
@@ -119,10 +118,3 @@ export const SignInScreen = (): JSX.Element => {
     </KeyboardAwareScrollView>
   )
 }
-
-const styles = StyleSheet.create({
-  logo: {
-    height: 100,
-    width: '100%',
-  },
-})

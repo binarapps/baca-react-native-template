@@ -169,6 +169,12 @@
     "go_to_typography": "Go to Typography",
     "header": "This is Example screen"
   },
+  "forgot_password_screen": {
+    "back_to_login": "Back to login",
+    "forgot_password": "Forgot password?",
+    "no_worries": "No worries, we’ll send you reset instructions.",
+    "reset_password": "Reset password"
+  },
   "home_screen": {
     "details": "Details"
   },

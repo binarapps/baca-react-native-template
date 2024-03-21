@@ -168,6 +168,12 @@
     "go_to_screen_with_BEdata": "Idź do widoku z danymi z backend-u",
     "go_to_screen_test_form": "Idź do formularza testowego"
   },
+  "forgot_password_screen": {
+    "back_to_login": "Wróć do logowania",
+    "forgot_password": "Zapomniałeś hasła?",
+    "no_worries": "Bez obaw, wyślemy Ci instrukcje resetowania hasła.",
+    "reset_password": "Zresetuj hasło"
+  },
   "home_screen": {
     "details": "Detale"
   },

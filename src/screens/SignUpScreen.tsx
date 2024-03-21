@@ -1,4 +1,4 @@
-import { ControlledField, KeyboardAwareScrollView } from '@baca/components'
+import { CompanyLogo, ControlledField, KeyboardAwareScrollView } from '@baca/components'
 import { Button, Center, Spacer } from '@baca/design-system'
 import { useScreenOptions, useSignUpForm, useTranslation } from '@baca/hooks'
 import { useCallback, useEffect } from 'react'
@@ -25,6 +25,9 @@ export const SignUpScreen = () => {
   return (
     <KeyboardAwareScrollView>
       <Center flex={1} flexGrow={1} px={8}>
+        <Spacer y={16} />
+        <CompanyLogo height={50} type="binar" />
+        <Spacer y={8} />
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
