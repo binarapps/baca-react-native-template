@@ -24,7 +24,7 @@ export const SignInScreen = (): JSX.Element => {
     title: t('navigation.screen_titles.sign_in'),
   })
 
-  const { control, errors, submit, isSubmitting, setFocus } = useSignInForm()
+  const { control, errors, submit, getValues, isSubmitting, setFocus } = useSignInForm()
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,7 +34,10 @@ export const SignInScreen = (): JSX.Element => {
 
   const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
   const navigateToAppInfo = useCallback(() => push('/application-info'), [push])
-  const navigateToForgotPassword = useCallback(() => push('/forgot-password'), [push])
+  const navigateToForgotPassword = useCallback(
+    () => push(`/forgot-password?email=${encodeURIComponent(getValues('email'))}`),
+    [getValues, push]
+  )
   const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (

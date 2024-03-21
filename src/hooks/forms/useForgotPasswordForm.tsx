@@ -1,6 +1,7 @@
 import { useAuthControllerForgotPassword } from '@baca/api/query/auth/auth'
 import { AuthForgotPasswordDto } from '@baca/api/types'
 import { handleFormError, hapticImpact } from '@baca/utils'
+import { router } from 'expo-router'
 import { useForm } from 'react-hook-form'
 
 const defaultValues: AuthForgotPasswordDto = {
@@ -15,6 +16,7 @@ export const useForgotPasswordForm = () => {
     control,
     formState: { errors },
     handleSubmit,
+    reset,
     setError: setFormError,
   } = useForm<AuthForgotPasswordDto>({
     mode: 'onTouched',
@@ -25,7 +27,9 @@ export const useForgotPasswordForm = () => {
     forgotPasswordMutate(
       { data },
       {
-        onSuccess: () => {},
+        onSuccess: () => {
+          router.replace('/reset-password-sent')
+        },
         onError: (e) => {
           handleFormError<keyof AuthForgotPasswordDto>(
             e as unknown as keyof AuthForgotPasswordDto,
@@ -44,6 +48,7 @@ export const useForgotPasswordForm = () => {
     control,
     errors,
     isSubmitting,
+    reset,
     submit: handleSubmit(onSubmit),
   }
 }

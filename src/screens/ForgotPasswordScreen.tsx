@@ -6,8 +6,8 @@ import {
 } from '@baca/components'
 import { REGEX } from '@baca/constants'
 import { Button, Center, Display, Spacer, Text } from '@baca/design-system'
-import { useForgotPasswordForm, useScreenOptions, useTranslation } from '@baca/hooks'
-import { router } from 'expo-router'
+import { useForgotPasswordForm, useScreenOptions, useTranslation, useEffect } from '@baca/hooks'
+import { router, useLocalSearchParams } from 'expo-router'
 import { StyleSheet } from 'react-native'
 
 export const ForgotPasswordScreen = () => {
@@ -17,7 +17,15 @@ export const ForgotPasswordScreen = () => {
     title: t('navigation.screen_titles.forgot_password'),
   })
 
-  const { control, errors, submit } = useForgotPasswordForm()
+  const { email } = useLocalSearchParams<{ email?: string }>()
+
+  const { control, errors, reset, submit } = useForgotPasswordForm()
+
+  useEffect(() => {
+    if (email) {
+      reset({ email: decodeURIComponent(email) })
+    }
+  }, [email, reset])
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.contentContainerStyle}>
@@ -29,13 +37,16 @@ export const ForgotPasswordScreen = () => {
         <Spacer y={6} />
         <Display.SmSemibold>{t('forgot_password_screen.forgot_password')}</Display.SmSemibold>
         <Spacer y={3} />
-        <Text.MdRegular lineHeight="lg">{t('forgot_password_screen.no_worries')}</Text.MdRegular>
+        <Text.MdRegular textAlign="center" lineHeight="lg">
+          {t('forgot_password_screen.no_worries')}
+        </Text.MdRegular>
         <Spacer y={8} />
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
           enterKeyHint="next"
           inputMode="email"
+          isRequired
           label={t('form.labels.email')}
           name="email"
           onSubmitEditing={submit}
@@ -50,7 +61,7 @@ export const ForgotPasswordScreen = () => {
           testID="emailInput"
         />
         <Spacer y={6} />
-        <Button size="lg" w="full">
+        <Button onPress={submit} size="lg" w="full">
           {t('forgot_password_screen.reset_password')}
         </Button>
         <Spacer y={8} />
