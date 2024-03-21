@@ -85,7 +85,6 @@ export const SignInScreen = (): JSX.Element => {
             {...{ control, errors }}
             checkboxText={t('form.checkbox.remember_me')}
             name="confirm"
-            size={18}
             testID="confirmCheckbox"
           />
           <Button

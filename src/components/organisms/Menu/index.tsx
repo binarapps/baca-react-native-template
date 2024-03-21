@@ -1,8 +1,8 @@
-import { AbsoluteFullFill, Box, TouchableProps, ScrollView } from '@baca/design-system/components'
+import { Box, TouchableProps, ScrollView, Pressable } from '@baca/design-system/components'
 import { useRef, useState, useMemo, useTheme, useCallback } from '@baca/hooks'
 import { Portal } from '@gorhom/portal'
 import React, { NamedExoticComponent, PropsWithChildren, memo } from 'react'
-import { View, Modal, TouchableWithoutFeedback } from 'react-native'
+import { View, Modal } from 'react-native'
 
 import { MenuItem } from '../../molecules/MenuItem'
 
@@ -120,37 +120,36 @@ const Menu = memo<MenuProps>(
             visible={isOpen}
             onRequestClose={handleClose}
           >
-            <TouchableWithoutFeedback onPress={handleClose}>
-              <AbsoluteFullFill backgroundColor="bg.active" bgOpacity={0.1} />
-            </TouchableWithoutFeedback>
-            {triggerPosition && (
-              <Box
-                position="absolute"
-                top={triggerPosition?.y}
-                left={triggerPosition?.x}
-                p={2}
-                backgroundColor="fg.white"
-                borderRadius={4}
-                {...shadows['4']}
-              >
-                <ScrollView scrollEnabled={scrollable}>
-                  {React.Children.map(props.children, (child) => {
-                    if (React.isValidElement(child)) {
-                      return React.cloneElement(child, {
-                        ...child.props,
-                        onPress: () => {
-                          if (closeOnSelect) {
-                            handleClose()
-                          }
-                          child.props.onPress?.()
-                        },
-                      })
-                    }
-                    return child
-                  })}
-                </ScrollView>
-              </Box>
-            )}
+            <Pressable onPress={handleClose} flex={1} bg="Base.black" bgOpacity={0.1}>
+              {triggerPosition && (
+                <Box
+                  position="absolute"
+                  top={triggerPosition?.y}
+                  left={triggerPosition?.x}
+                  p={2}
+                  backgroundColor="bg.primary"
+                  borderRadius={4}
+                  {...shadows['4']}
+                >
+                  <ScrollView scrollEnabled={scrollable}>
+                    {React.Children.map(props.children, (child) => {
+                      if (React.isValidElement(child)) {
+                        return React.cloneElement(child, {
+                          ...child.props,
+                          onPress: () => {
+                            if (closeOnSelect) {
+                              handleClose()
+                            }
+                            child.props.onPress?.()
+                          },
+                        })
+                      }
+                      return child
+                    })}
+                  </ScrollView>
+                </Box>
+              )}
+            </Pressable>
           </Modal>
         </Portal>
       </>

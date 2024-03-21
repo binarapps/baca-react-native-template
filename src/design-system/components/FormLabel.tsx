@@ -19,12 +19,14 @@ export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => 
   return (
     <View style={[styles.wrapper, { ...(label && styles.wrapperWithLabel) }]}>
       {label && (
-        <Text style={[labelStyle, { color: labelStyle?.color || colors.text.brand.primary }]}>
+        <Text.SmMedium style={[labelStyle, { color: labelStyle?.color || colors.text.secondary }]}>
           {label}
           {isRequired && (
-            <Text style={[stylesForRequired, { color: colors.text.error.primary }]}>*</Text>
+            <Text.SmMedium style={[stylesForRequired, { color: colors.text.error.primary }]}>
+              *
+            </Text.SmMedium>
           )}
-        </Text>
+        </Text.SmMedium>
       )}
     </View>
   )

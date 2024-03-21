@@ -221,7 +221,7 @@ export type CheckboxProps = ViewProps & {
   onChange: (newValue: boolean | string[]) => void
   checkboxText?: string
   disabled?: boolean
-  size?: number
+  size?: 'sm' | 'md'
   isError?: boolean
   isChecked?: boolean
   checkboxes?: string[]
