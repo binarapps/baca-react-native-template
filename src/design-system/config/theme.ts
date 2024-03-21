@@ -124,7 +124,7 @@ export const fontWeights: { [key in FontWeight]: '400' | '500' | '600' | '700' }
 export const fonts: { [key in FontWeight]: string } = {
   Regular: 'Inter_Regular',
   Medium: 'Inter_Medium',
-  Semibold: 'Inter_Semibold',
+  Semibold: 'Inter_SemiBold',
   Bold: 'Inter_Bold',
 } as const
 
