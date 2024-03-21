@@ -81,6 +81,12 @@
       "new_account_created": "A new account has been created. An email with an activation link was sent to {{userEmail}}.",
       "profile_updated": "Successfully updated your profile data."
     },
+    "title": {
+      "error": "An error occurred",
+      "info": "Additional info",
+      "success": "Success",
+      "warning": "Attention"
+    },
     "warning": {}
   },
   "update": {
@@ -138,6 +144,12 @@
       "3xl": "3xl",
       "4xl": "4xl"
     }
+  },
+  "confirm_email_screen": {
+    "go_back_login": "Go back to login screen",
+    "verification_failed": "Ops, we could not verify your e-mail address.",
+    "verification_in_progress": "E-mail verification in progress ...",
+    "verification_succeed": "E-mail address has been confirmed successfully."
   },
   "details_screen": {
     "awesome": "Awesome 🎉",

@@ -1,11 +1,9 @@
 import { useAuthControllerUpdate, useAuthControllerMe } from '@baca/api/query/auth/auth'
 import { AuthUpdateDto } from '@baca/api/types'
-import { hapticImpact } from '@baca/utils'
-import { handleFormError } from '@baca/utils/handleFormErrors'
+import { handleFormError, hapticImpact, showSuccessToast } from '@baca/utils'
 import { useMemo, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { notify } from 'react-native-notificated'
 
 export const useUpdateProfileForm = () => {
   const { data: userData } = useAuthControllerMe()
@@ -42,13 +40,7 @@ export const useUpdateProfileForm = () => {
       { data },
       {
         onSuccess: () => {
-          notify('success', {
-            params: {
-              style: { multiline: 100 },
-              title: 'SUCCESS',
-              description: t('toast.success.profile_updated'),
-            },
-          })
+          showSuccessToast({ description: t('toast.success.profile_updated') })
         },
         onError: (e) => {
           handleFormError<keyof AuthUpdateDto>(

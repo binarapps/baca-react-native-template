@@ -1,10 +1,8 @@
 import { useAuthControllerRegister } from '@baca/api/query/auth/auth'
 import { AuthRegisterLoginDto } from '@baca/api/types'
-import { hapticImpact } from '@baca/utils'
-import { handleFormError } from '@baca/utils/handleFormErrors'
+import { handleFormError, hapticImpact, showSuccessToast } from '@baca/utils'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { notify } from 'react-native-notificated'
 
 const defaultValues: AuthRegisterLoginDto = {
   email: '',
@@ -39,12 +37,8 @@ export const useSignUpForm = () => {
       },
       {
         onSuccess: () => {
-          notify('success', {
-            params: {
-              style: { multiline: 100 },
-              title: 'SUCCESS',
-              description: t('toast.success.new_account_created', { userEmail: data.email }),
-            },
+          showSuccessToast({
+            description: t('toast.success.new_account_created', { userEmail: data.email }),
           })
         },
         onError: (e) => {

@@ -1,4 +1,4 @@
-import { hex2rgba, getColorValue, removeFalsyProperties } from '@baca/utils'
+import { getColorValue, hex2rgba, removeFalsyProperties } from '@baca/utils'
 import { ImageStyle, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 
 import { generateSize } from './generateSize'
@@ -55,6 +55,7 @@ const generateSpacingStyle = ({
   pb,
   px,
   py,
+  gap,
 }: SpacingProps): StyleProp<ViewStyle> => {
   const style: StyleProp<ViewStyle> = [
     generateSize(p, 'padding'),
@@ -71,6 +72,7 @@ const generateSpacingStyle = ({
     generateSize(mt, 'marginTop'),
     generateSize(ml, 'marginLeft'),
     generateSize(mr, 'marginRight'),
+    generateSize(gap, 'gap'),
   ]
 
   return style.filter(Boolean)

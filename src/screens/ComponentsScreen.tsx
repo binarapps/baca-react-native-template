@@ -1,5 +1,6 @@
-import { Icon, Loader, Box, Text, Button, Center, ScrollView, Display } from '@baca/design-system'
-import { useCallback, useNotifications, useScreenOptions, useTranslation } from '@baca/hooks'
+import { Loader, Box, Text, Button, Center, ScrollView, Display } from '@baca/design-system'
+import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
+import { showInformationToast } from '@baca/utils'
 import * as Linking from 'expo-linking'
 
 const loaderVariants = [
@@ -27,25 +28,20 @@ const loaderVariants = [
 
 export const ComponentsScreen = (): JSX.Element => {
   const { t } = useTranslation()
-  const { notify } = useNotifications()
 
   useScreenOptions({
     title: t('navigation.screen_titles.components'),
   })
 
-  const testNotification = useCallback(
-    () =>
-      notify('info', {
-        params: {
-          title: t('components_screen.notification.title'),
-          description: t('components_screen.notification.description'),
-          onPress: () => {
-            Linking.openURL('https://thewidlarzgroup.github.io/react-native-notificated/')
-          },
-        },
-      }),
-    [notify, t]
-  )
+  const testNotification = useCallback(() => {
+    showInformationToast({
+      title: t('components_screen.notification.title'),
+      description: t('components_screen.notification.description'),
+      onPress: () => {
+        Linking.openURL('https://thewidlarzgroup.github.io/react-native-notificated/')
+      },
+    })
+  }, [t])
 
   return (
     <ScrollView flexGrow={1} p={4}>
@@ -62,8 +58,8 @@ export const ComponentsScreen = (): JSX.Element => {
         <Button.Primary title={t('components_screen.button_variants.primary')} />
         <Button.Primary
           mt={4}
-          leftIcon={<Icon name="account-box-fill" size={24} color="fg.error.secondary" />}
-          rightIcon={<Icon name="account-box-fill" size={24} color="alpha.black.100" />}
+          leftIconName="ancient-gate-fill"
+          rightIconName="alarm-fill"
           title={t('components_screen.button_variants.with_icons')}
         />
         <Button.PrimaryDestructive

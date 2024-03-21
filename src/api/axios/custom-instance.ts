@@ -1,11 +1,10 @@
 // custom-instance.ts
 
 import { ENV, SECOND_IN_MS } from '@baca/constants'
-import { getApiError } from '@baca/utils'
+import { getApiError, showErrorToast } from '@baca/utils'
 import Axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import i18n from 'i18next'
 import qs from 'qs'
-import { notify } from 'react-native-notificated'
 
 import { injectTokenToRequest } from './interceptors'
 
@@ -45,9 +44,7 @@ AXIOS_INSTANCE.interceptors.response.use(
 
     // TODO: we should handle certain error type
     if (errorMessage) {
-      notify('error', {
-        params: { title: 'ERROR', description: i18n.t('errors.something_went_wrong') },
-      })
+      showErrorToast({ title: 'ERROR', description: i18n.t('errors.something_went_wrong') })
       //CONFIG: Add errors in getApiError
       const api_error = getApiError(errorMessage)
 

@@ -81,6 +81,12 @@
       "new_account_created": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
       "profile_updated": "Zaktualizowano Twoje dane."
     },
+    "title": {
+      "error": "Wystąpił błąd",
+      "info": "Dodatkowe info",
+      "success": "Udało się",
+      "warning": "Uwaga"
+    },
     "warning": {}
   },
   "update": {
@@ -137,6 +143,12 @@
       "description": "by react-native-notificated 🎉",
       "title": "In-app notification example"
     }
+  },
+  "confirm_email_screen": {
+    "go_back_login": "Wróć na stronę logowania",
+    "verification_failed": "Ups, nie udało się zweryfikować adresu email.",
+    "verification_in_progress": "Trwa weryfikowanie adresu e-mail ...",
+    "verification_succeed": "Adres e-mail został pomyślnie potwierdzony."
   },
   "details_screen": {
     "title": "To jest przykładowy widok",

@@ -48,24 +48,38 @@ exports[`Button renders correctly 1`] = `
   }
   testID="baseButton"
 >
-  <Text
-    allowFontScaling={false}
+  <View
+    flexDirection="row"
+    gap={4}
     style={
-      {
-        "color": "#FFFFFF",
-        "fontFamily": "Inter_Semibold",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "400",
-        "lineHeight": 21,
-        "textAlign": "center",
-        "textTransform": "none",
-      }
+      [
+        {
+          "flexDirection": "row",
+          "gap": 16,
+        },
+        undefined,
+      ]
     }
-    testID="baseText"
-    textAlign="center"
   >
-    Button
-  </Text>
+    <Text
+      allowFontScaling={false}
+      style={
+        {
+          "color": "#FFFFFF",
+          "fontFamily": "Inter_Semibold",
+          "fontSize": 14,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 21,
+          "textAlign": "center",
+          "textTransform": "none",
+        }
+      }
+      testID="baseText"
+      textAlign="center"
+    >
+      Button
+    </Text>
+  </View>
 </View>
 `;
