@@ -11,7 +11,7 @@ const notificationVariants: {
   [key in NotificationsType]: { bg: ColorNames; textColor: ColorNames }
 } = {
   default: { bg: 'Blue.100', textColor: 'Blue.800' },
-  error: { bg: 'Rose.100', textColor: 'Rose.800' },
+  error: { bg: 'Rosé.100', textColor: 'Rosé.800' },
   success: { bg: 'Green light.100', textColor: 'Green light.800' },
   warning: { bg: 'Yellow.100', textColor: 'Yellow.800' },
 }

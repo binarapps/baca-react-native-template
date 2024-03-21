@@ -8,7 +8,6 @@ import {
   forwardRef,
   ForwardRefExoticComponent,
   PropsWithoutRef,
-  ReactNode,
   RefAttributes,
 } from 'react'
 import {
@@ -248,77 +247,67 @@ const RawButton = memo(
         [hoverColorStyle, defaultColorStyle, disabled, disabledColorStyle, textStyle]
       )
 
+      const iconElement = useCallback(
+        (props: PressableStateCallbackType, iconName?: IconNames) => {
+          return iconName ? (
+            <Icon name={iconName} size={buttonSizeVariant.iconSize} color={getIconColor(props)} />
+          ) : null
+        },
+        [buttonSizeVariant.iconSize, getIconColor]
+      )
+
       const childrenElement = useCallback(
         (props: PressableStateCallbackType) => {
-          return (
-            <>
-              {loading ? (
-                <Loader type="default" size={24} />
-              ) : (
-                <Row gap={buttonSizeVariant.iconGap}>
-                  {leftIconName && (
-                    <Icon
-                      name={leftIconName}
-                      size={buttonSizeVariant.iconSize}
-                      color={getIconColor(props)}
-                    />
-                  )}
-                  {title ? (
-                    <Text
-                      variant={buttonSizeVariant.textVariant}
-                      allowFontScaling={false}
-                      style={pressableTextStyleFunction(props)}
-                      textAlign="center"
-                    >
-                      {title}
-                    </Text>
-                  ) : typeof children === 'string' ? (
-                    <Text
-                      variant={buttonSizeVariant.textVariant}
-                      allowFontScaling={false}
-                      style={pressableTextStyleFunction(props)}
-                      textAlign="center"
-                    >
-                      {children}
-                    </Text>
-                  ) : (
-                    (children as ReactNode)
-                  )}
-                  {rightIconName && (
-                    <Icon
-                      color={getIconColor(props)}
-                      name={rightIconName}
-                      size={buttonSizeVariant.iconSize}
-                    />
-                  )}
-                </Row>
-              )}
-            </>
-          )
+          if (title) {
+            return (
+              <Text
+                variant={buttonSizeVariant.textVariant}
+                allowFontScaling={false}
+                style={pressableTextStyleFunction(props)}
+                textAlign="center"
+              >
+                {title}
+              </Text>
+            )
+          }
+          if (typeof children === 'string') {
+            return (
+              <Text
+                variant={buttonSizeVariant.textVariant}
+                allowFontScaling={false}
+                style={pressableTextStyleFunction(props)}
+                textAlign="center"
+              >
+                {children}
+              </Text>
+            )
+          }
+          return <>{children}</>
         },
-        [
-          buttonSizeVariant.iconGap,
-          buttonSizeVariant.iconSize,
-          buttonSizeVariant.textVariant,
-          children,
-          getIconColor,
-          leftIconName,
-          loading,
-          pressableTextStyleFunction,
-          rightIconName,
-          title,
-        ]
+
+        [buttonSizeVariant.textVariant, children, pressableTextStyleFunction, title]
       )
 
       return (
         <Pressable
           accessibilityRole="button"
+          disabled={disabled || loading}
           role="button"
           style={pressableStyleFunction}
           testID="baseButton"
-          {...{ disabled, ...hoverProps, ref, ...props }}
+          {...{ ...hoverProps, ref, ...props }}
         >
-          {(props: PressableStateCallbackType) => <>{childrenElement(props)}</>}
+          {loading ? (
+            <Loader type="default" size={24} />
+          ) : (
+            (props: PressableStateCallbackType) => (
+              <Row gap={buttonSizeVariant.iconGap}>
+                {leftIconName && iconElement(props, leftIconName)}
+                {childrenElement(props)}
+                {rightIconName && iconElement(props, leftIconName)}
+              </Row>
+            )
+          )}
         </Pressable>
       )
     }
