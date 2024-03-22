@@ -15,8 +15,6 @@ $ui-sidebar: 244px;
 // Header Logo
 .headerContainer {
   padding-top: 0px;
-  min-height: 96px;
-  height: 96px;
 }
 
 .headerLink {
@@ -87,5 +85,5 @@ $ui-sidebar: 244px;
 }
 
 .sideBarHeader {
-  align-items: center;
+  align-items: stretch;
 }

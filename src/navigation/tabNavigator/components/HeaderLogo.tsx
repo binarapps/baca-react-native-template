@@ -1,6 +1,6 @@
 import { CompanyLogo } from '@baca/components'
 import cssStyles from '@baca/styles'
-import { Pressable, Text } from '@bacons/react-views'
+import { Pressable } from '@bacons/react-views'
 import { Link } from 'expo-router'
 import { Platform, StyleSheet, View } from 'react-native'
 
@@ -28,7 +28,7 @@ export function HeaderLogo() {
       >
         <Pressable>
           {({ hovered }) => (
-            <Text
+            <View
               style={[
                 jsStyles.headerLogo,
                 {
@@ -56,7 +56,7 @@ export function HeaderLogo() {
                 type="binarSygnet"
                 width={40}
               />
-            </Text>
+            </View>
           )}
         </Pressable>
       </Link>
@@ -66,8 +66,6 @@ export function HeaderLogo() {
 
 const jsStyles = StyleSheet.create({
   headerContainer: {
-    height: 96,
-    minHeight: 96,
     paddingTop: 0,
   },
   headerLink: {
@@ -76,8 +74,6 @@ const jsStyles = StyleSheet.create({
   headerLogo: {
     alignItems: 'center',
     borderRadius: 8,
-    display: 'flex',
-    marginVertical: 8,
     padding: 8,
   },
 })
