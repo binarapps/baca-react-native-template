@@ -32,6 +32,20 @@ const IS_DEV = process.env.IS_DEV === '1'
 const runtimeVersion = { policy: IS_DEV ? 'sdkVersion' : 'appVersion' } as const
 
 type Setup = { [key in Environments]: string }
+
+// https://patorjk.com/software/taag/#p=display&h=0&v=0&c=c&f=ANSI%20Regular&t=CONFIG
+/***
+ *     ██████  ██████  ███    ██ ███████ ██  ██████
+ *    ██      ██    ██ ████   ██ ██      ██ ██
+ *    ██      ██    ██ ██ ██  ██ █████   ██ ██   ███
+ *    ██      ██    ██ ██  ██ ██ ██      ██ ██    ██
+ *     ██████  ██████  ██   ████ ██      ██  ██████
+ *
+ *
+ */
+
+// CONFIG: You can change the values below to adjust app
+// You can also run `yarn bootstrap` script to make this steps more safety
 export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   adaptiveIconBackgroundColor: {
     production: APP_CONFIG.adaptiveIconBackgroundColor,
@@ -75,7 +89,42 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   },
 } as const
 
-// CONFIG: Add your eas build config here !! More details about the following parameters, and other available configs -> https://docs.expo.dev/build-reference/eas-json/
+const universalLinks = [
+  'https://r.pl',
+  'https://biletyczarterowe.r.pl',
+  // Uncomment this when testing, you can add your own domain for testing purposes
+  // 'https://chic-queijadas-4c3b2c.netlify.app'
+]
+
+/***
+ *    ██████  ██    ██ ███    ██  █████  ███    ███ ██  ██████
+ *    ██   ██  ██  ██  ████   ██ ██   ██ ████  ████ ██ ██
+ *    ██   ██   ████   ██ ██  ██ ███████ ██ ████ ██ ██ ██
+ *    ██   ██    ██    ██  ██ ██ ██   ██ ██  ██  ██ ██ ██
+ *    ██████     ██    ██   ████ ██   ██ ██      ██ ██  ██████
+ *
+ *
+ *     ██████  ██████  ███    ██ ███████ ██  ██████
+ *    ██      ██    ██ ████   ██ ██      ██ ██
+ *    ██      ██    ██ ██ ██  ██ █████   ██ ██   ███
+ *    ██      ██    ██ ██  ██ ██ ██      ██ ██    ██
+ *     ██████  ██████  ██   ████ ██      ██  ██████
+ *
+ *
+ */
+// Please make sure you know what are you doing when you make some changes on the bottom
+
+const associatedDomains = universalLinks.map((link) => link.replace('https://', 'applinks:'))
+const intentFilters = universalLinks.map((link) => ({
+  action: 'VIEW',
+  autoVerify: true,
+  data: [''].map(() => ({
+    scheme: 'https',
+    host: link.replace('https://', ''),
+  })),
+  category: ['BROWSABLE', 'DEFAULT'],
+}))
+
 export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
   const ENVIRONMENT = (process.env.ENVIRONMENT || 'qa') as Environments
 
@@ -92,16 +141,18 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
         foregroundImage: EAS_ENV_CONFIG.adaptiveIcon[ENVIRONMENT],
       },
       package: EAS_ENV_CONFIG.androidPackageName[ENVIRONMENT],
+      intentFilters,
     },
     extra: {
       eas: { projectId: APP_CONFIG.easProjectId },
       ENVIRONMENT,
+      universalLinks,
       ...process.env,
-      universalLinks: [],
     },
     icon: EAS_ENV_CONFIG.appIcon[ENVIRONMENT],
     ios: {
       ...config.ios,
+      associatedDomains,
       bundleIdentifier: EAS_ENV_CONFIG.iosBundleIdentifier[ENVIRONMENT],
     },
     name: EAS_ENV_CONFIG.appName[ENVIRONMENT],
