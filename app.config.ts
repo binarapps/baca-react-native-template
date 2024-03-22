@@ -126,10 +126,10 @@ const intentFilters = universalLinks.map((link) => ({
 }))
 
 export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
-  const ENVIRONMENT = (process.env.ENVIRONMENT || 'qa') as Environments
+  const ENVIRONMENT_NAME = (process.env.ENVIRONMENT_NAME || 'qa') as Environments
 
-  if (!envValues.includes(ENVIRONMENT)) {
-    throw Error(`${ENVIRONMENT} setup missing`)
+  if (!envValues.includes(ENVIRONMENT_NAME)) {
+    throw Error(`${ENVIRONMENT_NAME} setup missing`)
   }
 
   return {
@@ -137,32 +137,32 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     android: {
       ...config.android,
       adaptiveIcon: {
-        backgroundColor: EAS_ENV_CONFIG.adaptiveIconBackgroundColor[ENVIRONMENT],
-        foregroundImage: EAS_ENV_CONFIG.adaptiveIcon[ENVIRONMENT],
+        backgroundColor: EAS_ENV_CONFIG.adaptiveIconBackgroundColor[ENVIRONMENT_NAME],
+        foregroundImage: EAS_ENV_CONFIG.adaptiveIcon[ENVIRONMENT_NAME],
       },
-      package: EAS_ENV_CONFIG.androidPackageName[ENVIRONMENT],
+      package: EAS_ENV_CONFIG.androidPackageName[ENVIRONMENT_NAME],
       intentFilters,
     },
     extra: {
       eas: { projectId: APP_CONFIG.easProjectId },
-      ENVIRONMENT,
+      ENVIRONMENT_NAME,
       universalLinks,
       ...process.env,
     },
-    icon: EAS_ENV_CONFIG.appIcon[ENVIRONMENT],
+    icon: EAS_ENV_CONFIG.appIcon[ENVIRONMENT_NAME],
     ios: {
       ...config.ios,
       associatedDomains,
-      bundleIdentifier: EAS_ENV_CONFIG.iosBundleIdentifier[ENVIRONMENT],
+      bundleIdentifier: EAS_ENV_CONFIG.iosBundleIdentifier[ENVIRONMENT_NAME],
     },
-    name: EAS_ENV_CONFIG.appName[ENVIRONMENT],
+    name: EAS_ENV_CONFIG.appName[ENVIRONMENT_NAME],
     owner: config.owner || 'binarapps',
     runtimeVersion,
-    scheme: EAS_ENV_CONFIG.scheme[ENVIRONMENT],
+    scheme: EAS_ENV_CONFIG.scheme[ENVIRONMENT_NAME],
     updates: { url: `https://u.expo.dev/${APP_CONFIG.easProjectId}` },
     web: {
       ...config.web,
-      favicon: EAS_ENV_CONFIG.favicon[ENVIRONMENT],
+      favicon: EAS_ENV_CONFIG.favicon[ENVIRONMENT_NAME],
     },
   }
 }
