@@ -89,12 +89,7 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   },
 } as const
 
-const universalLinks = [
-  'https://r.pl',
-  'https://biletyczarterowe.r.pl',
-  // Uncomment this when testing, you can add your own domain for testing purposes
-  // 'https://chic-queijadas-4c3b2c.netlify.app'
-]
+const universalLinks = ['https://baca-six.vercel.app']
 
 /***
  *    ██████  ██    ██ ███    ██  █████  ███    ███ ██  ██████
