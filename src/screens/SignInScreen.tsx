@@ -48,7 +48,7 @@ export const SignInScreen = (): JSX.Element => {
       <Center p={8}>
         <Spacer y={16} />
         <CompanyLogo height={50} type="binar" />
-        <Spacer y={8} />
+        <Spacer y={4} />
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
