@@ -26,7 +26,7 @@ export const CategoriesScreen = () => {
 
 const styles = StyleSheet.create({
   logo: {
-    height: 100,
+    height: 50,
     width: '100%',
   },
 })

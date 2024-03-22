@@ -118,7 +118,7 @@ export const SignInScreen = (): JSX.Element => {
 
 const styles = StyleSheet.create({
   logo: {
-    height: 100,
+    height: 50,
     width: '100%',
   },
 })
