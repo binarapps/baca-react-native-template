@@ -2,7 +2,7 @@ import { KeyboardAwareScrollView } from '@baca/components'
 import { LandingHeader } from '@baca/components/LandingHeader'
 import { darkLogo, lightLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
-import { Button, Center, Text } from '@baca/design-system'
+import { Button, Center, Spacer, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
 import { Image, StyleSheet } from 'react-native'
@@ -34,6 +34,7 @@ export const LandingScreen = () => {
           source={colorScheme === 'light' ? lightLogo : darkLogo}
           style={styles.logo}
         />
+        <Spacer y={4} />
         <Text.LgBold textAlign="center">{t('hello')}</Text.LgBold>
         <Text.MdRegular textAlign="center">{t('thanks')}</Text.MdRegular>
         <Text.MdRegular textAlign="center">{t('app_information')}</Text.MdRegular>

@@ -1,7 +1,7 @@
 import { useArticlesControllerFindAll } from '@baca/api/query/articles/articles'
 import { darkLogo, lightLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
-import { Button, Center, Text } from '@baca/design-system'
+import { Button, Center, Spacer, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
 import { Image, StyleSheet } from 'react-native'
@@ -39,6 +39,7 @@ export const HomeScreen = () => {
         source={colorScheme === 'light' ? lightLogo : darkLogo}
         style={styles.logo}
       />
+      <Spacer y={4} />
       <Text.MdBold textAlign="center">{t('hello')}</Text.MdBold>
       <Text.MdRegular textAlign="center">{t('thanks')}</Text.MdRegular>
       <Text.MdRegular textAlign="center">{t('app_information')}</Text.MdRegular>

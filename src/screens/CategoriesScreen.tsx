@@ -1,6 +1,6 @@
 import { darkLogo, lightLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
-import { Center, Text } from '@baca/design-system'
+import { Center, Spacer, Text } from '@baca/design-system'
 import { useScreenOptions } from '@baca/hooks'
 import { Image, StyleSheet } from 'react-native'
 
@@ -19,6 +19,7 @@ export const CategoriesScreen = () => {
         source={colorScheme === 'light' ? lightLogo : darkLogo}
         style={styles.logo}
       />
+      <Spacer y={4} />
       <Text.LgBold textAlign="center">Categories screen</Text.LgBold>
     </Center>
   )

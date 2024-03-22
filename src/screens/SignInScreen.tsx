@@ -45,7 +45,7 @@ export const SignInScreen = (): JSX.Element => {
           resizeMode="contain"
           source={colorScheme === 'light' ? lightLogo : darkLogo}
         />
-        <Spacer y="8" />
+        <Spacer y={8} />
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
