@@ -8,6 +8,8 @@ import { ThemeProvider } from '@react-navigation/native'
 import { Slot } from 'expo-router'
 import { useAtomValue } from 'jotai'
 
+import '../App'
+
 export const unstable_settings = {
   initialRouteName: 'index',
 }
