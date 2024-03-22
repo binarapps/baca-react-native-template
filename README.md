@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/logo-light.png" alt="Logo">
+    <img src="assets/logo/logo-light.png" alt="Logo">
 </p>
 
 [![MIT License](https://img.shields.io/npm/l/@binarapps/expo-ts-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
