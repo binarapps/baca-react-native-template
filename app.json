@@ -11,7 +11,10 @@
       "jsEngine": "hermes",
       "buildNumber": "10",
       "supportsTablet": true,
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "name": "Template",
     "orientation": "portrait",
@@ -32,8 +35,7 @@
       "expo-font",
       "expo-localization",
       "expo-secure-store",
-      "expo-router",
-      "./plugin/withDebugKeystore.js"
+      "expo-router"
     ],
     "web": {
       "output": "single",
