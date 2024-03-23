@@ -13,7 +13,9 @@ description: Build & deploy the iOS app
 
 # Build & deploy the iOS app
 
-1.Build first iOS binary 🕐 / 📱
+---
+
+## Build first iOS binary 🕐 / 📱
 
 <ol type="a">
 <li>Check if you are already logged in to your eas/expo account</li>
@@ -52,9 +54,11 @@ yarn build:[qa/staging/production]:ios
 
 CONGRATULATION !! 🥳🥳 You just started your first IOS build of the QA app version!
 
-2.Deploy the first iOS app version for tests in TestFlight. 🕐 / 📱
+---
 
-<ol type="a">
+## Deploy the first iOS app version for tests in TestFlight. 🕐 / 📱
+
+<ol>
 <li>
 Creating new apps in App Store Connect
 
@@ -63,47 +67,47 @@ When you created an iOS binary (your build is in progress or at least you've gen
 <ol type="I">
 <li>Log in to App Store Connect to the account you were logged in to while building the app in the previous step.</li>
 <li>
-Create a new app.
+Create a new app:
 
-1.Got to the Apps tab.
+- Go to the Apps tab.
 
-![Apps tab](../../static/img/deploy_apps.png)
-2.Click on the +button to create a new app.
+  ![Apps tab](../../static/img/deploy_apps.png)
 
-![Create new app](../../static/img/deploy_add_button.png)
-3.Select New app from the popup.
+- Click on the `+` button to create a new app.
 
-![Select new app](../../static/img/deploy_new_app.png)
+  ![Create new app](../../static/img/deploy_add_button.png)
 
-4.Fill out the questionnaire about the newly created app.
+- Select New app from the popup.
 
-![Fill out the questionnaire](../../static/img/deploy_new_form.png)
+  ![Select new app](../../static/img/deploy_new_app.png)
+
+- Fill out the questionnaire about the newly created app.
+
+  ![Fill out the questionnaire](../../static/img/deploy_new_form.png)
 
 Fields description:
 
-1)Choose the platform which you want to support (probably only iOS).
+- `Platforms` - Choose the platform which you want to support (probably only iOS).
 
-2)Add your app name. Depending on the type of your app, you are creating:
+- `Name` - Add your app name Depending on the type of your app, you are creating:
 
-a)your app name (qa)
+  - your app name (qa)
+  - your app name (staging)
+  - your app name
 
-b)your app name (staging)
+- `Primary Language` - Choose your primary language (English, Polish, or some other).
 
-c)your app name
+- `BundleId` - Choose your bundle id.
 
-3)Choose your primary language (English, Polish, or some other).
+  When you went through the building app process correctly you should be able to choose the bundle id created for your app for example:
+  binarappsYOURAPPNAME 344h234g234d23423f4234 - com.binarapps.yourappname - last part is your app bundle id, you should choose accurate to the app version (qa/staging/production)
 
-4)Choose your bundle id.
+- `SKU` - You need to pass a unique ID that will not be visible in the store, it could be your bundle id for example com.binarapps.yourappname.qa
 
-When you went through the building app process correctly you should be able to choose the bundle id created for your app for example:
-binarappsYOURAPPNAME 344h234g234d23423f4234 - com.binarapps.yourappname - last part is your app bundle id, you should choose accurate to the app version (qa/staging/production)
-
-5)You need to pass a unique ID that will not be visible in the store, it could be your bundle id for example com.binarapps.yourappname.qa
-
-6)You could choose limited access, only accounts with the role: Admins, Finance, and Reports, and people you add access will see the app in the App Store account
+- `User Access` - You could choose limited access, only accounts with the role: Admins, Finance, and Reports, and people you add access will see the app in the App Store account
 
 </li>
-<li>Create and go through step ii again to cover qa/staging/production app depending on your strategy.</li>
+<li>Create and go through step `ii` again to cover qa/staging/production app depending on your strategy.</li>
 </ol>
 </li>
 <li>
@@ -140,9 +144,9 @@ Configure eas.json file.
 
 Where:
 
-- your_appStore_app_id should be taken in that way.
-- your_apple_team_id should be taken from Apple Developer Portal in that way.
-- your_app_name should be your app name from App Store Connect.
+- `your_appStore_app_id` should be taken in that way.
+- `your_apple_team_id` should be taken from Apple Developer Portal in that way.
+- `your_app_name` should be your app name from App Store Connect.
 
 </li>
 <li>
@@ -286,7 +290,9 @@ CONGRATULATIONS !! 🥳🥳 You have just started your first iOS build submissio
 </li>
 </ol>
 
-3.Build and deploy the next versions of the app to TestFlight. 🕐 / 📱
+---
+
+## Build and deploy the next versions of the app to TestFlight. 🕐 / 📱
 
 To run this step, ensure that you already have built and deployed the first version of the app (it means, that you need to go through steps 3 and 4 for qa/staging/production version of the app depending on your needs)
 
