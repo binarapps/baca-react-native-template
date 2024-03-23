@@ -3,7 +3,7 @@
     "details": [
       {
         "appIDs": [
-          "ABCDE12345.online.binarapps"
+          "5764GC687R.com.binarapps.baca"
         ],
         "components": [
           {
@@ -33,12 +33,12 @@
   },
   "webcredentials": {
     "apps": [
-      "ABCDE12345.online.binarapps"
+      "5764GC687R.com.binarapps.baca"
     ]
   },
   "appclips": {
     "apps": [
-      "ABCED12345.online.binarapps"
+      "5764GC687R.com.binarapps.baca"
     ]
   }
 }
