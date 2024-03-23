@@ -2,14 +2,14 @@
   "expo": {
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 10,
+      "versionCode": 15,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "jsEngine": "hermes",
-      "buildNumber": "10",
+      "buildNumber": "15",
       "supportsTablet": true,
       "googleServicesFile": "./GoogleService-Info.plist",
       "config": {
