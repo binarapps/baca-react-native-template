@@ -16,17 +16,6 @@ const adaptiveIconPath = './assets/icons/android/adaptive-icon-'
 const appIconPath = './assets/icons/ios/icon-'
 const faviconPath = './assets/icons/web/favicon-'
 
-// APP_CONFIG_START
-export const APP_CONFIG = {
-  androidPackageName: 'online.binarapps', // CONFIG: Add your android package name here
-  appName: 'Template', // CONFIG: Add your app name here
-  easProjectId: 'ac562c27-4a4e-4532-869f-fe6f9447bee6', // CONFIG: Add your eas project ID here
-  iosBundleIdentifier: 'online.binarapps', // CONFIG: Add your ios bundle identifier here
-  scheme: 'yourUrlScheme', // CONFIG: Add your url scheme to link to your app
-  adaptiveIconBackgroundColor: '#2E7AF0CC', // CONFIG: Add your android adaptive icon background color here
-} as const
-// APP_CONFIG_END
-
 const IS_DEV = process.env.IS_DEV === '1'
 
 const runtimeVersion = { policy: IS_DEV ? 'sdkVersion' : 'appVersion' } as const
@@ -41,11 +30,41 @@ type Setup = { [key in Environments]: string }
  *    ██      ██    ██ ██  ██ ██ ██      ██ ██    ██
  *     ██████  ██████  ██   ████ ██      ██  ██████
  *
- *
  */
 
 // CONFIG: You can change the values below to adjust app
 // You can also run `yarn bootstrap` script to make this steps more safety
+
+// APP_CONFIG_START
+export const APP_CONFIG = {
+  androidPackageName: 'com.binarapps.baca', // CONFIG: Add your android package name here
+  appName: 'BACA', // CONFIG: Add your app name here
+  easProjectId: 'ac562c27-4a4e-4532-869f-fe6f9447bee6', // CONFIG: Add your eas project ID here
+  iosBundleIdentifier: 'com.binarapps.baca', // CONFIG: Add your ios bundle identifier here
+  scheme: 'baca', // CONFIG: Add your url scheme to link to your app
+  adaptiveIconBackgroundColor: '#2E7AF0CC', // CONFIG: Add your android adaptive icon background color here
+} as const
+// APP_CONFIG_END
+
+const universalLinks = ['https://baca-six.vercel.app']
+
+/***
+ *    ██████  ██    ██ ███    ██  █████  ███    ███ ██  ██████
+ *    ██   ██  ██  ██  ████   ██ ██   ██ ████  ████ ██ ██
+ *    ██   ██   ████   ██ ██  ██ ███████ ██ ████ ██ ██ ██
+ *    ██   ██    ██    ██  ██ ██ ██   ██ ██  ██  ██ ██ ██
+ *    ██████     ██    ██   ████ ██   ██ ██      ██ ██  ██████
+ *
+ *
+ *     ██████  ██████  ███    ██ ███████ ██  ██████
+ *    ██      ██    ██ ████   ██ ██      ██ ██
+ *    ██      ██    ██ ██ ██  ██ █████   ██ ██   ███
+ *    ██      ██    ██ ██  ██ ██ ██      ██ ██    ██
+ *     ██████  ██████  ██   ████ ██      ██  ██████
+ *
+ */
+// Please make sure you know what are you doing when you make some changes on the bottom
+
 export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   adaptiveIconBackgroundColor: {
     production: APP_CONFIG.adaptiveIconBackgroundColor,
@@ -89,26 +108,6 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   },
 } as const
 
-const universalLinks = ['https://baca-six.vercel.app']
-
-/***
- *    ██████  ██    ██ ███    ██  █████  ███    ███ ██  ██████
- *    ██   ██  ██  ██  ████   ██ ██   ██ ████  ████ ██ ██
- *    ██   ██   ████   ██ ██  ██ ███████ ██ ████ ██ ██ ██
- *    ██   ██    ██    ██  ██ ██ ██   ██ ██  ██  ██ ██ ██
- *    ██████     ██    ██   ████ ██   ██ ██      ██ ██  ██████
- *
- *
- *     ██████  ██████  ███    ██ ███████ ██  ██████
- *    ██      ██    ██ ████   ██ ██      ██ ██
- *    ██      ██    ██ ██ ██  ██ █████   ██ ██   ███
- *    ██      ██    ██ ██  ██ ██ ██      ██ ██    ██
- *     ██████  ██████  ██   ████ ██      ██  ██████
- *
- *
- */
-// Please make sure you know what are you doing when you make some changes on the bottom
-
 const associatedDomains = universalLinks.map((link) => link.replace('https://', 'applinks:'))
 const intentFilters = universalLinks.map((link) => ({
   action: 'VIEW',
@@ -126,6 +125,33 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
   if (!envValues.includes(ENVIRONMENT_NAME)) {
     throw Error(`${ENVIRONMENT_NAME} setup missing`)
   }
+  const {
+    KEYSTORE_KEY_ALIAS = '',
+    KEYSTORE_KEY_PASSWORD = '',
+    KEYSTORE_STORE_PASSWORD = '',
+    ...environmentVariables
+  } = process.env || {}
+
+  // This is used to make usable keystore file in debug
+  // It's usefull because thanks to that you can test in prebuilded app native functionalities like:
+  // - push notifications
+  // - maps
+  // - google / facebook sign in
+  // - deeplinks
+  const keystorePlugin: Partial<ExpoConfig>['plugins'] = IS_DEV
+    ? [
+        [
+          './plugins/withDebugKeystore',
+          {
+            storePassword: KEYSTORE_STORE_PASSWORD,
+            keyAlias: KEYSTORE_KEY_ALIAS,
+            keyPassword: KEYSTORE_KEY_PASSWORD,
+          },
+        ],
+      ]
+    : []
+
+  const plugins = [...(config?.plugins ?? []), ...keystorePlugin]
 
   return {
     ...config,
@@ -142,7 +168,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
       eas: { projectId: APP_CONFIG.easProjectId },
       ENVIRONMENT_NAME,
       universalLinks,
-      ...process.env,
+      ...(environmentVariables || {}),
     },
     icon: EAS_ENV_CONFIG.appIcon[ENVIRONMENT_NAME],
     ios: {
@@ -153,6 +179,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     name: EAS_ENV_CONFIG.appName[ENVIRONMENT_NAME],
     owner: config.owner || 'binarapps',
     runtimeVersion,
+    plugins,
     scheme: EAS_ENV_CONFIG.scheme[ENVIRONMENT_NAME],
     updates: { url: `https://u.expo.dev/${APP_CONFIG.easProjectId}` },
     web: {
