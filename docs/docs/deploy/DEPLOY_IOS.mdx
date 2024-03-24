@@ -11,13 +11,15 @@ tags:
 description: Build & deploy the iOS app
 ---
 
+import Details from '@site/src/components/Details'
+
 # Build & deploy the iOS app
 
 ---
 
 ## Build first iOS binary 🕐 / 📱
 
-<ol type="a">
+<ol>
 <li>Check if you are already logged in to your eas/expo account</li>
 
 ```bash
@@ -26,7 +28,9 @@ eas whoami
 
 If not please log in to your account before proceeding to the next step.
 
-<li>In the terminal run the build command (choose the proper environment (qa/staging/production).</li>
+<li>
+  In the terminal run the build command (choose the proper environment (qa/staging/production).
+</li>
 
 ```bash
 yarn build:[qa/staging/production]:ios
@@ -58,9 +62,7 @@ CONGRATULATION !! 🥳🥳 You just started your first IOS build of the QA app v
 
 ## Deploy the first iOS app version for tests in TestFlight. 🕐 / 📱
 
-<ol>
-<li>
-Creating new apps in App Store Connect
+### Creating new apps in App Store Connect
 
 When you created an iOS binary (your build is in progress or at least you've generated Distribution Certificate (.p12 file) and Provisioning Profile (.mobileprovision file)), you are ready to create and configure apps in App Store Connect.
 
@@ -109,9 +111,7 @@ Fields description:
 </li>
 <li>Create and go through step `ii` again to cover qa/staging/production app depending on your strategy.</li>
 </ol>
-</li>
-<li>
-Submit the app to the Test Flight.
+### 2. Submit the app to the Test Flight.
 <ol type="I">
 <li>
 Configure eas.json file.
@@ -152,10 +152,9 @@ Where:
 <li>
     The first submission - authenticate the app submission process. 
     
-    
     You can authenticate your builds in two different ways:
 
-1.<b>App Store Connect API Key.</b>
+<Details title="App Store Connect API Key.">
 
 To use this method you will need access to the App Store Connect account with the role of Account Holder. If you do not have such access, please authenticate with method
 
@@ -201,93 +200,85 @@ After applying this data submission process will start. CONGRATULATIONS !! 🥳�
 
 </li>
 </ol>
-</li>
-</ol>
-</li>
-</ol>
+</Details>
 
-2.<b>Apple App-Specific Password.</b>
+<Details title="Apple App-Specific Password.">
 
-<ol type="a">
-<li>
-Generate App-Specific Password - follow the instruction.
+1. Generate App-Specific Password - [follow the instruction.](https://github.com/expo/fyi/blob/main/apple-app-specific-password.md)
 
-You can name your App-specific password for example as EAS submit.
+   You can name your App-specific password for example as EAS submit.
 
-</li>
-<li>Copy the newly generated password. (if not copied, please create a new App-Specific Password, and remove the previous one).</li>
-<li>
-Store password in expo service (we will name it → EXPO_APPLE_APP_SPECIFIC_PASSWORD).
+2. Copy the newly generated password. (if not copied, please create a new App-Specific Password, and remove the previous one).
+3. Store password in expo service (we will name it → EXPO_APPLE_APP_SPECIFIC_PASSWORD).
 
-In project dir terminal run:
+   In project dir terminal run:
 
-```bash
-eas secret:create --scope project --name EXPO_APPLE_APP_SPECIFIC_PASSWORD --value YOUR_GENERATED_APP_SPECIFIC_PASSWORD --type string
-```
+   ```bash
+   eas secret:create --scope project --name EXPO_APPLE_APP_SPECIFIC_PASSWORD --value   YOUR_GENERATED_APP_SPECIFIC_PASSWORD --type string
+   ```
 
-In place of YOUR_GENERATED_APP_SPECIFIC_PASSWORD provide your generated password.
+   In place of YOUR_GENERATED_APP_SPECIFIC_PASSWORD provide your generated password.
 
-</li>
-<li>
-Configure eas.json file, to authenticate the submission process with your App-Specific Password.
+4. Configure eas.json file, to authenticate the submission process with your App-Specific Password.
 
-Add the following lines (do not remove existing configuration added in 4.b.i step).
+   Add the following lines (do not remove existing configuration added in 4.b.i step).
 
-```
-"submit": {
-    "production": {
-      "ios": {
-        "appleId": "your_apple_id",
-      }
-    },
-    "staging": {
-      "ios": {
-        "appleId": "your_apple_id",
-      }
-    },
-    "qa": {
-      "ios": {
-        "appleId": "your_apple_id",
-      }
-    }
-}
-```
+   ```
+   "submit": {
+       "production": {
+         "ios": {
+           "appleId": "your_apple_id",
+         }
+       },
+       "staging": {
+         "ios": {
+           "appleId": "your_apple_id",
+         }
+       },
+       "qa": {
+         "ios": {
+           "appleId": "your_apple_id",
+         }
+       }
+   }
+   ```
 
-Where your_apple_id is your apple ID with access to App Store Connect. (for example m.baumruck@binarapps.com)
+   Where your_apple_id is your apple ID with access to App Store Connect. (for example m.baumruck@binarapps.com)
 
-</li>
-<li>
-Store your apple account password as an expo secret in the expo service.
+5. Store your apple account password as an expo secret in the expo service.
 
-To allow other users and CI to submit the app to the store, and sign in with an app-specific password, you need to allow expo services to authenticate with your account. To do that, expo service will log in to your apple account with your apple id (provided in eas.json in the previous step and apple password (stored as a secret on the expo service).
+   To allow other users and CI to submit the app to the store, and sign in with an app-specific password, you need to allow expo services to authenticate with your account. To do that, expo service will log in to your apple account with your apple id (provided in eas.json in the previous step and apple password (stored as a secret on the expo service).
 
-In project dir terminal run:
+   In project dir terminal run:
 
-```bash
-eas secret:create --scope project --name EXPO_APPLE_PASSWORD --value YOUR_APPLE_PASSWORD --type string
-```
+   ```bash
+   eas secret:create --scope project --name EXPO_APPLE_PASSWORD --value YOUR_APPLE_PASSWORD --type string
+   ```
 
-In place of YOUR_APPLE_PASSWORD provide your apple password.
+   In place of YOUR_APPLE_PASSWORD provide your apple password.
 
-</li>
-<li>
-Start the submission process, in project dir run the following command:
+   You can also add `EXPO_APPLE_PASSWORD` to `.env` file and when doing deploy it will be added automatically
 
-```bash
-eas submit -p ios --latest
-```
+6. Start the submission process, in project dir run the following command:
 
-If you want to submit a different build than the latest one, you can run:
+   ```bash
+   eas submit -p ios --latest
+   ```
 
-```bash
-eas submit -p ios --id your_build_id
-```
+   If you want to submit a different build than the latest one, you can run:
 
-Where in place of your_build_id you could pass the id of the build from the build list (previous step).
+   ```bash
+   eas submit -p ios --id your_build_id
+   ```
 
-CONGRATULATIONS !! 🥳🥳 You have just started your first iOS build submission!
+   Where in place of your_build_id you could pass the id of the build from the build list (previous step).
+
+**CONGRATULATIONS !! 🥳🥳 You have just started your first iOS build submission!**
+
+</Details>
 
 </li>
+
 </ol>
 
 ---
