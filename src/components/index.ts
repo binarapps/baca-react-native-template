@@ -1,5 +1,6 @@
 export * from './molecules'
 export * from './organisms'
+export * from './wrappers'
 
 export * from './AppLoading'
 export * from './CompanyLogo'

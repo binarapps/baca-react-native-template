@@ -12,7 +12,7 @@ type SignInFormValues = AuthEmailLoginDto & {
 
 const defaultValues: SignInFormValues = {
   // TODO: Reset this values when building production app
-  email: 'l.jeziorski+user@binarapps.com',
+  email: 'm.baumruck+user@binarapps.com',
   password: 'Qwerty1!',
   confirm: false,
 }
