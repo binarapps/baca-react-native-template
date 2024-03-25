@@ -3,25 +3,6 @@ import * as dotenv from 'dotenv'
 
 dotenv.config()
 
-const environments = {
-  prod: 'production',
-  stg: 'staging',
-  qa: 'qa',
-} as const
-
-export const envValues = Object.values(environments)
-export type Environments = (typeof envValues)[number]
-
-const adaptiveIconPath = './assets/icons/android/adaptive-icon-'
-const appIconPath = './assets/icons/ios/icon-'
-const faviconPath = './assets/icons/web/favicon-'
-
-const IS_DEV = process.env.IS_DEV === '1'
-
-const runtimeVersion = { policy: IS_DEV ? 'sdkVersion' : 'appVersion' } as const
-
-type Setup = { [key in Environments]: string }
-
 // https://patorjk.com/software/taag/#p=display&h=0&v=0&c=c&f=ANSI%20Regular&t=CONFIG
 /***
  *     ██████  ██████  ███    ██ ███████ ██  ██████
@@ -64,6 +45,25 @@ const universalLinks = ['https://baca-six.vercel.app']
  *
  */
 // Please make sure you know what are you doing when you make some changes on the bottom
+
+const environments = {
+  prod: 'production',
+  stg: 'staging',
+  qa: 'qa',
+} as const
+
+export const envValues = Object.values(environments)
+export type Environments = (typeof envValues)[number]
+
+const adaptiveIconPath = './assets/icons/android/adaptive-icon-'
+const appIconPath = './assets/icons/ios/icon-'
+const faviconPath = './assets/icons/web/favicon-'
+
+const IS_DEV = process.env.IS_DEV === '1'
+
+const runtimeVersion = { policy: IS_DEV ? 'sdkVersion' : 'appVersion' } as const
+
+type Setup = { [key in Environments]: string }
 
 export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   adaptiveIconBackgroundColor: {
