@@ -11,13 +11,9 @@ const navigateToLogin = () => {
 export const ResetPasswordLinkSentScreen = () => {
   const { t } = useTranslation()
 
-  // useScreenOptions({
-  //   title: t('navigation.screen_titles.forgot_password'),
-  // })
-
   const { email } = useLocalSearchParams<{ email?: string }>()
 
-  const { reset, submit } = useForgotPasswordForm({
+  const { isSubmitting, reset, submit } = useForgotPasswordForm({
     onSuccess: () => {
       showSuccessToast({ description: 'Password link resend' })
     },
@@ -51,6 +47,7 @@ export const ResetPasswordLinkSentScreen = () => {
         <Row alignItems="center">
           <Text.SmRegular>{t('reset_password_link_sent_screen.did_not_receive')}</Text.SmRegular>
           <Button.LinkColor
+            loading={isSubmitting}
             onPress={submit}
             size="md"
             title={t('reset_password_link_sent_screen.click_to_resend')}

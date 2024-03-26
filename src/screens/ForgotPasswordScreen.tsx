@@ -9,7 +9,7 @@ export const ForgotPasswordScreen = () => {
 
   const { email } = useLocalSearchParams<{ email?: string }>()
 
-  const { control, errors, reset, submit } = useForgotPasswordForm({})
+  const { control, errors, isSubmitting, reset, submit } = useForgotPasswordForm({})
 
   useEffect(() => {
     if (email) {
@@ -51,7 +51,7 @@ export const ForgotPasswordScreen = () => {
           testID="emailInput"
         />
         <Spacer y={6} />
-        <Button onPress={submit} size="lg" w="full">
+        <Button loading={isSubmitting} onPress={submit} size="lg" w="full">
           {t('forgot_password_screen.reset_password')}
         </Button>
         <Spacer y={4} />
