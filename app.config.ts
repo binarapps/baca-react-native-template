@@ -27,7 +27,7 @@ export const APP_CONFIG = {
 } as const
 // APP_CONFIG_END
 
-const universalLinks = ['https://baca-six.vercel.app']
+const universalLinks = ['https://baca-six.vercel.app', 'https://binarapps.online']
 
 /***
  *    ██████  ██    ██ ███    ██  █████  ███    ███ ██  ██████
@@ -108,16 +108,17 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   },
 } as const
 
-const associatedDomains = universalLinks.map((link) => link.replace('https://', 'applinks:'))
-const intentFilters = universalLinks.map((link) => ({
-  action: 'VIEW',
-  autoVerify: true,
-  data: [''].map(() => ({
-    scheme: 'https',
-    host: link.replace('https://', ''),
-  })),
-  category: ['BROWSABLE', 'DEFAULT'],
-}))
+const associatedDomains = universalLinks.map((link) => link.replace('https://', 'applinks:')) || []
+const intentFilters =
+  universalLinks.map((link) => ({
+    action: 'VIEW',
+    autoVerify: true,
+    data: [''].map(() => ({
+      scheme: 'https',
+      host: link.replace('https://', ''),
+    })),
+    category: ['BROWSABLE', 'DEFAULT'],
+  })) || []
 
 export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
   const ENVIRONMENT_NAME = (process.env.ENVIRONMENT_NAME || 'qa') as Environments
