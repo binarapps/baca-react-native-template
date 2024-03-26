@@ -3,6 +3,7 @@
     "add": "Dodaj",
     "back": "Cofnij",
     "cancel": "Anuluj",
+    "continue": "Kontynuuj",
     "go_back": "Cofnij",
     "remove": "Usuń",
     "save": "Zapisz",
@@ -30,12 +31,14 @@
     },
     "errors": {},
     "labels": {
+      "confirm_password": "Potwierdź hasło",
       "email": "Adres e-mail",
       "first_name": "Imię",
       "last_name": "Nazwisko",
       "password": "Hasło"
     },
     "placeholders": {
+      "confirm_password": "Potwierdź hasło",
       "create_password": "Utwórz nowe hasło",
       "email": "Podaj adres e-mail",
       "first_name": "Podaj swoje imię",
@@ -46,6 +49,7 @@
     "validation": {
       "invalid_email_format": "Niepoprawny format adresu e-mail",
       "invalid_password_format": "Hasło musi zawierać minimum: 8 znaków, jedną wielką literę, jedną małą literę, jedną cyfrę i jeden znak specjalny",
+      "passwords_does_not_match": "Wprowadzone hasła nie są identyczne",
       "required": "Pole wymagane"
     }
   },
@@ -185,12 +189,21 @@
     "go_to_blog": "Otwórz blog",
     "go_to_form": "Otwórz pełno ekranowy formularz full"
   },
+  "reset_password_complete": {
+    "password_reset": "Reset hasła",
+    "password_successfully_reset": "Twoje hasło zostało pomyślnie zresetowane. Kliknij poniżej aby się zalogować."
+  },
   "reset_password_link_sent_screen": {
     "check_email": "Sprawdź skrzynkę e-mail",
     "click_to_resend": "Wyślij ponownie",
     "did_not_receive": "Nie otrzymałeś wiadomości e-mail?",
     "open_email_app": "Otwórz aplikację e-mail",
     "we_sent_link": "Wysłaliśmy link resetujący hasło na"
+  },
+  "reset_password_screen": {
+    "reset_password": "Reset hasła",
+    "set_new_password": "Ustaw nowe hasło",
+    "welcome_back": "Witaj ponownie! Proszę wprowadź dane."
   },
   "settings_screen": {
     "current_theme": "Current theme: {{theme}}",
@@ -226,9 +239,9 @@
       "interests": "Zaznacz przynajmniej 1 zainteresowanie",
       "music": "Zaznacz przynajmniej 1 rodzaj muzyki",
       "name": "Imie jest wymagane",
-      "phone_format": "Numer telefonu musi byc w formacie 000-000-000",
+      "phone_format": "Numer telefonu musi być w formacie 000-000-000",
       "phone": "Number telefonu jest wymagany",
-      "postalCode_format": "Kod pocztowy musi byc w formacie 00-000",
+      "postalCode_format": "Kod pocztowy musi być w formacie 00-000",
       "postalCode": "Kod pocztowy jest wymagany",
       "sex": "Płeć jest wymagana",
       "shoeSize": "Rozmiar buta jest wymagany",

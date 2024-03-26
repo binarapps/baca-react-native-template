@@ -3,6 +3,7 @@
     "add": "Add",
     "back": "Back",
     "cancel": "Cancel",
+    "continue": "Continue",
     "go_back": "Go back",
     "remove": "Remove",
     "save": "Save",
@@ -30,12 +31,14 @@
     },
     "errors": {},
     "labels": {
+      "confirm_password": "Confirm password",
       "email": "E-mail address",
       "first_name": "First name",
       "last_name": "Last name",
       "password": "Password"
     },
     "placeholders": {
+      "confirm_password": "Confirm password",
       "create_password": "Create a password",
       "email": "Enter your email",
       "first_name": "Enter your first name",
@@ -46,6 +49,7 @@
     "validation": {
       "invalid_email_format": "Incorrect e-mail address format",
       "invalid_password_format": "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+      "passwords_does_not_match": "Passwords does not match",
       "required": "This field is required"
     }
   },
@@ -186,12 +190,21 @@
     "login_cta": "Log in",
     "sign_up": "Sign up"
   },
+  "reset_password_complete": {
+    "password_reset": "Password reset",
+    "password_successfully_reset": "Your password has been successfully reset. Click below to log in magically."
+  },
   "reset_password_link_sent_screen": {
     "check_email": "Check your email",
     "click_to_resend": "Click to resend",
     "did_not_receive": "Didn’t receive the email?",
     "open_email_app": "Open email app",
     "we_sent_link": "We sent a password reset link to"
+  },
+  "reset_password_screen": {
+    "reset_password": "Reset password",
+    "set_new_password": "Set new password",
+    "welcome_back": "Welcome back! Please enter your details."
   },
   "settings_screen": {
     "copy_push_token": "Copy push token",
