@@ -1,4 +1,4 @@
-import { useColorScheme } from '@baca/contexts'
+import { useTheme } from '@baca/hooks'
 import { IconNames } from '@baca/types/icon'
 import { getColorValue } from '@baca/utils'
 import {
@@ -28,7 +28,6 @@ import {
   buttonSizeVariants,
   buttonVariants,
   getButtonShadowStyle,
-  theme,
 } from '../../config'
 import { generateStyledComponent } from '../../utils'
 import { Icon } from '../Icon'
@@ -84,7 +83,7 @@ const RawButton = memo(
       },
       ref
     ) => {
-      const { colorScheme } = useColorScheme()
+      const { colors } = useTheme()
       const { hoverProps, isHovered } = useHover()
       const { hoveredStyle, defaultStyle, disabledStyle } = useMemo(
         () => buttonVariants[variant],
@@ -99,76 +98,66 @@ const RawButton = memo(
         () => ({
           backgroundColor: getColorValue({
             color: hoveredStyle.backgroundColor,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
           borderColor: getColorValue({
             color: hoveredStyle.borderColor!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
           borderWidth: hoveredStyle.borderWidth,
         }),
-        [
-          colorScheme,
-          hoveredStyle.backgroundColor,
-          hoveredStyle.borderColor,
-          hoveredStyle.borderWidth,
-        ]
+        [colors, hoveredStyle.backgroundColor, hoveredStyle.borderColor, hoveredStyle.borderWidth]
       )
 
       const hoverColorStyle = useMemo<TextStyle>(
         () => ({
           color: getColorValue({
             color: hoveredStyle.color!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
         }),
-        [colorScheme, hoveredStyle.color]
+        [colors, hoveredStyle.color]
       )
 
       const defaultStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
             color: defaultStyle.backgroundColor,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
           borderColor: getColorValue({
             color: defaultStyle.borderColor!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
           borderWidth: defaultStyle.borderWidth,
         }),
-        [
-          colorScheme,
-          defaultStyle.backgroundColor,
-          defaultStyle.borderColor,
-          defaultStyle.borderWidth,
-        ]
+        [colors, defaultStyle.backgroundColor, defaultStyle.borderColor, defaultStyle.borderWidth]
       )
 
       const defaultColorStyle = useMemo<TextStyle>(
         () => ({
           color: getColorValue({
             color: defaultStyle.color!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
         }),
-        [colorScheme, defaultStyle.color]
+        [colors, defaultStyle.color]
       )
 
       const disabledStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
             color: disabledStyle.backgroundColor,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
           borderColor: getColorValue({
             color: disabledStyle.borderColor!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
           borderWidth: disabledStyle.borderWidth,
         }),
         [
-          colorScheme,
+          colors,
           disabledStyle.backgroundColor,
           disabledStyle.borderColor,
           disabledStyle.borderWidth,
@@ -179,10 +168,10 @@ const RawButton = memo(
         () => ({
           color: getColorValue({
             color: disabledStyle.color!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
         }),
-        [colorScheme, disabledStyle.color]
+        [colors, disabledStyle.color]
       )
       const buttonSizeVariant = buttonSizeVariants[size]
 
@@ -261,10 +250,11 @@ const RawButton = memo(
           if (title) {
             return (
               <Text
-                variant={buttonSizeVariant.textVariant}
                 allowFontScaling={false}
+                selectable={false}
                 style={pressableTextStyleFunction(props)}
                 textAlign="center"
+                variant={buttonSizeVariant.textVariant}
               >
                 {title}
               </Text>
@@ -273,10 +263,11 @@ const RawButton = memo(
           if (typeof children === 'string') {
             return (
               <Text
-                variant={buttonSizeVariant.textVariant}
                 allowFontScaling={false}
+                selectable={false}
                 style={pressableTextStyleFunction(props)}
                 textAlign="center"
+                variant={buttonSizeVariant.textVariant}
               >
                 {children}
               </Text>
@@ -298,7 +289,11 @@ const RawButton = memo(
           {...{ ...hoverProps, ref, ...props }}
         >
           {loading ? (
-            <Loader type="default" size={24} />
+            <Loader
+              color={colors.button.primary.bg}
+              size={buttonSizeVariant.iconSize}
+              type="default"
+            />
           ) : (
             (props: PressableStateCallbackType) => (
               <Row gap={buttonSizeVariant.iconGap}>
@@ -326,7 +321,7 @@ const Button = generateStyledComponent<ButtonProps, typeof Pressable>(
 ) as ButtonComposition
 
 const generateButtonVariant = (variant: ButtonVariant) =>
-  forwardRef<View, ButtonProps>((props, ref) => <Button variant={variant} {...props} ref={ref} />)
+  forwardRef<View, ButtonProps>((props, ref) => <Button {...{ ...props, ref, variant }} />)
 
 Button.Primary = generateButtonVariant('Primary')
 Button.PrimaryDestructive = generateButtonVariant('PrimaryDestructive')
