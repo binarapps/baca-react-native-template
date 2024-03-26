@@ -299,7 +299,7 @@ const RawButton = memo(
               <Row gap={buttonSizeVariant.iconGap}>
                 {leftIconName && iconElement(props, leftIconName)}
                 {childrenElement(props)}
-                {rightIconName && iconElement(props, leftIconName)}
+                {rightIconName && iconElement(props, rightIconName)}
               </Row>
             )
           )}
