@@ -14,18 +14,16 @@ type ApiErrorType = {
   statusCode: number
 
   errors: never
-  status: never
 }
 
 type FormErrorType = {
   errors?: {
     [key: string]: string[]
   }
-  status: number
+  statusCode: number
 
   error: never
   message: never
-  statusCode: never
 }
 
 export type ApiError = ApiErrorType | FormErrorType
@@ -50,7 +48,6 @@ AXIOS_INSTANCE.interceptors.response.use(
     return response
   },
   async (error: AxiosError<ApiError>) => {
-    console.log('ERRRRRR DUPA ERRR', error)
     // handle FormErrorType
     const formErrors = error?.response?.data?.errors
 
