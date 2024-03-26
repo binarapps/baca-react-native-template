@@ -16,7 +16,8 @@
     "missing_auth": "Brak autoryzacji",
     "screen_not_found": "NotFound screen",
     "something_went_wrong": "Coś poszło nie tak",
-    "token_expired": "Token wygasł"
+    "token_expired": "Token wygasł",
+    "to_may_requests": "Zbyt wiele prób, spróbuj ponownie za kilka minut"
   },
   "examples_component": {
     "example": "Przykład"

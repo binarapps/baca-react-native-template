@@ -42,6 +42,11 @@ AXIOS_INSTANCE.interceptors.response.use(
       throw formErrors
     }
 
+    if (error.response?.status === 429) {
+      showErrorToast({ title: 'ERROR', description: i18n.t('errors.to_may_requests') })
+      return
+    }
+
     // TODO: we should handle certain error type
     if (errorMessage) {
       showErrorToast({ title: 'ERROR', description: i18n.t('errors.something_went_wrong') })

@@ -16,7 +16,8 @@
     "missing_auth": "Missing auth",
     "screen_not_found": "NotFound screen",
     "something_went_wrong": "Something went wrong",
-    "token_expired": "Token expired"
+    "token_expired": "Token expired",
+    "to_may_requests": "To many request. Please try again after few minutes"
   },
   "examples_component": {
     "example": "Example"
