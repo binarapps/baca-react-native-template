@@ -17,24 +17,16 @@
         "autoIncrement": true,
         "buildType": "apk"
       },
-      "channel": "staging",
-      "distribution": "store",
-      "ios": {
-        "autoIncrement": "buildNumber"
-      },
-      "node": "18.15.0"
+      "extends": "production",
+      "channel": "staging"
     },
     "qa": {
       "android": {
         "autoIncrement": true,
         "buildType": "apk"
       },
-      "channel": "qa",
-      "distribution": "store",
-      "ios": {
-        "autoIncrement": "buildNumber"
-      },
-      "node": "18.15.0"
+      "extends": "production",
+      "channel": "qa"
     }
   },
   "cli": {
