@@ -1,8 +1,9 @@
-import { Box, TouchableProps, ScrollView, Pressable } from '@baca/design-system/components'
+import { useColorScheme } from '@baca/contexts'
+import { Box, TouchableProps, ScrollView, Pressable } from '@baca/design-system'
 import { useRef, useState, useMemo, useTheme, useCallback } from '@baca/hooks'
 import { Portal } from '@gorhom/portal'
 import React, { NamedExoticComponent, PropsWithChildren, memo } from 'react'
-import { View, Modal } from 'react-native'
+import { View, Modal, Dimensions } from 'react-native'
 
 import { MenuItem } from '../../molecules/MenuItem'
 
@@ -15,7 +16,7 @@ type TriggerPosition = {
 type TriggerState = {
   isOpen: boolean
 }
-type MenuProps = {
+export type MenuProps = {
   trigger: (props: TouchableProps, state: TriggerState) => JSX.Element
   onOpen?: () => void
   onClose?: () => void
@@ -47,6 +48,7 @@ const Menu = memo<MenuProps>(
     placement = 'bottomLeft',
     ...props
   }) => {
+    const { colorScheme } = useColorScheme()
     const { shadows } = useTheme()
     const _modalRef = useRef<Modal>(null)
     const _triggerContainer = useRef<View>(null)
@@ -120,12 +122,19 @@ const Menu = memo<MenuProps>(
             visible={isOpen}
             onRequestClose={handleClose}
           >
-            <Pressable onPress={handleClose} flex={1} bg="Base.black" bgOpacity={0.1}>
+            <Pressable
+              onPress={handleClose}
+              flex={1}
+              bg={colorScheme === 'light' ? 'Base.black' : 'Base.white'}
+              bgOpacity={0.2}
+            >
               {triggerPosition && (
                 <Box
                   position="absolute"
                   top={triggerPosition?.y}
-                  left={triggerPosition?.x}
+                  {...(placement.toLocaleLowerCase().includes('right')
+                    ? { right: Dimensions.get('window').width - triggerPosition?.x }
+                    : { left: triggerPosition?.x })}
                   p={2}
                   backgroundColor="bg.primary"
                   borderRadius={4}

@@ -18,7 +18,7 @@ export const BoxWithShadow: FC<PropsWithChildren<BoxWithShadowProps>> = ({
   ...rest
 }) => {
   const shadowProps = useMemo(
-    () => (isInvalid ? errorShadow : isFocused ? focusShadow : {}),
+    () => (isInvalid && isFocused ? errorShadow : isFocused ? focusShadow : {}),
     [isInvalid, isFocused]
   )
 

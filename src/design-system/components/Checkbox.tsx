@@ -97,7 +97,7 @@ export const Checkbox = forwardRef<View, CheckboxProps>(
               <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
             ) : null}
           </Box>
-          <Text>{checkboxText}</Text>
+          <Text.SmRegular>{checkboxText}</Text.SmRegular>
         </View>
       </Pressable>
     )

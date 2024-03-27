@@ -1,30 +1,35 @@
-import { ControlledField, KeyboardAwareScrollView } from '@baca/components'
-import { Button, Center, Spacer } from '@baca/design-system'
-import { useScreenOptions, useSignUpForm, useTranslation } from '@baca/hooks'
-import { useCallback, useEffect } from 'react'
+import { CompanyLogo, ControlledField, FormWrapper } from '@baca/components'
+import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
+import { useSignUpForm, useTranslation } from '@baca/hooks'
+import { router } from 'expo-router'
+import { useCallback } from 'react'
+import { Keyboard } from 'react-native'
+
+const navigateToLogIn = () => {
+  router.navigate('/sign-in')
+}
 
 export const SignUpScreen = () => {
   const { t } = useTranslation()
 
-  useScreenOptions({
-    title: t('navigation.screen_titles.sign_up'),
-  })
-
   const { control, errors, register, isSubmitting, setFocus } = useSignUpForm()
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFocus('firstName')
-    }, 500)
-  }, [setFocus])
 
   const focusLastNameInput = useCallback(() => setFocus('lastName'), [setFocus])
   const focusEmailInput = useCallback(() => setFocus('email'), [setFocus])
   const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (
-    <KeyboardAwareScrollView>
-      <Center flex={1} flexGrow={1} px={8}>
+    <FormWrapper>
+      <Center>
+        <Spacer y={16} />
+        <CompanyLogo height={50} type="binar" />
+        <Spacer y={8} />
+        <Display.SmSemibold>{t('sign_up_screen.sign_up')}</Display.SmSemibold>
+        <Spacer y={3} />
+        <Text.MdRegular color="text.tertiary" textAlign="center" lineHeight="lg">
+          {t('sign_up_screen.start_free_trail')}
+        </Text.MdRegular>
+        <Spacer y={8} />
         <ControlledField.Input
           {...{ control, errors }}
           autoCapitalize="none"
@@ -74,39 +79,49 @@ export const SignUpScreen = () => {
           enterKeyHint="next"
           isRequired
           label={t('form.labels.password')}
-          mb={16}
           name="password"
-          onSubmitEditing={register}
+          onSubmitEditing={Keyboard.dismiss}
           placeholder={t('form.placeholders.create_password')}
           rules={{
             required: t('form.validation.required'),
           }}
           type="password"
         />
-        <Spacer y={2} />
-        <ControlledField.Checkbox
-          {...{ control, errors }}
-          checkboxText={t('form.checkbox.privacy_policy')}
-          isRequired
-          name="privacyPolicyAccepted"
-          rules={{
-            required: t('form.validation.required'),
-          }}
-        />
-        <ControlledField.Checkbox
-          {...{ control, errors }}
-          checkboxText={t('form.checkbox.terms_accepted')}
-          isRequired
-          name="termsAccepted"
-          rules={{
-            required: t('form.validation.required'),
-          }}
-        />
+        <Box gap={4} my={6} w="full">
+          <ControlledField.Checkbox
+            {...{ control, errors }}
+            checkboxText={t('form.checkbox.privacy_policy')}
+            isRequired
+            name="privacyPolicyAccepted"
+            rules={{
+              required: t('form.validation.required'),
+            }}
+          />
+          <ControlledField.Checkbox
+            {...{ control, errors }}
+            checkboxText={t('form.checkbox.terms_accepted')}
+            isRequired
+            name="termsAccepted"
+            rules={{
+              required: t('form.validation.required'),
+            }}
+          />
+        </Box>
+
         <Spacer y={4} />
-        <Button disabled={isSubmitting} loading={isSubmitting} onPress={register}>
-          {t('sign_up_screen.sign_up')}
+        <Button loading={isSubmitting} onPress={register} w="full">
+          {t('sign_up_screen.get_started')}
         </Button>
+        <Spacer y={4} />
+        <Row alignItems="center">
+          <Text.SmRegular color="text.tertiary">
+            {t('sign_in_screen.do_not_have_an_account')}
+          </Text.SmRegular>
+          <Button.LinkColor onPress={navigateToLogIn} size="sm">
+            {t('sign_up_screen.log_in')}
+          </Button.LinkColor>
+        </Row>
       </Center>
-    </KeyboardAwareScrollView>
+    </FormWrapper>
   )
 }

@@ -3,6 +3,7 @@
     "add": "Add",
     "back": "Back",
     "cancel": "Cancel",
+    "continue": "Continue",
     "go_back": "Go back",
     "remove": "Remove",
     "save": "Save",
@@ -16,7 +17,8 @@
     "missing_auth": "Missing auth",
     "screen_not_found": "NotFound screen",
     "something_went_wrong": "Something went wrong",
-    "token_expired": "Token expired"
+    "token_expired": "Token expired",
+    "to_may_requests": "To many request. Please try again after few minutes"
   },
   "examples_component": {
     "example": "Example"
@@ -29,12 +31,14 @@
     },
     "errors": {},
     "labels": {
+      "confirm_password": "Confirm password",
       "email": "E-mail address",
       "first_name": "First name",
       "last_name": "Last name",
       "password": "Password"
     },
     "placeholders": {
+      "confirm_password": "Confirm password",
       "create_password": "Create a password",
       "email": "Enter your email",
       "first_name": "Enter your first name",
@@ -45,6 +49,7 @@
     "validation": {
       "invalid_email_format": "Incorrect e-mail address format",
       "invalid_password_format": "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+      "passwords_does_not_match": "Passwords does not match",
       "required": "This field is required"
     }
   },
@@ -64,10 +69,12 @@
       "details": "Details",
       "examples_stack": "Examples",
       "examples": "Examples",
+      "forgot_password": "Forgot password",
       "home_stack": "Home",
       "home": "Home",
       "main_tab": "MainTab",
       "not_found": "Not Found",
+      "resetLinkSent": "Reset link sent",
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
@@ -168,6 +175,12 @@
     "go_to_typography": "Go to Typography",
     "header": "This is Example screen"
   },
+  "forgot_password_screen": {
+    "back_to_login": "Back to login",
+    "forgot_password": "Forgot password?",
+    "no_worries": "No worries, we’ll send you reset instructions.",
+    "reset_password": "Reset password"
+  },
   "home_screen": {
     "details": "Details"
   },
@@ -177,6 +190,22 @@
     "login_cta": "Log in",
     "sign_up": "Sign up"
   },
+  "reset_password_complete": {
+    "password_reset": "Password reset",
+    "password_successfully_reset": "Your password has been successfully reset. Click below to log in magically."
+  },
+  "reset_password_link_sent_screen": {
+    "check_email": "Check your email",
+    "click_to_resend": "Click to resend",
+    "did_not_receive": "Didn’t receive the email?",
+    "open_email_app": "Open email app",
+    "we_sent_link": "We sent a password reset link to"
+  },
+  "reset_password_screen": {
+    "reset_password": "Reset password",
+    "set_new_password": "Set new password",
+    "welcome_back": "Welcome back! Please enter your details."
+  },
   "settings_screen": {
     "copy_push_token": "Copy push token",
     "current_theme": "Current theme: {{theme}}",
@@ -185,11 +214,17 @@
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Don't have an account?",
+    "forgot_password": "Forgot password",
     "sign_in": "Sign in",
-    "sign_up": "Sign up"
+    "sign_up": "Sign up",
+    "welcome_back": "Welcome back",
+    "welcome_back_enter_details": "Welcome back! Please enter your details"
   },
   "sign_up_screen": {
-    "sign_up": "Sign up"
+    "get_started": "Get started",
+    "log_in": "Log in",
+    "sign_up": "Sign up",
+    "start_free_trail": "Start your 30-day free trial."
   },
   "test_form": {
     "additional_comment": "Additional comment",

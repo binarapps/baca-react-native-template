@@ -24,7 +24,7 @@ const showCustomToast = ({
       error: i18n.t('toast.title.error'),
       info: i18n.t('toast.title.info'),
       warning: i18n.t('toast.title.warning'),
-      success: i18n.t('toast.title.warning'),
+      success: i18n.t('toast.title.success'),
     }[variant]
 
   notify(variant, {

@@ -88,7 +88,7 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
     )
 
     return (
-      <Box {...layoutProps} width="100%" mb="2">
+      <Box width="100%" mb="2" {...layoutProps}>
         <Pressable onPress={handleFocus}>
           <FormLabel {...{ isRequired, label, labelStyle }} />
           <BaseInput

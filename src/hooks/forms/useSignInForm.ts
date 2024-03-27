@@ -27,6 +27,7 @@ export const useSignInForm = () => {
   const {
     control,
     formState: { errors },
+    getValues,
     handleSubmit,
     setError: setFormError,
     setFocus,
@@ -65,10 +66,11 @@ export const useSignInForm = () => {
   }
 
   return {
-    submit: handleSubmit(onSubmit),
-    isSubmitting,
     control,
     errors,
+    getValues,
+    isSubmitting,
     setFocus,
+    submit: handleSubmit(onSubmit),
   }
 }

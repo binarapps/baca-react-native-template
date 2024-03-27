@@ -63,6 +63,7 @@ exports[`Button renders correctly 1`] = `
   >
     <Text
       allowFontScaling={false}
+      selectable={false}
       style={
         {
           "color": "#FFFFFF",

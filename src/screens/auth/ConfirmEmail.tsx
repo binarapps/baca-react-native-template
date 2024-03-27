@@ -9,7 +9,7 @@ const navigateToSignIn = () => router.replace('/sign-in')
 
 export const ConfirmEmail = () => {
   const { t } = useTranslation()
-  const { code } = useLocalSearchParams<{ code: string }>()
+  const { hash } = useLocalSearchParams<{ hash: string }>()
 
   const {
     isError,
@@ -30,8 +30,8 @@ export const ConfirmEmail = () => {
         }
       }
     }
-    confirmFn(code)
-  }, [code, confirmEmailMutation])
+    confirmFn(hash)
+  }, [hash, confirmEmailMutation])
 
   return (
     <Center flexGrow={1}>

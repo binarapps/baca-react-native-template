@@ -1,10 +1,8 @@
 import { useArticlesControllerFindAll } from '@baca/api/query/articles/articles'
-import { darkLogo, lightLogo } from '@baca/constants'
-import { useColorScheme } from '@baca/contexts'
-import { Button, Center, Spacer, Text } from '@baca/design-system'
+import { CompanyLogo } from '@baca/components'
+import { Button, Center, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
-import { Image, StyleSheet } from 'react-native'
 
 export const HomeScreen = () => {
   const { t } = useTranslation()
@@ -12,8 +10,6 @@ export const HomeScreen = () => {
   useScreenOptions({
     title: t('navigation.screen_titles.home'),
   })
-
-  const { colorScheme } = useColorScheme()
 
   useArticlesControllerFindAll({ page: 1, pageSize: 10 })
 
@@ -33,13 +29,7 @@ export const HomeScreen = () => {
 
   return (
     <Center flex={1} px={4}>
-      <Image
-        resizeMethod="resize"
-        resizeMode="contain"
-        source={colorScheme === 'light' ? lightLogo : darkLogo}
-        style={styles.logo}
-      />
-      <Spacer y={4} />
+      <CompanyLogo />
       <Text.MdBold textAlign="center">{t('hello')}</Text.MdBold>
       <Text.MdRegular textAlign="center">{t('thanks')}</Text.MdRegular>
       <Text.MdRegular textAlign="center">{t('app_information')}</Text.MdRegular>
@@ -55,10 +45,3 @@ export const HomeScreen = () => {
     </Center>
   )
 }
-
-const styles = StyleSheet.create({
-  logo: {
-    height: 50,
-    width: '100%',
-  },
-})

@@ -8,12 +8,25 @@ import qs from 'qs'
 
 import { injectTokenToRequest } from './interceptors'
 
-export type ApiError = {
-  error?: string
+type ApiErrorType = {
+  error: string
+  message: string
+  statusCode: number
+
+  errors: never
+}
+
+type FormErrorType = {
   errors?: {
     [key: string]: string[]
   }
+  statusCode: number
+
+  error: never
+  message: never
 }
+
+export type ApiError = ApiErrorType | FormErrorType
 
 export const baseURL = ENV.API_URL
 
@@ -35,16 +48,24 @@ AXIOS_INSTANCE.interceptors.response.use(
     return response
   },
   async (error: AxiosError<ApiError>) => {
-    const errorMessage = error?.response?.data?.error
+    // handle FormErrorType
     const formErrors = error?.response?.data?.errors
 
     if (formErrors) {
       throw formErrors
     }
 
+    // handle ApiErrorType
+    const errorMessage = error?.response?.data?.message
+
+    if (error.response?.status === 429) {
+      showErrorToast({ description: i18n.t('errors.to_may_requests') })
+      return
+    }
+
     // TODO: we should handle certain error type
     if (errorMessage) {
-      showErrorToast({ title: 'ERROR', description: i18n.t('errors.something_went_wrong') })
+      showErrorToast({ description: errorMessage })
       //CONFIG: Add errors in getApiError
       const api_error = getApiError(errorMessage)
 
