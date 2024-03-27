@@ -1,36 +1,20 @@
 import {
   CompanyLogo,
   ControlledField,
-  KeyboardAwareScrollView,
+  FormWrapper,
   LanguagePicker,
   Version,
 } from '@baca/components'
-import { REGEX } from '@baca/constants'
-import { Box, Button, Center, Row, Spacer, Text } from '@baca/design-system'
-import {
-  useCallback,
-  useSignInForm,
-  useTranslation,
-  useEffect,
-  useScreenOptions,
-} from '@baca/hooks'
+import { REGEX, isWeb } from '@baca/constants'
+import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
+import { useCallback, useSignInForm, useTranslation } from '@baca/hooks'
 import { useRouter } from 'expo-router'
 
 export const SignInScreen = (): JSX.Element => {
   const { push } = useRouter()
   const { t } = useTranslation()
 
-  useScreenOptions({
-    title: t('navigation.screen_titles.sign_in'),
-  })
-
   const { control, errors, submit, getValues, isSubmitting, setFocus } = useSignInForm()
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFocus('email')
-    }, 500)
-  }, [setFocus])
 
   const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
   const navigateToAppInfo = useCallback(() => push('/application-info'), [push])
@@ -41,13 +25,29 @@ export const SignInScreen = (): JSX.Element => {
   const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (
-    <KeyboardAwareScrollView>
-      <Box alignItems="flex-end" pr={8}>
-        <LanguagePicker />
-      </Box>
-      <Center p={8}>
-        <Spacer y={16} />
+    <FormWrapper keyboardAwareProps={{ contentContainerStyle: { maxWidth: 'full' } }}>
+      {isWeb ? (
+        <Box mr={4}>
+          <Spacer y={4} />
+          <Box alignItems="flex-end" h={8} w="full">
+            <LanguagePicker isWeb pickerPlacement="bottomRight" />
+          </Box>
+        </Box>
+      ) : null}
+      <Center alignSelf="center" maxWidth={360} width="full">
+        {!isWeb ? (
+          <Box alignItems="flex-end" h={8} w="full">
+            <LanguagePicker pickerPlacement="bottomRight" />
+          </Box>
+        ) : null}
+        <Spacer y={isWeb ? 4 : 8} />
         <CompanyLogo height={50} type="binar" />
+        <Spacer y={8} />
+        <Display.SmSemibold>{t('sign_in_screen.welcome_back')}</Display.SmSemibold>
+        <Spacer y={3} />
+        <Text.MdRegular color="text.tertiary" textAlign="center" lineHeight="lg">
+          {t('sign_in_screen.welcome_back_enter_details')}
+        </Text.MdRegular>
         <Spacer y={8} />
         <ControlledField.Input
           {...{ control, errors }}
@@ -100,24 +100,22 @@ export const SignInScreen = (): JSX.Element => {
           my={8}
           onPress={submit}
           testID="signInButton"
+          w="full"
         >
           {t('sign_in_screen.sign_in')}
         </Button>
-        <Text bold mb={4}>
-          {t('sign_in_screen.do_not_have_an_account')}
-        </Text>
-        <Button.LinkColor onPress={navigateToSignUp}>
-          {t('sign_in_screen.sign_up')}
-        </Button.LinkColor>
-
-        <Box mt={12} />
-        {/* TODO: Remove this after implementing signing in with backend  */}
-        <Text bold>Correct credentials</Text>
-        <Text color="text.primary" textAlign="center">
-          Email: test@example.com{'\n'}Password: 123456
-        </Text>
-        <Version onPress={navigateToAppInfo} />
+        <Row alignItems="center">
+          <Text.SmRegular color="text.tertiary">
+            {t('sign_in_screen.do_not_have_an_account')}
+          </Text.SmRegular>
+          <Button.LinkColor onPress={navigateToSignUp} size="sm">
+            {t('sign_in_screen.sign_up')}
+          </Button.LinkColor>
+        </Row>
       </Center>
-    </KeyboardAwareScrollView>
+      <Box alignItems="center" flexGrow={1} justifyContent="flex-end">
+        <Version onPress={navigateToAppInfo} />
+      </Box>
+    </FormWrapper>
   )
 }

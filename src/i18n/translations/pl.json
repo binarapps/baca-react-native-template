@@ -213,12 +213,16 @@
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",
     "forgot_password": "Nie pamiętam hasła",
-    "sign_in": "Zaloguj",
-    "sign_up": "Zarejestruj"
+    "sign_in": "Zaloguj się",
+    "sign_up": "Zarejestruj się",
+    "welcome_back": "Welcome back",
+    "welcome_back_enter_details": "Welcome back! Please enter your details"
   },
   "sign_up_screen": {
-    "created_new_account": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
-    "sign_up": "Zarejestruj"
+    "get_started": "Rozpoczynamy",
+    "log_in": "Zaloguj się",
+    "sign_up": "Zarejestruj się",
+    "start_free_trail": "Rozpocznij darmowy 30 dniowy okres próbny."
   },
   "test_form": {
     "additional_comment": "Dodatkowy komentarz",

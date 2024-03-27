@@ -216,10 +216,15 @@
     "do_not_have_an_account": "Don't have an account?",
     "forgot_password": "Forgot password",
     "sign_in": "Sign in",
-    "sign_up": "Sign up"
+    "sign_up": "Sign up",
+    "welcome_back": "Welcome back",
+    "welcome_back_enter_details": "Welcome back! Please enter your details"
   },
   "sign_up_screen": {
-    "sign_up": "Sign up"
+    "get_started": "Get started",
+    "log_in": "Log in",
+    "sign_up": "Sign up",
+    "start_free_trail": "Start your 30-day free trial."
   },
   "test_form": {
     "additional_comment": "Additional comment",

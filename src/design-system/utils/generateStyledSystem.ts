@@ -173,7 +173,6 @@ const generateLayoutsStyle = ({
 }: LayoutsProps): StyleProp<ViewStyle> => {
   return {
     position,
-    bottom,
     left,
     right,
     top,
