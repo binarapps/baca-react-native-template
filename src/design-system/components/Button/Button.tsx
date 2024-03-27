@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   baseText: {
     fontStyle: 'normal',
     fontWeight: '400',
-    letterSpacing: 0,
     lineHeight: 21,
   },
 })
