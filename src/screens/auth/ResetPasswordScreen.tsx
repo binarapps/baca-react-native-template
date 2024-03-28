@@ -1,7 +1,7 @@
 import { CompanyLogo, ControlledField, FeaturedIcon, FormWrapper } from '@baca/components'
-import { REGEX } from '@baca/constants'
 import { Button, Center, Display, Spacer, Text } from '@baca/design-system'
 import { useEffect, useResetPasswordForm, useTranslation } from '@baca/hooks'
+import { usePasswordValidation } from '@baca/hooks/usePasswordValidation'
 import { router, useLocalSearchParams } from 'expo-router'
 
 const navigateToLogin = () => {
@@ -13,6 +13,8 @@ export const ResetPasswordScreen = () => {
   const { hash } = useLocalSearchParams<{ hash: string }>()
 
   const { control, errors, isSubmitting, reset, submit } = useResetPasswordForm()
+
+  const { isPasswordError, passwordSuggestions, validationFn } = usePasswordValidation()
 
   useEffect(() => {
     if (hash) {
@@ -36,25 +38,22 @@ export const ResetPasswordScreen = () => {
         <Spacer y={8} />
 
         <ControlledField.Input
-          {...{ control, errors }}
+          {...{ control, errors: {} }}
           autoCapitalize="none"
           enterKeyHint="next"
           inputMode="text"
+          isInvalid={isPasswordError}
           isRequired
           label={t('form.labels.password')}
+          mb={5}
           name="password"
           onSubmitEditing={submit}
           placeholder={t('form.placeholders.password')}
-          rules={{
-            required: t('form.validation.required'),
-            pattern: {
-              value: REGEX.REGISTRATION_PASSWORD,
-              message: t('form.validation.invalid_password_format'),
-            },
-          }}
+          rules={{ validate: { validationFn } }}
           testID="passwordInput"
           type="password"
         />
+        {passwordSuggestions}
         <Spacer y={4} />
         <ControlledField.Input
           {...{ control, errors }}

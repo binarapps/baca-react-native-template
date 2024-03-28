@@ -5,6 +5,8 @@ import { router } from 'expo-router'
 import { useCallback } from 'react'
 import { Keyboard } from 'react-native'
 
+import { usePasswordValidation } from '../../hooks/usePasswordValidation'
+
 const navigateToLogIn = () => {
   router.navigate('/sign-in')
 }
@@ -13,6 +15,8 @@ export const SignUpScreen = () => {
   const { t } = useTranslation()
 
   const { control, errors, register, isSubmitting, setFocus } = useSignUpForm()
+
+  const { isPasswordError, passwordSuggestions, validationFn } = usePasswordValidation()
 
   const focusLastNameInput = useCallback(() => setFocus('lastName'), [setFocus])
   const focusEmailInput = useCallback(() => setFocus('email'), [setFocus])
@@ -74,19 +78,20 @@ export const SignUpScreen = () => {
           }}
         />
         <ControlledField.Input
-          {...{ control, errors }}
+          {...{ control, errors: {} }}
           autoCapitalize="none"
           enterKeyHint="next"
+          isInvalid={isPasswordError}
           isRequired
           label={t('form.labels.password')}
+          mb={5}
           name="password"
           onSubmitEditing={Keyboard.dismiss}
           placeholder={t('form.placeholders.create_password')}
-          rules={{
-            required: t('form.validation.required'),
-          }}
+          rules={{ validate: { validationFn } }}
           type="password"
         />
+        {passwordSuggestions}
         <Box gap={4} my={6} w="full">
           <ControlledField.Checkbox
             {...{ control, errors }}

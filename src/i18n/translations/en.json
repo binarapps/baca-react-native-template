@@ -48,7 +48,8 @@
     "select": {},
     "validation": {
       "invalid_email_format": "Incorrect e-mail address format",
-      "invalid_password_format": "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+      "password_min_1_special_char": "Must contain one special character ",
+      "password_min_8_chars": "Must be at least 8 characters",
       "passwords_does_not_match": "Passwords does not match",
       "required": "This field is required"
     }
