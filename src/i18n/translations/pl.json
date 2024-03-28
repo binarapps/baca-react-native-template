@@ -48,7 +48,8 @@
     "select": {},
     "validation": {
       "invalid_email_format": "Niepoprawny format adresu e-mail",
-      "invalid_password_format": "Hasło musi zawierać minimum: 8 znaków, jedną wielką literę, jedną małą literę, jedną cyfrę i jeden znak specjalny",
+      "password_min_1_special_char": "Musi zawierać co najmniej 1 znaj specjalny",
+      "password_min_8_chars": "Musi składać się z co najmniej 8 znaków",
       "passwords_does_not_match": "Wprowadzone hasła nie są identyczne",
       "required": "Pole wymagane"
     }
