@@ -215,8 +215,8 @@
     "forgot_password": "Nie pamiętam hasła",
     "sign_in": "Zaloguj się",
     "sign_up": "Zarejestruj się",
-    "welcome_back": "Welcome back",
-    "welcome_back_enter_details": "Welcome back! Please enter your details"
+    "welcome_back": "Witaj ponownie!",
+    "welcome_back_enter_details": "Proszę wprowadź dane."
   },
   "sign_up_screen": {
     "get_started": "Rozpoczynamy",
