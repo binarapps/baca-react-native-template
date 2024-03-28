@@ -2,7 +2,7 @@ import { useColorScheme } from '@baca/contexts'
 import { Box, TouchableProps, ScrollView, Pressable } from '@baca/design-system'
 import { useRef, useState, useMemo, useTheme, useCallback } from '@baca/hooks'
 import { Portal } from '@gorhom/portal'
-import React, { NamedExoticComponent, PropsWithChildren, memo } from 'react'
+import React, { NamedExoticComponent, PropsWithChildren, memo, useEffect } from 'react'
 import { View, Modal, Dimensions } from 'react-native'
 
 import { MenuItem } from '../../molecules/MenuItem'
@@ -56,41 +56,45 @@ const Menu = memo<MenuProps>(
     const [isOpen, setOpen] = useState(props.isOpen || false)
 
     const _measureTriggerPosition = useCallback(() => {
-      if (_triggerContainer.current) {
-        _triggerContainer.current?.measureInWindow((x, y, width, height) => {
-          switch (placement) {
-            case 'top':
-              setTriggerPosition({ x, y: y - height, width, height })
-              return
-            case 'topLeft':
-              setTriggerPosition({ x: x - width, y: y - height, width, height })
-              return
-            case 'topRight':
-              setTriggerPosition({ x: x + width, y: y - height, width, height })
-              return
-            case 'bottom':
-              setTriggerPosition({ x, y: y + height, width, height })
-              return
-            case 'bottomLeft':
-              setTriggerPosition({ x: x - width, y: y + height, width, height })
-              return
-            case 'bottomRight':
-              setTriggerPosition({ x: x + width, y: y + height, width, height })
-              return
-            case 'left':
-              setTriggerPosition({ x: x - width, y, width, height })
-              return
-            case 'right':
-              x = x + width
-              setTriggerPosition({ x: x + width, y, width, height })
-              return
-            default:
-              // default is bottomLeft
-              setTriggerPosition({ x, y: y + height, width, height })
-          }
-        })
-      }
+      _triggerContainer.current?.measureInWindow((x, y, width, height) => {
+        switch (placement) {
+          case 'top':
+            setTriggerPosition({ x, y: y - height, width, height })
+            return
+          case 'topLeft':
+            setTriggerPosition({ x: x - width, y: y - height, width, height })
+            return
+          case 'topRight':
+            setTriggerPosition({ x: x + width, y: y - height, width, height })
+            return
+          case 'bottom':
+            setTriggerPosition({ x, y: y + height, width, height })
+            return
+          case 'bottomLeft':
+            setTriggerPosition({ x: x - width, y: y + height, width, height })
+            return
+          case 'bottomRight':
+            setTriggerPosition({ x: x + width, y: y + height, width, height })
+            return
+          case 'left':
+            setTriggerPosition({ x: x - width, y, width, height })
+            return
+          case 'right':
+            x = x + width
+            setTriggerPosition({ x: x + width, y, width, height })
+            return
+          default:
+            // default is bottomLeft
+            setTriggerPosition({ x, y: y + height, width, height })
+        }
+      })
     }, [placement])
+
+    useEffect(() => {
+      if (isOpen && !triggerPosition) {
+        _measureTriggerPosition()
+      }
+    }, [_measureTriggerPosition, isOpen, triggerPosition])
 
     const handleOpen = useCallback(() => {
       setOpen(true)
@@ -111,9 +115,7 @@ const Menu = memo<MenuProps>(
 
     return (
       <>
-        <View ref={_triggerContainer} onLayout={_measureTriggerPosition}>
-          {trigger(triggerTouchableProps, { isOpen })}
-        </View>
+        <View ref={_triggerContainer}>{trigger(triggerTouchableProps, { isOpen })}</View>
         <Portal>
           <Modal
             ref={_modalRef}
