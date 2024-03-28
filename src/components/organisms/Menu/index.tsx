@@ -3,7 +3,7 @@ import { Box, TouchableProps, ScrollView, Pressable } from '@baca/design-system'
 import { useRef, useState, useMemo, useTheme, useCallback } from '@baca/hooks'
 import { Portal } from '@gorhom/portal'
 import React, { NamedExoticComponent, PropsWithChildren, memo, useEffect } from 'react'
-import { View, Modal, Dimensions } from 'react-native'
+import { View, Modal, Dimensions, Platform } from 'react-native'
 
 import { MenuItem } from '../../molecules/MenuItem'
 
@@ -91,7 +91,7 @@ const Menu = memo<MenuProps>(
     }, [placement])
 
     useEffect(() => {
-      if (isOpen && !triggerPosition) {
+      if (isOpen && !triggerPosition && Platform.OS === 'ios') {
         _measureTriggerPosition()
       }
     }, [_measureTriggerPosition, isOpen, triggerPosition])
@@ -115,7 +115,12 @@ const Menu = memo<MenuProps>(
 
     return (
       <>
-        <View ref={_triggerContainer}>{trigger(triggerTouchableProps, { isOpen })}</View>
+        <View
+          onLayout={Platform.OS !== 'ios' ? _measureTriggerPosition : undefined}
+          ref={_triggerContainer}
+        >
+          {trigger(triggerTouchableProps, { isOpen })}
+        </View>
         <Portal>
           <Modal
             ref={_modalRef}
