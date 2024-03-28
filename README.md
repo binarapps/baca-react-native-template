@@ -10,8 +10,6 @@
 
 # @binarapps/baca-react-native-template
 
-- [WEB DEMO APP](https://baca-six.vercel.app)
-
 > **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
 >
 > This repository is part of whole ecosystem, and it only contains React Native code
@@ -42,7 +40,13 @@ We know there are a lot of project starters for react native, but we have some g
 
 ## How it looks?
 
-Check this recording of how it look like:
+### WEB
+
+- **[DEMO APP](https://baca-six.vercel.app)**
+
+### MOBILE + WEB
+
+<!-- TODO: Add new recording -->
 
 [![expo-ts-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
