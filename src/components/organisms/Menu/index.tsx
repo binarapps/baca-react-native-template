@@ -116,7 +116,7 @@ const Menu = memo<MenuProps>(
     return (
       <>
         <View
-          onLayout={Platform.OS === 'android' ? _measureTriggerPosition : undefined}
+          onLayout={Platform.OS !== 'ios' ? _measureTriggerPosition : undefined}
           ref={_triggerContainer}
         >
           {trigger(triggerTouchableProps, { isOpen })}
