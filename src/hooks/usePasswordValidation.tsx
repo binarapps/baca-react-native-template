@@ -31,9 +31,9 @@ export const usePasswordValidation = () => {
   const passwordSuggestions = useMemo(() => {
     return passwordSuggestionsList.map((suggestion) => {
       const isError = passwordErrors?.includes(suggestion)
-      const iconName: IconNames = isError ? 'close-line' : 'check-line'
+      const iconName: IconNames = !showValidationState || isError ? 'close-line' : 'check-line'
       const iconColor: ColorNames = !showValidationState
-        ? 'fg.disabled_subtle'
+        ? 'fg.disabled'
         : isError
         ? 'utility.error.500'
         : 'utility.success.500'
