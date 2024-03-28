@@ -260,16 +260,16 @@ export const Input = forwardRef<TextInput, InputProps>(
             ref={_inputRef}
             secureTextEntry={securePassword}
             selectionColor={colors.text.secondary}
-            width="100%"
+            flex={1}
             {...inputProps}
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
           {props.type === 'password' ? (
-            <Touchable mr={2} onPress={toggleSecurePassword}>
+            <Touchable right={0} pr={2} onPress={toggleSecurePassword}>
               <Icon
                 name={secureTextIconName || iconName}
-                color={secureTextIconColor || 'icon.fg.brand'}
+                color={secureTextIconColor || 'fg.brand.primary'}
                 size={secureTextIconSize}
               />
             </Touchable>
