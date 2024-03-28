@@ -13,25 +13,21 @@ description: Testing in Expo Go
 
 # Testing in Expo Go 🕐
 
-When to use the Expo Go app:
+> **Note!** If you encounter any troubles with building and publishing an app please contact with **[Mateusz Rostkowski](https://www.github.com/MateuszRostkowski)** or **[Michał Baumruck](https://github.com/micbaumr)**
+
+## When to use the Expo Go app:
 
 - If you are developing an app - for other developers and for fast internal testing
 - If you are developing an app, and do not have access to App Store and Google Play Store - for internal and external testing
 
 When not to use the Expo Go app:
 
-<ul>
-    <li>
-        If you have applied native features to an app for example - one-signal (libraries that need to apply native code to the app with expo-plugins)
-        <ul>
-            <li>in that case, you could use expo-dev-client to create your own Expo Go app with injected native code into it</li>
-        </ul>
-    </li>
-</ul>
+- If you have applied native features to an app for example - one-signal (libraries that need to apply native code to the app with expo-plugins)
+  - in that case, you could use expo-dev-client to create your own Expo Go app with injected native code into it
 
-### Process:
+## How to deploy?
 
-1.Deploy app for tests in expo go.
+### 1. Deploy app for tests in expo go.
 
 The easiest way to allow testers to test an app on physical devices is to deploy the app to Expo Go.
 
@@ -43,7 +39,7 @@ In terminal run:
 yarn update:expo_go
 ```
 
-2.Test the app on the physical device
+### 2. Test the app on the physical device
 
 <ol type="a">
     <li>
@@ -59,18 +55,15 @@ yarn update:expo_go
 
 ### Summary:
 
-<ul>
-    <li>You should have in mind that testing in the Expo Go app is limited to apps that do not apply native features for example - one-signal (libraries that need to apply native code to an app with expo-plugins).</li>
-    <li>
-        Testing inside the Expo Go app is divided by a branch (git branch) from which are generated builds (updates) - could be done for example - for every feature branch
-        <ul>
-            <li>you can easily switch between different branches - for example - test multiple features from code review just in one place (Expo Go)</li>
-        </ul>
-    </li>
-    <li>
-        If multiple builds (updates) are generated for the same branch, in the Expo Go app you can switch between each build 
-        <ul>
-            <li>you can easily switch between different builds (on the same feature branch) for example -to check when something was broken</li>
-        </ul>
-    </li>
-</ul>
+- You should have in mind that testing in the Expo Go app is limited to apps that do not apply native features for example
+
+  - one-signal (libraries that need to apply native code to an app with expo-plugins).
+  - firebase analytics
+
+- Testing inside the Expo Go app is divided by a branch (git branch) from which are generated builds (updates) - could be done for example - for every feature branch
+
+  - you can easily switch between different branches - for example - test multiple features from code review just in one place (Expo Go)
+
+- If multiple builds (updates) are generated for the same branch, in the Expo Go app you can switch between each build
+
+  - you can easily switch between different builds (on the same feature branch) for example -to check when something was broken

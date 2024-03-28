@@ -1,0 +1,67 @@
+---
+id: checklist
+slug: /checklist
+title: Checklist
+sidebar_position: 3
+tags:
+  - Checklist
+  - Getting started
+  - Project structure
+description: Bootstrap checklist
+---
+
+# Checklist 🕐
+
+> This list is in development, we are working hard to finish it :)
+
+## 1. Initial setup
+
+- [ ] setup git repository
+- [ ] create app on expo
+- [ ] create app on doppler
+
+## Deployment
+
+- [ ] get apple developer access
+- [ ] get play store access
+
+## Deeplinking
+
+- [ ] iOS configuration file - apple-app-site-association
+  - [ ] verify content-type
+- [ ] android configuration file - assetlinks.json
+
+  - [ ] verify content-type
+  - [ ] verify sha256_cert_fingerprints
+
+- Content type verification
+  - go to page- https://webpage.com/.well-known/apple-app-site-association / https://webpage.com/.well-known/assetlinks.json
+  - open dev tools
+  - open network tab
+  - click on assetlinks.json
+  - check content-type
+  - it should contain `application/json;`
+
+{/* - TODO: Sha256 verification */}
+
+## Testing
+
+### Android
+
+- [ ] Push notifications (test it to some specified page - like /settings)
+  - [ ] Killed app
+  - [ ] Forgrounded app
+  - [ ] Opened app
+- [ ] Deeplinks (test it to some specified page - like /settings)
+  - [ ] Killed app
+  - [ ] Forgrounded app
+
+### iOS
+
+- [ ] Push notifications (test it to some specified page - like /settings)
+  - [ ] Killed app
+  - [ ] Forgrounded app
+  - [ ] Opened app
+- [ ] Deeplinks (test it to some specified page - like /settings)
+  - [ ] Killed app
+  - [ ] Forgrounded app

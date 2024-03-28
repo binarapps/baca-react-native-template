@@ -20,7 +20,7 @@ Bootstrap project structure, that is needed to start development
 
 ---
 
-### 1. Setup repository
+### Step 1. Setup repository
 
 ```bash
 git clone git@github.com:binarapps/baca-react-native-template.git name_of_your_app
@@ -52,7 +52,7 @@ npx create-expo-app --template=@binarapps/baca-react-native-template name_of_you
 
 ---
 
-### 2. Login / register to expo
+### Step 2. Login / register to expo
 
 If you have expo account → go login with it
 
@@ -82,35 +82,35 @@ eas whoami
 
 ---
 
-### 3. Create project on expo.dev
+### Step 3. Create project on expo.dev
 
-a. Sign in to the expo dev console (account created in the first step of repo configuration).
+1. Sign in to the expo dev console (account created in the first step of repo configuration).
 
-b. Select the proper organization you are working for from a dropdown:
+2. Select the proper organization you are working for from a dropdown:
 
-![Select organization](../../static/img/expo_select.jpg)
+   ![Select organization](../../static/img/expo_select.jpg)
 
-Ideally, it will be an organization created by the client (especially for production builds), to easily pass access after the end of development.
+   Ideally, it will be an organization created by the client (especially for production builds), to easily pass access after the end of development.
 
-c. Create a new Project in the organization.
+3. Create a new Project in the organization.
 
-I. From the sidebar menu click **All projects** button:
+   - From the sidebar menu click **All projects** button:
 
-![All projects](../../static/img/expo_all.png)
+     ![All projects](../../static/img/expo_all.png)
 
-II. On the page with the list of projects click **+New Project** button:
+   - On the page with the list of projects click **+New Project** button:
 
-![New project](../../static/img/expo_new.png)
+     ![New project](../../static/img/expo_new.png)
 
-III. Apply **display name** and **slug** of your project.
+   - Apply **display name** and **slug** of your project.
 
-Display name is a name that will be visible in the Expo Dev Console.
+     Display name is a name that will be visible in the Expo Dev Console.
 
-Slug is the name that will link your Expo application with your code.
+     Slug is the name that will link your Expo application with your code.
 
-## ![Project create](../../static/img/expo_create.png)
+     ![Project create](../../static/img/expo_create.png)
 
-### 4.Sync project with code.
+### Step 4.Sync project with code.
 
 Synchronize the newly created Expo Project to your app.
 
@@ -130,4 +130,4 @@ In `app.json` file please insert the following:
 
 ---
 
-### 5. Make environment setup - [tutorial](/docs/doppler-config)
+### Step 5. Make environment variables setup - [tutorial](/docs/doppler-config)
