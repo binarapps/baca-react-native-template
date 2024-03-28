@@ -219,6 +219,7 @@
     "welcome_back_enter_details": "Proszę wprowadź dane."
   },
   "sign_up_screen": {
+    "already_have_an_account": "Masz już konto?",
     "get_started": "Rozpoczynamy",
     "log_in": "Zaloguj się",
     "sign_up": "Zarejestruj się",

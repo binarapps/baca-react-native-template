@@ -115,7 +115,7 @@ export const SignUpScreen = () => {
         <Spacer y={4} />
         <Row alignItems="center">
           <Text.SmRegular color="text.tertiary">
-            {t('sign_in_screen.do_not_have_an_account')}
+            {t('sign_up_screen.already_have_an_account')}
           </Text.SmRegular>
           <Button.LinkColor onPress={navigateToLogIn} size="sm">
             {t('sign_up_screen.log_in')}

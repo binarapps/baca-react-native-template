@@ -221,6 +221,7 @@
     "welcome_back_enter_details": "Please enter your details"
   },
   "sign_up_screen": {
+    "already_have_an_account": "Do you have an account?",
     "get_started": "Get started",
     "log_in": "Log in",
     "sign_up": "Sign up",
