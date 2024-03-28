@@ -1,0 +1,45 @@
+node_modules/
+.expo/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# webstorm
+.idea/
+
+# macOS
+.DS_Store
+
+# yarn
+yarn-error.log
+
+dist/
+
+# project files
+
+# CONFIG: uncomment following lines
+.env
+.env.qa
+.env.production
+.env.staging
+env.json
+# Local Netlify folder
+.netlify
+
+# native files
+/android
+/ios
+
+google-services.json
+GoogleService-Info.plist
+
+scripts/doppler_variables.sh
+.env
+env.json
+
+.vercel
