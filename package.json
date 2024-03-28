@@ -51,7 +51,7 @@
     "generate:env:staging": "scripts/generate_dotenv.sh staging",
     "generate:google-services-config": "./scripts/generate_firebase_config.sh",
     "generate:icon:types": "node ./scripts/generate_icon_types.js",
-    "generate:last:publish": "node ./scripts/generate_publish_history.js",
+    "generate:last:publish": "node ./scripts/generate_last_update_id.js",
     "generate:query": "yarn orval --config ./orval.config.ts",
     "generate:screen": "node ./scripts/create_new_screen.js && yarn eslint src --fix && yarn tsc",
     "lint:fix": "eslint src --fix",
