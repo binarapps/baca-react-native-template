@@ -7,7 +7,9 @@ export const ProfileScreen = () => {
   const { t } = useTranslation()
   const { back } = useRouter()
 
-  useScreenOptions({ headerShown: false })
+  useScreenOptions({
+    title: t('navigation.screen_titles.profile'),
+  })
 
   const { control, errors, isSubmitting, setFocus, submit } = useUpdateProfileForm()
 
@@ -15,9 +17,9 @@ export const ProfileScreen = () => {
 
   return (
     <Box m={8}>
+      {/* TODO: Add translations here */}
       <Text.LgBold>Profile</Text.LgBold>
       <Text.MdRegular>Update your personal details here.</Text.MdRegular>
-
       <Box borderColor="utility.gray.300" borderBottomWidth={2} borderTopWidth={2} my={4} py={4}>
         <ControlledField.Input
           {...{ control, errors }}
@@ -50,7 +52,6 @@ export const ProfileScreen = () => {
           testID="emailInput"
         />
       </Box>
-
       <Row justifyContent="flex-end">
         <Button.SecondaryColor
           disabled={isSubmitting}
