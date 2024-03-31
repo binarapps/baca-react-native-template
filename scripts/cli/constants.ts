@@ -8,6 +8,9 @@ export const NAVIGATION_CONFIG_PATH = 'navigation/tabNavigator/navigation-config
 export const APP_JSON_PATH = 'app.json'
 export const APP_CONFIG_PATH = 'app.config.ts'
 export const README_PATH = 'README.md'
+
+export const COMPONENTS_PATH = 'src/components/index.ts'
+export const COMPONENT_TEMPLATE_PATH = 'templates/component_template.tsx'
 export const README_TEMPLATE_PATH = 'templates/README.md'
 export const PULL_REQUEST_TEMPLATE_PATH = '.github/pull_request_template.md'
 export const NEW_PULL_REQUEST_TEMPLATE_PATH = 'templates/pull_request_template.md'
