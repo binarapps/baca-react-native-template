@@ -1,12 +1,8 @@
 import { useAuthControllerRegister } from '@baca/api/query/auth/auth'
 import { AuthRegisterLoginDto } from '@baca/api/types'
-import { hapticImpact } from '@baca/utils'
-import { handleFormError } from '@baca/utils/handleFormErrors'
-import { isError } from '@tanstack/react-query'
-import { useState } from 'react'
+import { handleFormError, hapticImpact, showSuccessToast } from '@baca/utils'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { notify } from 'react-native-notificated'
 
 const defaultValues: AuthRegisterLoginDto = {
   email: '',
@@ -20,9 +16,7 @@ const defaultValues: AuthRegisterLoginDto = {
 }
 
 export const useSignUpForm = () => {
-  const [error, setError] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const { mutateAsync } = useAuthControllerRegister()
+  const { mutate: signUpMutation, isLoading } = useAuthControllerRegister()
   const { t } = useTranslation()
 
   const {
@@ -36,46 +30,35 @@ export const useSignUpForm = () => {
     defaultValues,
   })
 
-  const onSubmit = async (data: AuthRegisterLoginDto) => {
-    try {
-      setIsSubmitting(true)
-      setError('')
-
-      await mutateAsync({ data })
-      notify('success', {
-        params: {
-          style: { multiline: 100 },
-          title: 'SUCCESS',
-          description: t('sign_up_screen.created_new_account', { userEmail: data.email }),
+  const onSubmit = (data: AuthRegisterLoginDto) => {
+    signUpMutation(
+      {
+        data,
+      },
+      {
+        onSuccess: () => {
+          showSuccessToast({
+            description: t('toast.success.new_account_created', { userEmail: data.email }),
+          })
         },
-      })
-    } catch (e) {
-      if (isError(e)) {
-        setError(e.message)
-      } else {
-        setError(t('errors.something_went_wrong'))
+        onError: (e) => {
+          handleFormError<keyof AuthRegisterLoginDto>(
+            e as unknown as keyof AuthRegisterLoginDto,
+            ({ field, description }) => {
+              setFormError(field, { message: description })
+            }
+          )
+          hapticImpact()
+        },
       }
-
-      handleFormError<keyof AuthRegisterLoginDto>(
-        e as keyof AuthRegisterLoginDto,
-        ({ field, description }) => {
-          setFormError(field as keyof AuthRegisterLoginDto, { message: description })
-        }
-      )
-
-      hapticImpact()
-    } finally {
-      setIsSubmitting(false)
-    }
+    )
   }
 
   return {
     control,
-    error,
     errors,
-    isRegisterLoading: isSubmitting,
-    setFocus,
-    setIsSubmitting,
+    isSubmitting: isLoading,
     register: handleSubmit(onSubmit),
+    setFocus,
   }
 }

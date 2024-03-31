@@ -7,7 +7,7 @@ import {
   useImperativeHandle,
   useMemo,
 } from '@baca/hooks'
-import { convertEmToNumber, getColorValue, getFontWeight } from '@baca/utils'
+import { convertEmToNumber, getColorValue } from '@baca/utils'
 import { forwardRef } from 'react'
 import {
   NativeSyntheticEvent,
@@ -18,9 +18,11 @@ import {
 } from 'react-native'
 
 import { Box } from './Box'
+import { BoxWithShadow } from './BoxWithShadow'
 import { Icon } from './Icon'
 import { Touchable } from './Touchables/Touchable'
 import type { InputProps } from './types'
+import { fontTextSize, fontWeights } from '../config'
 import { generateStyleSheet, generateStyledSystem } from '../utils'
 
 const layoutPropsKeys = [
@@ -51,11 +53,11 @@ const layoutPropsKeys = [
 ]
 
 const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
-  const { colors, fontSizes, fontWeights, fonts, lineHeights } = useTheme()
+  const { colors, fonts, lineHeights } = useTheme()
 
-  const fontSize = fontSizes[props.fontSize || 'xs']
-  const fontWeight = fontWeights[props.fontWeight || 'normal']
-  const fontFamily = fonts[props.fontFamily || 'regular']
+  const fontSize = fontTextSize[props.fontSize || 'sm']
+  const fontWeight = fontWeights[props.fontWeight || 'Regular']
+  const fontFamily = fonts[props.fontFamily || 'Regular']
 
   const lineHeightStyle = useMemo<TextStyle>(
     () => ({
@@ -108,7 +110,7 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
 
   const fontWeightStyle = useMemo<TextStyle>(
     () => ({
-      fontWeight: (props.bold && 'bold') || (fontWeight && getFontWeight(fontWeight)),
+      fontWeight: (props.bold && fontWeights.Bold) || fontWeight,
     }),
     [fontWeight, props.bold]
   )
@@ -130,7 +132,6 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
   const inputTextStyle = useMemo<TextStyle>(
     () =>
       generateStyleSheet<TextStyle>([
-        props.bold && { fontWeight: '500' },
         props.italic && { fontStyle: 'italic' },
         fontFamilyStyle,
         fontSizeStyle,
@@ -146,7 +147,6 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
       fontSizeStyle,
       fontWeightStyle,
       lineHeightStyle,
-      props.bold,
       props.italic,
       textAlignmentStyle,
       textColorStyle,
@@ -174,10 +174,7 @@ export const Input = forwardRef<TextInput, InputProps>(
     },
     ref
   ) => {
-    const {
-      colors,
-      shadows: { inputShadow },
-    } = useTheme()
+    const { colors } = useTheme()
 
     const [isFocused, setIsFocused] = useState(false)
     const _inputRef = useRef<TextInput>(null)
@@ -225,56 +222,62 @@ export const Input = forwardRef<TextInput, InputProps>(
     )
 
     return (
-      <Box
-        flexDirection="row"
-        alignItems="center"
-        overflow="hidden"
-        borderColor={isInvalid ? 'border.error' : isFocused ? 'border.primary' : 'border.brand'}
-        borderRadius={4}
-        borderWidth={1}
-        backgroundColor={
-          isInvalid ? 'bg.error.primary' : isFocused ? 'bg.brand.primary' : 'bg.active'
-        }
-        bgOpacity={isFocused ? 0.1 : 1}
-        {...inputShadow}
-        {...layoutProps}
-      >
-        <StyledInput
-          ref={_inputRef}
-          autoCapitalize="none"
-          color={isInvalid ? 'text.error.primary' : 'text.primary'}
-          cursorColor={colors.text.placeholder}
-          {...Platform.select({
-            default: { editable: !isDisabled },
-            web: { disabled: isDisabled },
-          })}
-          flex={1}
-          fontFamily="regular"
-          fontSize="xs"
-          fontWeight="bold"
-          height="100%"
-          placeholder="Enter your email"
-          px={3}
-          py={2}
-          secureTextEntry={securePassword}
-          selectionColor={colors.text.secondary}
-          width="100%"
-          {...inputProps}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
-        {props.type === 'password' ? (
-          <Touchable mr={2} onPress={toggleSecurePassword}>
-            <Icon
-              name={secureTextIconName || iconName}
-              color={secureTextIconColor || 'icon.fg.brand'}
-              size={secureTextIconSize}
-            />
-          </Touchable>
-        ) : (
-          props.rightElement
-        )}
-      </Box>
+      <BoxWithShadow {...{ isFocused, isInvalid }}>
+        <Box
+          alignItems="center"
+          borderColor={
+            isDisabled
+              ? 'border.disabled'
+              : isInvalid
+              ? 'border.error'
+              : isFocused
+              ? 'border.brand'
+              : 'border.primary'
+          }
+          bg={isDisabled ? 'bg.disabled_subtle' : 'bg.primary'}
+          borderRadius={8}
+          borderWidth={1}
+          flexDirection="row"
+          overflow="hidden"
+          {...layoutProps}
+        >
+          <StyledInput
+            autoCapitalize="none"
+            color={isDisabled ? 'text.disabled' : 'text.primary'}
+            cursorColor={colors.text.placeholder}
+            {...Platform.select({
+              default: { editable: !isDisabled },
+              web: { disabled: isDisabled },
+            })}
+            fontFamily="Regular"
+            fontSize="md"
+            fontWeight="Regular"
+            height="100%"
+            placeholder="Enter your email"
+            placeholderTextColor={colors.text.placeholder}
+            px={3}
+            py={2}
+            ref={_inputRef}
+            secureTextEntry={securePassword}
+            selectionColor={colors.text.secondary}
+            flex={1}
+            {...inputProps}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
+          {props.type === 'password' ? (
+            <Touchable right={0} pr={2} onPress={toggleSecurePassword}>
+              <Icon
+                name={secureTextIconName || iconName}
+                color={secureTextIconColor || 'fg.brand.primary'}
+                size={secureTextIconSize}
+              />
+            </Touchable>
+          ) : (
+            props.rightElement
+          )}
+        </Box>
+      </BoxWithShadow>
     )
   }
 )

@@ -4,6 +4,11 @@ const fs = require('fs')
 
 module.exports = function withDebugKeystore(mainConfig, props) {
   const { storePassword, keyAlias, keyPassword } = props || {}
+
+  if (!storePassword || !keyAlias || !keyPassword) {
+    return
+  }
+
   const appBuildGradle = withAppBuildGradle(mainConfig, async (config) => {
     config.modResults.contents = config.modResults.contents.replace(
       "storeFile file('debug.keystore')",
@@ -13,21 +18,21 @@ module.exports = function withDebugKeystore(mainConfig, props) {
     if (storePassword) {
       config.modResults.contents = config.modResults.contents.replace(
         "storePassword 'android'",
-        `storePassword '2d4a995df1b18f0e16f1352eb227bee1'`
+        `storePassword '${storePassword}'`
       )
     }
 
     if (keyAlias) {
       config.modResults.contents = config.modResults.contents.replace(
         "keyAlias 'androiddebugkey'",
-        `keyAlias 'd163cbc4fe503964637c6dc4601a56ab'`
+        `keyAlias '${keyAlias}'`
       )
     }
 
     if (keyPassword) {
       config.modResults.contents = config.modResults.contents.replace(
         "keyPassword 'android'",
-        `keyPassword '9139334a6da1fcd2fdba63dfa74967f'`
+        `keyPassword '${keyPassword}'`
       )
     }
 

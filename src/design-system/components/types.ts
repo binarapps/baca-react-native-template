@@ -1,4 +1,4 @@
-import { _appTheme } from '@baca/design-system'
+import { FontWeight, TextFontSize, _appTheme } from '@baca/design-system'
 import { IconNames } from '@baca/types/icon'
 import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 'react-native'
 
@@ -17,6 +17,7 @@ type Sizing =
   | 'minHeight'
   | 'maxH'
   | 'maxHeight'
+
 export type SizingValue =
   | keyof typeof _appTheme.size
   | DimensionValue
@@ -49,6 +50,8 @@ export type Spacing =
   | 'pb'
   | 'px'
   | 'py'
+  | 'gap'
+
 export type SpacingProps = {
   [key in Spacing]?: SizingValue
 }
@@ -123,10 +126,10 @@ export type BordersProps = {
 
 export type TextProps = {
   color?: ColorNames
-  fontSize?: FontSizes
+  fontSize?: TextFontSize
   letterSpacing?: LetterSpacings
   lineHeight?: LineHeights
-  fontWeight?: FontWeights
+  fontWeight?: FontWeight
   fontFamily?: Fonts
   bold?: boolean
   italic?: boolean
@@ -218,7 +221,7 @@ export type CheckboxProps = ViewProps & {
   onChange: (newValue: boolean | string[]) => void
   checkboxText?: string
   disabled?: boolean
-  size?: number
+  size?: 'sm' | 'md'
   isError?: boolean
   isChecked?: boolean
   checkboxes?: string[]

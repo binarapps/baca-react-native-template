@@ -24,6 +24,7 @@ import type {
   ArticlesControllerFindDraftsParams,
   CreateArticleDto,
   ErrorServerEntity,
+  ErrorValidationEntity,
   UpdateArticleDto,
 } from '../../types'
 
@@ -49,7 +50,7 @@ export const articlesControllerCreate = (
 }
 
 export const getArticlesControllerCreateMutationOptions = <
-  TError = ErrorType<ErrorServerEntity>,
+  TError = ErrorType<ErrorValidationEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -83,13 +84,15 @@ export type ArticlesControllerCreateMutationResult = NonNullable<
   Awaited<ReturnType<typeof articlesControllerCreate>>
 >
 export type ArticlesControllerCreateMutationBody = BodyType<CreateArticleDto>
-export type ArticlesControllerCreateMutationError = ErrorType<ErrorServerEntity>
+export type ArticlesControllerCreateMutationError = ErrorType<
+  ErrorValidationEntity | ErrorServerEntity
+>
 
 /**
  * @summary Create Article
  */
 export const useArticlesControllerCreate = <
-  TError = ErrorType<ErrorServerEntity>,
+  TError = ErrorType<ErrorValidationEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -340,7 +343,7 @@ export const articlesControllerUpdate = (
 }
 
 export const getArticlesControllerUpdateMutationOptions = <
-  TError = ErrorType<ErrorServerEntity>,
+  TError = ErrorType<ErrorValidationEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -374,13 +377,15 @@ export type ArticlesControllerUpdateMutationResult = NonNullable<
   Awaited<ReturnType<typeof articlesControllerUpdate>>
 >
 export type ArticlesControllerUpdateMutationBody = BodyType<UpdateArticleDto>
-export type ArticlesControllerUpdateMutationError = ErrorType<ErrorServerEntity>
+export type ArticlesControllerUpdateMutationError = ErrorType<
+  ErrorValidationEntity | ErrorServerEntity
+>
 
 /**
  * @summary Update Article
  */
 export const useArticlesControllerUpdate = <
-  TError = ErrorType<ErrorServerEntity>,
+  TError = ErrorType<ErrorValidationEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<

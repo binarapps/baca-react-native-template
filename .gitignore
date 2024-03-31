@@ -23,10 +23,11 @@ dist/
 # project files
 
 # CONFIG: uncomment following lines
-# .env
-# .env.qa
-# .env.production
-# .env.staging
+.env
+.env.qa
+.env.production
+.env.staging
+env.json
 # Local Netlify folder
 .netlify
 
@@ -40,6 +41,8 @@ GoogleService-Info.plist
 scripts/doppler_variables.sh
 .env
 env.json
+
+.vercel
 
 # baca-cli build
 scripts/cli/build/

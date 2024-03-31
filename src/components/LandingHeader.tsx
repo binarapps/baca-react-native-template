@@ -8,6 +8,7 @@ import { useRouter } from 'expo-router'
 import { useAtomValue } from 'jotai'
 import { Image, StyleSheet, Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
 export function LandingHeader() {
   const { colorScheme } = useColorScheme()
   const { top } = useSafeAreaInsets()
@@ -20,6 +21,7 @@ export function LandingHeader() {
   const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
 
   const height = 60 + top
+
   return (
     <View
       style={[
@@ -36,7 +38,7 @@ export function LandingHeader() {
         <Image
           resizeMethod="resize"
           resizeMode="contain"
-          source={colorScheme === 'light' ? darkBinarLogo : lightBinarLogo}
+          source={colorScheme === 'light' ? lightBinarLogo : darkBinarLogo}
           style={jsStyles.logoWide}
         />
       )}

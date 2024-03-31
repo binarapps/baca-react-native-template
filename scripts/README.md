@@ -10,7 +10,7 @@
 
 1.1. Create `.env` files corresponding to the environment (`.env.production`,`.env.qa`,`.env.staging`)
 
-1.2. Each of newly created files should consist at least one variable `ENVIRONMENT`.
+1.2. Each of newly created files should consist at least one variable `ENVIRONMENT_NAME`.
 
 Accordingly to environment value should be `production`,`qa` or `staging`
 
@@ -18,9 +18,9 @@ Accordingly to environment value should be `production`,`qa` or `staging`
 
 You should pass environment variables to files provided in 1.1. which follow `.env` file rules
 
-Each `.env` file has included `ENVIRONMENT` variable to allow use proper configuration in build process.
+Each `.env` file has included `ENVIRONMENT_NAME` variable to allow use proper configuration in build process.
 
-Values of the `ENVIRONMENT` variable should always be passed to `.env` file and have following values depending of environment `production`, `qa` or `staging`.
+Values of the `ENVIRONMENT_NAME` variable should always be passed to `.env` file and have following values depending of environment `production`, `qa` or `staging`.
 
 ### 1.3. Running `generate_dotenv.sh` script
 

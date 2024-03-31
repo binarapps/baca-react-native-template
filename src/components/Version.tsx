@@ -11,7 +11,7 @@ const appVersion = Application?.nativeApplicationVersion ?? Constants?.expoConfi
 
 export const Version = ({ onPress }: { onPress: () => void }) => {
   const version = `${appName}: ${appVersion} (${Application?.nativeBuildVersion ?? '-'}) ${
-    Updates.updateId ? 'update: ' + Updates.updateId : ''
+    Updates.updateId ? '\nupdate: ' + Updates.updateId : ''
   }`
 
   const handleShortPress = useCallback(async () => {
@@ -20,7 +20,9 @@ export const Version = ({ onPress }: { onPress: () => void }) => {
 
   return (
     <Pressable onPress={handleShortPress} onLongPress={onPress} delayLongPress={1000}>
-      <Text opacity={40}>{version}</Text>
+      <Text opacity={40} textAlign="center">
+        {version}
+      </Text>
       <Spacer y="1" />
     </Pressable>
   )

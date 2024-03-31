@@ -20,7 +20,7 @@ description: Intro to app deployment
 - Required to deploy an app - 📱
 - Nice to have - 🌈
 
-> **Note!** If you encounter any troubles with building and publishing an app please add a comment and address it to **Michał Baumruck** or **Mateusz Rostkowski**
+> **Note!** If you encounter any troubles with building and publishing an app please contact with **[Mateusz Rostkowski](https://www.github.com/MateuszRostkowski)** or **[Michał Baumruck](https://github.com/micbaumr)**
 
 ### When and how to: build, submit, and update an app
 
@@ -141,7 +141,7 @@ description: Intro to app deployment
         </td>
         <td>
             <ul>
-                <li>Can't test native modules that are not supported by expo go like: firebase analytics,  onesignal</li>
+                <li>Can't test native modules that are not supported by expo go like: Firebase Analytics,  OneSignal</li>
                 <li>It's little different than native app, will need additional tests after testing in expo go</li>
             </ul>
         </td>

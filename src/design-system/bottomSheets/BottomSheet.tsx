@@ -2,7 +2,6 @@ import { Box } from '@baca/design-system/components/Box'
 import { useSafeAreaInsets } from '@baca/hooks'
 import {
   BottomSheetModal,
-  BottomSheetScrollView,
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
   BottomSheetView,
@@ -10,6 +9,7 @@ import {
 import { RefObject, useCallback } from 'react'
 import { Dimensions } from 'react-native'
 
+import { BottomSheetScrollView } from './BootomSheetScrollables'
 import { BottomSheetHeader } from './BottomSheetHeader'
 
 const screenHeight = Dimensions.get('screen').height

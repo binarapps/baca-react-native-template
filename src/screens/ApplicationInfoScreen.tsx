@@ -1,4 +1,4 @@
-import { isExpoGo } from '@baca/constants'
+import { ENV, isExpoGo } from '@baca/constants'
 import { Box, Button, Text } from '@baca/design-system'
 import {
   useCallback,
@@ -10,12 +10,9 @@ import {
 // TODO: there are tons of more interesting methods there!
 import * as Application from 'expo-application'
 import * as Clipboard from 'expo-clipboard'
-import Constants from 'expo-constants'
 import * as Notifications from 'expo-notifications'
 import { useRouter } from 'expo-router'
 import { ScrollView, StyleSheet } from 'react-native'
-
-const projectId = Constants.expoConfig?.extra?.eas?.projectId
 
 export const ApplicationInfoScreen = (): JSX.Element => {
   const { i18n, t } = useTranslation()
@@ -28,9 +25,15 @@ export const ApplicationInfoScreen = (): JSX.Element => {
 
   usePreventGoBack()
 
+  const checkNotificationPermissionStatus = useCallback(async () => {
+    const permissions = await Notifications.getPermissionsAsync()
+
+    alert('Permission status' + JSON.stringify(permissions, null, 2))
+  }, [])
+
   const handleCopyPushToken = useCallback(async () => {
     try {
-      if (!isExpoGo && !projectId) {
+      if (!isExpoGo && !ENV.EAS_PROJECT_ID) {
         throw new Error(
           'You must set `projectId` in eas build then value will be available from Constants?.expoConfig?.extra?.eas?.projectId'
         )
@@ -39,7 +42,7 @@ export const ApplicationInfoScreen = (): JSX.Element => {
         await Notifications.getExpoPushTokenAsync(
           !isExpoGo
             ? {
-                projectId,
+                projectId: ENV.EAS_PROJECT_ID,
               }
             : {}
         )
@@ -50,10 +53,20 @@ export const ApplicationInfoScreen = (): JSX.Element => {
       alert('Copied push token to clipboard.')
     } catch (error) {
       console.log('error', error)
+      alert(
+        JSON.stringify({
+          message: 'There was an error when copying push token',
+          error,
+        })
+      )
     }
   }, [])
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Button my={2} onPress={checkNotificationPermissionStatus}>
+        Check notification perfmission status
+      </Button>
       <Button my={2} onPress={handleCopyPushToken}>
         {t('settings_screen.copy_push_token')}
       </Button>

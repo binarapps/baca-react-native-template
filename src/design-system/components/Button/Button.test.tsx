@@ -1,8 +1,16 @@
 import { theme } from '@baca/design-system'
 import { cleanup, render, fireEvent, act } from '@baca/utils/testUtils'
-import { StyleSheet } from 'react-native'
 
 import { Button } from './Button'
+
+const baseStyles = {
+  alignItems: 'center',
+  borderRadius: 4,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  paddingHorizontal: 14,
+  paddingVertical: 10,
+}
 
 afterEach(cleanup)
 describe('Button', () => {
@@ -14,80 +22,111 @@ describe('Button', () => {
   it('renders correctly Button.Primary', () => {
     const { getByTestId } = render(<Button.Primary title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
-      alignItems: 'center',
+      ...baseStyles,
       backgroundColor: theme.light.colors.button.primary.bg,
-      borderColor: 'transparent',
-      borderRadius: 4,
-      borderWidth: undefined,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      minWidth: 128,
-      paddingHorizontal: 24,
-      paddingVertical: 8,
+      borderColor: theme.light.colors.button.primary.border,
+      borderWidth: 1,
     })
   })
 
-  it('renders correctly Button.Secondary', () => {
-    const { getByTestId } = render(<Button.Secondary title="Button" />)
+  it('renders correctly Button.PrimaryDestructive', () => {
+    const { getByTestId } = render(<Button.PrimaryDestructive title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      backgroundColor: theme.light.colors.button.primary.error.bg,
+      borderColor: theme.light.colors.button.primary.error.border,
+      borderWidth: 1,
+    })
+  })
+
+  it('renders correctly Button.SecondaryColor', () => {
+    const { getByTestId } = render(<Button.SecondaryColor title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      backgroundColor: theme.light.colors.button.secondary.color.bg,
+      borderColor: theme.light.colors.button.secondary.color.border,
+      borderWidth: 1,
+    })
+  })
+
+  it('renders correctly Button.SecondaryGray', () => {
+    const { getByTestId } = render(<Button.SecondaryGray title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
       alignItems: 'center',
       backgroundColor: theme.light.colors.button.secondary.bg,
-      borderColor: 'transparent',
-      borderRadius: 4,
-      borderWidth: undefined,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      minWidth: 128,
-      paddingHorizontal: 24,
-      paddingVertical: 8,
+      borderColor: theme.light.colors.button.secondary.border,
+      borderWidth: 1,
     })
   })
 
-  it('renders correctly Button.Outline', () => {
-    const { getByTestId } = render(<Button.Outline title="Button" />)
+  it('renders correctly Button.SecondaryDestructive', () => {
+    const { getByTestId } = render(<Button.SecondaryDestructive title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
-      alignItems: 'center',
-      backgroundColor: theme.light.colors.button.tertiary.fg,
-      borderColor: theme.light.colors.border.primary,
-      borderRadius: 4,
-      borderWidth: StyleSheet.hairlineWidth,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      minWidth: 128,
-      paddingHorizontal: 24,
-      paddingVertical: 8,
+      ...baseStyles,
+      backgroundColor: theme.light.colors.button.secondary.error.bg,
+      borderColor: theme.light.colors.button.secondary.error.border,
+      borderWidth: 1,
     })
   })
 
-  it('renders correctly Button.Ghost', () => {
-    const { getByTestId } = render(<Button.Ghost title="Button" />)
+  it('renders correctly Button.TertiaryColor', () => {
+    const { getByTestId } = render(<Button.TertiaryColor title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
-      alignItems: 'center',
-      backgroundColor: theme.light.colors.button.tertiary.fg,
-      borderColor: 'transparent',
-      borderRadius: 4,
+      ...baseStyles,
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
       borderWidth: undefined,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      minWidth: 128,
-      paddingHorizontal: 24,
-      paddingVertical: 8,
     })
   })
 
-  it('renders correctly Button.Link', () => {
-    const { getByTestId } = render(<Button.Link title="Button" />)
+  it('renders correctly Button.TertiaryGray', () => {
+    const { getByTestId } = render(<Button.TertiaryGray title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
-      alignItems: 'center',
-      backgroundColor: theme.light.colors.button.tertiary.fg,
-      borderColor: 'transparent',
-      borderRadius: 4,
+      ...baseStyles,
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
       borderWidth: undefined,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      minWidth: 128,
-      paddingHorizontal: 24,
-      paddingVertical: 8,
+    })
+  })
+
+  it('renders correctly Button.TertiaryDestructive', () => {
+    const { getByTestId } = render(<Button.TertiaryDestructive title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
+      borderWidth: undefined,
+    })
+  })
+
+  it('renders correctly Button.LinkColor', () => {
+    const { getByTestId } = render(<Button.LinkColor title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
+      borderWidth: undefined,
+    })
+  })
+
+  it('renders correctly Button.LinkGray', () => {
+    const { getByTestId } = render(<Button.LinkGray title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
+      borderWidth: undefined,
+    })
+  })
+
+  it('renders correctly Button.LinkDestructive', () => {
+    const { getByTestId } = render(<Button.LinkDestructive title="Button" />)
+    expect(getByTestId('baseButton').props.style).toStrictEqual({
+      ...baseStyles,
+      backgroundColor: theme.light.colors.Base.transparent,
+      borderColor: theme.light.colors.Base.transparent,
+      borderWidth: undefined,
     })
   })
 

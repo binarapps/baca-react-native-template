@@ -3,9 +3,10 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "online.binarapps",
+      "package_name": "com.binarapps.baca",
       "sha256_cert_fingerprints": [
-        "B9:77:35:F2:94:7B:EC:53:F9:60:5F:32:1C:12:5C:E9:4E:27:9E:E2:A7:EE:6F:62:A4:77:21:98:AD:11:2A:B1"
+        "BC:32:97:EA:93:CE:17:FA:FD:66:FC:67:9F:AD:70:71:D1:D9:50:FB:B8:E5:1D:92:49:EE:F7:F0:DE:29:D8:09",
+        "9A:3B:31:10:84:96:07:EC:3C:77:84:91:F5:80:7A:53:23:C0:B6:C3:25:D8:60:E8:EE:16:6B:75:0A:0A:25:8B"
       ]
     }
   }

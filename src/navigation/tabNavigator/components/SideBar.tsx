@@ -65,7 +65,7 @@ export function SideBar({ visible }: { visible: boolean }) {
         >
           <HeaderLogo />
 
-          <View style={[jsStyles.sidebarTabs]}>
+          <View style={jsStyles.sidebarTabs}>
             {upperSideTabs.map((tab) => (
               <SideBarTabItem key={tab.name} {...tab}>
                 {tab.displayedName}

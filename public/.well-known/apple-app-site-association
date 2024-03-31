@@ -1,44 +1,54 @@
 {
   "applinks": {
+    "apps": [],
     "details": [
       {
         "appIDs": [
-          "ABCDE12345.online.binarapps"
+          "5764GC687R.com.binarapps.baca"
         ],
         "components": [
           {
-            "#": "no_universal_links",
-            "exclude": true,
-            "comment": "Matches any URL with a fragment that equals no_universal_links and instructs the system not to open it as a universal link."
-          },
-          {
-            "/": "/buy/*",
-            "comment": "Matches any URL with a path that starts with /buy/."
-          },
-          {
-            "/": "/help/website/*",
-            "exclude": true,
-            "comment": "Matches any URL with a path that starts with /help/website/ and instructs the system not to open it as a universal link."
-          },
-          {
-            "/": "/help/*",
+            "/": "*",
             "?": {
-              "articleNumber": "????"
+              "$web_only": "true"
             },
-            "comment": "Matches any URL with a path that starts with /help/ and that has a query item with name 'articleNumber' and a value of exactly four characters."
+            "exclude": true,
+            "comment": "Matches any URL whose path is * and which has a query item with name '$web_only' and value 'true' and instructs the system NOT to open it as a Universal link"
+          },
+          {
+            "/": "*",
+            "?": {
+              "%24web_only": "true"
+            },
+            "exclude": true,
+            "comment": "Matches any URL whose path is * and which has a query item with name '%24web_only' and value 'true' and instructs the system NOT to open it as a Universal link"
+          },
+          {
+            "/": "*",
+            "comment": "Matches any URL whose path is * and instructs the system to open it as a Universal link"
+          },
+          {
+            "/": "/",
+            "comment": "Matches any URL whose path is / and instructs the system to open it as a Universal link"
           }
+        ]
+      },
+      {
+        "appID": "5764GC687R.com.binarapps.baca",
+        "paths": [
+          "/*"
         ]
       }
     ]
   },
-  "webcredentials": {
+  "activitycontinuation": {
     "apps": [
-      "ABCDE12345.online.binarapps"
+      "5764GC687R.com.binarapps.baca"
     ]
   },
   "appclips": {
     "apps": [
-      "ABCED12345.online.binarapps"
+      "5764GC687R.com.binarapps.baca"
     ]
   }
 }

@@ -2,20 +2,21 @@
   "expo": {
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 10,
+      "versionCode": 15,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "jsEngine": "hermes",
-      "buildNumber": "10",
+      "buildNumber": "15",
       "supportsTablet": true,
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
-    "name": "Template",
+    "name": "BACA",
     "orientation": "portrait",
     "owner": "binarapps",
     "slug": "expo-typescript-template",
@@ -34,10 +35,10 @@
       "expo-font",
       "expo-localization",
       "expo-secure-store",
-      "expo-router",
-      "./plugin/withDebugKeystore.js"
+      "expo-router"
     ],
     "web": {
+      "output": "single",
       "bundler": "metro"
     }
   }
