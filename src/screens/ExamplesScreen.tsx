@@ -16,6 +16,10 @@ export const ExamplesScreen = () => {
   const goToTypography = useCallback(() => push('/example/typography'), [push])
   const goToCityListScreen_EXAMPLE = useCallback(() => push('/example/data-from-be'), [push])
   const goToTestForm = useCallback(() => push('/example/test-form'), [push])
+  const goToPushNotificationsHelpers = useCallback(
+    () => push('/example/push-notifications-helpers'),
+    [push]
+  )
 
   const goToHomeStackDetails = useCallback(() => push('/home/details'), [push])
 
@@ -41,6 +45,10 @@ export const ExamplesScreen = () => {
       </Button>
       <Button mb={2} onPress={goToTestForm}>
         {t('examples_screen.go_to_screen_test_form')}
+      </Button>
+      {/* TODO: Add translations */}
+      <Button mb={2} onPress={goToPushNotificationsHelpers}>
+        Go to push notifications helpers
       </Button>
     </ScrollView>
   )
