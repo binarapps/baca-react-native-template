@@ -1,41 +1,44 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const fs = require('fs')
 
-const json = fs.readFileSync('./assets/figma/variables.json')
+import fs from 'fs'
+
+const json = fs.readFileSync('./assets/figma/variables.json') as unknown as string
 
 const figmaVariables = JSON.parse(json)
 
-const collections = figmaVariables.collections
+const collections = figmaVariables.collections as any
 
-const primitivesCollection = collections.find((collection) => collection.name === '_Primitives')
-const colorsCollection = collections.find((collection) => collection.name === '1. Color modes')
+const primitivesCollection = collections.find(
+  (collection: any) => collection.name === '_Primitives'
+)
+const colorsCollection = collections.find((collection: any) => collection.name === '1. Color modes')
 
-const primitivesColors = primitivesCollection.modes
-  .find((mode) => mode.name === 'Style')
-  .variables.filter((variable) => variable.type === 'color')
-  .map((color) => ({ name: color.name, value: color.value }))
+const primitivesColors = primitivesCollection?.modes
+  ?.find((mode: any) => mode.name === 'Style')
+  ?.variables.filter((variable: any) => variable.type === 'color')
+  ?.map((color: any) => ({ name: color.name, value: color.value }))
 
 // colorMode could be either 'light' or 'dark'
-const getModeColors = (colorMode) => {
+const getModeColors = (colorMode: string) => {
   const modeName = colorMode === 'light' ? 'Light mode' : 'Dark mode'
-  const modeColors = colorsCollection.modes.find((mode) => mode.name === modeName)?.variables
+  const modeColors = colorsCollection?.modes.find((mode: any) => mode.name === modeName)?.variables
   const colors = modeColors
-    .map((variable) => {
+    ?.map((variable: any) => {
       if (variable.isAlias) {
-        if (variable.value.collection === '_Primitives') {
-          const primitiveColor = primitivesColors.find(
-            (color) => color.name === variable.value.name
-          )
+        const valueName = variable.value.name
+        if (variable?.value?.collection === '_Primitives') {
+          const primitiveColor = primitivesColors?.find((color: any) => color.name === valueName)
           if (primitiveColor) {
             return { name: variable.name, value: primitiveColor.value }
           }
           return null
         } else {
-          const newColor = modeColors.find((color) => color.name === variable.value.name)
+          const newColor = modeColors.find((color: any) => color.name === valueName)
           if (newColor) {
-            const primitiveColor = primitivesColors.find(
-              (color) => color.name === newColor.value.name
+            const primitiveColor = primitivesColors?.find(
+              (color: any) => color.name === newColor.value.name
             )
             if (primitiveColor) {
               return { name: variable.name, value: primitiveColor.value }
@@ -49,11 +52,12 @@ const getModeColors = (colorMode) => {
     })
     .filter(Boolean)
 
-  const colorsArray = colors.map((color) => {
-    return { [color.name.split('/').pop().split(' ').shift() || '']: color.value }
+  const colorsArray = colors?.map((color: any) => {
+    const keyName = color?.name?.split?.('/')?.pop()?.split(' ').shift() || ''
+    return { [keyName]: color?.value }
   })
 
-  const colorsInMode = colorsArray.reduceRight((acc, color) => {
+  const colorsInMode = colorsArray?.reduceRight((acc: any, color: any) => {
     const [entries] = Object.entries(color)
 
     const nestedKeys = entries[0].split('-')
@@ -63,6 +67,10 @@ const getModeColors = (colorMode) => {
     return mergeObjects(acc, newValue)
   }, {})
 
+  if (!colorsInMode) {
+    return
+  }
+
   const sortedColors = sortObject(colorsInMode)
   return sortedColors
 }
@@ -70,11 +78,11 @@ const getModeColors = (colorMode) => {
 const light = getModeColors('light')
 const dark = getModeColors('dark')
 
-const primitivesColorsArray = primitivesColors.map((color) => {
+const primitivesColorsArray = primitivesColors?.map((color: any) => {
   return { [color.name.split('/').slice(1).join('-')]: color.value }
 })
 
-const primitives = primitivesColorsArray.reduceRight((acc, color) => {
+const primitives = primitivesColorsArray?.reduceRight((acc: any, color: any) => {
   const [entries] = Object.entries(color)
 
   const colorName = entries[0].split('_')
@@ -94,18 +102,20 @@ const primitives = primitivesColorsArray.reduceRight((acc, color) => {
 const theme = {
   darkMode: dark,
   lightMode: light,
-  primitives: sortObject(primitives),
+  primitives: primitives ? sortObject(primitives) : undefined,
 }
 
 const objectString = `export const themeColors = ${JSON.stringify(theme, null, 2)}`
 
-// Specify the file path
-const filePath = './src/design-system/config/colors.ts'
+export const generateTheme = () => {
+  // Specify the file path
+  const filePath = './src/design-system/config/colors.ts'
 
-fs.writeFileSync(filePath, objectString, 'utf-8')
+  fs.writeFileSync(filePath, objectString, 'utf-8')
+}
 
 // Utils
-function createNestedObject(keys, value) {
+function createNestedObject(keys: any[], value: any) {
   if (keys.length === 0) {
     return value
   }
@@ -113,15 +123,15 @@ function createNestedObject(keys, value) {
   const key = keys[0]
   const remainingKeys = keys.slice(1)
 
-  const nestedObject = {}
+  const nestedObject: any = {}
   nestedObject[key] = createNestedObject(remainingKeys, value)
 
   return nestedObject
 }
 
-function mergeObjects(obj1, obj2) {
+function mergeObjects(obj1: any, obj2: any) {
   // Initialize the result object
-  const result = {}
+  const result: any = {}
 
   // Loop through keys in obj1
   for (const key in obj1) {
@@ -146,7 +156,7 @@ function mergeObjects(obj1, obj2) {
   return result
 }
 
-function sortObject(obj) {
+function sortObject(obj?: object): any {
   if (typeof obj !== 'object' || obj === null) {
     return obj
   }
@@ -155,11 +165,12 @@ function sortObject(obj) {
     return obj.map(sortObject)
   }
 
-  const sorted = {}
+  const sorted: any = {}
   Object.keys(obj)
     .sort()
     .forEach((key) => {
-      sorted[key] = sortObject(obj[key])
+      const objectToSort = (obj as any)[key]
+      sorted[key] = sortObject(objectToSort)
     })
   return sorted
 }

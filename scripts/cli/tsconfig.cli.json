@@ -1,6 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "rootDir": ".",
+    "noImplicitAny": false,
     "outDir": "build",
     "strict": true,
     "lib": ["ESNext"],
