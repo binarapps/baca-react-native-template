@@ -48,8 +48,8 @@ export const refreshTokenIfNeeded = async (token: Token): Promise<Token> => {
       return token
     }
 
-    const oneHourForwardUnix = Date.now() + 1000 * 14.8 * 60 //CONFIG: add time when to refetch token before current token expiration f.e. 1 hour
-    const shouldRefreshToken = expirationTime < Math.round(oneHourForwardUnix)
+    const refetchTriggerTime = Date.now() + 1000 * 14.9 * 60 //CONFIG: add time when to refetch token before current token expiration f.e. 1 hour -> 1000 * 60 * 60
+    const shouldRefreshToken = expirationTime < Math.round(refetchTriggerTime)
 
     // If token is still refreshing and there is no logout message shown app should try again to get token after 0.5 second
     if (isRefreshingToken) {
@@ -64,12 +64,17 @@ export const refreshTokenIfNeeded = async (token: Token): Promise<Token> => {
     if (shouldRefreshToken && !isRefreshingToken) {
       store.set(isRefreshingTokenAtom, true)
 
+      // const refreshedToken: AuthControllerRefreshMutationResult = (await fetch(  //FIXME: uncomment this line when type from BE will be improved
       const refreshedToken = (await fetch(`${ENV.API_URL}api/v1/auth/refresh`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token.refreshToken}` },
       }).then((response) => response.json())) as unknown as Token //FIXME: remove when type from BE will be correct
 
-      await setToken(refreshedToken)
+      if (token) {
+        await setToken(refreshedToken)
+      } else {
+        console.log('THERE IS NO TOKEN ! ')
+      }
 
       store.set(isRefreshingTokenAtom, false)
 

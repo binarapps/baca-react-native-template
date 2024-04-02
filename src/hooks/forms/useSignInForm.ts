@@ -56,7 +56,9 @@ export const useSignInForm = () => {
         },
         onSuccess: async (response) => {
           const { user, ...token } = response
-          await setToken(token)
+          if (token) {
+            await setToken(token)
+          }
 
           setIsSignedIn(true)
 

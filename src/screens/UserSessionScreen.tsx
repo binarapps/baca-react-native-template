@@ -11,7 +11,7 @@ export const UserSessionScreen = () => {
     query: { enabled: false },
   })
 
-  const [token1, setToken] = useState<Token | null>(null)
+  const [token, setToken] = useState<Token | null>(null)
 
   const fetchToken = useCallback(async () => {
     const token = await getToken()
@@ -42,7 +42,13 @@ export const UserSessionScreen = () => {
       <Box>
         <Text.LgBold>Refresh token:</Text.LgBold>
         <Text.LgMedium>Is refreshing token:{JSON.stringify(isRefreshing, null, 2)}</Text.LgMedium>
-        <Text.MdRegular>{JSON.stringify(token1, null, 2)}</Text.MdRegular>
+        <Text.MdRegular>
+          {JSON.stringify(
+            { ...token, expDate: new Date(token?.tokenExpires || 0).toLocaleString() },
+            null,
+            2
+          )}
+        </Text.MdRegular>
       </Box>
       <Button onPress={fetchToken} title="Try to get new token if needed" />
     </ScrollView>
