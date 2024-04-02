@@ -2,7 +2,7 @@ diff --git a/node_modules/expo-router/build/global-state/routing.js b/node_modul
 index 2fba9d1..9cce0c9 100644
 --- a/node_modules/expo-router/build/global-state/routing.js
 +++ b/node_modules/expo-router/build/global-state/routing.js
-@@ -173,6 +173,9 @@ function getNavigateAction(state, parentState, type = 'NAVIGATE') {
+@@ -173,6 +173,10 @@ function getNavigateAction(state, parentState, type = 'NAVIGATE') {
      else if (type === 'REPLACE' && parentState.type === 'tab') {
          type = 'JUMP_TO';
      }
