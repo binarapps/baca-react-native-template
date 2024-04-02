@@ -1,17 +1,16 @@
 import { ASYNC_STORAGE_KEYS } from '@baca/constants'
-import { NotificationContextProvider, NotificationContextType } from '@baca/contexts'
-import { useState, useMemo, useEffect, useAppStateActive } from '@baca/hooks'
 import {
-  assignPushToken,
-  disableAndroidBackgroundNotificationListener,
-  getNotificationFromStack,
-  getNotificationStackLength,
-} from '@baca/services'
+  NotificationContextProvider,
+  NotificationContextType,
+  ReceivedNotification,
+} from '@baca/contexts'
+import { useState, useMemo, useEffect, useAppStateActive } from '@baca/hooks'
+import { assignPushToken } from '@baca/services'
 import { store } from '@baca/store'
 import { isSignedInAtom } from '@baca/store/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Notifications from 'expo-notifications'
-import { router } from 'expo-router'
+import { useRootNavigationState, router } from 'expo-router'
 import { PropsWithChildren, FC, useCallback } from 'react'
 import { Alert, AlertButton } from 'react-native'
 
@@ -28,17 +27,37 @@ const deeplinkWhenNotificationReceived = async (
   // Alternatively we can prevent navigating to this routes when user is not logged in
 
   if (deeplinkPath) {
-    router.push(deeplinkPath)
+    router.navigate(deeplinkPath)
   }
 }
 
 export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
+  // -------------------------------------------------------------
+  // ----------------------- HOOKS -------------------------------
+  // -------------------------------------------------------------
   const [permissionStatus, setPermissionStatus] =
     useState<NotificationContextType['permissionStatus']>()
-  const [notification, setNotification] = useState<NotificationContextType['notification']>()
-  const [inAppNotification, setInAppNotification] =
-    useState<NotificationContextType['inAppNotification']>()
+  const [notification, setNotification] = useState<ReceivedNotification>(undefined)
+  const backgroundNotification = Notifications.useLastNotificationResponse()
+  const rootNavigationState = useRootNavigationState()
 
+  // -------------------------------------------------------------
+  // ------ Navigating to screen after opening notification ------
+  // -------------------------------------------------------------
+
+  // When initializing push notifications logic navigation is not ready yet
+  // We need to wait for navigation to set up and that's why there is `rootNavigationState.key` listener
+  // Ideally this should be added as hook to layout file as described in this tutorial:
+  // - https://docs.expo.dev/versions/latest/sdk/notifications/#handle-push-notifications-with-navigation
+  useEffect(() => {
+    if (notification && rootNavigationState.key) {
+      deeplinkWhenNotificationReceived(notification)
+    }
+  }, [rootNavigationState.key, notification])
+
+  // -------------------------------------------------------------
+  // --------------- Sending push token to backend ---------------
+  // -------------------------------------------------------------
   const tryToRegisterPushToken = useCallback(async () => {
     const wasPushTokenSendStringified = await AsyncStorage.getItem(
       ASYNC_STORAGE_KEYS.WAS_PUSH_TOKEN_SEND
@@ -69,29 +88,23 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   // To update immediately permission status
   useAppStateActive(tryToRegisterPushToken, true)
 
-  // ----------------------------------------------
-  // fix notifications on android when app is killed
-  // ----------------------------------------------
+  // -------------------------------------------------------------
+  // Listener for notifications when app is killed and in background
+  // -------------------------------------------------------------
   useEffect(() => {
-    while (getNotificationStackLength() > 0) {
-      const androidBackgroundNotification = getNotificationFromStack()
-      if (androidBackgroundNotification) {
-        setNotification(androidBackgroundNotification)
-        deeplinkWhenNotificationReceived(androidBackgroundNotification)
-      }
+    if (backgroundNotification) {
+      setNotification({
+        ...backgroundNotification?.notification,
+        context: {
+          source: 'useLastNotificationResponse',
+        },
+      })
+    } else {
+      setNotification(undefined)
     }
-    disableAndroidBackgroundNotificationListener()
+  }, [backgroundNotification])
 
-    // -------------------------------------------------------------
-    // Listener for notifications when app is killed and in background
-    // -------------------------------------------------------------
-    const notificationResponseReceived = Notifications.addNotificationResponseReceivedListener(
-      ({ notification }) => {
-        setNotification(notification)
-        deeplinkWhenNotificationReceived(notification)
-      }
-    )
-
+  useEffect(() => {
     // --------------------------------------------------
     // listener for notifications when app is in background
     // --------------------------------------------------
@@ -105,7 +118,14 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
         {
           text: 'Ok',
           style: 'default',
-          onPress: () => deeplinkWhenNotificationReceived(notification),
+          onPress: () => {
+            setNotification({
+              ...notification,
+              context: {
+                source: 'addNotificationReceivedListener',
+              },
+            })
+          },
         },
       ]
 
@@ -119,7 +139,6 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
     })
 
     return () => {
-      Notifications.removeNotificationSubscription(notificationResponseReceived)
       Notifications.removeNotificationSubscription(notificationReceived)
     }
   }, [])
@@ -130,10 +149,8 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
       setPermissionStatus,
       notification,
       setNotification,
-      inAppNotification,
-      setInAppNotification,
     }),
-    [inAppNotification, notification, permissionStatus]
+    [notification, permissionStatus]
   )
   return <NotificationContextProvider value={value}>{children}</NotificationContextProvider>
 }
