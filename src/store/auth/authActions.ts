@@ -1,7 +1,7 @@
-import { deleteToken, removePushToken } from '@baca/services'
-import { store } from '@baca/store/store'
-
 import { isSignedInAtom } from './authState'
+import { removePushToken } from '../../services/NotificationService'
+import { deleteToken } from '../../services/TokenService'
+import { store } from '../store'
 
 export async function signOut() {
   // set user logged out

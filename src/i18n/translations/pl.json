@@ -1,4 +1,16 @@
 {
+  "alert": {
+    "prevent_go_back": {
+      "description": "Masz niezapisane zmiany. Jesteś pewny, że chcesz je porzucić i wyjść?",
+      "discard": "Porzuć",
+      "do_not_leave": "Nie wychodź",
+      "title": "Anulować zmiany?"
+    },
+    "session_expired": {
+      "description": "Spróbuj zalogować się ponownie",
+      "title": "Twoja sesja wygasła"
+    }
+  },
   "common": {
     "add": "Dodaj",
     "back": "Cofnij",
@@ -55,12 +67,6 @@
     }
   },
   "navigation": {
-    "prevent_go_back_alert": {
-      "description": "Masz niezapisane zmiany. Jesteś pewny, że chcesz je porzucić i wyjść?",
-      "discard": "Porzuć",
-      "do_not_leave": "Nie wychodź",
-      "title": "Anulować zmiany?"
-    },
     "screen_titles": {
       "application_info": "ApplicationInfo",
       "blog": "Blog",

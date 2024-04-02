@@ -1,6 +1,8 @@
 import { ASYNC_STORAGE_KEYS, ENV } from '@baca/constants'
-import { isRefreshingTokenAtom, logoutMessageShownAtom, store } from '@baca/store'
 import { decodeAccessToken, secureStore, wait } from '@baca/utils'
+
+import { isRefreshingTokenAtom, logoutMessageShownAtom } from '../store/global'
+import { store } from '../store/store'
 
 const { USER_TOKEN } = ASYNC_STORAGE_KEYS
 
