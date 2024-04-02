@@ -166,15 +166,16 @@
     "awesome": "Wspaniale 🎉"
   },
   "examples_screen": {
-    "header": "To jest przykładowy widok",
     "go_to_application_info": "Idź do ApplicationInfo",
     "go_to_colors": "Idź do Kolorów",
     "go_to_components": "Idź do Komponentów",
-    "go_to_typography": "Idź do Typografii",
     "go_to_home_stack_details": "Idź do HomeStackDetails",
-    "go_to_settings": "Idź do Ustawień",
+    "go_to_screen_test_form": "Idź do formularza testowego",
     "go_to_screen_with_BEdata": "Idź do widoku z danymi z backend-u",
-    "go_to_screen_test_form": "Idź do formularza testowego"
+    "go_to_settings": "Idź do Ustawień",
+    "go_to_typography": "Idź do Typografii",
+    "go_to_user_session": "Idź do sesji użytkowania",
+    "header": "To jest przykładowy widok"
   },
   "forgot_password_screen": {
     "back_to_login": "Wróć do logowania",

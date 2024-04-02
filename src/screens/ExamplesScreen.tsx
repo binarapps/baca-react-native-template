@@ -16,6 +16,7 @@ export const ExamplesScreen = () => {
   const goToTypography = useCallback(() => push('/example/typography'), [push])
   const goToCityListScreen_EXAMPLE = useCallback(() => push('/example/data-from-be'), [push])
   const goToTestForm = useCallback(() => push('/example/test-form'), [push])
+  const goToUserSession = useCallback(() => push('/example/user-session'), [push])
 
   const goToHomeStackDetails = useCallback(() => push('/home/details'), [push])
 
@@ -41,6 +42,9 @@ export const ExamplesScreen = () => {
       </Button>
       <Button mb={2} onPress={goToTestForm}>
         {t('examples_screen.go_to_screen_test_form')}
+      </Button>
+      <Button mb={2} onPress={goToUserSession}>
+        {t('examples_screen.go_to_user_session')}
       </Button>
     </ScrollView>
   )

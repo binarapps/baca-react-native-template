@@ -55,7 +55,9 @@ export const useSignInForm = () => {
           hapticImpact()
         },
         onSuccess: async (response) => {
-          await setToken(response.accessToken)
+          const { user, ...token } = response
+          await setToken(token)
+
           setIsSignedIn(true)
 
           // Send push token to backend
