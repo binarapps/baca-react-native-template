@@ -1,8 +1,7 @@
 import { lightBinarLogo, darkBinarLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
 import { Box, Button, Icon, Pressable, Spacer } from '@baca/design-system'
-import { useCallback, useTranslation } from '@baca/hooks'
-import { TabColorsStrings } from '@baca/navigation/tabNavigator/navigation-config'
+import { useCallback, useTheme, useTranslation } from '@baca/hooks'
 import { isSignedInAtom } from '@baca/store/auth'
 import { useRouter } from 'expo-router'
 import { useAtomValue } from 'jotai'
@@ -11,6 +10,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export function LandingHeader() {
   const { colorScheme } = useColorScheme()
+  const { colors } = useTheme()
   const { top } = useSafeAreaInsets()
   const { t } = useTranslation()
   const { push, canGoBack, back } = useRouter()
@@ -25,7 +25,7 @@ export function LandingHeader() {
   return (
     <View
       style={[
-        { height, paddingTop: top },
+        { borderBottomColor: colors.border.secondary, height, paddingTop: top },
         jsStyles.appHeader,
         Platform.select({ default: {}, web: { display: 'flex' } }),
       ]}
@@ -58,7 +58,6 @@ export function LandingHeader() {
 const jsStyles = StyleSheet.create({
   appHeader: {
     alignItems: 'center',
-    borderBottomColor: TabColorsStrings.lightGray,
     borderBottomWidth: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
