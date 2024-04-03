@@ -50,7 +50,13 @@ export const refreshTokenIfNeeded = async (token: Token): Promise<Token> => {
       return token
     }
 
-    const refetchTriggerTime = Date.now() + 1000 * 14.9 * 60 //CONFIG: add time when to refetch token before current token expiration f.e. 1 hour -> 1000 * 60 * 60
+    // CONFIG: add time when to refetch token before current token expiration f.e. 1 hour -> 1000 * 60 * 60
+    // Current time - 14.9 minute
+    // If token is valid for 20 minute, it will be refreshed after 6 minutes
+    // Current time is set like that to easily test this logic, but in production app it could be 1 or 2 minutes
+    const timeBeforeTokenShouldBeRefetched = 1000 * 60 * 14.9
+
+    const refetchTriggerTime = Date.now() + timeBeforeTokenShouldBeRefetched
     const shouldRefreshToken = expirationTime < Math.round(refetchTriggerTime)
 
     // If token is still refreshing and there is no logout message shown app should try again to get token after 0.5 second
