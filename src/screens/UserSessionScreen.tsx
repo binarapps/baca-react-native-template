@@ -2,6 +2,7 @@ import { useAuthControllerMe } from '@baca/api/query/auth/auth'
 import { Box, Button, ScrollView, Text } from '@baca/design-system'
 import { Token, getToken } from '@baca/services'
 import { isRefreshingTokenAtom } from '@baca/store'
+import { wait } from '@baca/utils'
 import { useAtomValue } from 'jotai'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -22,7 +23,11 @@ export const UserSessionScreen = () => {
 
   const fetchUser = useCallback(async () => {
     await refetch()
-  }, [refetch])
+
+    // Refetch function could refresh token, so we are fetching it from store again
+    await wait(100)
+    await fetchToken()
+  }, [fetchToken, refetch])
 
   useEffect(() => {
     fetchToken()

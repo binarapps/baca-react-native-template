@@ -1,14 +1,15 @@
 import { CompanyLogo } from '@baca/components'
+import { useTheme } from '@baca/hooks'
 import cssStyles from '@baca/styles'
 import { Pressable } from '@bacons/react-views'
 import { Link } from 'expo-router'
 import { Platform, StyleSheet, View } from 'react-native'
 
 import { useWidth } from '../hooks'
-import { TabColorsStrings } from '../navigation-config'
 import { cns } from '../utils'
 
 export function HeaderLogo() {
+  const { colors } = useTheme()
   const isLargeHorizontal = useWidth(1264)
 
   return (
@@ -32,9 +33,7 @@ export function HeaderLogo() {
               style={[
                 jsStyles.headerLogo,
                 {
-                  backgroundColor: hovered
-                    ? TabColorsStrings.lightGray50
-                    : TabColorsStrings.transparent,
+                  backgroundColor: hovered ? colors.bg.tertiary : colors.Base.transparent,
                 },
               ]}
             >

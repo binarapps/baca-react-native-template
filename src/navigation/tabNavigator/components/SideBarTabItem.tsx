@@ -1,14 +1,10 @@
-import { useColorScheme } from '@baca/contexts'
-import { Icon } from '@baca/design-system'
-import cssStyles from '@baca/styles'
+import { Icon, Text } from '@baca/design-system'
+import { useTheme } from '@baca/hooks'
 import { IconNames } from '@baca/types/icon'
-import { Text } from '@bacons/react-views'
 import { Platform, StyleSheet, View } from 'react-native'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
 import { useWidth } from '../hooks'
-import { TabColors, TabColorsStrings } from '../navigation-config'
-import { cns } from '../utils'
 
 export function SideBarTabItem({
   children,
@@ -26,7 +22,7 @@ export function SideBarTabItem({
   params?: Record<string, string>
 }) {
   const isLarge = useWidth(1264)
-  const { colorScheme } = useColorScheme()
+  const { colors } = useTheme()
 
   return (
     <TabBarItemWrapper {...{ name, onPress, params }} id={name} style={jsStyles.sidebarTabItem}>
@@ -35,7 +31,7 @@ export function SideBarTabItem({
           style={[
             jsStyles.sidebarItemContainer,
             hovered && {
-              backgroundColor: TabColorsStrings.lightGray50,
+              backgroundColor: colors.bg.tertiary,
             },
           ]}
         >
@@ -47,30 +43,13 @@ export function SideBarTabItem({
               },
             ]}
           >
-            <Icon
-              name={focused ? iconFocused : icon}
-              size={30}
-              color={colorScheme === 'light' ? TabColors.tabIconDark : TabColors.tabIconLight}
-            />
+            <Icon color="nav.item.button.icon.fg" name={focused ? iconFocused : icon} size={30} />
           </View>
-
           <Text
-            style={[
-              jsStyles.sidebarItemText,
-              Platform.select({
-                default: {
-                  display: isLarge ? 'flex' : 'none',
-                },
-                web: cns(cssStyles.sideBarTabItemText),
-              }),
-              {
-                color:
-                  colorScheme === 'light'
-                    ? TabColorsStrings.tabTextDark
-                    : TabColorsStrings.tabTextLight,
-              },
-              focused && jsStyles.fontBold,
-            ]}
+            color="text.secondary"
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={[jsStyles.sidebarItemText, { display: isLarge ? 'flex' : 'none' }]}
+            variant={focused ? 'MdBold' : 'MdSemibold'}
           >
             {children}
           </Text>
@@ -81,7 +60,6 @@ export function SideBarTabItem({
 }
 
 const jsStyles = StyleSheet.create({
-  fontBold: { fontWeight: 'bold' },
   sidebarIconContainer: Platform.select({
     default: { padding: 0 },
     web: {
@@ -103,10 +81,9 @@ const jsStyles = StyleSheet.create({
     }),
   },
   sidebarItemText: {
-    fontSize: 16,
-    lineHeight: 24,
     marginLeft: 16,
     marginRight: 16,
+    userSelect: 'none',
   },
   sidebarTabItem: {
     paddingVertical: 4,
