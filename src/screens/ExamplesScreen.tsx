@@ -20,6 +20,7 @@ export const ExamplesScreen = () => {
     () => push('/example/push-notifications-helpers'),
     [push]
   )
+  const goToUserSession = useCallback(() => push('/example/user-session'), [push])
 
   const goToHomeStackDetails = useCallback(() => push('/home/details'), [push])
 
@@ -49,6 +50,9 @@ export const ExamplesScreen = () => {
       {/* TODO: Add translations */}
       <Button mb={2} onPress={goToPushNotificationsHelpers}>
         Go to push notifications helpers
+      </Button>
+      <Button mb={2} onPress={goToUserSession}>
+        {t('examples_screen.go_to_user_session')}
       </Button>
     </ScrollView>
   )
