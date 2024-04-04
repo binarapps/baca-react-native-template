@@ -18,7 +18,7 @@ export const HelperSection = ({
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const HelperRenderJson = ({ children }: { children: any }) => {
-  if (!children) {
+  if (typeof children === 'undefined') {
     return null
   }
   return (
