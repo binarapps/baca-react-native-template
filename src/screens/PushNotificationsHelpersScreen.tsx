@@ -1,20 +1,11 @@
+import { HelperRenderJson, HelperSection } from '@baca/components'
 import { ENV, isExpoGo } from '@baca/constants'
 import { useNotificationContext } from '@baca/contexts'
-import { Box, Text, Button, ScrollView, Spacer } from '@baca/design-system'
+import { Text, Button, ScrollView } from '@baca/design-system'
 import { useCallback, useEffect, useScreenOptions, useState, useTranslation } from '@baca/hooks'
 import { wait } from '@baca/utils'
 import * as Clipboard from 'expo-clipboard'
 import * as Notifications from 'expo-notifications'
-
-const Section = ({ header = '', children }: { header: string; children: React.ReactNode }) => {
-  return (
-    <Box p={4} borderRadius={16} bg="bg.active" mb={4}>
-      <Text.XlBold>{header}</Text.XlBold>
-      <Spacer y={2} />
-      {children}
-    </Box>
-  )
-}
 
 export const PushNotificationsHelpersScreen = (): JSX.Element => {
   const { t } = useTranslation()
@@ -100,50 +91,42 @@ export const PushNotificationsHelpersScreen = (): JSX.Element => {
 
   return (
     <ScrollView flexGrow={1} p={4}>
-      <Section header="Push token">
-        <Button my={2} onPress={handleCopyPushToken}>
-          {t('settings_screen.copy_push_token')}
-        </Button>
-      </Section>
+      <HelperSection header="Push token">
+        <Button onPress={handleCopyPushToken}>{t('settings_screen.copy_push_token')}</Button>
+      </HelperSection>
 
-      <Section header="Permissions">
-        <Button my={2} onPress={checkNotificationPermissionStatus}>
+      <HelperSection header="Permissions">
+        <Button onPress={checkNotificationPermissionStatus}>
           Check notifications permission status
         </Button>
         {notificationPermissionStatus && (
           <>
-            <Spacer y={2} />
             <Text.LgBold>Notification permission status</Text.LgBold>
-            <Text.MdMedium>{JSON.stringify(notificationPermissionStatus, null, 2)}</Text.MdMedium>
+            <HelperRenderJson>{notificationPermissionStatus}</HelperRenderJson>
           </>
         )}
-      </Section>
+      </HelperSection>
 
-      <Section header="Last push notification data">
-        <Text.MdMedium>
-          {notification ? JSON.stringify(notification, null, 2) : "There wasn't any notification"}
-        </Text.MdMedium>
+      <HelperSection header="Last push notification data">
+        <HelperRenderJson>{notification}</HelperRenderJson>
         {/* When there is no notification we would like to also display if notification is null or undefined */}
         <Text.MdMedium>{!notification ? typeof notification : undefined}</Text.MdMedium>
-      </Section>
+      </HelperSection>
 
-      <Section header="Scheduled notifications">
-        <Button my={2} onPress={scheduleNotification}>
-          Schedule new push notification - 10 seconds
-        </Button>
+      <HelperSection header="Scheduled notifications">
+        <Button onPress={scheduleNotification}>Schedule new push notification - 10 seconds</Button>
 
-        <Button my={2} onPress={getListOfScheduledNotificaitons}>
+        <Button onPress={getListOfScheduledNotificaitons}>
           Get list of scheduled notifications
         </Button>
 
-        <Spacer y={2} />
         <Text.LgBold>List of scheduled notifications</Text.LgBold>
         {listOfscheduledNotifications.length ? (
-          <Text.MdMedium>{JSON.stringify(listOfscheduledNotifications, null, 2)}</Text.MdMedium>
+          <HelperRenderJson>{listOfscheduledNotifications}</HelperRenderJson>
         ) : (
           <Text.MdMedium>No scheduled notifications</Text.MdMedium>
         )}
-      </Section>
+      </HelperSection>
     </ScrollView>
   )
 }
