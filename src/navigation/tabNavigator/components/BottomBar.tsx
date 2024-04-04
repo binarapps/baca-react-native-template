@@ -1,15 +1,15 @@
-import { useColorScheme } from '@baca/contexts'
 import { Icon } from '@baca/design-system'
+import { useTheme } from '@baca/hooks'
 import cssStyles from '@baca/styles'
 import { Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
-import { bottomTabs, TabColors, TabColorsStrings } from '../navigation-config'
+import { bottomTabs } from '../navigation-config'
 import { cns } from '../utils'
 
 export function BottomBar({ visible }: { visible: boolean }) {
-  const { colorScheme } = useColorScheme()
+  const { colors } = useTheme()
   return (
     <View
       style={[
@@ -24,14 +24,14 @@ export function BottomBar({ visible }: { visible: boolean }) {
         }),
       ]}
     >
-      <View style={jsStyles.nav}>
+      <View style={[jsStyles.nav, { borderTopColor: colors.border.secondary }]}>
         {bottomTabs.map((tab, i) => (
           <TabBarItemWrapper key={i} name={tab.name} id={tab.id} params={tab.params}>
             {({ focused, pressed, hovered }) => (
               <Icon
                 name={focused ? tab.iconFocused : tab.icon}
                 size={40}
-                color={colorScheme === 'light' ? TabColors.tabIconDark : TabColors.tabIconLight}
+                color="nav.item.button.icon.fg"
                 style={[
                   jsStyles.tabIcon,
                   pressed && jsStyles.tabIconPressed,
@@ -54,7 +54,6 @@ export function BottomBar({ visible }: { visible: boolean }) {
 const jsStyles = StyleSheet.create({
   nav: {
     alignItems: 'center',
-    borderTopColor: TabColorsStrings.lightGray,
     borderTopWidth: 1,
     flexDirection: 'row',
     height: 49,

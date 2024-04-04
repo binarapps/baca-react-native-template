@@ -6,7 +6,7 @@ import Axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import i18n from 'i18next'
 import qs from 'qs'
 
-import { injectTokenToRequest } from './interceptors'
+import { injectTokenToRequest, signOutWhenNotAuthorized } from './interceptors'
 
 type ApiErrorType = {
   error: string
@@ -62,6 +62,8 @@ AXIOS_INSTANCE.interceptors.response.use(
       showErrorToast({ description: i18n.t('errors.to_may_requests') })
       return
     }
+
+    await signOutWhenNotAuthorized(error)
 
     // TODO: we should handle certain error type
     if (errorMessage) {

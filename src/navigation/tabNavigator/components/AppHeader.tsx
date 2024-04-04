@@ -1,11 +1,11 @@
 import { CompanyLogo } from '@baca/components'
 import { isWeb } from '@baca/constants'
+import { useTheme } from '@baca/hooks'
 import { StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-import { TabColorsStrings } from '../navigation-config'
-
 export function AppHeader() {
+  const { colors } = useTheme()
   const { top } = useSafeAreaInsets()
 
   if (!isWeb) return null
@@ -13,7 +13,12 @@ export function AppHeader() {
   const height = 60 + top
 
   return (
-    <View style={[{ height, paddingTop: top }, jsStyles.appHeader]}>
+    <View
+      style={[
+        { borderBottomColor: colors.border.secondary, height, paddingTop: top },
+        jsStyles.appHeader,
+      ]}
+    >
       <CompanyLogo height={60} width={150} />
     </View>
   )
@@ -22,7 +27,6 @@ export function AppHeader() {
 const jsStyles = StyleSheet.create({
   appHeader: {
     alignItems: 'center',
-    borderBottomColor: TabColorsStrings.lightGray,
     borderBottomWidth: 1,
     display: 'flex',
     flexDirection: 'row',
