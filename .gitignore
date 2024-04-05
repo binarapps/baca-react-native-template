@@ -43,3 +43,4 @@ scripts/doppler_variables.sh
 env.json
 
 .vercel
+.env*.local

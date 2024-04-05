@@ -23,7 +23,7 @@ export const usePasswordValidation = () => {
       !showValidationState && setShowValidationState(true)
       setIsPasswordError(!!min8Chars || !!min1SpecialChar)
       setPasswordErrors([min8Chars, min1SpecialChar])
-      return !!min8Chars || !!min1SpecialChar ? 'Error' : false
+      return !!min8Chars || !!min1SpecialChar ? 'Error' : undefined
     },
     [showValidationState]
   )
