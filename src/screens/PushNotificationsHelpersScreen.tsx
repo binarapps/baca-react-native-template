@@ -14,7 +14,7 @@ export const PushNotificationsHelpersScreen = (): JSX.Element => {
   const [notificationPermissionStatus, setNotificationPermissionStatus] =
     useState<Notifications.NotificationPermissionsStatus>()
 
-  const [listOfscheduledNotifications, setListOfScheduledNotifications] = useState<
+  const [listOfScheduledNotifications, setListOfScheduledNotifications] = useState<
     Notifications.NotificationRequest[]
   >([])
 
@@ -28,15 +28,15 @@ export const PushNotificationsHelpersScreen = (): JSX.Element => {
     checkNotificationPermissionStatus()
   }, [checkNotificationPermissionStatus])
 
-  const getListOfScheduledNotificaitons = useCallback(async () => {
+  const getListOfScheduledNotifications = useCallback(async () => {
     const listOfScheduledNotifications = await Notifications.getAllScheduledNotificationsAsync()
 
     setListOfScheduledNotifications(listOfScheduledNotifications)
   }, [])
 
   useEffect(() => {
-    getListOfScheduledNotificaitons()
-  }, [getListOfScheduledNotificaitons])
+    getListOfScheduledNotifications()
+  }, [getListOfScheduledNotifications])
 
   const handleCopyPushToken = useCallback(async () => {
     try {
@@ -83,44 +83,58 @@ export const PushNotificationsHelpersScreen = (): JSX.Element => {
     })
 
     await wait(200)
-    await getListOfScheduledNotificaitons()
-  }, [getListOfScheduledNotificaitons])
+    await getListOfScheduledNotifications()
+  }, [getListOfScheduledNotifications])
 
   return (
     <ScrollView flexGrow={1} p={4}>
+      {/* TODO: Add translations */}
       <HelperSection header="Push token">
         <Button onPress={handleCopyPushToken}>{t('settings_screen.copy_push_token')}</Button>
       </HelperSection>
 
+      {/* TODO: Add translations */}
       <HelperSection header="Permissions">
+        {/* TODO: Add translations */}
         <Button onPress={checkNotificationPermissionStatus}>
           Check notifications permission status
         </Button>
         {notificationPermissionStatus && (
           <>
+            {/* TODO: Add translations */}
             <Text.LgBold>Notification permission status</Text.LgBold>
             <HelperRenderJson>{notificationPermissionStatus}</HelperRenderJson>
           </>
         )}
       </HelperSection>
 
+      {/* TODO: Add translations */}
       <HelperSection header="Last push notification data">
         <HelperRenderJson>{notification}</HelperRenderJson>
         {/* When there is no notification we would like to also display if notification is null or undefined */}
         <Text.MdMedium>{!notification ? typeof notification : undefined}</Text.MdMedium>
       </HelperSection>
 
+      {/* TODO: Add translations */}
       <HelperSection header="Scheduled notifications">
+        {/* TODO: Add translations */}
         <Button onPress={scheduleNotification}>Schedule new push notification - 10 seconds</Button>
 
-        <Button onPress={getListOfScheduledNotificaitons}>
+        <Button onPress={getListOfScheduledNotifications}>
+          {/* TODO: Add translations */}
           Get list of scheduled notifications
         </Button>
+        <Text.LgBold>
+          {/* TODO: Add translations */}
+          Count of scheduled notifications: {listOfScheduledNotifications.length}
+        </Text.LgBold>
 
+        {/* TODO: Add translations */}
         <Text.LgBold>List of scheduled notifications</Text.LgBold>
-        {listOfscheduledNotifications.length ? (
-          <HelperRenderJson>{listOfscheduledNotifications}</HelperRenderJson>
+        {listOfScheduledNotifications.length ? (
+          <HelperRenderJson>{listOfScheduledNotifications}</HelperRenderJson>
         ) : (
+          // TODO: Add translations
           <Text.MdMedium>No scheduled notifications</Text.MdMedium>
         )}
       </HelperSection>
