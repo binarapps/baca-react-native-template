@@ -19,7 +19,7 @@ export const DataFromBeScreen_EXAMPLE = () => {
     return (
       <Box mb="1" bg="fg.brand.primary" borderRadius={2} m={2}>
         <Text>{'id: ' + id}</Text>
-        <Text.Body mb={2}>{'title: ' + title}</Text.Body>
+        <Text.MdRegular mb={2}>{'title: ' + title}</Text.MdRegular>
       </Box>
     )
   }, [])
@@ -27,8 +27,8 @@ export const DataFromBeScreen_EXAMPLE = () => {
   return (
     <Box flex={1}>
       <Center flex={1}>
-        <Text fontSize="xl">THIS IS EXAMPLE SCREEN</Text>
-        <Text fontSize="xl">which contains data from backend</Text>
+        <Text.XlRegular>THIS IS EXAMPLE SCREEN</Text.XlRegular>
+        <Text.XlRegular>which contains data from backend</Text.XlRegular>
         <Spacer y="1" />
         <FlatList
           ListEmptyComponent={

@@ -40,22 +40,18 @@ export const usePreventGoBack = (preventRemove = true) => {
 
     e.preventDefault()
 
-    alert(
-      t('navigation.prevent_go_back_alert.title'),
-      t('navigation.prevent_go_back_alert.description'),
-      [
-        {
-          text: t('navigation.prevent_go_back_alert.do_not_leave'),
-          style: 'cancel',
-          onPress: () => undefined,
-        },
-        {
-          text: t('navigation.prevent_go_back_alert.discard'),
-          style: 'destructive',
-          onPress: () => navigation.dispatch(e?.data?.action),
-        },
-      ]
-    )
+    alert(t('alert.prevent_go_back.title'), t('alert.prevent_go_back.description'), [
+      {
+        text: t('alert.prevent_go_back.do_not_leave'),
+        style: 'cancel',
+        onPress: () => undefined,
+      },
+      {
+        text: t('alert.prevent_go_back.discard'),
+        style: 'destructive',
+        onPress: () => navigation.dispatch(e?.data?.action),
+      },
+    ])
   })
 
   React.useEffect(

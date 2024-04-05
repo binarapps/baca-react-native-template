@@ -5,9 +5,6 @@
 import 'setimmediate'
 import 'react-native-reanimated'
 
-import 'fast-text-encoding'
-import 'react-native-url-polyfill/auto'
-
 // Rest imports
 import '@baca/i18n'
 import { enableAndroidBackgroundNotificationListener, startMockedServer } from '@baca/services'
@@ -22,10 +19,10 @@ if (ENABLE_MOCKED_SERVER) {
 }
 
 // TODO: Uncomment reactotron setup when using
-// const isUsingReactotron = true
-// if (__DEV__ && isUsingReactotron && !process.env.JEST_WORKER_ID) {
-//   require('./ReactotronConfig')
-// }
+const isUsingReactotron = true
+if (__DEV__ && isUsingReactotron && !process.env.JEST_WORKER_ID) {
+  require('./ReactotronConfig')
+}
 
 // Workaround for the notifications received in background on android
 // src: https://github.com/expo/expo/issues/14078#issuecomment-1041294084

@@ -1,5 +1,6 @@
 export * from './Absolute'
 export * from './Box'
+export * from './BoxWithShadow'
 export * from './Button'
 export * from './Center'
 export * from './Column'

@@ -9,13 +9,13 @@
 
 export interface AuthUpdateDto {
   /** The first name of the user. */
-  firstName: string
+  firstName?: string
   /** The last name of the user. */
-  lastName: string
+  lastName?: string
   /** IETF language tags (e.g., en-US). */
-  locale: string
+  locale?: string
   /** The old password required for security verification when updating user credentials. */
-  oldPassword: string
+  oldPassword?: string
   /** The new password for updating user credentials. */
-  password: string
+  password?: string
 }

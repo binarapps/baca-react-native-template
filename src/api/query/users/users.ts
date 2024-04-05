@@ -23,6 +23,7 @@ import type {
   ErrorEntity,
   ErrorServerEntity,
   ErrorUnauthorizedEntity,
+  ErrorValidationEntity,
   UpdateUserDto,
   UserEntity,
   UsersControllerFindAllParams,
@@ -50,7 +51,9 @@ export const usersControllerCreate = (
 }
 
 export const getUsersControllerCreateMutationOptions = <
-  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
+  TError = ErrorType<
+    ErrorUnauthorizedEntity | ErrorEntity | ErrorValidationEntity | ErrorServerEntity
+  >,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -85,14 +88,16 @@ export type UsersControllerCreateMutationResult = NonNullable<
 >
 export type UsersControllerCreateMutationBody = BodyType<CreateUserDto>
 export type UsersControllerCreateMutationError = ErrorType<
-  ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity
+  ErrorUnauthorizedEntity | ErrorEntity | ErrorValidationEntity | ErrorServerEntity
 >
 
 /**
  * @summary Create User
  */
 export const useUsersControllerCreate = <
-  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
+  TError = ErrorType<
+    ErrorUnauthorizedEntity | ErrorEntity | ErrorValidationEntity | ErrorServerEntity
+  >,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<

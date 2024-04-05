@@ -1,78 +1,116 @@
 {
-  "common": {
-    "add": "Dodaj",
-    "back": "Cofnij",
-    "cancel": "Anuluj",
-    "email_label": "E-mail",
-    "email_placeholder": "john@doe.com",
-    "empty_list": "Lista jest pusta",
-    "go_back": "Cofnij",
-    "log_in": "Login",
-    "phone_label": "Telefon",
-    "remove": "Usuń",
-    "save": "Zapisz",
-    "search": "Szukaj",
-    "send_again": "Wyślij ponownie",
-    "show_on_map": "Pokaż na mapie",
-    "sign_in": "Zaloguj",
-    "sign_up": "Zarejestruj",
-    "try_again_later": "Proszę spróbuj ponownie później",
-    "try_again": "Spróbuj ponownie",
-    "user_label": "Użytkownik",
-    "user_placeholder": "Użytkownik"
-  },
-  "errors": {
-    "missing_auth": "Brak autoryzacji",
-    "screen_not_found": "NotFound screen",
-    "something_went_wrong": "Coś poszło nie tak",
-    "token_expired": "Token wygasł",
-    "play_services_not_available": "Usługi play są niedostępne."
-  },
-  "form": {
-    "invalid_email_format": "Zły adres e-mail",
-    "invalid_password": "Niepoprawne hasło",
-    "required": "Pole wymagane"
-  },
-  "navigation": {
-    "prevent_go_back_alert": {
+  "alert": {
+    "prevent_go_back": {
       "description": "Masz niezapisane zmiany. Jesteś pewny, że chcesz je porzucić i wyjść?",
       "discard": "Porzuć",
       "do_not_leave": "Nie wychodź",
       "title": "Anulować zmiany?"
     },
+    "session_expired": {
+      "description": "Spróbuj zalogować się ponownie",
+      "title": "Twoja sesja wygasła"
+    }
+  },
+  "common": {
+    "add": "Dodaj",
+    "back": "Cofnij",
+    "cancel": "Anuluj",
+    "continue": "Kontynuuj",
+    "go_back": "Cofnij",
+    "remove": "Usuń",
+    "save": "Zapisz",
+    "search": "Szukaj",
+    "try_again_later": "Proszę spróbuj ponownie później",
+    "try_again": "Spróbuj ponownie"
+  },
+  "errors": {
+    "invalid_email": "Niepoprawny adres e-mail",
+    "invalid_password": "Niepoprawne hasło",
+    "missing_auth": "Brak autoryzacji",
+    "play_services_not_available": "Usługi play są niedostępne.",
+    "screen_not_found": "NotFound screen",
+    "something_went_wrong": "Coś poszło nie tak",
+    "to_may_requests": "Zbyt wiele prób, spróbuj ponownie za kilka minut",
+    "token_expired": "Token wygasł"
+  },
+  "examples_component": {
+    "example": "Przykład"
+  },
+  "form": {
+    "checkbox": {
+      "privacy_policy": "Zapoznałem się i akceptuję politykę prywatności",
+      "remember_me": "Zapamiętaj mnie",
+      "terms_accepted": "Zgadzam się z warunkami użytkowania"
+    },
+    "errors": {},
+    "labels": {
+      "confirm_password": "Potwierdź hasło",
+      "email": "Adres e-mail",
+      "first_name": "Imię",
+      "last_name": "Nazwisko",
+      "password": "Hasło"
+    },
+    "placeholders": {
+      "confirm_password": "Potwierdź hasło",
+      "create_password": "Utwórz nowe hasło",
+      "email": "Podaj adres e-mail",
+      "first_name": "Podaj swoje imię",
+      "last_name": "Podaj swoje nazwisko",
+      "password": "Hasło"
+    },
+    "select": {},
+    "validation": {
+      "invalid_email_format": "Niepoprawny format adresu e-mail",
+      "password_min_1_special_char": "Musi zawierać co najmniej 1 znaj specjalny",
+      "password_min_8_chars": "Musi składać się z co najmniej 8 znaków",
+      "passwords_does_not_match": "Wprowadzone hasła nie są identyczne",
+      "required": "Pole wymagane"
+    }
+  },
+  "navigation": {
     "screen_titles": {
       "application_info": "ApplicationInfo",
+      "blog": "Blog",
       "colors": "Colors",
       "components": "Components",
       "data_from_be_screen_example": "Dane z backend-u",
       "details": "Details",
       "examples_stack": "Examples",
       "examples": "Examples",
+      "forgot_password": "Nie pamiętam hasła",
       "home_stack": "Home",
       "home": "Home",
       "main_tab": "MainTab",
       "not_found": "NotFound",
+      "resetLinkSent": "Link wysłany",
+      "profile": "Profil użytkownika",
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
-      "typography": "Typography",
       "test_form": "Formularz testowy",
-      "blog": "Blog"
+      "typography": "Typography"
     }
+  },
+  "toast": {
+    "error": {},
+    "success": {
+      "new_account_created": "Nowe konto zostało stworzone. Email z linkiem weryfikacyjnym został wysłany na {{userEmail}}.",
+      "profile_updated": "Zaktualizowano Twoje dane."
+    },
+    "title": {
+      "error": "Wystąpił błąd",
+      "info": "Dodatkowe info",
+      "success": "Udało się",
+      "warning": "Uwaga"
+    },
+    "warning": {}
   },
   "update": {
     "alert_message": "Będziesz musiał zrestartować aplikację, żeby mieć lepsze doświadczenia podczas jej używania",
     "alert_title": "Aktualizacja",
     "restart": "Zrestartuj"
   },
-  "examples_component": {
-    "example": "Przykład"
-  },
-  "landing_screen": {
-    "login_cta": "Zaloguj się",
-    "go_to_blog": "Otwórz blog",
-    "go_to_form": "Otwórz pełno ekranowy formularz full"
-  },
+
   "application_info_screen": {
     "navigation_info": "Kiedy będziesz próbował cofnąć to zostaniesz podwójnie zapytany, czy na pewno tego chcesz \n"
   },
@@ -94,13 +132,19 @@
     },
     "button_variants": {
       "disabled": "Button disabled",
-      "ghost": "Button ghost",
       "header": "Button variants",
-      "link": "Button link",
+      "link_color": "Button link color",
+      "link_destructive": "Button link destructive",
+      "link_gray": "Button link gray",
       "loading": "Button loading",
-      "outline": "Button outline",
       "primary": "Button primary",
-      "secondary": "Button secondary",
+      "primary_destructive": "Button primary destructive",
+      "secondary_color": "Button secondary color",
+      "secondary_destructive": "Button secondary destructive",
+      "secondary_gray": "Button secondary gray",
+      "tertiary_color": "Button tertiary color",
+      "tertiary_destructive": "Button tertiary destructive",
+      "tertiary_gray": "Button tertiary gray",
       "with_icons": "Button with icons"
     },
     "loader_variants": {
@@ -116,6 +160,12 @@
       "title": "In-app notification example"
     }
   },
+  "confirm_email_screen": {
+    "go_back_login": "Wróć na stronę logowania",
+    "verification_failed": "Ups, nie udało się zweryfikować adresu email.",
+    "verification_in_progress": "Trwa weryfikowanie adresu e-mail ...",
+    "verification_succeed": "Adres e-mail został pomyślnie potwierdzony."
+  },
   "details_screen": {
     "title": "To jest przykładowy widok",
     "open_bottom_sheet": "Otwórz BottomSheetModal",
@@ -123,18 +173,47 @@
     "awesome": "Wspaniale 🎉"
   },
   "examples_screen": {
-    "header": "To jest przykładowy widok",
     "go_to_application_info": "Idź do ApplicationInfo",
     "go_to_colors": "Idź do Kolorów",
     "go_to_components": "Idź do Komponentów",
-    "go_to_typography": "Idź do Typografii",
     "go_to_home_stack_details": "Idź do HomeStackDetails",
-    "go_to_settings": "Idź do Ustawień",
+    "go_to_screen_test_form": "Idź do formularza testowego",
     "go_to_screen_with_BEdata": "Idź do widoku z danymi z backend-u",
-    "go_to_screen_test_form": "Idź do formularza testowego"
+    "go_to_settings": "Idź do Ustawień",
+    "go_to_typography": "Idź do Typografii",
+    "go_to_user_session": "Idź do sesji użytkowania",
+    "header": "To jest przykładowy widok"
+  },
+  "forgot_password_screen": {
+    "back_to_login": "Wróć do logowania",
+    "forgot_password": "Zapomniałeś hasła?",
+    "no_worries": "Bez obaw, wyślemy Ci instrukcje resetowania hasła.",
+    "reset_password": "Zresetuj hasło"
   },
   "home_screen": {
     "details": "Detale"
+  },
+  "landing_screen": {
+    "login_cta": "Zaloguj się",
+    "sign_up": "Zarejestruj się",
+    "go_to_blog": "Otwórz blog",
+    "go_to_form": "Otwórz pełno ekranowy formularz full"
+  },
+  "reset_password_complete": {
+    "password_reset": "Reset hasła",
+    "password_successfully_reset": "Twoje hasło zostało pomyślnie zresetowane. Kliknij poniżej aby się zalogować."
+  },
+  "reset_password_link_sent_screen": {
+    "check_email": "Sprawdź skrzynkę e-mail",
+    "click_to_resend": "Wyślij ponownie",
+    "did_not_receive": "Nie otrzymałeś wiadomości e-mail?",
+    "open_email_app": "Otwórz aplikację e-mail",
+    "we_sent_link": "Wysłaliśmy link resetujący hasło na"
+  },
+  "reset_password_screen": {
+    "reset_password": "Reset hasła",
+    "set_new_password": "Ustaw nowe hasło",
+    "welcome_back": "Witaj ponownie! Proszę wprowadź dane."
   },
   "settings_screen": {
     "current_theme": "Current theme: {{theme}}",
@@ -143,21 +222,19 @@
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",
-    "email_helper_text": "Email",
-    "forgot_password": "Zapomniałeś hasła?",
-    "or_pass": "lub wprowadź:",
-    "password_helper_text": "Hasła muszą być takie same",
-    "password_label": "Hasło",
-    "password_placeholder": "hasło",
-    "remember_me": "Zapamiętaj mnie",
-    "sign_in": "Zaloguj",
-    "sign_up": "Zarejestruj",
-    "sign_in_by_google": "Zaloguj się przez Google"
+    "forgot_password": "Nie pamiętam hasła",
+    "sign_in_by_google": "Zaloguj się przez Google",
+    "sign_in": "Zaloguj się",
+    "sign_up": "Zarejestruj się",
+    "welcome_back_enter_details": "Proszę wprowadź dane.",
+    "welcome_back": "Witaj ponownie!"
   },
   "sign_up_screen": {
-    "agree_terms_label": "Zgadzam się z warunkami użytkowania",
-    "newsletter_label": "Subskrybuj nasz newsletter",
-    "sign_up": "Zarejestruj"
+    "already_have_an_account": "Masz już konto?",
+    "get_started": "Rozpoczynamy",
+    "log_in": "Zaloguj się",
+    "sign_up": "Zarejestruj się",
+    "start_free_trail": "Rozpocznij darmowy 30 dniowy okres próbny."
   },
   "test_form": {
     "additional_comment": "Dodatkowy komentarz",
@@ -178,9 +255,9 @@
       "interests": "Zaznacz przynajmniej 1 zainteresowanie",
       "music": "Zaznacz przynajmniej 1 rodzaj muzyki",
       "name": "Imie jest wymagane",
-      "phone_format": "Numer telefonu musi byc w formacie 000-000-000",
+      "phone_format": "Numer telefonu musi być w formacie 000-000-000",
       "phone": "Number telefonu jest wymagany",
-      "postalCode_format": "Kod pocztowy musi byc w formacie 00-000",
+      "postalCode_format": "Kod pocztowy musi być w formacie 00-000",
       "postalCode": "Kod pocztowy jest wymagany",
       "sex": "Płeć jest wymagana",
       "shoeSize": "Rozmiar buta jest wymagany",
@@ -205,8 +282,8 @@
     "which_music": "Jakiej muzyki słuchasz ?"
   },
   "typography_screen": {
-    "text_font_size": "Text.fontSize: ",
-    "heading_size": "Heading.size: "
+    "display_font_size": "Display fontSize: ",
+    "text_font_size": "Text fontSize: "
   },
   "hello": "Witaj",
   "thanks": "Dzięki za używanie najlepszej templatki dla aplikacji expo",

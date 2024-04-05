@@ -13,9 +13,11 @@ description: Build & deploy your react native android mobile app
 
 # Build & deploy the Android app
 
-1.Build first Android binary 🕐 / 📱
+---
 
-<ol type="a">
+## Build first Android binary 🕐 / 📱
+
+<ol>
 <li>
 Select the proper build type
 
@@ -71,21 +73,23 @@ CONGRATULATION !! 🥳🥳 You just started the first Android build of your app!
 </li>
 </ol>
 
-2.Deploy the first version of the Android app for tests in Google Play Store. (internal testing) ?? / ??
+---
+
+## Deploy the first version of the Android app for tests in Google Play Store. (internal testing) 🕐 / 📱
 
 The first submission to Google Play Store needs to be done manually.
 
-<ol type="a">
-<li>Log in to Play Developer Console.</li>
-<li>
-Choose your developer account (if you have more than one):
+### Step 1 - Log in to Play Developer Console.
+
+[Play developer console link](https://play.google.com/console/u/0)
+
+### Step 2 - Choose your developer account (if you have more than one):
 
 ![Choose account](../../static/img/android_account.png)
 
-</li>
-<li>
-Create new app
-<ol type="i">
+### Step 3 - Create new app
+
+<ol>
 <li>
 Press Create App button on the right
 
@@ -99,17 +103,17 @@ Fill out the form for creating about new App.
 
 Fields description:
 
-1)Add your app name. Depending on the type of your app, you are creating:
+1. Add your app name. Depending on the type of your app, you are creating:
 
-a)your app name (qa)
+   - your app name (qa)
 
-b)your app name (staging)
+   - your app name (staging)
 
-c)your app name
+   - your app name
 
-2)Choose your primary language (English, Polish, or some other).
+2. Choose your primary language (English, Polish, or some other).
 
-3)Confirm Developer Programme Polices and US export laws
+3. Confirm Developer Programme Polices and US export laws
 
 </li>
 <li>
@@ -119,11 +123,10 @@ You should create a new app for each environment you need to use (e.g. qa, stagi
 
 </li>
 </ol>
-</li>
 
-<li>
-Download your build file (<b>apk</b> or <b>app-bundle</b>) from the expo dev console.
-<ol type="i">
+### Step 4 - Download your build file (<b>apk</b> or <b>app-bundle</b>) from the expo dev console.
+
+<ol>
 <li>Log in to the expo dev console.</li>
 <li>Choose your organization from the dropdown in the top left corner.</li>
 <li>Choose your project from the left sidebar.</li>
@@ -152,10 +155,10 @@ If you downloaded an <b>app-bundle</b> file, it will be used in the next step.
 
 </li>
 </ol>
-</li>
-<li>
-Prepare the internal test.
-<ol type="i">
+
+### Step 5 - Prepare the internal test.
+
+<ol>
 <li>
 Go to the Internal testing tab from the menu on the left (ensure you are working on the proper app - the app name is visible in the right top corner)
 
@@ -211,10 +214,10 @@ CONGRATULATION !! 🥳🥳 You just released the first version of the app for in
 
 </li>
 </ol>
-</li>
-<li>
-Invite testers to test your app.
-<ol type="i">
+
+### Step 6 - Invite testers to test your app.
+
+<ol>
 <li>Go to the internal testing tab (7.e.i)</li>
 <li>
 Enter Testers tab
@@ -261,10 +264,10 @@ CONGRATULATION !! 🥳🥳 You just invited the first tester of the app for inte
 
 </li>
 </ol>
-</li>
-</ol>
 
-3.Build and deploy the next versions of the app to the Google Play Store. 🌈 / 🕐 / 📱
+---
+
+## Build and deploy the next versions of the app to the Google Play Store. 🌈 / 🕐 / 📱
 
 To run this step, ensure that you already have built and deployed the first version of the app (it means, that you need to go through steps 6 and 7 for qa / staging / production version of the app depending of your needs)
 
@@ -272,14 +275,16 @@ Only the first submission of the Android app needs to be done manually. Every ne
 
 To make it possible, <b>Google Service Account</b> key file needs to be provided.
 
-<ol type="a">
+<ol>
 <li>
 Generate <b>Google Service Account</b> key → follow the instruction.
 
 To generate the above you will need to contact with account owner of your project.
 
 </li>
-<li>Put generated <b>Google Service Account</b> key in the root dir of your project.</li>
+<li>
+Put generated <b>Google Service Account</b> key in the root dir of your project.
+</li>
 <li>
 Add Google Service Account key to .gitignore file.
 

@@ -1,3 +1,7 @@
+import 'text-encoding-polyfill'
+import 'fast-text-encoding'
+import 'react-native-url-polyfill/auto'
+
 import { getArticlesMock } from '@baca/api/query/articles/articles.msw'
 import { getAuthMock } from '@baca/api/query/auth/auth.msw'
 import { getAuthSocialMock } from '@baca/api/query/auth-social/auth-social.msw'

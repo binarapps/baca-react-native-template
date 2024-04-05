@@ -1,5 +1,5 @@
 type GetColorValueProps = {
-  color: ColorNames | string
+  color?: ColorNames | string
   colors: Colors
 }
 
@@ -8,7 +8,7 @@ export const getColorValue = ({ color, colors }: GetColorValueProps): string => 
     return color
   }
 
-  if (!color || typeof color === 'object') return 'transparent'
+  if (!color || typeof color === 'object') return colors.Base.transparent
 
   const keys = color.split('.')
 

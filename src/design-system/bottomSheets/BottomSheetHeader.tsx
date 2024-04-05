@@ -22,9 +22,9 @@ export const BottomSheetHeader = ({
   return (
     <Row alignItems="center">
       <Box flex={1} px={4}>
-        <Text.H4Bold numberOfLines={numberOfLines} allowFontScaling={false}>
+        <Text.MdBold numberOfLines={numberOfLines} allowFontScaling={false}>
           {title}
-        </Text.H4Bold>
+        </Text.MdBold>
       </Box>
       {showCloseButton && (
         <Touchable onPress={onClose} hitSlop={10} p={4} pl={8}>

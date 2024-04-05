@@ -1,4 +1,5 @@
-import { useColorScheme } from '@baca/contexts'
+import { useTheme } from '@baca/hooks'
+import { IconNames } from '@baca/types/icon'
 import { getColorValue } from '@baca/utils'
 import {
   useMemo,
@@ -18,26 +19,35 @@ import {
   TextStyle,
   StyleProp,
   View,
+  Platform,
 } from 'react-native'
 
-import { buttonVariants, theme } from '../../config'
+import {
+  ButtonSize,
+  ButtonVariant,
+  buttonSizeVariants,
+  buttonVariants,
+  getButtonShadowStyle,
+} from '../../config'
 import { generateStyledComponent } from '../../utils'
-import { Box } from '../Box'
+import { Icon } from '../Icon'
 import { Loader } from '../Loader'
+import { Row } from '../Row'
 import { Text } from '../Text'
+import { useHover } from '../Touchables/useHover'
 import { StyledProps } from '../types'
 
 export type ButtonProps = StyledProps &
   PressableProps & {
+    disabled?: boolean
+    leftIconName?: IconNames
+    loaderElement?: JSX.Element
+    loading?: boolean
+    rightIconName?: IconNames
+    size?: ButtonSize
+    textStyle?: StyleProp<TextStyle>
     title?: string
     variant?: ButtonVariant
-    size?: 'sm' | 'md' | 'lg'
-    loading?: boolean
-    disabled?: boolean
-    leftIcon?: JSX.Element
-    rightIcon?: JSX.Element
-    loaderElement?: JSX.Element
-    textStyle?: StyleProp<TextStyle>
   }
 
 const styles = StyleSheet.create({
@@ -46,14 +56,10 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
   },
   baseText: {
-    color: theme.light.colors.text.primary,
     fontStyle: 'normal',
     fontWeight: '400',
-    letterSpacing: 0,
     lineHeight: 21,
   },
 })
@@ -62,100 +68,95 @@ const RawButton = memo(
   forwardRef<View, ButtonProps>(
     (
       {
-        variant = 'Primary',
-        size = 'md',
-        loading,
-        disabled,
-        leftIcon,
-        rightIcon,
-        style,
-        title,
         children,
+        disabled,
+        leftIconName,
+        loading,
+        rightIconName,
+        size = 'md',
+        style,
         textStyle,
+        title,
+        variant = 'Primary',
         ...props
       },
       ref
     ) => {
-      const { colorScheme } = useColorScheme()
-      const { pressedStyle, notPressedStyle, disabledStyle } = useMemo(
+      const { colors } = useTheme()
+      const { hoverProps, isHovered } = useHover()
+      const { hoveredStyle, defaultStyle, disabledStyle } = useMemo(
         () => buttonVariants[variant],
         [variant]
       )
 
-      const pressedStyles = useMemo<ViewStyle>(
+      const pressedStyles = useMemo<ViewStyle>(() => {
+        return getButtonShadowStyle({ variant })
+      }, [variant])
+
+      const hoveredStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
-            color: pressedStyle.backgroundColor,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            color: hoveredStyle.backgroundColor,
+            colors,
           }),
           borderColor: getColorValue({
-            color: pressedStyle.borderColor!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            color: hoveredStyle.borderColor!,
+            colors,
           }),
-          borderWidth: pressedStyle.borderWidth,
+          borderWidth: hoveredStyle.borderWidth,
         }),
-        [
-          colorScheme,
-          pressedStyle.backgroundColor,
-          pressedStyle.borderColor,
-          pressedStyle.borderWidth,
-        ]
+        [colors, hoveredStyle.backgroundColor, hoveredStyle.borderColor, hoveredStyle.borderWidth]
       )
 
-      const pressedColorStyle = useMemo<TextStyle>(
+      const hoverColorStyle = useMemo<TextStyle>(
         () => ({
           color: getColorValue({
-            color: pressedStyle.color!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            color: hoveredStyle.color!,
+            colors,
           }),
         }),
-        [colorScheme, pressedStyle.color]
+        [colors, hoveredStyle.color]
       )
 
-      const notPressedStyles = useMemo<ViewStyle>(
+      const defaultStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
-            color: notPressedStyle.backgroundColor,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            color: defaultStyle.backgroundColor,
+            colors,
           }),
           borderColor: getColorValue({
-            color: notPressedStyle.borderColor!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            color: defaultStyle.borderColor!,
+            colors,
           }),
-          borderWidth: notPressedStyle.borderWidth,
+          borderWidth: defaultStyle.borderWidth,
         }),
-        [
-          colorScheme,
-          notPressedStyle.backgroundColor,
-          notPressedStyle.borderColor,
-          notPressedStyle.borderWidth,
-        ]
+        [colors, defaultStyle.backgroundColor, defaultStyle.borderColor, defaultStyle.borderWidth]
       )
 
-      const notPressedColorStyle = useMemo<TextStyle>(
+      const defaultColorStyle = useMemo<TextStyle>(
         () => ({
           color: getColorValue({
-            color: notPressedStyle.color!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            color: defaultStyle.color!,
+            colors,
           }),
         }),
-        [colorScheme, notPressedStyle.color]
+        [colors, defaultStyle.color]
       )
 
       const disabledStyles = useMemo<ViewStyle>(
         () => ({
           backgroundColor: getColorValue({
             color: disabledStyle.backgroundColor,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
           borderColor: getColorValue({
             color: disabledStyle.borderColor!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
           borderWidth: disabledStyle.borderWidth,
         }),
         [
-          colorScheme,
+          colors,
           disabledStyle.backgroundColor,
           disabledStyle.borderColor,
           disabledStyle.borderWidth,
@@ -166,100 +167,147 @@ const RawButton = memo(
         () => ({
           color: getColorValue({
             color: disabledStyle.color!,
-            colors: colorScheme === 'light' ? theme.light.colors : theme.dark.colors,
+            colors,
           }),
         }),
-        [colorScheme, disabledStyle.color]
+        [colors, disabledStyle.color]
       )
+      const buttonSizeVariant = buttonSizeVariants[size]
 
       const buttonSizeStyle = useMemo<ViewStyle>(
         () => ({
-          paddingHorizontal: size === 'sm' ? 12 : size === 'md' ? 24 : 48,
-          minWidth: size === 'sm' ? 64 : size === 'md' ? 128 : 256,
+          paddingHorizontal: buttonSizeVariant.paddingHorizontal,
+          paddingVertical: buttonSizeVariant.paddingVertical,
         }),
-        [size]
+        [buttonSizeVariant.paddingHorizontal, buttonSizeVariant.paddingVertical]
       )
 
       const pressableStyleFunction = useCallback(
         ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
           StyleSheet.flatten<ViewStyle>([
             styles.baseButton,
-            pressed ? pressedStyles : notPressedStyles,
+            {
+              ...Platform.select({
+                default:
+                  pressed || isHovered ? { ...hoveredStyles, ...pressedStyles } : defaultStyles,
+                web: pressed
+                  ? { ...defaultStyles, ...pressedStyles }
+                  : isHovered
+                  ? hoveredStyles
+                  : defaultStyles,
+              }),
+            },
             disabled && disabledStyles,
             loading && disabledStyles,
             buttonSizeStyle,
             typeof style === 'function' ? style({ pressed }) : style,
           ]),
-        [pressedStyles, notPressedStyles, loading, buttonSizeStyle, disabled, disabledStyles, style]
+        [
+          buttonSizeStyle,
+          defaultStyles,
+          disabled,
+          disabledStyles,
+          hoveredStyles,
+          isHovered,
+          loading,
+          pressedStyles,
+          style,
+        ]
+      )
+
+      const getIconColor = useCallback(
+        ({ pressed }: PressableStateCallbackType): ColorNames | undefined => {
+          if (disabled) return disabledStyle.color
+          if (pressed || isHovered) return hoveredStyle.color
+          return defaultStyle.color
+        },
+        [defaultStyle.color, disabled, disabledStyle.color, hoveredStyle.color, isHovered]
       )
 
       const pressableTextStyleFunction = useCallback(
         ({ pressed }: PressableStateCallbackType) =>
           StyleSheet.flatten([
             styles.baseText,
-            pressed ? pressedColorStyle : notPressedColorStyle,
+            pressed ? hoverColorStyle : defaultColorStyle,
             disabled && disabledColorStyle,
             textStyle,
           ]),
-        [pressedColorStyle, notPressedColorStyle, disabled, disabledColorStyle, textStyle]
+        [hoverColorStyle, defaultColorStyle, disabled, disabledColorStyle, textStyle]
+      )
+
+      const iconElement = useCallback(
+        (props: PressableStateCallbackType, iconName?: IconNames) => {
+          return iconName ? (
+            <Icon name={iconName} size={buttonSizeVariant.iconSize} color={getIconColor(props)} />
+          ) : null
+        },
+        [buttonSizeVariant.iconSize, getIconColor]
       )
 
       const childrenElement = useCallback(
         (props: PressableStateCallbackType) => {
-          if (loading) {
-            return <Loader type="default" size={24} />
-          }
           if (title) {
             return (
-              <Text.BodyBold
+              <Text
                 allowFontScaling={false}
+                selectable={false}
                 style={pressableTextStyleFunction(props)}
                 textAlign="center"
+                variant={buttonSizeVariant.textVariant}
               >
                 {title}
-              </Text.BodyBold>
+              </Text>
             )
           }
-
           if (typeof children === 'string') {
             return (
-              <Text.BodyBold
+              <Text
                 allowFontScaling={false}
+                selectable={false}
                 style={pressableTextStyleFunction(props)}
                 textAlign="center"
+                variant={buttonSizeVariant.textVariant}
               >
                 {children}
-              </Text.BodyBold>
+              </Text>
             )
           }
-          return children
+          return <>{children}</>
         },
-        [children, loading, pressableTextStyleFunction, title]
+
+        [buttonSizeVariant.textVariant, children, pressableTextStyleFunction, title]
       )
 
       return (
         <Pressable
-          ref={ref}
-          role="button"
           accessibilityRole="button"
+          disabled={disabled || loading}
+          role="button"
           style={pressableStyleFunction}
-          disabled={disabled}
           testID="baseButton"
-          {...props}
+          {...{ ...hoverProps, ref, ...props }}
         >
-          {(props: PressableStateCallbackType) => (
-            <>
-              {leftIcon && <Box mr={8}>{leftIcon}</Box>}
-              {childrenElement(props)}
-              {rightIcon && <Box ml={8}>{rightIcon}</Box>}
-            </>
+          {loading ? (
+            <Loader
+              color={colors.button.primary.bg}
+              size={buttonSizeVariant.iconSize}
+              type="default"
+            />
+          ) : (
+            (props: PressableStateCallbackType) => (
+              <Row gap={buttonSizeVariant.iconGap}>
+                {leftIconName && iconElement(props, leftIconName)}
+                {childrenElement(props)}
+                {rightIconName && iconElement(props, rightIconName)}
+              </Row>
+            )
           )}
         </Pressable>
       )
     }
   )
 )
-export type ButtonVariant = 'Primary' | 'Secondary' | 'Outline' | 'Ghost' | 'Link'
+
 type ButtonComposition = ForwardRefExoticComponent<
   PropsWithoutRef<ButtonProps> & RefAttributes<View>
 > & {
@@ -272,12 +320,18 @@ const Button = generateStyledComponent<ButtonProps, typeof Pressable>(
 ) as ButtonComposition
 
 const generateButtonVariant = (variant: ButtonVariant) =>
-  forwardRef<View, ButtonProps>((props, ref) => <Button variant={variant} {...props} ref={ref} />)
+  forwardRef<View, ButtonProps>((props, ref) => <Button {...{ ...props, ref, variant }} />)
 
 Button.Primary = generateButtonVariant('Primary')
-Button.Secondary = generateButtonVariant('Secondary')
-Button.Outline = generateButtonVariant('Outline')
-Button.Ghost = generateButtonVariant('Ghost')
-Button.Link = generateButtonVariant('Link')
+Button.PrimaryDestructive = generateButtonVariant('PrimaryDestructive')
+Button.SecondaryColor = generateButtonVariant('SecondaryColor')
+Button.SecondaryGray = generateButtonVariant('SecondaryGray')
+Button.SecondaryDestructive = generateButtonVariant('SecondaryDestructive')
+Button.TertiaryColor = generateButtonVariant('TertiaryColor')
+Button.TertiaryGray = generateButtonVariant('TertiaryGray')
+Button.TertiaryDestructive = generateButtonVariant('TertiaryDestructive')
+Button.LinkColor = generateButtonVariant('LinkColor')
+Button.LinkGray = generateButtonVariant('LinkGray')
+Button.LinkDestructive = generateButtonVariant('LinkDestructive')
 
 export { Button }

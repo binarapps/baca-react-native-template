@@ -6,8 +6,8 @@ export const injectTokenToRequest = async (
 ): Promise<InternalAxiosRequestConfig<object>> => {
   const token = await getToken()
 
-  if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`
+  if (token?.accessToken) {
+    config.headers['Authorization'] = `Bearer ${token.accessToken}`
   }
 
   return config

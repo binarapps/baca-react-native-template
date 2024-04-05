@@ -2,6 +2,10 @@ $size-xs: 768px;
 $size-l: 1264px;
 $ui-sidebar: 244px;
 
+*:focus {
+  outline: none;
+}
+
 .container {
   flex-direction: column;
   @media (min-width: $size-xs) {
@@ -11,8 +15,6 @@ $ui-sidebar: 244px;
 // Header Logo
 .headerContainer {
   padding-top: 0px;
-  min-height: 96px;
-  height: 96px;
 }
 
 .headerLink {
@@ -83,5 +85,5 @@ $ui-sidebar: 244px;
 }
 
 .sideBarHeader {
-  align-items: center;
+  align-items: stretch;
 }

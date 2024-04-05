@@ -8,6 +8,7 @@
  */
 
 export interface LastConsentProperties {
+  /** The date and time when the consents were last created or the user agreed to the terms for the first time. */
   createdAt: string
   /** Whether the privacy policy was accepted. */
   privacyPolicyAccepted: boolean
@@ -17,5 +18,6 @@ export interface LastConsentProperties {
   termsAccepted: boolean
   /** Version of terms. */
   termsVersion: string
+  /** The date and time of the last update to the consents, indicating when the user last modified their agreement or the consents were refreshed. */
   updatedAt: string
 }

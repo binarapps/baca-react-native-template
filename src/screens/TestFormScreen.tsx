@@ -70,55 +70,72 @@ export const TestFormScreen = (): JSX.Element => {
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-      <Text fontSize="xl" fontWeight="bold" py={2}>
+      <Text type="display" variant="XxlBold" fontWeight="bold" py={2}>
         {t('test_form.contact_data')}
       </Text>
       <ControlledField.Input
         {...{ control, errors }}
         enterKeyHint="next"
         isRequired
+        label={t('test_form.name_placeholder')}
         name="name"
         onSubmitEditing={setFocus('surname')}
         placeholder={t('test_form.name_placeholder')}
+        rules={VALIDATION.name}
       />
       <ControlledField.Input
         {...{ control, errors }}
         enterKeyHint="next"
         mt={2}
+        isRequired
+        label={t('test_form.surname_placeholder')}
         name="surname"
         onSubmitEditing={setFocus('email')}
         placeholder={t('test_form.surname_placeholder')}
+        rules={VALIDATION.surname}
       />
       <ControlledField.Input
         {...{ control, errors }}
         enterKeyHint="next"
+        isRequired
+        label={t('test_form.email_placeholder')}
         mt={2}
         name="email"
         onSubmitEditing={setFocus('phone')}
         placeholder={t('test_form.email_placeholder')}
+        rules={VALIDATION.email}
       />
       <ControlledField.Input
         {...{ control, errors }}
         enterKeyHint="next"
+        isRequired
+        label={t('test_form.phone_placeholder')}
         mt={2}
         name="phone"
         onSubmitEditing={setFocus('postalCode')}
         placeholder={t('test_form.phone_placeholder')}
+        rules={VALIDATION.phone}
       />
       <ControlledField.Input
         {...{ control, errors }}
         enterKeyHint="next"
+        isRequired
+        label={t('test_form.postalCode_placeholder')}
         mt={2}
         name="postalCode"
         onSubmitEditing={setFocus('city')}
         placeholder={t('test_form.postalCode_placeholder')}
+        rules={VALIDATION.postalCode}
       />
       <ControlledField.Input
         {...{ control, errors }}
         enterKeyHint="next"
+        isRequired
+        label={t('test_form.city_placeholder')}
         mt={2}
         name="city"
         placeholder={t('test_form.city_placeholder')}
+        rules={VALIDATION.city}
       />
       <ControlledField.Radio
         {...{ control, errors }}
@@ -170,7 +187,7 @@ export const TestFormScreen = (): JSX.Element => {
         name="interests"
         rules={VALIDATION.interests}
       />
-      <Text fontSize="xl" fontWeight="bold" py={2}>
+      <Text fontWeight="bold" py={2}>
         {t('test_form.additional_comment')}
       </Text>
       <Controller

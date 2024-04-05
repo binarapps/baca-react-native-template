@@ -3,35 +3,30 @@
     "production": {
       "android": {
         "autoIncrement": true,
-        "buildType": "apk"
+        "buildType": "app-bundle"
       },
       "channel": "production",
       "distribution": "store",
       "ios": {
         "autoIncrement": "buildNumber"
-      }
+      },
+      "node": "18.15.0"
     },
     "staging": {
       "android": {
         "autoIncrement": true,
         "buildType": "apk"
       },
-      "channel": "staging",
-      "distribution": "store",
-      "ios": {
-        "autoIncrement": "buildNumber"
-      }
+      "extends": "production",
+      "channel": "staging"
     },
     "qa": {
       "android": {
         "autoIncrement": true,
         "buildType": "apk"
       },
-      "channel": "qa",
-      "distribution": "store",
-      "ios": {
-        "autoIncrement": "buildNumber"
-      }
+      "extends": "production",
+      "channel": "qa"
     }
   },
   "cli": {
@@ -52,7 +47,10 @@
   "submit": {
     "production": {
       "android": {},
-      "ios": {}
+      "ios": {
+        "ascAppId": "6478398699",
+        "appleTeamId": "5764GC687R"
+      }
     },
     "staging": {
       "android": {},
