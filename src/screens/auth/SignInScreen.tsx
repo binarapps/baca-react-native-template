@@ -6,7 +6,16 @@ import {
   Version,
 } from '@baca/components'
 import { REGEX, isWeb } from '@baca/constants'
-import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
+import {
+  Box,
+  Button,
+  Center,
+  Display,
+  Row,
+  SignInWithGoogle,
+  Spacer,
+  Text,
+} from '@baca/design-system'
 import { useCallback, useSignInForm, useTranslation } from '@baca/hooks'
 import { useRouter } from 'expo-router'
 
@@ -104,6 +113,7 @@ export const SignInScreen = (): JSX.Element => {
         >
           {t('sign_in_screen.sign_in')}
         </Button>
+        <SignInWithGoogle />
         <Row alignItems="center">
           <Text.SmRegular color="text.tertiary">
             {t('sign_in_screen.do_not_have_an_account')}

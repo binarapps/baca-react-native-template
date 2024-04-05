@@ -11,7 +11,7 @@ type GoogleButtonProps = {
 
 export const GoogleButton = ({ onPress, isDisabled }: GoogleButtonProps) => {
   return (
-    <Button mb={6} onPress={onPress} variant="Outline" disabled={isDisabled}>
+    <Button mb={6} onPress={onPress} disabled={isDisabled}>
       <Image source={googleIcon} alt="google-icon" />
       <Text pl={3}>Log in with Google</Text>
     </Button>
