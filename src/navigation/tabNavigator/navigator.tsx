@@ -4,12 +4,12 @@ import React from 'react'
 import { Platform, View } from 'react-native'
 
 import { AppHeader, BottomBar, SideBar } from './components'
-import { useWidth } from './hooks'
+import { useUniversalWidth } from './hooks'
 import { TabbedNavigator } from './tab-slot'
 import { cns } from './utils'
 
 export function ResponsiveNavigator() {
-  const isRowLayout = useWidth(768)
+  const isRowLayout = useUniversalWidth(768)
 
   return (
     <TabbedNavigator>
