@@ -29,7 +29,7 @@ export const FullScreenModal = ({ children, modalRef, ...rest }: Props) => {
       visible={isOpen}
       onRequestClose={setIsOpen.off}
     >
-      <Box bg="bg.brand.primary" w="100%" height="100%">
+      <Box bg="bg.primary" w="100%" height="100%">
         {children}
       </Box>
     </Modal>
