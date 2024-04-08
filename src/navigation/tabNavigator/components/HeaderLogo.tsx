@@ -5,12 +5,12 @@ import { Pressable } from '@bacons/react-views'
 import { Link } from 'expo-router'
 import { Platform, StyleSheet, View } from 'react-native'
 
-import { useWidth } from '../hooks'
+import { useUniversalWidth } from '../hooks'
 import { cns } from '../utils'
 
 export function HeaderLogo() {
   const { colors } = useTheme()
-  const isLargeHorizontal = useWidth(1264)
+  const isLargeHorizontal = useUniversalWidth(1264)
 
   return (
     <View
@@ -19,14 +19,7 @@ export function HeaderLogo() {
         web: cns(cssStyles.headerContainer),
       })}
     >
-      <Link
-        style={Platform.select({
-          default: jsStyles.headerLink,
-          web: cns(cssStyles.headerLink),
-        })}
-        href="/"
-        asChild
-      >
+      <Link style={jsStyles.headerLink} href="/" asChild>
         <Pressable>
           {({ hovered }) => (
             <View
@@ -69,6 +62,7 @@ const jsStyles = StyleSheet.create({
   },
   headerLink: {
     alignItems: 'center',
+    paddingBottom: 24,
   },
   headerLogo: {
     alignItems: 'center',

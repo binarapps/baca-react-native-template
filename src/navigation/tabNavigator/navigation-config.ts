@@ -14,8 +14,8 @@ type Tabs = Tab[]
 export const upperSideTabs: Tabs = [
   {
     displayedName: 'Home',
-    icon: 'home-3-line',
-    iconFocused: 'home-3-fill',
+    icon: 'home-5-line',
+    iconFocused: 'home-5-fill',
     id: 'home',
     name: 'home',
   },
@@ -62,3 +62,14 @@ export const upperSideTabs: Tabs = [
 export const bottomSideTabs: Tabs = []
 
 export const bottomTabs: Tabs = [...upperSideTabs]
+
+export const tabsColors: {
+  color: ColorNames
+  colorFocused: ColorNames
+} = {
+  color: 'nav.item.button.icon.fg',
+  colorFocused: 'Brand.600',
+}
+
+export const getTabColor = (isFocused = false) =>
+  isFocused ? tabsColors.colorFocused : tabsColors.color

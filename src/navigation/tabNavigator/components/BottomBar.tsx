@@ -1,11 +1,11 @@
-import { Icon } from '@baca/design-system'
+import { Column, Icon, Text } from '@baca/design-system'
 import { useTheme } from '@baca/hooks'
 import cssStyles from '@baca/styles'
 import { Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
-import { bottomTabs } from '../navigation-config'
+import { bottomTabs, getTabColor } from '../navigation-config'
 import { cns } from '../utils'
 
 export function BottomBar({ visible }: { visible: boolean }) {
@@ -28,21 +28,27 @@ export function BottomBar({ visible }: { visible: boolean }) {
         {bottomTabs.map((tab, i) => (
           <TabBarItemWrapper key={i} name={tab.name} id={tab.id} params={tab.params}>
             {({ focused, pressed, hovered }) => (
-              <Icon
-                name={focused ? tab.iconFocused : tab.icon}
-                size={40}
-                color="nav.item.button.icon.fg"
+              <Column
+                px={2}
+                alignItems="center"
                 style={[
-                  jsStyles.tabIcon,
                   pressed && jsStyles.tabIconPressed,
                   Platform.select({
                     web: {
                       transitionDuration: '200ms',
-                      transform: hovered ? [{ scale: 1.2 }] : [{ scale: 1 }],
+                      transform: [{ scale: hovered ? 1.1 : pressed ? 0.9 : 1 }],
                     },
                   }),
                 ]}
-              />
+                gap={2}
+              >
+                <Icon
+                  name={focused ? tab.iconFocused : tab.icon}
+                  size={24}
+                  color={getTabColor(focused)}
+                />
+                <Text.XsMedium color={getTabColor(focused)}>{tab.displayedName}</Text.XsMedium>
+              </Column>
             )}
           </TabBarItemWrapper>
         ))}
@@ -56,16 +62,11 @@ const jsStyles = StyleSheet.create({
     alignItems: 'center',
     borderTopWidth: 1,
     flexDirection: 'row',
-    height: 49,
+    height: 56,
     justifyContent: 'space-around',
     paddingHorizontal: 16,
   },
-
-  tabIcon: {
-    paddingHorizontal: 8,
-  },
   tabIconPressed: {
     opacity: 0.8,
-    transform: [{ scale: 0.9 }],
   },
 })
