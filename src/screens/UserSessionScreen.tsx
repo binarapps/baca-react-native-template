@@ -1,5 +1,6 @@
 import { useAuthControllerMe } from '@baca/api/query/auth/auth'
-import { Box, Button, ScrollView, Text } from '@baca/design-system'
+import { HelperRenderJson, HelperSection } from '@baca/components'
+import { Button, ScrollView, Text } from '@baca/design-system'
 import { Token, getToken } from '@baca/services'
 import { isRefreshingTokenAtom } from '@baca/store'
 import { wait } from '@baca/utils'
@@ -34,28 +35,24 @@ export const UserSessionScreen = () => {
   }, [fetchToken])
 
   return (
-    <ScrollView gap={4} pb={8} px={8}>
-      <Box>
-        <Text.LgBold>User data:</Text.LgBold>
-        <Text.LgMedium>
-          Is fetching user data:
-          {JSON.stringify(isInitialLoading || isRefetching, null, 10)}
-        </Text.LgMedium>
-        <Text.MdRegular>{JSON.stringify(data, null, 10)}</Text.MdRegular>
-      </Box>
-      <Button loading={isRefetching} onPress={fetchUser} title="Refetch user" />
-      <Box>
-        <Text.LgBold>Refresh token:</Text.LgBold>
-        <Text.LgMedium>Is refreshing token:{JSON.stringify(isRefreshing, null, 2)}</Text.LgMedium>
-        <Text.MdRegular>
-          {JSON.stringify(
-            { ...token, expDate: new Date(token?.tokenExpires || 0).toLocaleString() },
-            null,
-            2
-          )}
-        </Text.MdRegular>
-      </Box>
-      <Button onPress={fetchToken} title="Try to get new token if needed" />
+    <ScrollView flexGrow={1} p={4}>
+      <HelperSection header="User data">
+        <Text.MdMedium>Is fetching user data:</Text.MdMedium>
+        <HelperRenderJson>{isInitialLoading || isRefetching}</HelperRenderJson>
+        <Text.MdMedium>User data:</Text.MdMedium>
+        <HelperRenderJson>{data}</HelperRenderJson>
+        <Button loading={isRefetching} onPress={fetchUser} title="Refetch user" />
+      </HelperSection>
+
+      <HelperSection header="Refresh token">
+        <Text.MdMedium>Is refreshing token:</Text.MdMedium>
+        <HelperRenderJson>{isRefreshing}</HelperRenderJson>
+        <Text.MdMedium>Refresh token:</Text.MdMedium>
+        <HelperRenderJson>
+          {{ ...token, expDate: new Date(token?.tokenExpires || 0).toLocaleString() }}
+        </HelperRenderJson>
+        <Button onPress={fetchToken} title="Try to get new token if needed" />
+      </HelperSection>
     </ScrollView>
   )
 }
