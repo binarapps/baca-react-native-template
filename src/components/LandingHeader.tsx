@@ -3,7 +3,7 @@ import { useColorScheme } from '@baca/contexts'
 import { Box, Button, Icon, Pressable, Row, Spacer, Touchable } from '@baca/design-system'
 import { useFullScreenModal } from '@baca/design-system/modals/useFullScreenModal'
 import { useCallback, useMemo, useTheme, useTranslation } from '@baca/hooks'
-import { useWidth } from '@baca/navigation/tabNavigator/hooks'
+import { useUniversalWidth } from '@baca/navigation/tabNavigator/hooks'
 import { isSignedInAtom } from '@baca/store/auth'
 import { useRouter } from 'expo-router'
 import { useAtomValue } from 'jotai'
@@ -19,7 +19,7 @@ export function LandingHeader() {
 
   const height = 60 + top
 
-  const isDesktop = useWidth(768)
+  const isDesktop = useUniversalWidth(768)
 
   const isSignedIn = useAtomValue(isSignedInAtom)
 
