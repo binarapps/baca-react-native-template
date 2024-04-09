@@ -2,20 +2,12 @@ import {
   CompanyLogo,
   ControlledField,
   FormWrapper,
+  GoogleButton,
   LanguagePicker,
   Version,
 } from '@baca/components'
 import { REGEX, isWeb } from '@baca/constants'
-import {
-  Box,
-  Button,
-  Center,
-  Display,
-  Row,
-  SignInWithGoogle,
-  Spacer,
-  Text,
-} from '@baca/design-system'
+import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
 import { useCallback, useSignInForm, useTranslation } from '@baca/hooks'
 import { useRouter } from 'expo-router'
 
@@ -34,7 +26,7 @@ export const SignInScreen = (): JSX.Element => {
   const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (
-    <FormWrapper keyboardAwareProps={{ contentContainerStyle: { maxWidth: 'full' } }}>
+    <FormWrapper keyboardAwareProps={{ contentContainerStyle: { maxWidth: 'auto' } }}>
       {isWeb ? (
         <Box mr={4}>
           <Spacer y={4} />
@@ -43,7 +35,7 @@ export const SignInScreen = (): JSX.Element => {
           </Box>
         </Box>
       ) : null}
-      <Center alignSelf="center" maxWidth={360} width="full">
+      <Center alignSelf="center" maxWidth={360} w="full">
         {!isWeb ? (
           <Box alignItems="flex-end" h={8} w="full">
             <LanguagePicker pickerPlacement="bottomRight" />
@@ -92,7 +84,7 @@ export const SignInScreen = (): JSX.Element => {
           testID="passwordInput"
           type="password"
         />
-        <Row alignItems="center" mt={8} w="full" justifyContent="space-between">
+        <Row alignItems="center" mb={2} mt={8} w="full" justifyContent="space-between">
           <ControlledField.Checkbox
             {...{ control, errors }}
             checkboxText={t('form.checkbox.remember_me')}
@@ -106,15 +98,17 @@ export const SignInScreen = (): JSX.Element => {
         <Button
           disabled={isSubmitting}
           loading={isSubmitting}
-          my={8}
+          my={4}
           onPress={submit}
           testID="signInButton"
           w="full"
         >
           {t('sign_in_screen.sign_in')}
         </Button>
-        <SignInWithGoogle />
-        <Row alignItems="center">
+        <Box gap={3} w="full">
+          <GoogleButton />
+        </Box>
+        <Row alignItems="center" mt={8}>
           <Text.SmRegular color="text.tertiary">
             {t('sign_in_screen.do_not_have_an_account')}
           </Text.SmRegular>

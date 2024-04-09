@@ -334,7 +334,7 @@ export const shadows = {
     shadowOffset: { width: 0, height: 0 },
     shadowColor: themeColors.primitives['Gray (light mode)'][400],
     shadowOpacity: 1,
-    shadowRadius: 8,
+    shadowRadius: 2,
     elevation: 3,
   },
 }

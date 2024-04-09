@@ -21,6 +21,7 @@ export const FormWrapper: FC<PropsWithChildren<FormWrapperProps>> = ({
   return (
     <SafeAreaView {...{ edges }} style={styles.safeAreaContainer}>
       <KeyboardAwareScrollView
+        showsVerticalScrollIndicator={false}
         {...keyboardAwareProps}
         contentContainerStyle={[
           styles.contentContainerStyle,

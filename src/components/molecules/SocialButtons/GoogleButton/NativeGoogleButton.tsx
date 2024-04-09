@@ -1,15 +1,17 @@
 import { useAuthGoogleControllerLogin } from '@baca/api/query/auth-social/auth-social'
-import { isExpoGo } from '@baca/constants'
+import { ENV, isExpoGo, isWeb } from '@baca/constants'
 import { useCallback, useEffect, useState } from '@baca/hooks'
+import { assignPushToken, setToken } from '@baca/services'
+import { isSignedInAtom, store } from '@baca/store'
+import { showErrorToast } from '@baca/utils'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { GoogleButton } from './GoogleButton'
+import { SocialButton } from '../SocialButton'
 
-let NativeGoogleButton: FC
-
-if (!isExpoGo) {
-  // Conditionall import makes it work with expo go
+let NativeGoogleButton: FC = () => undefined
+if (!isExpoGo && !isWeb) {
+  // Conditionally import makes it work with expo go
   import('@react-native-google-signin/google-signin').then(({ GoogleSignin, statusCodes }) => {
     type GoogleSignInError = Error & { code: keyof typeof statusCodes }
 
@@ -20,9 +22,11 @@ if (!isExpoGo) {
 
       useEffect(() => {
         // No extra configuration is needed,
-        // but for the more customisation check:
+        // but for the more customization check:
         // https://github.com/react-native-google-signin/google-signin#configureoptions
-        GoogleSignin?.configure?.()
+        GoogleSignin?.configure?.({
+          webClientId: ENV.WEB_CLIENT_ID,
+        })
       }, [])
 
       const verifyPlayServices = useCallback(async (): Promise<void> => {
@@ -35,12 +39,28 @@ if (!isExpoGo) {
 
       const verifyToken = useCallback(async (): Promise<void> => {
         const tokenResponse = await GoogleSignin?.getTokens?.()
-        const { accessToken } = tokenResponse || {}
-        await signInByGoogle({
-          data: {
-            idToken: accessToken,
+
+        const { idToken } = tokenResponse || {}
+
+        signInByGoogle(
+          {
+            data: {
+              idToken,
+            },
           },
-        })
+          {
+            onSuccess: async (response) => {
+              const { user, ...token } = response
+              if (token) {
+                await setToken(token)
+              }
+              store.set(isSignedInAtom, true)
+
+              // Send push token to backend
+              await assignPushToken()
+            },
+          }
+        )
       }, [signInByGoogle])
 
       const signIn = useCallback(async (): Promise<void> => {
@@ -51,27 +71,26 @@ if (!isExpoGo) {
           // TODO: This could be extracted to external function with an additional handling of the error codes
           const typedError = error as GoogleSignInError
 
-          if (typedError.code) {
+          if (typedError?.code) {
             switch (typedError.code) {
               case statusCodes?.SIGN_IN_CANCELLED:
               case statusCodes?.IN_PROGRESS:
                 break
               case statusCodes?.PLAY_SERVICES_NOT_AVAILABLE:
-                // TODO: wait for toast components
-                alert(t('errors.play_services_not_available'))
+                showErrorToast({ description: t('errors.play_services_not_available') })
                 break
               default:
-                alert(t('errors.something_went_wrong'))
+                showErrorToast({ description: t('errors.something_went_wrong') })
                 break
             }
             return
           }
 
-          alert(t('errors.something_went_wrong'))
+          showErrorToast({ description: t('errors.something_went_wrong') })
         }
       }, [t, verifyToken])
 
-      return <GoogleButton onPress={signIn} isDisabled={isDisabled} />
+      return <SocialButton disabled={isDisabled} onPress={signIn} type="google" />
     }
   })
 }

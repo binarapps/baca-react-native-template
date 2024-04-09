@@ -223,6 +223,8 @@
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",
     "forgot_password": "Nie pamiętam hasła",
+    "sign_in_by_apple": "Zaloguj się przez Apple",
+    "sign_in_by_facebook": "Zaloguj się przez Facebook",
     "sign_in_by_google": "Zaloguj się przez Google",
     "sign_in": "Zaloguj się",
     "sign_up": "Zarejestruj się",
