@@ -40,12 +40,12 @@ if (!isExpoGo && !isWeb) {
       const verifyToken = useCallback(async (): Promise<void> => {
         const tokenResponse = await GoogleSignin?.getTokens?.()
 
-        const { idToken } = tokenResponse || {}
+        const { accessToken } = tokenResponse || {}
 
         signInByGoogle(
           {
             data: {
-              idToken,
+              accessToken,
             },
           },
           {
