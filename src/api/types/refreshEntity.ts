@@ -13,5 +13,5 @@ export interface RefreshEntity {
   /** The refresh token for refreshing the access token. */
   refreshToken: string
   /** The expiry date of the access token. */
-  tokenExpires: string
+  tokenExpires: number
 }

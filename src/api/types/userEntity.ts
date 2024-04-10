@@ -6,12 +6,12 @@
  * API documentation for the starter-kit project in NestJS by BinarApps. The API allows management of users, sessions and offers various functions for logged in users. Contains examples of authentication, authorization, and CRUD for selected resources.
  * OpenAPI spec version: 1.0
  */
-import type { LastConsentProperties } from './lastConsentProperties'
+import type { LastConsentEntity } from './lastConsentEntity'
 import type { Role } from './role'
 import type { Status } from './status'
 
 export interface UserEntity {
-  consent?: LastConsentProperties
+  consent?: LastConsentEntity
   createdAt: string
   deletedAt: string
   email: string

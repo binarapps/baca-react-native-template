@@ -8,6 +8,6 @@
  */
 
 export interface AuthGoogleLoginDto {
-  /** Google ID token obtained after user authentication using Google OAuth. Use this token to authenticate the request to the application. */
-  idToken: string
+  /** Google Access token obtained after user authentication using Google OAuth. Use this token to authenticate the request to the application. */
+  accessToken: string
 }
