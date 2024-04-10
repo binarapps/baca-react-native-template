@@ -2,14 +2,14 @@
   "expo": {
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 15,
+      "versionCode": 17,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "jsEngine": "hermes",
-      "buildNumber": "15",
+      "buildNumber": "17",
       "supportsTablet": true,
       "googleServicesFile": "./GoogleService-Info.plist",
       "config": {
@@ -29,13 +29,21 @@
       "fallbackToCacheTimeout": 0
     },
     "userInterfaceStyle": "automatic",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "plugins": [
       "@react-native-google-signin/google-signin",
       "expo-font",
       "expo-localization",
       "expo-secure-store",
-      "expo-router"
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
     ],
     "web": {
       "output": "single",
