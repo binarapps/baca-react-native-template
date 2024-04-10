@@ -1,4 +1,3 @@
-import { useArticlesControllerFindAll } from '@baca/api/query/articles/articles'
 import { CompanyLogo } from '@baca/components'
 import { Button, Center, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
@@ -10,8 +9,6 @@ export const HomeScreen = () => {
   useScreenOptions({
     title: t('navigation.screen_titles.home'),
   })
-
-  useArticlesControllerFindAll({ page: 1, pageSize: 10 })
 
   const navigateToDetails = useCallback(() => {
     router.navigate({
