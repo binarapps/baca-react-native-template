@@ -1,3 +1,3 @@
-import { BlogScreen } from '@baca/screens/BlogScreen'
+import { PrivacyPolicyScreen } from '@baca/screens'
 
-export default BlogScreen
+export default PrivacyPolicyScreen
