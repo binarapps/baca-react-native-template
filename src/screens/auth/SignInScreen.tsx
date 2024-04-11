@@ -1,6 +1,7 @@
 import {
   CompanyLogo,
   ControlledField,
+  FacebookButton,
   FormWrapper,
   GoogleButton,
   LanguagePicker,
@@ -107,6 +108,7 @@ export const SignInScreen = (): JSX.Element => {
         </Button>
         <Box gap={3} w="full">
           <GoogleButton />
+          <FacebookButton />
         </Box>
         <Row alignItems="center" mt={8}>
           <Text.SmRegular color="text.tertiary">

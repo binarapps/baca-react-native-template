@@ -43,6 +43,15 @@
             "useFrameworks": "static"
           }
         }
+      ],
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "974812100702878",
+          "clientToken": "434baaffa008eb537185c49ff516e3a8",
+          "displayName": "BACA",
+          "scheme": "fb974812100702878"
+        }
       ]
     ],
     "web": {
