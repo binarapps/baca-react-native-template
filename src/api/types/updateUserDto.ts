@@ -14,8 +14,6 @@ export interface UpdateUserDto {
   email?: string
   /** The updated first name of the user. */
   firstName?: string
-  /** The updated hash associated with the user account. */
-  hash: string
   /** The updated last name of the user. */
   lastName?: string
   /** IETF language tags (e.g., en-US). */

@@ -1,11 +1,14 @@
 import { useAuthControllerLogin } from '@baca/api/query/auth/auth'
-import { setToken } from '@baca/services'
+import { AuthEmailLoginDto } from '@baca/api/types'
+import { assignPushToken, setToken } from '@baca/services'
 import { isSignedInAtom } from '@baca/store/auth'
-import { SignInFormValues } from '@baca/types/authForms'
-import { hapticImpact } from '@baca/utils'
+import { handleFormError, hapticImpact } from '@baca/utils'
 import { useSetAtom } from 'jotai'
 import { useForm } from 'react-hook-form'
-import { notify } from 'react-native-notificated'
+
+type SignInFormValues = AuthEmailLoginDto & {
+  confirm: boolean
+}
 
 const defaultValues: SignInFormValues = {
   // TODO: Reset this values when building production app
@@ -24,8 +27,10 @@ export const useSignInForm = () => {
   const {
     control,
     formState: { errors },
-    setFocus,
+    getValues,
     handleSubmit,
+    setError: setFormError,
+    setFocus,
   } = useForm<SignInFormValues>({
     mode: 'onTouched',
     defaultValues,
@@ -40,22 +45,36 @@ export const useSignInForm = () => {
       // FIXME: add proper notification handling, generate some global config
       {
         onError: (e) => {
-          notify('error', { params: { title: 'ERROR', description: e?.message } })
+          handleFormError<keyof AuthEmailLoginDto>(
+            e as unknown as keyof AuthEmailLoginDto,
+            ({ field, description }) => {
+              setFormError(field, { message: description })
+            }
+          )
+
           hapticImpact()
         },
         onSuccess: async (response) => {
-          await setToken(response.accessToken)
+          const { user, ...token } = response
+          if (token) {
+            await setToken(token)
+          }
+
           setIsSignedIn(true)
+
+          // Send push token to backend
+          await assignPushToken()
         },
       }
     )
   }
 
   return {
-    submit: handleSubmit(onSubmit),
-    isSubmitting,
     control,
     errors,
+    getValues,
+    isSubmitting,
     setFocus,
+    submit: handleSubmit(onSubmit),
   }
 }

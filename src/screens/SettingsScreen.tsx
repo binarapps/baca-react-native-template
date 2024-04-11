@@ -24,7 +24,7 @@ export const SettingsScreen = (): JSX.Element => {
   return (
     <ScrollView mt={4}>
       <Center flex={1}>
-        <Text fontSize="2xl" bold mb={2}>
+        <Text bold mb={2}>
           {t('settings_screen.current_theme', { theme: colorSchemeSetting })}
         </Text>
         {colorSchemesList.map((scheme) => {
@@ -37,9 +37,9 @@ export const SettingsScreen = (): JSX.Element => {
           )
         })}
 
-        <Button.Secondary mt={8} size="lg" onPress={signOut}>
+        <Button.SecondaryColor mt={8} size="lg" onPress={signOut}>
           {t('settings_screen.sign_out')}
-        </Button.Secondary>
+        </Button.SecondaryColor>
         <Spacer y={10} />
         <Version onPress={noop} />
       </Center>

@@ -16,9 +16,9 @@ description: Backend connection - check how to fetch data from backend and displ
 
 This template uses this packages to keep connection with backend:
 
-- (axios)[https://axios-http.com/docs/intro] - direct calls to backend
-- (react-query)[https://tanstack.com/query/latest/docs/framework/react/overview] - use hooks that helps displaying data on UI
-- (orval)[https://orval.dev/overview] - generating query hooks based on swagger (provided by backend)
+- [axios](https://axios-http.com/docs/intro) - direct calls to backend
+- [react-query](https://tanstack.com/query/latest/docs/framework/react/overview) - use hooks that helps displaying data on UI
+- [orval](https://orval.dev/overview) - generating query hooks based on swagger (provided by backend)
 
 ## Generate new query
 
@@ -38,7 +38,7 @@ This template uses this packages to keep connection with backend:
   - override-header - additionally turning off `no-explicit-any` eslint rule
   - mutator - where is api instance placed
   - afterAllFilesWrite - what should happened when the script will run - we are running liter with fix flag
-- Orval is very flexible and you can do a lot modifications, please check (their docs)[https://orval.dev/overview] for reference
+- Orval is very flexible and you can do a lot modifications, please check [their docs](https://orval.dev/overview) for reference
 
 2. How to do changes to axios instance
 

@@ -16,7 +16,16 @@ import { ColorSchemeProvider } from './ColorSchemeProvider'
 import { NotificationsProvider } from './NotificatedProvider'
 import { NotificationProvider as ExpoNotificationsProvider } from './NotificationProvider'
 
-const queryClient = new QueryClient({})
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // It's needed to do it like that because when it's set to true it refetch query every 1-2 seconds
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+    },
+  },
+})
 
 export const Providers: FC<PropsWithChildren> = ({ children }) => {
   useAppStateActive(checkForUpdates, false)

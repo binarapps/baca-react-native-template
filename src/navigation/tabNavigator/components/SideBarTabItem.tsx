@@ -1,14 +1,10 @@
-import { useColorScheme } from '@baca/contexts'
-import { Icon } from '@baca/design-system'
-import cssStyles from '@baca/styles'
+import { Icon, Row, Text } from '@baca/design-system'
 import { IconNames } from '@baca/types/icon'
-import { Text } from '@bacons/react-views'
-import { Platform, StyleSheet, View } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
-import { useWidth } from '../hooks'
-import { TabColors, TabColorsStrings } from '../navigation-config'
-import { cns } from '../utils'
+import { useUniversalWidth } from '../hooks'
+import { getTabColor } from '../navigation-config'
 
 export function SideBarTabItem({
   children,
@@ -25,89 +21,41 @@ export function SideBarTabItem({
   onPress?(): void
   params?: Record<string, string>
 }) {
-  const isLarge = useWidth(1264)
-  const { colorScheme } = useColorScheme()
+  const isLarge = useUniversalWidth(1264)
 
   return (
     <TabBarItemWrapper {...{ name, onPress, params }} id={name} style={jsStyles.sidebarTabItem}>
       {({ focused, hovered }) => (
-        <View
+        <Row
+          alignItems="center"
+          borderRadius={8}
+          p={2}
+          gap={4}
+          bg={hovered ? 'bg.tertiary' : undefined}
           style={[
-            jsStyles.sidebarItemContainer,
+            Platform.select({
+              web: {
+                transitionDuration: '200ms',
+                transitionProperty: ['background-color', 'box-shadow', 'transform'],
+                transitionTimingFunction: 'cubic-bezier(0.17, 0.17, 0, 1)',
+              },
+            }),
             hovered && {
-              backgroundColor: TabColorsStrings.lightGray50,
+              transform: [{ scale: 1.1 }],
             },
           ]}
         >
-          <View
-            style={[
-              jsStyles.sidebarIconContainer,
-              hovered && {
-                transform: [{ scale: 1.1 }],
-              },
-            ]}
-          >
-            <Icon
-              name={focused ? iconFocused : icon}
-              size={30}
-              color={colorScheme === 'light' ? TabColors.tabIconDark : TabColors.tabIconLight}
-            />
-          </View>
-
-          <Text
-            style={[
-              jsStyles.sidebarItemText,
-              Platform.select({
-                default: {
-                  display: isLarge ? 'flex' : 'none',
-                },
-                web: cns(cssStyles.sideBarTabItemText),
-              }),
-              {
-                color:
-                  colorScheme === 'light'
-                    ? TabColorsStrings.tabTextDark
-                    : TabColorsStrings.tabTextLight,
-              },
-              focused && jsStyles.fontBold,
-            ]}
-          >
-            {children}
-          </Text>
-        </View>
+          <Icon color={getTabColor(focused)} name={focused ? iconFocused : icon} size={30} />
+          {isLarge ? (
+            <Text.MdSemibold color={getTabColor(focused)}>{children}</Text.MdSemibold>
+          ) : null}
+        </Row>
       )}
     </TabBarItemWrapper>
   )
 }
 
 const jsStyles = StyleSheet.create({
-  fontBold: { fontWeight: 'bold' },
-  sidebarIconContainer: Platform.select({
-    default: { padding: 0 },
-    web: {
-      transitionDuration: '150ms',
-      transitionProperty: ['transform'],
-      transitionTimingFunction: 'cubic-bezier(0.17, 0.17, 0, 1)',
-    },
-  }),
-  sidebarItemContainer: {
-    alignItems: 'center',
-    borderRadius: 8,
-    flexDirection: 'row',
-    padding: 8,
-    ...Platform.select({
-      web: {
-        transitionDuration: '200ms',
-        transitionProperty: ['background-color', 'box-shadow'],
-      },
-    }),
-  },
-  sidebarItemText: {
-    fontSize: 16,
-    lineHeight: 24,
-    marginLeft: 16,
-    marginRight: 16,
-  },
   sidebarTabItem: {
     paddingVertical: 4,
     width: '100%',

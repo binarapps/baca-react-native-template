@@ -212,6 +212,30 @@ export const getAuthControllerResetPasswordMockHandler = () => {
   })
 }
 
+export const getAuthControllerEmailChangeMockHandler = () => {
+  return http.post('*/api/v1/auth/email/change', async () => {
+    await delay(1000)
+    return new HttpResponse(null, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  })
+}
+
+export const getAuthControllerConfirmEmailChangeMockHandler = () => {
+  return http.post('*/api/v1/auth/email/change-confirm', async () => {
+    await delay(1000)
+    return new HttpResponse(null, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  })
+}
+
 export const getAuthControllerMeMockHandler = (overrideResponse?: UserEntity) => {
   return http.get('*/api/v1/auth/me', async () => {
     await delay(1000)
@@ -296,6 +320,8 @@ export const getAuthMock = () => [
   getAuthControllerResendVerificationEmailMockHandler(),
   getAuthControllerForgotPasswordMockHandler(),
   getAuthControllerResetPasswordMockHandler(),
+  getAuthControllerEmailChangeMockHandler(),
+  getAuthControllerConfirmEmailChangeMockHandler(),
   getAuthControllerMeMockHandler(),
   getAuthControllerUpdateMockHandler(),
   getAuthControllerDeleteMockHandler(),

@@ -1,21 +1,9 @@
-import { isExpoGo } from '@baca/constants'
 import { Box, Button, Text } from '@baca/design-system'
-import {
-  useCallback,
-  usePreventGoBack,
-  useSafeAreaInsets,
-  useScreenOptions,
-  useTranslation,
-} from '@baca/hooks'
+import { usePreventGoBack, useSafeAreaInsets, useScreenOptions, useTranslation } from '@baca/hooks'
 // TODO: there are tons of more interesting methods there!
 import * as Application from 'expo-application'
-import * as Clipboard from 'expo-clipboard'
-import Constants from 'expo-constants'
-import * as Notifications from 'expo-notifications'
 import { useRouter } from 'expo-router'
 import { ScrollView, StyleSheet } from 'react-native'
-
-const projectId = Constants.expoConfig?.extra?.eas?.projectId
 
 export const ApplicationInfoScreen = (): JSX.Element => {
   const { i18n, t } = useTranslation()
@@ -28,35 +16,8 @@ export const ApplicationInfoScreen = (): JSX.Element => {
 
   usePreventGoBack()
 
-  const handleCopyPushToken = useCallback(async () => {
-    try {
-      if (!isExpoGo && !projectId) {
-        throw new Error(
-          'You must set `projectId` in eas build then value will be available from Constants?.expoConfig?.extra?.eas?.projectId'
-        )
-      }
-      const token = (
-        await Notifications.getExpoPushTokenAsync(
-          !isExpoGo
-            ? {
-                projectId,
-              }
-            : {}
-        )
-      ).data
-
-      console.log(token)
-      await Clipboard.setStringAsync(token)
-      alert('Copied push token to clipboard.')
-    } catch (error) {
-      console.log('error', error)
-    }
-  }, [])
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Button my={2} onPress={handleCopyPushToken}>
-        {t('settings_screen.copy_push_token')}
-      </Button>
       <Text bold>{t('application_info_screen.navigation_info')}</Text>
       <Text>{Application.applicationId}</Text>
       <Text>{Application.applicationName}</Text>

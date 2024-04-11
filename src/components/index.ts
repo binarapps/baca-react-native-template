@@ -1,8 +1,13 @@
 export * from './molecules'
 export * from './organisms'
+export * from './wrappers'
 
 export * from './AppLoading'
+export * from './CompanyLogo'
+export * from './FeaturedIcon'
+export * from './HelpersScreenComponents'
 export * from './KeyboardAwareScrollView'
+export * from './LandingHeader'
 export * from './LanguagePicker'
 export * from './Modal'
 export * from './StatusBar'

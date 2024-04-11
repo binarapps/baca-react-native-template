@@ -16,7 +16,13 @@ import Details from '@site/src/components/Details'
 
 # Doppler configuration 🌈
 
-Thanks to doppler you will be able to autoamtically mange your environment varialbes.
+## Why you need it?
+
+Thanks to doppler you will be able to automatically mange your environment variables.
+
+This starter have fully integrated doppler configuration, you just need to do few easy steps
+
+## Configuration
 
 <Details title="1. Sign up for the Doppler tool">
 
@@ -63,7 +69,7 @@ a. Enter the projects tab, and select a newly created project
 
 b. Each project consist of three predefined environments - dev, stg and prd. \*\*
 Click each of them to enter environment variable page.
-![Select environment](../../static/img/doppler_envirnoments.png)
+![Select environment](../../static/img/doppler_environments.png)
 
 c. To add a new environment variable click on <b>Add first secret</b>
 ![Add first secret](../../static/img/doppler_secret_add.png)
@@ -82,14 +88,7 @@ g. Make sure that you have consistent data in each environment. In these step, y
 
 </Details>
 
-<Details title="5. Implement Doppler tool onto the app.">
-
-Use gist to go through the implementation of Doppler tool in the app. \*\*
-In doppler_variables.sh file, please use generated Access Tokens from the above.
-
-</Details>
-
-<Details title="6. Get Access from your code level">
+<Details title="5. Get Access tokens">
 
 a. Enter <b>Access</b> tab:
 
@@ -116,19 +115,47 @@ f. To be able to use environment variables for different environments (qa/stagin
 
 </Details>
 
+<Details title="6. Place doppler tokens in configuration file">
+
+1. Create empty file `scripts/doppler_variables.sh` and add this script to new created file.
+
+- run this command (this will copy template and place it in `scripts/doppler_variables.sh`)
+
+```bash
+yarn prepare:env_file
+```
+
+2. Add correct values to variables (ask one of the developers for that), example:
+
+```bash
+export DOPPLER_TOKEN_DEVELOPMENT=dp.st.alpha.XXXXxxxxXXXXxxxxXXXXxxxx
+```
+
+</Details>
+
 <Details title="7. Check if everything works correctly.">
 
 In project dir terminal run:
 
 ```bash
-yarn prepare:(qa/staging/production)
+yarn generate:env:(qa/staging/production)
 ```
 
 Choose the proper app version depending on the environment for which you want to generate env file.
 
-<b>.env</b> file should be generated and consist of variables passed to Doppler, and some extra doppler
+<b>`.env`</b> file should be generated and consist of variables passed to Doppler, and some extra doppler
 variables as DOPPLER_CONFIG.
 
 CONGRATULATION !! 🥳🥳 You have configured the Doppler tool for your project!
+
+---
+
+Additionally you can start the expo server:
+
+- this will start server and generate env variables
+
+```bash
+  yarn start
+```
 
 </Details>

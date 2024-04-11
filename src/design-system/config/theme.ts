@@ -93,25 +93,42 @@ export const ProjectColors = {
   //CONFIG: Add your project specific colors here
   modalBackground: 'rgba(0, 0, 0, 0.5)',
 }
+export type TextFontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type DisplayFontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
+export type FontWeight = 'Regular' | 'Medium' | 'Semibold' | 'Bold'
 
-export const fontSizes = {
-  '2xs': 10,
+export const fontTextSize: { [key in TextFontSize]: number } = {
   xs: 12,
   sm: 14,
   md: 16,
   lg: 18,
   xl: 20,
-  '2xl': 24,
-  '3xl': 30,
-  '4xl': 36,
-  '5xl': 48,
-  '6xl': 60,
-  '7xl': 72,
-  '8xl': 96,
-  '9xl': 128,
 } as const
 
-export const scale = fontSizes.md
+export const fontDisplaySize: { [key in DisplayFontSize]: number } = {
+  xs: 24,
+  sm: 30,
+  md: 36,
+  lg: 48,
+  xl: 60,
+  xxl: 72,
+} as const
+
+export const fontWeights: { [key in FontWeight]: '400' | '500' | '600' | '700' } = {
+  Regular: '400',
+  Medium: '500',
+  Semibold: '600',
+  Bold: '700',
+} as const
+
+export const fonts: { [key in FontWeight]: string } = {
+  Regular: 'Inter_Regular',
+  Medium: 'Inter_Medium',
+  Semibold: 'Inter_SemiBold',
+  Bold: 'Inter_Bold',
+} as const
+
+export const scale = fontTextSize.md
 
 export const letterSpacings = {
   xs: '-0.05em',
@@ -133,26 +150,6 @@ export const lineHeights = {
   '3xl': '2.5em',
   '4xl': '3em',
   '5xl': '4em',
-} as const
-
-export const fontWeights = {
-  hairline: '100',
-  thin: '200',
-  light: '300',
-  normal: '400',
-  medium: '500',
-  semibold: '600',
-  bold: '700',
-  extrabold: '800',
-  black: '900',
-} as const
-
-export const fonts = {
-  thin: 'Lato_100Thin',
-  light: 'Lato_300Light',
-  regular: 'Lato_400Regular',
-  bold: 'Lato_700Bold',
-  black: 'Lato_900Black',
 } as const
 
 export const size = {
@@ -319,10 +316,25 @@ export const shadows = {
     shadowRadius: 0,
     elevation: 0,
   },
-  inputShadow: {
-    shadowOffset: { width: 0, height: 2 },
-    shadowColor: colors.primary,
-    shadowOpacity: 0.16,
+  errorShadow: {
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: themeColors.primitives.Error[500],
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  focusShadow: {
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: themeColors.primitives.Brand[500],
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  grayShadow: {
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: themeColors.primitives['Gray (light mode)'][400],
+    shadowOpacity: 1,
+    shadowRadius: 8,
     elevation: 3,
   },
 }
@@ -335,7 +347,6 @@ export const _appTheme = {
   },
   fonts,
   letterSpacings,
-  fontSizes,
   lineHeights,
   fontWeights,
   size,
@@ -345,11 +356,11 @@ export const _appTheme = {
 export const theme = {
   light: {
     ..._appTheme,
-    colors: themeColors.lightMode,
+    colors: { ...themeColors.primitives, ...themeColors.lightMode },
   },
   dark: {
     ..._appTheme,
-    colors: themeColors.darkMode,
+    colors: { ...themeColors.primitives, ...themeColors.darkMode },
   },
 }
 

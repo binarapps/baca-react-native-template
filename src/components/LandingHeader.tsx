@@ -1,57 +1,114 @@
-import { darkLogoFull, lightLogoFull } from '@baca/constants'
+import { lightBinarLogo, darkBinarLogo } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
-import { Box, Button, Icon, Pressable } from '@baca/design-system'
-import { useTranslation } from '@baca/hooks'
-import { TabColorsStrings } from '@baca/navigation/tabNavigator/navigation-config'
+import { Box, Button, Icon, Pressable, Row, Spacer, Touchable } from '@baca/design-system'
+import { useFullScreenModal } from '@baca/design-system/modals/useFullScreenModal'
+import { useCallback, useMemo, useTheme, useTranslation } from '@baca/hooks'
+import { useUniversalWidth } from '@baca/navigation/tabNavigator/hooks'
 import { isSignedInAtom } from '@baca/store/auth'
 import { useRouter } from 'expo-router'
 import { useAtomValue } from 'jotai'
 import { Image, StyleSheet, Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
 export function LandingHeader() {
   const { colorScheme } = useColorScheme()
+  const { colors } = useTheme()
   const { top } = useSafeAreaInsets()
   const { t } = useTranslation()
   const { push, canGoBack, back } = useRouter()
 
+  const height = 60 + top
+
+  const isDesktop = useUniversalWidth(768)
+
   const isSignedIn = useAtomValue(isSignedInAtom)
 
-  const navigateToLogin = () => push('/sign-in')
+  const navigateToLogin = useCallback(() => push('/sign-in'), [push])
+  const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
 
-  const height = 60 + top
-  return (
-    <View
-      style={[
-        { height, paddingTop: top },
-        jsStyles.appHeader,
-        Platform.select({ default: {}, web: { display: 'flex' } }),
-      ]}
-    >
-      {canGoBack() ? (
-        <Pressable onPress={back}>
-          <Icon name="arrow-left-line" size={20} />
-        </Pressable>
-      ) : (
-        <Image
-          resizeMethod="resize"
-          resizeMode="contain"
-          source={colorScheme === 'light' ? lightLogoFull : darkLogoFull}
-          style={jsStyles.logoWide}
-        />
-      )}
-      {!isSignedIn ? (
+  const { closeFullScreenModal, modalComponentRenderFunction, presentFullScreenModal } =
+    useFullScreenModal()
+
+  const renderLeftMenu = useMemo(() => {
+    return canGoBack() ? (
+      <Pressable onPress={back}>
+        <Icon name="arrow-left-line" size={20} />
+      </Pressable>
+    ) : (
+      <Image
+        resizeMethod="resize"
+        resizeMode="contain"
+        source={colorScheme === 'light' ? lightBinarLogo : darkBinarLogo}
+        style={jsStyles.logoWide}
+      />
+    )
+  }, [back, canGoBack, colorScheme])
+
+  const fullScreenModal = modalComponentRenderFunction(
+    <Box flex={1}>
+      <View
+        style={[
+          { borderBottomColor: colors.border.secondary, height, paddingTop: top },
+          jsStyles.appHeader,
+          Platform.select({ default: {}, web: { display: 'flex' } }),
+        ]}
+      >
+        {renderLeftMenu}
+        <Touchable onPress={closeFullScreenModal}>
+          <Icon name="close-line" size={24} color="text.brand.primary" />
+        </Touchable>
+      </View>
+      <Box flex={1} />
+      <Box p={4} w="full">
         <Button onPress={navigateToLogin}>{t('landing_screen.login_cta')}</Button>
-      ) : (
-        <Box />
-      )}
-    </View>
+        <Spacer y="4" />
+        <Button onPress={navigateToSignUp}>{t('landing_screen.sign_up')}</Button>
+      </Box>
+    </Box>
+  )
+
+  const renderRightMenu = useMemo(() => {
+    if (isSignedIn) {
+      return <Box />
+    }
+
+    if (isDesktop) {
+      return (
+        <Row>
+          <Button onPress={navigateToLogin}>{t('landing_screen.login_cta')}</Button>
+          <Spacer x="4" />
+          <Button onPress={navigateToSignUp}>{t('landing_screen.sign_up')}</Button>
+        </Row>
+      )
+    }
+
+    return (
+      <Touchable onPress={presentFullScreenModal}>
+        <Icon name="menu-2-line" size={24} color="text.brand.primary" />
+      </Touchable>
+    )
+  }, [isDesktop, isSignedIn, navigateToLogin, navigateToSignUp, presentFullScreenModal, t])
+
+  return (
+    <>
+      <View
+        style={[
+          { borderBottomColor: colors.border.secondary, height, paddingTop: top },
+          jsStyles.appHeader,
+          Platform.select({ default: {}, web: { display: 'flex' } }),
+        ]}
+      >
+        {renderLeftMenu}
+        {renderRightMenu}
+      </View>
+      {fullScreenModal}
+    </>
   )
 }
 
 const jsStyles = StyleSheet.create({
   appHeader: {
     alignItems: 'center',
-    borderBottomColor: TabColorsStrings.lightGray,
     borderBottomWidth: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',

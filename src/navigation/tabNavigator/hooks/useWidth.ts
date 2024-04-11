@@ -10,3 +10,9 @@ export function useWidth(size: number): boolean {
   }
   return width >= size
 }
+
+export function useUniversalWidth(size: number): boolean {
+  const { width } = useWindowDimensions()
+
+  return width >= size
+}

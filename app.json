@@ -2,20 +2,21 @@
   "expo": {
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 10,
+      "versionCode": 17,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "jsEngine": "hermes",
-      "buildNumber": "10",
+      "buildNumber": "17",
       "supportsTablet": true,
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
-    "name": "Template",
+    "name": "BACA",
     "orientation": "portrait",
     "owner": "binarapps",
     "slug": "expo-typescript-template",
@@ -28,16 +29,24 @@
       "fallbackToCacheTimeout": 0
     },
     "userInterfaceStyle": "automatic",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "plugins": [
       "@react-native-google-signin/google-signin",
       "expo-font",
       "expo-localization",
       "expo-secure-store",
       "expo-router",
-      "./plugin/withDebugKeystore.js"
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
     ],
     "web": {
+      "output": "single",
       "bundler": "metro"
     }
   }

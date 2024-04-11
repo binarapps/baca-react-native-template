@@ -1,7 +1,7 @@
 import { theme } from '@baca/design-system'
 import { cleanup, render } from '@baca/utils/testUtils'
 
-import { Text } from './Text'
+import { Display, Text } from './Text'
 
 afterEach(cleanup)
 
@@ -9,8 +9,11 @@ console.error = jest.fn()
 console.warn = jest.fn()
 
 const defaultTextStyles = {
-  textTransform: 'none',
   color: theme.light.colors.text.brand.primary,
+  fontFamily: 'Inter_Regular',
+  fontSize: 16,
+  fontWeight: '400',
+  textTransform: 'none',
 }
 
 describe('Text', () => {
@@ -125,219 +128,275 @@ describe('Text', () => {
     })
   })
 
-  it('renders correctly with variant H1', () => {
-    const { getByText } = render(<Text variant="H1">Hello World</Text>)
+  it('renders correctly with variant LgRegular (Display)', () => {
+    const { getByText } = render(
+      <Display type="display" variant="LgRegular">
+        Hello World
+      </Display>
+    )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 48,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly compound Text.H1', () => {
-    const { getByText } = render(<Text.H1>Hello World</Text.H1>)
+  it('renders correctly compound Text.LgRegular', () => {
+    const { getByText } = render(<Display.LgRegular>Hello World</Display.LgRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 48,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly with variant H1Bold', () => {
-    const { getByText } = render(<Text variant="H1Bold">Hello World</Text>)
+  it('renders correctly with variant LgBold (Display)', () => {
+    const { getByText } = render(
+      <Display type="display" variant="LgBold">
+        Hello World
+      </Display>
+    )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 48,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly compound Text.H1Bold', () => {
-    const { getByText } = render(<Text.H1Bold>Hello World</Text.H1Bold>)
+  it('renders correctly compound Display.LgBold', () => {
+    const { getByText } = render(<Display.LgBold>Hello World</Display.LgBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 48,
+      fontWeight: '700',
     })
   })
 
   it('renders correctly with variant H2', () => {
-    const { getByText } = render(<Text variant="H2">Hello World</Text>)
+    const { getByText } = render(
+      <Display type="display" variant="MdRegular">
+        Hello World
+      </Display>
+    )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 36,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly compound Text.H2', () => {
-    const { getByText } = render(<Text.H2>Hello World</Text.H2>)
+  it('renders correctly compound Display.H2', () => {
+    const { getByText } = render(<Display.MdRegular>Hello World</Display.MdRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 36,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly with variant H2Bold', () => {
-    const { getByText } = render(<Text variant="H2Bold">Hello World</Text>)
+  it('renders correctly with variant MdBold (Display)', () => {
+    const { getByText } = render(
+      <Display type="display" variant="MdBold">
+        Hello World
+      </Display>
+    )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 36,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly compound Text.H2Bold', () => {
-    const { getByText } = render(<Text.H2Bold>Hello World</Text.H2Bold>)
+  it('renders correctly compound Display.MdBold', () => {
+    const { getByText } = render(<Display.MdBold>Hello World</Display.MdBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 36,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly with variant H3', () => {
-    const { getByText } = render(<Text variant="H3">Hello World</Text>)
+  it('renders correctly with variant SmRegular (Display)', () => {
+    const { getByText } = render(
+      <Display type="display" variant="SmRegular">
+        Hello World
+      </Display>
+    )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 30,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly compound Text.H3', () => {
-    const { getByText } = render(<Text.H3>Hello World</Text.H3>)
+  it('renders correctly compound Display.SmRegular', () => {
+    const { getByText } = render(<Display.SmRegular>Hello World</Display.SmRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 30,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly with variant H3Bold', () => {
-    const { getByText } = render(<Text variant="H3Bold">Hello World</Text>)
+  it('renders correctly with variant SmBold (Display)', () => {
+    const { getByText } = render(
+      <Display type="display" variant="SmBold">
+        Hello World
+      </Display>
+    )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 30,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly compound Text.H3Bold', () => {
-    const { getByText } = render(<Text.H3Bold>Hello World</Text.H3Bold>)
+  it('renders correctly compound Display.SmBold', () => {
+    const { getByText } = render(<Display.SmBold>Hello World</Display.SmBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 30,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly with variant H4', () => {
-    const { getByText } = render(<Text variant="H4">Hello World</Text>)
+  it('renders correctly with variant XsRegular (Display)', () => {
+    const { getByText } = render(
+      <Display type="display" variant="XsRegular">
+        Hello World
+      </Display>
+    )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 24,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly compound Text.H4', () => {
-    const { getByText } = render(<Text.H4>Hello World</Text.H4>)
+  it('renders correctly compound Display.XsRegular', () => {
+    const { getByText } = render(<Display.XsRegular>Hello World</Display.XsRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 24,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly with variant H4Bold', () => {
-    const { getByText } = render(<Text variant="H4Bold">Hello World</Text>)
+  it('renders correctly with variant XsBold (Display)', () => {
+    const { getByText } = render(
+      <Display type="display" variant="XsBold">
+        Hello World
+      </Display>
+    )
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 24,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly compound Text.H4Bold', () => {
-    const { getByText } = render(<Text.H4Bold>Hello World</Text.H4Bold>)
+  it('renders correctly compound Display.XsBold', () => {
+    const { getByText } = render(<Display.XsBold>Hello World</Display.XsBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 24,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly with variant H5', () => {
-    const { getByText } = render(<Text variant="H5">Hello World</Text>)
+  it('renders correctly with variant XlRegular', () => {
+    const { getByText } = render(<Text variant="XlRegular">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 20,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly compound Text.H5', () => {
-    const { getByText } = render(<Text.H5>Hello World</Text.H5>)
+  it('renders correctly compound Text.XlRegular', () => {
+    const { getByText } = render(<Text.XlRegular>Hello World</Text.XlRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 20,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly with variant H5Bold', () => {
-    const { getByText } = render(<Text variant="H5Bold">Hello World</Text>)
+  it('renders correctly with variant XlBold', () => {
+    const { getByText } = render(<Text variant="XlBold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 20,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly compound Text.H5Bold', () => {
-    const { getByText } = render(<Text.H5Bold>Hello World</Text.H5Bold>)
+  it('renders correctly compound Text.XlBold', () => {
+    const { getByText } = render(<Text.XlBold>Hello World</Text.XlBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 20,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly with variant H6', () => {
-    const { getByText } = render(<Text variant="H6">Hello World</Text>)
+  it('renders correctly with variant LgRegular', () => {
+    const { getByText } = render(<Text variant="LgRegular">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 18,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly compound Text.H6', () => {
-    const { getByText } = render(<Text.H6>Hello World</Text.H6>)
+  it('renders correctly compound Text.LgRegular', () => {
+    const { getByText } = render(<Text.LgRegular>Hello World</Text.LgRegular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_400Regular',
+      fontFamily: 'Inter_Regular',
       fontSize: 18,
+      fontWeight: '400',
     })
   })
 
-  it('renders correctly with variant H6Bold', () => {
-    const { getByText } = render(<Text variant="H6Bold">Hello World</Text>)
+  it('renders correctly with variant LgBold', () => {
+    const { getByText } = render(<Text variant="LgBold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 18,
+      fontWeight: '700',
     })
   })
 
-  it('renders correctly compound Text.H6Bold', async () => {
-    const { getByText } = render(<Text.H6Bold>Hello World</Text.H6Bold>)
+  it('renders correctly compound Text.LgBold', async () => {
+    const { getByText } = render(<Text.LgBold>Hello World</Text.LgBold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       ...defaultTextStyles,
-      fontFamily: 'Lato_700Bold',
+      fontFamily: 'Inter_Bold',
       fontSize: 18,
+      fontWeight: '700',
     })
   })
 })

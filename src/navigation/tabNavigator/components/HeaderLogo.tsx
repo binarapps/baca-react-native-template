@@ -1,17 +1,16 @@
-import { darkLogoFull, darkLogoSygnet, lightLogoFull, lightLogoSygnet } from '@baca/constants'
-import { useColorScheme } from '@baca/contexts'
+import { CompanyLogo } from '@baca/components'
+import { useTheme } from '@baca/hooks'
 import cssStyles from '@baca/styles'
-import { Pressable, Text } from '@bacons/react-views'
+import { Pressable } from '@bacons/react-views'
 import { Link } from 'expo-router'
-import { Image, Platform, StyleSheet, View } from 'react-native'
+import { Platform, StyleSheet, View } from 'react-native'
 
-import { useWidth } from '../hooks'
-import { TabColorsStrings } from '../navigation-config'
+import { useUniversalWidth } from '../hooks'
 import { cns } from '../utils'
 
 export function HeaderLogo() {
-  const { colorScheme } = useColorScheme()
-  const isLargeHorizontal = useWidth(1264)
+  const { colors } = useTheme()
+  const isLargeHorizontal = useUniversalWidth(1264)
 
   return (
     <View
@@ -20,51 +19,36 @@ export function HeaderLogo() {
         web: cns(cssStyles.headerContainer),
       })}
     >
-      <Link
-        style={Platform.select({
-          default: jsStyles.headerLink,
-          web: cns(cssStyles.headerLink),
-        })}
-        href="/"
-        asChild
-      >
+      <Link style={jsStyles.headerLink} href="/" asChild>
         <Pressable>
           {({ hovered }) => (
-            <Text
+            <View
               style={[
                 jsStyles.headerLogo,
                 {
-                  backgroundColor: hovered
-                    ? TabColorsStrings.lightGray50
-                    : TabColorsStrings.transparent,
+                  backgroundColor: hovered ? colors.bg.tertiary : colors.Base.transparent,
                 },
               ]}
             >
-              <Image
-                resizeMethod="resize"
-                resizeMode="contain"
-                source={colorScheme === 'light' ? lightLogoFull : darkLogoFull}
-                style={[
-                  jsStyles.logoWide,
-                  Platform.select({
-                    default: !isLargeHorizontal ? { display: 'none' } : {},
-                    web: cns(cssStyles.wideVisible),
-                  }),
-                ]}
+              <CompanyLogo
+                height={40}
+                style={Platform.select({
+                  default: !isLargeHorizontal ? { display: 'none' } : {},
+                  web: cns(cssStyles.wideVisible),
+                })}
+                type="binar"
+                width={120}
               />
-              <Image
-                resizeMethod="resize"
-                resizeMode="contain"
-                source={colorScheme === 'light' ? lightLogoSygnet : darkLogoSygnet}
-                style={[
-                  jsStyles.logoSygnet,
-                  Platform.select({
-                    default: isLargeHorizontal ? { display: 'none' } : {},
-                    web: cns(cssStyles.wideHidden),
-                  }),
-                ]}
+              <CompanyLogo
+                height={40}
+                style={Platform.select({
+                  default: isLargeHorizontal ? { display: 'none' } : {},
+                  web: cns(cssStyles.wideHidden),
+                })}
+                type="binarSygnet"
+                width={40}
               />
-            </Text>
+            </View>
           )}
         </Pressable>
       </Link>
@@ -74,19 +58,15 @@ export function HeaderLogo() {
 
 const jsStyles = StyleSheet.create({
   headerContainer: {
-    height: 96,
-    minHeight: 96,
     paddingTop: 0,
   },
   headerLink: {
     alignItems: 'center',
+    paddingBottom: 24,
   },
   headerLogo: {
     alignItems: 'center',
     borderRadius: 8,
-    display: 'flex',
-    margin: 0,
+    padding: 8,
   },
-  logoSygnet: { height: 60, width: 40 },
-  logoWide: { height: 60, width: 150 },
 })

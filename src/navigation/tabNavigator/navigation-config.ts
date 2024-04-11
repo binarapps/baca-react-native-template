@@ -1,6 +1,4 @@
-import { palette } from '@baca/design-system'
 import { IconNames } from '@baca/types/icon'
-import { hex2rgba } from '@baca/utils'
 
 type Tab = {
   displayedName: string
@@ -16,8 +14,8 @@ type Tabs = Tab[]
 export const upperSideTabs: Tabs = [
   {
     displayedName: 'Home',
-    icon: 'home-3-line',
-    iconFocused: 'home-3-fill',
+    icon: 'home-5-line',
+    iconFocused: 'home-5-fill',
     id: 'home',
     name: 'home',
   },
@@ -65,15 +63,13 @@ export const bottomSideTabs: Tabs = []
 
 export const bottomTabs: Tabs = [...upperSideTabs]
 
-export const TabColors: Record<string, ColorNames> = {
-  tabIconDark: 'text.brand.tertiary',
-  tabIconLight: 'text.success.primary',
-} as const
+export const tabsColors: {
+  color: ColorNames
+  colorFocused: ColorNames
+} = {
+  color: 'nav.item.button.icon.fg',
+  colorFocused: 'Brand.600',
+}
 
-export const TabColorsStrings = {
-  lightGray: palette.gray['300'],
-  lightGray50: hex2rgba(palette.gray['50'], 0.5),
-  tabTextDark: palette.gray['700'],
-  tabTextLight: palette.gray['300'],
-  transparent: 'transparent',
-} as const
+export const getTabColor = (isFocused = false) =>
+  isFocused ? tabsColors.colorFocused : tabsColors.color
