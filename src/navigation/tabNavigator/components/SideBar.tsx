@@ -1,17 +1,20 @@
+import { useSafeAreaInsets, useTheme } from '@baca/hooks'
 import { signOut } from '@baca/store/auth'
 import cssStyles from '@baca/styles'
 import { Platform, StyleSheet, View } from 'react-native'
 
 import { HeaderLogo } from './HeaderLogo'
 import { SideBarTabItem } from './SideBarTabItem'
-import { useWidth } from '../hooks'
-import { TabColorsStrings, upperSideTabs } from '../navigation-config'
+import { useUniversalWidth } from '../hooks'
+import { upperSideTabs } from '../navigation-config'
 import { cns } from '../utils'
 
 const NAV_MEDIUM_WIDTH = 244
 
 export function SideBar({ visible }: { visible: boolean }) {
-  const isLarge = useWidth(1264)
+  const { colors } = useTheme()
+  const { top } = useSafeAreaInsets()
+  const isLarge = useUniversalWidth(1264)
 
   return (
     <View
@@ -36,6 +39,8 @@ export function SideBar({ visible }: { visible: boolean }) {
       <View
         style={[
           jsStyles.sidebarInner,
+          { paddingTop: top + 8 },
+          { borderRightColor: colors.border.secondary },
           ...Platform.select({
             default: [
               isLarge &&
@@ -97,14 +102,12 @@ const jsStyles = StyleSheet.create({
 
   sidebarInner: {
     alignItems: 'stretch',
-    borderRightColor: TabColorsStrings.lightGray,
     borderRightWidth: 1,
     height: '100%',
     maxHeight: '100%',
     minWidth: 72,
     paddingBottom: 20,
     paddingHorizontal: 12,
-    paddingTop: 8,
     position: 'absolute',
     width: 72,
   },

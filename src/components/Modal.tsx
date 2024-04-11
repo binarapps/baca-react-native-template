@@ -1,4 +1,5 @@
 import { useTheme } from '@baca/hooks'
+import { hex2rgba } from '@baca/utils'
 import {
   Modal as RNModal,
   ModalProps,
@@ -48,7 +49,10 @@ export const Modal = ({
         >
           <ScrollableComponent
             style={styles.scroll}
-            contentContainerStyle={[styles.scrollContent, { background: colors.bg.overlay }]}
+            contentContainerStyle={[
+              styles.scrollContent,
+              { background: hex2rgba(colors.bg.overlay, 0.5) },
+            ]}
             showsVerticalScrollIndicator={false}
           >
             <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>
@@ -66,10 +70,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   scroll: {
-    paddingHorizontal: 32,
     width: '100%',
   },
   scrollContent: {
     justifyContent: 'center',
+    paddingHorizontal: 32,
   },
 })

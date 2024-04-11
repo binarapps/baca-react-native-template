@@ -1,4 +1,16 @@
 {
+  "alert": {
+    "prevent_go_back": {
+      "description": "You have unsaved changes. Are you sure to discard them and leave the screen?",
+      "discard": "Discard",
+      "do_not_leave": "Don't leave",
+      "title": "Discard changes?"
+    },
+    "session_expired": {
+      "description": "Try to log in again",
+      "title": "Your current session expired"
+    }
+  },
   "common": {
     "add": "Add",
     "back": "Back",
@@ -55,12 +67,6 @@
     }
   },
   "navigation": {
-    "prevent_go_back_alert": {
-      "description": "You have unsaved changes. Are you sure to discard them and leave the screen?",
-      "discard": "Discard",
-      "do_not_leave": "Don't leave",
-      "title": "Discard changes?"
-    },
     "screen_titles": {
       "application_info": "ApplicationInfo",
       "blog": "Blog",
@@ -175,6 +181,7 @@
     "go_to_screen_with_BEdata": "Go to screen with data from BE",
     "go_to_settings": "Go to Settings",
     "go_to_typography": "Go to Typography",
+    "go_to_user_session": "Go to user session",
     "header": "This is Example screen"
   },
   "forgot_password_screen": {
@@ -217,7 +224,7 @@
   "sign_in_screen": {
     "do_not_have_an_account": "Don't have an account?",
     "forgot_password": "Forgot password",
-    "sign_in": "Sign in",
+    "sign_in": "Log in",
     "sign_up": "Sign up",
     "welcome_back": "Welcome back",
     "welcome_back_enter_details": "Please enter your details"

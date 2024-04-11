@@ -1,4 +1,16 @@
 {
+  "alert": {
+    "prevent_go_back": {
+      "description": "Masz niezapisane zmiany. Jesteś pewny, że chcesz je porzucić i wyjść?",
+      "discard": "Porzuć",
+      "do_not_leave": "Nie wychodź",
+      "title": "Anulować zmiany?"
+    },
+    "session_expired": {
+      "description": "Spróbuj zalogować się ponownie",
+      "title": "Twoja sesja wygasła"
+    }
+  },
   "common": {
     "add": "Dodaj",
     "back": "Cofnij",
@@ -55,12 +67,6 @@
     }
   },
   "navigation": {
-    "prevent_go_back_alert": {
-      "description": "Masz niezapisane zmiany. Jesteś pewny, że chcesz je porzucić i wyjść?",
-      "discard": "Porzuć",
-      "do_not_leave": "Nie wychodź",
-      "title": "Anulować zmiany?"
-    },
     "screen_titles": {
       "application_info": "ApplicationInfo",
       "blog": "Blog",
@@ -166,15 +172,16 @@
     "awesome": "Wspaniale 🎉"
   },
   "examples_screen": {
-    "header": "To jest przykładowy widok",
     "go_to_application_info": "Idź do ApplicationInfo",
     "go_to_colors": "Idź do Kolorów",
     "go_to_components": "Idź do Komponentów",
-    "go_to_typography": "Idź do Typografii",
     "go_to_home_stack_details": "Idź do HomeStackDetails",
-    "go_to_settings": "Idź do Ustawień",
+    "go_to_screen_test_form": "Idź do formularza testowego",
     "go_to_screen_with_BEdata": "Idź do widoku z danymi z backend-u",
-    "go_to_screen_test_form": "Idź do formularza testowego"
+    "go_to_settings": "Idź do Ustawień",
+    "go_to_typography": "Idź do Typografii",
+    "go_to_user_session": "Idź do sesji użytkowania",
+    "header": "To jest przykładowy widok"
   },
   "forgot_password_screen": {
     "back_to_login": "Wróć do logowania",
@@ -222,7 +229,7 @@
   },
   "sign_up_screen": {
     "already_have_an_account": "Masz już konto?",
-    "get_started": "Rozpoczynamy",
+    "get_started": "Rozpocznij",
     "log_in": "Zaloguj się",
     "sign_up": "Zarejestruj się",
     "start_free_trail": "Rozpocznij darmowy 30 dniowy okres próbny."
