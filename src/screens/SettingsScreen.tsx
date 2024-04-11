@@ -64,12 +64,7 @@ export const SettingsScreen = (): JSX.Element => {
         <Button.SecondaryColor mt={8} size="lg" onPress={signOut}>
           {t('settings_screen.sign_out')}
         </Button.SecondaryColor>
-        <Button
-          mt={8}
-          onPress={handleRemoveUserAccount}
-          testID="saveProfileUpdateButton"
-          loading={isLoading}
-        >
+        <Button mt={8} onPress={handleRemoveUserAccount} loading={isLoading}>
           {t('settings_screen.remove_account')}
         </Button>
         <Spacer y={10} />
