@@ -1,8 +1,13 @@
 import { useAuthControllerRegister } from '@baca/api/query/auth/auth'
 import { AuthRegisterLoginDto } from '@baca/api/types'
 import { handleFormError, hapticImpact, showSuccessToast } from '@baca/utils'
+import { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+
+type UseSignUpFormProps = {
+  setIsSignUpButtonDisabled?: Dispatch<SetStateAction<boolean>>
+}
 
 const defaultValues: AuthRegisterLoginDto = {
   email: '',
@@ -15,7 +20,7 @@ const defaultValues: AuthRegisterLoginDto = {
   privacyPolicyAccepted: false,
 }
 
-export const useSignUpForm = () => {
+export const useSignUpForm = ({ setIsSignUpButtonDisabled }: UseSignUpFormProps) => {
   const { mutate: signUpMutation, isLoading } = useAuthControllerRegister()
   const { t } = useTranslation()
 
@@ -31,6 +36,7 @@ export const useSignUpForm = () => {
   })
 
   const onSubmit = (data: AuthRegisterLoginDto) => {
+    setIsSignUpButtonDisabled?.(true)
     signUpMutation(
       {
         data,
@@ -52,6 +58,7 @@ export const useSignUpForm = () => {
         },
       }
     )
+    setIsSignUpButtonDisabled?.(false)
   }
 
   return {

@@ -1,24 +1,22 @@
-import { appleIconDark, appleIcon, facebookIcon, googleIcon } from '@baca/constants'
+import { googleIcon } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
-import { Button, ButtonProps } from '@baca/design-system'
+import { Button, ButtonProps, Icon } from '@baca/design-system'
 import i18n from '@baca/i18n'
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { Image, ImageSourcePropType } from 'react-native'
 
 type SocialMediaType = 'apple' | 'facebook' | 'google'
 
 const socialButtonVariants: {
   [key in SocialMediaType]: {
-    source: { light: ImageSourcePropType; dark?: ImageSourcePropType }
+    source?: { light: ImageSourcePropType; dark?: ImageSourcePropType }
     text: () => string
   }
 } = {
   apple: {
-    source: { light: appleIcon, dark: appleIconDark },
     text: () => i18n.t('sign_in_screen.sign_in_by_apple'),
   },
   facebook: {
-    source: { light: facebookIcon },
     text: () => i18n.t('sign_in_screen.sign_in_by_facebook'),
   },
   google: {
@@ -37,11 +35,34 @@ export const SocialButton: FC<SocialButtonProps> = ({ type = 'google', ...rest }
 
   const { source, text } = socialButtonVariants[type]
 
+  const generateLeftElement = useCallback(
+    (type: SocialMediaType) => {
+      switch (type) {
+        case 'apple':
+          return (
+            <Icon
+              color={colorScheme === 'light' ? 'Base.black' : 'Base.white'}
+              name="apple-fill"
+              size={24}
+            />
+          )
+        case 'facebook':
+          // @ts-expect-error icon type accepts only ColorNames in order to make suggestion in code, but strings works as well
+          return <Icon color="#1877F2" name="facebook-circle-fill" size={24} />
+        case 'google':
+          return (
+            <Image source={source?.[colorScheme] || source?.['light']} width={24} height={24} />
+          )
+      }
+    },
+    [colorScheme, source]
+  )
+
   return (
     <Button
       alignItems="center"
       justifyContent="center"
-      leftElement={<Image source={source[colorScheme] || source['light']} width={24} height={24} />}
+      leftElement={generateLeftElement(type)}
       variant="SecondaryGray"
       maxW={360}
       w="full"

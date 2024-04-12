@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   baseText: {
     fontStyle: 'normal',
     fontWeight: '400',
-    lineHeight: 21,
+    lineHeight: 24,
   },
 })
 

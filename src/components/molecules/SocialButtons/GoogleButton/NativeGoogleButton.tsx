@@ -4,22 +4,29 @@ import { useCallback, useEffect, useState } from '@baca/hooks'
 import { assignPushToken, setToken } from '@baca/services'
 import { isSignedInAtom, store } from '@baca/store'
 import { showErrorToast } from '@baca/utils'
-import { FC } from 'react'
+import { Dispatch, FC, SetStateAction } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { SocialButton } from '../SocialButton'
 
-let NativeGoogleButton: FC = () => null
+export type GoogleButtonProps = {
+  isDisabled: boolean
+  setIsDisabled: Dispatch<SetStateAction<boolean>>
+}
+
+let NativeGoogleButton: FC<GoogleButtonProps> = () => null
 
 if (!isExpoGo && !isWeb) {
   // Conditionally import makes it work with expo go
   import('@react-native-google-signin/google-signin').then(({ GoogleSignin, statusCodes }) => {
     type GoogleSignInError = Error & { code: keyof typeof statusCodes }
 
-    NativeGoogleButton = () => {
-      const [isDisabled, setIsDisabled] = useState(false)
-      const { mutate: signInByGoogle } = useAuthGoogleControllerLogin()
+    NativeGoogleButton = ({ isDisabled, setIsDisabled }) => {
       const { t } = useTranslation()
+      const { mutate: signInByGoogle } = useAuthGoogleControllerLogin()
+
+      const [isGoogleButtonDisabled, setIsGoogleButtonDisabled] = useState<boolean>(false)
+      const [isLoading, setIsLoading] = useState(false)
 
       useEffect(() => {
         // No extra configuration is needed,
@@ -31,7 +38,7 @@ if (!isExpoGo && !isWeb) {
       }, [])
 
       const verifyPlayServices = useCallback(async (): Promise<void> => {
-        setIsDisabled(!(await GoogleSignin?.hasPlayServices?.()))
+        setIsGoogleButtonDisabled(!(await GoogleSignin?.hasPlayServices?.()))
       }, [])
 
       useEffect(() => {
@@ -65,6 +72,8 @@ if (!isExpoGo && !isWeb) {
       }, [signInByGoogle])
 
       const signIn = useCallback(async (): Promise<void> => {
+        setIsLoading(true)
+        setIsDisabled(true)
         try {
           await GoogleSignin?.signIn?.()
           await verifyToken()
@@ -88,10 +97,20 @@ if (!isExpoGo && !isWeb) {
           }
 
           showErrorToast({ description: t('errors.something_went_wrong') })
+        } finally {
+          setIsDisabled(false)
+          setIsLoading(false)
         }
-      }, [t, verifyToken])
+      }, [setIsDisabled, t, verifyToken])
 
-      return <SocialButton disabled={isDisabled} onPress={signIn} type="google" />
+      return (
+        <SocialButton
+          disabled={isGoogleButtonDisabled || isDisabled}
+          loading={isLoading}
+          onPress={signIn}
+          type="google"
+        />
+      )
     }
   })
 }
