@@ -9,7 +9,8 @@ import { useTranslation } from 'react-i18next'
 
 import { SocialButton } from '../SocialButton'
 
-let NativeGoogleButton: FC = () => undefined
+let NativeGoogleButton: FC = () => null
+
 if (!isExpoGo && !isWeb) {
   // Conditionally import makes it work with expo go
   import('@react-native-google-signin/google-signin').then(({ GoogleSignin, statusCodes }) => {
