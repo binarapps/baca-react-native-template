@@ -7,7 +7,7 @@ import { Image, ImageSourcePropType } from 'react-native'
 
 type SocialMediaType = 'apple' | 'facebook' | 'google'
 
-const SocialButtonVariants: {
+const socialButtonVariants: {
   [key in SocialMediaType]: {
     source: { light: ImageSourcePropType; dark?: ImageSourcePropType }
     text: () => string
@@ -35,7 +35,7 @@ type SocialButtonProps = {
 export const SocialButton: FC<SocialButtonProps> = ({ type = 'google', ...rest }) => {
   const { colorScheme } = useColorScheme()
 
-  const { source, text } = SocialButtonVariants[type]
+  const { source, text } = socialButtonVariants[type]
 
   return (
     <Button
