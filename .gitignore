@@ -47,3 +47,4 @@ env.json
 
 # baca-cli build
 scripts/cli/build/
+scripts/cli/temp/

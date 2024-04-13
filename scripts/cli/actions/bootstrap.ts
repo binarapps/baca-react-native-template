@@ -1,5 +1,5 @@
+import { prompt } from 'enquirer'
 import fs from 'fs'
-import promptSync from 'prompt-sync'
 
 import {
   README_PATH,
@@ -8,9 +8,114 @@ import {
   PULL_REQUEST_TEMPLATE_PATH,
   APP_JSON_PATH,
 } from '../constants'
+import { APP_CONFIG } from '../temp/app.config'
 import { logger, addAfter } from '../utils'
 
-const prompt = promptSync()
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
+const newAppJson = JSON.parse(fs.readFileSync(APP_JSON_PATH, 'utf8'))
+
+type SetupProjectProps = {
+  appName: string
+  bundleId: string
+  androidPackageName: string
+  scheme: string
+  easId: string
+  organizationOwner: string
+  androidIconColor: string
+  appSlug: string
+}
+
+// Check types of questions here:
+// - https://github.com/enquirer/enquirer/blob/master/examples/enquirer/questions.js
+type Questions = keyof SetupProjectProps
+
+type QuestionsObject = {
+  [k in Questions]: {
+    type: string
+    message: string
+    initial: string
+    order: number
+  }
+}
+
+const questionsObject: QuestionsObject = {
+  appName: {
+    type: 'text',
+    message: 'What is your app name?',
+    initial: APP_CONFIG.appName,
+    order: 1,
+  },
+  bundleId: {
+    type: 'text',
+    message: 'What is your bundle Id?',
+    initial: APP_CONFIG.iosBundleIdentifier,
+    order: 2,
+  },
+  androidPackageName: {
+    type: 'text',
+    message: 'What is your android package name?',
+    initial: APP_CONFIG.androidPackageName,
+    order: 3,
+  },
+  scheme: {
+    type: 'text',
+    message: 'What is your scheme name?',
+    initial: APP_CONFIG.scheme,
+    order: 4,
+  },
+  easId: {
+    type: 'text',
+    message: 'What is your eas id?',
+    initial: APP_CONFIG.easProjectId,
+    order: 5,
+  },
+  organizationOwner: {
+    type: 'text',
+    message: 'What is your expo organization owner?',
+    initial: newAppJson.expo.owner,
+    order: 6,
+  },
+  androidIconColor: {
+    type: 'text',
+    message: 'What is your android icon color?',
+    initial: APP_CONFIG.adaptiveIconBackgroundColor,
+    order: 7,
+  },
+  appSlug: {
+    type: 'text',
+    message: 'What is your expo app slug?',
+    initial: newAppJson.expo.slug,
+    order: 8,
+  },
+}
+
+/**
+ * Creates temp files
+ * - app.config.ts
+ *
+ */
+const createTempFiles = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      const exist = fs.existsSync('scripts/cli/temp/')
+
+      if (!exist) {
+        fs.mkdirSync('scripts/cli/temp/')
+      }
+
+      fs.copyFile('app.config.ts', 'scripts/cli/temp/app.config.ts', (err) => {
+        if (err) {
+          logger.error('ERROR WHEN CREATING TEMP FILES, please run this script again \n', err)
+          reject(new Error('ERROR SEE MESSAGE ABOVE'))
+        } else {
+          resolve(true)
+        }
+      })
+    } catch (e) {
+      reject(e)
+    }
+  })
+}
 
 /**
  * Replaces placeholders in the README file with the provided app name and organization owner.
@@ -54,7 +159,7 @@ export const APP_CONFIG = {
   easProjectId: '${easId}', // CONFIG: Add your eas project ID here
   iosBundleIdentifier: '${bundleId}', // CONFIG: Add your ios bundle identifier here
   scheme: '${scheme}', // CONFIG: Add your url scheme to link to your app
-  adaptiveIconBackgroundColor: '${androidIconColor}', // CONFIG: Add your url scheme to link to your app
+  adaptiveIconBackgroundColor: '${androidIconColor}', // CONFIG: Add your android adaptive icon background color here
 } as const
 `
 
@@ -74,16 +179,15 @@ const replacePullRequestTemplate = () => {
 }
 
 const changeAppJson = (appName: string, appSlug: string, organizationOwner: string) => {
-  const newAppJson = JSON.parse(fs.readFileSync(APP_JSON_PATH, 'utf8'))
   newAppJson.expo.slug = appSlug
   newAppJson.expo.name = appName
   newAppJson.expo.owner = organizationOwner
-  newAppJson.version = '1.0.0'
+  newAppJson.expo.version = '1.0.0'
+
   fs.writeFileSync(APP_JSON_PATH, JSON.stringify(newAppJson, null, 2))
 }
 
 const changePackageJson = (appName: string, organizationOwner: string) => {
-  const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
   packageJson.name = `@${organizationOwner}/${appName}`
   packageJson.description = `App created from expo-template powered by binarapps`
   packageJson.version = '1.0.0'
@@ -103,18 +207,18 @@ const removeDocsFolder = () => {
   fs.rm('./documentation', { recursive: true, force: true }, () => {})
 }
 
-const setUpProject = async (
-  appName: string,
-  bundleId: string,
-  androidPackageName: string,
-  scheme: string,
-  easId: string,
-  organizationOwner: string,
-  androidIconColor: string,
-  appSlug: string
-) => {
+const setUpProject = async ({
+  appName,
+  bundleId,
+  androidPackageName,
+  scheme,
+  easId,
+  organizationOwner,
+  androidIconColor,
+  appSlug,
+}: SetupProjectProps) => {
   // START
-  logger.success('Start ...')
+  logger.success('Start bootstrapping ...')
 
   // 1. Delete readme -> and create new, with new app name etc.
   logger.info('Generating new readme file')
@@ -148,60 +252,32 @@ const setUpProject = async (
   logger.success(`Config your project has been success`)
 }
 
-export const bootstrap = () => {
-  logger.info('Please give me this information to setup your project:')
-  const appName = prompt('App name: ')
-  if (!appName) {
-    return logger.error('Please write correct app name')
+const questions = Object.entries(questionsObject)
+  .map((value) => ({
+    name: value[0],
+    ...value[1],
+  }))
+  .sort((a, b) => a.order - b.order)
+
+export const bootstrap = async () => {
+  try {
+    logger.info('Please give me this information to setup your project:')
+
+    // 0. Create temp files
+    await createTempFiles()
+
+    const answers = (await prompt(questions)) as unknown as SetupProjectProps
+
+    await setUpProject(answers)
+
+    logger.info(
+      '\nYou can also add images (splash screen, app icon, logos) right now, \nGo to `assets` folder and replace images to match your app.\n'
+    )
+    logger.info('\nPlease verify the changes made by this script and commit it to your repository.')
+  } catch (e) {
+    logger.error(
+      '\nError while bootstraping project \nERROR:',
+      e ? e : "Couldn't find what's happened"
+    )
   }
-
-  const appSlug = prompt('App slug (from expo dashboard): ')
-  if (!appSlug) {
-    return logger.error('Please write app slug')
-  }
-
-  const organizationOwner = prompt('Organization owner (from expo dashboard): ')
-  if (!organizationOwner) {
-    return logger.error('Please write organziation owner')
-  }
-
-  const easId = prompt('EAS project ID (from expo dashboard): ')
-  if (!easId) {
-    return logger.error('Please write correct eas project ID')
-  }
-
-  const androidIconColor =
-    prompt('Android adaptive icon color (you can leave it empty and fill it later): ') ||
-    '#2E7AF0CC'
-
-  const bundleId = prompt('Bundle ID (ios): ')
-  if (!bundleId) {
-    return logger.error('Please write correct bundle ID')
-  }
-
-  const androidPackageName = prompt('Package name (android): ')
-  if (!androidPackageName) {
-    return logger.error('Please write correct android package name')
-  }
-
-  const scheme = prompt('URL scheme (for deeplinking): ')
-  if (!scheme) {
-    return logger.error('Please write correct scheme')
-  }
-
-  setUpProject(
-    appName,
-    bundleId,
-    androidPackageName,
-    scheme,
-    easId,
-    organizationOwner,
-    androidIconColor,
-    appSlug
-  )
-
-  logger.info(
-    '\nYou can also add images right now, go to assets folder and replace images to match your app \n'
-  )
-  logger.info('\nPlease verify the changes made by this script and commit it to your repository \n')
 }
