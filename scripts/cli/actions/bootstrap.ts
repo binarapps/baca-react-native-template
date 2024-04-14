@@ -23,6 +23,7 @@ type SetupProjectProps = {
   organizationOwner: string
   androidIconColor: string
   appSlug: string
+  appleTeamId: string
 }
 
 // Check types of questions here:
@@ -87,6 +88,12 @@ const questionsObject: QuestionsObject = {
     initial: newAppJson.expo.slug,
     order: 8,
   },
+  appleTeamId: {
+    type: 'text',
+    message: 'What is your apple team id? (Optional)',
+    initial: newAppJson.expo.slug,
+    order: 8,
+  },
 }
 
 /**
@@ -123,7 +130,7 @@ const createTempFiles = () => {
  * @param appName - The name of the app.
  * @param organizationOwner - The owner of the organization.
  */
-const replaceReadme = (appName: string, organizationOwner: string) => {
+const replaceReadme = ({ appName, organizationOwner }: SetupProjectProps) => {
   let contents = fs.readFileSync(README_PATH, 'utf-8')
 
   contents = contents.replaceAll('_NAME_', appName)
@@ -142,14 +149,14 @@ const replaceReadme = (appName: string, organizationOwner: string) => {
  * @param easId - The EAS project ID.
  * @param androidIconColor - The background color for the adaptive icon on Android.
  */
-const setUpAppConfig = (
-  appName: string,
-  bundleId: string,
-  androidPackageName: string,
-  scheme: string,
-  easId: string,
-  androidIconColor: string
-) => {
+const setUpAppConfig = ({
+  appName,
+  bundleId,
+  androidPackageName,
+  scheme,
+  easId,
+  androidIconColor,
+}: SetupProjectProps) => {
   let contents = fs.readFileSync(APP_CONFIG_PATH, 'utf8')
 
   const appConfig = `
@@ -178,7 +185,7 @@ const replacePullRequestTemplate = () => {
   fs.writeFileSync(PULL_REQUEST_TEMPLATE_PATH, contents)
 }
 
-const changeAppJson = (appName: string, appSlug: string, organizationOwner: string) => {
+const changeAppJson = ({ appName, appSlug, organizationOwner }: SetupProjectProps) => {
   newAppJson.expo.slug = appSlug
   newAppJson.expo.name = appName
   newAppJson.expo.owner = organizationOwner
@@ -187,7 +194,7 @@ const changeAppJson = (appName: string, appSlug: string, organizationOwner: stri
   fs.writeFileSync(APP_JSON_PATH, JSON.stringify(newAppJson, null, 2))
 }
 
-const changePackageJson = (appName: string, organizationOwner: string) => {
+const changePackageJson = ({ appName, organizationOwner }: SetupProjectProps) => {
   packageJson.name = `@${organizationOwner}/${appName}`
   packageJson.description = `App created from expo-template powered by binarapps`
   packageJson.version = '1.0.0'
@@ -204,29 +211,24 @@ const removeIssueTemplates = () => {
 }
 
 const removeDocsFolder = () => {
-  fs.rm('./documentation', { recursive: true, force: true }, () => {})
+  fs.rm('./docs', { recursive: true, force: true }, () => {})
 }
 
-const setUpProject = async ({
-  appName,
-  bundleId,
-  androidPackageName,
-  scheme,
-  easId,
-  organizationOwner,
-  androidIconColor,
-  appSlug,
-}: SetupProjectProps) => {
+// TODO: Implement changeEasJson and changeDeeplinkFiles functions
+const changeEasJson = (config: SetupProjectProps) => {}
+const changeDeeplinkFiles = (config: SetupProjectProps) => {}
+
+const setUpProject = async (config: SetupProjectProps) => {
   // START
   logger.success('Start bootstrapping ...')
 
   // 1. Delete readme -> and create new, with new app name etc.
   logger.info('Generating new readme file')
-  replaceReadme(appName, organizationOwner)
+  replaceReadme(config)
 
   // 2. Replace appName, bundleId, androidPackageName,scheme and easProjectId in app.config.ts file
   logger.info('Change project variables in app.config.ts file')
-  setUpAppConfig(appName, bundleId, androidPackageName, scheme, easId, androidIconColor)
+  setUpAppConfig(config)
 
   // 3. Delete exist pull request template -> generate the new
   logger.info('Generating new pull request template file')
@@ -234,11 +236,11 @@ const setUpProject = async ({
 
   // 4. Change app.json file
   logger.info('Change app.json file')
-  changeAppJson(appName, appSlug, organizationOwner)
+  changeAppJson(config)
 
   // 5. Change package.json file
   logger.info('Change package.json file')
-  changePackageJson(appName, organizationOwner)
+  changePackageJson(config)
 
   // 6. Remove issue templates
   logger.info('Remove issue templates')
@@ -247,6 +249,13 @@ const setUpProject = async ({
   // 7. Remove docs folder
   logger.info('Remove docs folder')
   removeDocsFolder()
+
+  // 8. Change eas.json
+  logger.info('Remove docs folder')
+  changeEasJson(config)
+
+  // 8. Change deeplink files
+  changeDeeplinkFiles(config)
 
   //Finish
   logger.success(`Config your project has been success`)
