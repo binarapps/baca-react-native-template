@@ -257,6 +257,7 @@ type SizeStyle = {
   paddingVertical: number
   iconGap: number
   iconSize: number
+  lineHeight: number
 }
 
 export const buttonSizeVariants: { [key in ButtonSize]: SizeStyle } = {
@@ -266,6 +267,7 @@ export const buttonSizeVariants: { [key in ButtonSize]: SizeStyle } = {
     paddingVertical: 8,
     iconGap: 4,
     iconSize: 20,
+    lineHeight: 20,
   },
   md: {
     textVariant: 'SmSemibold',
@@ -273,6 +275,7 @@ export const buttonSizeVariants: { [key in ButtonSize]: SizeStyle } = {
     paddingVertical: 10,
     iconGap: 4,
     iconSize: 20,
+    lineHeight: 20,
   },
   lg: {
     textVariant: 'MdSemibold',
@@ -280,6 +283,7 @@ export const buttonSizeVariants: { [key in ButtonSize]: SizeStyle } = {
     paddingVertical: 12,
     iconGap: 6,
     iconSize: 20,
+    lineHeight: 24,
   },
   xl: {
     textVariant: 'MdSemibold',
@@ -287,6 +291,7 @@ export const buttonSizeVariants: { [key in ButtonSize]: SizeStyle } = {
     paddingVertical: 16,
     iconGap: 6,
     iconSize: 20,
+    lineHeight: 24,
   },
   xxl: {
     textVariant: 'LgSemibold',
@@ -294,6 +299,7 @@ export const buttonSizeVariants: { [key in ButtonSize]: SizeStyle } = {
     paddingVertical: 18,
     iconGap: 10,
     iconSize: 24,
+    lineHeight: 28,
   },
 } as const
 

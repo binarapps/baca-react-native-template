@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
   baseText: {
     fontStyle: 'normal',
     fontWeight: '400',
-    lineHeight: 24,
   },
 })
 
@@ -230,11 +229,19 @@ const RawButton = memo(
         ({ pressed }: PressableStateCallbackType) =>
           StyleSheet.flatten([
             styles.baseText,
+            { lineHeight: buttonSizeVariant.lineHeight },
             pressed ? hoverColorStyle : defaultColorStyle,
             disabled && disabledColorStyle,
             textStyle,
           ]),
-        [hoverColorStyle, defaultColorStyle, disabled, disabledColorStyle, textStyle]
+        [
+          buttonSizeVariant.lineHeight,
+          hoverColorStyle,
+          defaultColorStyle,
+          disabled,
+          disabledColorStyle,
+          textStyle,
+        ]
       )
 
       const iconElement = useCallback(
