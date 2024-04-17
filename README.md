@@ -70,13 +70,16 @@ It's great for production project, but if you want to just test it, you can foll
 
 ### Implemented custom features
 
+- custom cli
+  - run `yarn baca` to see available options
 - generators:
-  - create screen - `yarn generate:screen`
-  - create component - `yarn generate:component`
+  - `yarn baca generate` | `yarn g`
 - support of multiple environments
   - production, staging, qa
 - eas configuration
   - update, build, submit
+- deployment docs
+  - https://baca-docs.vercel.app/docs/bootstrap/intro
 - verifying code on pull request - pipelines
   - when creating pull request on github, there are tests, linters and types checks. If there will be some error you will be notified that something is wrong.
 - custom fonts
@@ -117,11 +120,11 @@ It's great for production project, but if you want to just test it, you can foll
 - [Reanimated v2](https://github.com/software-mansion/react-native-reanimated)
 - Axios + React query
   - Fetching data from backend
+- Jotai
+  - State management
 
 ## What is planned in the future?
 
-- add some state management tool - in progress
-- write docs (app deployment, app setup and more) - in progress
 - tutorial on how to use features
   - navigation
   - deepLinking
@@ -136,7 +139,6 @@ It's great for production project, but if you want to just test it, you can foll
   - Create sample app and document the process of deployment
 - Improve mock server logic
 - add commit lint
-- add script that display last update information (eas update)
 
 ### Implementations to add
 
