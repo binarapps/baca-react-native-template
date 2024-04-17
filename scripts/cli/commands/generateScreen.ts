@@ -1,8 +1,6 @@
+import { prompt } from 'enquirer'
+// eslint-disable-next-line import/order
 import fs from 'fs'
-import prompt from 'prompt-sync'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import selectPrompt from 'select-prompt'
 
 import { APP_ROUTER_DIRECTORY, SCREENS_DIRECTORY } from '../constants'
 import { getDirectoryNames, logger } from '../utils'
@@ -16,44 +14,47 @@ const addAfter = (content: string, searchText: string, textToAdd: string) => {
  *
  * @param basePath - The path of the current directory.
  */
-const selectPath = (basePath: string) =>
-  new Promise<string>((resolve) => {
-    const subDirectories = getDirectoryNames(basePath)
-    const hasSubDirectories = subDirectories.length > 0
+const selectPath = async (basePath: string): Promise<string> => {
+  const subDirectories = getDirectoryNames(basePath)
+  const hasSubDirectories = subDirectories.length > 0
 
-    // Return the result when there are no subdirectories
-    if (!hasSubDirectories) {
-      resolve(basePath)
-      return
-    }
+  // Return the result when there are no subdirectories
+  if (!hasSubDirectories) {
+    return basePath
+  }
 
-    const subDirectoryPrompt = subDirectories.map((directoryName) => ({
-      title: directoryName,
-      value: directoryName,
-    }))
+  const subDirectoryPrompt = subDirectories.map((directoryName) => ({
+    name: directoryName,
+    value: directoryName,
+  }))
 
-    if (basePath.includes('tabs')) {
-      subDirectoryPrompt.unshift({ title: '_New Tab_', value: 'new-tab' })
-    }
+  if (basePath.includes('tabs')) {
+    subDirectoryPrompt.unshift({ name: '_New Tab_', value: 'new-tab' })
+  }
 
-    if (basePath !== APP_ROUTER_DIRECTORY) {
-      subDirectoryPrompt.unshift({ title: '.', value: '.' })
-    }
+  if (basePath !== APP_ROUTER_DIRECTORY) {
+    subDirectoryPrompt.unshift({ name: '.', value: '.' })
+  }
 
-    selectPrompt(`Select a directory (${basePath})`, subDirectoryPrompt, {
-      cursor: 0,
-    }).on('submit', (subValue: string) => {
-      // Return the result when user selects current directory
-      if (subValue === '.') {
-        resolve(basePath)
-        return
-      }
-      // Recursively execute path selection when subValue is not the current directory
-      selectPath(`${basePath}/${subValue}`).then((subResult) => {
-        resolve(subResult)
-      })
-    })
+  const promptAnswer = await prompt({
+    name: 'subValue',
+    message: 'What do you want to generate?',
+    type: 'select',
+    choices: subDirectoryPrompt,
   })
+
+  // @ts-expect-error: subValue not found on promptAnswer
+  const subValue = promptAnswer.subValue
+
+  // Return the result when user selects current directory
+  if (subValue === '.') {
+    return basePath
+  }
+  // Recursively execute path selection when subValue is not the current directory
+  const subResult = await selectPath(`${basePath}/${subValue}`)
+
+  return subResult
+}
 
 /**
  * Validates if a route with the given name already exists in the specified path.
@@ -115,8 +116,16 @@ const addToScreensIndex = (screenName: string) => {
   fs.writeFileSync(indexFilePath, newIndexFile)
 }
 
-const promptTabName = () => {
-  const tabName = prompt()('Enter tab name: ')
+const promptTabName = async () => {
+  const promptAnswer = await prompt({
+    message: 'What is your screen name?',
+    name: 'tabName',
+    type: 'input',
+  })
+
+  // @ts-expect-error: generator not found on promptAnswer
+  const tabName = promptAnswer.tabName as string
+
   if (!tabName) {
     throw new Error('Tab name is required')
   }
@@ -148,13 +157,21 @@ const createNewNavTab = (tabName: string) => {
  * Validates the screen name and path.
  */
 export const generateScreen = async () => {
-  const routeName = prompt()('Enter screen name: ')
+  const promptAnswer = await prompt({
+    message: 'What is your screen name?',
+    name: 'screenName',
+    type: 'input',
+  })
+
+  // @ts-expect-error: generator not found on promptAnswer
+  const routeName = promptAnswer.screenName as string
+
   let routePath = await selectPath(APP_ROUTER_DIRECTORY)
 
   const isNewTab = routePath.includes('(tabs)') && routePath.includes('new-tab')
   if (isNewTab) {
     const tabName = promptTabName()
-    createNewNavTab(tabName)
+    createNewNavTab(routeName)
 
     const newTabPath = routePath.replace('/new-tab', `/${tabName}`)
     routePath = newTabPath
