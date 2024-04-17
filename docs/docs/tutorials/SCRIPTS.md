@@ -66,3 +66,9 @@ BACA - 2.1.0:
 ```
 
 You can easily share this with testers or clients, thanks to that users will be sure what version is currently in the app.
+
+## Generate icon types
+
+This script has to be executed when new icons where added to the icomoon.ttf icons set in case to provide proper types for components which use icons.
+
+If script won't be executed typescript will throw an error when trying to use newly added icon.
