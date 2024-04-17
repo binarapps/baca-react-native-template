@@ -1,13 +1,10 @@
-import promptSync from 'prompt-sync'
+import { prompt } from 'enquirer'
 
 import { COMPONENT_TEMPLATE_PATH, COMPONENTS_PATH } from '../constants'
 import { logger } from '../utils'
 
-const prompt = promptSync()
-
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs')
-const selectPrompt = require('select-prompt')
 
 const paths = {
   template: COMPONENT_TEMPLATE_PATH,
@@ -56,21 +53,28 @@ const generateNewComponent = async (name: string, type: string) => {
 
 export const generateComponent = async () => {
   const componentTypes = [
-    { title: 'Molecule', value: 'molecule' },
-    { title: 'Organism', value: 'organism' },
-    { title: 'Common', value: 'common' },
+    { name: 'Molecule', value: 'molecule' },
+    { name: 'Organism', value: 'organism' },
+    { name: 'Common', value: 'common' },
   ]
 
-  selectPrompt('Select type for new component', componentTypes, {
-    cursor: 0,
-  }).on('submit', async (type: string) => {
-    const name = prompt('What is component name? ')
+  const promptAnswer = await prompt([
+    {
+      message: 'What is your component type?',
+      name: 'componentType',
+      type: 'select',
+      choices: componentTypes,
+    },
+    {
+      message: 'What is your component name?',
+      name: 'componentName',
+      type: 'input',
+    },
+  ])
+  // @ts-expect-error: componentType not found on promptAnswer
+  const componentType = promptAnswer.componentType as string
+  // @ts-expect-error: componentName not found on promptAnswer
+  const componentName = promptAnswer.componentName as string
 
-    if (!name) {
-      return logger.error('No component name passed')
-    }
-
-    // 1. New component -> component_name + component_type (atom | molecule | organism | common)
-    await generateNewComponent(name, type)
-  })
+  await generateNewComponent(componentName, componentType)
 }
