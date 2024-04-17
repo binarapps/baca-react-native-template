@@ -44,15 +44,23 @@ yarn prepare:qa
 yarn prepare:staging
 ```
 
-## 4. generators
+## 3. generators
+
+Run this command to see all available commands
 
 ```bash
-## Create new component
-yarn generate:component
-
-## Create new screen
-yarn baca:generate
-
-## Bootstrap the app
-yarn baca:bootstrap
+yarn baca
 ```
+
+Our custom cli for now contain this screens:
+
+1. Generators
+
+- create new screen - `yarn baca generate screen`
+- create new component - `yarn baca generate component`
+- create icon types - `yarn baca generate icon-types`
+- create theme - `yarn baca generate theme`
+
+2. Bootstrap the app
+
+- `yarn baca bootstrap`
