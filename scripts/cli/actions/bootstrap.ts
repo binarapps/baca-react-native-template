@@ -1,6 +1,7 @@
 import { prompt } from 'enquirer'
 import fs from 'fs'
 
+import { APP_CONFIG } from '../../../app.config'
 import {
   README_PATH,
   APP_CONFIG_PATH,
@@ -8,7 +9,6 @@ import {
   PULL_REQUEST_TEMPLATE_PATH,
   APP_JSON_PATH,
 } from '../constants'
-import { APP_CONFIG } from '../temp/app.config'
 import { logger, addAfter } from '../utils'
 
 const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
@@ -94,34 +94,6 @@ const questionsObject: QuestionsObject = {
     initial: newAppJson.expo.slug,
     order: 8,
   },
-}
-
-/**
- * Creates temp files
- * - app.config.ts
- *
- */
-const createTempFiles = () => {
-  return new Promise((resolve, reject) => {
-    try {
-      const exist = fs.existsSync('scripts/cli/temp/')
-
-      if (!exist) {
-        fs.mkdirSync('scripts/cli/temp/')
-      }
-
-      fs.copyFile('app.config.ts', 'scripts/cli/temp/app.config.ts', (err) => {
-        if (err) {
-          logger.error('ERROR WHEN CREATING TEMP FILES, please run this script again \n', err)
-          reject(new Error('ERROR SEE MESSAGE ABOVE'))
-        } else {
-          resolve(true)
-        }
-      })
-    } catch (e) {
-      reject(e)
-    }
-  })
 }
 
 /**
@@ -268,12 +240,9 @@ const questions = Object.entries(questionsObject)
   }))
   .sort((a, b) => a.order - b.order)
 
-export const bootstrap = async () => {
+export const bootstrap = async (params?: string) => {
   try {
     logger.info('Please give me this information to setup your project:')
-
-    // 0. Create temp files
-    await createTempFiles()
 
     const answers = (await prompt(questions)) as unknown as SetupProjectProps
 

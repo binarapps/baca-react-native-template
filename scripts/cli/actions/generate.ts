@@ -1,48 +1,53 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import selectPrompt from 'select-prompt'
+import { prompt } from 'enquirer'
 
-import { generateComponent } from '../commands/generateComponent'
-import { generateIconTypes } from '../commands/generateIconTypes'
-import { generateScreen } from '../commands/generateScreen'
-import { generateTheme } from '../commands/generateTheme'
+import { generateIconTypes, generateScreen, generateTheme, generateComponent } from '../commands'
 
-const data = [
+export const generators = [
   {
     title: 'Screen',
+    description: 'Generate new screen',
     value: 'screen',
     command: generateScreen,
   },
   {
     title: 'Component',
+    description: 'Generate new component',
     value: 'component',
     command: generateComponent,
   },
   {
     title: 'Icon types',
+    description: 'Generate new icon types - based on icon - `selection.json`',
     value: 'icon-types',
     command: generateIconTypes,
   },
   {
     title: 'Generate theme',
+    description: 'Generate new theme - based on figma variables',
     value: 'generate-theme',
     command: generateTheme,
   },
 ] as const
 
-const generatePrompts = data.map(({ title, value }) => ({ title, value }))
+export const generate = async () => {
+  const promptAnswer = await prompt({
+    name: 'generator',
+    message: 'What do you want to generate?',
+    type: 'select',
+    choices: generators.map((generator) => ({
+      name: generator.title,
+      value: generator.value,
+    })),
+  })
 
-export const generate = () => {
-  selectPrompt('What do you want to generate?', generatePrompts).on(
-    'submit',
-    async (value: string) => {
-      const command = data.find((item) => item.value === value)?.command
+  // @ts-expect-error: generator not found on promptAnswer
+  const answerValue = promptAnswer?.generator as string
 
-      if (command) {
-        command()
-      } else {
-        console.log('There was some issue while running the script ', value)
-      }
-    }
-  )
+  const command = generators.find((item) => item.title === answerValue)?.command
+
+  if (command) {
+    command()
+  } else {
+    console.log('There was some issue while running the script ', answerValue)
+  }
 }
