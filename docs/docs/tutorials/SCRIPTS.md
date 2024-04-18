@@ -57,7 +57,7 @@ Check [doppler documentantion](/docs/doppler-config) to see more details
 
 ## Generate last update info
 
-This script is automatically executed after running `yarn update:production`, this will return ids of last udpate:
+This script is automatically executed after running `yarn update:production` (or staging|qa), this will return ids of last udpate:
 
 ```
 BACA - 2.1.0:
