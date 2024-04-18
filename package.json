@@ -54,7 +54,6 @@
     "generate:env:qa": "scripts/generate_dotenv.sh qa",
     "generate:env:staging": "scripts/generate_dotenv.sh staging",
     "generate:google-services-config": "./scripts/generate_firebase_config.sh",
-    "generate:icon:types": "node ./scripts/generate_icon_types.js",
     "generate:last:publish": "node ./scripts/generate_last_update_id.js",
     "generate:query": "yarn orval --config ./orval.config.ts",
     "ios:dev-client": "IS_DEV=1 npx expo run:ios",
