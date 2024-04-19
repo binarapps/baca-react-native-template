@@ -223,10 +223,9 @@ const setUpProject = async (config: SetupProjectProps) => {
   removeDocsFolder()
 
   // 8. Change eas.json
-  logger.info('Remove docs folder')
   changeEasJson(config)
 
-  // 8. Change deeplink files
+  // 9. Change deeplink files
   changeDeeplinkFiles(config)
 
   //Finish
