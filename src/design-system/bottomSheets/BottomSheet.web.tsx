@@ -52,7 +52,7 @@ export const BottomSheet = ({
     <Modal transparent visible={isOpen} onRequestClose={closeModalHandler}>
       <Box
         mx="auto"
-        bg="bg.brand.primary"
+        bg="bg.primary"
         borderRadius={8}
         borderColor={'border.primary'}
         borderWidth={1}

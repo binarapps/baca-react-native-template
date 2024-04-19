@@ -40,13 +40,7 @@ export const Modal = ({
       {...rest}
     >
       <TouchableWithoutFeedback onPress={onRequestClose}>
-        <SafeAreaView
-          style={[
-            styles.modal,
-            { backgroundColor: colors.alpha.black[30] },
-            additionalWrapperStyle,
-          ]}
-        >
+        <SafeAreaView style={[styles.modal, additionalWrapperStyle]}>
           <ScrollableComponent
             style={styles.scroll}
             contentContainerStyle={[
