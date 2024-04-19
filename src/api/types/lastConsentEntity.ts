@@ -7,7 +7,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface LastConsentProperties {
+export interface LastConsentEntity {
   /** The date and time when the consents were last created or the user agreed to the terms for the first time. */
   createdAt: string
   /** Whether the privacy policy was accepted. */

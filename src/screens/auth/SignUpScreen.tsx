@@ -1,4 +1,4 @@
-import { CompanyLogo, ControlledField, FormWrapper } from '@baca/components'
+import { CompanyLogo, ControlledField, FormWrapper, GoogleButton } from '@baca/components'
 import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
 import { useSignUpForm, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
@@ -117,6 +117,10 @@ export const SignUpScreen = () => {
         <Button loading={isSubmitting} onPress={register} w="full">
           {t('sign_up_screen.get_started')}
         </Button>
+        <Spacer y={4} />
+        <Box gap={3} w="full">
+          <GoogleButton />
+        </Box>
         <Spacer y={4} />
         <Row alignItems="center">
           <Text.SmRegular color="text.tertiary">

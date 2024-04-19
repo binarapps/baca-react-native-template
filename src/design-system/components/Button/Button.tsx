@@ -40,6 +40,7 @@ import { StyledProps } from '../types'
 export type ButtonProps = StyledProps &
   PressableProps & {
     disabled?: boolean
+    leftElement?: JSX.Element
     leftIconName?: IconNames
     loaderElement?: JSX.Element
     loading?: boolean
@@ -70,6 +71,7 @@ const RawButton = memo(
       {
         children,
         disabled,
+        leftElement,
         leftIconName,
         loading,
         rightIconName,
@@ -295,7 +297,8 @@ const RawButton = memo(
             />
           ) : (
             (props: PressableStateCallbackType) => (
-              <Row gap={buttonSizeVariant.iconGap}>
+              <Row alignItems="center" gap={buttonSizeVariant.iconGap}>
+                {leftElement && leftElement}
                 {leftIconName && iconElement(props, leftIconName)}
                 {childrenElement(props)}
                 {rightIconName && iconElement(props, rightIconName)}

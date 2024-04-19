@@ -130,7 +130,7 @@ export const getAuthControllerRefreshResponseMock = (
 ): RefreshEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
-  tokenExpires: faker.word.sample(),
+  tokenExpires: faker.number.int({ min: undefined, max: undefined }),
   ...overrideResponse,
 })
 

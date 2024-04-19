@@ -416,7 +416,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized - Invalid credentials",
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
@@ -1287,7 +1287,7 @@
       "ErrorValidationEntity": {
         "type": "object",
         "properties": {
-          "status": {
+          "statusCode": {
             "type": "number",
             "description": "HTTP status code indicating the error",
             "example": 422
@@ -1299,7 +1299,7 @@
             "additionalProperties": { "type": "string" }
           }
         },
-        "required": ["status", "errors"]
+        "required": ["statusCode", "errors"]
       },
       "UpdateArticleDto": {
         "type": "object",
@@ -1434,7 +1434,7 @@
         },
         "required": ["id", "name"]
       },
-      "LastConsentProperties": {
+      "LastConsentEntity": {
         "type": "object",
         "properties": {
           "termsAccepted": {
@@ -1508,17 +1508,7 @@
             "example": { "id": 1, "name": "ACTIVE" },
             "allOf": [{ "$ref": "#/components/schemas/Status" }]
           },
-          "consent": {
-            "example": {
-              "createdAt": "2024-03-07T23:29:27.697Z",
-              "privacyPolicyAccepted": true,
-              "privacyPolicyVersion": "1.0",
-              "termsAccepted": true,
-              "termsVersion": "1.0",
-              "updatedAt": "2024-03-07T23:29:27.697Z"
-            },
-            "allOf": [{ "$ref": "#/components/schemas/LastConsentProperties" }]
-          }
+          "consent": { "$ref": "#/components/schemas/LastConsentEntity" }
         },
         "required": [
           "id",
@@ -1779,7 +1769,7 @@
             "description": "The refresh token for refreshing the access token."
           },
           "tokenExpires": {
-            "type": "string",
+            "type": "number",
             "example": 1708531622031,
             "description": "The expiry date of the access token."
           }
@@ -1837,13 +1827,13 @@
       "AuthGoogleLoginDto": {
         "type": "object",
         "properties": {
-          "idToken": {
+          "accessToken": {
             "type": "string",
             "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOGI2ZTFlYTI1Y2I2M2Q0ZTI5YWI1Y2M2ZDZmODBlZjRmNDY2NjciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiIxMjM0NTY3ODkwMTIzNDU2Nzg5MC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjEyMzQ1Njc4OTAxMjM0NTY3ODkwLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiZXhwIjoxNjUxNTc2MDAwLCJpYXQiOjE2NTE1NzI0MDAsImlzcyI6ImFjY291bnRzLmdvb2dsZS5jb20iLCJzdWIiOiIxMjM0NTY3ODkwMTIzNDU2Nzg5MCIsImVtYWlsIjoianVzdHVzZXJAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJKdXN0IFVzZXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9qdXN0dXNlci9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiSnVzdCIsImZhbWlseV9uYW1lIjoiVXNlciJ9.QWxsYWtoemF0aGtqZGxza2FqaGRsa2FqZGxza2FqZGhza2FqaGRrc2FqaGtqZHNhbGtqZHNhbGtqZGhsYWtqZHNhbGtqaGRsYWtqaGRza2FqaGRrc2FqaGRrc2FqaGRrc2Fq",
-            "description": "Google ID token obtained after user authentication using Google OAuth. Use this token to authenticate the request to the application."
+            "description": "Google Access token obtained after user authentication using Google OAuth. Use this token to authenticate the request to the application."
           }
         },
-        "required": ["idToken"]
+        "required": ["accessToken"]
       },
       "AuthFacebookLoginDto": {
         "type": "object",
