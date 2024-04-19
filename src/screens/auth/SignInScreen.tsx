@@ -2,20 +2,24 @@ import {
   CompanyLogo,
   ControlledField,
   FormWrapper,
-  GoogleButton,
   LanguagePicker,
+  SocialButtons,
   Version,
 } from '@baca/components'
 import { REGEX, isWeb } from '@baca/constants'
 import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
-import { useCallback, useSignInForm, useTranslation } from '@baca/hooks'
+import { useCallback, useSignInForm, useState, useTranslation } from '@baca/hooks'
 import { useRouter } from 'expo-router'
 
 export const SignInScreen = (): JSX.Element => {
   const { push } = useRouter()
   const { t } = useTranslation()
 
-  const { control, errors, submit, getValues, isSubmitting, setFocus } = useSignInForm()
+  const [isSignInButtonDisabled, setIsSignInButtonsDisabled] = useState<boolean>(false)
+
+  const { control, errors, submit, getValues, isSubmitting, setFocus } = useSignInForm({
+    setIsSignInButtonsDisabled,
+  })
 
   const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
   const navigateToAppInfo = useCallback(() => push('/application-info'), [push])
@@ -96,7 +100,7 @@ export const SignInScreen = (): JSX.Element => {
           </Button.LinkColor>
         </Row>
         <Button
-          disabled={isSubmitting}
+          disabled={isSubmitting || isSignInButtonDisabled}
           loading={isSubmitting}
           my={4}
           onPress={submit}
@@ -105,9 +109,10 @@ export const SignInScreen = (): JSX.Element => {
         >
           {t('sign_in_screen.sign_in')}
         </Button>
-        <Box gap={3} w="full">
-          <GoogleButton />
-        </Box>
+        <SocialButtons
+          isDisabled={isSignInButtonDisabled}
+          setIsDisabled={setIsSignInButtonsDisabled}
+        />
         <Row alignItems="center" mt={8}>
           <Text.SmRegular color="text.tertiary">
             {t('sign_in_screen.do_not_have_an_account')}

@@ -4,10 +4,15 @@ import { assignPushToken, setToken } from '@baca/services'
 import { isSignedInAtom } from '@baca/store/auth'
 import { handleFormError, hapticImpact } from '@baca/utils'
 import { useSetAtom } from 'jotai'
+import { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 
 type SignInFormValues = AuthEmailLoginDto & {
   confirm: boolean
+}
+
+type UseSignInFormProps = {
+  setIsSignInButtonsDisabled?: Dispatch<SetStateAction<boolean>>
 }
 
 const defaultValues: SignInFormValues = {
@@ -17,7 +22,7 @@ const defaultValues: SignInFormValues = {
   confirm: false,
 }
 
-export const useSignInForm = () => {
+export const useSignInForm = ({ setIsSignInButtonsDisabled }: UseSignInFormProps) => {
   const setIsSignedIn = useSetAtom(isSignedInAtom)
 
   const { mutate: loginMutate, isLoading: isSubmitting } = useAuthControllerLogin<{
@@ -37,6 +42,7 @@ export const useSignInForm = () => {
   })
 
   const onSubmit = async (data: SignInFormValues) => {
+    setIsSignInButtonsDisabled?.(true)
     // Errors are handled on UI side
     // if you want to stop this function with error just throw new Error.
     // Remember to pass readable error message for user, because this error will be displayed for him
@@ -67,6 +73,7 @@ export const useSignInForm = () => {
         },
       }
     )
+    setIsSignInButtonsDisabled?.(false)
   }
 
   return {

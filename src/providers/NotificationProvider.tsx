@@ -50,10 +50,10 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   // Ideally this should be added as hook to layout file as described in this tutorial:
   // - https://docs.expo.dev/versions/latest/sdk/notifications/#handle-push-notifications-with-navigation
   useEffect(() => {
-    if (notification && rootNavigationState.key) {
+    if (notification && rootNavigationState?.key) {
       deeplinkWhenNotificationReceived(notification)
     }
-  }, [rootNavigationState.key, notification])
+  }, [rootNavigationState?.key, notification])
 
   // -------------------------------------------------------------
   // --------------- Sending push token to backend ---------------
