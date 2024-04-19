@@ -168,7 +168,7 @@ export const Select = <T extends SelectKey>({
             styles.textInput,
             isError
               ? { borderColor: colors.text.error.primary }
-              : { borderColor: colors.border.brand },
+              : { borderColor: colors.border.primary },
           ]}
           color={inputColor}
         >
