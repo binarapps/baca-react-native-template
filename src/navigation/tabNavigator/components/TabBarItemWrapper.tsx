@@ -25,19 +25,23 @@ export function TabBarItemWrapper({
   const focused = useIsTabSelected(id)
 
   if (onPress) {
-    return <Pressable onPress={onPress}>{(props) => children?.({ ...props, focused })}</Pressable>
+    return (
+      <Pressable hitSlop={5} onPress={onPress}>
+        {(props) => children?.({ ...props, focused })}
+      </Pressable>
+    )
   }
 
   if (name.startsWith('/') || name.startsWith('.')) {
     return (
       <Link href={{ pathname: name, params }} asChild style={style}>
-        <Pressable>{(props) => children?.({ ...props, focused })}</Pressable>
+        <Pressable hitSlop={5}>{(props) => children?.({ ...props, focused })}</Pressable>
       </Link>
     )
   }
   return (
     <TabbedNavigator.Link name={id} asChild style={style}>
-      <Pressable>{(props) => children?.({ ...props, focused })}</Pressable>
+      <Pressable hitSlop={5}>{(props) => children?.({ ...props, focused })}</Pressable>
     </TabbedNavigator.Link>
   )
 }
