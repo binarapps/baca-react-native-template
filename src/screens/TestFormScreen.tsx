@@ -69,7 +69,7 @@ export const TestFormScreen = (): JSX.Element => {
       })),
     []
   )
-  console.log('bottom + 16', bottom + 16)
+
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={[styles.container, { paddingBottom: bottom + 16 }]}
