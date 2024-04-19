@@ -1,7 +1,9 @@
-import 'i18next'
+import { ParseKeys } from 'i18next'
 import english from '@baca/i18n/translations/en.json'
+import polish from '@baca/i18n/translations/pl.json'
 
 type EN = typeof english
+type PL = typeof polish
 
 declare module 'i18next' {
   interface CustomTypeOptions {
@@ -9,6 +11,9 @@ declare module 'i18next' {
     returnNull: false
     resources: {
       en: EN
+      pl: PL
     }
   }
 }
+
+export type I18nKeys = ParseKeys

@@ -1,5 +1,5 @@
 import { Column, Icon, Text } from '@baca/design-system'
-import { useTheme } from '@baca/hooks'
+import { useTheme, useTranslation } from '@baca/hooks'
 import cssStyles from '@baca/styles'
 import { Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -10,6 +10,7 @@ import { cns } from '../utils'
 
 export function BottomBar({ visible }: { visible: boolean }) {
   const { colors } = useTheme()
+  const { t } = useTranslation()
   return (
     <View
       style={[
@@ -47,7 +48,7 @@ export function BottomBar({ visible }: { visible: boolean }) {
                   size={24}
                   color={getTabColor(focused)}
                 />
-                <Text.XsMedium color={getTabColor(focused)}>{tab.displayedName}</Text.XsMedium>
+                <Text.XsMedium color={getTabColor(focused)}>{t(tab.displayedNameTx)}</Text.XsMedium>
               </Column>
             )}
           </TabBarItemWrapper>
