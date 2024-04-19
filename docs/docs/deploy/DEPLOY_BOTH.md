@@ -14,7 +14,7 @@ description: Build and deploy both Android and iOS apps
 
 # Build & deploy both Android and iOS apps
 
-> **NOTE** You need to go through [iOS](docs/deploy/ios) and [android](docs/deploy/android) tutorials to make this working.
+> **NOTE** You need to go through [iOS](/docs/deploy/ios) and [android](/docs/deploy/android) tutorials to make this working.
 
 Build and deploy the next version of Android and iOS simultaneously. 🌈 / 🕐 /📱
 

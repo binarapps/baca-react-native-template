@@ -9,6 +9,11 @@
     "session_expired": {
       "description": "Try to log in again",
       "title": "Your current session expired"
+    },
+    "remove_account": {
+      "description": "Are you sure you want to delete your account?",
+      "title": "Attention!",
+      "confirm": "Yes, delete"
     }
   },
   "common": {
@@ -21,7 +26,8 @@
     "save": "Save",
     "search": "Search",
     "try_again_later": "Please try again later",
-    "try_again": "Try again"
+    "try_again": "Try again",
+    "remove_account": "Remove account"
   },
   "errors": {
     "invalid_email": "Niepoprawny adres e-mail",
@@ -220,7 +226,8 @@
     "copy_push_token": "Copy push token",
     "current_theme": "Current theme: {{theme}}",
     "sign_out": "Sign out!",
-    "selected": " - selected"
+    "selected": " - selected",
+    "remove_account": "Remove account"
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Don't have an account?",
