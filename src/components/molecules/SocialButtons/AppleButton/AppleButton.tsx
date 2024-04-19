@@ -36,19 +36,6 @@ export const AppleButton: FC<AppleButtonProps> = ({ isDisabled, setIsDisabled })
         ],
       })
 
-      console.log(
-        JSON.stringify(
-          {
-            data: {
-              idToken: appleResponse.identityToken!,
-              firstName: appleResponse.fullName?.givenName || '',
-              lastName: appleResponse.fullName?.familyName || '',
-            },
-          },
-          null,
-          2
-        )
-      )
       signInApple(
         {
           data: {
