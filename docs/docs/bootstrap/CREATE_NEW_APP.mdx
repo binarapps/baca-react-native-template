@@ -1,10 +1,11 @@
 ---
 id: bootstrap
-slug: /bootstrap/intro
-title: Bootstrap - start development
+slug: /bootstrap/create-new-app
+title: Create new app
 sidebar_position: 1
 tags:
   - Bootstrap
+  - Create new app
   - Getting started
   - Project structure
 description: Bootstrap project structure, that is needed to start development your new project
@@ -62,7 +63,12 @@ If you do not have expo account → register on your company email. In terminal 
 eas register
 ```
 
-You will be redirected to expo registration page. If something is not right please make sure you have eas cli installed - `npm install -g eas-cli`
+You will be redirected to expo registration page. If something is not right please make sure you have eas cli installed
+
+```bash
+npm install -g eas-cli
+
+```
 
 Login to expo account on your local machine.
 
@@ -112,21 +118,27 @@ eas whoami
 
 ### Step 4.Sync project with code.
 
-Synchronize the newly created Expo Project to your app.
+Please gather this data:
 
-In `app.json` file please insert the following:
+1. **app name** - you can add **display name** from previous step, or add anything you want here, this name will be displayed for users later
+2. **slug name** - created in 1-st point.
+3. **owner** - organization picked from the list in 1-st point
 
-1. **slug name** - created in 1-st point.
-2. **owner** - organization picked from the list in 1-st point
+:::note
 
-```json
-{
-  "expo": {
-    "owner": "your_organization_name",
-    "slug": "your_app_name"
-  }
-}
+If you will have issues with finding this values, please check [bootstrap testing docs](/docs/bootstrap/testing)
+
+:::
+
+If you gather all this data please run this command:
+
+```bash
+yarn baca bootstrap --simple
 ```
+
+:::warning
+Please verify all changes made with the script
+:::
 
 ---
 
