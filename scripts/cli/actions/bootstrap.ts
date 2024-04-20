@@ -35,8 +35,17 @@ type QuestionsObject = {
     type: string
     message: string
     initial: string
+    simple?: boolean
     order: number
   }
+}
+
+type Question = {
+  type: string
+  message: string
+  initial: string
+  order: number
+  name: string
 }
 
 const questionsObject: QuestionsObject = {
@@ -44,55 +53,59 @@ const questionsObject: QuestionsObject = {
     type: 'text',
     message: 'What is your app name?',
     initial: APP_CONFIG.appName,
+    simple: true,
     order: 1,
-  },
-  bundleId: {
-    type: 'text',
-    message: 'What is your bundle Id?',
-    initial: APP_CONFIG.iosBundleIdentifier,
-    order: 2,
-  },
-  androidPackageName: {
-    type: 'text',
-    message: 'What is your android package name?',
-    initial: APP_CONFIG.androidPackageName,
-    order: 3,
-  },
-  scheme: {
-    type: 'text',
-    message: 'What is your scheme name?',
-    initial: APP_CONFIG.scheme,
-    order: 4,
-  },
-  easId: {
-    type: 'text',
-    message: 'What is your eas id?',
-    initial: APP_CONFIG.easProjectId,
-    order: 5,
-  },
-  organizationOwner: {
-    type: 'text',
-    message: 'What is your expo organization owner?',
-    initial: newAppJson.expo.owner,
-    order: 6,
-  },
-  androidIconColor: {
-    type: 'text',
-    message: 'What is your android icon color?',
-    initial: APP_CONFIG.adaptiveIconBackgroundColor,
-    order: 7,
   },
   appSlug: {
     type: 'text',
     message: 'What is your expo app slug?',
     initial: newAppJson.expo.slug,
+    simple: true,
+    order: 2,
+  },
+  organizationOwner: {
+    type: 'text',
+    message: 'What is your expo organization owner?',
+    initial: newAppJson.expo.owner,
+    simple: true,
+    order: 3,
+  },
+  bundleId: {
+    type: 'text',
+    message: 'What is your bundle Id?',
+    initial: APP_CONFIG.iosBundleIdentifier,
+    order: 4,
+  },
+  androidPackageName: {
+    type: 'text',
+    message: 'What is your android package name?',
+    initial: APP_CONFIG.androidPackageName,
+    order: 5,
+  },
+  scheme: {
+    type: 'text',
+    message: 'What is your scheme name?',
+    initial: APP_CONFIG.scheme,
+    order: 6,
+  },
+  easId: {
+    type: 'text',
+    message: 'What is your eas id?',
+    initial: APP_CONFIG.easProjectId,
+    order: 7,
+  },
+  androidIconColor: {
+    type: 'text',
+    message: 'What is your android icon color?',
+    initial: APP_CONFIG.adaptiveIconBackgroundColor,
     order: 8,
   },
   appleTeamId: {
     type: 'text',
     message: 'What is your apple team id? (Optional)',
-    initial: newAppJson.expo.slug,
-    order: 8,
+    // FIXME: GET IT FROM EAS.JSON
+    initial: '5764GC687R',
+    order: 9,
   },
 }
 
@@ -232,18 +245,30 @@ const setUpProject = async (config: SetupProjectProps) => {
   logger.success(`Config your project has been success`)
 }
 
-const questions = Object.entries(questionsObject)
-  .map((value) => ({
+type BootstrapConfig = { isSimple: boolean }
+
+const sortQuestions = (questions: Question[]) => {
+  return questions.sort((a, b) => a.order - b.order)
+}
+
+const getQuesstions = ({ isSimple }: BootstrapConfig) => {
+  const questions = Object.entries(questionsObject).map((value) => ({
     name: value[0],
     ...value[1],
   }))
-  .sort((a, b) => a.order - b.order)
 
-export const bootstrap = async (params?: string) => {
+  if (isSimple) {
+    return sortQuestions(questions.filter((question) => question.simple))
+  }
+
+  return sortQuestions(questions)
+}
+
+export const bootstrap = async (config: BootstrapConfig) => {
   try {
     logger.info('Please give me this information to setup your project:')
 
-    const answers = (await prompt(questions)) as unknown as SetupProjectProps
+    const answers = (await prompt(getQuesstions(config))) as unknown as SetupProjectProps
 
     await setUpProject(answers)
 

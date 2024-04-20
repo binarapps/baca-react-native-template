@@ -43,10 +43,12 @@ generators.forEach((generator) => {
 
 program
   .command('bootstrap')
+  .option('-s, --simple', 'Run bootstrap simple with needed values')
   .description('Bootstrap of new project')
   .alias('b')
-  .action((buildTarget, options, command) => {
-    actions.bootstrap()
+  .action((buildTarget) => {
+    const isSimple = buildTarget.simple ?? false
+    actions.bootstrap({ isSimple })
   })
 
 program.parse()
