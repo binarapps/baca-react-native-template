@@ -73,8 +73,12 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
+              label: 'Overview',
+              to: '/docs/overview',
+            },
+            {
               label: 'Intro',
-              to: '/docs/bootstrap/intro',
+              to: '/docs/bootstrap/create-new-app',
             },
           ],
         },
@@ -106,6 +110,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['bash'],
     },
   } satisfies Preset.ThemeConfig,
 }

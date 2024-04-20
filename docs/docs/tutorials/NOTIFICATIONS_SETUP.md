@@ -21,7 +21,7 @@ Expo notifications are already preconfigured in this template. However, you stil
 ## Usage in expo dev client (expo run:\[android:ios\])
 
 1. Make sure you have created your account in [expo.dev](http://expo.dev).
-2. Follow [bootstrap](/docs/bootstrap/intro) docs
+2. Follow [bootstrap](/docs/bootstrap/create-new-app) docs
 3. Follow platform specific configuration.
 
 ### Android

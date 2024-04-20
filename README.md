@@ -18,7 +18,7 @@ This is a template to be used with react native and expo. It includes all the ne
 
 ## Documentation
 
-Check out our [documentation page](https://baca-docs.vercel.app/docs/bootstrap/intro), it contains:
+Check out our [documentation page](https://baca-docs.vercel.app/docs/overview), it contains:
 
 - Bootstrapping project - tutorial how to easy setup from scratch
 - Deploying app
@@ -52,7 +52,7 @@ We know there are a lot of project starters for react native, but we have some g
 
 ## How to use?
 
-We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](https://baca-docs.vercel.app/docs/bootstrap/intro)**
+We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](https://baca-docs.vercel.app/docs/overview)**
 
 It's great for production project, but if you want to just test it, you can follow the quick steps (on the bottom).
 
@@ -79,7 +79,7 @@ It's great for production project, but if you want to just test it, you can foll
 - eas configuration
   - update, build, submit
 - deployment docs
-  - https://baca-docs.vercel.app/docs/bootstrap/intro
+  - https://baca-docs.vercel.app/docs/overview
 - verifying code on pull request - pipelines
   - when creating pull request on github, there are tests, linters and types checks. If there will be some error you will be notified that something is wrong.
 - custom fonts
