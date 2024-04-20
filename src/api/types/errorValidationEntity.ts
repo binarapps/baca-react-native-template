@@ -12,5 +12,5 @@ export interface ErrorValidationEntity {
   /** Object containing field-specific validation errors */
   errors: ErrorValidationEntityErrors
   /** HTTP status code indicating the error */
-  status: number
+  statusCode: number
 }

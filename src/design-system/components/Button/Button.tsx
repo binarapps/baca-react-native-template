@@ -40,6 +40,7 @@ import { StyledProps } from '../types'
 export type ButtonProps = StyledProps &
   PressableProps & {
     disabled?: boolean
+    leftElement?: JSX.Element
     leftIconName?: IconNames
     loaderElement?: JSX.Element
     loading?: boolean
@@ -60,7 +61,6 @@ const styles = StyleSheet.create({
   baseText: {
     fontStyle: 'normal',
     fontWeight: '400',
-    lineHeight: 21,
   },
 })
 
@@ -70,6 +70,7 @@ const RawButton = memo(
       {
         children,
         disabled,
+        leftElement,
         leftIconName,
         loading,
         rightIconName,
@@ -228,11 +229,19 @@ const RawButton = memo(
         ({ pressed }: PressableStateCallbackType) =>
           StyleSheet.flatten([
             styles.baseText,
+            { lineHeight: buttonSizeVariant.lineHeight },
             pressed ? hoverColorStyle : defaultColorStyle,
             disabled && disabledColorStyle,
             textStyle,
           ]),
-        [hoverColorStyle, defaultColorStyle, disabled, disabledColorStyle, textStyle]
+        [
+          buttonSizeVariant.lineHeight,
+          hoverColorStyle,
+          defaultColorStyle,
+          disabled,
+          disabledColorStyle,
+          textStyle,
+        ]
       )
 
       const iconElement = useCallback(
@@ -295,7 +304,8 @@ const RawButton = memo(
             />
           ) : (
             (props: PressableStateCallbackType) => (
-              <Row gap={buttonSizeVariant.iconGap}>
+              <Row alignItems="center" gap={buttonSizeVariant.iconGap}>
+                {leftElement && leftElement}
                 {leftIconName && iconElement(props, leftIconName)}
                 {childrenElement(props)}
                 {rightIconName && iconElement(props, rightIconName)}

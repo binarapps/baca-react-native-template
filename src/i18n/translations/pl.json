@@ -9,6 +9,11 @@
     "session_expired": {
       "description": "Spróbuj zalogować się ponownie",
       "title": "Twoja sesja wygasła"
+    },
+    "remove_account": {
+      "description": "Czy na pewno chcesz usunąć swoje konto?",
+      "title": "Uwaga!",
+      "confirm": "Tak, usuń"
     }
   },
   "common": {
@@ -21,16 +26,18 @@
     "save": "Zapisz",
     "search": "Szukaj",
     "try_again_later": "Proszę spróbuj ponownie później",
-    "try_again": "Spróbuj ponownie"
+    "try_again": "Spróbuj ponownie",
+    "remove_account": "Usuń konto"
   },
   "errors": {
     "invalid_email": "Niepoprawny adres e-mail",
     "invalid_password": "Niepoprawne hasło",
     "missing_auth": "Brak autoryzacji",
+    "play_services_not_available": "Usługi play są niedostępne.",
     "screen_not_found": "NotFound screen",
     "something_went_wrong": "Coś poszło nie tak",
-    "token_expired": "Token wygasł",
-    "to_may_requests": "Zbyt wiele prób, spróbuj ponownie za kilka minut"
+    "to_may_requests": "Zbyt wiele prób, spróbuj ponownie za kilka minut",
+    "token_expired": "Token wygasł"
   },
   "examples_component": {
     "example": "Przykład"
@@ -60,7 +67,7 @@
     "select": {},
     "validation": {
       "invalid_email_format": "Niepoprawny format adresu e-mail",
-      "password_min_1_special_char": "Musi zawierać co najmniej 1 znaj specjalny",
+      "password_min_1_special_char": "Musi zawierać co najmniej 1 znak specjalny",
       "password_min_8_chars": "Musi składać się z co najmniej 8 znaków",
       "passwords_does_not_match": "Wprowadzone hasła nie są identyczne",
       "required": "Pole wymagane"
@@ -217,15 +224,19 @@
   "settings_screen": {
     "current_theme": "Current theme: {{theme}}",
     "selected": " - wybrano",
-    "sign_out": "Wyloguj!"
+    "sign_out": "Wyloguj!",
+    "remove_account": "Usuń konto"
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",
     "forgot_password": "Nie pamiętam hasła",
+    "sign_in_by_apple": "Zaloguj się przez Apple",
+    "sign_in_by_facebook": "Zaloguj się przez Facebook",
+    "sign_in_by_google": "Zaloguj się przez Google",
     "sign_in": "Zaloguj się",
     "sign_up": "Zarejestruj się",
-    "welcome_back": "Witaj ponownie!",
-    "welcome_back_enter_details": "Proszę wprowadź dane."
+    "welcome_back_enter_details": "Proszę wprowadź dane.",
+    "welcome_back": "Witaj ponownie!"
   },
   "sign_up_screen": {
     "already_have_an_account": "Masz już konto?",

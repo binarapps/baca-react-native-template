@@ -8,13 +8,14 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "jsEngine": "hermes",
       "buildNumber": "17",
-      "supportsTablet": true,
-      "googleServicesFile": "./GoogleService-Info.plist",
       "config": {
         "usesNonExemptEncryption": false
-      }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "jsEngine": "hermes",
+      "usesAppleSignIn": true,
+      "supportsTablet": true
     },
     "name": "BACA",
     "orientation": "portrait",
@@ -32,6 +33,7 @@
     "version": "2.2.0",
     "plugins": [
       "@react-native-google-signin/google-signin",
+      "expo-apple-authentication",
       "expo-font",
       "expo-localization",
       "expo-secure-store",

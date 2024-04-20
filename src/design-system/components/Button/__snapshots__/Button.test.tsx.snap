@@ -49,11 +49,13 @@ exports[`Button renders correctly 1`] = `
   testID="baseButton"
 >
   <View
+    alignItems="center"
     flexDirection="row"
     gap={4}
     style={
       [
         {
+          "alignItems": "center",
           "flexDirection": "row",
           "gap": 16,
         },
@@ -71,7 +73,7 @@ exports[`Button renders correctly 1`] = `
           "fontSize": 14,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 21,
+          "lineHeight": 20,
           "textAlign": "center",
           "textTransform": "none",
         }

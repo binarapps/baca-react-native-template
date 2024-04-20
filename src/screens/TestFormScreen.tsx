@@ -1,8 +1,9 @@
 import { ControlledField, KeyboardAwareScrollView, TextArea } from '@baca/components'
-import { Button, Text } from '@baca/design-system'
+import { Button, Spacer, Text } from '@baca/design-system'
 import { useMemo, useScreenOptions, useTestForm, useTranslation } from '@baca/hooks'
 import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const shoeSizes = [
   '34',
@@ -25,6 +26,7 @@ const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
 
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
+  const { bottom } = useSafeAreaInsets()
 
   useScreenOptions({
     title: t('navigation.screen_titles.test_form'),
@@ -69,8 +71,10 @@ export const TestFormScreen = (): JSX.Element => {
   )
 
   return (
-    <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-      <Text type="display" variant="XxlBold" fontWeight="bold" py={2}>
+    <KeyboardAwareScrollView
+      contentContainerStyle={[styles.container, { paddingBottom: bottom + 16 }]}
+    >
+      <Text type="display" variant="LgBold" fontWeight="bold" py={2}>
         {t('test_form.contact_data')}
       </Text>
       <ControlledField.Input
@@ -204,6 +208,7 @@ export const TestFormScreen = (): JSX.Element => {
       <Button my={4} onPress={submit}>
         {t('test_form.submit')}
       </Button>
+      <Spacer y={`${bottom}px`} />
     </KeyboardAwareScrollView>
   )
 }

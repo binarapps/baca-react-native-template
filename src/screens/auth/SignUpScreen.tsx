@@ -1,8 +1,7 @@
-import { CompanyLogo, ControlledField, FormWrapper } from '@baca/components'
+import { CompanyLogo, ControlledField, FormWrapper, SocialButtons } from '@baca/components'
 import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
-import { useSignUpForm, useTranslation } from '@baca/hooks'
+import { useCallback, useSignUpForm, useState, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
-import { useCallback } from 'react'
 import { Keyboard } from 'react-native'
 
 import { usePasswordValidation } from '../../hooks/usePasswordValidation'
@@ -14,7 +13,11 @@ const navigateToLogIn = () => {
 export const SignUpScreen = () => {
   const { t } = useTranslation()
 
-  const { control, errors, register, isSubmitting, setFocus } = useSignUpForm()
+  const [isSignUpButtonDisabled, setIsSignUpButtonDisabled] = useState<boolean>(false)
+
+  const { control, errors, register, isSubmitting, setFocus } = useSignUpForm({
+    setIsSignUpButtonDisabled,
+  })
 
   const { isPasswordError, passwordSuggestions, validationFn } = usePasswordValidation()
 
@@ -117,6 +120,11 @@ export const SignUpScreen = () => {
         <Button loading={isSubmitting} onPress={register} w="full">
           {t('sign_up_screen.get_started')}
         </Button>
+        <Spacer y={4} />
+        <SocialButtons
+          isDisabled={isSignUpButtonDisabled}
+          setIsDisabled={setIsSignUpButtonDisabled}
+        />
         <Spacer y={4} />
         <Row alignItems="center">
           <Text.SmRegular color="text.tertiary">

@@ -1,11 +1,12 @@
 import { AppLoading } from '@baca/components'
 import { useAppStateActive } from '@baca/hooks'
 import { AuthLogic } from '@baca/logic/AuthLogic'
+import { queryClient } from '@baca/queryClient'
 import { store } from '@baca/store'
 import { checkForUpdates } from '@baca/utils'
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { PortalProvider } from '@gorhom/portal'
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { Provider } from 'jotai'
 import { FC, PropsWithChildren } from 'react'
 import { StyleSheet } from 'react-native'
@@ -15,17 +16,6 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { ColorSchemeProvider } from './ColorSchemeProvider'
 import { NotificationsProvider } from './NotificatedProvider'
 import { NotificationProvider as ExpoNotificationsProvider } from './NotificationProvider'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // It's needed to do it like that because when it's set to true it refetch query every 1-2 seconds
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-    },
-  },
-})
 
 export const Providers: FC<PropsWithChildren> = ({ children }) => {
   useAppStateActive(checkForUpdates, false)
