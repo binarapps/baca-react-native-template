@@ -2,10 +2,10 @@
     <img src="assets/logo/logo-light.png" alt="Logo">
 </p>
 
-[![MIT License](https://img.shields.io/npm/l/@binarapps/expo-ts-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![MIT License](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)
-[![MIT License](https://img.shields.io/npm/dt/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/dt/@binarapps/expo-ts-template?style=flat-square)
-[![MIT License](https://img.shields.io/github/stars/binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/expo-ts-template?style=flat-square)
+[![MIT License](https://img.shields.io/npm/l/@binarapps/baca-react-native-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![MIT License](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)
+[![MIT License](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)
+[![MIT License](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)
 [![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
 # @binarapps/baca-react-native-template
@@ -48,7 +48,7 @@ We know there are a lot of project starters for react native, but we have some g
 
 <!-- TODO: Add new recording -->
 
-[![expo-ts-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
+[![baca-react-native-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
 ## How to use?
 
@@ -58,15 +58,15 @@ It's great for production project, but if you want to just test it, you can foll
 
 ### Quick steps:
 
-- `npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app`
+- `npx create-expo-app --template=@binarapps/baca-react-native-template name_of_your_app`
 - `cd name_of_your_app`
 - `yarn bootstrap` - the cli will ask you some questions about your app (you can fill all this data later)
 
 ## What's inside?
 
-[![MIT License](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)
-[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)
-[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)
+[![MIT License](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)
+[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)
+[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)
 
 ### Implemented custom features
 
@@ -159,13 +159,13 @@ Please adhere to this project's `code of conduct`.
 Clone the project
 
 ```bash
-  git clone https://github.com/binarapps/expo-ts-template.git
+  git clone https://github.com/binarapps/baca-react-native-template.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd expo-ts-template
+  cd baca-react-native-template
 ```
 
 Install dependencies
