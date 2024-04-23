@@ -17,9 +17,6 @@ function inpectCommand(command: Command) {
   // The option value is stored as property on command because we called .storeOptionsAsProperties()
 
   console.log(command.helpInformation())
-  //   console.log(`
-  // Please run this script with -h argument, to see what options you have
-  //   `)
 }
 
 const program = new CommandWithTrace('baca').action((options, command) => {
