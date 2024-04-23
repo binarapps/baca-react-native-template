@@ -38,13 +38,15 @@ const selectPath = async (basePath: string): Promise<string> => {
 
   const promptAnswer = await prompt({
     name: 'subValue',
-    message: 'What do you want to generate?',
+    message: 'What screen type do you want to generate?',
     type: 'select',
     choices: subDirectoryPrompt,
   })
 
-  // @ts-expect-error: subValue not found on promptAnswer
-  const subValue = promptAnswer.subValue
+  const subValue = subDirectoryPrompt.find(
+    // @ts-expect-error: subValue not found on promptAnswer
+    (promptValue) => promptValue.name === promptAnswer.subValue
+  )?.value
 
   // Return the result when user selects current directory
   if (subValue === '.') {
