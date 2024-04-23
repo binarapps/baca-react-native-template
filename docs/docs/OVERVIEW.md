@@ -16,6 +16,18 @@ description: Bootstrap project structure, that is needed to start development yo
 
 It is specialy designed to make react native apps development much easier and much faster.
 
+## Why to use?
+
+There are a lot of project starters for react native, we have some good features that other starters usually don't have:
+
+- Fully works with **EXPO GO**
+  - Good for start of the project, later you can switch to expo-dev-client
+- Fully works on **WEB**
+  - If you want to develop apps both on web and mobile this starter is good choice for you
+- **Code generators** (create new screen / create new component and others)
+- **Fully + Strong typed**
+- **App deployment documentation**
+
 ## How to start?
 
 1. Create new app - follow [this docs](/docs/bootstrap/create-new-app)
