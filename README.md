@@ -28,15 +28,15 @@ Check out our [documentation page](https://baca-docs.vercel.app/docs/overview), 
 
 ## Why to use?
 
-We know there are a lot of project starters for react native, but we have some good features:
+There are a lot of project starters for react native, we have some good features that other starters usually don't have:
 
 - Fully works with **EXPO GO**
   - Good for start of the project, later you can switch to expo-dev-client
 - Fully works on **WEB**
   - If you want to develop apps both on web and mobile this starter is good choice for you
-- **Code generators** (create new screen / create new component)
+- **Code generators** (create new screen / create new component and others)
 - **Fully + Strong typed**
-- **App deployment documentation** (currently in progress, but it will be added in near future)
+- **App deployment documentation**
 
 ## How it looks?
 
