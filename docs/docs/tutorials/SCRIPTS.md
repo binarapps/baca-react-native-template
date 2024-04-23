@@ -32,7 +32,7 @@ yarn g
 OR
 
 ```bash
-yarn baca:generate
+yarn baca generate
 ```
 
 This will show you list of generators, run this to test it :)
