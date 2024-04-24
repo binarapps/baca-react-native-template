@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useMemo } from 'react'
-import { View, TouchableOpacity, StyleSheet } from 'react-native'
+import { TouchableOpacity, StyleSheet } from 'react-native'
 
 import { Center } from './Center'
 import { Icon } from './Icon'
@@ -82,26 +82,25 @@ export const Checkbox = forwardRef<TouchableOpacity, CheckboxProps>(
     return (
       <TouchableOpacity
         {...{ disabled, hitSlop, ref }}
+        activeOpacity={0.5}
         onPress={handleValueChange}
         style={styles.mainContainer}
       >
-        <View style={styles.row}>
-          <Center
-            bg={bgColor}
-            borderColor={borderColor}
-            borderRadius={4}
-            borderWidth={1}
-            height={checkboxSize.boxSize}
-            mr={2}
-            width={checkboxSize.boxSize}
-            {...{ ...props }}
-          >
-            {isChecked ? (
-              <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
-            ) : null}
-          </Center>
-          <Text.SmRegular>{checkboxText}</Text.SmRegular>
-        </View>
+        <Center
+          bg={bgColor}
+          borderColor={borderColor}
+          borderRadius={4}
+          borderWidth={1}
+          height={checkboxSize.boxSize}
+          mr={2}
+          width={checkboxSize.boxSize}
+          {...{ ...props }}
+        >
+          {isChecked ? (
+            <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
+          ) : null}
+        </Center>
+        <Text.SmRegular>{checkboxText}</Text.SmRegular>
       </TouchableOpacity>
     )
   }
@@ -110,12 +109,7 @@ export const Checkbox = forwardRef<TouchableOpacity, CheckboxProps>(
 const styles = StyleSheet.create({
   mainContainer: {
     alignItems: 'center',
-    flexDirection: 'row',
-  },
-  row: {
-    alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
   },
 })
