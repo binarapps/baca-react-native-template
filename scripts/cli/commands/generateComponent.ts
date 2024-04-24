@@ -1,16 +1,17 @@
+import { prompt } from 'enquirer'
+
+import { COMPONENT_TEMPLATE_PATH, COMPONENTS_PATH } from '../constants'
+import { logger } from '../utils'
+
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs')
-const prompt = require('prompt-sync')()
-const selectPrompt = require('select-prompt')
-
-const { logger } = require('./utils')
 
 const paths = {
-  template: './templates/component_template.tsx',
-  componentsIndex: './src/components/index.ts',
+  template: COMPONENT_TEMPLATE_PATH,
+  componentsIndex: COMPONENTS_PATH,
 }
 
-const createComponentFile = (name, type) => {
+const createComponentFile = (name: string, type: string) => {
   const newCommonComponentPath = `./src/components/${name}.tsx`
   const newAtomicComponentPath = `./src/components/${type}s/${name}.tsx`
   const componentFromFile = fs.readFileSync(paths.template, 'utf8')
@@ -23,7 +24,7 @@ const createComponentFile = (name, type) => {
   fs.writeFileSync(newAtomicComponentPath, componentContent)
 }
 
-const addToIndex = (name, type) => {
+const addToIndex = (name: string, type: string) => {
   const atomicComponentIndexPath = `./src/components/${type}s/index.ts`
   const newExport = `
 export * from './${name}'`
@@ -38,7 +39,7 @@ export * from './${name}'`
   fs.writeFileSync(atomicComponentIndexPath, contents + newExport)
 }
 
-const generateComponent = async (name, type) => {
+const generateNewComponent = async (name: string, type: string) => {
   // Generate Component file
   logger.info('Generating component files')
   createComponentFile(name, type)
@@ -50,24 +51,30 @@ const generateComponent = async (name, type) => {
   logger.success(`Component ${name} created successfully`)
 }
 
-const generateNewComponent = async () => {
+export const generateComponent = async () => {
   const componentTypes = [
-    { title: 'Atom', value: 'atom' },
-    { title: 'Molecule', value: 'molecule' },
-    { title: 'Organism', value: 'organism' },
-    { title: 'Common', value: 'common' },
+    { name: 'Molecule', value: 'molecule' },
+    { name: 'Organism', value: 'organism' },
+    { name: 'Common', value: 'common' },
   ]
 
-  selectPrompt('Select type for new component', componentTypes, {
-    cursor: 0,
-  }).on('submit', async (type) => {
-    const name = prompt('What is component name? ')
-    if (!name) {
-      return logger.error('No component name passed')
-    }
-    // 1. New component -> component_name + component_type (atom | molecule | organism | common)
-    await generateComponent(name, type)
-  })
-}
+  const promptAnswer = await prompt([
+    {
+      message: 'What is your component type?',
+      name: 'componentType',
+      type: 'select',
+      choices: componentTypes,
+    },
+    {
+      message: 'What is your component name?',
+      name: 'componentName',
+      type: 'input',
+    },
+  ])
+  // @ts-expect-error: componentType not found on promptAnswer
+  const componentType = promptAnswer.componentType as string
+  // @ts-expect-error: componentName not found on promptAnswer
+  const componentName = promptAnswer.componentName as string
 
-generateNewComponent()
+  await generateNewComponent(componentName, componentType)
+}

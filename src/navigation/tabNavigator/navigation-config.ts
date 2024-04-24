@@ -12,6 +12,7 @@ type Tabs = Tab[]
 
 // name with '/' at the begging will not be resolved as 'bottom tab', will be as usual screen
 export const upperSideTabs: Tabs = [
+  // UPPER SIDE TABS
   {
     displayedName: 'Home',
     icon: 'home-5-line',
@@ -47,7 +48,6 @@ export const upperSideTabs: Tabs = [
     id: 'profile',
     name: 'profile',
   },
-
   // In case you want to navigate to screen with params you can do this like this
   // {
   //   displayedName: 'Details',

@@ -44,20 +44,23 @@ yarn prepare:qa
 yarn prepare:staging
 ```
 
-## 3. `generate_icon_types.sh`
+## 3. generators
 
-This script has to be executed when new icons where added to the icomoon.ttf icons set in case to provide proper types for components which use icons.
-If script won't be executed typescript will throw an error when trying to use newly added icon.
-
-## 4. generators
+Run this command to see all available commands
 
 ```bash
-## Create new component
-yarn generate:screen
-
-## Create new screen
-yarn generate:component
-
-## Bootstrap the app
-yarn bootstrap:new_app
+yarn baca
 ```
+
+Our custom cli for now contain this screens:
+
+1. Generators
+
+- create new screen - `yarn baca generate screen`
+- create new component - `yarn baca generate component`
+- create icon types - `yarn baca generate icon-types`
+- create theme - `yarn baca generate theme`
+
+2. Bootstrap the app
+
+- `yarn baca bootstrap`

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "outDir": "build",
+    "strict": true,
+    "lib": ["ESNext"],
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "allowJs": false
+  },
+  "include": ["../../app.config.ts", "**/*"]
+}
