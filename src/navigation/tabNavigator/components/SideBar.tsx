@@ -1,4 +1,4 @@
-import { useSafeAreaInsets, useTheme } from '@baca/hooks'
+import { useSafeAreaInsets, useTheme, useTranslation } from '@baca/hooks'
 import { signOut } from '@baca/store/auth'
 import cssStyles from '@baca/styles'
 import { Platform, StyleSheet, View } from 'react-native'
@@ -13,6 +13,7 @@ const NAV_MEDIUM_WIDTH = 244
 
 export function SideBar({ visible }: { visible: boolean }) {
   const { colors } = useTheme()
+  const { t } = useTranslation()
   const { top } = useSafeAreaInsets()
   const isLarge = useUniversalWidth(1264)
 
@@ -73,7 +74,7 @@ export function SideBar({ visible }: { visible: boolean }) {
           <View style={jsStyles.sidebarTabs}>
             {upperSideTabs.map((tab) => (
               <SideBarTabItem key={tab.name} {...tab}>
-                {tab.displayedName}
+                {t(tab.displayedNameTx)}
               </SideBarTabItem>
             ))}
           </View>

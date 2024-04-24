@@ -10,6 +10,15 @@ import { forwardRef, useCallback, useMemo } from 'react'
 
 import { FieldRadioProps } from './types'
 
+const radioSizes = {
+  sm: {
+    boxSize: 4,
+  },
+  md: {
+    boxSize: 5,
+  },
+} as const
+
 export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
   (
     {
@@ -18,6 +27,7 @@ export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
       radioOptions,
       errorMessage,
       isError,
+      size = 'sm',
       onChange,
       label,
       labelStyle,
@@ -25,13 +35,24 @@ export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
     },
     ref
   ) => {
-    const borderColor: ColorNames = useMemo(
-      () => (isError ? 'border.error' : isDisabled ? 'border.disabled' : 'border.brand'),
-      [isError, isDisabled]
-    )
-    const bgColor = useCallback(
-      (item: string): ColorNames => (item === value ? 'bg.brand.primary' : 'bg.tertiary'),
-      [value]
+    const checkboxSize = useMemo(() => radioSizes[size], [size])
+
+    const getBorderColor = useCallback(
+      (isSelected: boolean): ColorNames | undefined => {
+        if (isDisabled) {
+          return 'border.disabled'
+        }
+        if (isError) {
+          return 'border.error'
+        }
+
+        if (isSelected) {
+          return 'bg.brand.solid'
+        }
+
+        return 'border.primary'
+      },
+      [isDisabled, isError]
     )
 
     const renderRadioButtons = useMemo(
@@ -49,21 +70,17 @@ export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
               <Box
                 alignItems="center"
                 borderRadius={50}
-                borderWidth={1}
-                height={22}
-                width={22}
+                height={checkboxSize.boxSize}
+                width={checkboxSize.boxSize}
                 justifyContent="center"
-                borderColor={borderColor}
-              >
-                {item === value ? (
-                  <Box borderRadius={50} height={14} width={14} bg={bgColor(item)} />
-                ) : null}
-              </Box>
+                borderColor={getBorderColor(item === value)}
+                borderWidth={item === value ? 5 : 1}
+              />
               <Text ml={4}>{item}</Text>
             </Touchable>
           )
         }),
-      [radioOptions, value, bgColor, borderColor, onChange, ref]
+      [radioOptions, ref, checkboxSize.boxSize, getBorderColor, value, onChange]
     )
 
     return (

@@ -214,6 +214,7 @@ export type RadioProps = {
   radioOptions?: string[]
   isError?: boolean
   value?: string | number
+  size?: 'sm' | 'md'
 }
 
 export type CheckboxProps = ViewProps & {

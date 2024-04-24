@@ -1,6 +1,16 @@
 import { SocialButton } from '@baca/components'
-import { Loader, Box, Text, Button, Center, ScrollView, Display } from '@baca/design-system'
-import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
+import { Radio } from '@baca/components/molecules/Field/Radio'
+import {
+  Loader,
+  Box,
+  Text,
+  Button,
+  Center,
+  ScrollView,
+  Display,
+  Checkbox,
+} from '@baca/design-system'
+import { useBoolean, useCallback, useScreenOptions, useState, useTranslation } from '@baca/hooks'
 import { noop, showInformationToast } from '@baca/utils'
 import * as Linking from 'expo-linking'
 
@@ -26,6 +36,37 @@ const loaderVariants = [
     headerText: 'components_screen.loader_variants.default',
   },
 ] as const
+
+const TestCheckbox = () => {
+  const { t } = useTranslation()
+  const [isChecked, setIsChecked] = useBoolean()
+
+  return (
+    <Checkbox
+      onChange={setIsChecked.toggle}
+      value={isChecked}
+      isChecked={isChecked}
+      checkboxText={t('form.checkbox.remember_me')}
+    />
+  )
+}
+
+const AGES = ['18-30', '31-40', '41-50']
+const TextRadioButtons = () => {
+  const { t } = useTranslation()
+  const [selectedRadio, setSelectedRadio] = useState<string | undefined>()
+
+  return (
+    <Radio
+      onChange={setSelectedRadio}
+      value={selectedRadio}
+      isRequired
+      name="age"
+      radioOptions={AGES}
+      label={t('test_form.age')}
+    />
+  )
+}
 
 export const ComponentsScreen = (): JSX.Element => {
   const { t } = useTranslation()
@@ -77,6 +118,10 @@ export const ComponentsScreen = (): JSX.Element => {
         <SocialButton onPress={noop} type="google" />
         <SocialButton onPress={noop} type="facebook" />
         <SocialButton onPress={noop} type="apple" />
+        <Box w="full" gap={6}>
+          <TestCheckbox />
+          <TextRadioButtons />
+        </Box>
         <Button loading size="lg" />
         <Text.LgRegular>{t('components_screen.loader_variants.header')}</Text.LgRegular>
         {loaderVariants?.map((loader) => (

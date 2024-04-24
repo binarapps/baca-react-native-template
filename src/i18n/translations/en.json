@@ -16,6 +16,14 @@
       "confirm": "Yes, delete"
     }
   },
+  "bottom_tabs": {
+    "home": "Home",
+    "categories": "Categories",
+    "example": "Example",
+    "settings": "Settings",
+    "profile": "Profile",
+    "details": "Details"
+  },
   "common": {
     "add": "Add",
     "back": "Back",

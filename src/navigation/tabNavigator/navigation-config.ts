@@ -1,7 +1,9 @@
+import { I18nKeys } from '@baca/types/i18next'
 import { IconNames } from '@baca/types/icon'
 
 type Tab = {
-  displayedName: string
+  // This will be passed to translations object and translated in the app
+  displayedNameTx: I18nKeys
   icon: IconNames
   iconFocused: IconNames
   id: string
@@ -14,35 +16,35 @@ type Tabs = Tab[]
 export const upperSideTabs: Tabs = [
   // UPPER SIDE TABS
   {
-    displayedName: 'Home',
+    displayedNameTx: 'bottom_tabs.home',
     icon: 'home-5-line',
     iconFocused: 'home-5-fill',
     id: 'home',
     name: 'home',
   },
   {
-    displayedName: 'Categories',
+    displayedNameTx: 'bottom_tabs.categories',
     icon: 'stack-line',
     iconFocused: 'stack-fill',
     id: 'categories',
     name: 'categories',
   },
   {
-    displayedName: 'Example',
+    displayedNameTx: 'bottom_tabs.example',
     icon: 'aliens-line',
     iconFocused: 'aliens-fill',
     id: 'example',
     name: 'example',
   },
   {
-    displayedName: 'Settings',
+    displayedNameTx: 'bottom_tabs.settings',
     icon: 'settings-2-line',
     iconFocused: 'settings-2-fill',
     id: 'settings',
     name: 'settings',
   },
   {
-    displayedName: 'Profile',
+    displayedNameTx: 'bottom_tabs.profile',
     icon: 'user-3-line',
     iconFocused: 'user-3-fill',
     id: 'profile',
@@ -50,7 +52,7 @@ export const upperSideTabs: Tabs = [
   },
   // In case you want to navigate to screen with params you can do this like this
   // {
-  //   displayedName: 'Details',
+  //   displayedNameTx: 'bottom_tabs.details',
   //   icon: 'baidu-line',
   //   iconFocused: 'baidu-fill',
   //   id: 'details',

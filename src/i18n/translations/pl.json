@@ -16,6 +16,14 @@
       "confirm": "Tak, usuń"
     }
   },
+  "bottom_tabs": {
+    "home": "Home",
+    "categories": "Kategorie",
+    "example": "Przykłady",
+    "settings": "Ustawienia",
+    "profile": "Profil",
+    "details": "Detale"
+  },
   "common": {
     "add": "Dodaj",
     "back": "Cofnij",
