@@ -2,10 +2,10 @@
     <img src="assets/logo/logo-light.png" alt="Logo">
 </p>
 
-[![MIT License](https://img.shields.io/npm/l/@binarapps/expo-ts-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![MIT License](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)
-[![MIT License](https://img.shields.io/npm/dt/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/dt/@binarapps/expo-ts-template?style=flat-square)
-[![MIT License](https://img.shields.io/github/stars/binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/expo-ts-template?style=flat-square)
+[![MIT License](https://img.shields.io/npm/l/@binarapps/baca-react-native-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![MIT License](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)
+[![MIT License](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)
+[![MIT License](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)
 [![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
 # @binarapps/baca-react-native-template
@@ -18,7 +18,7 @@ This is a template to be used with react native and expo. It includes all the ne
 
 ## Documentation
 
-Check out our [documentation page](https://baca-docs.vercel.app/docs/bootstrap/intro), it contains:
+Check out our [documentation page](https://baca-docs.vercel.app/docs/overview), it contains:
 
 - Bootstrapping project - tutorial how to easy setup from scratch
 - Deploying app
@@ -28,15 +28,15 @@ Check out our [documentation page](https://baca-docs.vercel.app/docs/bootstrap/i
 
 ## Why to use?
 
-We know there are a lot of project starters for react native, but we have some good features:
+There are a lot of project starters for react native, we have some good features that other starters usually don't have:
 
 - Fully works with **EXPO GO**
   - Good for start of the project, later you can switch to expo-dev-client
 - Fully works on **WEB**
   - If you want to develop apps both on web and mobile this starter is good choice for you
-- **Code generators** (create new screen / create new component)
+- **Code generators** (create new screen / create new component and others)
 - **Fully + Strong typed**
-- **App deployment documentation** (currently in progress, but it will be added in near future)
+- **App deployment documentation**
 
 ## How it looks?
 
@@ -48,35 +48,38 @@ We know there are a lot of project starters for react native, but we have some g
 
 <!-- TODO: Add new recording -->
 
-[![expo-ts-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
+[![baca-react-native-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
 ## How to use?
 
-We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](https://baca-docs.vercel.app/docs/bootstrap/intro)**
+We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](https://baca-docs.vercel.app/docs/overview)**
 
 It's great for production project, but if you want to just test it, you can follow the quick steps (on the bottom).
 
 ### Quick steps:
 
-- `npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app`
+- `npx create-expo-app --template=@binarapps/baca-react-native-template name_of_your_app`
 - `cd name_of_your_app`
 - `yarn bootstrap` - the cli will ask you some questions about your app (you can fill all this data later)
 
 ## What's inside?
 
-[![MIT License](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)
-[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)
-[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)
+[![MIT License](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)
+[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)
+[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)
 
 ### Implemented custom features
 
+- custom cli
+  - run `yarn baca` to see available options
 - generators:
-  - create screen - `yarn generate:screen`
-  - create component - `yarn generate:component`
+  - `yarn baca generate` | `yarn g`
 - support of multiple environments
   - production, staging, qa
 - eas configuration
   - update, build, submit
+- deployment docs
+  - https://baca-docs.vercel.app/docs/overview
 - verifying code on pull request - pipelines
   - when creating pull request on github, there are tests, linters and types checks. If there will be some error you will be notified that something is wrong.
 - custom fonts
@@ -117,11 +120,11 @@ It's great for production project, but if you want to just test it, you can foll
 - [Reanimated v2](https://github.com/software-mansion/react-native-reanimated)
 - Axios + React query
   - Fetching data from backend
+- Jotai
+  - State management
 
 ## What is planned in the future?
 
-- add some state management tool - in progress
-- write docs (app deployment, app setup and more) - in progress
 - tutorial on how to use features
   - navigation
   - deepLinking
@@ -136,7 +139,6 @@ It's great for production project, but if you want to just test it, you can foll
   - Create sample app and document the process of deployment
 - Improve mock server logic
 - add commit lint
-- add script that display last update information (eas update)
 
 ### Implementations to add
 
@@ -157,13 +159,13 @@ Please adhere to this project's `code of conduct`.
 Clone the project
 
 ```bash
-  git clone https://github.com/binarapps/expo-ts-template.git
+  git clone https://github.com/binarapps/baca-react-native-template.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd expo-ts-template
+  cd baca-react-native-template
 ```
 
 Install dependencies

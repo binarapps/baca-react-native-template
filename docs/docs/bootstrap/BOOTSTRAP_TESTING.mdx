@@ -1,7 +1,7 @@
 ---
 id: bootstrap-testing
 slug: /bootstrap/testing
-title: Bootstrap - testing
+title: Prepare for testing
 sidebar_position: 2
 tags:
   - Bootstrap
@@ -103,6 +103,16 @@ If you have some domain, for example: example.com, your bundle id could be: `com
   open your app when tapped. It is only available in standalone apps.
 </Details>
 
+<Details title="8. Apple team id (optional)">
+
+> **Optional step** - You can run the bootstrap script later
+
+This can be found in developer apple console.
+
+> Image will be added in future
+
+</Details>
+
 <Details title="You should have data like this:">
   
 You can generate this data and save it in some notepad or somewhere else.
@@ -115,7 +125,8 @@ You can generate this data and save it in some notepad or somewhere else.
   "slug": "expo_app_slug",
   "easProjectId": "xxx-xxx-xxx-xx",
   "scheme": "yourUrlScheme",
-  "adaptiveIconBackgroundColor": "#2E7AF0CC"
+  "adaptiveIconBackgroundColor": "#2E7AF0CC",
+  "appleTeamId": "1234XXXYYX"
 }
 ```
 </Details>
@@ -126,8 +137,15 @@ You can generate this data and save it in some notepad or somewhere else.
 
 ### **After you will collect all necessary data run this command:**
 
+> If you don't have some value you can use default value, bootstrap script is collecting current data from code, so you can run this script multiple times
+> **REMEBER** to have empty git repo because this script will do changes in your codebase
+
 ```sh
-yarn bootstrap:new_app
+yarn b
+
+## OR
+
+yarn baca bootstrap
 ```
 
 ## Potential issues

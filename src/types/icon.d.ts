@@ -1,8 +1,3 @@
-/**
- * @see https://remixicon.com/
- * You can find visually all icons that you need
- */
-
 export type IconNames =
   | 'layout-right-2-line'
   | 'drag-drop-line'

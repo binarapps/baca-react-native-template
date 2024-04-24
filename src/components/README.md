@@ -1,6 +1,6 @@
 # Components
 
-Components in [expo-ts-template](https://github.com/binarapps/expo-ts-template) follows [atomic design methodology](https://atomicdesign.bradfrost.com/).
+Components in [baca-react-native-template](https://github.com/binarapps/baca-react-native-template) follows [atomic design methodology](https://atomicdesign.bradfrost.com/).
 
 For more information on such a design methodology, visit the page above.
 On the other hand, below you can find documentation of the implemented components
