@@ -2,29 +2,34 @@
     <img src="assets/logo/logo-light.png" alt="Logo">
 </p>
 
+# BACA - react-native-template
+
+> **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
+>
+> This repository is part of whole ecosystem, and it only contains React Native code
+
 [![MIT License](https://img.shields.io/npm/l/@binarapps/baca-react-native-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 [![MIT License](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)
 [![MIT License](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)
 [![MIT License](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)
 [![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
-# @binarapps/baca-react-native-template
-
-> **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
->
-> This repository is part of whole ecosystem, and it only contains React Native code
+## Great React Native boilerplate
 
 This is a template to be used with react native and expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included, so it's easier to start coding the app itself without all the necessary boilerplate setup.
 
-## Documentation
+## [Documentation](https://baca-docs.vercel.app/docs/overview)
 
 Check out our [documentation page](https://baca-docs.vercel.app/docs/overview), it contains:
 
-- Bootstrapping project - tutorial how to easy setup from scratch
+- Bootstrapping project
+  - tutorial how to easy setup from scratch
+- Building app
 - Deploying app
 - Tutorials how to:
   - manage environment variables
   - use jotai as state management tool
+  - and many more other tutorials
 
 ## Why to use?
 
@@ -87,21 +92,20 @@ It's great for production project, but if you want to just test it, you can foll
 - dark / light theme support
   - color scheme detection (dark / light mode toggle)
 - navigation
-  - screen tracking hook
-  - state persistence on development mode
+  <!-- - screen tracking hook
+  - state persistence on development mode -->
   - prevent go back (to be used on forms for example)
-  - strong types, prevent issues in future
 - auth flow ready for implementation details
   - using expo-secure-store module to save user token
-  - right now it has simple signIn/signOut flow
+  - right now it has fully working signIn/signOut logic based on baca backend
 - animations with `reanimated` and `moti`
 
 ### Implemented libraries
 
 - TypeScript
   - app is fully typed
-- [Expo v49](https://github.com/expo/expo)
-- [React Navigation v6](https://github.com/react-navigation/react-navigation)
+- [Expo v50](https://github.com/expo/expo)
+- [Expo router](https://docs.expo.dev/router/introduction/)
 - Prettier and eslint
   - code formatting
   - code checking
@@ -114,10 +118,10 @@ It's great for production project, but if you want to just test it, you can foll
   - language detection
 - `@gorhom/bottom-sheet`
 - Expo-notifications
-  - You can read how to configure them [here](/NOTIFICATIONS_SETUP.MD)
+  - You can read how to configure them [here](https://baca-docs.vercel.app/docs/expo-notifications)
 - Reactotron
   - used for debugging
-- [Reanimated v2](https://github.com/software-mansion/react-native-reanimated)
+- [Reanimated](https://github.com/software-mansion/react-native-reanimated)
 - Axios + React query
   - Fetching data from backend
 - Jotai
