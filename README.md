@@ -43,7 +43,7 @@ There are a lot of project starters for react native, we have some good features
 - **Fully + Strong typed**
 - **App deployment documentation**
 
-## 🔍How it looks?
+## 🔍 How it looks?
 
 - [Web demo app](https://baca-six.vercel.app)
 - [Video](https://www.youtube.com/watch?v=NmTd5nXXTLI)
