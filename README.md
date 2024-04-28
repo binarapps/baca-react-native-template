@@ -14,11 +14,11 @@
 [![MIT License](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)
 [![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
-## Great React Native boilerplate
+## 🎉 Great React Native boilerplate
 
 This is a template to be used with react native and expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included, so it's easier to start coding the app itself without all the necessary boilerplate setup.
 
-## [Documentation](https://baca-docs.vercel.app/docs/overview)
+## 📖 [Documentation](https://baca-docs.vercel.app/docs/overview)
 
 Check out our [documentation page](https://baca-docs.vercel.app/docs/overview), it contains:
 
@@ -31,7 +31,7 @@ Check out our [documentation page](https://baca-docs.vercel.app/docs/overview), 
   - use jotai as state management tool
   - and many more other tutorials
 
-## Why to use?
+## 🏆 Why to use?
 
 There are a lot of project starters for react native, we have some good features that other starters usually don't have:
 
@@ -43,37 +43,30 @@ There are a lot of project starters for react native, we have some good features
 - **Fully + Strong typed**
 - **App deployment documentation**
 
-## How it looks?
+## 🔍How it looks?
 
-### WEB
+- [Web demo app](https://baca-six.vercel.app)
+- [Video](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
-- **[DEMO APP](https://baca-six.vercel.app)**
-
-### MOBILE + WEB
-
-<!-- TODO: Add new recording -->
-
-[![baca-react-native-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
-
-## How to use?
+## 🚀 How to use?
 
 We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](https://baca-docs.vercel.app/docs/overview)**
 
 It's great for production project, but if you want to just test it, you can follow the quick steps (on the bottom).
 
-### Quick steps:
+### 🏃‍♂️ Quick steps:
 
 - `npx create-expo-app --template=@binarapps/baca-react-native-template name_of_your_app`
 - `cd name_of_your_app`
 - `yarn bootstrap` - the cli will ask you some questions about your app (you can fill all this data later)
 
-## What's inside?
+## 📦 What's inside?
 
 [![MIT License](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)
 
-### Implemented custom features
+### Custom features
 
 - custom cli
   - run `yarn baca` to see available options
@@ -100,7 +93,7 @@ It's great for production project, but if you want to just test it, you can foll
   - right now it has fully working signIn/signOut logic based on baca backend
 - animations with `reanimated` and `moti`
 
-### Implemented libraries
+### Libraries
 
 - TypeScript
   - app is fully typed
@@ -127,7 +120,7 @@ It's great for production project, but if you want to just test it, you can foll
 - Jotai
   - State management
 
-## What is planned in the future?
+## 🔜 What is planned in the future?
 
 - tutorial on how to use features
   - navigation
@@ -143,14 +136,12 @@ It's great for production project, but if you want to just test it, you can foll
   - Create sample app and document the process of deployment
 - Improve mock server logic
 - add commit lint
+- libraries to add:
+  - [expo image](https://github.com/expo/expo/tree/main/packages/expo-image)
+  - [FlashList](https://github.com/Shopify/flash-list)
+  - [ZOD](https://github.com/colinhacks/zod)
 
-### Implementations to add
-
-- [expo image](https://github.com/expo/expo/tree/main/packages/expo-image)
-- [FlashList](https://github.com/Shopify/flash-list)
-- [ZOD](https://github.com/colinhacks/zod)
-
-## How to contribute?
+## 👏 How to contribute?
 
 Contributions are always welcome!
 
@@ -158,7 +149,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
-## How to run locally?
+## 🤙 How to run locally?
 
 Clone the project
 
@@ -202,15 +193,15 @@ Start the expo server
   yarn start
 ```
 
-## License
+## 📘 License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## Feedback
+## 📝 Feedback
 
 If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.com
 
-## Contributors
+## 👨‍👩‍👧‍👦 Contributors
 
 - [Kacper Grzeszczyk](https://www.github.com/kacgrzes) - @kacgrzes
 - [Mateusz Rostkowski](https://www.github.com/MateuszRostkowski) - @MateuszRostkowski
@@ -225,15 +216,14 @@ If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.
 - [Weronika Grzeszczyk](https://github.com/vercia) - @vercia
 - [Mateusz Świerczyński](https://github.com/MatiSwierczynski) - @MatiSwierczynski
 
-## Similar packages
+## 📦 Similar packages
 
-- https://github.com/obytes/react-native-template-obytes
-- https://github.com/infinitered/ignite
-- https://github.com/wataru-maeda/react-native-boilerplate
-
-### Outdated (not maintained anymore)
-
-- https://github.com/kacgrzes/expo-typescript-template (our repo is fork of this one - we keep maintaining this)
-- https://github.com/codingki/react-native-expo-template
-- https://github.com/flatlogic/react-native-starter
-- https://github.com/mcnamee/react-native-expo-starter-kit
+- Maintained
+  - https://github.com/obytes/react-native-template-obytes
+  - https://github.com/infinitered/ignite
+  - https://github.com/wataru-maeda/react-native-boilerplate
+- Outdated (not maintained anymore):
+  - https://github.com/kacgrzes/expo-typescript-template (our repo is fork of this one - we keep maintaining this)
+  - https://github.com/codingki/react-native-expo-template
+  - https://github.com/flatlogic/react-native-starter
+  - https://github.com/mcnamee/react-native-expo-starter-kit
