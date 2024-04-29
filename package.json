@@ -66,7 +66,7 @@
     "prepare:staging": "yarn && yarn generate:env:staging && yarn upload:env && yarn generate:google-services-config",
     "prepare": "husky install",
     "prettier:write": "prettier --write ./src",
-    "start:prod": "yarn generate:env:production && IS_DEV=1 IS_EXPO_GO=1 expo start -c -g",
+    "start:production": "yarn generate:env:production && IS_DEV=1 IS_EXPO_GO=1 expo start -c -g",
     "start:staging": "yarn generate:env:staging && IS_DEV=1 IS_EXPO_GO=1 expo start -c -g",
     "start": "yarn generate:env:qa && cross-env IS_DEV=1 IS_EXPO_GO=1 expo start -c -g",
     "test:debug": "jest -o --watch --coverage=false",
