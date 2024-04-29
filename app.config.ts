@@ -139,7 +139,9 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
   // - maps
   // - google / facebook sign in
   // - deeplinks
-  const keystorePlugin: Partial<ExpoConfig>['plugins'] = IS_DEV
+  const shouldAddKeystorePlugin =
+    IS_DEV && KEYSTORE_STORE_PASSWORD && KEYSTORE_KEY_ALIAS && KEYSTORE_KEY_PASSWORD
+  const keystorePlugin: Partial<ExpoConfig>['plugins'] = shouldAddKeystorePlugin
     ? [
         [
           './plugins/withDebugKeystore',
