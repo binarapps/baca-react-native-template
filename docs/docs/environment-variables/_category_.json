@@ -1,0 +1,10 @@
+{
+  "label": "Environment variables",
+  "position": 3,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Documentation for environment variables in BACA projects"
+  }
+}
