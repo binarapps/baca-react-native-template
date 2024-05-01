@@ -1,0 +1,102 @@
+---
+id: variables
+slug: /variables
+title: Environment variables description
+sidebar_position: 1
+tags:
+  - Bootstrap
+  - Getting started
+  - Project structure
+  - Script
+  - Generators
+description: List od all environment variables in the project with descriptions
+---
+
+import Details from '@site/src/components/Details'
+
+# Environment variables - description
+
+## List of all variables
+
+```.env
+ANDROID_FIREBASE_CONFIG=
+API_URL=https://api.binarapps.online/
+DOPPLER_CONFIG=qa
+DOPPLER_ENVIRONMENT=qa
+DOPPLER_PROJECT=frontend
+ENVIRONMENT_NAME=qa
+IOS_FIREBASE_CONFIG=
+KEYSTORE_KEY_ALIAS=8f28dbb8551f74db7eba891a5e37db5d
+KEYSTORE_KEY_PASSWORD=a6718139b86a3d62656a18dfab89ab32
+KEYSTORE_STORE_PASSWORD=a9539aa0e7ddd93fb1998b532c47bb19
+WEB_CLIENT_ID=363534133095-3dgo2dg6r4o3ft920p4u4mhb0tmo3nlm.apps.googleusercontent.com
+```
+
+## Description
+
+<Details title="ANDROID_FIREBASE_CONFIG">
+
+This is google-services.json file encoded with base64
+
+> NOTE: More detailed instruction will be added in near future
+
+</Details>
+
+<Details title="API_URL">
+
+It's url that is used to connect with backend
+
+Default: `https://api.binarapps.online/`
+
+</Details>
+
+<Details title="DOPPLER_CONFIG | DOPPLER_ENVIRONMENT | DOPPLER_PROJECT">
+
+Automatically added by doppler, don't needed in project
+
+</Details>
+
+<Details title="ENVIRONMENT_NAME">
+
+Name of environment
+
+Values: qa | staging | production
+
+</Details>
+
+<Details title="IOS_FIREBASE_CONFIG">
+
+This is GoogleService-Info.plist file encoded with base64
+
+> NOTE: More detailed instruction will be added in near future
+
+</Details>
+
+<Details title="KEYSTORE_KEY_ALIAS | KEYSTORE_KEY_PASSWORD | KEYSTORE_STORE_PASSWORD">
+
+This is used to make usable keystore file in debug.
+
+It's usefull because thanks to that you can test in prebuilded app native functionalities like:
+
+- push notifications
+- maps
+- google / facebook sign in
+- deeplinks
+
+To make this working you need to generate new keystore and get password, alias and store pasword.
+
+You also need to setup `debug.jks` file in your code base.
+
+> NOTE: More detailed instruction will be added in near future
+
+{/* TODO: Make more detailed instruction on how to do it */}
+
+</Details>
+
+<Details title="WEB_CLIENT_ID">
+
+This is used for google sign in
+
+> NOTE: More detailed instruction will be added in near future
+
+</Details>
