@@ -26,29 +26,14 @@ Expo notifications are already preconfigured in this template. However, you stil
 
 ### Android
 
-1. Configure firebase to get `google-services.json` file - [follow this guide](https://docs.expo.dev/push-notifications/using-fcm/).
+1. Configure firebase to get `google-services.json` file - [follow this guide](https://docs.expo.dev/push-notifications/fcm-credentials/).
 2. Make sure that you have changed your `owner` name in `app.json`.
 3. Download `google-services.json` file
 4. Encode this file to base64
 5. Place base64 string in environment variable in this value: `ANDROID_FIREBASE_CONFIG`
 6. Provide your `experienceId` in `extra` section in `app.json` typically it follows this scheme - `@owner/slug` ex.:
-
-```json
-{
-  "expo": {
-    ...,
-    "owner": "your_owner_name",
-    "slug": "your_app_slug",
-    ...,
-    "extra": {
-      "experienceId": "your_owner_name/your_app_slug"
-    }
-  }
-}
-```
-
-<b>Make sure that you have provided your own secrets for those fields.</b>
-
+   - `yarn baca bootstrap --simple`
+   - you should have this values already filled up - look at [create new app docs](/docs/bootstrap/create-new-app)
 7. Get credentials
 
 For Android, you need to configure Firebase Cloud Messaging (FCM) V1 to get credentials and set up your Expo project.
