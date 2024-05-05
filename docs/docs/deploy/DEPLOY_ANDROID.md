@@ -29,23 +29,27 @@ Configure buildType in eas.json as follows:
 
 ```json
 {
+  // ...
   "build": {
     "production": {
       "android": {
+        // success-line
         "buildType": "app-bundle" // you can choose here between apk and app-bundle
-        // ...rest of the properties
+        // ...
       }
     },
     "staging": {
       "android": {
+        // success-line
         "buildType": "app-bundle" // you can choose here between apk and app-bundle
-        // ...rest of the properties
+        // ...
       }
     },
     "qa": {
       "android": {
+        // success-line
         "buildType": "apk" // you can choose here between apk and app-bundle
-        // ...rest of the properties
+        // ...
       }
     }
   }
@@ -300,18 +304,21 @@ Configure eas.json to use the <b>Google Account Service</b> key, and to send a n
 "submit": {
     "production": {
       "android": {
+        // success-line
         "serviceAccountKeyPath": "path_to_your_google_service_account_key",
         "track":"internal"
       }
     },
     "staging": {
       "android": {
+        // success-line
         "serviceAccountKeyPath": "path_to_your_google_service_account_key",
         "track":"internal"
       }
     },
     "qa": {
       "android": {
+        // success-line
         "serviceAccountKeyPath": "path_to_your_google_service_account_key",
         "track":"internal"
       }
