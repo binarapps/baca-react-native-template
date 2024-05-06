@@ -60,7 +60,7 @@ Check [doppler documentantion](/docs/doppler-config) to see more details
 This script is automatically executed after running `yarn update:production` (or staging|qa), this will return ids of last udpate:
 
 ```
-BACA - 2.1.0:
+BACA - 2.3.0:
 - android: 8f6577b8-f1a6-46de-9471-8a0ff072ccc9
 - ios: a8bdc3aa-239a-48da-b76e-c259af5567b0
 ```
