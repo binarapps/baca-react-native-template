@@ -9,11 +9,6 @@
     "session_expired": {
       "description": "Try to log in again",
       "title": "Your current session expired"
-    },
-    "remove_account": {
-      "description": "Are you sure you want to delete your account?",
-      "title": "Attention!",
-      "confirm": "Yes, delete"
     }
   },
   "bottom_tabs": {
@@ -34,8 +29,7 @@
     "save": "Save",
     "search": "Search",
     "try_again_later": "Please try again later",
-    "try_again": "Try again",
-    "remove_account": "Remove account"
+    "try_again": "Try again"
   },
   "errors": {
     "invalid_email": "Niepoprawny adres e-mail",

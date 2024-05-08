@@ -9,11 +9,6 @@
     "session_expired": {
       "description": "Spróbuj zalogować się ponownie",
       "title": "Twoja sesja wygasła"
-    },
-    "remove_account": {
-      "description": "Czy na pewno chcesz usunąć swoje konto?",
-      "title": "Uwaga!",
-      "confirm": "Tak, usuń"
     }
   },
   "bottom_tabs": {
@@ -34,8 +29,7 @@
     "save": "Zapisz",
     "search": "Szukaj",
     "try_again_later": "Proszę spróbuj ponownie później",
-    "try_again": "Spróbuj ponownie",
-    "remove_account": "Usuń konto"
+    "try_again": "Spróbuj ponownie"
   },
   "errors": {
     "invalid_email": "Niepoprawny adres e-mail",
