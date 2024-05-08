@@ -6,30 +6,25 @@ import {
   BottomSheetBackdropProps,
   BottomSheetView,
 } from '@gorhom/bottom-sheet'
-import { RefObject, useCallback } from 'react'
+import { useCallback } from 'react'
 import { Dimensions } from 'react-native'
 
 import { BottomSheetScrollView } from './BootomSheetScrollables'
 import { BottomSheetHeader } from './BottomSheetHeader'
+import { BottomSheetProps } from './types'
 
 const screenHeight = Dimensions.get('screen').height
-
-type Props = {
-  bottomSheetRef: RefObject<BottomSheetModal>
-  children: JSX.Element | JSX.Element[]
-  title?: string
-  showCloseButton?: boolean
-  numberOfTitleLines?: number
-}
 
 export { BottomSheetScrollView }
 export const BottomSheet = ({
   children,
   title,
+  iconConfig,
+  isDivider = true,
   showCloseButton = true,
   numberOfTitleLines,
   bottomSheetRef,
-}: Props) => {
+}: BottomSheetProps) => {
   const { top } = useSafeAreaInsets()
 
   const handleClose = useCallback(() => {
@@ -52,13 +47,13 @@ export const BottomSheet = ({
     >
       <BottomSheetView>
         <BottomSheetHeader
+          iconConfig={iconConfig}
           title={title}
           numberOfLines={numberOfTitleLines}
           showCloseButton={showCloseButton}
           onClose={handleClose}
         />
-        <Box pb="1px" bg="bg.brand.primary" />
-
+        {isDivider && <Box pb="1px" bg="bg.brand.primary" />}
         {children}
       </BottomSheetView>
     </BottomSheetModal>

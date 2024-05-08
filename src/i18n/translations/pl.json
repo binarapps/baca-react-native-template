@@ -232,8 +232,14 @@
   "settings_screen": {
     "current_theme": "Current theme: {{theme}}",
     "selected": " - wybrano",
-    "sign_out": "Wyloguj!",
-    "remove_account": "Usuń konto"
+    "sign_out": "Wyloguj!"
+  },
+  "profile_screen": {
+    "profile": "Profil",
+    "update_your_details": "Zaktualizuj swoje dane osobowe tutaj.",
+    "remove_account": "Usuń konto",
+    "are_you_sure": "Jesteś pewny/a?",
+    "remove_account_desc": "Tej akcji nie można cofnąć.\n\nUtracisz dostęp do swojego konta. Jeśli masz aktywną subskrypcję, utracisz do niej dostęp.\n\nUpewnij się, że jesteś pewien tej akcji"
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",
