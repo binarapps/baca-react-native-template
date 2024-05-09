@@ -135,7 +135,7 @@ export const getAuthControllerRefreshResponseMock = (
 })
 
 export const getAuthControllerLoginMockHandler = (overrideResponse?: AuthEntity) => {
-  return http.post('*/api/v1/auth/email/login', async () => {
+  return http.post('/api/v1/auth/email/login', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getAuthControllerLoginResponseMock()),
@@ -150,7 +150,7 @@ export const getAuthControllerLoginMockHandler = (overrideResponse?: AuthEntity)
 }
 
 export const getAuthControllerRegisterMockHandler = (overrideResponse?: UserEntity) => {
-  return http.post('*/api/v1/auth/email/register', async () => {
+  return http.post('/api/v1/auth/email/register', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getAuthControllerRegisterResponseMock()),
@@ -165,7 +165,7 @@ export const getAuthControllerRegisterMockHandler = (overrideResponse?: UserEnti
 }
 
 export const getAuthControllerConfirmEmailMockHandler = () => {
-  return http.post('*/api/v1/auth/email/confirm', async () => {
+  return http.post('/api/v1/auth/email/confirm', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -177,7 +177,7 @@ export const getAuthControllerConfirmEmailMockHandler = () => {
 }
 
 export const getAuthControllerResendVerificationEmailMockHandler = () => {
-  return http.post('*/api/v1/auth/email/resend', async () => {
+  return http.post('/api/v1/auth/email/resend', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -189,7 +189,7 @@ export const getAuthControllerResendVerificationEmailMockHandler = () => {
 }
 
 export const getAuthControllerForgotPasswordMockHandler = () => {
-  return http.post('*/api/v1/auth/forgot/password', async () => {
+  return http.post('/api/v1/auth/forgot/password', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -201,7 +201,7 @@ export const getAuthControllerForgotPasswordMockHandler = () => {
 }
 
 export const getAuthControllerResetPasswordMockHandler = () => {
-  return http.post('*/api/v1/auth/reset/password', async () => {
+  return http.post('/api/v1/auth/reset/password', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -213,7 +213,7 @@ export const getAuthControllerResetPasswordMockHandler = () => {
 }
 
 export const getAuthControllerEmailChangeMockHandler = () => {
-  return http.post('*/api/v1/auth/email/change', async () => {
+  return http.post('/api/v1/auth/email/change', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -225,7 +225,7 @@ export const getAuthControllerEmailChangeMockHandler = () => {
 }
 
 export const getAuthControllerConfirmEmailChangeMockHandler = () => {
-  return http.post('*/api/v1/auth/email/change-confirm', async () => {
+  return http.post('/api/v1/auth/email/change-confirm', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -237,7 +237,7 @@ export const getAuthControllerConfirmEmailChangeMockHandler = () => {
 }
 
 export const getAuthControllerMeMockHandler = (overrideResponse?: UserEntity) => {
-  return http.get('*/api/v1/auth/me', async () => {
+  return http.get('/api/v1/auth/me', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getAuthControllerMeResponseMock()),
@@ -252,7 +252,7 @@ export const getAuthControllerMeMockHandler = (overrideResponse?: UserEntity) =>
 }
 
 export const getAuthControllerUpdateMockHandler = () => {
-  return http.patch('*/api/v1/auth/me', async () => {
+  return http.patch('/api/v1/auth/me', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -264,7 +264,7 @@ export const getAuthControllerUpdateMockHandler = () => {
 }
 
 export const getAuthControllerDeleteMockHandler = () => {
-  return http.delete('*/api/v1/auth/me', async () => {
+  return http.delete('/api/v1/auth/me', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -276,7 +276,7 @@ export const getAuthControllerDeleteMockHandler = () => {
 }
 
 export const getAuthControllerRefreshMockHandler = (overrideResponse?: RefreshEntity) => {
-  return http.post('*/api/v1/auth/refresh', async () => {
+  return http.post('/api/v1/auth/refresh', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getAuthControllerRefreshResponseMock()),
@@ -291,7 +291,7 @@ export const getAuthControllerRefreshMockHandler = (overrideResponse?: RefreshEn
 }
 
 export const getAuthControllerLogoutMockHandler = () => {
-  return http.post('*/api/v1/auth/logout', async () => {
+  return http.post('/api/v1/auth/logout', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -303,7 +303,7 @@ export const getAuthControllerLogoutMockHandler = () => {
 }
 
 export const getAuthControllerLogoutAllMockHandler = () => {
-  return http.post('*/api/v1/auth/logout/all', async () => {
+  return http.post('/api/v1/auth/logout/all', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
