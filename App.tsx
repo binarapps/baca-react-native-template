@@ -11,7 +11,6 @@ import { enableAndroidBackgroundNotificationListener, startMockedServer } from '
 import * as Device from 'expo-device'
 import 'expo-router/entry'
 
-// FIXME: moking not working on mobile app - follow this discussion https://github.com/mswjs/msw/issues/2026
 const ENABLE_MOCKED_SERVER = false
 
 if (ENABLE_MOCKED_SERVER) {
