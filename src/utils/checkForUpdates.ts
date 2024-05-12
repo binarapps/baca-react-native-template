@@ -24,22 +24,21 @@ export const checkForUpdates = async (shouldReload?: boolean) => {
     if (isAlertOpened) return
     isAlertOpened = true
 
-    alert(i18n.t('update.alert_title'), i18n.t('update.alert_message'), [
-      {
-        text: i18n.t('common.cancel'),
-        onPress: () => {
-          isAlertOpened = false
+    alert(
+      i18n.t('update.alert_title'),
+      i18n.t('update.alert_message'),
+      [
+        {
+          text: i18n.t('update.restart'),
+          onPress: async () => {
+            isAlertOpened = false
+            await Updates.reloadAsync()
+          },
         },
-        style: 'cancel',
-      },
-      {
-        text: i18n.t('update.restart'),
-        onPress: async () => {
-          await Updates.reloadAsync()
-        },
-      },
-    ])
+      ],
+      { cancelable: false }
+    )
   } catch (e) {
-    console.log('There was some error while checking updates', e)
+    console.error('There was some error while checking updates', e)
   }
 }
