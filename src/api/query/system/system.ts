@@ -11,7 +11,13 @@ import type { MutationFunction, UseMutationOptions } from '@tanstack/react-query
 
 import { customInstance } from '../../axios/custom-instance'
 import type { ErrorType, BodyType } from '../../axios/custom-instance'
-import type { CheckUpdateDto } from '../../types'
+import type {
+  AppVersionStatusEntity,
+  CheckUpdateDto,
+  ErrorServerEntity,
+  ErrorTooManyRequestsEntity,
+  ErrorValidationEntity,
+} from '../../types'
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
 
@@ -19,7 +25,7 @@ export const systemControllerCheckForAppUpdate = (
   checkUpdateDto: BodyType<CheckUpdateDto>,
   options?: SecondParameter<typeof customInstance>
 ) => {
-  return customInstance<void>(
+  return customInstance<AppVersionStatusEntity>(
     {
       url: `/api/v1/system/app-updates/check`,
       method: 'POST',
@@ -31,7 +37,7 @@ export const systemControllerCheckForAppUpdate = (
 }
 
 export const getSystemControllerCheckForAppUpdateMutationOptions = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
@@ -65,10 +71,12 @@ export type SystemControllerCheckForAppUpdateMutationResult = NonNullable<
   Awaited<ReturnType<typeof systemControllerCheckForAppUpdate>>
 >
 export type SystemControllerCheckForAppUpdateMutationBody = BodyType<CheckUpdateDto>
-export type SystemControllerCheckForAppUpdateMutationError = ErrorType<unknown>
+export type SystemControllerCheckForAppUpdateMutationError = ErrorType<
+  void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
+>
 
 export const useSystemControllerCheckForAppUpdate = <
-  TError = ErrorType<unknown>,
+  TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
   TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<

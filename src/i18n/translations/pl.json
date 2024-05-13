@@ -122,9 +122,11 @@
   "update": {
     "alert_message": "Będziesz musiał zrestartować aplikację, żeby mieć lepsze doświadczenia podczas jej używania",
     "alert_title": "Aktualizacja",
-    "restart": "Zrestartuj"
+    "restart": "Zrestartuj",
+    "update_now": "Aktualizuj teraz",
+    "error_title": "Błąd",
+    "error_message": "Wystąpił błąd. Proszę spróbuj ponownie później."
   },
-
   "application_info_screen": {
     "navigation_info": "Kiedy będziesz próbował cofnąć to zostaniesz podwójnie zapytany, czy na pewno tego chcesz \n"
   },
