@@ -50,7 +50,7 @@ export const DataFromBeScreen_EXAMPLE = () => {
         }
       )
     }
-  }, [os, currentVersion, checkForUpdate])
+  }, [os, currentVersion, checkForUpdate, t])
 
   const renderItem: ListRenderItem<ArticleEntity> = useCallback(({ item: { id, title } }) => {
     return (
