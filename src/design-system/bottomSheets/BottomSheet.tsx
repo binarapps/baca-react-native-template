@@ -1,5 +1,5 @@
-import { Box } from '@baca/design-system/components/Box'
 import { useColorScheme } from '@baca/contexts'
+import { Box } from '@baca/design-system/components/Box'
 import { useSafeAreaInsets, useTheme } from '@baca/hooks'
 import {
   BottomSheetModal,
@@ -48,9 +48,11 @@ export const BottomSheet = ({
       backdropComponent={renderBackdrop}
       enableDynamicSizing
       backgroundStyle={{
-        backgroundColor: isDarkTheme ? colors.bg.primary : 'green',
+        // eslint-disable-next-line react-native/no-inline-styles
+        backgroundColor: colors.bg.primary,
       }}
       handleIndicatorStyle={{
+        // eslint-disable-next-line react-native/no-inline-styles
         backgroundColor: isDarkTheme ? colors.alpha.black[100] : colors.alpha.white[100],
       }}
     >
