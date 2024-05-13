@@ -1,4 +1,3 @@
-import { useColorScheme } from '@baca/contexts'
 import { Box } from '@baca/design-system/components/Box'
 import { useSafeAreaInsets, useTheme } from '@baca/hooks'
 import {
@@ -27,7 +26,6 @@ export const BottomSheet = ({
   bottomSheetRef,
 }: BottomSheetProps) => {
   const { top } = useSafeAreaInsets()
-  const { isDarkTheme } = useColorScheme()
   const { colors } = useTheme()
 
   const handleClose = useCallback(() => {
@@ -53,7 +51,7 @@ export const BottomSheet = ({
       }}
       handleIndicatorStyle={{
         // eslint-disable-next-line react-native/no-inline-styles
-        backgroundColor: isDarkTheme ? colors.alpha.black[100] : colors.alpha.white[100],
+        backgroundColor: colors.alpha.black[100],
       }}
     >
       <BottomSheetView>
