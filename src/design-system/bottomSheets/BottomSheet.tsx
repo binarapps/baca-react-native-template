@@ -1,5 +1,6 @@
 import { Box } from '@baca/design-system/components/Box'
-import { useSafeAreaInsets } from '@baca/hooks'
+import { useColorScheme } from '@baca/contexts'
+import { useSafeAreaInsets, useTheme } from '@baca/hooks'
 import {
   BottomSheetModal,
   BottomSheetBackdrop,
@@ -26,6 +27,8 @@ export const BottomSheet = ({
   bottomSheetRef,
 }: BottomSheetProps) => {
   const { top } = useSafeAreaInsets()
+  const { isDarkTheme } = useColorScheme()
+  const { colors } = useTheme()
 
   const handleClose = useCallback(() => {
     bottomSheetRef?.current?.snapToPosition(-1)
@@ -44,6 +47,12 @@ export const BottomSheet = ({
       snapPoints={[screenHeight - top - 24]}
       backdropComponent={renderBackdrop}
       enableDynamicSizing
+      backgroundStyle={{
+        backgroundColor: isDarkTheme ? colors.bg.primary : 'green',
+      }}
+      handleIndicatorStyle={{
+        backgroundColor: isDarkTheme ? colors.alpha.black[100] : colors.alpha.white[100],
+      }}
     >
       <BottomSheetView>
         <BottomSheetHeader

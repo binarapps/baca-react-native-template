@@ -54,10 +54,13 @@ export const ColorSchemeProvider: FC<PropsWithChildren> = ({ children }) => {
     [colorSchemeSetting, setItem]
   )
 
+  const isDarkTheme = useMemo(() => colorScheme === 'dark', [colorSchemeSetting])
+
   const value: ColorSchemeContextType = useMemo(
     () => ({
       colorScheme,
       colorSchemeSetting,
+      isDarkTheme,
       setColorSchemeSetting: setNewColorSchemeSetting,
     }),
     [colorScheme, colorSchemeSetting, setNewColorSchemeSetting]
