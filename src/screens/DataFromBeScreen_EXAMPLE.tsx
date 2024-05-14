@@ -1,11 +1,9 @@
 import { useArticlesControllerFindAll } from '@baca/api/query/articles/articles'
-import { useSystemControllerCheckForAppUpdate } from '@baca/api/query/system/system'
 import { ArticleEntity } from '@baca/api/types'
 import { Loader, Center, Text, Box, Spacer } from '@baca/design-system'
 import { useScreenOptions, useTranslation } from '@baca/hooks'
-import * as Application from 'expo-application'
-import { useCallback, useEffect } from 'react'
-import { ListRenderItem, FlatList, Platform, Linking, Alert } from 'react-native'
+import { useCallback } from 'react'
+import { ListRenderItem, FlatList } from 'react-native'
 
 export const DataFromBeScreen_EXAMPLE = () => {
   const { t } = useTranslation()
@@ -16,41 +14,6 @@ export const DataFromBeScreen_EXAMPLE = () => {
 
   const { data: articles, isInitialLoading: isInitialLoadingArticles } =
     useArticlesControllerFindAll({ page: 1, pageSize: 10 })
-
-  const currentVersion = Application.nativeApplicationVersion || 'unknown'
-  const os = Platform.OS
-
-  const { mutate: checkForUpdate } = useSystemControllerCheckForAppUpdate()
-
-  useEffect(() => {
-    if (os === 'ios' || os === 'android') {
-      checkForUpdate(
-        {
-          data: {
-            currentVersion,
-            os,
-          },
-        },
-        {
-          onSuccess: (data) => {
-            if (data.updateRequired) {
-              const storeUrl =
-                os === 'ios'
-                  ? `https://apps.apple.com/app/id${data.appId}`
-                  : `https://play.google.com/store/apps/details?id=${data.appId}`
-              Alert.alert(t('update.alert_title'), t('update.alert_message'), [
-                { text: t('update.update_now'), onPress: () => Linking.openURL(storeUrl) },
-              ])
-            }
-          },
-          onError: (error) => {
-            console.error('Error checking for updates:', error)
-            Alert.alert(t('update.error_title'), t('update.error_message'))
-          },
-        }
-      )
-    }
-  }, [os, currentVersion, checkForUpdate, t])
 
   const renderItem: ListRenderItem<ArticleEntity> = useCallback(({ item: { id, title } }) => {
     return (
