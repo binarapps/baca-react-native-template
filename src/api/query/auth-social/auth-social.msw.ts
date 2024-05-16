@@ -144,7 +144,7 @@ export const getAuthAppleControllerLoginResponseMock = (
 })
 
 export const getAuthGoogleControllerLoginMockHandler = (overrideResponse?: AuthEntity) => {
-  return http.post('*/api/v1/auth/google/login', async () => {
+  return http.post('/api/v1/auth/google/login', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(
@@ -161,7 +161,7 @@ export const getAuthGoogleControllerLoginMockHandler = (overrideResponse?: AuthE
 }
 
 export const getAuthFacebookControllerLoginMockHandler = (overrideResponse?: AuthEntity) => {
-  return http.post('*/api/v1/auth/facebook/login', async () => {
+  return http.post('/api/v1/auth/facebook/login', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(
@@ -178,7 +178,7 @@ export const getAuthFacebookControllerLoginMockHandler = (overrideResponse?: Aut
 }
 
 export const getAuthAppleControllerLoginMockHandler = (overrideResponse?: AuthEntity) => {
-  return http.post('*/api/v1/auth/apple/login', async () => {
+  return http.post('/api/v1/auth/apple/login', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(

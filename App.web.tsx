@@ -10,7 +10,6 @@ import '@baca/i18n'
 import { startMockedServer } from '@baca/services'
 import 'expo-router/entry'
 
-// FIXME: moking not working on mobile app - follow this discussion https://github.com/mswjs/msw/issues/2026
 const ENABLE_MOCKED_SERVER = false
 
 if (ENABLE_MOCKED_SERVER) {
