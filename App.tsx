@@ -4,6 +4,8 @@
 // This is added to support web for reaniamted: https://github.com/software-mansion/react-native-reanimated/issues/4140#issuecomment-1455209588
 import 'setimmediate'
 import 'react-native-reanimated'
+// This is added to work jwt-decode for react-native: https://github.com/auth0/jwt-decode?tab=readme-ov-file#polyfilling-atob
+import 'core-js/stable/atob'
 
 // Rest imports
 import '@baca/i18n'
