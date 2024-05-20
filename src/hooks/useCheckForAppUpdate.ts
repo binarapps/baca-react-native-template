@@ -8,13 +8,13 @@ export const useCheckForAppUpdate = () => {
   const { t } = useTranslation()
   const currentVersion = Application.nativeApplicationVersion || 'unknown'
   const { OS } = Platform
-  const APP_STORE_URL = `https://apps.apple.com/app/id`
-  const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=`
   const [isUpdateLoading, setIsUpdateLoading] = useState<boolean>(true)
 
   const { mutate: checkForUpdate } = useSystemControllerCheckForAppUpdate()
 
   useEffect(() => {
+    const APP_STORE_URL = `https://apps.apple.com/app/id`
+    const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=`
     if (OS === 'ios' || OS === 'android') {
       checkForUpdate(
         {
