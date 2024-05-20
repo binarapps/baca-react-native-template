@@ -45,7 +45,7 @@ export const useCheckForAppUpdate = () => {
     } else {
       setIsUpdateLoading(false)
     }
-  }, [OS, currentVersion, checkForUpdate, t])
+  }, [checkForUpdate, t])
 
   return isUpdateLoading
 }
