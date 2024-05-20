@@ -7,7 +7,7 @@ import { Platform, Alert, Linking } from 'react-native'
 export const useCheckForAppUpdate = () => {
   const { t } = useTranslation()
   const currentVersion = Application.nativeApplicationVersion || 'unknown'
-  const os = Platform.OS
+  const { OS } = Platform
   const APP_STORE_URL = `https://apps.apple.com/app/id`
   const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=`
   const [isUpdateLoading, setIsUpdateLoading] = useState<boolean>(true)
@@ -15,19 +15,19 @@ export const useCheckForAppUpdate = () => {
   const { mutate: checkForUpdate } = useSystemControllerCheckForAppUpdate()
 
   useEffect(() => {
-    if (os === 'ios' || os === 'android') {
+    if (OS === 'ios' || OS === 'android') {
       checkForUpdate(
         {
           data: {
             currentVersion,
-            os,
+            os: OS,
           },
         },
         {
           onSuccess: ({ updateRequired, appId }) => {
             if (updateRequired) {
               const storeUrl =
-                os === 'ios' ? `${APP_STORE_URL}${appId}` : `${PLAY_STORE_URL}${appId}`
+                OS === 'ios' ? `${APP_STORE_URL}${appId}` : `${PLAY_STORE_URL}${appId}`
               Alert.alert(t('update.alert_title'), t('update.alert_message'), [
                 { text: t('update.update_now'), onPress: () => Linking.openURL(storeUrl) },
               ])
@@ -44,7 +44,7 @@ export const useCheckForAppUpdate = () => {
     } else {
       setIsUpdateLoading(false)
     }
-  }, [os, currentVersion, checkForUpdate, t])
+  }, [OS, currentVersion, checkForUpdate, t])
 
   return isUpdateLoading
 }
