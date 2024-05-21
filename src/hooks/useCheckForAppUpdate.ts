@@ -1,9 +1,9 @@
 import { useSystemControllerCheckForAppUpdate } from '@baca/api/query/system/system'
+import { APP_STORE_URL, PLAY_STORE_URL } from '@baca/constants/links'
 import { useTranslation } from '@baca/hooks'
 import * as Application from 'expo-application'
 import { useEffect, useState } from 'react'
 import { Platform, Alert, Linking } from 'react-native'
-import { APP_STORE_URL, PLAY_STORE_URL } from 'scripts/cli/constants'
 
 const currentVersion = Application.nativeApplicationVersion || 'unknown'
 const { OS } = Platform
