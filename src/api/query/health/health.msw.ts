@@ -30,7 +30,7 @@ export const getHealthControllerCheckResponseMock = (overrideResponse: any = {})
 })
 
 export const getHealthControllerCheckMockHandler = (overrideResponse?: HealthEntity) => {
-  return http.get('*/api/v1/health', async () => {
+  return http.get('/api/v1/health', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getHealthControllerCheckResponseMock()),

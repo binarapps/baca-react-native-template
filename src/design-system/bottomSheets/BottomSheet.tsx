@@ -1,36 +1,32 @@
 import { Box } from '@baca/design-system/components/Box'
-import { useSafeAreaInsets } from '@baca/hooks'
+import { useSafeAreaInsets, useTheme } from '@baca/hooks'
 import {
   BottomSheetModal,
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
   BottomSheetView,
 } from '@gorhom/bottom-sheet'
-import { RefObject, useCallback } from 'react'
+import { useCallback } from 'react'
 import { Dimensions } from 'react-native'
 
 import { BottomSheetScrollView } from './BootomSheetScrollables'
 import { BottomSheetHeader } from './BottomSheetHeader'
+import { BottomSheetProps } from './types'
 
 const screenHeight = Dimensions.get('screen').height
-
-type Props = {
-  bottomSheetRef: RefObject<BottomSheetModal>
-  children: JSX.Element | JSX.Element[]
-  title?: string
-  showCloseButton?: boolean
-  numberOfTitleLines?: number
-}
 
 export { BottomSheetScrollView }
 export const BottomSheet = ({
   children,
   title,
+  iconConfig,
+  isDivider = true,
   showCloseButton = true,
   numberOfTitleLines,
   bottomSheetRef,
-}: Props) => {
+}: BottomSheetProps) => {
   const { top } = useSafeAreaInsets()
+  const { colors } = useTheme()
 
   const handleClose = useCallback(() => {
     bottomSheetRef?.current?.snapToPosition(-1)
@@ -49,16 +45,24 @@ export const BottomSheet = ({
       snapPoints={[screenHeight - top - 24]}
       backdropComponent={renderBackdrop}
       enableDynamicSizing
+      backgroundStyle={{
+        // eslint-disable-next-line react-native/no-inline-styles
+        backgroundColor: colors.bg.primary,
+      }}
+      handleIndicatorStyle={{
+        // eslint-disable-next-line react-native/no-inline-styles
+        backgroundColor: colors.alpha.black[100],
+      }}
     >
       <BottomSheetView>
         <BottomSheetHeader
+          iconConfig={iconConfig}
           title={title}
           numberOfLines={numberOfTitleLines}
           showCloseButton={showCloseButton}
           onClose={handleClose}
         />
-        <Box pb="1px" bg="bg.brand.primary" />
-
+        {isDivider && <Box pb="1px" bg="bg.brand.primary" />}
         {children}
       </BottomSheetView>
     </BottomSheetModal>

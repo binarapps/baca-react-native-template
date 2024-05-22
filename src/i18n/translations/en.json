@@ -9,11 +9,6 @@
     "session_expired": {
       "description": "Try to log in again",
       "title": "Your current session expired"
-    },
-    "remove_account": {
-      "description": "Are you sure you want to delete your account?",
-      "title": "Attention!",
-      "confirm": "Yes, delete"
     }
   },
   "bottom_tabs": {
@@ -34,8 +29,7 @@
     "save": "Save",
     "search": "Search",
     "try_again_later": "Please try again later",
-    "try_again": "Try again",
-    "remove_account": "Remove account"
+    "try_again": "Try again"
   },
   "errors": {
     "invalid_email": "Niepoprawny adres e-mail",
@@ -234,8 +228,14 @@
     "copy_push_token": "Copy push token",
     "current_theme": "Current theme: {{theme}}",
     "sign_out": "Sign out!",
-    "selected": " - selected",
-    "remove_account": "Remove account"
+    "selected": " - selected"
+  },
+  "profile_screen": {
+    "profile": "Profile",
+    "update_your_details": "Update your personal details here.",
+    "remove_account": "Remove account",
+    "are_you_sure": "Are you sure?",
+    "remove_account_desc": "This action cannot be undone.\n\nYou will lose access to your account. If you have an active subscription you will lose access to it.\n\nPlease make sure you are certain about this action."
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Don't have an account?",
