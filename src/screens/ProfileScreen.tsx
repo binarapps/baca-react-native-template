@@ -1,7 +1,14 @@
 import { useAuthControllerDelete } from '@baca/api/query/auth/auth'
 import { ControlledField } from '@baca/components'
+import { isWeb } from '@baca/constants'
 import { Button, Text, Spacer, Row, Box, useBottomSheet } from '@baca/design-system'
-import { useCallback, useTranslation, useUpdateProfileForm, useScreenOptions } from '@baca/hooks'
+import {
+  useCallback,
+  useTranslation,
+  useUpdateProfileForm,
+  useScreenOptions,
+  useWeb,
+} from '@baca/hooks'
 import { signOut } from '@baca/store/auth'
 import { showErrorToast } from '@baca/utils'
 import { useRouter } from 'expo-router'
@@ -9,6 +16,7 @@ import { useRouter } from 'expo-router'
 export const ProfileScreen = () => {
   const { t } = useTranslation()
   const { back } = useRouter()
+  const { shouldApplyMobileStyles } = useWeb()
   const { mutateAsync: removeUserAccount, isLoading } = useAuthControllerDelete()
   const { control, errors, isSubmitting, setFocus, submit } = useUpdateProfileForm()
 
@@ -71,36 +79,69 @@ export const ProfileScreen = () => {
       <Text.LgBold>{t('profile_screen.profile')}</Text.LgBold>
       <Text.MdRegular>{t('profile_screen.update_your_details')}</Text.MdRegular>
       <Box borderColor="utility.gray.300" borderBottomWidth={2} borderTopWidth={2} my={4} py={4}>
-        <ControlledField.Input
-          {...{ control, errors }}
-          autoCapitalize="none"
-          inputMode="text"
-          label={t('form.labels.first_name')}
-          name="firstName"
-          onFocus={focusLastNameInput}
-          placeholder={t('form.placeholders.email')}
-          testID="emailInput"
-        />
-        <ControlledField.Input
-          {...{ control, errors }}
-          autoCapitalize="none"
-          inputMode="text"
-          label={t('form.labels.last_name')}
-          name="lastName"
-          placeholder={t('form.placeholders.last_name')}
-          testID="lastNameInput"
-        />
-        <ControlledField.Input
-          {...{ control, errors }}
-          autoCapitalize="none"
-          inputMode="email"
-          isDisabled
-          label={t('form.labels.email')}
-          name="email"
-          onSubmitEditing={submit}
-          placeholder={t('form.placeholders.email')}
-          testID="emailInput"
-        />
+        <Box
+          justifyContent="space-between"
+          flexDirection={isWeb && !shouldApplyMobileStyles ? 'row' : 'column'}
+          mb={isWeb ? 10 : 0}
+        >
+          <Text.SmBold flex={1}>{t('form.labels.first_name')}</Text.SmBold>
+          <Box flex={isWeb ? 1 : 0}>
+            <ControlledField.Input
+              {...{ control, errors }}
+              autoCapitalize="none"
+              inputMode="text"
+              name="firstName"
+              onFocus={focusLastNameInput}
+              placeholder={t('form.placeholders.email')}
+              testID="emailInput"
+              {...(!isWeb && {
+                label: t('form.labels.first_name'),
+              })}
+            />
+          </Box>
+        </Box>
+        <Box
+          justifyContent="space-between"
+          flexDirection={isWeb && !shouldApplyMobileStyles ? 'row' : 'column'}
+          mb={isWeb ? 10 : 0}
+        >
+          <Text.SmBold flex={1}>{t('form.labels.last_name')}</Text.SmBold>
+          <Box flex={isWeb ? 1 : 0}>
+            <ControlledField.Input
+              {...{ control, errors }}
+              autoCapitalize="none"
+              inputMode="text"
+              name="lastName"
+              placeholder={t('form.placeholders.last_name')}
+              testID="lastNameInput"
+              {...(!isWeb && {
+                label: t('form.labels.last_name'),
+              })}
+            />
+          </Box>
+        </Box>
+        <Box
+          justifyContent="space-between"
+          flexDirection={isWeb && !shouldApplyMobileStyles ? 'row' : 'column'}
+          mb={isWeb ? 10 : 0}
+        >
+          <Text.SmBold flex={1}>{t('form.labels.last_name')}</Text.SmBold>
+          <Box flex={isWeb ? 1 : 0}>
+            <ControlledField.Input
+              {...{ control, errors }}
+              autoCapitalize="none"
+              inputMode="email"
+              isDisabled
+              name="email"
+              onSubmitEditing={submit}
+              placeholder={t('form.placeholders.email')}
+              testID="emailInput"
+              {...(!isWeb && {
+                label: t('form.labels.email'),
+              })}
+            />
+          </Box>
+        </Box>
       </Box>
       <Row justifyContent="flex-end">
         <Button.SecondaryColor
