@@ -42,7 +42,7 @@ export const ProfileScreen = () => {
       <Text.LgSemibold color="text.primary" pt={4} pb={2}>
         {t('profile_screen.are_you_sure')}
       </Text.LgSemibold>
-      <Text.SmRegular color="text.tertiary" lineHeight="md">
+      <Text.SmRegular color="text.secondary" lineHeight="md">
         {t('profile_screen.remove_account_desc')}
       </Text.SmRegular>
       <Row w="full" justifyContent="space-between" pt={8}>
@@ -75,17 +75,22 @@ export const ProfileScreen = () => {
   const focusLastNameInput = useCallback(() => setFocus('lastName'), [setFocus])
 
   return (
-    <Box m={8}>
-      <Text.LgBold>{t('profile_screen.profile')}</Text.LgBold>
-      <Text.MdRegular>{t('profile_screen.update_your_details')}</Text.MdRegular>
-      <Box borderColor="utility.gray.300" borderBottomWidth={2} borderTopWidth={2} my={4} py={4}>
+    <Box p={4}>
+      <Text.LgBold color="text.primary">{t('profile_screen.profile')}</Text.LgBold>
+      <Spacer y={1} />
+      <Text.MdRegular color="text.secondary">
+        {t('profile_screen.update_your_details')}
+      </Text.MdRegular>
+      <Spacer y={4} />
+      <Box borderColor="border.secondary" borderTopWidth={1} py={6}>
         <Box
           justifyContent="space-between"
           flexDirection={isWeb && !shouldApplyMobileStyles ? 'row' : 'column'}
           mb={isWeb ? 10 : 0}
+          maxW={800}
         >
           <Text.SmBold flex={1}>{t('form.labels.first_name')}</Text.SmBold>
-          <Box flex={isWeb ? 1 : 0}>
+          <Box flex={isWeb ? 2 : 0}>
             <ControlledField.Input
               {...{ control, errors }}
               autoCapitalize="none"
@@ -104,9 +109,10 @@ export const ProfileScreen = () => {
           justifyContent="space-between"
           flexDirection={isWeb && !shouldApplyMobileStyles ? 'row' : 'column'}
           mb={isWeb ? 10 : 0}
+          maxW={800}
         >
           <Text.SmBold flex={1}>{t('form.labels.last_name')}</Text.SmBold>
-          <Box flex={isWeb ? 1 : 0}>
+          <Box flex={isWeb ? 2 : 0}>
             <ControlledField.Input
               {...{ control, errors }}
               autoCapitalize="none"
@@ -124,9 +130,10 @@ export const ProfileScreen = () => {
           justifyContent="space-between"
           flexDirection={isWeb && !shouldApplyMobileStyles ? 'row' : 'column'}
           mb={isWeb ? 10 : 0}
+          maxW={800}
         >
           <Text.SmBold flex={1}>{t('form.labels.last_name')}</Text.SmBold>
-          <Box flex={isWeb ? 1 : 0}>
+          <Box flex={isWeb ? 2 : 0}>
             <ControlledField.Input
               {...{ control, errors }}
               autoCapitalize="none"
@@ -142,33 +149,31 @@ export const ProfileScreen = () => {
             />
           </Box>
         </Box>
+        <Row maxW={800} justifyContent="flex-end">
+          <Button.SecondaryColor
+            disabled={isSubmitting}
+            loading={isSubmitting}
+            onPress={back}
+            testID="backProfileButton"
+          >
+            {t('common.cancel')}
+          </Button.SecondaryColor>
+          <Spacer x="4" />
+          <Button
+            disabled={isSubmitting}
+            loading={isSubmitting}
+            onPress={submit}
+            testID="saveProfileUpdateButton"
+          >
+            {t('common.save')}
+          </Button>
+        </Row>
       </Box>
-      <Row justifyContent="flex-end">
-        <Button.SecondaryColor
-          disabled={isSubmitting}
-          loading={isSubmitting}
-          my={8}
-          onPress={back}
-          testID="backProfileButton"
-        >
-          {t('common.cancel')}
-        </Button.SecondaryColor>
-        <Spacer x="4" />
-        <Button
-          disabled={isSubmitting}
-          loading={isSubmitting}
-          my={8}
-          onPress={submit}
-          testID="saveProfileUpdateButton"
-        >
-          {t('common.save')}
-        </Button>
-      </Row>
-      <Box borderColor="utility.gray.300" borderTopWidth={2} my={4} py={6}>
+
+      <Box borderColor="border.secondary" borderTopWidth={1} my={4} py={6} alignItems="flex-start">
         <Button
           leftIconName="delete-bin-line"
           variant="SecondaryDestructive"
-          w="1/2"
           borderRadius={8}
           onPress={presentBottomSheet}
         >
