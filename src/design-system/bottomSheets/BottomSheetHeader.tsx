@@ -1,3 +1,4 @@
+import { BottomSheetHeaderProps } from './types'
 import { Box } from '../components/Box'
 import { Icon } from '../components/Icon'
 import { Row } from '../components/Row'
@@ -9,22 +10,25 @@ export const BottomSheetHeader = ({
   numberOfLines = undefined,
   showCloseButton,
   onClose,
-}: {
-  title?: string
-  numberOfLines?: number
-  showCloseButton?: boolean
-  onClose?: () => void
-}) => {
+  iconConfig,
+}: BottomSheetHeaderProps) => {
   if (!showCloseButton && !title) {
     return null
   }
 
   return (
     <Row alignItems="center">
+      {iconConfig && (
+        <Box backgroundColor={iconConfig.bgColor} p={3} borderRadius={100} ml={4} mt={4}>
+          <Icon name={iconConfig.name} size={24} color={iconConfig.color} />
+        </Box>
+      )}
       <Box flex={1} px={4}>
-        <Text.MdBold numberOfLines={numberOfLines} allowFontScaling={false}>
-          {title}
-        </Text.MdBold>
+        {title && (
+          <Text.MdBold numberOfLines={numberOfLines} allowFontScaling={false}>
+            {title}
+          </Text.MdBold>
+        )}
       </Box>
       {showCloseButton && (
         <Touchable onPress={onClose} hitSlop={10} p={4} pl={8}>
