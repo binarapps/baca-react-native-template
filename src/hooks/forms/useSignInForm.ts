@@ -17,8 +17,8 @@ type UseSignInFormProps = {
 
 const defaultValues: SignInFormValues = {
   // TODO: Reset this values when building production app
-  email: 'l.jeziorski+user@binarapps.com',
-  password: 'Qwerty1!',
+  email: 'mateusz.rostkowski+baca@binarapps.com',
+  password: 'Test1234,',
   confirm: false,
 }
 
