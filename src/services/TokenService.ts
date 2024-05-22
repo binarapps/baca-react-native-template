@@ -1,3 +1,4 @@
+import { AuthControllerRefreshMutationResult } from '@baca/api/query/auth/auth'
 import { ASYNC_STORAGE_KEYS, ENV } from '@baca/constants'
 import { decodeAccessToken, secureStore, wait } from '@baca/utils'
 
@@ -72,11 +73,13 @@ export const refreshTokenIfNeeded = async (token: Token): Promise<Token> => {
     if (shouldRefreshToken && !isRefreshingToken) {
       store.set(isRefreshingTokenAtom, true)
 
-      // const refreshedToken: AuthControllerRefreshMutationResult = (await fetch(  //FIXME: uncomment this line when type from BE will be improved
-      const refreshedToken = (await fetch(`${ENV.API_URL}api/v1/auth/refresh`, {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${token.refreshToken}` },
-      }).then((response) => response.json())) as unknown as Token //FIXME: remove when type from BE will be correct
+      const refreshedToken: AuthControllerRefreshMutationResult = await fetch(
+        `${ENV.API_URL}api/v1/auth/refresh`,
+        {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token.refreshToken}` },
+        }
+      ).then((response) => response.json())
 
       if (token) {
         await setToken(refreshedToken)
