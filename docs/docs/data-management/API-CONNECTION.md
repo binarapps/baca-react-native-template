@@ -1,28 +1,38 @@
 ---
-id: backend-connection
-slug: /backend-connection
-title: Backend connection
-sidebar_position: 4
+id: api-connection
+slug: /api-connection
+title: API connection
+sidebar_position: 1
 tags:
   - Backend
+  - API
   - react-query
   - axios
   - react native
   - orval
-description: Backend connection - check how to fetch data from backend and display it for users
+description: API connection - check how to fetch data from backend and display it for users
 ---
 
-# Backend connection
+# API connection
 
-This template uses this packages to keep connection with backend:
+This template uses this packages to keep connection with API:
 
-- [axios](https://axios-http.com/docs/intro) - direct calls to backend
+- [axios](https://axios-http.com/docs/intro) - direct calls to API
 - [react-query](https://tanstack.com/query/latest/docs/framework/react/overview) - use hooks that helps displaying data on UI
-- [orval](https://orval.dev/overview) - generating query hooks based on swagger (provided by backend)
+- [orval](https://orval.dev/overview) - generating query hooks based on swagger (provided by backend developers)
+
+:::note
+If you are not using swagger (or open API v3) on your backend side it could be hard for you to make this working, because we are using [orval](https://orval.dev/overview) to auto generate everything.
+
+If you will have any issues please contact **[Mateusz Rostkowski](https://www.github.com/MateuszRostkowski)**
+:::
 
 ## Generate new query
 
-1. Get `swagger-spec.json` - example: https://gist.github.com/lenage/08964335de9064540c8c335fb849c5da
+All api connection code is automatically generated based on swagger schema, you will just need to do this few steps to update your code base.
+
+1. Get `swagger-spec.json` from backend - example: https://gist.github.com/lenage/08964335de9064540c8c335fb849c5da
+   - This also could be automaticaly done, probably we will work on it soon :)
 2. Replace it in `./scripts/data` folder
 3. Run script `yarn generate:query`
 4. See the magic happens ✨
