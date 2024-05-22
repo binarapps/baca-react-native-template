@@ -2,7 +2,7 @@
 id: jotai
 slug: /jotai
 title: State management - jotai
-sidebar_position: 3
+sidebar_position: 4
 tags:
   - Jotai
   - State management
@@ -46,7 +46,9 @@ import { useAtomValue } from 'jotai'
 import { isSignedInAtom, userNameAtom } from '@baca/store/auth'
 
 export const UserName = () => {
+  // success-line
   const isSignedIn = useAtomValue(isSignedInAtom)
+  // success-line
   const userName = useAtomValue(userNameAtom)
 
   if (isSignedIn) {
@@ -64,7 +66,9 @@ import { store } from '@baca/store'
 import { isSignedInAtom, userNameAtom } from '@baca/store/auth'
 
 const getUserName = () => {
+  // success-line
   const isSignedIn = store.get(isSignedInAtom)
+  // success-line
   const userName = store.get(userNameAtom)
 
   if (isSignedIn) {
@@ -84,11 +88,13 @@ import { isSignedInAtom } from '@baca/store/auth'
 
 const SignInButton = () => {
   // Optionbally you can use `useSetAtom()`
+  // success-line
   const [isSignedIn, setIsSignedIn] = useAtom(isSignedInAtom)
 
   const handleSignIn = () => {
     // Handle logic on backend
 
+    // success-line
     setIsSignedIn(true)
   }
 
@@ -109,6 +115,7 @@ import { isSignedInAtom } from '@baca/store/auth'
 const handleSignIn = () => {
   // Handle logic on backend
 
+  // success-line
   store.set(isSignedInAtom, true)
 }
 
