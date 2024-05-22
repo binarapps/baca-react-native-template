@@ -1,5 +1,6 @@
 import { Loader, Center } from '@baca/design-system/components'
 import { useCachedResources, useNavigationTheme } from '@baca/hooks'
+import { useCheckForAppUpdate } from '@baca/hooks/useCheckForAppUpdate'
 import { isSignedInAtom } from '@baca/store/auth'
 import * as SplashScreen from 'expo-splash-screen'
 import { useAtomValue } from 'jotai'
@@ -11,19 +12,18 @@ SplashScreen.preventAutoHideAsync()
 
 export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
   const { navigationTheme } = useNavigationTheme()
-
   const isLoadingComplete = useCachedResources()
-
   const isSignedIn = useAtomValue(isSignedInAtom)
-  const [isLayoutReady, setIsLayoutReady] = useState<boolean>(false)
 
+  const [isLayoutReady, setIsLayoutReady] = useState<boolean>(false)
   const [isSplashHidden, setIsSplashHidden] = useState<boolean>(false)
+  const isUpdateLoading = useCheckForAppUpdate()
 
   const onLayout = useCallback(() => {
     setIsLayoutReady(true)
   }, [])
 
-  const isLoading = !isLoadingComplete || isSignedIn === null || !isLayoutReady
+  const isLoading = !isLoadingComplete || isSignedIn === null || !isLayoutReady || isUpdateLoading
 
   useEffect(() => {
     const hideSplashScreen = () => {

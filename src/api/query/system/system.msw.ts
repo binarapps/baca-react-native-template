@@ -6,17 +6,38 @@
  * API documentation for the starter-kit project in NestJS by BinarApps. The API allows management of users, sessions and offers various functions for logged in users. Contains examples of authentication, authorization, and CRUD for selected resources.
  * OpenAPI spec version: 1.0
  */
+import { faker } from '@faker-js/faker'
 import { HttpResponse, delay, http } from 'msw'
 
-export const getSystemControllerCheckForAppUpdateMockHandler = () => {
+import type { AppVersionStatusEntity } from '../../types'
+
+export const getSystemControllerCheckForAppUpdateResponseMock = (
+  overrideResponse: any = {}
+): AppVersionStatusEntity => ({
+  appId: faker.word.sample(),
+  currentVersionReleaseDate: `${faker.date.past().toISOString().split('.')[0]}Z`,
+  latestVersion: faker.word.sample(),
+  minimumVersion: faker.word.sample(),
+  updateRequired: faker.datatype.boolean(),
+  ...overrideResponse,
+})
+
+export const getSystemControllerCheckForAppUpdateMockHandler = (
+  overrideResponse?: AppVersionStatusEntity
+) => {
   return http.post('*/api/v1/system/app-updates/check', async () => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    return new HttpResponse(
+      JSON.stringify(
+        overrideResponse ? overrideResponse : getSystemControllerCheckForAppUpdateResponseMock()
+      ),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
   })
 }
 export const getSystemMock = () => [getSystemControllerCheckForAppUpdateMockHandler()]

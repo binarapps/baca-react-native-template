@@ -116,9 +116,9 @@
   "update": {
     "alert_message": "You will have to restart the application to have better experiences while using it",
     "alert_title": "New version available",
-    "restart": "Restart"
+    "restart": "Restart",
+    "update_now": "Update now"
   },
-
   "application_info_screen": {
     "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
   },
@@ -143,7 +143,6 @@
       "tertiary_gray": "Button tertiary gray",
       "with_icons": "Button with icons"
     },
-
     "loader_variants": {
       "bricks": "Bricks loader",
       "bubbles": "Bubbles loader",

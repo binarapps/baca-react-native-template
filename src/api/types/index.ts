@@ -7,6 +7,7 @@
  * OpenAPI spec version: 1.0
  */
 
+export * from './appVersionStatusEntity'
 export * from './articleEntity'
 export * from './articlesControllerFindAllParams'
 export * from './articlesControllerFindDraftsParams'
