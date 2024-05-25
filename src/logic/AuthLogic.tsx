@@ -11,7 +11,8 @@ export const AuthLogic: FC = () => {
     const bootstrap = async () => {
       // TODO: This should be moved to backend calls, in this bootstrap function we should fetch user info and not token
       const token = await getToken()
-      setIsSignedIn(!!token)
+
+      setIsSignedIn(!!token?.accessToken)
     }
 
     bootstrap()
