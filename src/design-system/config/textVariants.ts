@@ -28,19 +28,25 @@ export const textVariants: {
   LgBold: { fontWeight: 'Bold', fontSize: 'lg' },
   LgMedium: { fontWeight: 'Medium', fontSize: 'lg' },
   LgRegular: { fontWeight: 'Regular', fontSize: 'lg' },
-  LgSemibold: { fontWeight: 'Semibold', fontSize: 'lg' },
+  // FIXME: Investigate why Semibold is crashing
+  // Semibold is crashing for some reason
+  // https://github.com/expo/expo/issues/29030
+  LgSemibold: { fontWeight: 'Bold', fontSize: 'lg' },
   MdBold: { fontWeight: 'Bold', fontSize: 'md' },
   MdMedium: { fontWeight: 'Medium', fontSize: 'md' },
   MdRegular: { fontWeight: 'Regular', fontSize: 'md' },
-  MdSemibold: { fontWeight: 'Semibold', fontSize: 'md' },
+  // FIXME: Investigate why Semibold is crashing
+  MdSemibold: { fontWeight: 'Bold', fontSize: 'md' },
   SmBold: { fontWeight: 'Bold', fontSize: 'sm' },
   SmMedium: { fontWeight: 'Medium', fontSize: 'sm' },
   SmRegular: { fontWeight: 'Regular', fontSize: 'sm' },
-  SmSemibold: { fontWeight: 'Semibold', fontSize: 'sm' },
+  // FIXME: Investigate why Semibold is crashing
+  SmSemibold: { fontWeight: 'Bold', fontSize: 'sm' },
   XlBold: { fontWeight: 'Bold', fontSize: 'xl' },
   XlMedium: { fontWeight: 'Medium', fontSize: 'xl' },
   XlRegular: { fontWeight: 'Regular', fontSize: 'xl' },
-  XlSemibold: { fontWeight: 'Semibold', fontSize: 'xl' },
+  // FIXME: Investigate why Semibold is crashing
+  XlSemibold: { fontWeight: 'Bold', fontSize: 'xl' },
   XsBold: { fontWeight: 'Bold', fontSize: 'xs' },
   XsMedium: { fontWeight: 'Medium', fontSize: 'xs' },
   XsRegular: { fontWeight: 'Regular', fontSize: 'xs' },
