@@ -1,5 +1,6 @@
 import { useAuthControllerDelete } from '@baca/api/query/auth/auth'
 import { ControlledField } from '@baca/components'
+import { ProfileHeader } from '@baca/components/screens/profile/ProfileHeader'
 import { isWeb } from '@baca/constants'
 import { Button, Text, Spacer, Row, Box, useBottomSheet } from '@baca/design-system'
 import {
@@ -76,11 +77,7 @@ export const ProfileScreen = () => {
 
   return (
     <Box p={4}>
-      <Text.LgBold color="text.primary">{t('profile_screen.profile')}</Text.LgBold>
-      <Spacer y={1} />
-      <Text.MdRegular color="text.secondary">
-        {t('profile_screen.update_your_details')}
-      </Text.MdRegular>
+      <ProfileHeader />
       <Spacer y={4} />
       <Box borderColor="border.secondary" borderTopWidth={1} py={6}>
         <Box
@@ -132,7 +129,7 @@ export const ProfileScreen = () => {
           mb={isWeb ? 10 : 0}
           maxW={800}
         >
-          <Text.SmBold flex={1}>{t('form.labels.last_name')}</Text.SmBold>
+          <Text.SmBold flex={1}>{t('form.labels.email')}</Text.SmBold>
           <Box flex={isWeb ? 2 : 0}>
             <ControlledField.Input
               {...{ control, errors }}
@@ -169,7 +166,6 @@ export const ProfileScreen = () => {
           </Button>
         </Row>
       </Box>
-
       <Box borderColor="border.secondary" borderTopWidth={1} my={4} py={6} alignItems="flex-start">
         <Button
           leftIconName="delete-bin-line"
