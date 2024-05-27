@@ -1,15 +1,8 @@
 import { useAuthControllerDelete } from '@baca/api/query/auth/auth'
-import { ControlledField } from '@baca/components'
+import { ProfileDetailsForm } from '@baca/components/screens/profile/ProfileDetailsForm'
 import { ProfileHeader } from '@baca/components/screens/profile/ProfileHeader'
-import { isWeb } from '@baca/constants'
 import { Button, Text, Spacer, Row, Box, useBottomSheet } from '@baca/design-system'
-import {
-  useCallback,
-  useTranslation,
-  useUpdateProfileForm,
-  useScreenOptions,
-  useWeb,
-} from '@baca/hooks'
+import { useCallback, useTranslation, useUpdateProfileForm, useScreenOptions } from '@baca/hooks'
 import { signOut } from '@baca/store/auth'
 import { showErrorToast } from '@baca/utils'
 import { useRouter } from 'expo-router'
@@ -17,9 +10,8 @@ import { useRouter } from 'expo-router'
 export const ProfileScreen = () => {
   const { t } = useTranslation()
   const { back } = useRouter()
-  const { shouldApplyMobileStyles } = useWeb()
   const { mutateAsync: removeUserAccount, isLoading } = useAuthControllerDelete()
-  const { control, errors, isSubmitting, setFocus, submit } = useUpdateProfileForm()
+  const { isSubmitting, submit } = useUpdateProfileForm()
 
   const { bottomSheetComponentRenderFunction, closeBottomSheet, presentBottomSheet } =
     useBottomSheet({
@@ -73,99 +65,30 @@ export const ProfileScreen = () => {
     title: t('navigation.screen_titles.profile'),
   })
 
-  const focusLastNameInput = useCallback(() => setFocus('lastName'), [setFocus])
-
   return (
     <Box p={4}>
       <ProfileHeader />
       <Spacer y={4} />
-      <Box borderColor="border.secondary" borderTopWidth={1} py={6}>
-        <Box
-          justifyContent="space-between"
-          flexDirection={isWeb && !shouldApplyMobileStyles ? 'row' : 'column'}
-          mb={isWeb ? 10 : 0}
-          maxW={800}
+      <ProfileDetailsForm />
+      <Row maxW={800} justifyContent="flex-end">
+        <Button.SecondaryColor
+          disabled={isSubmitting}
+          loading={isSubmitting}
+          onPress={back}
+          testID="backProfileButton"
         >
-          <Text.SmBold flex={1}>{t('form.labels.first_name')}</Text.SmBold>
-          <Box flex={isWeb ? 2 : 0}>
-            <ControlledField.Input
-              {...{ control, errors }}
-              autoCapitalize="none"
-              inputMode="text"
-              name="firstName"
-              onFocus={focusLastNameInput}
-              placeholder={t('form.placeholders.email')}
-              testID="emailInput"
-              {...(!isWeb && {
-                label: t('form.labels.first_name'),
-              })}
-            />
-          </Box>
-        </Box>
-        <Box
-          justifyContent="space-between"
-          flexDirection={isWeb && !shouldApplyMobileStyles ? 'row' : 'column'}
-          mb={isWeb ? 10 : 0}
-          maxW={800}
+          {t('common.cancel')}
+        </Button.SecondaryColor>
+        <Spacer x="4" />
+        <Button
+          disabled={isSubmitting}
+          loading={isSubmitting}
+          onPress={submit}
+          testID="saveProfileUpdateButton"
         >
-          <Text.SmBold flex={1}>{t('form.labels.last_name')}</Text.SmBold>
-          <Box flex={isWeb ? 2 : 0}>
-            <ControlledField.Input
-              {...{ control, errors }}
-              autoCapitalize="none"
-              inputMode="text"
-              name="lastName"
-              placeholder={t('form.placeholders.last_name')}
-              testID="lastNameInput"
-              {...(!isWeb && {
-                label: t('form.labels.last_name'),
-              })}
-            />
-          </Box>
-        </Box>
-        <Box
-          justifyContent="space-between"
-          flexDirection={isWeb && !shouldApplyMobileStyles ? 'row' : 'column'}
-          mb={isWeb ? 10 : 0}
-          maxW={800}
-        >
-          <Text.SmBold flex={1}>{t('form.labels.email')}</Text.SmBold>
-          <Box flex={isWeb ? 2 : 0}>
-            <ControlledField.Input
-              {...{ control, errors }}
-              autoCapitalize="none"
-              inputMode="email"
-              isDisabled
-              name="email"
-              onSubmitEditing={submit}
-              placeholder={t('form.placeholders.email')}
-              testID="emailInput"
-              {...(!isWeb && {
-                label: t('form.labels.email'),
-              })}
-            />
-          </Box>
-        </Box>
-        <Row maxW={800} justifyContent="flex-end">
-          <Button.SecondaryColor
-            disabled={isSubmitting}
-            loading={isSubmitting}
-            onPress={back}
-            testID="backProfileButton"
-          >
-            {t('common.cancel')}
-          </Button.SecondaryColor>
-          <Spacer x="4" />
-          <Button
-            disabled={isSubmitting}
-            loading={isSubmitting}
-            onPress={submit}
-            testID="saveProfileUpdateButton"
-          >
-            {t('common.save')}
-          </Button>
-        </Row>
-      </Box>
+          {t('common.save')}
+        </Button>
+      </Row>
       <Box borderColor="border.secondary" borderTopWidth={1} my={4} py={6} alignItems="flex-start">
         <Button
           leftIconName="delete-bin-line"
