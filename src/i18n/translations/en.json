@@ -27,6 +27,7 @@
     "go_back": "Go back",
     "remove": "Remove",
     "save": "Save",
+    "change": "Change",
     "search": "Search",
     "try_again_later": "Please try again later",
     "try_again": "Try again"
@@ -56,7 +57,9 @@
       "email": "E-mail address",
       "first_name": "First name",
       "last_name": "Last name",
-      "password": "Password"
+      "password": "Password",
+      "old_password": "Old password",
+      "new_password": "New password"
     },
     "placeholders": {
       "confirm_password": "Confirm password",
@@ -64,7 +67,9 @@
       "email": "Enter your email",
       "first_name": "Enter your first name",
       "last_name": "Enter your last name",
-      "password": "Password"
+      "password": "Password",
+      "old_password": "Enter your current password",
+      "new_password": "Enter the new password"
     },
     "select": {},
     "validation": {
