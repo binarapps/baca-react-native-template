@@ -17,24 +17,24 @@ export const ProfileDetailsForm = () => {
     <Box>
       <Box borderColor="border.secondary" borderTopWidth={1} py={6}>
         <ProfileControlledInput
-          labelTx="form.labels.first_name"
+          label={t('form.labels.first_name')}
           name="firstName"
-          placeholderTx="form.placeholders.first_name"
+          placeholder={t('form.placeholders.first_name')}
           control={control}
           errors={errors}
           onFocus={focusLastNameInput}
         />
         <ProfileControlledInput
-          labelTx="form.labels.last_name"
+          label={t('form.labels.last_name')}
           name="lastName"
-          placeholderTx="form.placeholders.last_name"
+          placeholder={t('form.placeholders.last_name')}
           control={control}
           errors={errors}
         />
         <ProfileControlledInput
-          labelTx="form.labels.email"
+          label={t('form.labels.email')}
           name="email"
-          placeholderTx="form.placeholders.email"
+          placeholder={t('form.placeholders.email')}
           control={control}
           errors={errors}
           isDisabled
