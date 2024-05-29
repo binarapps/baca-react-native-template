@@ -1,6 +1,6 @@
 import { useAuthControllerDelete } from '@baca/api/query/auth/auth'
 import { Button, Text, Spacer, Row, Box, useBottomSheet } from '@baca/design-system'
-import { useCallback, useTranslation, useScreenOptions } from '@baca/hooks'
+import { useCallback, useTranslation } from '@baca/hooks'
 import { signOut } from '@baca/store/auth'
 import { showErrorToast } from '@baca/utils'
 
@@ -55,10 +55,6 @@ export const ProfileDeleteAccountButton = () => {
       bgColor: 'bg.error.secondary',
     }
   )
-
-  useScreenOptions({
-    title: t('navigation.screen_titles.profile'),
-  })
 
   return (
     <Box>
