@@ -1,28 +1,22 @@
 import { Modal } from '@baca/components/Modal'
 import { useBoolean, useWeb } from '@baca/hooks'
-import { BottomSheetModal } from '@gorhom/bottom-sheet'
-import { RefObject, useCallback, useImperativeHandle } from 'react'
+import { useCallback, useImperativeHandle } from 'react'
 import { ScrollView } from 'react-native'
 
 import { BottomSheetHeader } from './BottomSheetHeader'
+import { BottomSheetProps } from './types'
 import { Box } from '../components/Box'
-
-type Props = {
-  bottomSheetRef: RefObject<BottomSheetModal>
-  children: JSX.Element | JSX.Element[]
-  title?: string
-  showCloseButton?: boolean
-  numberOfTitleLines?: number
-}
 
 export const BottomSheetScrollView = ScrollView
 export const BottomSheet = ({
   children,
+  iconConfig,
+  isDivider = true,
   title,
   showCloseButton = true,
   numberOfTitleLines,
   bottomSheetRef,
-}: Props) => {
+}: BottomSheetProps) => {
   const [isOpen, setIsOpen] = useBoolean(false)
   const { webContentWidth } = useWeb()
 
@@ -63,8 +57,9 @@ export const BottomSheet = ({
           numberOfLines={numberOfTitleLines}
           showCloseButton={showCloseButton}
           onClose={setIsOpen.off}
+          iconConfig={iconConfig}
         />
-        <Box pb="1px" bg="bg.brand.primary" />
+        {isDivider && <Box pb="1px" bg="bg.brand.primary" />}
         {children}
       </Box>
     </Modal>

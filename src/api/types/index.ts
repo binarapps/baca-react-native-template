@@ -7,6 +7,7 @@
  * OpenAPI spec version: 1.0
  */
 
+export * from './appVersionStatusEntity'
 export * from './articleEntity'
 export * from './articlesControllerFindAllParams'
 export * from './articlesControllerFindDraftsParams'
@@ -24,6 +25,8 @@ export * from './authResendVerificationEmailDto'
 export * from './authResetPasswordDto'
 export * from './authUpdateDto'
 export * from './authorPublicDto'
+export * from './checkUpdateDto'
+export * from './checkUpdateDtoOs'
 export * from './createArticleDto'
 export * from './createUserDto'
 export * from './errorEntity'

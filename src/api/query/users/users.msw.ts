@@ -193,7 +193,7 @@ export const getUsersControllerRemoveResponseMock = (overrideResponse: any = {})
 })
 
 export const getUsersControllerCreateMockHandler = (overrideResponse?: UserEntity) => {
-  return http.post('*/api/v1/users', async () => {
+  return http.post('/api/v1/users', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerCreateResponseMock()),
@@ -208,7 +208,7 @@ export const getUsersControllerCreateMockHandler = (overrideResponse?: UserEntit
 }
 
 export const getUsersControllerFindAllMockHandler = (overrideResponse?: UserEntity[]) => {
-  return http.get('*/api/v1/users', async () => {
+  return http.get('/api/v1/users', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerFindAllResponseMock()),
@@ -223,7 +223,7 @@ export const getUsersControllerFindAllMockHandler = (overrideResponse?: UserEnti
 }
 
 export const getUsersControllerFindOneMockHandler = (overrideResponse?: UserEntity) => {
-  return http.get('*/api/v1/users/:id', async () => {
+  return http.get('/api/v1/users/:id', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerFindOneResponseMock()),
@@ -238,7 +238,7 @@ export const getUsersControllerFindOneMockHandler = (overrideResponse?: UserEnti
 }
 
 export const getUsersControllerUpdateMockHandler = (overrideResponse?: UserEntity) => {
-  return http.patch('*/api/v1/users/:id', async () => {
+  return http.patch('/api/v1/users/:id', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerUpdateResponseMock()),
@@ -253,7 +253,7 @@ export const getUsersControllerUpdateMockHandler = (overrideResponse?: UserEntit
 }
 
 export const getUsersControllerRemoveMockHandler = (overrideResponse?: UserEntity) => {
-  return http.delete('*/api/v1/users/:id', async () => {
+  return http.delete('/api/v1/users/:id', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerRemoveResponseMock()),

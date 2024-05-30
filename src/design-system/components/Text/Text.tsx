@@ -54,7 +54,7 @@ const RawText = memo(
       {
         bold,
         capitalize,
-        color = 'text.brand.primary',
+        color,
         italic,
         letterSpacing,
         lineHeight,
@@ -136,9 +136,7 @@ const RawText = memo(
 
       const textColor = useMemo<TextStyle>(
         () => ({
-          color: color
-            ? getColorValue({ color, colors: theme.colors })
-            : theme.colors.text.brand.primary,
+          color: color ? getColorValue({ color, colors: theme.colors }) : theme.colors.text.primary,
         }),
         [theme, color]
       )

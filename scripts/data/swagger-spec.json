@@ -10,28 +10,42 @@
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/CreateArticleDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateArticleDto"
+              }
+            }
           }
         },
         "responses": {
           "201": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ArticleEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Validation Error - One or more fields did not pass validation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -42,8 +56,22 @@
         "summary": "Find All Articles",
         "description": "Retrieves a list of all articles with pagination support.",
         "parameters": [
-          { "name": "page", "required": true, "in": "query", "schema": { "type": "number" } },
-          { "name": "pageSize", "required": true, "in": "query", "schema": { "type": "number" } }
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -52,7 +80,9 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": { "$ref": "#/components/schemas/ArticleEntity" }
+                  "items": {
+                    "$ref": "#/components/schemas/ArticleEntity"
+                  }
                 }
               }
             }
@@ -60,7 +90,11 @@
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -73,8 +107,22 @@
         "summary": "Find Draft Articles",
         "description": "Retrieves a list of draft articles with pagination support.",
         "parameters": [
-          { "name": "page", "required": true, "in": "query", "schema": { "type": "number" } },
-          { "name": "pageSize", "required": true, "in": "query", "schema": { "type": "number" } }
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -83,7 +131,9 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": { "$ref": "#/components/schemas/ArticleEntity" }
+                  "items": {
+                    "$ref": "#/components/schemas/ArticleEntity"
+                  }
                 }
               }
             }
@@ -91,7 +141,11 @@
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -104,19 +158,34 @@
         "summary": "Find Article by ID",
         "description": "Retrieves an article by its unique identifier.",
         "parameters": [
-          { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
         ],
         "responses": {
           "200": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ArticleEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -127,33 +196,54 @@
         "summary": "Update Article",
         "description": "Updates an article with the provided details.",
         "parameters": [
-          { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateArticleDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateArticleDto"
+              }
+            }
           }
         },
         "responses": {
           "201": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ArticleEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Validation Error - One or more fields did not pass validation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -164,14 +254,27 @@
         "summary": "Remove Article",
         "description": "Deletes an article by its unique identifier.",
         "parameters": [
-          { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
         ],
         "responses": {
-          "204": { "description": "" },
+          "204": {
+            "description": ""
+          },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -187,64 +290,20 @@
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/CreateUserDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            }
           }
         },
         "responses": {
           "201": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
-            }
-          },
-          "422": {
-            "description": "Validation Error - One or more fields did not pass validation",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
-            }
-          }
-        },
-        "tags": ["users"],
-        "security": [{ "bearer": [] }]
-      },
-      "get": {
-        "operationId": "UsersController_findAll",
-        "summary": "Find All Users",
-        "description": "Retrieves a list of all users.",
-        "parameters": [
-          { "name": "page", "required": true, "in": "query", "schema": { "type": "number" } },
-          { "name": "pageSize", "required": true, "in": "query", "schema": { "type": "number" } }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": { "$ref": "#/components/schemas/UserEntity" }
+                  "$ref": "#/components/schemas/UserEntity"
                 }
               }
             }
@@ -253,25 +312,123 @@
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "403": {
             "description": "Forbidden",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error - One or more fields did not pass validation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["users"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "UsersController_findAll",
+        "summary": "Find All Users",
+        "description": "Retrieves a list of all users.",
+        "parameters": [
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserEntity"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["users"],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/users/{id}": {
@@ -280,120 +437,199 @@
         "summary": "Find User by ID",
         "description": "Retrieves a user by its ID.",
         "parameters": [
-          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
             }
           },
           "401": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "403": {
             "description": "Forbidden",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["users"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       },
       "patch": {
         "operationId": "UsersController_update",
         "summary": "Update User",
         "description": "Updates a user with the provided details.",
         "parameters": [
-          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateUserDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserDto"
+              }
+            }
           }
         },
         "responses": {
           "201": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
             }
           },
           "401": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "403": {
             "description": "Forbidden",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["users"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       },
       "delete": {
         "operationId": "UsersController_remove",
         "summary": "Remove User",
         "description": "Deletes a user by their unique identifier.",
         "parameters": [
-          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
             }
           },
           "401": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "403": {
             "description": "Forbidden",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["users"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/auth/email/login": {
@@ -405,35 +641,51 @@
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/AuthEmailLoginDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthEmailLoginDto"
+              }
+            }
           }
         },
         "responses": {
           "201": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/AuthEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthEntity"
+                }
+              }
             }
           },
           "401": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "403": {
             "description": "Please activate your account before proceeding",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Validation Error - One or more fields did not pass validation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
               }
             }
           },
@@ -441,14 +693,20 @@
             "description": "ThrottlerException: Too Many Requests",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorTooManyRequestsEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTooManyRequestsEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -466,14 +724,18 @@
             "in": "header",
             "description": "Specifies the preferred language for API responses. Supported values are: en (English), de (German), pl (Polish)",
             "required": false,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/AuthRegisterLoginDto" }
+              "schema": {
+                "$ref": "#/components/schemas/AuthRegisterLoginDto"
+              }
             }
           }
         },
@@ -481,15 +743,23 @@
           "201": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
             }
           },
-          "400": { "description": "Bad Request - Missing or invalid registration details" },
+          "400": {
+            "description": "Bad Request - Missing or invalid registration details"
+          },
           "422": {
             "description": "Validation Error - One or more fields did not pass validation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
               }
             }
           },
@@ -497,14 +767,20 @@
             "description": "ThrottlerException: Too Many Requests",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorTooManyRequestsEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTooManyRequestsEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -522,22 +798,32 @@
             "in": "header",
             "description": "Specifies the preferred language for API responses. Supported values are: en (English), de (German), pl (Polish)",
             "required": false,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/AuthConfirmEmailDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthConfirmEmailDto"
+              }
+            }
           }
         },
         "responses": {
-          "400": { "description": "Bad Request - Invalid or expired hash code" },
+          "400": {
+            "description": "Bad Request - Invalid or expired hash code"
+          },
           "422": {
             "description": "Validation Error - One or more fields did not pass validation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
               }
             }
           },
@@ -545,14 +831,20 @@
             "description": "ThrottlerException: Too Many Requests",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorTooManyRequestsEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTooManyRequestsEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -570,14 +862,18 @@
             "in": "header",
             "description": "Specifies the preferred language for API responses. Supported values are: en (English), de (German), pl (Polish)",
             "required": false,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/AuthResendVerificationEmailDto" }
+              "schema": {
+                "$ref": "#/components/schemas/AuthResendVerificationEmailDto"
+              }
             }
           }
         },
@@ -585,14 +881,20 @@
           "400": {
             "description": "Bad Request - Invalid email format",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Validation Error - One or more fields did not pass validation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
               }
             }
           },
@@ -600,14 +902,20 @@
             "description": "ThrottlerException: Too Many Requests",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorTooManyRequestsEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTooManyRequestsEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -625,14 +933,18 @@
             "in": "header",
             "description": "Specifies the preferred language for API responses. Supported values are: en (English), de (German), pl (Polish)",
             "required": false,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/AuthForgotPasswordDto" }
+              "schema": {
+                "$ref": "#/components/schemas/AuthForgotPasswordDto"
+              }
             }
           }
         },
@@ -640,14 +952,20 @@
           "400": {
             "description": "Bad Request - Invalid email format",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Validation Error - One or more fields did not pass validation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
               }
             }
           },
@@ -655,14 +973,20 @@
             "description": "ThrottlerException: Too Many Requests",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorTooManyRequestsEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTooManyRequestsEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -679,7 +1003,9 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/AuthResetPasswordDto" }
+              "schema": {
+                "$ref": "#/components/schemas/AuthResetPasswordDto"
+              }
             }
           }
         },
@@ -687,14 +1013,20 @@
           "400": {
             "description": "Bad Request - Invalid or expired hash code",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Validation Error - One or more fields did not pass validation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
               }
             }
           },
@@ -702,14 +1034,20 @@
             "description": "ThrottlerException: Too Many Requests",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorTooManyRequestsEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTooManyRequestsEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -727,27 +1065,39 @@
             "in": "header",
             "description": "Specifies the preferred language for API responses. Supported values are: en (English), de (German), pl (Polish)",
             "required": false,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/AuthEmailChangeDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthEmailChangeDto"
+              }
+            }
           }
         },
         "responses": {
           "400": {
             "description": "Bad Request - Invalid or expired hash code",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Validation Error - One or more fields did not pass validation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorValidationEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
               }
             }
           },
@@ -755,19 +1105,29 @@
             "description": "ThrottlerException: Too Many Requests",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorTooManyRequestsEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTooManyRequestsEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["auth"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/auth/email/change-confirm": {
@@ -781,14 +1141,18 @@
             "in": "header",
             "description": "Specifies the preferred language for API responses. Supported values are: en (English), de (German), pl (Polish)",
             "required": false,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/AuthConfirmEmailChangeDto" }
+              "schema": {
+                "$ref": "#/components/schemas/AuthConfirmEmailChangeDto"
+              }
             }
           }
         },
@@ -796,26 +1160,40 @@
           "400": {
             "description": "Bad Request - Invalid or expired hash code",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "429": {
             "description": "ThrottlerException: Too Many Requests",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorTooManyRequestsEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTooManyRequestsEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["auth"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/auth/me": {
@@ -828,26 +1206,40 @@
           "201": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/UserEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
             }
           },
           "401": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["auth"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       },
       "patch": {
         "operationId": "AuthController_update",
@@ -857,7 +1249,11 @@
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/AuthUpdateDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthUpdateDto"
+              }
+            }
           }
         },
         "responses": {
@@ -865,26 +1261,42 @@
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
-          "404": { "description": "User not found" },
+          "404": {
+            "description": "User not found"
+          },
           "422": {
             "description": "Missing old password / Incorrect old password / Missing password",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["auth"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       },
       "delete": {
         "operationId": "AuthController_delete",
@@ -896,19 +1308,29 @@
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["auth"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/auth/refresh": {
@@ -921,26 +1343,40 @@
           "201": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/RefreshEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshEntity"
+                }
+              }
             }
           },
           "401": {
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["auth"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/auth/logout": {
@@ -954,19 +1390,29 @@
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["auth"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/auth/logout/all": {
@@ -980,19 +1426,29 @@
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorUnauthorizedEntity" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorUnauthorizedEntity"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
         "tags": ["auth"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/files/upload": {
@@ -1008,8 +1464,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "file": { "type": "string", "format": "binary" },
-                  "category": { "type": "string" }
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "category": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -1019,14 +1480,26 @@
           "201": {
             "description": "",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/FileEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileEntity"
+                }
+              }
             }
           },
-          "422": { "description": "Unprocessable Entity - No file selected or missing user ID." },
-          "500": { "description": "Internal server error" }
+          "422": {
+            "description": "Unprocessable Entity - No file selected or missing user ID."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
         },
         "tags": ["files"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/files/{fileName}": {
@@ -1035,32 +1508,58 @@
         "summary": "Download File",
         "description": "Downloads the specified file.",
         "parameters": [
-          { "name": "fileName", "required": true, "in": "path", "schema": { "type": "string" } }
+          {
+            "name": "fileName",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "403": {
             "description": "Forbidden - You do not have permission to view this file or file does not exist."
           },
-          "500": { "description": "Internal server error" }
+          "500": {
+            "description": "Internal server error"
+          }
         },
         "tags": ["files"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       },
       "delete": {
         "operationId": "FilesController_deleteFile",
         "summary": "Delete File",
         "description": "Deletes the specified file.",
         "parameters": [
-          { "name": "fileName", "required": true, "in": "path", "schema": { "type": "string" } }
+          {
+            "name": "fileName",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "403": {
             "description": "Forbidden - You do not have permission to delete this file or file does not exist."
           },
-          "500": { "description": "Internal server error" }
+          "500": {
+            "description": "Internal server error"
+          }
         },
         "tags": ["files"],
-        "security": [{ "bearer": [] }]
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
       }
     },
     "/api/v1/auth/google/login": {
@@ -1072,32 +1571,52 @@
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/AuthGoogleLoginDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthGoogleLoginDto"
+              }
+            }
           }
         },
         "responses": {
           "201": {
             "description": "Successfully logged in with Google",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/AuthEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthEntity"
+                }
+              }
             }
           },
           "400": {
             "description": "Bad Request - Error during Google token verification or processing",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Unprocessable Entity - Invalid or expired Google token",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -1114,7 +1633,9 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/AuthFacebookLoginDto" }
+              "schema": {
+                "$ref": "#/components/schemas/AuthFacebookLoginDto"
+              }
             }
           }
         },
@@ -1122,25 +1643,41 @@
           "201": {
             "description": "Successfully logged in with Facebook",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/AuthEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthEntity"
+                }
+              }
             }
           },
           "400": {
             "description": "Bad Request - Error during Facebook token verification or processing",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Unprocessable Entity - Invalid or expired Facebook token",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -1156,32 +1693,52 @@
         "requestBody": {
           "required": true,
           "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/AuthAppleLoginDto" } }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthAppleLoginDto"
+              }
+            }
           }
         },
         "responses": {
           "201": {
             "description": "Successfully logged in with Apple",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/AuthEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthEntity"
+                }
+              }
             }
           },
           "400": {
             "description": "Bad Request - Error during Apple token verification or processing",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "422": {
             "description": "Unprocessable Entity - Invalid or expired Apple token",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorServerEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
             }
           }
         },
@@ -1198,18 +1755,90 @@
           "200": {
             "description": "The health check result.",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/HealthEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthEntity"
+                }
+              }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorEntity" } }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEntity"
+                }
+              }
             }
           },
-          "503": { "description": "One or more health checks failed" }
+          "503": {
+            "description": "One or more health checks failed"
+          }
         },
         "tags": ["health"]
+      }
+    },
+    "/api/v1/system/app-updates/check": {
+      "post": {
+        "operationId": "SystemController_checkForAppUpdate",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Details about application from AppStore or PlayStore based on provided os",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppVersionStatusEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Missing or invalid app details"
+          },
+          "422": {
+            "description": "Validation Error - One or more fields did not pass validation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorValidationEntity"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "ThrottlerException: Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTooManyRequestsEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorServerEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["system"]
       }
     }
   },
@@ -1226,12 +1855,22 @@
   "tags": [],
   "servers": [],
   "components": {
-    "securitySchemes": { "bearer": { "scheme": "bearer", "bearerFormat": "JWT", "type": "http" } },
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
     "schemas": {
       "ErrorServerEntity": {
         "type": "object",
         "properties": {
-          "error": { "type": "string", "description": "Type of error", "example": "Server Error" },
+          "error": {
+            "type": "string",
+            "description": "Type of error",
+            "example": "Server Error"
+          },
           "statusCode": {
             "type": "number",
             "description": "HTTP status code indicating the error",
@@ -1243,35 +1882,75 @@
       "CreateArticleDto": {
         "type": "object",
         "properties": {
-          "title": { "type": "string" },
-          "description": { "type": "string" },
-          "body": { "type": "string" },
-          "published": { "type": "boolean", "default": false }
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean",
+            "default": false
+          }
         },
         "required": ["title", "body"]
       },
       "AuthorPublicDto": {
         "type": "object",
         "properties": {
-          "email": { "type": "string" },
-          "firstName": { "type": "string" },
-          "lastName": { "type": "string" }
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          }
         },
         "required": ["email", "firstName", "lastName"]
       },
       "ArticleEntity": {
         "type": "object",
         "properties": {
-          "id": { "type": "number" },
-          "title": { "type": "string" },
-          "description": { "type": "string", "nullable": true },
-          "body": { "type": "string" },
-          "published": { "type": "boolean" },
-          "createdAt": { "format": "date-time", "type": "string" },
-          "updatedAt": { "format": "date-time", "type": "string" },
-          "deletedAt": { "format": "date-time", "type": "string" },
-          "authorId": { "type": "string", "nullable": true },
-          "author": { "$ref": "#/components/schemas/AuthorPublicDto" }
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "body": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "deletedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "authorId": {
+            "type": "string",
+            "nullable": true
+          },
+          "author": {
+            "$ref": "#/components/schemas/AuthorPublicDto"
+          }
         },
         "required": [
           "id",
@@ -1295,8 +1974,12 @@
           "errors": {
             "type": "object",
             "description": "Object containing field-specific validation errors",
-            "example": { "email": "Invalid email format." },
-            "additionalProperties": { "type": "string" }
+            "example": {
+              "email": "Invalid email format."
+            },
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "required": ["statusCode", "errors"]
@@ -1304,16 +1987,29 @@
       "UpdateArticleDto": {
         "type": "object",
         "properties": {
-          "title": { "type": "string" },
-          "description": { "type": "string" },
-          "body": { "type": "string" },
-          "published": { "type": "boolean", "default": false }
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean",
+            "default": false
+          }
         }
       },
       "ErrorUnauthorizedEntity": {
         "type": "object",
         "properties": {
-          "error": { "type": "string", "description": "Type of error", "example": "Unauthorized" },
+          "error": {
+            "type": "string",
+            "description": "Type of error",
+            "example": "Unauthorized"
+          },
           "statusCode": {
             "type": "number",
             "description": "HTTP status code indicating the error",
@@ -1330,7 +2026,11 @@
             "description": "Message describing the error",
             "example": "An error occurred while processing your request"
           },
-          "error": { "type": "string", "description": "Type of error", "example": "Forbidden" },
+          "error": {
+            "type": "string",
+            "description": "Type of error",
+            "example": "Forbidden"
+          },
           "statusCode": {
             "type": "number",
             "description": "HTTP status code indicating the error",
@@ -1391,11 +2091,19 @@
           },
           "role": {
             "description": "The role assigned to the user.",
-            "allOf": [{ "$ref": "#/components/schemas/RoleDto" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RoleDto"
+              }
+            ]
           },
           "status": {
             "description": "The status of the user account.",
-            "allOf": [{ "$ref": "#/components/schemas/StatusDto" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/StatusDto"
+              }
+            ]
           }
         },
         "required": ["email", "password", "firstName", "lastName", "locale", "role", "status"]
@@ -1482,7 +2190,10 @@
       "UserEntity": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "example": "a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n8" },
+          "id": {
+            "type": "string",
+            "example": "a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n8"
+          },
           "createdAt": {
             "format": "date-time",
             "type": "string",
@@ -1493,22 +2204,60 @@
             "type": "string",
             "example": "2022-02-01T00:00:00.000Z"
           },
-          "deletedAt": { "format": "date-time", "type": "string", "example": null },
-          "email": { "type": "string", "example": "user@example.com" },
-          "firstName": { "type": "string", "example": "John" },
-          "lastName": { "type": "string", "example": "Doe" },
-          "provider": { "type": "string", "example": "google" },
-          "socialId": { "type": "string", "example": "102209777480561953757" },
-          "locale": { "type": "string", "example": "en-US" },
+          "deletedAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": null
+          },
+          "email": {
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "provider": {
+            "type": "string",
+            "example": "google"
+          },
+          "socialId": {
+            "type": "string",
+            "example": "102209777480561953757"
+          },
+          "locale": {
+            "type": "string",
+            "example": "en-US"
+          },
           "role": {
-            "example": { "id": 2, "name": "USER" },
-            "allOf": [{ "$ref": "#/components/schemas/Role" }]
+            "example": {
+              "id": 2,
+              "name": "USER"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Role"
+              }
+            ]
           },
           "status": {
-            "example": { "id": 1, "name": "ACTIVE" },
-            "allOf": [{ "$ref": "#/components/schemas/Status" }]
+            "example": {
+              "id": 1,
+              "name": "ACTIVE"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Status"
+              }
+            ]
           },
-          "consent": { "$ref": "#/components/schemas/LastConsentEntity" }
+          "consent": {
+            "$ref": "#/components/schemas/LastConsentEntity"
+          }
         },
         "required": [
           "id",
@@ -1555,11 +2304,19 @@
           },
           "role": {
             "description": "The updated role assigned to the user.",
-            "allOf": [{ "$ref": "#/components/schemas/RoleDto" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RoleDto"
+              }
+            ]
           },
           "status": {
             "description": "The updated status of the user account.",
-            "allOf": [{ "$ref": "#/components/schemas/StatusDto" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/StatusDto"
+              }
+            ]
           },
           "provider": {
             "type": "string",
@@ -1608,7 +2365,11 @@
           },
           "user": {
             "description": "The user entity associated with the authentication.",
-            "allOf": [{ "$ref": "#/components/schemas/UserEntity" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            ]
           }
         },
         "required": ["accessToken", "refreshToken", "tokenExpires", "user"]
@@ -1632,17 +2393,35 @@
       "AuthRegisterLoginDto": {
         "type": "object",
         "properties": {
-          "email": { "type": "string", "example": "example@binarapps.com" },
-          "password": { "type": "string", "example": "NewSecurePassword123!" },
-          "firstName": { "type": "string", "example": "Jon" },
-          "lastName": { "type": "string", "example": "Doe" },
+          "email": {
+            "type": "string",
+            "example": "example@binarapps.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "NewSecurePassword123!"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "Jon"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe"
+          },
           "locale": {
             "type": "string",
             "example": "en-US",
             "description": "IETF language tags (e.g., en-US)."
           },
-          "termsAccepted": { "type": "boolean", "example": true },
-          "privacyPolicyAccepted": { "type": "boolean", "example": true }
+          "termsAccepted": {
+            "type": "boolean",
+            "example": true
+          },
+          "privacyPolicyAccepted": {
+            "type": "boolean",
+            "example": true
+          }
         },
         "required": [
           "email",
@@ -1829,7 +2608,7 @@
         "properties": {
           "accessToken": {
             "type": "string",
-            "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOGI2ZTFlYTI1Y2I2M2Q0ZTI5YWI1Y2M2ZDZmODBlZjRmNDY2NjciLCJ0eXAiOiJKV1QifQ.eyJhenAiOiIxMjM0NTY3ODkwMTIzNDU2Nzg5MC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjEyMzQ1Njc4OTAxMjM0NTY3ODkwLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiZXhwIjoxNjUxNTc2MDAwLCJpYXQiOjE2NTE1NzI0MDAsImlzcyI6ImFjY291bnRzLmdvb2dsZS5jb20iLCJzdWIiOiIxMjM0NTY3ODkwMTIzNDU2Nzg5MCIsImVtYWlsIjoianVzdHVzZXJAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJKdXN0IFVzZXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9qdXN0dXNlci9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiSnVzdCIsImZhbWlseV9uYW1lIjoiVXNlciJ9.QWxsYWtoemF0aGtqZGxza2FqaGRsa2FqZGxza2FqZGhza2FqaGRrc2FqaGtqZHNhbGtqZHNhbGtqZGhsYWtqZHNhbGtqaGRsYWtqaGRza2FqaGRrc2FqaGRrc2FqaGRrc2Fq",
+            "example": "EAAJ3MZA...ZDZD",
             "description": "Google Access token obtained after user authentication using Google OAuth. Use this token to authenticate the request to the application."
           }
         },
@@ -1883,15 +2662,27 @@
         "properties": {
           "db": {
             "description": "The status of the database connection",
-            "allOf": [{ "$ref": "#/components/schemas/HealthCheckStatusDto" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/HealthCheckStatusDto"
+              }
+            ]
           },
           "domain": {
             "description": "The status of the domain",
-            "allOf": [{ "$ref": "#/components/schemas/HealthCheckStatusDto" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/HealthCheckStatusDto"
+              }
+            ]
           },
           "cache": {
             "description": "The status of the cache",
-            "allOf": [{ "$ref": "#/components/schemas/HealthCheckStatusDto" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/HealthCheckStatusDto"
+              }
+            ]
           }
         },
         "required": ["db", "domain", "cache"]
@@ -1899,10 +2690,18 @@
       "HealthEntity": {
         "type": "object",
         "properties": {
-          "status": { "type": "string", "description": "Overall health status", "example": "ok" },
+          "status": {
+            "type": "string",
+            "description": "Overall health status",
+            "example": "ok"
+          },
           "info": {
             "description": "Detailed info about each component's health",
-            "allOf": [{ "$ref": "#/components/schemas/HealthCheckInfoDto" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/HealthCheckInfoDto"
+              }
+            ]
           },
           "error": {
             "type": "object",
@@ -1911,12 +2710,74 @@
           },
           "details": {
             "description": "Detailed health check results for each component",
-            "allOf": [{ "$ref": "#/components/schemas/HealthCheckInfoDto" }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/HealthCheckInfoDto"
+              }
+            ]
           }
         },
         "required": ["status", "info", "error", "details"]
+      },
+      "CheckUpdateDto": {
+        "type": "object",
+        "properties": {
+          "os": {
+            "type": "string",
+            "example": "ios",
+            "description": "The operating system for which to check the update. Can be either \"android\" or \"ios\".",
+            "enum": ["android", "ios"]
+          },
+          "currentVersion": {
+            "type": "string",
+            "example": "1.2.0",
+            "description": "The current version of the app installed on the device."
+          }
+        },
+        "required": ["os", "currentVersion"]
+      },
+      "AppVersionStatusEntity": {
+        "type": "object",
+        "properties": {
+          "latestVersion": {
+            "type": "string",
+            "example": "1.5.0",
+            "description": "The latest version of the app available in the app store."
+          },
+          "minimumVersion": {
+            "type": "string",
+            "example": "1.0.0",
+            "description": "The minimum version of the app that still functions correctly without mandatory updates."
+          },
+          "updateRequired": {
+            "type": "boolean",
+            "example": true,
+            "description": "Indicates whether an update is required to continue using the app."
+          },
+          "appId": {
+            "type": "string",
+            "example": "com.example.com",
+            "description": "AppId of application in AppStore(AppStore Bundle ID) or PlayStore(Google Play Store app ID)"
+          },
+          "currentVersionReleaseDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2.0.0",
+            "description": "The current version of the app."
+          }
+        },
+        "required": [
+          "latestVersion",
+          "minimumVersion",
+          "updateRequired",
+          "appId",
+          "currentVersionReleaseDate"
+        ]
       }
     }
   },
-  "externalDocs": { "description": "JSON", "url": "/docs-json" }
+  "externalDocs": {
+    "description": "JSON",
+    "url": "/docs-json"
+  }
 }

@@ -7,6 +7,7 @@ export type ColorSchemeName = Exclude<SettingColorSchemeName, 'system'>
 export type ColorSchemeContextType = {
   colorSchemeSetting: SettingColorSchemeName
   colorScheme: ColorSchemeName
+  isDarkTheme: boolean
   setColorSchemeSetting: (newColorScheme: SettingColorSchemeName) => void
 }
 

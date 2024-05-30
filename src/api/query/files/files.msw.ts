@@ -26,7 +26,7 @@ export const getFilesControllerUploadFileResponseMock = (
 })
 
 export const getFilesControllerUploadFileMockHandler = (overrideResponse?: FileEntity) => {
-  return http.post('*/api/v1/files/upload', async () => {
+  return http.post('/api/v1/files/upload', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(
@@ -43,7 +43,7 @@ export const getFilesControllerUploadFileMockHandler = (overrideResponse?: FileE
 }
 
 export const getFilesControllerDownloadMockHandler = () => {
-  return http.get('*/api/v1/files/:fileName', async () => {
+  return http.get('/api/v1/files/:fileName', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
@@ -55,7 +55,7 @@ export const getFilesControllerDownloadMockHandler = () => {
 }
 
 export const getFilesControllerDeleteFileMockHandler = () => {
-  return http.delete('*/api/v1/files/:fileName', async () => {
+  return http.delete('/api/v1/files/:fileName', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,

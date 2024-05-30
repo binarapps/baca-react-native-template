@@ -31,7 +31,7 @@ export const useSignUpForm = ({ setIsSignUpButtonDisabled }: UseSignUpFormProps)
     setError: setFormError,
     setFocus,
   } = useForm<AuthRegisterLoginDto>({
-    mode: 'onTouched',
+    mode: 'onChange',
     defaultValues,
   })
 

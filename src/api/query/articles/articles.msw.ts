@@ -149,7 +149,7 @@ export const getArticlesControllerUpdateResponseMock = (
 })
 
 export const getArticlesControllerCreateMockHandler = (overrideResponse?: ArticleEntity) => {
-  return http.post('*/api/v1/articles', async () => {
+  return http.post('/api/v1/articles', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(
@@ -166,7 +166,7 @@ export const getArticlesControllerCreateMockHandler = (overrideResponse?: Articl
 }
 
 export const getArticlesControllerFindAllMockHandler = (overrideResponse?: ArticleEntity[]) => {
-  return http.get('*/api/v1/articles', async () => {
+  return http.get('/api/v1/articles', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(
@@ -183,7 +183,7 @@ export const getArticlesControllerFindAllMockHandler = (overrideResponse?: Artic
 }
 
 export const getArticlesControllerFindDraftsMockHandler = (overrideResponse?: ArticleEntity[]) => {
-  return http.get('*/api/v1/articles/drafts', async () => {
+  return http.get('/api/v1/articles/drafts', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(
@@ -200,7 +200,7 @@ export const getArticlesControllerFindDraftsMockHandler = (overrideResponse?: Ar
 }
 
 export const getArticlesControllerFindOneMockHandler = (overrideResponse?: ArticleEntity) => {
-  return http.get('*/api/v1/articles/:id', async () => {
+  return http.get('/api/v1/articles/:id', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(
@@ -217,7 +217,7 @@ export const getArticlesControllerFindOneMockHandler = (overrideResponse?: Artic
 }
 
 export const getArticlesControllerUpdateMockHandler = (overrideResponse?: ArticleEntity) => {
-  return http.patch('*/api/v1/articles/:id', async () => {
+  return http.patch('/api/v1/articles/:id', async () => {
     await delay(1000)
     return new HttpResponse(
       JSON.stringify(
@@ -234,7 +234,7 @@ export const getArticlesControllerUpdateMockHandler = (overrideResponse?: Articl
 }
 
 export const getArticlesControllerRemoveMockHandler = () => {
-  return http.delete('*/api/v1/articles/:id', async () => {
+  return http.delete('/api/v1/articles/:id', async () => {
     await delay(1000)
     return new HttpResponse(null, {
       status: 200,
