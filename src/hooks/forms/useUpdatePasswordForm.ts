@@ -1,29 +1,40 @@
 import { useAuthControllerUpdate } from '@baca/api/query/auth/auth'
 import { AuthUpdateDto } from '@baca/api/types'
 import { handleFormError, hapticImpact, showSuccessToast } from '@baca/utils'
+import { useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
 export const useUpdatePasswordForm = () => {
   const { t } = useTranslation()
-  const { mutate: updateUserMutation, isLoading } = useAuthControllerUpdate()
+  const { mutate: updatePasswordMutation, isLoading } = useAuthControllerUpdate()
+
+  const defaultValues: AuthUpdateDto = useMemo(
+    () => ({
+      oldPassword: '',
+      password: '',
+    }),
+    []
+  )
 
   const {
     control,
     formState: { errors },
     handleSubmit,
+    reset,
     setError: setFormError,
-    setFocus,
   } = useForm<AuthUpdateDto>({
     mode: 'onTouched',
+    defaultValues,
   })
 
   const onSubmit = (data: AuthUpdateDto) => {
-    updateUserMutation(
+    updatePasswordMutation(
       { data },
       {
         onSuccess: () => {
-          showSuccessToast({ description: t('toast.success.password_updated') })
+          showSuccessToast({ description: t('toast.success.profile_updated') })
+          reset(defaultValues)
         },
         onError: (e) => {
           handleFormError<keyof AuthUpdateDto>(
@@ -32,7 +43,6 @@ export const useUpdatePasswordForm = () => {
               setFormError(field, { message: description })
             }
           )
-
           hapticImpact()
         },
       }
@@ -43,7 +53,6 @@ export const useUpdatePasswordForm = () => {
     control,
     errors,
     isSubmitting: isLoading,
-    setFocus,
     submit: handleSubmit(onSubmit),
   }
 }

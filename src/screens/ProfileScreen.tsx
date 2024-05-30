@@ -1,3 +1,4 @@
+import { AuthUpdateDto } from '@baca/api/types'
 import { ProfileDeleteAccountButton } from '@baca/components/screens/profile/ProfileDeleteAccountButton'
 import { ProfileDetailsForm } from '@baca/components/screens/profile/ProfileDetailsForm'
 import { ProfileHeader } from '@baca/components/screens/profile/ProfileHeader'
@@ -12,7 +13,7 @@ export const ProfileScreen = () => {
     title: t('navigation.screen_titles.profile'),
   })
 
-  const handlePasswordUpdate = (data) => {
+  const handlePasswordUpdate = (data: AuthUpdateDto) => {
     console.log('Password updated:', data)
   }
 

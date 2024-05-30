@@ -68,8 +68,8 @@
       "first_name": "Enter your first name",
       "last_name": "Enter your last name",
       "password": "Password",
-      "old_password": "Enter your current password",
-      "new_password": "Enter the new password"
+      "old_password": "Enter current password",
+      "new_password": "Enter new password"
     },
     "select": {},
     "validation": {

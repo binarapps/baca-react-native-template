@@ -58,7 +58,7 @@ export const ProfileDeleteAccountButton = () => {
 
   return (
     <Box>
-      <Box borderColor="border.secondary" borderTopWidth={1} my={4} py={6} alignItems="flex-start">
+      <Box borderColor="border.secondary" borderTopWidth={1} py={6} alignItems="flex-start">
         <Button
           leftIconName="delete-bin-line"
           variant="SecondaryDestructive"
