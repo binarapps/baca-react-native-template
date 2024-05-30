@@ -174,6 +174,7 @@ const generateLayoutsStyle = ({
   return {
     position,
     left,
+    bottom,
     right,
     top,
     zIndex,
