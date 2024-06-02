@@ -27,6 +27,7 @@
     "go_back": "Cofnij",
     "remove": "Usuń",
     "save": "Zapisz",
+    "change": "Zmień",
     "search": "Szukaj",
     "try_again_later": "Proszę spróbuj ponownie później",
     "try_again": "Spróbuj ponownie"
@@ -56,7 +57,9 @@
       "email": "Adres e-mail",
       "first_name": "Imię",
       "last_name": "Nazwisko",
-      "password": "Hasło"
+      "password": "Hasło",
+      "old_password": "Stare hasło",
+      "new_password": "Nowe hasło"
     },
     "placeholders": {
       "confirm_password": "Potwierdź hasło",
@@ -64,7 +67,9 @@
       "email": "Podaj adres e-mail",
       "first_name": "Podaj swoje imię",
       "last_name": "Podaj swoje nazwisko",
-      "password": "Hasło"
+      "password": "Hasło",
+      "old_password": "Podaj stare hasło",
+      "new_password": "Podaj nowe hasło"
     },
     "select": {},
     "validation": {
@@ -126,18 +131,6 @@
     "colors_label": "Kolory"
   },
   "components_screen": {
-    "test_notification": "Test notification",
-    "typography": {
-      "label": "Typography",
-      "xs": "xs",
-      "sm": "sm",
-      "md": "md",
-      "lg": "lg",
-      "xl": "xl",
-      "2xl": "2xl",
-      "3xl": "3xl",
-      "4xl": "4xl"
-    },
     "button_variants": {
       "disabled": "Button disabled",
       "header": "Button variants",
@@ -166,6 +159,18 @@
     "notification": {
       "description": "by react-native-notificated 🎉",
       "title": "In-app notification example"
+    },
+    "test_notification": "Test notification",
+    "typography": {
+      "label": "Typography",
+      "xs": "xs",
+      "sm": "sm",
+      "md": "md",
+      "lg": "lg",
+      "xl": "xl",
+      "2xl": "2xl",
+      "3xl": "3xl",
+      "4xl": "4xl"
     }
   },
   "confirm_email_screen": {
