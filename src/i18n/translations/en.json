@@ -28,6 +28,7 @@
     "remove": "Remove",
     "save": "Save",
     "change": "Change",
+    "upload": "Upload",
     "search": "Search",
     "try_again_later": "Please try again later",
     "try_again": "Try again"
@@ -239,7 +240,9 @@
     "update_your_details": "Update your personal details here.",
     "remove_account": "Remove account",
     "are_you_sure": "Are you sure?",
-    "remove_account_desc": "This action cannot be undone.\n\nYou will lose access to your account. If you have an active subscription you will lose access to it.\n\nPlease make sure you are certain about this action."
+    "remove_account_desc": "This action cannot be undone.\n\nYou will lose access to your account. If you have an active subscription you will lose access to it.\n\nPlease make sure you are certain about this action.",
+    "your_photo": "Your photo",
+    "your_photo_description": "This will be displayed on your profile."
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Don't have an account?",
