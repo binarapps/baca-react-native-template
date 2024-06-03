@@ -1,6 +1,5 @@
 import { Box, Button, Row } from '@baca/design-system'
 import { useUpdatePasswordForm } from '@baca/hooks/forms/useUpdatePasswordForm'
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ProfileControlledInput } from './ProfileControlledInput'

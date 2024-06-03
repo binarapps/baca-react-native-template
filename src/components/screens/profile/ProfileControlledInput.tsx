@@ -1,8 +1,9 @@
 import { ControlledField } from '@baca/components'
 import { isWeb } from '@baca/constants'
-import { Box } from '@baca/design-system'
+import { Box, Text } from '@baca/design-system'
 import { useWeb } from '@baca/hooks'
 import { ProfileControlledInputProps } from '@baca/types/ProfileInputProps'
+import { StyleSheet } from 'react-native'
 
 export const ProfileControlledInput = ({
   label,
@@ -23,9 +24,9 @@ export const ProfileControlledInput = ({
       mb={isWeb ? 10 : 0}
       maxW={800}
     >
-      {/* <Text.SmBold flex={1} color="text.primary">
+      <Text.SmBold flex={1} color="text.primary" style={s.labelMargin}>
         {label}
-      </Text.SmBold> */}
+      </Text.SmBold>
       <Box flex={isWeb ? 2 : 0}>
         <ControlledField.Input
           control={control}
@@ -38,9 +39,12 @@ export const ProfileControlledInput = ({
           isDisabled={isDisabled}
           onFocus={onFocus}
           onSubmitEditing={onSubmitEditing}
-          {...(!isWeb && { label })}
         />
       </Box>
     </Box>
   )
 }
+
+const s = StyleSheet.create({
+  labelMargin: { marginBottom: 10 },
+})

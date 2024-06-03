@@ -28,6 +28,7 @@
     "remove": "Usuń",
     "save": "Zapisz",
     "change": "Zmień",
+    "upload": "Prześlij",
     "search": "Szukaj",
     "try_again_later": "Proszę spróbuj ponownie później",
     "try_again": "Spróbuj ponownie"
@@ -238,7 +239,10 @@
     "update_your_details": "Zaktualizuj swoje dane osobowe tutaj.",
     "remove_account": "Usuń konto",
     "are_you_sure": "Jesteś pewny/a?",
-    "remove_account_desc": "Tej akcji nie można cofnąć.\n\nUtracisz dostęp do swojego konta. Jeśli masz aktywną subskrypcję, utracisz do niej dostęp.\n\nUpewnij się, że jesteś pewien tej akcji"
+    "remove_account_desc": "Tej akcji nie można cofnąć.\n\nUtracisz dostęp do swojego konta. Jeśli masz aktywną subskrypcję, utracisz do niej dostęp.\n\nUpewnij się, że jesteś pewien tej akcji",
+    "your_photo": "Twoje zdjęcie",
+    "your_photo_description": "To będzie wyświetlane na twoim profilu.",
+    "photo_innerText": "Bez Zdjęcia"
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",

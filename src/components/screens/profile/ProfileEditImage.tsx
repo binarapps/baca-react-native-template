@@ -1,8 +1,9 @@
-import { Box, Text, Button, Row } from '@baca/design-system'
+import { isWeb } from '@baca/constants'
+import { Box, Text, Button, Row, themeColors } from '@baca/design-system'
 import * as ImagePicker from 'expo-image-picker'
 import { t } from 'i18next'
 import React from 'react'
-import { View, Image, StyleSheet } from 'react-native'
+import { Image, StyleSheet } from 'react-native'
 
 export const ProfileEditImage: React.FC = () => {
   const [image, setImage] = React.useState<string | null>(null)
@@ -21,20 +22,20 @@ export const ProfileEditImage: React.FC = () => {
   }
 
   return (
-    <Box borderColor="border.secondary" borderTopWidth={1} py={6} /* mb={isWeb ? 10 : 4} */>
-      <Box style={styles.marginBottom}>
+    <Box borderColor="border.secondary" borderTopWidth={1} py={6}>
+      <Box style={s.marginBottom}>
         <Text.SmBold color="text.primary">{t('profile_screen.your_photo')}</Text.SmBold>
         <Text.SmRegular color="text.secondary">
           {t('profile_screen.your_photo_description')}
         </Text.SmRegular>
       </Box>
-      <Box style={styles.imageContainer}>
+      <Box style={s.imageContainer}>
         {image ? (
-          <Image source={{ uri: image }} style={styles.image} />
+          <Image source={{ uri: image }} style={s.image} />
         ) : (
-          <View style={styles.placeholder}>
-            <Text style={styles.placeholderText}>No Image</Text>
-          </View>
+          <Box style={s.placeholder}>
+            <Text color="Gray modern.600">{t('profile_screen.photo_innerText')}</Text>
+          </Box>
         )}
       </Box>
       <Row maxW={800} justifyContent="flex-end">
@@ -44,7 +45,7 @@ export const ProfileEditImage: React.FC = () => {
   )
 }
 
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
   image: {
     height: '100%',
     width: '100%',
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
     height: 100,
     marginBottom: 10,
     overflow: 'hidden',
+    right: isWeb ? 150 : 0,
     width: 100,
   },
   marginBottom: {
@@ -62,12 +64,9 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     alignItems: 'center',
+    backgroundColor: themeColors.primitives['Gray neutral']['50'],
     height: '100%',
     justifyContent: 'center',
     width: '100%',
-    // backgroundColor: '#e0e0e0',
-  },
-  placeholderText: {
-    // color: '#888',
   },
 })
