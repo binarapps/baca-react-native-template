@@ -1,5 +1,5 @@
 import { useTheme } from '@baca/hooks'
-import { IconNames } from '@baca/types/icon'
+import { IconNames } from '@baca/types'
 import { getColorValue } from '@baca/utils'
 import {
   useMemo,
