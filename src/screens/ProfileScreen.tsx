@@ -1,8 +1,10 @@
-import { ProfileDeleteAccountButton } from '@baca/components/screens/profile/ProfileDeleteAccountButton'
-import { ProfileDetailsForm } from '@baca/components/screens/profile/ProfileDetailsForm'
-import { ProfileEditImage } from '@baca/components/screens/profile/ProfileEditImage'
-import { ProfileHeader } from '@baca/components/screens/profile/ProfileHeader'
-import { ProfilePasswordForm } from '@baca/components/screens/profile/ProfilePasswordForm'
+import {
+  ProfileDeleteAccountButton,
+  ProfileDetailsForm,
+  ProfileEditImage,
+  ProfileHeader,
+  ProfilePasswordForm,
+} from '@baca/components'
 import { Box, ScrollView, Spacer } from '@baca/design-system'
 import { useTranslation, useScreenOptions } from '@baca/hooks'
 

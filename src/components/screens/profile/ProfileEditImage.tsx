@@ -2,7 +2,7 @@ import { isWeb } from '@baca/constants'
 import { Box, Text, Button, Row, themeColors } from '@baca/design-system'
 import * as ImagePicker from 'expo-image-picker'
 import { t } from 'i18next'
-import React, { useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { Image, StyleSheet } from 'react-native'
 
 export const ProfileEditImage: React.FC = () => {

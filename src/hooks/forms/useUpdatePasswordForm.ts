@@ -1,21 +1,17 @@
 import { useAuthControllerUpdate } from '@baca/api/query/auth/auth'
 import { AuthUpdateDto } from '@baca/api/types'
 import { handleFormError, hapticImpact, showSuccessToast } from '@baca/utils'
-import { useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+
+const defaultValues: AuthUpdateDto = {
+  oldPassword: '',
+  password: '',
+}
 
 export const useUpdatePasswordForm = () => {
   const { t } = useTranslation()
   const { mutate: updatePasswordMutation, isLoading } = useAuthControllerUpdate()
-
-  const defaultValues: AuthUpdateDto = useMemo(
-    () => ({
-      oldPassword: '',
-      password: '',
-    }),
-    []
-  )
 
   const {
     control,
