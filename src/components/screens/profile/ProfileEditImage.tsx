@@ -2,13 +2,13 @@ import { isWeb } from '@baca/constants'
 import { Box, Text, Button, Row, themeColors } from '@baca/design-system'
 import * as ImagePicker from 'expo-image-picker'
 import { t } from 'i18next'
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import { Image, StyleSheet } from 'react-native'
 
 export const ProfileEditImage: React.FC = () => {
-  const [image, setImage] = React.useState<string | null>(null)
+  const [image, setImage] = useState<string | null>(null)
 
-  const pickImage = async () => {
+  const pickImage = useCallback(async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -19,21 +19,21 @@ export const ProfileEditImage: React.FC = () => {
     if (!result.canceled && result.assets && result.assets.length > 0) {
       setImage(result.assets[0].uri)
     }
-  }
+  }, [])
 
   return (
     <Box borderColor="border.secondary" borderTopWidth={1} py={6}>
-      <Box style={s.marginBottom}>
+      <Box style={styles.marginBottom}>
         <Text.SmBold color="text.primary">{t('profile_screen.your_photo')}</Text.SmBold>
         <Text.SmRegular color="text.secondary">
           {t('profile_screen.your_photo_description')}
         </Text.SmRegular>
       </Box>
-      <Box style={s.imageContainer}>
+      <Box style={styles.imageContainer}>
         {image ? (
-          <Image source={{ uri: image }} style={s.image} />
+          <Image source={{ uri: image }} style={styles.image} />
         ) : (
-          <Box style={s.placeholder}>
+          <Box style={styles.placeholder}>
             <Text color="Gray modern.600">{t('profile_screen.photo_innerText')}</Text>
           </Box>
         )}
@@ -45,7 +45,7 @@ export const ProfileEditImage: React.FC = () => {
   )
 }
 
-const s = StyleSheet.create({
+const styles = StyleSheet.create({
   image: {
     height: '100%',
     width: '100%',
