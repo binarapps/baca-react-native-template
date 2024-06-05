@@ -24,7 +24,7 @@ export const ProfileControlledInput = ({
       mb={isWeb ? 10 : 0}
       maxW={800}
     >
-      <Text.SmBold flex={1} color="text.primary" style={s.labelMargin}>
+      <Text.SmBold flex={1} color="text.primary" style={styles.labelMargin}>
         {label}
       </Text.SmBold>
       <Box flex={isWeb ? 2 : 0}>
@@ -45,6 +45,6 @@ export const ProfileControlledInput = ({
   )
 }
 
-const s = StyleSheet.create({
+const styles = StyleSheet.create({
   labelMargin: { marginBottom: 10 },
 })
