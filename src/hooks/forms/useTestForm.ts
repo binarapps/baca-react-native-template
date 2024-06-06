@@ -1,4 +1,4 @@
-import { TestFormValues } from '@baca/types/testForm'
+import { TestFormValues } from '@baca/types'
 import { isError } from '@tanstack/react-query'
 import { useState } from 'react'
 import { FieldPath, useForm } from 'react-hook-form'

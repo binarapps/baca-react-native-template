@@ -1,8 +1,11 @@
-import { ProfileDeleteAccountButton } from '@baca/components/screens/profile/ProfileDeleteAccountButton'
-import { ProfileDetailsForm } from '@baca/components/screens/profile/ProfileDetailsForm'
-import { ProfileHeader } from '@baca/components/screens/profile/ProfileHeader'
-import { ProfilePasswordForm } from '@baca/components/screens/profile/ProfilePasswordForm'
-import { Box, Spacer } from '@baca/design-system'
+import {
+  ProfileDeleteAccountButton,
+  ProfileDetailsForm,
+  ProfileEditImage,
+  ProfileHeader,
+  ProfilePasswordForm,
+} from '@baca/components'
+import { Box, ScrollView, Spacer } from '@baca/design-system'
 import { useTranslation, useScreenOptions } from '@baca/hooks'
 
 export const ProfileScreen = () => {
@@ -13,14 +16,18 @@ export const ProfileScreen = () => {
   })
 
   return (
-    <Box p={4}>
-      <ProfileHeader />
-      <Spacer y={4} />
-      <ProfileDetailsForm />
-      <Spacer y={4} />
-      <ProfilePasswordForm />
-      <Spacer y={4} />
-      <ProfileDeleteAccountButton />
-    </Box>
+    <ScrollView>
+      <Box p={4}>
+        <ProfileHeader />
+        <Spacer y={4} />
+        <ProfileEditImage />
+        <Spacer y={4} />
+        <ProfileDetailsForm />
+        <Spacer y={4} />
+        <ProfilePasswordForm />
+        <Spacer y={4} />
+        <ProfileDeleteAccountButton />
+      </Box>
+    </ScrollView>
   )
 }

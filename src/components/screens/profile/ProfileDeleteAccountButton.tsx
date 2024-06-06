@@ -57,18 +57,16 @@ export const ProfileDeleteAccountButton = () => {
   )
 
   return (
-    <Box>
-      <Box borderColor="border.secondary" borderTopWidth={1} py={6} alignItems="flex-start">
-        <Button
-          leftIconName="delete-bin-line"
-          variant="SecondaryDestructive"
-          borderRadius={8}
-          onPress={presentBottomSheet}
-        >
-          {t('profile_screen.remove_account')}
-        </Button>
-        {bottomSheet}
-      </Box>
+    <Box borderColor="border.secondary" borderTopWidth={1} py={6} alignItems="flex-start">
+      <Button
+        leftIconName="delete-bin-line"
+        variant="SecondaryDestructive"
+        borderRadius={8}
+        onPress={presentBottomSheet}
+      >
+        {t('profile_screen.remove_account')}
+      </Button>
+      {bottomSheet}
     </Box>
   )
 }

@@ -1,5 +1,5 @@
 import { Box, Icon } from '@baca/design-system'
-import { IconNames } from '@baca/types/icon'
+import { IconNames } from '@baca/types'
 
 type FeatureIconSize = 'sm' | 'md' | 'lg' | 'xl'
 

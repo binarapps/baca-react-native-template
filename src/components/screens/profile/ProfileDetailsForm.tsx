@@ -20,23 +20,20 @@ export const ProfileDetailsForm = () => {
           label={t('form.labels.first_name')}
           name="firstName"
           placeholder={t('form.placeholders.first_name')}
-          control={control}
-          errors={errors}
+          {...{ control, errors }}
           onFocus={focusLastNameInput}
         />
         <ProfileControlledInput
           label={t('form.labels.last_name')}
           name="lastName"
           placeholder={t('form.placeholders.last_name')}
-          control={control}
-          errors={errors}
+          {...{ control, errors }}
         />
         <ProfileControlledInput
           label={t('form.labels.email')}
           name="email"
           placeholder={t('form.placeholders.email')}
-          control={control}
-          errors={errors}
+          {...{ control, errors }}
           isDisabled
           onSubmitEditing={submit}
         />
