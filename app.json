@@ -6,7 +6,9 @@
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "buildNumber": "20",
       "config": {
@@ -33,6 +35,7 @@
     "version": "2.3.0",
     "plugins": [
       "@react-native-google-signin/google-signin",
+      "expo-asset",
       "expo-apple-authentication",
       "expo-font",
       "expo-localization",

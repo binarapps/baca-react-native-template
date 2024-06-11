@@ -9,7 +9,7 @@ console.error = jest.fn()
 console.warn = jest.fn()
 
 const defaultTextStyles = {
-  color: theme.light.colors.text.brand.primary,
+  color: theme.light.colors.text.primary,
   fontFamily: 'Inter_Regular',
   fontSize: 16,
   fontWeight: '400',
