@@ -3,6 +3,11 @@
  * and scoped locally.
  */
 
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
@@ -27,11 +32,12 @@
 }
 
 .imageWrapper {
-  padding: 0 0px;
+  padding: 0 16px;
 }
 
 .image {
-  width: 30%;
+  width: 100%;
+  max-width: 400px;
   height: auto;
   border-radius: 12px;
 }
