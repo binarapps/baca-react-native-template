@@ -22,16 +22,16 @@
   justify-content: center;
 }
 
-.heroBanner .imageContainer {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
+.sliderContainer {
   margin-top: 32px;
 }
 
-.heroBanner .imageContainer .image {
-  max-width: 300px;
+.imageWrapper {
+  padding: 0 0px;
+}
+
+.image {
+  width: 30%;
   height: auto;
   border-radius: 12px;
 }
