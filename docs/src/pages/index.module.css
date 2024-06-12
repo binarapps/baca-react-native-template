@@ -28,7 +28,7 @@
 }
 
 .sliderContainer {
-  margin-top: 32px;
+  margin-top: 86px;
 }
 
 .imageWrapper {
@@ -40,4 +40,20 @@
   max-width: 400px;
   height: auto;
   border-radius: 12px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.buttonReadDocs {
+  width: 160px;
+}
+
+.buttonTryIt {
+  width: 160px;
+  background-color: #2f2f2f;
+  color: #ffffff !important;
 }

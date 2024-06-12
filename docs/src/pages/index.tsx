@@ -18,7 +18,6 @@ function HomepageHeader() {
     autoplaySpeed: 3000,
     dots: true,
     infinite: true,
-    pauseOnHover: false,
     responsive: [
       {
         breakpoint: 1000,
@@ -47,9 +46,18 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs/overview">
-            See docs
+        <div className={styles.buttonsContainer}>
+          <Link
+            className={clsx('button button--secondary button--lg', styles.buttonReadDocs)}
+            to="/docs/overview"
+          >
+            Read docs
+          </Link>
+          <Link
+            className={clsx('button button--secondary button--lg', styles.buttonTryIt)}
+            to="/docs/overview"
+          >
+            Try it
           </Link>
         </div>
         <div className={styles.sliderContainer}>
