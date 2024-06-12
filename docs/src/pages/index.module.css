@@ -21,3 +21,17 @@
   align-items: center;
   justify-content: center;
 }
+
+.heroBanner .imageContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.heroBanner .imageContainer .image {
+  max-width: 300px;
+  height: auto;
+  border-radius: 12px;
+}

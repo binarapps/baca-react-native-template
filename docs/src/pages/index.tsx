@@ -1,11 +1,9 @@
-/* eslint-disable react-native/no-raw-text */
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import HomepageFeatures from '@site/src/components/HomepageFeatures'
 import Heading from '@theme/Heading'
 import Layout from '@theme/Layout'
 import clsx from 'clsx'
-
 import styles from './index.module.css'
 
 function HomepageHeader() {
@@ -21,6 +19,28 @@ function HomepageHeader() {
           <Link className="button button--secondary button--lg" to="/docs/overview">
             See docs
           </Link>
+        </div>
+        <div className={styles.imageContainer}>
+          <img
+            src="/img/iphone_signup_draft_light.png"
+            alt="First iPhone draft"
+            className={styles.image}
+          />
+          <img
+            src="/img/iphone_signup_draft_dark.png"
+            alt="Second iPhone draft"
+            className={styles.image}
+          />
+          <img
+            src="/img/iphone_settings_draft_light.png"
+            alt="Third iPhone draft"
+            className={styles.image}
+          />
+          <img
+            src="/img/iphone_settings_draft_dark.png"
+            alt="Fourth iPhone draft"
+            className={styles.image}
+          />
         </div>
       </div>
     </header>
