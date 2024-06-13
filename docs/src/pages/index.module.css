@@ -48,12 +48,26 @@
   gap: 3rem;
 }
 
-.buttonReadDocs {
+.button {
   width: 160px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttonTryIt {
-  width: 160px;
   background-color: #2f2f2f;
   color: #ffffff !important;
+}
+
+@media screen and (max-width: 600px) {
+  .buttonsContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .button {
+    width: 100%;
+  }
 }
