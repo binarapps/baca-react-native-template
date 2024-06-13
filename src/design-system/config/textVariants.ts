@@ -17,6 +17,10 @@ export type TextVariant =
   | 'XlMedium'
   | 'XlRegular'
   | 'XlSemibold'
+  | 'XxlBold'
+  | 'XxlMedium'
+  | 'XxlRegular'
+  | 'XxlSemibold'
   | 'XsBold'
   | 'XsMedium'
   | 'XsRegular'
@@ -47,6 +51,11 @@ export const textVariants: {
   XlRegular: { fontWeight: 'Regular', fontSize: 'xl' },
   // FIXME: Investigate why Semibold is crashing
   XlSemibold: { fontWeight: 'Bold', fontSize: 'xl' },
+  XxlBold: { fontWeight: 'Bold', fontSize: 'xxl' },
+  XxlMedium: { fontWeight: 'Medium', fontSize: 'xxl' },
+  XxlRegular: { fontWeight: 'Regular', fontSize: 'xxl' },
+  // FIXME: Investigate why Semibold is crashing
+  XxlSemibold: { fontWeight: 'Bold', fontSize: 'xxl' },
   XsBold: { fontWeight: 'Bold', fontSize: 'xs' },
   XsMedium: { fontWeight: 'Medium', fontSize: 'xs' },
   XsRegular: { fontWeight: 'Regular', fontSize: 'xs' },

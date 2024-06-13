@@ -1,38 +1,40 @@
-import { CompanyLogo, KeyboardAwareScrollView, LandingHeader } from '@baca/components'
-import { Button, Center, Text } from '@baca/design-system'
-import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
-import { router } from 'expo-router'
+// import { CompanyLogo, KeyboardAwareScrollView, LandingHeader } from '@baca/components'
+// import { Button, Center, Text } from '@baca/design-system'
+// import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
+// import { router } from 'expo-router'
 
-export const LandingScreen = () => {
-  const { t } = useTranslation()
+// //TODO: Ask Mateusz for which purpose does LandingScreen exist?
 
-  useScreenOptions({
-    title: t('navigation.screen_titles.home'),
-  })
+// export const LandingScreen = () => {
+//   const { t } = useTranslation()
 
-  const navigateToBlog = useCallback(() => {
-    router.navigate('/blog')
-  }, [])
+//   useScreenOptions({
+//     title: t('navigation.screen_titles.home'), //TODO: Delete JSON we're not using
+//   })
 
-  const navigateToBigForm = useCallback(() => {
-    router.navigate('/big-form')
-  }, [])
+//   const navigateToBlog = useCallback(() => {
+//     router.navigate('/blog')
+//   }, [])
 
-  return (
-    <KeyboardAwareScrollView>
-      <LandingHeader />
-      <Center flex={1} px={4}>
-        <CompanyLogo />
-        <Text.LgBold textAlign="center">{t('hello')}</Text.LgBold>
-        <Text.MdRegular textAlign="center">{t('thanks')}</Text.MdRegular>
-        <Text.MdRegular textAlign="center">{t('app_information')}</Text.MdRegular>
-        <Button mt={4} onPress={navigateToBigForm}>
-          {t('landing_screen.go_to_form')}
-        </Button>
-        <Button mt={4} onPress={navigateToBlog}>
-          {t('landing_screen.go_to_blog')}
-        </Button>
-      </Center>
-    </KeyboardAwareScrollView>
-  )
-}
+//   const navigateToBigForm = useCallback(() => {
+//     router.navigate('/big-form')
+//   }, [])
+
+//   return (
+//     <KeyboardAwareScrollView>
+//       <LandingHeader />
+//       <Center flex={1} px={4}>
+//         <CompanyLogo />
+//         <Text.LgBold textAlign="center">{t('hello')}</Text.LgBold>
+//         <Text.MdRegular textAlign="center">{t('thanks')}</Text.MdRegular>
+//         <Text.MdRegular textAlign="center">{t('app_information')}</Text.MdRegular>
+//         <Button mt={4} onPress={navigateToBigForm}>
+//           {t('landing_screen.go_to_form')}
+//         </Button>
+//         <Button mt={4} onPress={navigateToBlog}>
+//           {t('landing_screen.go_to_blog')}
+//         </Button>
+//       </Center>
+//     </KeyboardAwareScrollView>
+//   )
+// }

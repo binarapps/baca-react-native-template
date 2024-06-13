@@ -305,5 +305,7 @@
   },
   "hello": "Welcome",
   "thanks": "Thank you for using the best template for expo apps",
-  "app_information": "Shake your device to open developer menu"
+  "app_information": "Shake your device to open developer menu",
+  "home_header_title": "BACA - react native starter",
+  "home_header_subtitle": "Start your react native project and boost your productivity"
 }

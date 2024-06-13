@@ -1,4 +1,3 @@
-import { CompanyLogo } from '@baca/components'
 import { Button, Center, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
@@ -26,10 +25,8 @@ export const HomeScreen = () => {
 
   return (
     <Center flex={1} px={4}>
-      <CompanyLogo />
-      <Text.MdBold textAlign="center">{t('hello')}</Text.MdBold>
-      <Text.MdRegular textAlign="center">{t('thanks')}</Text.MdRegular>
-      <Text.MdRegular textAlign="center">{t('app_information')}</Text.MdRegular>
+      <Text.XxlBold textAlign="center">{t('home_header_title')}</Text.XxlBold>
+      <Text.LgRegular textAlign="center">{t('home_header_subtitle')}</Text.LgRegular>
       <Button mt={4} onPress={navigateToDetails}>
         {t('home_screen.details')}
       </Button>
@@ -41,4 +38,4 @@ export const HomeScreen = () => {
       </Button>
     </Center>
   )
-} //first commit
+}
