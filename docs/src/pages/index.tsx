@@ -55,7 +55,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className={clsx('button button--secondary button--lg', styles.buttonTryIt)}
-            to="/docs/overview"
+            to="https://binarapps.online/sign-in"
           >
             Try it
           </Link>
