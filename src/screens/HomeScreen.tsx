@@ -1,6 +1,6 @@
 import { Button, Center, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
-import { router } from 'expo-router'
+import { View, Linking, StyleSheet } from 'react-native'
 
 export const HomeScreen = () => {
   const { t } = useTranslation()
@@ -9,33 +9,45 @@ export const HomeScreen = () => {
     title: t('navigation.screen_titles.home'),
   })
 
-  const navigateToDetails = useCallback(() => {
-    router.navigate({
-      pathname: 'home/details',
-      params: { user: 'example@example.com' },
-    })
-  }, [])
-  const navigateToBlog = useCallback(() => {
-    router.navigate('/blog')
-  }, [])
-
-  const navigateToBigForm = useCallback(() => {
-    router.navigate('/big-form')
+  const openLink = useCallback((url: string) => {
+    Linking.openURL(url)
   }, [])
 
   return (
     <Center flex={1} px={4}>
       <Text.XxlBold textAlign="center">{t('home_header_title')}</Text.XxlBold>
       <Text.LgRegular textAlign="center">{t('home_header_subtitle')}</Text.LgRegular>
-      <Button mt={4} onPress={navigateToDetails}>
-        {t('home_screen.details')}
-      </Button>
-      <Button mt={4} onPress={navigateToBigForm}>
-        {t('landing_screen.go_to_form')}
-      </Button>
-      <Button mt={4} onPress={navigateToBlog}>
-        {t('landing_screen.go_to_blog')}
-      </Button>
+
+      <View style={styles.buttonsContainer}>
+        <Button
+          m={3}
+          h={12}
+          minWidth={160}
+          maxWidth={160}
+          onPress={() => openLink('/docs/overview')}
+        >
+          <Text.MdBold>Read docs</Text.MdBold>
+        </Button>
+        <Button.SecondaryColor
+          m={3}
+          h={12}
+          minWidth={160}
+          maxWidth={160}
+          onPress={() => openLink('https://binarapps.online/sign-in')}
+        >
+          <Text.MdBold>Try it</Text.MdBold>
+        </Button.SecondaryColor>
+      </View>
     </Center>
   )
 }
+
+const styles = StyleSheet.create({
+  buttonsContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginTop: 16,
+  },
+})
