@@ -3,6 +3,8 @@ import type { Config } from '@docusaurus/types'
 import { themes as prismThemes } from 'prism-react-renderer'
 
 const repoLink = 'https://github.com/binarapps/baca-react-native-template'
+const docsLink = '/docs/overview'
+const demoLink = 'https://binarapps.online/sign-in'
 
 const config: Config = {
   title: 'BACA - react native starter',
@@ -58,11 +60,22 @@ const config: Config = {
         src: 'img/logo-light.png',
         srcDark: 'img/logo-dark.png',
       },
+      hideOnScroll: true,
       items: [
         {
           href: repoLink,
           label: 'GitHub',
           position: 'right',
+        },
+        {
+          to: docsLink,
+          label: 'Docs',
+          position: 'left',
+        },
+        {
+          to: demoLink,
+          label: 'Demo',
+          position: 'left',
         },
       ],
     },

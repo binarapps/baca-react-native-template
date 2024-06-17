@@ -33,7 +33,7 @@ const FeatureList: FeatureItem[] = [
     title: 'Powered by React Native and Expo',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
-      <>We are using the newest tools to acheive the best performance and developer experience.</>
+      <>We are using the newest tools to achieve the best performance and developer experience.</>
     ),
   },
 ]
