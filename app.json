@@ -33,6 +33,7 @@
     "version": "2.3.0",
     "plugins": [
       "@react-native-google-signin/google-signin",
+      "expo-asset",
       "expo-apple-authentication",
       "expo-font",
       "expo-localization",
