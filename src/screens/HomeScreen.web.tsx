@@ -2,9 +2,6 @@ import { Button, Center, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { View, Linking, StyleSheet } from 'react-native'
 
-//TODO: Delete JSON we're not using
-//TODO: Add t internationalization for buttons
-
 export const HomeScreen = () => {
   const { t } = useTranslation()
 
