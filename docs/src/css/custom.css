@@ -6,6 +6,9 @@
 
 /* You can override the default Infima variables here. */
 
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
 :root {
   --ifm-color-primary: #531fa5;
   --ifm-color-primary-dark: #4b1c95;

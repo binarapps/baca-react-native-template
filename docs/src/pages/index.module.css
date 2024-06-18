@@ -21,3 +21,48 @@
   align-items: center;
   justify-content: center;
 }
+
+.sliderContainer {
+  margin-top: 86px;
+}
+
+.imageWrapper {
+  padding: 0 16px;
+}
+
+.image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.button {
+  width: 160px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonTryIt {
+  background-color: #2f2f2f;
+  color: #ffffff !important;
+}
+
+@media screen and (max-width: 600px) {
+  .buttonsContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
