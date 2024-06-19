@@ -1,3 +1,4 @@
+import { BACA_APP_URL, BACA_DOCS_URL } from '@baca/constants'
 import { Box, Button, Center, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { Linking } from 'react-native'
@@ -25,13 +26,7 @@ export const HomeScreen = () => {
         justifyContent={'center'}
         mt={4}
       >
-        <Button
-          h={12}
-          m={3}
-          maxWidth={160}
-          minWidth={160}
-          onPress={() => openLink('https://baca-docs.vercel.app/docs/overview')}
-        >
+        <Button h={12} m={3} maxWidth={160} minWidth={160} onPress={() => openLink(BACA_DOCS_URL)}>
           {t('home_screen.read_docs')}
         </Button>
         <Button.SecondaryColor
@@ -39,7 +34,7 @@ export const HomeScreen = () => {
           m={3}
           maxWidth={160}
           minWidth={160}
-          onPress={() => openLink('https://binarapps.online/sign-in')}
+          onPress={() => openLink(BACA_APP_URL)}
         >
           {t('home_screen.try_it')}
         </Button.SecondaryColor>
