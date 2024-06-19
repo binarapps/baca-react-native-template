@@ -1,9 +1,6 @@
-import { Button, Center, Text } from '@baca/design-system'
+import { Box, Button, Center, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
-import { View, Linking, StyleSheet } from 'react-native'
-
-//TODO: Delete JSON we're not using
-//TODO: Add t internationalization for buttons
+import { Linking } from 'react-native'
 
 export const HomeScreen = () => {
   const { t } = useTranslation()
@@ -18,39 +15,35 @@ export const HomeScreen = () => {
 
   return (
     <Center flex={1} px={4}>
-      <Text.XxlBold textAlign="center">{t('home_header_title')}</Text.XxlBold>
-      <Text.LgRegular textAlign="center">{t('home_header_subtitle')}</Text.LgRegular>
+      <Text.XxlBold textAlign="center">{t('home_screen.header_title')}</Text.XxlBold>
+      <Text.LgRegular textAlign="center">{t('home_screen.header_subtitle')}</Text.LgRegular>
 
-      <View style={styles.buttonsContainer}>
+      <Box
+        alignItems={'center'}
+        flexDirection={'row'}
+        flexWrap={'wrap'}
+        justifyContent={'center'}
+        mt={4}
+      >
         <Button
-          m={3}
           h={12}
-          minWidth={160}
+          m={3}
           maxWidth={160}
+          minWidth={160}
           onPress={() => openLink('https://baca-docs.vercel.app/docs/overview')}
         >
-          <Text.MdBold>Read docs</Text.MdBold>
+          {t('home_screen.read_docs')}
         </Button>
         <Button.SecondaryColor
-          m={3}
           h={12}
-          minWidth={160}
+          m={3}
           maxWidth={160}
+          minWidth={160}
           onPress={() => openLink('https://binarapps.online/sign-in')}
         >
-          <Text.MdBold>Try it</Text.MdBold>
+          {t('home_screen.try_it')}
         </Button.SecondaryColor>
-      </View>
+      </Box>
     </Center>
   )
 }
-
-const styles = StyleSheet.create({
-  buttonsContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    marginTop: 16,
-  },
-})
