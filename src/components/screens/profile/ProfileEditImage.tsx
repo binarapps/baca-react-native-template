@@ -1,4 +1,3 @@
-import { isWeb } from '@baca/constants'
 import { Box, Text, Button, Row, themeColors } from '@baca/design-system'
 import * as ImagePicker from 'expo-image-picker'
 import { t } from 'i18next'
@@ -22,8 +21,8 @@ export const ProfileEditImage: React.FC = () => {
   }, [])
 
   return (
-    <Box borderColor="border.secondary" borderTopWidth={1} py={6}>
-      <Box style={styles.marginBottom}>
+    <Row style={styles.container}>
+      <Box style={styles.textContainer}>
         <Text.SmBold color="text.primary">{t('profile_screen.your_photo')}</Text.SmBold>
         <Text.SmRegular color="text.secondary">
           {t('profile_screen.your_photo_description')}
@@ -34,39 +33,47 @@ export const ProfileEditImage: React.FC = () => {
           <Image source={{ uri: image }} style={styles.image} />
         ) : (
           <Box style={styles.placeholder}>
-            <Text color="Gray modern.600">{t('profile_screen.photo_innerText')}</Text>
+            <Text fontSize={11} color="Gray modern.600">
+              {t('profile_screen.photo_innerText')}
+            </Text>
           </Box>
         )}
       </Box>
-      <Row maxW={800} justifyContent="flex-end">
-        <Button onPress={pickImage}>{t('common.upload')}</Button>
-      </Row>
-    </Box>
+      <Button onPress={pickImage}>{t('common.upload')}</Button>
+    </Row>
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    maxWidth: 800,
+  },
   image: {
     height: '100%',
     width: '100%',
   },
   imageContainer: {
-    alignSelf: 'center',
-    borderRadius: 50,
-    height: 100,
+    borderRadius: 32,
+    height: 64,
     marginBottom: 10,
+    marginRight: 82,
     overflow: 'hidden',
-    right: isWeb ? 150 : 0,
-    width: 100,
-  },
-  marginBottom: {
-    marginBottom: 10,
+    width: 64,
   },
   placeholder: {
     alignItems: 'center',
     backgroundColor: themeColors.primitives['Gray neutral']['50'],
     height: '100%',
     justifyContent: 'center',
-    width: '100%',
+  },
+  textContainer: {
+    flex: 1,
+    marginBottom: 30,
+    maxWidth: 260,
+    minWidth: 260,
   },
 })
