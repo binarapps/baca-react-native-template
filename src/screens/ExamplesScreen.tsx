@@ -24,6 +24,8 @@ export const ExamplesScreen = () => {
 
   const goToHomeStackDetails = useCallback(() => push('/home/details'), [push])
 
+  const goToSkiaComponents = useCallback(() => push('/example/skia-components'), [push])
+
   return (
     <ScrollView p={4}>
       <Button mb={2} onPress={goToApplicationInfo}>
@@ -53,6 +55,9 @@ export const ExamplesScreen = () => {
       </Button>
       <Button mb={2} onPress={goToUserSession}>
         {t('examples_screen.go_to_user_session')}
+      </Button>
+      <Button mb={2} onPress={goToSkiaComponents}>
+        {t('examples_screen.go_to_skia_components')}
       </Button>
     </ScrollView>
   )
