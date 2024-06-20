@@ -18,24 +18,25 @@ export const ProfilePasswordForm = () => {
   return (
     <Box borderColor="border.secondary" borderTopWidth={1} py={6}>
       <ProfileControlledInput
-        label={t('form.labels.old_password')}
-        name="oldPassword"
-        placeholder={t('form.placeholders.old_password')}
         control={control}
         errors={errors}
+        label={t('form.labels.old_password')}
+        name="oldPassword"
         onSubmitEditing={focusNewPasswordInput}
+        placeholder={t('form.placeholders.old_password')}
+        type="password"
       />
       <ProfileControlledInput
-        label={t('form.labels.new_password')}
-        name="password"
-        placeholder={t('form.placeholders.new_password')}
         control={control}
         errors={{}}
         isInvalid={isPasswordError}
         isRequired
+        label={t('form.labels.new_password')}
+        name="password"
+        onSubmitEditing={Keyboard.dismiss}
+        placeholder={t('form.placeholders.new_password')}
         rules={{ validate: { validationFn } }}
         type="password"
-        onSubmitEditing={Keyboard.dismiss}
       />
       {passwordSuggestions}
       <Row maxW={800} justifyContent="flex-end">
