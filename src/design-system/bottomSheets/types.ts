@@ -1,4 +1,4 @@
-import { IconNames } from '@baca/types/icon'
+import { IconNames } from '@baca/types'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { RefObject } from 'react'
 

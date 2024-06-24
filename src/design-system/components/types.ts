@@ -1,5 +1,5 @@
 import { FontWeight, TextFontSize, _appTheme } from '@baca/design-system'
-import { IconNames } from '@baca/types/icon'
+import { IconNames } from '@baca/types'
 import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 'react-native'
 
 import { BoxProps } from './Box'

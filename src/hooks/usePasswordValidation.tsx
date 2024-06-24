@@ -1,6 +1,6 @@
 import { REGEX } from '@baca/constants'
 import { Box, Icon, Row, Text } from '@baca/design-system'
-import { IconNames } from '@baca/types/icon'
+import { IconNames } from '@baca/types'
 import { useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 

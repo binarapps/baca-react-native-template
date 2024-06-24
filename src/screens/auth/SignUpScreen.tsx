@@ -1,10 +1,9 @@
 import { CompanyLogo, ControlledField, FormWrapper, SocialButtons } from '@baca/components'
 import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
 import { useCallback, useSignUpForm, useState, useTranslation } from '@baca/hooks'
+import { usePasswordValidation } from '@baca/hooks/usePasswordValidation'
 import { router } from 'expo-router'
 import { Keyboard } from 'react-native'
-
-import { usePasswordValidation } from '../../hooks/usePasswordValidation'
 
 const navigateToLogIn = () => {
   router.navigate('/sign-in')
