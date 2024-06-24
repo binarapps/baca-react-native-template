@@ -2,15 +2,14 @@ import { googleIcon } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
 import { Button, ButtonProps, Icon } from '@baca/design-system'
 import i18n from '@baca/i18n'
-import { Image, ImageStyle } from 'expo-image'
+import { Image, ImageStyle, ImageSource } from 'expo-image'
 import { FC, useCallback } from 'react'
-import { ImageSourcePropType } from 'react-native'
 
 type SocialMediaType = 'apple' | 'facebook' | 'google'
 
 const socialButtonVariants: {
   [key in SocialMediaType]: {
-    source?: { light: ImageSourcePropType; dark?: ImageSourcePropType }
+    source?: { light: ImageSource; dark?: ImageSource }
     text: () => string
   }
 } = {
