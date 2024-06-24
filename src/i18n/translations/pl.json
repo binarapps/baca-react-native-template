@@ -11,25 +11,28 @@
       "title": "Twoja sesja wygasła"
     }
   },
+  "app_information": "Potrząśnij swoim urządzeniem, by otworzyć menu dewelopera",
   "bottom_tabs": {
-    "home": "Home",
     "categories": "Kategorie",
+    "details": "Detale",
     "example": "Przykłady",
-    "settings": "Ustawienia",
+    "home": "Home",
     "profile": "Profil",
-    "details": "Detale"
+    "settings": "Ustawienia"
   },
   "common": {
     "add": "Dodaj",
     "back": "Cofnij",
     "cancel": "Anuluj",
+    "change": "Zmień",
     "continue": "Kontynuuj",
     "go_back": "Cofnij",
     "remove": "Usuń",
     "save": "Zapisz",
     "search": "Szukaj",
     "try_again_later": "Proszę spróbuj ponownie później",
-    "try_again": "Spróbuj ponownie"
+    "try_again": "Spróbuj ponownie",
+    "upload": "Prześlij"
   },
   "errors": {
     "invalid_email": "Niepoprawny adres e-mail",
@@ -56,6 +59,8 @@
       "email": "Adres e-mail",
       "first_name": "Imię",
       "last_name": "Nazwisko",
+      "new_password": "Nowe hasło",
+      "old_password": "Stare hasło",
       "password": "Hasło"
     },
     "placeholders": {
@@ -64,6 +69,8 @@
       "email": "Podaj adres e-mail",
       "first_name": "Podaj swoje imię",
       "last_name": "Podaj swoje nazwisko",
+      "new_password": "Podaj nowe hasło",
+      "old_password": "Podaj stare hasło",
       "password": "Hasło"
     },
     "select": {},
@@ -75,6 +82,7 @@
       "required": "Pole wymagane"
     }
   },
+  "hello": "Witaj",
   "navigation": {
     "screen_titles": {
       "application_info": "ApplicationInfo",
@@ -90,8 +98,8 @@
       "home": "Home",
       "main_tab": "MainTab",
       "not_found": "NotFound",
-      "resetLinkSent": "Link wysłany",
       "profile": "Profil użytkownika",
+      "resetLinkSent": "Link wysłany",
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
@@ -126,18 +134,6 @@
     "colors_label": "Kolory"
   },
   "components_screen": {
-    "test_notification": "Test notification",
-    "typography": {
-      "label": "Typography",
-      "xs": "xs",
-      "sm": "sm",
-      "md": "md",
-      "lg": "lg",
-      "xl": "xl",
-      "2xl": "2xl",
-      "3xl": "3xl",
-      "4xl": "4xl"
-    },
     "button_variants": {
       "disabled": "Button disabled",
       "header": "Button variants",
@@ -145,8 +141,8 @@
       "link_destructive": "Button link destructive",
       "link_gray": "Button link gray",
       "loading": "Button loading",
-      "primary": "Button primary",
       "primary_destructive": "Button primary destructive",
+      "primary": "Button primary",
       "secondary_color": "Button secondary color",
       "secondary_destructive": "Button secondary destructive",
       "secondary_gray": "Button secondary gray",
@@ -166,6 +162,18 @@
     "notification": {
       "description": "by react-native-notificated 🎉",
       "title": "In-app notification example"
+    },
+    "test_notification": "Test notification",
+    "typography": {
+      "label": "Typography",
+      "2xl": "2xl",
+      "3xl": "3xl",
+      "4xl": "4xl",
+      "lg": "lg",
+      "md": "md",
+      "sm": "sm",
+      "xl": "xl",
+      "xs": "xs"
     }
   },
   "confirm_email_screen": {
@@ -175,10 +183,10 @@
     "verification_succeed": "Adres e-mail został pomyślnie potwierdzony."
   },
   "details_screen": {
-    "title": "To jest przykładowy widok",
+    "awesome": "Wspaniale 🎉",
     "open_bottom_sheet": "Otwórz BottomSheetModal",
     "screen_params": "Parametry widoku: {{params}}",
-    "awesome": "Wspaniale 🎉"
+    "title": "To jest przykładowy widok"
   },
   "examples_screen": {
     "go_to_application_info": "Idź do ApplicationInfo",
@@ -206,10 +214,10 @@
     "try_it": "Wypróbuj"
   },
   "landing_screen": {
-    "login_cta": "Zaloguj się",
-    "sign_up": "Zarejestruj się",
     "go_to_blog": "Otwórz blog",
-    "go_to_form": "Otwórz pełno ekranowy formularz full"
+    "go_to_form": "Otwórz pełno ekranowy formularz full",
+    "login_cta": "Zaloguj się",
+    "sign_up": "Zarejestruj się"
   },
   "reset_password_complete": {
     "password_reset": "Reset hasła",
@@ -233,11 +241,14 @@
     "sign_out": "Wyloguj!"
   },
   "profile_screen": {
-    "profile": "Profil",
-    "update_your_details": "Zaktualizuj swoje dane osobowe tutaj.",
-    "remove_account": "Usuń konto",
     "are_you_sure": "Jesteś pewny/a?",
-    "remove_account_desc": "Tej akcji nie można cofnąć.\n\nUtracisz dostęp do swojego konta. Jeśli masz aktywną subskrypcję, utracisz do niej dostęp.\n\nUpewnij się, że jesteś pewien tej akcji"
+    "photo_innerText": "Bez Zdjęcia",
+    "profile": "Profil",
+    "remove_account_desc": "Tej akcji nie można cofnąć.\n\nUtracisz dostęp do swojego konta. Jeśli masz aktywną subskrypcję, utracisz do niej dostęp.\n\nUpewnij się, że jesteś pewien tej akcji",
+    "remove_account": "Usuń konto",
+    "update_your_details": "Zaktualizuj swoje dane osobowe tutaj.",
+    "your_photo_description": "To będzie wyświetlane na twoim profilu.",
+    "your_photo": "Twoje zdjęcie"
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Nie masz konta?",
@@ -302,11 +313,9 @@
     "surname_placeholder": "Nazwisko",
     "which_music": "Jakiej muzyki słuchasz ?"
   },
+  "thanks": "Dzięki za używanie najlepszej templatki dla aplikacji expo",
   "typography_screen": {
     "display_font_size": "Display fontSize: ",
     "text_font_size": "Text fontSize: "
-  },
-  "hello": "Witaj",
-  "thanks": "Dzięki za używanie najlepszej templatki dla aplikacji expo",
-  "app_information": "Potrząśnij swoim urządzeniem, by otworzyć menu dewelopera"
+  }
 }

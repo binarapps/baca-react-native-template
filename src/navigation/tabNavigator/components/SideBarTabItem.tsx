@@ -1,5 +1,5 @@
 import { Icon, Row, Text } from '@baca/design-system'
-import { IconNames } from '@baca/types/icon'
+import { IconNames } from '@baca/types'
 import { Platform, StyleSheet } from 'react-native'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'

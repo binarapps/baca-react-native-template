@@ -1,5 +1,4 @@
-import { I18nKeys } from '@baca/types/i18next'
-import { IconNames } from '@baca/types/icon'
+import { I18nKeys, IconNames } from '@baca/types'
 
 type Tab = {
   // This will be passed to translations object and translated in the app

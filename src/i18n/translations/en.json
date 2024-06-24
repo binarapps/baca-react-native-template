@@ -11,25 +11,28 @@
       "title": "Your current session expired"
     }
   },
+  "app_information": "Shake your device to open developer menu",
   "bottom_tabs": {
-    "home": "Home",
     "categories": "Categories",
+    "details": "Details",
     "example": "Example",
-    "settings": "Settings",
+    "home": "Home",
     "profile": "Profile",
-    "details": "Details"
+    "settings": "Settings"
   },
   "common": {
     "add": "Add",
     "back": "Back",
     "cancel": "Cancel",
+    "change": "Change",
     "continue": "Continue",
     "go_back": "Go back",
     "remove": "Remove",
     "save": "Save",
     "search": "Search",
     "try_again_later": "Please try again later",
-    "try_again": "Try again"
+    "try_again": "Try again",
+    "upload": "Upload"
   },
   "errors": {
     "invalid_email": "Niepoprawny adres e-mail",
@@ -56,6 +59,8 @@
       "email": "E-mail address",
       "first_name": "First name",
       "last_name": "Last name",
+      "new_password": "New password",
+      "old_password": "Old password",
       "password": "Password"
     },
     "placeholders": {
@@ -64,6 +69,8 @@
       "email": "Enter your email",
       "first_name": "Enter your first name",
       "last_name": "Enter your last name",
+      "new_password": "Enter new password",
+      "old_password": "Enter current password",
       "password": "Password"
     },
     "select": {},
@@ -75,6 +82,7 @@
       "required": "This field is required"
     }
   },
+  "hello": "Welcome",
   "navigation": {
     "screen_titles": {
       "application_info": "ApplicationInfo",
@@ -90,8 +98,8 @@
       "home": "Home",
       "main_tab": "MainTab",
       "not_found": "Not Found",
-      "resetLinkSent": "Reset link sent",
       "profile": "Profile",
+      "resetLinkSent": "Reset link sent",
       "settings": "Settings",
       "sign_in": "Sign in",
       "sign_up": "Sign up",
@@ -133,8 +141,8 @@
       "link_destructive": "Button link destructive",
       "link_gray": "Button link gray",
       "loading": "Button loading",
-      "primary": "Button primary",
       "primary_destructive": "Button primary destructive",
+      "primary": "Button primary",
       "secondary_color": "Button secondary color",
       "secondary_destructive": "Button secondary destructive",
       "secondary_gray": "Button secondary gray",
@@ -158,14 +166,14 @@
     "test_notification": "Test notification",
     "typography": {
       "label": "Typography",
-      "xs": "xs",
-      "sm": "sm",
-      "md": "md",
-      "lg": "lg",
-      "xl": "xl",
       "2xl": "2xl",
       "3xl": "3xl",
-      "4xl": "4xl"
+      "4xl": "4xl",
+      "lg": "lg",
+      "md": "md",
+      "sm": "sm",
+      "xl": "xl",
+      "xs": "xs"
     }
   },
   "confirm_email_screen": {
@@ -230,15 +238,18 @@
   "settings_screen": {
     "copy_push_token": "Copy push token",
     "current_theme": "Current theme: {{theme}}",
-    "sign_out": "Sign out!",
-    "selected": " - selected"
+    "selected": " - selected",
+    "sign_out": "Sign out!"
   },
   "profile_screen": {
-    "profile": "Profile",
-    "update_your_details": "Update your personal details here.",
-    "remove_account": "Remove account",
     "are_you_sure": "Are you sure?",
-    "remove_account_desc": "This action cannot be undone.\n\nYou will lose access to your account. If you have an active subscription you will lose access to it.\n\nPlease make sure you are certain about this action."
+    "photo_innerText": "No Image",
+    "profile": "Profile",
+    "remove_account_desc": "This action cannot be undone.\n\nYou will lose access to your account. If you have an active subscription you will lose access to it.\n\nPlease make sure you are certain about this action.",
+    "remove_account": "Remove account",
+    "update_your_details": "Update your personal details here.",
+    "your_photo_description": "This will be displayed on your profile.",
+    "your_photo": "Your photo"
   },
   "sign_in_screen": {
     "do_not_have_an_account": "Don't have an account?",
@@ -303,11 +314,9 @@
     "surname_placeholder": "Surname",
     "which_music": "what kind of music do you listen ?"
   },
+  "thanks": "Thank you for using the best template for expo apps",
   "typography_screen": {
     "display_font_size": "Display fontSize: ",
     "text_font_size": "Text fontSize: "
-  },
-  "hello": "Welcome",
-  "thanks": "Thank you for using the best template for expo apps",
-  "app_information": "Shake your device to open developer menu"
+  }
 }
