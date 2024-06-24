@@ -11,9 +11,9 @@ import { Text } from './Text'
 import { Touchable } from './Touchables/Touchable'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
 import { BottomSheet } from '../bottomSheets/BottomSheet'
-import { BottomSheetFlatList } from '../bottomSheets/BottomSheetFlatList'
+import { BottomSheetFlashList } from '../bottomSheets/BottomSheetFlashList'
 
-const ITEM_HEIGHT = 56
+// const ITEM_HEIGHT = 56
 const BOTTOM_SHEET_CONTENT_HEIGHT = Dimensions.get('screen').height / 1.5
 
 const SelectItem = <T extends SelectKey>({
@@ -148,12 +148,12 @@ export const Select = <T extends SelectKey>({
 
   const keyExtractor = useCallback((item: SelectItemProps<T>) => item.value.toString(), [])
 
-  const getItemLayout = useCallback(
-    (_data: ArrayLike<SelectItemProps<T>> | null | undefined, index: number) => {
-      return { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
-    },
-    []
-  )
+  // const getItemLayout = useCallback(
+  //   (_data: ArrayLike<SelectItemProps<T>> | null | undefined, index: number) => {
+  //     return { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
+  //   },
+  //   []
+  // )
 
   const inputColor = useMemo(() => {
     return isError ? 'text.error.primary' : dropdownDisabled ? 'utility.gray.500' : 'text.primary'
@@ -177,13 +177,14 @@ export const Select = <T extends SelectKey>({
         <Icon color={inputColor} size={22} name="arrow-down-s-line" style={styles.icon} />
       </Touchable>
       <BottomSheet title={label} bottomSheetRef={ref}>
-        <Box pb={6} px={4}>
-          <BottomSheetFlatList
-            style={styles.bottomSheetFlatList}
+        <Box pb={6} px={4} style={{ height: BOTTOM_SHEET_CONTENT_HEIGHT }}>
+          <BottomSheetFlashList
+            style={styles.bottomSheetFlashList}
             data={items}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
-            getItemLayout={getItemLayout}
+            estimatedItemSize={50} // Added
+            initialScrollIndex={0} // Added
           />
         </Box>
       </BottomSheet>
@@ -192,7 +193,7 @@ export const Select = <T extends SelectKey>({
 }
 
 const styles = StyleSheet.create({
-  bottomSheetFlatList: {
+  bottomSheetFlashList: {
     maxHeight: BOTTOM_SHEET_CONTENT_HEIGHT,
   },
   icon: {
