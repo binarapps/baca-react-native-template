@@ -1,38 +1,43 @@
-import { BACA_APP_URL, BACA_DOCS_URL } from '@baca/constants'
-import { Box, Button, Center, Text } from '@baca/design-system'
+import { CompanyLogo } from '@baca/components'
+import { Button, Center, Text } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
-import { Linking } from 'react-native'
+import { router } from 'expo-router'
 
 export const HomeScreen = () => {
   const { t } = useTranslation()
-
   useScreenOptions({
     title: t('navigation.screen_titles.home'),
   })
 
-  const openLink = useCallback((url: string) => {
-    Linking.openURL(url)
+  const navigateToDetails = useCallback(() => {
+    router.navigate({
+      pathname: 'home/details',
+      params: { user: 'example@example.com' },
+    })
+  }, [])
+  const navigateToBlog = useCallback(() => {
+    router.navigate('/blog')
+  }, [])
+
+  const navigateToBigForm = useCallback(() => {
+    router.navigate('/big-form')
   }, [])
 
   return (
     <Center flex={1} px={4}>
-      <Text.XxlBold textAlign="center">{t('home_screen.header_title')}</Text.XxlBold>
-      <Text.LgRegular textAlign="center">{t('home_screen.header_subtitle')}</Text.LgRegular>
-
-      <Box alignItems="center" flexDirection="row" flexWrap="wrap" justifyContent="center" mt={4}>
-        <Button h={12} m={3} maxWidth={160} minWidth={160} onPress={() => openLink(BACA_DOCS_URL)}>
-          {t('home_screen.read_docs')}
-        </Button>
-        <Button.SecondaryColor
-          h={12}
-          m={3}
-          maxWidth={160}
-          minWidth={160}
-          onPress={() => openLink(BACA_APP_URL)}
-        >
-          {t('home_screen.try_it')}
-        </Button.SecondaryColor>
-      </Box>
+      <CompanyLogo />
+      <Text.MdBold textAlign="center">{t('hello')}</Text.MdBold>
+      <Text.MdRegular textAlign="center">{t('thanks')}</Text.MdRegular>
+      <Text.MdRegular textAlign="center">{t('app_information')}</Text.MdRegular>
+      <Button mt={4} onPress={navigateToDetails}>
+        {t('home_screen.details')}
+      </Button>
+      <Button mt={4} onPress={navigateToBigForm}>
+        {t('landing_screen.go_to_form')}
+      </Button>
+      <Button mt={4} onPress={navigateToBlog}>
+        {t('landing_screen.go_to_blog')}
+      </Button>
     </Center>
   )
 }
