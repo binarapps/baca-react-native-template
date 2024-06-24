@@ -1,14 +1,10 @@
 import { CompanyLogo, KeyboardAwareScrollView, LandingHeader } from '@baca/components'
 import { Button, Center, Text } from '@baca/design-system'
-import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
+import { useCallback, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
 
 export const LandingScreen = () => {
   const { t } = useTranslation()
-
-  useScreenOptions({
-    title: t('navigation.screen_titles.home'),
-  })
 
   const navigateToBlog = useCallback(() => {
     router.navigate('/blog')
