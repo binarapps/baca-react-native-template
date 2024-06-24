@@ -1,4 +1,4 @@
-import { ControlledField } from '@baca/components'
+import { ControlledField } from '@baca/components/organisms/ControlledField'
 import { isWeb } from '@baca/constants'
 import { Box, Text } from '@baca/design-system'
 import { useWeb } from '@baca/hooks'
