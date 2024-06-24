@@ -18,9 +18,10 @@ export const useUpdatePasswordForm = () => {
     formState: { errors },
     handleSubmit,
     reset,
+    setFocus,
     setError: setFormError,
   } = useForm<AuthUpdateDto>({
-    mode: 'onTouched',
+    mode: 'onChange',
     defaultValues,
   })
 
@@ -49,6 +50,7 @@ export const useUpdatePasswordForm = () => {
     control,
     errors,
     isSubmitting: isLoading,
+    setFocus,
     submit: handleSubmit(onSubmit),
   }
 }

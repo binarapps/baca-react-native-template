@@ -1,29 +1,44 @@
 import { Box, Button, Row } from '@baca/design-system'
-import { useUpdatePasswordForm } from '@baca/hooks/forms/useUpdatePasswordForm'
+import { useCallback } from '@baca/hooks'
+import { useUpdatePasswordForm } from '@baca/hooks/forms'
+import { usePasswordValidation } from '@baca/hooks/usePasswordValidation'
 import { useTranslation } from 'react-i18next'
+import { Keyboard } from 'react-native'
 
 import { ProfileControlledInput } from './ProfileControlledInput'
 
 export const ProfilePasswordForm = () => {
   const { t } = useTranslation()
-  const { control, errors, submit, isSubmitting } = useUpdatePasswordForm()
+  const { control, errors, submit, isSubmitting, setFocus } = useUpdatePasswordForm()
+
+  const { isPasswordError, passwordSuggestions, validationFn } = usePasswordValidation()
+
+  const focusNewPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (
     <Box borderColor="border.secondary" borderTopWidth={1} py={6}>
       <ProfileControlledInput
+        control={control}
+        errors={errors}
         label={t('form.labels.old_password')}
         name="oldPassword"
+        onSubmitEditing={focusNewPasswordInput}
         placeholder={t('form.placeholders.old_password')}
-        control={control}
-        errors={errors}
+        type="password"
       />
       <ProfileControlledInput
+        control={control}
+        errors={{}}
+        isInvalid={isPasswordError}
+        isRequired
         label={t('form.labels.new_password')}
         name="password"
+        onSubmitEditing={Keyboard.dismiss}
         placeholder={t('form.placeholders.new_password')}
-        control={control}
-        errors={errors}
+        rules={{ validate: { validationFn } }}
+        type="password"
       />
+      {passwordSuggestions}
       <Row maxW={800} justifyContent="flex-end">
         <Button
           disabled={isSubmitting}
