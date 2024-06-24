@@ -9,8 +9,6 @@ export const LandingScreen = () => {
   const { t } = useTranslation()
   const { viewportWidth, viewportHeight } = useViewportDimensions()
 
-  useScreenOptions({ title: t('navigation.screen_titles.home') })
-
   const openLink = useCallback((url: string) => Linking.openURL(url), [])
 
   const renderItem = (item: ImageSourcePropType, index: number) => (
