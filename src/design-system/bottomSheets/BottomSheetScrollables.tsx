@@ -3,10 +3,9 @@
 // Could be connected to this: https://github.com/gorhom/react-native-bottom-sheet/issues/1760
 // After upgrading bottom sheet library try changing the imports, maybe it will work as expected
 // import { BottomSheetScrollView as ScrollView, BottomSheetFlashList as FlashList, BottomSheetSectionList as SectionList } from "@gorhom/bottom-sheet";
-import { FlashList } from '@shopify/flash-list'
-import { SectionList } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { FlatList as RNFlatList, Platform, SectionList } from 'react-native'
+import { ScrollView, FlatList } from 'react-native-gesture-handler'
 
 export const BottomSheetScrollView = ScrollView
-export const BottomSheetFlashList = FlashList
+export const BottomSheetFlatList = Platform.OS === 'web' ? RNFlatList : FlatList
 export const BottomSheetSectionList = SectionList
