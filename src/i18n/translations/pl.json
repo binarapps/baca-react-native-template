@@ -196,6 +196,7 @@
     "go_to_screen_test_form": "Idź do formularza testowego",
     "go_to_screen_with_BEdata": "Idź do widoku z danymi z backend-u",
     "go_to_settings": "Idź do Ustawień",
+    "go_to_skia_components": "Idź do Komponentów Skia",
     "go_to_typography": "Idź do Typografii",
     "go_to_user_session": "Idź do sesji użytkowania",
     "header": "To jest przykładowy widok"
