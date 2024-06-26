@@ -2,22 +2,12 @@ import {
   FormErrorMessage,
   FormLabel,
   Box,
-  Touchable,
-  Text,
   TouchableRef,
+  RadioButton,
 } from '@baca/design-system/components'
-import { forwardRef, useCallback, useMemo } from 'react'
+import { forwardRef, useMemo } from 'react'
 
 import { FieldRadioProps } from './types'
-
-const radioSizes = {
-  sm: {
-    boxSize: 4,
-  },
-  md: {
-    boxSize: 5,
-  },
-} as const
 
 export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
   (
@@ -27,7 +17,7 @@ export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
       radioOptions,
       errorMessage,
       isError,
-      size = 'sm',
+      size = 'md',
       onChange,
       label,
       labelStyle,
@@ -35,52 +25,24 @@ export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
     },
     ref
   ) => {
-    const checkboxSize = useMemo(() => radioSizes[size], [size])
-
-    const getBorderColor = useCallback(
-      (isSelected: boolean): ColorNames | undefined => {
-        if (isDisabled) {
-          return 'border.disabled'
-        }
-        if (isError) {
-          return 'border.error'
-        }
-
-        if (isSelected) {
-          return 'bg.brand.solid'
-        }
-
-        return 'border.primary'
-      },
-      [isDisabled, isError]
-    )
-
     const renderRadioButtons = useMemo(
       () =>
         radioOptions?.map((item: string, index: number) => {
           return (
-            <Touchable
+            <RadioButton
               ref={ref}
               key={index}
-              onPress={() => onChange(item)}
-              alignItems="center"
-              flexDirection="row"
-              height={8}
-            >
-              <Box
-                alignItems="center"
-                borderRadius={50}
-                height={checkboxSize.boxSize}
-                width={checkboxSize.boxSize}
-                justifyContent="center"
-                borderColor={getBorderColor(item === value)}
-                borderWidth={item === value ? 5 : 1}
-              />
-              <Text ml={4}>{item}</Text>
-            </Touchable>
+              isDisabled={isDisabled}
+              isError={isError}
+              isSelected={item === value}
+              onChange={() => onChange(item)}
+              pb={2}
+              label={item}
+              size={size}
+            />
           )
         }),
-      [radioOptions, ref, checkboxSize.boxSize, getBorderColor, value, onChange]
+      [radioOptions, ref, isDisabled, isError, value, size, onChange]
     )
 
     return (
