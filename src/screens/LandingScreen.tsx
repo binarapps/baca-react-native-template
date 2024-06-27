@@ -1,18 +1,36 @@
 import { KeyboardAwareScrollView, LandingHeader } from '@baca/components'
 import { BACA_APP_URL, BACA_DOCS_URL } from '@baca/constants'
-import { Button, Center, Text, Box, ScrollView } from '@baca/design-system'
-import { useCallback, useScreenOptions, useTranslation, useViewportDimensions } from '@baca/hooks'
+import { Button, Center, Text, Box } from '@baca/design-system'
+import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { draftImages } from '@baca/screens'
-import { ImageSourcePropType, Linking, Image, StyleSheet } from 'react-native'
+import { useState, useEffect } from 'react'
+import { ImageSourcePropType, Linking, Image, Dimensions, StyleSheet } from 'react-native'
 
 export const LandingScreen = () => {
   const { t } = useTranslation()
-  const { viewportWidth, viewportHeight } = useViewportDimensions()
+  const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width)
+
+  useEffect(() => {
+    const onChange = ({ window }: { window: { width: number } }) => setScreenWidth(window.width)
+    const subscription = Dimensions.addEventListener('change', onChange)
+    return () => subscription?.remove()
+  }, [])
+
+  let numColumns
+  if (screenWidth >= 1100) {
+    numColumns = 4
+  } else if (screenWidth <= 767) {
+    numColumns = 2
+  } else {
+    numColumns = 4
+  }
+
+  const imageSize = screenWidth / numColumns - 16
 
   const openLink = useCallback((url: string) => Linking.openURL(url), [])
 
   const renderItem = (item: ImageSourcePropType, index: number) => (
-    <Box key={index} height={viewportHeight * 0.6} width={viewportWidth * 0.6}>
+    <Box key={index} height={imageSize} width={imageSize} style={styles.imagesContainer}>
       <Image source={item} resizeMode="contain" style={styles.imageSize} />
     </Box>
   )
@@ -51,17 +69,9 @@ export const LandingScreen = () => {
           </Button.SecondaryColor>
         </Box>
 
-        <ScrollView
-          height={viewportHeight * 0.6}
-          horizontal
-          mt={8}
-          pagingEnabled
-          scrollEventThrottle={16}
-          showsHorizontalScrollIndicator={false}
-          width={viewportWidth * 0.6}
-        >
+        <Box flexDirection="row" flexWrap="wrap" justifyContent="center" mt={4}>
           {draftImages.map(renderItem)}
-        </ScrollView>
+        </Box>
       </Center>
     </KeyboardAwareScrollView>
   )
@@ -71,5 +81,8 @@ const styles = StyleSheet.create({
   imageSize: {
     height: '100%',
     width: '100%',
+  },
+  imagesContainer: {
+    padding: 6,
   },
 })
