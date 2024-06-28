@@ -1,11 +1,12 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import { HeaderButtons } from './components/HeaderButtons'
-import { ImageSlider } from './components/ImageSlider'
-import styles from './index.module.css'
+
+import styles from './styles.module.css'
 import Heading from '@theme/Heading'
 import clsx from 'clsx'
+import HeaderButtons from './HeaderButtons'
+import ImageSlider from './ImageSlider'
 
-export function HomepageHeader() {
+export default function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
 
   return (
