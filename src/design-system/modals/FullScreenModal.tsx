@@ -1,4 +1,4 @@
-import { Box } from '@baca/design-system'
+import { Box } from '@baca/design-system/components/Box'
 import { useBoolean, useImperativeHandle } from '@baca/hooks'
 import { RefObject } from 'react'
 import { Modal, ModalProps } from 'react-native'

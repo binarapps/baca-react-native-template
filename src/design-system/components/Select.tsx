@@ -73,13 +73,6 @@ const SelectItem = <T extends SelectKey>({
       isChecked={selected}
       size="md"
       pb={4}
-      // isDisabled={disabled}
-      // isError={false}
-      // isSelected={selected}
-      // label={item.labelInDropdown ?? item.label}
-      // onChange={onItemSelect}
-      // size="md"
-      // pb={4}
     />
   )
 }
@@ -178,7 +171,7 @@ export const Select = <T extends SelectKey>({
             styles.bottomSheetContentFlatList,
             { paddingBottom: flatListPaddingBottom },
           ]}
-          data={items}
+          data={[...items, ...items]}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
           getItemLayout={getItemLayout}
