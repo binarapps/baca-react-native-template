@@ -208,13 +208,14 @@ export type SelectProps<T> = {
   onOpen?: () => void
 }
 
-export type RadioProps = {
-  onChange: (val: string) => void
-  label?: string
-  radioOptions?: string[]
+export type RadioButtonProps = {
+  onChange: (val: boolean) => void
+  isSelected?: boolean
+  isDisabled?: boolean
   isError?: boolean
-  value?: string | number
+  label?: string
   size?: 'sm' | 'md'
+  pb?: SizingValue
 }
 
 export type CheckboxProps = ViewProps & {
@@ -226,4 +227,5 @@ export type CheckboxProps = ViewProps & {
   isError?: boolean
   isChecked?: boolean
   checkboxes?: string[]
+  pb?: SizingValue
 }

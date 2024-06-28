@@ -1,6 +1,6 @@
 import { darkBinarLogo, darkLogoSygnet, lightBinarLogo, lightLogoSygnet } from '@baca/constants'
 import { ColorSchemeName, useColorScheme } from '@baca/contexts'
-import { Image, ImageProps, ImageStyle } from 'react-native'
+import { Image, ImageStyle, ImageProps } from 'expo-image'
 
 type LogoTypes = 'binarSygnet' | 'binar'
 
@@ -26,12 +26,5 @@ export const CompanyLogo = ({
 
   const source = LOGO[colorScheme][type]
 
-  return (
-    <Image
-      {...{ source }}
-      resizeMethod="resize"
-      resizeMode="contain"
-      style={[{ height, maxWidth: width }, style]}
-    />
-  )
+  return <Image contentFit="scale-down" source={source} style={[{ height, width }, style]} />
 }

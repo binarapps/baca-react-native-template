@@ -1,6 +1,7 @@
 import { forwardRef, useCallback, useMemo } from 'react'
 import { TouchableOpacity, StyleSheet } from 'react-native'
 
+import { Box } from './Box'
 import { Center } from './Center'
 import { Icon } from './Icon'
 import { Text } from './Text'
@@ -32,8 +33,9 @@ export const Checkbox = forwardRef<TouchableOpacity, CheckboxProps>(
       isChecked,
       isError,
       onChange,
-      size = 'sm',
+      size = 'md',
       value,
+      pb,
       ...props
     },
     ref
@@ -80,28 +82,30 @@ export const Checkbox = forwardRef<TouchableOpacity, CheckboxProps>(
     }, [isChecked, isError, disabled])
 
     return (
-      <TouchableOpacity
-        {...{ disabled, hitSlop, ref }}
-        activeOpacity={0.5}
-        onPress={handleValueChange}
-        style={styles.mainContainer}
-      >
-        <Center
-          bg={bgColor}
-          borderColor={borderColor}
-          borderRadius={4}
-          borderWidth={1}
-          height={checkboxSize.boxSize}
-          mr={2}
-          width={checkboxSize.boxSize}
-          {...{ ...props }}
+      <Box pb={pb}>
+        <TouchableOpacity
+          {...{ disabled, hitSlop, ref }}
+          activeOpacity={0.5}
+          onPress={handleValueChange}
+          style={styles.mainContainer}
         >
-          {isChecked ? (
-            <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
-          ) : null}
-        </Center>
-        <Text.SmRegular>{checkboxText}</Text.SmRegular>
-      </TouchableOpacity>
+          <Center
+            bg={bgColor}
+            borderColor={borderColor}
+            borderRadius={4}
+            borderWidth={1}
+            height={checkboxSize.boxSize}
+            mr={2}
+            width={checkboxSize.boxSize}
+            {...{ ...props }}
+          >
+            {isChecked ? (
+              <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
+            ) : null}
+          </Center>
+          <Text.SmRegular>{checkboxText}</Text.SmRegular>
+        </TouchableOpacity>
+      </Box>
     )
   }
 )

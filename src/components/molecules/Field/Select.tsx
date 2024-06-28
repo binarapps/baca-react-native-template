@@ -58,7 +58,7 @@ export const Select = <T extends SelectKey>({
     <Box {...layoutProps} width="100%" mb={2}>
       <Pressable>
         <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
-        <CustomSelect {...props} />
+        <CustomSelect label={label} {...props} />
         <FormErrorMessage errorMessage={errorMessage} />
       </Pressable>
     </Box>

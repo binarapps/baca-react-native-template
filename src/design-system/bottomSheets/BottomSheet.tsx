@@ -9,8 +9,8 @@ import {
 import { useCallback } from 'react'
 import { Dimensions } from 'react-native'
 
-import { BottomSheetScrollView } from './BootomSheetScrollables'
 import { BottomSheetHeader } from './BottomSheetHeader'
+import { BottomSheetScrollView } from './BottomSheetScrollables'
 import { BottomSheetProps } from './types'
 
 const screenHeight = Dimensions.get('screen').height

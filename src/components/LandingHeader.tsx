@@ -5,9 +5,10 @@ import { useFullScreenModal } from '@baca/design-system/modals/useFullScreenModa
 import { useCallback, useMemo, useTheme, useTranslation } from '@baca/hooks'
 import { useUniversalWidth } from '@baca/navigation/tabNavigator/hooks'
 import { isSignedInAtom } from '@baca/store/auth'
+import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
 import { useAtomValue } from 'jotai'
-import { Image, StyleSheet, Platform, View } from 'react-native'
+import { StyleSheet, Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export function LandingHeader() {
@@ -36,8 +37,7 @@ export function LandingHeader() {
       </Pressable>
     ) : (
       <Image
-        resizeMethod="resize"
-        resizeMode="contain"
+        contentFit="scale-down"
         source={colorScheme === 'light' ? lightBinarLogo : darkBinarLogo}
         style={jsStyles.logoWide}
       />
