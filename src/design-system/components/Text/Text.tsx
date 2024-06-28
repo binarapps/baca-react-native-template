@@ -248,6 +248,10 @@ Text.XlBold = generateTextVariant('XlBold')
 Text.XlMedium = generateTextVariant('XlMedium')
 Text.XlRegular = generateTextVariant('XlRegular')
 Text.XlSemibold = generateTextVariant('XlSemibold')
+Text.XxlBold = generateTextVariant('XxlBold')
+Text.XxlMedium = generateTextVariant('XxlMedium')
+Text.XxlRegular = generateTextVariant('XxlRegular')
+Text.XxlSemibold = generateTextVariant('XxlSemibold')
 
 export { Display, Text }
 

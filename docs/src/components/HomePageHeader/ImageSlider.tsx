@@ -1,4 +1,4 @@
-import styles from '../index.module.css'
+import styles from './styles.module.css'
 import Slider from 'react-slick'
 
 const sliderSettings = {
@@ -48,14 +48,16 @@ const sliderImages = [
   },
 ]
 
-export const ImageSlider = () => (
-  <div className={styles.sliderContainer}>
-    <Slider {...sliderSettings}>
-      {sliderImages.map((image, index) => (
-        <div key={index} className={styles.imageWrapper}>
-          <img src={image.src} alt={image.alt} className={styles.image} />
-        </div>
-      ))}
-    </Slider>
-  </div>
-)
+export default function ImageSlider() {
+  return (
+    <div className={styles.sliderContainer}>
+      <Slider {...sliderSettings}>
+        {sliderImages.map((image, index) => (
+          <div key={index} className={styles.imageWrapper}>
+            <img src={image.src} alt={image.alt} className={styles.image} />
+          </div>
+        ))}
+      </Slider>
+    </div>
+  )
+}

@@ -18,7 +18,7 @@ description: Mocking - check how to mock data from backend and display it for us
 
 This template uses [MSW](https://mswjs.io/docs) to mock data.
 
-Mocks are automatically generated with orval script - you can check [docs here](/api-connection)
+Mocks are automatically generated with orval script - you can check [docs here](/docs/api-connection)
 
 ## Enabling mocks
 

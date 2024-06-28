@@ -5,7 +5,6 @@ import { router } from 'expo-router'
 
 export const HomeScreen = () => {
   const { t } = useTranslation()
-
   useScreenOptions({
     title: t('navigation.screen_titles.home'),
   })

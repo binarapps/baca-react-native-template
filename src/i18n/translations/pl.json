@@ -207,7 +207,11 @@
     "reset_password": "Zresetuj hasło"
   },
   "home_screen": {
-    "details": "Detale"
+    "details": "Detale",
+    "header_subtitle": "Zacznij swój projekt w react native i zwiększ swoją produktywność",
+    "header_title": "BACA - react native starter",
+    "read_docs": "Przeczytaj dokumentacje",
+    "try_it": "Wypróbuj"
   },
   "landing_screen": {
     "go_to_blog": "Otwórz blog",
