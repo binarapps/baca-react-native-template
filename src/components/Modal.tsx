@@ -8,6 +8,7 @@ import {
   View,
   ViewStyle,
   StyleSheet,
+  Dimensions,
 } from 'react-native'
 
 import { KeyboardAwareScrollView } from './KeyboardAwareScrollView'
@@ -68,6 +69,6 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     justifyContent: 'center',
-    paddingHorizontal: 32,
+    paddingHorizontal: Dimensions.get('window').width < 450 ? 16 : 32,
   },
 })

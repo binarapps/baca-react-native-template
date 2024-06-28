@@ -1,5 +1,5 @@
 import { Modal } from '@baca/components/Modal'
-import { useBoolean, useWeb } from '@baca/hooks'
+import { useBoolean } from '@baca/hooks'
 import { useCallback, useImperativeHandle } from 'react'
 import { ScrollView } from 'react-native'
 
@@ -18,7 +18,6 @@ export const BottomSheet = ({
   bottomSheetRef,
 }: BottomSheetProps) => {
   const [isOpen, setIsOpen] = useBoolean(false)
-  const { webContentWidth } = useWeb()
 
   useImperativeHandle(bottomSheetRef, () => ({
     snapToPosition: (index: string | number) => {
@@ -46,11 +45,13 @@ export const BottomSheet = ({
     <Modal transparent visible={isOpen} onRequestClose={closeModalHandler}>
       <Box
         mx="auto"
+        my={8}
         bg="bg.primary"
         borderRadius={8}
         borderColor={'border.primary'}
         borderWidth={1}
-        maxW={webContentWidth}
+        width="90%"
+        maxWidth={500}
       >
         <BottomSheetHeader
           title={title}

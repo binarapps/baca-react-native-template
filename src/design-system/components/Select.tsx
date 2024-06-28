@@ -1,17 +1,16 @@
-import { useTheme } from '@baca/hooks'
+import { useSafeAreaInsets, useTheme } from '@baca/hooks'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { useCallback, useMemo, useRef } from 'react'
-import { Keyboard, StyleSheet, Dimensions } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Keyboard, StyleSheet, Dimensions, Platform } from 'react-native'
 
-import { Box } from './Box'
+import { Checkbox } from './Checkbox'
 import { Icon } from './Icon'
-import { Row } from './Row'
+import { RadioButton } from './RadioButton'
 import { Text } from './Text'
 import { Touchable } from './Touchables/Touchable'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
 import { BottomSheet } from '../bottomSheets/BottomSheet'
-import { BottomSheetFlatList } from '../bottomSheets/BottomSheetFlatList'
+import { BottomSheetFlatList } from '../bottomSheets/BottomSheetScrollables'
 
 const ITEM_HEIGHT = 56
 const BOTTOM_SHEET_CONTENT_HEIGHT = Dimensions.get('screen').height / 1.5
@@ -32,7 +31,6 @@ const SelectItem = <T extends SelectKey>({
   disabled: boolean
 }) => {
   const selected = value?.includes(item.value)
-  const { colors } = useTheme()
 
   const onItemSelect = useCallback(() => {
     if (maxSelectedItems === 1) {
@@ -53,38 +51,29 @@ const SelectItem = <T extends SelectKey>({
     }
   }, [closeDropdown, item.value, maxSelectedItems, setValue, value])
 
-  const color = useMemo(
-    () => (disabled && !selected ? colors.bg.brand.primary : colors.bg.active),
-    [disabled, selected, colors]
-  )
+  if (maxSelectedItems === 1) {
+    return (
+      <RadioButton
+        isDisabled={disabled}
+        isError={false}
+        isSelected={selected}
+        label={item.labelInDropdown ?? item.label}
+        onChange={onItemSelect}
+        size="md"
+        pb={4}
+      />
+    )
+  }
 
   return (
-    <TouchableOpacity style={styles.itemWrapper} onPress={onItemSelect}>
-      {maxSelectedItems === 1 ? (
-        <Row my={2} flex={1} alignItems="center">
-          <Text>{item.labelInDropdown ?? item.label}</Text>
-        </Row>
-      ) : null}
-      {maxSelectedItems > 1 ? (
-        <Row mb={4}>
-          <Box
-            borderRadius={5}
-            borderColor={disabled && !selected ? 'border.disabled' : 'border.brand'}
-            borderWidth={1}
-            width={5}
-            height={5}
-            mr={4}
-            justifyContent="center"
-            alignItems="center"
-          >
-            {selected ? <Icon color="icon.fg.brand" name="check-fill" size={18} /> : null}
-          </Box>
-          <Row flex={1} alignItems="center">
-            <Text style={{ color }}>{item.labelInDropdown ?? item.label}</Text>
-          </Row>
-        </Row>
-      ) : null}
-    </TouchableOpacity>
+    <Checkbox
+      onChange={onItemSelect}
+      checkboxText={item.labelInDropdown ?? item.label}
+      value={selected}
+      isChecked={selected}
+      size="md"
+      pb={4}
+    />
   )
 }
 
@@ -94,12 +83,14 @@ export const Select = <T extends SelectKey>({
   items,
   value,
   setValue,
+  label,
   maxSelectedItems = 1,
   onOpen,
   isError = false,
 }: SelectProps<T>) => {
   const ref = useRef<BottomSheetModal>(null)
   const { colors } = useTheme()
+  const { bottom } = useSafeAreaInsets()
 
   const showDropdown = useCallback(() => {
     onOpen && onOpen()
@@ -111,12 +102,7 @@ export const Select = <T extends SelectKey>({
     ref.current?.snapToPosition(-1)
   }, [])
 
-  const disabled = useMemo(
-    () => value?.length === maxSelectedItems,
-    [maxSelectedItems, value?.length]
-  )
-
-  const label = useMemo(() => {
+  const valueToShow = useMemo(() => {
     let retVal = ''
     const selectedItems = items?.filter((item) => value.includes(item.value)) ?? []
     if (selectedItems?.length === 0) {
@@ -139,11 +125,11 @@ export const Select = <T extends SelectKey>({
           maxSelectedItems={maxSelectedItems}
           closeDropdown={closeDropdown}
           value={value}
-          disabled={disabled}
+          disabled={dropdownDisabled}
         />
       )
     },
-    [closeDropdown, disabled, maxSelectedItems, setValue, value]
+    [closeDropdown, dropdownDisabled, maxSelectedItems, setValue, value]
   )
 
   const keyExtractor = useCallback((item: SelectItemProps<T>) => item.value.toString(), [])
@@ -159,6 +145,8 @@ export const Select = <T extends SelectKey>({
     return isError ? 'text.error.primary' : dropdownDisabled ? 'utility.gray.500' : 'text.primary'
   }, [dropdownDisabled, isError])
 
+  const flatListPaddingBottom = Platform.OS === 'web' ? 0 : 24 + bottom
+
   return (
     <>
       <Touchable disabled={dropdownDisabled} onPress={showDropdown} justifyContent="center">
@@ -172,35 +160,38 @@ export const Select = <T extends SelectKey>({
           ]}
           color={inputColor}
         >
-          {label}
+          {valueToShow}
         </Text>
         <Icon color={inputColor} size={22} name="arrow-down-s-line" style={styles.icon} />
       </Touchable>
       <BottomSheet title={label} bottomSheetRef={ref}>
-        <Box pb={6} px={4}>
-          <BottomSheetFlatList
-            style={styles.bottomSheetFlatList}
-            data={items}
-            keyExtractor={keyExtractor}
-            renderItem={renderItem}
-            getItemLayout={getItemLayout}
-          />
-        </Box>
+        <BottomSheetFlatList
+          style={styles.bottomSheetFlatList}
+          contentContainerStyle={[
+            styles.bottomSheetContentFlatList,
+            { paddingBottom: flatListPaddingBottom },
+          ]}
+          data={[...items, ...items]}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+          getItemLayout={getItemLayout}
+        />
       </BottomSheet>
     </>
   )
 }
 
 const styles = StyleSheet.create({
+  bottomSheetContentFlatList: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
   bottomSheetFlatList: {
     maxHeight: BOTTOM_SHEET_CONTENT_HEIGHT,
   },
   icon: {
     position: 'absolute',
     right: 8,
-  },
-  itemWrapper: {
-    paddingVertical: 8,
   },
   textInput: {
     alignItems: 'center',

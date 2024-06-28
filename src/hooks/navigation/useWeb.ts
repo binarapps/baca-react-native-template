@@ -29,12 +29,16 @@ export const useWeb: () => ReturnType = () => {
       }
     }
     setDimensions(Dimensions.get('window').width, Dimensions.get('screen').width)
-    Dimensions.addEventListener(
+    const subscription = Dimensions.addEventListener(
       'change',
       ({ window: { width: windowWidth }, screen: { width: screenWidth } }) => {
         setDimensions(windowWidth, screenWidth)
       }
     )
+
+    return () => {
+      subscription.remove()
+    }
   }, [])
 
   return {

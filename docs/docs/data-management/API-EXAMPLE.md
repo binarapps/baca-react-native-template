@@ -27,7 +27,8 @@ import { ArticleEntity } from '@baca/api/types'
 import { Loader, Center, Text, Box, Spacer } from '@baca/design-system'
 import { useScreenOptions, useTranslation } from '@baca/hooks'
 import { useCallback } from 'react'
-import { ListRenderItem, FlatList } from 'react-native'
+import { FlashList } from '@shopify/flash-list'
+import { ListRenderItem } from 'react-native'
 
 export const DataFromBeScreen_EXAMPLE = () => {
   const { t } = useTranslation()
@@ -56,7 +57,7 @@ export const DataFromBeScreen_EXAMPLE = () => {
         <Text.XlRegular>THIS IS EXAMPLE SCREEN</Text.XlRegular>
         <Text.XlRegular>which contains data from backend</Text.XlRegular>
         <Spacer y="1" />
-        <FlatList
+        <FlashList
           ListEmptyComponent={
             !isInitialLoadingArticles ? (
               <Center height={400} flex={1}>
