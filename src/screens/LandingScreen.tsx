@@ -1,14 +1,20 @@
 import { KeyboardAwareScrollView, LandingHeader } from '@baca/components'
-import { BACA_APP_URL, BACA_DOCS_URL } from '@baca/constants'
+import { BACA_DOCS_URL } from '@baca/constants'
 import { Button, Center, Text, Box } from '@baca/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { draftImages } from '@baca/screens'
+import { useRouter } from 'expo-router'
 import { useState, useEffect, useMemo } from 'react'
 import { ImageSourcePropType, Linking, Image, Dimensions, StyleSheet } from 'react-native'
 
 export const LandingScreen = () => {
   const { t } = useTranslation()
   const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width)
+
+  const { push } = useRouter()
+
+  const navigateToLogin = useCallback(() => push('/sign-in'), [push])
+  const navigateToDocs = useCallback(() => Linking.openURL(BACA_DOCS_URL), [])
 
   useEffect(() => {
     const onChange = ({ window }: { window: { width: number } }) => setScreenWidth(window.width)
@@ -38,8 +44,6 @@ export const LandingScreen = () => {
     }
   }, [screenWidth])
 
-  const openLink = useCallback((url: string) => Linking.openURL(url), [])
-
   const renderItem = (item: ImageSourcePropType, index: number) => (
     <Box key={index} width={imageWidth} px={paddingBetweenImages} pb={paddingBetweenImages}>
       <Box style={{ aspectRatio: 9 / 16 }} height="100%" borderRadius={16} bg="bg.active">
@@ -64,10 +68,10 @@ export const LandingScreen = () => {
         </Text.LgRegular>
 
         <Box alignItems="center" flexDirection="row" flexWrap="wrap" justifyContent="center" mt={4}>
-          <Button m={3} h={12} minWidth={160} onPress={() => openLink(BACA_DOCS_URL)}>
+          <Button m={3} h={12} minWidth={160} onPress={navigateToDocs}>
             {t('home_screen.read_docs')}
           </Button>
-          <Button.SecondaryColor m={3} h={12} minWidth={160} onPress={() => openLink(BACA_APP_URL)}>
+          <Button.SecondaryColor m={3} h={12} minWidth={160} onPress={navigateToLogin}>
             {t('home_screen.try_it')}
           </Button.SecondaryColor>
         </Box>
