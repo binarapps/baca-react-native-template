@@ -1,0 +1,6 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Go to Colors'
+- tapOn: 'Go to Colors'
+- assertVisible: 'Examples'
+- tapOn: 'Examples'
