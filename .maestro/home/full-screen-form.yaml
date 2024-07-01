@@ -1,0 +1,8 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Open full screen form'
+- tapOn: 'Open full screen form'
+- assertVisible: 'Contact data'
+# - tapOn:
+#     id: 'Name'
+# - inputText: 'Olaf'

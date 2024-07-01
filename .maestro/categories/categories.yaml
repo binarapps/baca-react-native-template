@@ -1,0 +1,3 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Categories screen'

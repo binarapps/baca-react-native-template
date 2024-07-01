@@ -1,0 +1,11 @@
+flows:
+  - auth/*
+  - app/*
+
+excludeTags:
+  - util
+
+executionOrder:
+  continueOnFailure: true
+  flowsOrder:
+    - login-with-validation
