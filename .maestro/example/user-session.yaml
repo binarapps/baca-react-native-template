@@ -1,0 +1,16 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Go to user session'
+- tapOn: 'Go to user session'
+- assertVisible: 'Refetch user'
+- tapOn: 'Refetch user'
+- scrollUntilVisible:
+    element:
+      text: 'Try to get new token if needed'
+    direction: DOWN
+    timeout: 10000
+    speed: 50
+    visibilityPercentage: 100
+- tapOn: 'Try to get new token if needed'
+- assertVisible: 'Examples'
+- tapOn: 'Examples'

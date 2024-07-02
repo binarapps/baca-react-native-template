@@ -1,0 +1,8 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'light'
+- tapOn: 'light'
+- assertVisible: 'dark'
+- tapOn: 'dark'
+- assertVisible: 'system'
+- tapOn: 'system'

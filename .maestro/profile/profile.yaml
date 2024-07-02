@@ -1,0 +1,26 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Upload'
+- tapOn: 'Upload'
+- assertVisible: 'Photos'
+- tapOn:
+    index: 1
+- assertVisible: 'Choose'
+- tapOn: 'Choose'
+- assertVisible: 'First name'
+- inputText: 'mattsaa'
+- assertVisible: 'Last name'
+- inputText: 'mat'
+- assertVisible: 'Save'
+- tapOn: 'Save'
+- scrollUntilVisible:
+    element:
+      text: 'Remove account'
+    direction: DOWN
+    timeout: 15000
+    speed: 40
+    visibilityPercentage: 100
+- assertVisible: 'Remove account'
+- tapOn: 'Remove account'
+- assertVisible: 'Cancel'
+- tapOn: 'Cancel'

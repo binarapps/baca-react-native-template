@@ -1,0 +1,8 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Go to ApplicationInfo'
+- tapOn: 'Go to ApplicationInfo'
+- assertVisible: 'Go back'
+- tapOn: 'Go back'
+- assertVisible: 'Discard'
+- tapOn: 'Discard'

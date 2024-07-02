@@ -1,0 +1,34 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Go to push notifications helpers'
+- tapOn: 'Go to push notifications helpers'
+- assertVisible: 'Copy push token'
+- tapOn: 'Copy push token'
+- assertVisible: 'OK'
+- tapOn: 'OK'
+- assertVisible: 'Check notifications permission status'
+- tapOn: 'Check notifications permission status'
+- scrollUntilVisible:
+    element:
+      text: 'Last push notification data'
+    direction: DOWN
+    timeout: 15000
+    speed: 40
+    visibilityPercentage: 100
+- scrollUntilVisible:
+    element:
+      text: 'Scheduled notifications'
+    direction: DOWN
+    timeout: 15000
+    speed: 40
+    visibilityPercentage: 100
+- assertVisible: 'Schedule new push notification - 10 seconds'
+- tapOn: 'Schedule new push notification - 10 seconds'
+- assertVisible: 'Get list of scheduled notifications'
+- tapOn: 'Get list of scheduled notifications'
+- assertVisible: 'PUSH TITLE'
+- tapOn: 'Ok'
+- assertVisible: 'Get list of scheduled notifications'
+- tapOn: 'Get list of scheduled notifications'
+- assertVisible: 'Examples'
+- tapOn: 'Examples'

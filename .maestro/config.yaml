@@ -1,0 +1,30 @@
+flows:
+  - auth/*
+  - home/*
+  - categories/*
+  - example/*
+  - settings/*
+  - profile/*
+
+excludeTags:
+  - utils
+
+executionOrder:
+  continueOnFailure: true
+  flowsOrder:
+    - login-with-validation
+    - details
+    - full-screen-form
+    - blog
+    - categories
+    - application-info
+    - colors
+    - components
+    - typography
+    - homestack
+    - data-backend
+    - test-form
+    - notifications-helpers
+    - user-session
+    - settings
+    - profile

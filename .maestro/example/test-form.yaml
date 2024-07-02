@@ -1,0 +1,7 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Go to test form'
+- tapOn: 'Go to test form'
+- assertVisible: 'Contact data'
+- assertVisible: 'Examples'
+- tapOn: 'Examples'

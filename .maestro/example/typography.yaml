@@ -1,0 +1,21 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Go to Typography'
+- tapOn: 'Go to Typography'
+- scrollUntilVisible:
+    element:
+      text: 'Display - MdBold'
+    direction: DOWN
+    timeout: 15000
+    speed: 90
+    visibilityPercentage: 100
+    centerElement: true
+- scrollUntilVisible:
+    element:
+      text: 'Text - XsRegular'
+    direction: DOWN
+    timeout: 15000
+    speed: 90
+    visibilityPercentage: 100
+- assertVisible: 'Examples'
+- tapOn: 'Examples'
