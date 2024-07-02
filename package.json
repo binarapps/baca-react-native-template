@@ -25,9 +25,9 @@
   "license": "MIT",
   "scripts": {
     "android:dev-client": "IS_DEV=1 npx expo run:android",
-    "baca": "yarn build:baca-cli && node ./scripts/cli/build/scripts/cli",
+    "android": "expo run:android",
     "b": "yarn baca b",
-    "g": "yarn baca g",
+    "baca": "yarn build:baca-cli && node ./scripts/cli/build/scripts/cli",
     "build:baca-cli": "npx tsc -p ./scripts/cli/tsconfig.cli.json",
     "build:production:android": "yarn prepare:production && eas build --platform android --profile production",
     "build:production:ios": "yarn prepare:production && eas build --platform ios --profile production",
@@ -47,7 +47,9 @@
     "deploy:staging:android": "yarn prepare:staging && eas build --platform android --profile staging --auto-submit --non-interactive",
     "deploy:staging:ios": "yarn prepare:staging && eas build --platform ios --profile staging --auto-submit --non-interactive",
     "deploy:staging": "yarn prepare:staging && eas build --platform all --profile staging --auto-submit --non-interactive",
+    "e2e-testing": "maestro test .maestro/ -e APP_ID=host.exp.Exponent",
     "eas-build-pre-install": "base64 --help && echo $ANDROID_FIREBASE_CONFIG | base64 --decode > google-services.json && cat google-services.json && echo $IOS_FIREBASE_CONFIG | base64 --decode > GoogleService-Info.plist && cat GoogleService-Info.plist",
+    "g": "yarn baca g",
     "generate:env:production": "scripts/generate_dotenv.sh production",
     "generate:env:qa": "scripts/generate_dotenv.sh qa",
     "generate:env:staging": "scripts/generate_dotenv.sh staging",
@@ -55,6 +57,7 @@
     "generate:last:publish": "node ./scripts/generate_last_update_id.js",
     "generate:query": "yarn orval --config ./orval.config.ts",
     "ios:dev-client": "IS_DEV=1 npx expo run:ios",
+    "ios": "expo run:ios",
     "lint:fix": "eslint src --fix",
     "lint": "eslint src && yarn tsc",
     "postinstall": "patch-package && yarn build:baca-cli",
@@ -87,9 +90,7 @@
     "upload:env": "./scripts/upload_env.sh",
     "web:build": "expo export:web",
     "web": "cross-env IS_DEV=1 expo start --web",
-    "whoami": "expo whoami",
-    "android": "expo run:android",
-    "ios": "expo run:ios"
+    "whoami": "expo whoami"
   },
   "dependencies": {
     "@bacons/react-views": "^1.1.3",

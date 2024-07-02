@@ -4,21 +4,9 @@ appId: host.exp.Exponent
 - tapOn:
     text: 'BACA (qa)'
 - assertVisible: 'Welcome back'
+- assertVisible: 'Remember me'
 - tapOn:
-    id: 'signInButton'
+    text: 'Remember me'
+- assertVisible: 'Log in'
+- tapOn: 'Log in'
 - assertVisible: 'Home'
-# - assertVisible: 'SDK version'
-# - tapOn:
-#     text: 'Continue'
-# - assertVisible: 'E-mail address*'
-# - tapOn:
-#     id: 'emailInput'
-# - inputText: 'mateusz.rostkowski+baca@binarapps.com' # Email ingresado directamente
-# - assertVisible: 'Password*'
-# - tapOn:
-#     id: 'passwordInput'
-# - inputText: 'password' # Contraseña ingresada directamente
-# - assertVisible:
-#     id: 'signInButton'
-# - tapOn:
-#     id: 'signInButton'
