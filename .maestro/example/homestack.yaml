@@ -6,7 +6,9 @@ env:
     \ Ipsum is that it has a more-or-less normal distribution of letters, as opposed\
     \ to using"
 ---
-- assertVisible: 'Details'
-- tapOn: 'Details'
+- assertVisible: 'Go to HomeStackDetails'
+- tapOn: 'Go to HomeStackDetails'
 - assertVisible: 'Open BottomSheetModal'
 - tapOn: 'Open BottomSheetModal'
+# - assertVisible: 'Example'
+# - tapOn: 'Example'
