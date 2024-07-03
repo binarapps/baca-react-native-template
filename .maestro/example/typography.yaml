@@ -2,6 +2,9 @@ appId: host.exp.Exponent
 ---
 - assertVisible: 'Go to Typography'
 - tapOn: 'Go to Typography'
+- assertVisible: '1'
+- tapOn: '1'
+- tapOn: '0'
 - scrollUntilVisible:
     element:
       text: 'Display - MdBold'

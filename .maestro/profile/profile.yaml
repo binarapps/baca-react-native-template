@@ -8,19 +8,30 @@ appId: host.exp.Exponent
 - assertVisible: 'Choose'
 - tapOn: 'Choose'
 - assertVisible: 'First name'
-- inputText: 'mattsaa'
 - assertVisible: 'Last name'
-- inputText: 'mat'
+- assertVisible: 'Cancel'
+- tapOn: 'Cancel'
+- assertVisible: 'Home'
+- assertVisible: ' Profile'
+- tapOn: ' Profile'
 - assertVisible: 'Save'
 - tapOn: 'Save'
 - scrollUntilVisible:
     element:
-      text: 'Remove account'
+      text: ' Remove account'
     direction: DOWN
     timeout: 15000
     speed: 40
     visibilityPercentage: 100
-- assertVisible: 'Remove account'
-- tapOn: 'Remove account'
-- assertVisible: 'Cancel'
-- tapOn: 'Cancel'
+- tapOn: 'Old password Enter current password '
+- inputRandomText
+- assertVisible: 'Automatic Strong Password cover view text '
+- assertVisible: 'Change'
+- tapOn: 'Change'
+- assertVisible: ' Remove account'
+- tapOn: ' Remove account'
+- assertVisible: 'Bottom sheet handle'
+- tapOn:
+    point: 50%,50%
+- assertVisible: ' Home'
+- tapOn: ' Home'

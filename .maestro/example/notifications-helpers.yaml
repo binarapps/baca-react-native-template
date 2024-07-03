@@ -28,7 +28,13 @@ appId: host.exp.Exponent
 - tapOn: 'Get list of scheduled notifications'
 - assertVisible: 'PUSH TITLE'
 - tapOn: 'Ok'
-- assertVisible: 'Get list of scheduled notifications'
+- scrollUntilVisible:
+    element:
+      text: 'Get list of scheduled notifications'
+    direction: DOWN
+    timeout: 15000
+    speed: 40
+    visibilityPercentage: 100
 - tapOn: 'Get list of scheduled notifications'
 - assertVisible: 'Examples'
 - tapOn: 'Examples'

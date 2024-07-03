@@ -8,9 +8,11 @@ appId: host.exp.Exponent
     element:
       text: 'Try to get new token if needed'
     direction: DOWN
-    timeout: 10000
-    speed: 50
+    timeout: 12500
+    speed: 60
     visibilityPercentage: 100
 - tapOn: 'Try to get new token if needed'
 - assertVisible: 'Examples'
 - tapOn: 'Examples'
+- assertVisible: ' Settings'
+- tapOn: ' Settings'
