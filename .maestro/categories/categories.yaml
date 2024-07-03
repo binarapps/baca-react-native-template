@@ -1,3 +1,8 @@
 appId: host.exp.Exponent
 ---
 - assertVisible: 'Categories screen'
+- assertVisible: ' Categories'
+- tapOn: ' Categories'
+- assertVisible: 'Categories screen'
+- assertVisible: ' Example'
+- tapOn: ' Example'

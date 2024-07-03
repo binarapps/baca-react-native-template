@@ -3,3 +3,5 @@ appId: host.exp.Exponent
 - assertVisible: 'Open blog'
 - tapOn: 'Open blog'
 - assertVisible: 'Contact data'
+- assertVisible: ''
+- tapOn: ''

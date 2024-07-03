@@ -47,6 +47,7 @@
     "deploy:staging:android": "yarn prepare:staging && eas build --platform android --profile staging --auto-submit --non-interactive",
     "deploy:staging:ios": "yarn prepare:staging && eas build --platform ios --profile staging --auto-submit --non-interactive",
     "deploy:staging": "yarn prepare:staging && eas build --platform all --profile staging --auto-submit --non-interactive",
+    "e2e-testing": "maestro test .maestro/ -e APP_ID=host.exp.Exponent",
     "eas-build-pre-install": "base64 --help && echo $ANDROID_FIREBASE_CONFIG | base64 --decode > google-services.json && cat google-services.json && echo $IOS_FIREBASE_CONFIG | base64 --decode > GoogleService-Info.plist && cat GoogleService-Info.plist",
     "g": "yarn baca g",
     "generate:env:production": "scripts/generate_dotenv.sh production",

@@ -1,42 +1,62 @@
 appId: host.exp.Exponent
 ---
 - assertVisible: 'Go to Components'
-- tapOn: 'Go to Components'
-- assertVisible: 'Test notification'
-- tapOn: 'Test notification'
-- assertVisible: 'Button primary'
-- tapOn: 'Button primary'
-# - assertVisible: 'Button with icons'
-# - tapOn: 'Button with icons'
-- assertVisible: 'Button primary destructive'
-- tapOn: 'Button primary destructive'
-- assertVisible: 'Button secondary color'
-- tapOn: 'Button secondary color'
-- assertVisible: 'Button secondary gray'
-- tapOn: 'Button secondary gray'
-- assertVisible: 'Button secondary destructive'
-- tapOn: 'Button secondary destructive'
-- assertVisible: 'Button tertiary color'
-- tapOn: 'Button tertiary color'
-- assertVisible: 'Button tertiary gray'
-- tapOn: 'Button tertiary gray'
-- assertVisible: 'Button tertiary destructive'
+- tapOn:
+    text: 'Go to Components'
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: 'Test notification'
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: 'Button primary'
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: ' Button with icons '
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: 'Button primary destructive'
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: 'Button secondary color'
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: 'Button secondary gray'
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: 'Button secondary destructive'
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: 'Button tertiary color'
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: 'Button tertiary gray'
+    waitToSettleTimeoutMs: 25
+- scrollUntilVisible:
+    element:
+      text: ' Log in with Apple'
+    direction: DOWN
+    timeout: 15000
+    speed: 40
+    visibilityPercentage: 100
 - tapOn: 'Button tertiary destructive'
-- assertVisible: 'Button link color'
 - tapOn: 'Button link color'
-- assertVisible: 'Button link gray'
 - tapOn: 'Button link gray'
-- assertVisible: 'Button link destructive'
 - tapOn: 'Button link destructive'
-# - assertVisible: 'Log in with Google'
-# - tapOn: 'Log in with Google'
-# - assertVisible: 'Log in with Facebook'
-# - tapOn: 'Log in with Facebook'
-# - assertVisible: 'Log in with Apple'
-# - tapOn: 'Log in with Apple'
+- tapOn: 'Log in with Google'
+- tapOn: ' Log in with Facebook'
+- tapOn: ' Log in with Apple'
 - assertVisible: 'Remember me'
-- doubleTapOn: 'Remember me'
-- assertVisible: '31-40'
-- tapOn: '31-40'
-- assertVisible: 'Examples'
-- tapOn: 'Examples'
+- tapOn: 'Remember me'
+- scrollUntilVisible:
+    element:
+      text: 'Disk loader'
+    direction: DOWN
+    timeout: 12500
+    speed: 72
+    visibilityPercentage: 50
+- tapOn:
+    text: '41-50'
+    waitToSettleTimeoutMs: 25
+- tapOn:
+    text: 'Examples'
+    waitToSettleTimeoutMs: 25
