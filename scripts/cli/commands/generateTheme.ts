@@ -4,53 +4,99 @@
 
 import fs from 'fs'
 
+// Type definitions
+type Variable =
+  | {
+      name: string
+      type?: string
+      isAlias: true
+      value: {
+        collection: string
+        name: string
+      }
+    }
+  | {
+      name: string
+      type?: string
+      isAlias?: false
+      value: string
+    }
+
+type Mode = {
+  name: string
+  variables: Variable[]
+}
+
+type Collection = {
+  name: string
+  modes: Mode[]
+}
+
+type FigmaVariables = {
+  collections: Collection[]
+}
+
 const json = fs.readFileSync('./assets/figma/variables.json') as unknown as string
 
-const figmaVariables = JSON.parse(json)
+const figmaVariables = JSON.parse(json) as FigmaVariables
 
-const collections = figmaVariables.collections as any
+const collections = figmaVariables.collections
 
-const primitivesCollection = collections.find(
-  (collection: any) => collection.name === '_Primitives'
-)
-const colorsCollection = collections.find((collection: any) => collection.name === '1. Color modes')
+const primitivesCollection = collections.find((collection) => collection.name === '_Primitives')
+const colorsCollection = collections.find((collection) => collection.name === '1. Color modes')
 
 const primitivesColors = primitivesCollection?.modes
-  ?.find((mode: any) => mode.name === 'Style')
-  ?.variables.filter((variable: any) => variable.type === 'color')
-  ?.map((color: any) => ({ name: color.name, value: color.value }))
+  ?.find((mode) => mode.name === 'Style')
+  ?.variables.filter((variable) => variable.type === 'color')
+  ?.map((color) => ({ name: color.name, value: color.value }))
+
+const getFinalColor = (variable: Variable, modeColors: Variable[], mainVariable?: Variable) => {
+  if (variable.isAlias) {
+    const valueName = variable.value.name
+
+    if (variable?.value?.collection === '_Primitives') {
+      const primitiveColor = primitivesColors?.find((color) => color.name === valueName)
+
+      if (primitiveColor) {
+        return { name: mainVariable?.name || variable.name, value: primitiveColor.value }
+      }
+
+      return null
+    } else if (variable?.value?.collection.includes('1. Color modes')) {
+      // GET PROPER COLOR !
+      const colorFromCollection = modeColors.find((color: any) => color.name === valueName)
+      if (colorFromCollection) {
+        if (colorFromCollection.isAlias) {
+          const color: any = getFinalColor(
+            colorFromCollection,
+            modeColors,
+            mainVariable || variable
+          )
+          return color || null
+        }
+        return { name: mainVariable?.name || variable.name, value: colorFromCollection.value }
+      }
+      return null
+    } else {
+      const newColor = modeColors.find((color) => color.name === valueName)
+      if (newColor && newColor.isAlias) {
+        const primitiveColor = primitivesColors?.find((color) => color.name === newColor.value.name)
+        if (primitiveColor) {
+          return { name: mainVariable?.name || variable.name, value: primitiveColor.value }
+        }
+      }
+    }
+  } else if (!variable.isAlias) {
+    return { name: mainVariable?.name || variable?.name, value: variable.value }
+  } else return null
+}
 
 // colorMode could be either 'light' or 'dark'
 const getModeColors = (colorMode: string) => {
   const modeName = colorMode === 'light' ? 'Light mode' : 'Dark mode'
   const modeColors = colorsCollection?.modes.find((mode: any) => mode.name === modeName)?.variables
-  const colors = modeColors
-    ?.map((variable: any) => {
-      if (variable.isAlias) {
-        const valueName = variable.value.name
-        if (variable?.value?.collection === '_Primitives') {
-          const primitiveColor = primitivesColors?.find((color: any) => color.name === valueName)
-          if (primitiveColor) {
-            return { name: variable.name, value: primitiveColor.value }
-          }
-          return null
-        } else {
-          const newColor = modeColors.find((color: any) => color.name === valueName)
-          if (newColor) {
-            const primitiveColor = primitivesColors?.find(
-              (color: any) => color.name === newColor.value.name
-            )
-            if (primitiveColor) {
-              return { name: variable.name, value: primitiveColor.value }
-            }
-          }
-        }
-        return null
-      } else if (!variable.isAlias) {
-        return { name: variable.name, value: variable.value }
-      } else return null
-    })
-    .filter(Boolean)
+
+  const colors = modeColors?.map((variable) => getFinalColor(variable, modeColors)).filter(Boolean)
 
   const colorsArray = colors?.map((color: any) => {
     const keyName = color?.name?.split?.('/')?.pop()?.split(' ').shift() || ''
@@ -78,7 +124,7 @@ const getModeColors = (colorMode: string) => {
 const light = getModeColors('light')
 const dark = getModeColors('dark')
 
-const primitivesColorsArray = primitivesColors?.map((color: any) => {
+const primitivesColorsArray = primitivesColors?.map((color) => {
   return { [color.name.split('/').slice(1).join('-')]: color.value }
 })
 
