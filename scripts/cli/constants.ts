@@ -11,6 +11,6 @@ export const README_PATH = 'README.md'
 
 export const COMPONENTS_PATH = 'src/components/index.ts'
 export const COMPONENT_TEMPLATE_PATH = 'templates/component_template.tsx'
-export const README_TEMPLATE_PATH = 'templates/README.md'
+export const README_TEMPLATE_PATH = 'templates/readme_template.md'
 export const PULL_REQUEST_TEMPLATE_PATH = '.github/pull_request_template.md'
 export const NEW_PULL_REQUEST_TEMPLATE_PATH = 'templates/pull_request_template.md'
