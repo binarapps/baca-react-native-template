@@ -26,9 +26,20 @@ If this is not your first time using BACA we are strongly recommend going throug
 
 ### Step 1. Setup repository
 
+1. Clone this repository to your local machine
+
 ```bash
 git clone git@github.com:binarapps/baca-react-native-template.git name_of_your_app
 cd name_of_your_app
+```
+
+2. Change origin to your repository
+
+```bash
+git remote remove origin
+git remote add origin git@github.com:organization_name/repository_name.git
+git branch -M main
+git push -u origin main
 ```
 
 ---
