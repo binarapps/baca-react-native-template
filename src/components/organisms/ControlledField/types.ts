@@ -38,7 +38,10 @@ export interface RenderInputProps {
 // ------- SELECT --------
 // -----------------------
 
-export type ControlledSelectProps<T> = Omit<FieldSelectProps<T>, 'setValue' | 'value'> & {
+export type ControlledSelectProps<T> = Omit<
+  FieldSelectProps<T>,
+  'selectedItems' | 'onSelectItem'
+> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/

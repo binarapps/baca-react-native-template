@@ -217,12 +217,13 @@ export type SelectItemProps<T> = {
 }
 
 export type SelectProps<T> = {
+  items: SelectItemProps<T>[]
+  onSelectItem: (newValue: T[]) => void
+  selectedItems: T[]
+
   placeholder?: string
   label?: string
   disabled?: boolean
-  items: SelectItemProps<T>[]
-  value: T[]
-  setValue: (newValue: T[]) => void
   maxSelectedItems?: number
   isError?: boolean
   onOpen?: () => void
