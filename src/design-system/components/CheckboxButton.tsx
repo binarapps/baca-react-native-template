@@ -24,7 +24,7 @@ const checkboxSizes = {
   },
 } as const
 
-export const Checkbox = ({
+export const CheckboxButton = ({
   checkboxLablel,
   disabled,
   isChecked,

@@ -12,7 +12,7 @@ export * from './Touchables'
 export * from './ScrollView'
 export { LinearGradient as Gradient } from 'expo-linear-gradient'
 
-export * from './Checkbox'
+export * from './CheckboxButton'
 export * from './FormErrorMessage'
 export * from './FormLabel'
 export * from './Icon'

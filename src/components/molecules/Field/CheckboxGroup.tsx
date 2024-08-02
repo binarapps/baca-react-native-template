@@ -1,4 +1,10 @@
-import { Box, Checkbox, FormErrorMessage, FormLabel, Spacer } from '@baca/design-system/components'
+import {
+  Box,
+  CheckboxButton,
+  FormErrorMessage,
+  FormLabel,
+  Spacer,
+} from '@baca/design-system/components'
 import { Fragment, useMemo } from 'react'
 
 import { FieldCheckboxProps } from './types'
@@ -31,7 +37,7 @@ export const CheckboxGroup = <T extends string>({
 
       return (
         <Fragment key={index}>
-          <Checkbox
+          <CheckboxButton
             onChange={handleChange}
             key={index}
             checkboxLablel={item.label}

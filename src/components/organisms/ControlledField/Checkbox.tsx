@@ -1,4 +1,4 @@
-import { Checkbox as CheckboxButton, Box, FormErrorMessage, FormLabel } from '@baca/design-system'
+import { CheckboxButton, Box, FormErrorMessage, FormLabel } from '@baca/design-system'
 import { useCallback } from '@baca/hooks'
 import { Controller, ControllerProps, get } from 'react-hook-form'
 

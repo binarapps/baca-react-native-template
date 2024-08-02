@@ -3,7 +3,7 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { useCallback, useMemo, useRef } from 'react'
 import { Keyboard, StyleSheet, Dimensions, Platform } from 'react-native'
 
-import { Checkbox } from './Checkbox'
+import { CheckboxButton } from './CheckboxButton'
 import { Icon } from './Icon'
 import { Radio } from './Radio'
 import { Text } from './Text'
@@ -66,7 +66,7 @@ const SelectItem = <T extends SelectKey>({
   }
 
   return (
-    <Checkbox
+    <CheckboxButton
       onChange={onItemSelect}
       checkboxLablel={item.labelInDropdown ?? item.label}
       isChecked={selected}

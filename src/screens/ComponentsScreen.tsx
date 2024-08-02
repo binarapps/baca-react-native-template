@@ -8,7 +8,7 @@ import {
   Center,
   ScrollView,
   Display,
-  Checkbox,
+  CheckboxButton,
 } from '@baca/design-system'
 import { useBoolean, useCallback, useScreenOptions, useState, useTranslation } from '@baca/hooks'
 import { noop, showInformationToast } from '@baca/utils'
@@ -42,7 +42,7 @@ const TestCheckbox = () => {
   const [isChecked, setIsChecked] = useBoolean()
 
   return (
-    <Checkbox
+    <CheckboxButton
       onChange={setIsChecked.toggle}
       isChecked={isChecked}
       checkboxLablel={t('form.checkbox.remember_me')}
