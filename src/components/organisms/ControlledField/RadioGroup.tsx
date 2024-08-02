@@ -4,7 +4,7 @@ import { Controller, get, ControllerProps } from 'react-hook-form'
 import type { ControlledRadioProps } from './types'
 import { Field } from '../../molecules'
 
-export const Radio = <T extends string>({
+export const RadioGroup = <T extends string>({
   name,
   control,
   errors,
@@ -18,14 +18,14 @@ export const Radio = <T extends string>({
     ({
       field: { ref, name, value, onChange },
     }: Parameters<ControllerProps['render']>[0]): JSX.Element => (
-      <Field.Radio
+      <Field.RadioGroup
         {...props}
         radioRef={ref}
         errorMessage={errorMessage}
         isError={!!errorMessage}
         name={name}
-        value={value}
-        onChange={onChange}
+        selectedItem={value}
+        onSelectItem={onChange}
         isRequired={isRequired}
       />
     ),

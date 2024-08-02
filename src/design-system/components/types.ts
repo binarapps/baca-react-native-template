@@ -232,7 +232,7 @@ export type SelectProps<T> = {
 // ---- RADIO BUTTON -----
 // -----------------------
 
-export type RadioButtonProps = {
+export type RadioProps = {
   onChange: (val: boolean) => void
   isSelected?: boolean
   isDisabled?: boolean

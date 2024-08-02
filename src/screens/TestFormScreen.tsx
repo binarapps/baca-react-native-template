@@ -141,19 +141,19 @@ export const TestFormScreen = (): JSX.Element => {
         placeholder={t('test_form.city_placeholder')}
         rules={VALIDATION.city}
       />
-      <ControlledField.Radio
+      <ControlledField.RadioGroup
         {...{ control, errors }}
         isRequired
         name="age"
-        radioOptions={mappedAges}
+        items={mappedAges}
         rules={VALIDATION.age}
         label={t('test_form.age')}
       />
-      <ControlledField.Radio
+      <ControlledField.RadioGroup
         {...{ control, errors }}
         isRequired
         name="sex"
-        radioOptions={sex}
+        items={sex}
         rules={VALIDATION.sex}
         label={t('test_form.sex')}
       />

@@ -23,22 +23,25 @@ export type FieldInputProps = InputProps &
 // -------- RADIO --------
 // -----------------------
 
-export type RadioItemProps<T> = {
+export type RadioGroupItemProps<T> = {
   label: string
   value: T
 }
 
-export type FieldRadioProps<T> = FormLabelProps & {
-  radioOptions?: RadioItemProps<T>[]
+export type RadioGroupProps<T> = FormLabelProps & {
+  // Items logic
+  items?: RadioGroupItemProps<T>[]
+  onSelectItem: (val: T) => void
+  selectedItem?: string | number
+
+  // UI logic
   errorMessage?: string
   isInvalid?: boolean
   isDisabled?: boolean
   name?: string
-  onChange: (val: T) => void
   radioRef?: LegacyRef<TouchableRef>
   label?: string
   isError?: boolean
-  value?: string | number
   size?: 'sm' | 'md'
 }
 

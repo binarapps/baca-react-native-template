@@ -4,14 +4,14 @@ import { Controller, ControllerProps, get } from 'react-hook-form'
 import type { ControlledCheckboxProps } from './types'
 import { Field } from '../../molecules'
 
-export const Checkbox: React.FC<ControlledCheckboxProps> = ({
+export const Checkbox = <T extends string>({
   name,
   control,
   errors,
   isRequired,
   rules,
   ...props
-}) => {
+}: ControlledCheckboxProps<T>) => {
   const errorMessage = get(errors, name)?.message
 
   const renderCheckbox = useCallback(

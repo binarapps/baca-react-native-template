@@ -1,5 +1,4 @@
-import { Version } from '@baca/components'
-import { Radio } from '@baca/components/molecules/Field/Radio'
+import { Field, Version } from '@baca/components'
 import { colorSchemesList } from '@baca/constants'
 import { useColorScheme } from '@baca/contexts'
 import { Spacer, Button, ScrollView, Box } from '@baca/design-system'
@@ -20,19 +19,18 @@ export const LanguageSettings = (): JSX.Element => {
 
   const handleItemPress = useCallback(
     (lng: string) => {
-      console.log('lng', lng)
       i18n.changeLanguage(lng.toLowerCase())
     },
     [i18n]
   )
 
   return (
-    <Radio
-      onChange={handleItemPress}
-      radioOptions={languagesToRender}
+    <Field.RadioGroup
+      onSelectItem={handleItemPress}
+      items={languagesToRender}
       label="Wybierz język"
       size="md"
-      value={language}
+      selectedItem={language}
     />
   )
 }
@@ -42,7 +40,6 @@ const ColorSchemeSettings = () => {
 
   const handleColorSchemeSettingChange = useCallback(
     (scheme: typeof colorSchemeSetting) => {
-      console.log('scheme', scheme)
       setColorSchemeSetting(scheme)
     },
     [setColorSchemeSetting]
@@ -54,12 +51,12 @@ const ColorSchemeSettings = () => {
   }))
 
   return (
-    <Radio
-      onChange={handleColorSchemeSettingChange}
-      radioOptions={colorSchemesListToRender}
+    <Field.RadioGroup
+      onSelectItem={handleColorSchemeSettingChange}
+      items={colorSchemesListToRender}
       label="Wybierz schemat kolorów"
       size="md"
-      value={colorSchemeSetting}
+      selectedItem={colorSchemeSetting}
     />
   )
 }

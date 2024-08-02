@@ -1,5 +1,5 @@
 import { SocialButton } from '@baca/components'
-import { Radio } from '@baca/components/molecules/Field/Radio'
+import { RadioGroup } from '@baca/components/molecules/Field/RadioGroup'
 import {
   Loader,
   Box,
@@ -62,12 +62,12 @@ const TextRadioButtons = () => {
   const [selectedRadio, setSelectedRadio] = useState<string | undefined>()
 
   return (
-    <Radio
-      onChange={setSelectedRadio}
-      value={selectedRadio}
+    <RadioGroup
+      onSelectItem={setSelectedRadio}
+      selectedItem={selectedRadio}
       isRequired
       name="age"
-      radioOptions={agesMap}
+      items={agesMap}
       label={t('test_form.age')}
     />
   )

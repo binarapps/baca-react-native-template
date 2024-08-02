@@ -1,39 +1,39 @@
-import { FormErrorMessage, FormLabel, Box, RadioButton } from '@baca/design-system/components'
+import { FormErrorMessage, FormLabel, Box, Radio } from '@baca/design-system/components'
 import { useMemo } from 'react'
 
-import { FieldRadioProps } from './types'
+import { RadioGroupProps } from './types'
 
-export const Radio = <T extends string>({
+export const RadioGroup = <T extends string>({
+  selectedItem,
+  items,
+  onSelectItem,
   isRequired,
-  value,
-  radioOptions,
   errorMessage,
   isError,
   size = 'md',
-  onChange,
   label,
   labelStyle,
   isDisabled,
   radioRef,
-}: FieldRadioProps<T>) => {
+}: RadioGroupProps<T>) => {
   const renderRadioButtons = useMemo(
     () =>
-      radioOptions?.map((item, index) => {
+      items?.map((item, index) => {
         return (
-          <RadioButton
+          <Radio
             ref={radioRef}
             key={index}
             isDisabled={isDisabled}
             isError={isError}
-            isSelected={item.value === value}
-            onChange={() => onChange(item.value)}
+            isSelected={item.value === selectedItem}
+            onChange={() => onSelectItem(item.value)}
             pb={2}
             label={item.label}
             size={size}
           />
         )
       }),
-    [radioOptions, radioRef, isDisabled, isError, value, size, onChange]
+    [items, radioRef, isDisabled, isError, selectedItem, size, onSelectItem]
   )
 
   return (

@@ -2,7 +2,7 @@
 import {
   FieldCheckboxProps,
   FieldInputProps,
-  FieldRadioProps,
+  RadioGroupProps,
   FieldSelectProps,
 } from '@baca/components/molecules'
 import {
@@ -14,7 +14,7 @@ import {
   RegisterOptions,
 } from 'react-hook-form'
 
-export type ControlledCheckboxProps = Omit<FieldCheckboxProps, 'onChange' | 'value'> & {
+export type ControlledCheckboxProps<T> = Omit<FieldCheckboxProps<T>, 'onChange' | 'value'> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
@@ -40,7 +40,7 @@ export interface RenderInputProps {
   field: ControllerRenderProps<FieldValues, string>
 }
 
-export type ControlledRadioProps<T> = Omit<FieldRadioProps<T>, 'onChange' | 'value'> & {
+export type ControlledRadioProps<T> = Omit<RadioGroupProps<T>, 'selectedItem' | 'onSelectItem'> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
