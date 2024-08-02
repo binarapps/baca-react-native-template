@@ -40,7 +40,7 @@ export interface RenderInputProps {
   field: ControllerRenderProps<FieldValues, string>
 }
 
-export type ControlledRadioProps = Omit<FieldRadioProps, 'onChange' | 'value'> & {
+export type ControlledRadioProps<T> = Omit<FieldRadioProps<T>, 'onChange' | 'value'> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/

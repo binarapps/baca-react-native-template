@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { TouchableOpacity, StyleSheet } from 'react-native'
 
 import { Box } from './Box'
@@ -24,91 +24,85 @@ const checkboxSizes = {
   },
 } as const
 
-export const Checkbox = forwardRef<TouchableOpacity, CheckboxProps>(
-  (
-    {
-      checkboxes,
-      checkboxText,
-      disabled,
-      isChecked,
-      isError,
-      onChange,
-      size = 'md',
-      value,
-      pb,
-      ...props
-    },
-    ref
-  ) => {
-    const checkboxSize = useMemo(() => checkboxSizes[size], [size])
+export const Checkbox = <T extends string>({
+  checkboxText,
+  disabled,
+  isChecked,
+  isError,
+  onChange,
+  size = 'md',
+  value,
+  pb,
+  ...props
+}: CheckboxProps<T>) => {
+  const checkboxSize = useMemo(() => checkboxSizes[size], [size])
 
-    const handleValueChange = useCallback(() => {
-      return checkboxes ? onChange(value) : onChange(!value)
-    }, [onChange, value, checkboxes])
+  const handleValueChange = useCallback(() => {
+    return onChange(value)
+  }, [onChange, value])
 
-    const iconColor = useMemo<ColorNames>(() => {
-      if (disabled && value) {
-        return 'fg.disabled_subtle'
-      }
+  const iconColor = useMemo<ColorNames>(() => {
+    if (disabled && value) {
+      return 'fg.disabled_subtle'
+    }
 
-      return 'fg.white'
-    }, [disabled, value])
+    return 'fg.white'
+  }, [disabled, value])
 
-    const bgColor = useMemo<ColorNames | undefined>(() => {
-      if (disabled) {
-        return 'bg.disabled_subtle'
-      }
+  const bgColor = useMemo<ColorNames | undefined>(() => {
+    if (disabled) {
+      return 'bg.disabled_subtle'
+    }
 
-      if (!isChecked) {
-        return undefined
-      }
+    if (!isChecked) {
+      return undefined
+    }
 
+    return 'bg.brand.solid'
+  }, [disabled, isChecked])
+
+  const borderColor = useMemo<ColorNames | undefined>(() => {
+    if (disabled) {
+      return 'border.disabled'
+    }
+    if (isError) {
+      return 'border.error'
+    }
+
+    if (isChecked) {
       return 'bg.brand.solid'
-    }, [disabled, isChecked])
+    }
 
-    const borderColor = useMemo<ColorNames | undefined>(() => {
-      if (disabled) {
-        return 'border.disabled'
-      }
-      if (isError) {
-        return 'border.error'
-      }
+    return 'border.primary'
+  }, [isChecked, isError, disabled])
 
-      if (isChecked) {
-        return 'bg.brand.solid'
-      }
-
-      return 'border.primary'
-    }, [isChecked, isError, disabled])
-
-    return (
-      <Box pb={pb}>
-        <TouchableOpacity
-          {...{ disabled, hitSlop, ref }}
-          activeOpacity={0.5}
-          onPress={handleValueChange}
-          style={styles.mainContainer}
+  return (
+    <Box pb={pb}>
+      <TouchableOpacity
+        {...{ disabled, hitSlop }}
+        activeOpacity={0.5}
+        onPress={handleValueChange}
+        style={styles.mainContainer}
+      >
+        <Center
+          bg={bgColor}
+          borderColor={borderColor}
+          borderRadius={4}
+          borderWidth={1}
+          height={checkboxSize.boxSize}
+          mr={2}
+          width={checkboxSize.boxSize}
+          {...props}
         >
-          <Center
-            bg={bgColor}
-            borderColor={borderColor}
-            borderRadius={4}
-            borderWidth={1}
-            height={checkboxSize.boxSize}
-            mr={2}
-            width={checkboxSize.boxSize}
-            {...{ ...props }}
-          >
-            {isChecked ? (
-              <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
-            ) : null}
-          </Center>
-          <Text.SmRegular>{checkboxText}</Text.SmRegular>
-        </TouchableOpacity>
-      </Box>
-    )
-  }
-)
+          {isChecked ? (
+            <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
+          ) : null}
+        </Center>
+        <Text.SmRegular>{checkboxText}</Text.SmRegular>
+      </TouchableOpacity>
+    </Box>
+  )
+}
 
 const styles = StyleSheet.create({
   mainContainer: {

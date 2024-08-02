@@ -4,6 +4,10 @@ import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 
 
 import { BoxProps } from './Box'
 
+// -----------------------
+// ---- DESIGN SYSTEM ----
+// -----------------------
+
 type Sizing =
   | 'w'
   | 'width'
@@ -124,24 +128,6 @@ export type BordersProps = {
   borderRightWidth?: ViewStyle['borderRightWidth']
 }
 
-export type TextProps = {
-  color?: ColorNames
-  fontSize?: TextFontSize
-  letterSpacing?: LetterSpacings
-  lineHeight?: LineHeights
-  fontWeight?: FontWeight
-  fontFamily?: Fonts
-  bold?: boolean
-  italic?: boolean
-  capitalize?: boolean
-  lowercase?: boolean
-  uppercase?: boolean
-  underline?: boolean
-  strikeThrough?: boolean
-  textDecoration?: TextStyle['textDecorationLine']
-  textTransform?: TextStyle['textTransform']
-}
-
 export type LayoutsProps = {
   position?: ViewStyle['position']
   zIndex?: ViewStyle['zIndex']
@@ -160,12 +146,6 @@ export type StyledProps = SizingProps &
   BordersProps &
   LayoutsProps
 
-export type FormLabelProps = {
-  label?: string
-  isRequired?: boolean
-  labelStyle?: TextStyle
-}
-
 export type AbsoluteProps = Omit<BoxProps, 'position'>
 
 export type SpacerProps = {
@@ -173,6 +153,42 @@ export type SpacerProps = {
   y?: SizingValue
   flex?: ViewStyle['flex']
 }
+
+// -----------------------
+// --------- TEXT --------
+// -----------------------
+
+export type TextProps = {
+  color?: ColorNames
+  fontSize?: TextFontSize
+  letterSpacing?: LetterSpacings
+  lineHeight?: LineHeights
+  fontWeight?: FontWeight
+  fontFamily?: Fonts
+  bold?: boolean
+  italic?: boolean
+  capitalize?: boolean
+  lowercase?: boolean
+  uppercase?: boolean
+  underline?: boolean
+  strikeThrough?: boolean
+  textDecoration?: TextStyle['textDecorationLine']
+  textTransform?: TextStyle['textTransform']
+}
+
+// -----------------------
+// --------- FORM --------
+// -----------------------
+
+export type FormLabelProps = {
+  label?: string
+  isRequired?: boolean
+  labelStyle?: TextStyle
+}
+
+// -----------------------
+// -------- INPUT --------
+// -----------------------
 
 export type InputProps = TextProps &
   StyledProps &
@@ -187,6 +203,10 @@ export type InputProps = TextProps &
     secureTextIconSize?: number
     type?: 'text' | 'password'
   }
+
+// -----------------------
+// ------- SELECT --------
+// -----------------------
 
 export type SelectKey = string | number
 
@@ -208,6 +228,10 @@ export type SelectProps<T> = {
   onOpen?: () => void
 }
 
+// -----------------------
+// ---- RADIO BUTTON -----
+// -----------------------
+
 export type RadioButtonProps = {
   onChange: (val: boolean) => void
   isSelected?: boolean
@@ -218,7 +242,16 @@ export type RadioButtonProps = {
   pb?: SizingValue
 }
 
-export type CheckboxProps = ViewProps & {
+// -----------------------
+// ------- CHECKBOX ------
+// -----------------------
+
+export type CheckboxItemProps<T> = {
+  label: string
+  value: T
+}
+
+export type CheckboxProps<T> = ViewProps & {
   value: boolean | string[]
   onChange: (newValue: boolean | string[]) => void
   checkboxText?: string
@@ -226,6 +259,6 @@ export type CheckboxProps = ViewProps & {
   size?: 'sm' | 'md'
   isError?: boolean
   isChecked?: boolean
-  checkboxes?: string[]
+  checkboxes?: CheckboxItemProps<T>[]
   pb?: SizingValue
 }
