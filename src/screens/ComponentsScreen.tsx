@@ -52,6 +52,11 @@ const TestCheckbox = () => {
 }
 
 const AGES = ['18-30', '31-40', '41-50']
+const agesMap = AGES.map((age) => ({
+  label: age,
+  value: age,
+}))
+
 const TextRadioButtons = () => {
   const { t } = useTranslation()
   const [selectedRadio, setSelectedRadio] = useState<string | undefined>()
@@ -62,7 +67,7 @@ const TextRadioButtons = () => {
       value={selectedRadio}
       isRequired
       name="age"
-      radioOptions={AGES}
+      radioOptions={agesMap}
       label={t('test_form.age')}
     />
   )

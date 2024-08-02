@@ -5,6 +5,12 @@ import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
+const mapItem = (item: string) => ({
+  value: item,
+  label: item,
+  labelInDropdown: item,
+})
+
 const shoeSizes = [
   '34',
   '35',
@@ -21,8 +27,13 @@ const shoeSizes = [
   '46',
   '47',
 ]
+const mappedShoeSizes = shoeSizes?.map(mapItem)
+
 const AGES = ['18-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81-90', '91-100']
+const mappedAges = AGES?.map(mapItem)
+
 const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
+const mappedMusics = MUSICS?.map(mapItem)
 
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
@@ -34,14 +45,15 @@ export const TestFormScreen = (): JSX.Element => {
 
   const { control, errors, submit, VALIDATION, setFocus } = useTestForm()
 
-  const INTERESTS = useMemo(
-    () => [
-      'IT',
-      t('test_form.cooking'),
-      t('test_form.sport'),
-      t('test_form.games'),
-      t('test_form.dancing'),
-    ],
+  const interests = useMemo(
+    () =>
+      [
+        'IT',
+        t('test_form.cooking'),
+        t('test_form.sport'),
+        t('test_form.games'),
+        t('test_form.dancing'),
+      ].map(mapItem),
     [t]
   )
 
@@ -52,23 +64,11 @@ export const TestFormScreen = (): JSX.Element => {
         t('test_form.middle'),
         t('test_form.secondary'),
         t('test_form.postsecondary'),
-      ]?.map((item) => ({
-        value: item,
-        label: item,
-        labelInDropdown: item,
-      })),
+      ]?.map(mapItem),
     [t]
   )
 
-  const mappedShoeSizes = useMemo(
-    () =>
-      shoeSizes?.map((item) => ({
-        value: item,
-        label: item,
-        labelInDropdown: item,
-      })),
-    []
-  )
+  const sex = useMemo(() => [t('test_form.male'), t('test_form.female')]?.map(mapItem), [t])
 
   return (
     <KeyboardAwareScrollView
@@ -145,7 +145,7 @@ export const TestFormScreen = (): JSX.Element => {
         {...{ control, errors }}
         isRequired
         name="age"
-        radioOptions={AGES}
+        radioOptions={mappedAges}
         rules={VALIDATION.age}
         label={t('test_form.age')}
       />
@@ -153,7 +153,7 @@ export const TestFormScreen = (): JSX.Element => {
         {...{ control, errors }}
         isRequired
         name="sex"
-        radioOptions={[t('test_form.male'), t('test_form.female')]}
+        radioOptions={sex}
         rules={VALIDATION.sex}
         label={t('test_form.sex')}
       />
@@ -177,7 +177,7 @@ export const TestFormScreen = (): JSX.Element => {
       />
       <ControlledField.Checkbox
         {...{ control, errors }}
-        checkboxes={MUSICS}
+        checkboxes={mappedMusics}
         isRequired
         label={t('test_form.which_music')}
         name="music"
@@ -185,7 +185,7 @@ export const TestFormScreen = (): JSX.Element => {
       />
       <ControlledField.Checkbox
         {...{ control, errors }}
-        checkboxes={INTERESTS}
+        checkboxes={interests}
         isRequired
         label={t('test_form.interests')}
         name="interests"
