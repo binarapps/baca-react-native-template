@@ -175,17 +175,17 @@ export const TestFormScreen = (): JSX.Element => {
         placeholder={t('test_form.shoe_size')}
         rules={VALIDATION.shoeSize}
       />
-      <ControlledField.Checkbox
+      <ControlledField.CheckboxGroup
         {...{ control, errors }}
-        checkboxes={mappedMusics}
+        items={mappedMusics}
         isRequired
         label={t('test_form.which_music')}
         name="music"
         rules={VALIDATION.music}
       />
-      <ControlledField.Checkbox
+      <ControlledField.CheckboxGroup
         {...{ control, errors }}
-        checkboxes={interests}
+        items={interests}
         isRequired
         label={t('test_form.interests')}
         name="interests"

@@ -97,7 +97,7 @@ export const SignUpScreen = () => {
         <Box gap={4} my={6} w="full">
           <ControlledField.Checkbox
             {...{ control, errors }}
-            checkboxText={t('form.checkbox.privacy_policy')}
+            checkboxLablel={t('form.checkbox.privacy_policy')}
             isRequired
             name="privacyPolicyAccepted"
             rules={{
@@ -106,7 +106,7 @@ export const SignUpScreen = () => {
           />
           <ControlledField.Checkbox
             {...{ control, errors }}
-            checkboxText={t('form.checkbox.terms_accepted')}
+            checkboxLablel={t('form.checkbox.terms_accepted')}
             isRequired
             name="termsAccepted"
             rules={{

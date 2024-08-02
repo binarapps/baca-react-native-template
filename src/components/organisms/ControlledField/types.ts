@@ -5,6 +5,7 @@ import {
   RadioGroupProps,
   FieldSelectProps,
 } from '@baca/components/molecules'
+import { CheckboxProps, FormLabelProps } from '@baca/design-system'
 import {
   Control,
   ControllerRenderProps,
@@ -14,7 +15,10 @@ import {
   RegisterOptions,
 } from 'react-hook-form'
 
-export type ControlledCheckboxProps<T> = Omit<FieldCheckboxProps<T>, 'onChange' | 'value'> & {
+export type ControlledCheckboxGroupProps<T> = Omit<
+  FieldCheckboxProps<T>,
+  'onSelectItem' | 'selectedItems' | 'errorMessage'
+> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
@@ -24,6 +28,18 @@ export type ControlledCheckboxProps<T> = Omit<FieldCheckboxProps<T>, 'onChange' 
   errors?: FieldErrors<any>
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
 }
+
+export type ControlledCheckboxProps = FormLabelProps &
+  Omit<CheckboxProps, 'onChange' | 'isChecked'> & {
+    // TODO: Think how to change this to proper type
+    // Could be helpful when solving
+    // - https://fettblog.eu/typescript-react-generic-forward-refs/
+    // - https://react-hook-form.com/ts#Control
+    name: Path<any>
+    control: Control<any>
+    errors?: FieldErrors<any>
+    rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
+  }
 
 export type ControlledInputProps = Omit<FieldInputProps, 'ref'> & {
   // TODO: Think how to change this to proper type

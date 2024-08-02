@@ -1,34 +1,43 @@
+import { Checkbox as CheckboxButton, Box, FormErrorMessage, FormLabel } from '@baca/design-system'
 import { useCallback } from '@baca/hooks'
 import { Controller, ControllerProps, get } from 'react-hook-form'
 
-import type { ControlledCheckboxProps } from './types'
-import { Field } from '../../molecules'
+import { ControlledCheckboxProps } from './types'
 
-export const Checkbox = <T extends string>({
-  name,
+export const Checkbox = ({
   control,
-  errors,
-  isRequired,
+  name,
   rules,
+  checkboxLablel,
+  isRequired,
+  label,
+  labelStyle,
+  disabled,
+  errors,
+  isError,
+  pb,
+  size,
   ...props
-}: ControlledCheckboxProps<T>) => {
+}: ControlledCheckboxProps) => {
   const errorMessage = get(errors, name)?.message
 
   const renderCheckbox = useCallback(
     ({ field }: Parameters<ControllerProps['render']>[0]) => (
-      <Field>
-        <Field.Checkbox
+      <Box gap={1}>
+        <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
+
+        <CheckboxButton
+          onChange={field.onChange}
+          checkboxLablel={checkboxLablel}
+          size={size}
+          {...(typeof field.value === 'boolean' && { isChecked: field.value })}
           {...props}
-          name={field.name}
-          value={field.value}
-          errorMessage={errorMessage}
-          onChange={(newValue) => field.onChange(newValue)}
-          isError={!!errorMessage}
-          isRequired={isRequired}
         />
-      </Field>
+        <FormErrorMessage errorMessage={errorMessage} />
+      </Box>
     ),
-    [errorMessage, isRequired, props]
+    [checkboxLablel, errorMessage, isRequired, label, labelStyle, props, size]
   )
+
   return <Controller name={name} control={control} rules={rules} render={renderCheckbox} />
 }

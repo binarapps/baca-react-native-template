@@ -1,6 +1,6 @@
-import { FontWeight, TextFontSize, _appTheme } from '@baca/design-system'
+import { FontWeight, TextFontSize, TouchableProps, _appTheme } from '@baca/design-system'
 import { IconNames } from '@baca/types'
-import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 'react-native'
+import { DimensionValue, TextStyle, ViewStyle, TextInputProps } from 'react-native'
 
 import { BoxProps } from './Box'
 
@@ -246,19 +246,15 @@ export type RadioProps = {
 // ------- CHECKBOX ------
 // -----------------------
 
-export type CheckboxItemProps<T> = {
-  label: string
-  value: T
-}
+export type CheckboxProps = TouchableProps & {
+  // Logic
+  onChange: (newValue: boolean) => void
+  isChecked?: boolean
 
-export type CheckboxProps<T> = ViewProps & {
-  value: boolean | string[]
-  onChange: (newValue: boolean | string[]) => void
-  checkboxText?: string
+  // UI
+  checkboxLablel?: string
   disabled?: boolean
   size?: 'sm' | 'md'
   isError?: boolean
-  isChecked?: boolean
-  checkboxes?: CheckboxItemProps<T>[]
   pb?: SizingValue
 }

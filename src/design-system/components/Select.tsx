@@ -68,8 +68,7 @@ const SelectItem = <T extends SelectKey>({
   return (
     <Checkbox
       onChange={onItemSelect}
-      checkboxText={item.labelInDropdown ?? item.label}
-      value={selected}
+      checkboxLablel={item.labelInDropdown ?? item.label}
       isChecked={selected}
       size="md"
       pb={4}
@@ -171,7 +170,7 @@ export const Select = <T extends SelectKey>({
             styles.bottomSheetContentFlatList,
             { paddingBottom: flatListPaddingBottom },
           ]}
-          data={[...items, ...items]}
+          data={items}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
           getItemLayout={getItemLayout}

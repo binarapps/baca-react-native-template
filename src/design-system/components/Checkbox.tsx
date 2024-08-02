@@ -1,10 +1,10 @@
 import { useCallback, useMemo } from 'react'
-import { TouchableOpacity, StyleSheet } from 'react-native'
 
 import { Box } from './Box'
 import { Center } from './Center'
 import { Icon } from './Icon'
 import { Text } from './Text'
+import { Touchable } from './Touchables'
 import { CheckboxProps } from './types'
 
 const hitSlop = {
@@ -24,30 +24,29 @@ const checkboxSizes = {
   },
 } as const
 
-export const Checkbox = <T extends string>({
-  checkboxText,
+export const Checkbox = ({
+  checkboxLablel,
   disabled,
   isChecked,
   isError,
   onChange,
   size = 'md',
-  value,
   pb,
-  ...props
-}: CheckboxProps<T>) => {
+  ...rest
+}: CheckboxProps) => {
   const checkboxSize = useMemo(() => checkboxSizes[size], [size])
 
   const handleValueChange = useCallback(() => {
-    return onChange(value)
-  }, [onChange, value])
+    return onChange(!isChecked)
+  }, [onChange, isChecked])
 
   const iconColor = useMemo<ColorNames>(() => {
-    if (disabled && value) {
+    if (disabled) {
       return 'fg.disabled_subtle'
     }
 
     return 'fg.white'
-  }, [disabled, value])
+  }, [disabled])
 
   const bgColor = useMemo<ColorNames | undefined>(() => {
     if (disabled) {
@@ -78,11 +77,13 @@ export const Checkbox = <T extends string>({
 
   return (
     <Box pb={pb}>
-      <TouchableOpacity
+      <Touchable
         {...{ disabled, hitSlop }}
         activeOpacity={0.5}
         onPress={handleValueChange}
-        style={styles.mainContainer}
+        alignItems="center"
+        flexDirection="row"
+        {...rest}
       >
         <Center
           bg={bgColor}
@@ -92,22 +93,13 @@ export const Checkbox = <T extends string>({
           height={checkboxSize.boxSize}
           mr={2}
           width={checkboxSize.boxSize}
-          {...props}
         >
           {isChecked ? (
             <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
           ) : null}
         </Center>
-        <Text.SmRegular>{checkboxText}</Text.SmRegular>
-      </TouchableOpacity>
+        <Text.SmRegular>{checkboxLablel}</Text.SmRegular>
+      </Touchable>
     </Box>
   )
 }
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'row',
-  },
-})
