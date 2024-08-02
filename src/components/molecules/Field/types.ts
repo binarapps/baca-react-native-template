@@ -20,6 +20,18 @@ export type FieldInputProps = InputProps &
   }
 
 // -----------------------
+// ------- SELECT --------
+// -----------------------
+
+export type FieldSelectProps<T> = SelectProps<T> &
+  FormLabelProps & {
+    helperText?: string
+    errorMessage?: string
+    errorIcon?: JSX.Element
+    isInvalid?: boolean
+  }
+
+// -----------------------
 // -------- RADIO --------
 // -----------------------
 
@@ -44,18 +56,6 @@ export type RadioGroupProps<T> = FormLabelProps & {
   isError?: boolean
   size?: 'sm' | 'md'
 }
-
-// -----------------------
-// ------- SELECT --------
-// -----------------------
-
-export type FieldSelectProps<T> = SelectProps<T> &
-  FormLabelProps & {
-    helperText?: string
-    errorMessage?: string
-    errorIcon?: JSX.Element
-    isInvalid?: boolean
-  }
 
 // -----------------------
 // --- CHECKBOX GROUP ----

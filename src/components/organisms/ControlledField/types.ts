@@ -15,30 +15,9 @@ import {
   RegisterOptions,
 } from 'react-hook-form'
 
-export type ControlledCheckboxGroupProps<T> = Omit<
-  FieldCheckboxGroupProps<T>,
-  'onSelectItem' | 'selectedItems' | 'errorMessage'
-> & {
-  // TODO: Think how to change this to proper type
-  // Could be helpful when solving
-  // - https://fettblog.eu/typescript-react-generic-forward-refs/
-  // - https://react-hook-form.com/ts#Control
-  name: Path<any>
-  control: Control<any>
-  errors?: FieldErrors<any>
-  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
-}
-
-export type ControlledCheckboxProps = Omit<FieldCheckboxProps, 'onChange' | 'isChecked'> & {
-  // TODO: Think how to change this to proper type
-  // Could be helpful when solving
-  // - https://fettblog.eu/typescript-react-generic-forward-refs/
-  // - https://react-hook-form.com/ts#Control
-  name: Path<any>
-  control: Control<any>
-  errors?: FieldErrors<any>
-  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
-}
+// -----------------------
+// -------- INPUT --------
+// -----------------------
 
 export type ControlledInputProps = Omit<FieldInputProps, 'ref'> & {
   // TODO: Think how to change this to proper type
@@ -55,6 +34,25 @@ export interface RenderInputProps {
   field: ControllerRenderProps<FieldValues, string>
 }
 
+// -----------------------
+// ------- SELECT --------
+// -----------------------
+
+export type ControlledSelectProps<T> = Omit<FieldSelectProps<T>, 'setValue' | 'value'> & {
+  // TODO: Think how to change this to proper type
+  // Could be helpful when solving
+  // - https://fettblog.eu/typescript-react-generic-forward-refs/
+  // - https://react-hook-form.com/ts#Control
+  name: Path<any>
+  control: Control<any>
+  errors: FieldErrors<any>
+  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
+}
+
+// -----------------------
+// -------- RADIO --------
+// -----------------------
+
 export type ControlledRadioProps<T> = Omit<RadioGroupProps<T>, 'selectedItem' | 'onSelectItem'> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
@@ -66,13 +64,35 @@ export type ControlledRadioProps<T> = Omit<RadioGroupProps<T>, 'selectedItem' | 
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
 }
 
-export type ControlledSelectProps<T> = Omit<FieldSelectProps<T>, 'setValue' | 'value'> & {
+// -----------------------
+// --- CHECKBOX GROUP ----
+// -----------------------
+
+export type ControlledCheckboxGroupProps<T> = Omit<
+  FieldCheckboxGroupProps<T>,
+  'onSelectItem' | 'selectedItems' | 'errorMessage'
+> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
   // - https://react-hook-form.com/ts#Control
   name: Path<any>
   control: Control<any>
-  errors: FieldErrors<any>
+  errors?: FieldErrors<any>
+  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
+}
+
+// -----------------------
+// ------ CHECKBOX -------
+// -----------------------
+
+export type ControlledCheckboxProps = Omit<FieldCheckboxProps, 'onChange' | 'isChecked'> & {
+  // TODO: Think how to change this to proper type
+  // Could be helpful when solving
+  // - https://fettblog.eu/typescript-react-generic-forward-refs/
+  // - https://react-hook-form.com/ts#Control
+  name: Path<any>
+  control: Control<any>
+  errors?: FieldErrors<any>
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
 }
