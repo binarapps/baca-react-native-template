@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  FieldCheckboxProps,
+  FieldCheckboxGroupProps,
   FieldInputProps,
   RadioGroupProps,
   FieldSelectProps,
+  FieldCheckboxProps,
 } from '@baca/components/molecules'
-import { CheckboxProps, FormLabelProps } from '@baca/design-system'
 import {
   Control,
   ControllerRenderProps,
@@ -16,7 +16,7 @@ import {
 } from 'react-hook-form'
 
 export type ControlledCheckboxGroupProps<T> = Omit<
-  FieldCheckboxProps<T>,
+  FieldCheckboxGroupProps<T>,
   'onSelectItem' | 'selectedItems' | 'errorMessage'
 > & {
   // TODO: Think how to change this to proper type
@@ -29,17 +29,16 @@ export type ControlledCheckboxGroupProps<T> = Omit<
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
 }
 
-export type ControlledCheckboxProps = FormLabelProps &
-  Omit<CheckboxProps, 'onChange' | 'isChecked'> & {
-    // TODO: Think how to change this to proper type
-    // Could be helpful when solving
-    // - https://fettblog.eu/typescript-react-generic-forward-refs/
-    // - https://react-hook-form.com/ts#Control
-    name: Path<any>
-    control: Control<any>
-    errors?: FieldErrors<any>
-    rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
-  }
+export type ControlledCheckboxProps = Omit<FieldCheckboxProps, 'onChange' | 'isChecked'> & {
+  // TODO: Think how to change this to proper type
+  // Could be helpful when solving
+  // - https://fettblog.eu/typescript-react-generic-forward-refs/
+  // - https://react-hook-form.com/ts#Control
+  name: Path<any>
+  control: Control<any>
+  errors?: FieldErrors<any>
+  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
+}
 
 export type ControlledInputProps = Omit<FieldInputProps, 'ref'> & {
   // TODO: Think how to change this to proper type

@@ -7,7 +7,7 @@ import {
 } from '@baca/design-system/components'
 import { Fragment, useMemo } from 'react'
 
-import { FieldCheckboxProps } from './types'
+import { FieldCheckboxGroupProps } from './types'
 
 export const CheckboxGroup = <T extends string>({
   items,
@@ -20,7 +20,7 @@ export const CheckboxGroup = <T extends string>({
   selectedItems,
   labelStyle,
   ...props
-}: FieldCheckboxProps<T>) => {
+}: FieldCheckboxGroupProps<T>) => {
   const renderCheckboxes = useMemo(() => {
     return items.map((item, index) => {
       const handleChange = () => {

@@ -1,4 +1,10 @@
-import { FormLabelProps, InputProps, SelectProps, TouchableRef } from '@baca/design-system'
+import {
+  CheckboxProps,
+  FormLabelProps,
+  InputProps,
+  SelectProps,
+  TouchableRef,
+} from '@baca/design-system'
 import { LegacyRef } from 'react'
 
 // -----------------------
@@ -52,7 +58,7 @@ export type FieldSelectProps<T> = SelectProps<T> &
   }
 
 // -----------------------
-// ------- CHECKBOX ------
+// --- CHECKBOX GROUP ----
 // -----------------------
 
 export type CheckboxItemProps<T> = {
@@ -60,7 +66,7 @@ export type CheckboxItemProps<T> = {
   value: T
 }
 
-export type FieldCheckboxProps<T> = FormLabelProps & {
+export type FieldCheckboxGroupProps<T> = FormLabelProps & {
   // Items logic
   items: CheckboxItemProps<T>[]
   onSelectItem: (val: T[]) => void
@@ -75,3 +81,12 @@ export type FieldCheckboxProps<T> = FormLabelProps & {
   isError?: boolean
   size?: 'sm' | 'md'
 }
+
+// -----------------------
+// ------ CHECKBOX -------
+// -----------------------
+
+export type FieldCheckboxProps = FormLabelProps &
+  CheckboxProps & {
+    errorMessage?: string
+  }
