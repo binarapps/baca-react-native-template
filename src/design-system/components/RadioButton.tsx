@@ -14,7 +14,7 @@ const radioSizes = {
   },
 } as const
 
-export const Radio = forwardRef<TouchableRef, RadioProps>(
+export const RadioButton = forwardRef<TouchableRef, RadioProps>(
   ({ isSelected, isDisabled, isError, onChange, label, size = 'md', pb }, ref) => {
     const checkboxSize = useMemo(() => radioSizes[size], [size])
 

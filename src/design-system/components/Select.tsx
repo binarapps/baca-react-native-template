@@ -5,7 +5,7 @@ import { Keyboard, StyleSheet, Dimensions, Platform } from 'react-native'
 
 import { CheckboxButton } from './CheckboxButton'
 import { Icon } from './Icon'
-import { Radio } from './Radio'
+import { RadioButton } from './RadioButton'
 import { Text } from './Text'
 import { Touchable } from './Touchables/Touchable'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
@@ -53,7 +53,7 @@ const SelectItem = <T extends SelectKey>({
 
   if (maxSelectedItems === 1) {
     return (
-      <Radio
+      <RadioButton
         isDisabled={disabled}
         isError={false}
         isSelected={selected}
