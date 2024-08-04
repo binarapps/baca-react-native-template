@@ -1,0 +1,37 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Upload'
+- tapOn: 'Upload'
+- assertVisible: 'Photos'
+- tapOn:
+    index: 1
+- assertVisible: 'Choose'
+- tapOn: 'Choose'
+- assertVisible: 'First name'
+- assertVisible: 'Last name'
+- assertVisible: 'Cancel'
+- tapOn: 'Cancel'
+- assertVisible: 'Home'
+- assertVisible: ' Profile'
+- tapOn: ' Profile'
+- assertVisible: 'Save'
+- tapOn: 'Save'
+- scrollUntilVisible:
+    element:
+      text: ' Remove account'
+    direction: DOWN
+    timeout: 15000
+    speed: 40
+    visibilityPercentage: 100
+- tapOn: 'Old password Enter current password '
+- inputRandomText
+- assertVisible: 'Automatic Strong Password cover view text '
+- assertVisible: 'Change'
+- tapOn: 'Change'
+- assertVisible: ' Remove account'
+- tapOn: ' Remove account'
+- assertVisible: 'Bottom sheet handle'
+- tapOn:
+    point: 50%,50%
+- assertVisible: ' Home'
+- tapOn: ' Home'

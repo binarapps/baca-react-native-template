@@ -6,10 +6,10 @@ import iconJson from 'assets/icomoon/selection.json'
 import { StyleProp, ViewStyle } from 'react-native'
 
 export type IconProps = {
-  style?: StyleProp<ViewStyle>
   color?: ColorNames
   name: IconNames
   size: number
+  style?: StyleProp<ViewStyle>
 }
 
 const IconFont = createIconSetFromIcoMoon(iconJson, 'IcoMoon', 'icomoon.ttf')

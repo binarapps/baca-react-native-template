@@ -1,0 +1,10 @@
+appId: host.exp.Exponent
+---
+- assertVisible: 'Details'
+- tapOn: 'Details'
+- assertVisible: 'Open BottomSheetModal'
+- tapOn: 'Open BottomSheetModal'
+- tapOn:
+    point: 50%,50%
+- assertVisible: 'Home'
+- tapOn: 'Home'

@@ -1,0 +1,12 @@
+appId: host.exp.Exponent
+---
+- launchApp
+- tapOn:
+    text: 'BACA (qa)'
+- assertVisible: 'Welcome back'
+- assertVisible: 'Remember me'
+- tapOn:
+    text: 'Remember me'
+- assertVisible: 'Log in'
+- tapOn: 'Log in'
+- assertVisible: 'Home'
