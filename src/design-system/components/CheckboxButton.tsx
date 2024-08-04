@@ -25,9 +25,9 @@ const checkboxSizes = {
 } as const
 
 export const CheckboxButton = ({
-  checkboxLablel,
-  disabled,
-  isChecked,
+  label,
+  isDisabled,
+  isSelected,
   isError,
   onChange,
   size = 'md',
@@ -37,48 +37,48 @@ export const CheckboxButton = ({
   const checkboxSize = useMemo(() => checkboxSizes[size], [size])
 
   const handleValueChange = useCallback(() => {
-    return onChange(!isChecked)
-  }, [onChange, isChecked])
+    return onChange(!isSelected)
+  }, [onChange, isSelected])
 
   const iconColor = useMemo<ColorNames>(() => {
-    if (disabled) {
+    if (isDisabled) {
       return 'fg.disabled_subtle'
     }
 
     return 'fg.white'
-  }, [disabled])
+  }, [isDisabled])
 
   const bgColor = useMemo<ColorNames | undefined>(() => {
-    if (disabled) {
+    if (isDisabled) {
       return 'bg.disabled_subtle'
     }
 
-    if (!isChecked) {
+    if (!isSelected) {
       return undefined
     }
 
     return 'bg.brand.solid'
-  }, [disabled, isChecked])
+  }, [isDisabled, isSelected])
 
   const borderColor = useMemo<ColorNames | undefined>(() => {
-    if (disabled) {
+    if (isDisabled) {
       return 'border.disabled'
     }
     if (isError) {
       return 'border.error'
     }
 
-    if (isChecked) {
+    if (isSelected) {
       return 'bg.brand.solid'
     }
 
     return 'border.primary'
-  }, [isChecked, isError, disabled])
+  }, [isSelected, isError, isDisabled])
 
   return (
     <Box pb={pb}>
       <Touchable
-        {...{ disabled, hitSlop }}
+        {...{ disabled: isDisabled, hitSlop }}
         activeOpacity={0.5}
         onPress={handleValueChange}
         alignItems="center"
@@ -94,11 +94,11 @@ export const CheckboxButton = ({
           mr={2}
           width={checkboxSize.boxSize}
         >
-          {isChecked ? (
+          {isSelected ? (
             <Icon color={iconColor} name="check-line" size={checkboxSize.iconSize} />
           ) : null}
         </Center>
-        <Text.SmRegular>{checkboxLablel}</Text.SmRegular>
+        <Text.SmRegular>{label}</Text.SmRegular>
       </Touchable>
     </Box>
   )

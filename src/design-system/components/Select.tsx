@@ -68,8 +68,8 @@ const SelectItem = <T extends SelectKey>({
   return (
     <CheckboxButton
       onChange={onItemSelect}
-      checkboxLablel={item.labelInDropdown ?? item.label}
-      isChecked={selected}
+      label={item.labelInDropdown ?? item.label}
+      isSelected={selected}
       size="md"
       pb={4}
     />

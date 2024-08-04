@@ -14,7 +14,7 @@ export const Checkbox = ({ control, name, rules, errors, ...props }: ControlledC
           {...props}
           onChange={field.onChange}
           errorMessage={errorMessage}
-          {...(typeof field.value === 'boolean' && { isChecked: field.value })}
+          {...(typeof field.value === 'boolean' && { isSelected: field.value })}
         />
       </Field>
     ),

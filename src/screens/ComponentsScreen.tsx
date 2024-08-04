@@ -44,8 +44,8 @@ const TestCheckbox = () => {
   return (
     <CheckboxButton
       onChange={setIsChecked.toggle}
-      isChecked={isChecked}
-      checkboxLablel={t('form.checkbox.remember_me')}
+      isSelected={isChecked}
+      label={t('form.checkbox.remember_me')}
     />
   )
 }

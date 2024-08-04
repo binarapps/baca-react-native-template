@@ -40,9 +40,9 @@ export const CheckboxGroup = <T extends string>({
           <CheckboxButton
             onChange={handleChange}
             key={index}
-            checkboxLablel={item.label}
+            label={item.label}
             {...(Array.isArray(selectedItems) && {
-              isChecked: selectedItems?.includes(item.value),
+              isSelected: selectedItems?.includes(item.value),
             })}
             {...props}
           />

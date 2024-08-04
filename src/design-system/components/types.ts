@@ -233,9 +233,12 @@ export type SelectProps<T> = {
 // ---- RADIO BUTTON -----
 // -----------------------
 
-export type RadioProps = {
+export type RadioProps = TouchableProps & {
+  // Logic
   onChange: (val: boolean) => void
   isSelected?: boolean
+
+  // UI
   isDisabled?: boolean
   isError?: boolean
   label?: string
@@ -250,12 +253,12 @@ export type RadioProps = {
 export type CheckboxProps = TouchableProps & {
   // Logic
   onChange: (newValue: boolean) => void
-  isChecked?: boolean
+  isSelected?: boolean
 
   // UI
-  checkboxLablel?: string
-  disabled?: boolean
-  size?: 'sm' | 'md'
+  isDisabled?: boolean
   isError?: boolean
+  label?: string
+  size?: 'sm' | 'md'
   pb?: SizingValue
 }
