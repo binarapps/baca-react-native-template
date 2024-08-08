@@ -1,8 +1,12 @@
-import { FontWeight, TextFontSize, _appTheme } from '@baca/design-system'
+import { FontWeight, TextFontSize, TouchableProps, _appTheme } from '@baca/design-system'
 import { IconNames } from '@baca/types'
-import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 'react-native'
+import { DimensionValue, TextStyle, ViewStyle, TextInputProps } from 'react-native'
 
 import { BoxProps } from './Box'
+
+// -----------------------
+// ---- DESIGN SYSTEM ----
+// -----------------------
 
 type Sizing =
   | 'w'
@@ -124,24 +128,6 @@ export type BordersProps = {
   borderRightWidth?: ViewStyle['borderRightWidth']
 }
 
-export type TextProps = {
-  color?: ColorNames
-  fontSize?: TextFontSize
-  letterSpacing?: LetterSpacings
-  lineHeight?: LineHeights
-  fontWeight?: FontWeight
-  fontFamily?: Fonts
-  bold?: boolean
-  italic?: boolean
-  capitalize?: boolean
-  lowercase?: boolean
-  uppercase?: boolean
-  underline?: boolean
-  strikeThrough?: boolean
-  textDecoration?: TextStyle['textDecorationLine']
-  textTransform?: TextStyle['textTransform']
-}
-
 export type LayoutsProps = {
   position?: ViewStyle['position']
   zIndex?: ViewStyle['zIndex']
@@ -160,12 +146,6 @@ export type StyledProps = SizingProps &
   BordersProps &
   LayoutsProps
 
-export type FormLabelProps = {
-  label?: string
-  isRequired?: boolean
-  labelStyle?: TextStyle
-}
-
 export type AbsoluteProps = Omit<BoxProps, 'position'>
 
 export type SpacerProps = {
@@ -173,6 +153,42 @@ export type SpacerProps = {
   y?: SizingValue
   flex?: ViewStyle['flex']
 }
+
+// -----------------------
+// --------- TEXT --------
+// -----------------------
+
+export type TextProps = {
+  color?: ColorNames
+  fontSize?: TextFontSize
+  letterSpacing?: LetterSpacings
+  lineHeight?: LineHeights
+  fontWeight?: FontWeight
+  fontFamily?: Fonts
+  bold?: boolean
+  italic?: boolean
+  capitalize?: boolean
+  lowercase?: boolean
+  uppercase?: boolean
+  underline?: boolean
+  strikeThrough?: boolean
+  textDecoration?: TextStyle['textDecorationLine']
+  textTransform?: TextStyle['textTransform']
+}
+
+// -----------------------
+// --------- FORM --------
+// -----------------------
+
+export type FormLabelProps = {
+  label?: string
+  isRequired?: boolean
+  labelStyle?: TextStyle
+}
+
+// -----------------------
+// -------- INPUT --------
+// -----------------------
 
 export type InputProps = TextProps &
   StyledProps &
@@ -188,6 +204,10 @@ export type InputProps = TextProps &
     type?: 'text' | 'password'
   }
 
+// -----------------------
+// ------- SELECT --------
+// -----------------------
+
 export type SelectKey = string | number
 
 export type SelectItemProps<T> = {
@@ -197,20 +217,28 @@ export type SelectItemProps<T> = {
 }
 
 export type SelectProps<T> = {
+  items: SelectItemProps<T>[]
+  onSelectItem: (newValue: T[]) => void
+  selectedItems: T[]
+
   placeholder?: string
   label?: string
   disabled?: boolean
-  items: SelectItemProps<T>[]
-  value: T[]
-  setValue: (newValue: T[]) => void
   maxSelectedItems?: number
   isError?: boolean
   onOpen?: () => void
 }
 
-export type RadioButtonProps = {
+// -----------------------
+// ---- RADIO BUTTON -----
+// -----------------------
+
+export type RadioProps = TouchableProps & {
+  // Logic
   onChange: (val: boolean) => void
   isSelected?: boolean
+
+  // UI
   isDisabled?: boolean
   isError?: boolean
   label?: string
@@ -218,14 +246,19 @@ export type RadioButtonProps = {
   pb?: SizingValue
 }
 
-export type CheckboxProps = ViewProps & {
-  value: boolean | string[]
-  onChange: (newValue: boolean | string[]) => void
-  checkboxText?: string
-  disabled?: boolean
-  size?: 'sm' | 'md'
+// -----------------------
+// ------- CHECKBOX ------
+// -----------------------
+
+export type CheckboxProps = TouchableProps & {
+  // Logic
+  onChange: (newValue: boolean) => void
+  isSelected?: boolean
+
+  // UI
+  isDisabled?: boolean
   isError?: boolean
-  isChecked?: boolean
-  checkboxes?: string[]
+  label?: string
+  size?: 'sm' | 'md'
   pb?: SizingValue
 }

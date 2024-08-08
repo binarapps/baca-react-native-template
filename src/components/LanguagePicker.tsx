@@ -2,6 +2,7 @@ import { theme } from '@baca/design-system'
 import { Icon, Row, Text } from '@baca/design-system/components'
 import { Touchable, TouchableProps } from '@baca/design-system/components/Touchables/Touchable'
 import { useCallback, useTranslation } from '@baca/hooks'
+import languages from '@baca/i18n/languages.json'
 import { StyleSheet } from 'react-native'
 import Animated, {
   useAnimatedStyle,
@@ -11,7 +12,6 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import { Menu, MenuProps } from './organisms/Menu'
-import languages from '../../assets/languages.json'
 
 type LanguagePickerProps = {
   isWeb?: boolean

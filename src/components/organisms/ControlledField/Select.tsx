@@ -30,8 +30,8 @@ export const Select = <T extends SelectKey>({
         <Field.Select
           errorMessage={errorMessage}
           isError={!!errorMessage}
-          value={properValue}
-          setValue={handleChange}
+          selectedItems={properValue}
+          onSelectItem={handleChange}
           isRequired={isRequired}
           {...props}
         />

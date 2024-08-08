@@ -1,5 +1,5 @@
 import { SocialButton } from '@baca/components'
-import { Radio } from '@baca/components/molecules/Field/Radio'
+import { RadioGroup } from '@baca/components/molecules/Field/RadioGroup'
 import {
   Loader,
   Box,
@@ -8,7 +8,7 @@ import {
   Center,
   ScrollView,
   Display,
-  Checkbox,
+  CheckboxButton,
 } from '@baca/design-system'
 import { useBoolean, useCallback, useScreenOptions, useState, useTranslation } from '@baca/hooks'
 import { noop, showInformationToast } from '@baca/utils'
@@ -42,27 +42,31 @@ const TestCheckbox = () => {
   const [isChecked, setIsChecked] = useBoolean()
 
   return (
-    <Checkbox
+    <CheckboxButton
       onChange={setIsChecked.toggle}
-      value={isChecked}
-      isChecked={isChecked}
-      checkboxText={t('form.checkbox.remember_me')}
+      isSelected={isChecked}
+      label={t('form.checkbox.remember_me')}
     />
   )
 }
 
 const AGES = ['18-30', '31-40', '41-50']
+const agesMap = AGES.map((age) => ({
+  label: age,
+  value: age,
+}))
+
 const TextRadioButtons = () => {
   const { t } = useTranslation()
   const [selectedRadio, setSelectedRadio] = useState<string | undefined>()
 
   return (
-    <Radio
-      onChange={setSelectedRadio}
-      value={selectedRadio}
+    <RadioGroup
+      onSelectItem={setSelectedRadio}
+      selectedItem={selectedRadio}
       isRequired
       name="age"
-      radioOptions={AGES}
+      items={agesMap}
       label={t('test_form.age')}
     />
   )
