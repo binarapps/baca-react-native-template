@@ -5,7 +5,7 @@ import {
   Box,
 } from '@baca/design-system/components'
 import { forwardRef, useCallback, useImperativeHandle, useRef, useMemo } from 'react'
-import { NativeSyntheticEvent, Pressable, TextInput, TextInputFocusEventData } from 'react-native'
+import { NativeSyntheticEvent, TextInput, TextInputFocusEventData } from 'react-native'
 
 import type { FieldInputProps } from './types'
 
@@ -47,6 +47,7 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
       labelStyle,
       onBlur,
       onFocus,
+      testID,
       ...props
     },
     ref
@@ -88,16 +89,19 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
     )
 
     return (
-      <Box width="100%" mb="2" {...layoutProps}>
-        <Pressable onPress={handleFocus}>
-          <FormLabel {...{ isRequired, label, labelStyle }} />
-          <BaseInput
-            isInvalid={isInvalid || Boolean(errorMessage)}
-            {...inputProps}
-            ref={_inputRef}
-          />
-          <FormErrorMessage {...{ errorMessage }} />
-        </Pressable>
+      <Box width="100%" gap={1} mb={2} {...layoutProps}>
+        <FormLabel
+          {...{ isRequired, label, labelStyle }}
+          testID={testID + ':label'}
+          onLabelPress={handleFocus}
+        />
+        <BaseInput
+          isInvalid={isInvalid || Boolean(errorMessage)}
+          {...inputProps}
+          ref={_inputRef}
+          testID={testID + ':input'}
+        />
+        <FormErrorMessage {...{ errorMessage }} testId={testID + ':error_message'} />
       </Box>
     )
   }

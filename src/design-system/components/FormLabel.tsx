@@ -1,11 +1,18 @@
 import { useTheme } from '@baca/hooks'
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 import { Text } from './Text'
+import { Touchable } from './Touchables'
 import { FormLabelProps } from './types'
 
-export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => {
+export const FormLabel = ({
+  label,
+  isRequired,
+  labelStyle,
+  testID,
+  onLabelPress,
+}: FormLabelProps) => {
   const { colors } = useTheme()
 
   const stylesForRequired =
@@ -16,19 +23,21 @@ export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => 
       )
     )
 
+  if (!label) {
+    return null
+  }
+
   return (
-    <View style={[styles.wrapper, { ...(label && styles.wrapperWithLabel) }]}>
-      {label && (
-        <Text.SmMedium style={[labelStyle, { color: labelStyle?.color || colors.text.secondary }]}>
-          {label}
-          {isRequired && (
-            <Text.SmMedium style={[stylesForRequired, { color: colors.text.error.primary }]}>
-              *
-            </Text.SmMedium>
-          )}
-        </Text.SmMedium>
-      )}
-    </View>
+    <Touchable style={[styles.wrapper]} testID={testID} onPress={onLabelPress}>
+      <Text.SmMedium style={[labelStyle, { color: labelStyle?.color || colors.text.secondary }]}>
+        {label}
+        {isRequired && (
+          <Text.SmMedium style={[stylesForRequired, { color: colors.text.error.primary }]}>
+            *
+          </Text.SmMedium>
+        )}
+      </Text.SmMedium>
+    </Touchable>
   )
 }
 
@@ -36,9 +45,6 @@ const styles = StyleSheet.create({
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
-  },
-  wrapperWithLabel: {
     marginBottom: 8,
-    marginTop: 4,
   },
 })

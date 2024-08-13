@@ -184,6 +184,8 @@ export type FormLabelProps = {
   label?: string
   isRequired?: boolean
   labelStyle?: TextStyle
+  testID?: string
+  onLabelPress?: () => void
 }
 
 // -----------------------
