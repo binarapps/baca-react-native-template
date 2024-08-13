@@ -79,7 +79,7 @@ export const SettingsScreen = (): JSX.Element => {
 
         <Box flexGrow={1} />
 
-        <Button.SecondaryColor mt={8} size="lg" onPress={signOut}>
+        <Button.SecondaryColor mt={8} size="lg" onPress={signOut} testID="settings:logout">
           {t('settings_screen.sign_out')}
         </Button.SecondaryColor>
         <Spacer y={4} />
