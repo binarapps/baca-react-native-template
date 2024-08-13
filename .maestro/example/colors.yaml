@@ -1,8 +1,0 @@
-appId: ${APP_ID}
-tags:
-  - example
----
-- assertVisible: 'Go to Colors'
-- tapOn: 'Go to Colors'
-- assertVisible: 'Examples'
-- tapOn: 'Examples'

@@ -1,9 +1,0 @@
-appId: ${APP_ID}
-tags:
-  - categories
----
-- assertVisible: ' Categories'
-- tapOn: ' Categories'
-- assertVisible: 'Categories screen'
-- assertVisible: ' Example'
-- tapOn: ' Example'
