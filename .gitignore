@@ -50,4 +50,4 @@ scripts/cli/build/
 scripts/cli/temp/
 
 # maestro
-./e2e-debug-output
+e2e-debug-output
