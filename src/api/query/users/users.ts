@@ -12,6 +12,7 @@ import type {
   QueryFunction,
   QueryKey,
   UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
@@ -107,7 +108,12 @@ export const useUsersControllerCreate = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof usersControllerCreate>>,
+  TError,
+  { data: BodyType<CreateUserDto> },
+  TContext
+> => {
   const mutationOptions = getUsersControllerCreateMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -165,7 +171,8 @@ export type UsersControllerFindAllQueryError = ErrorType<
 /**
  * @summary Find All Users
  */
-export const useUsersControllerFindAll = <
+
+export function useUsersControllerFindAll<
   TData = Awaited<ReturnType<typeof usersControllerFindAll>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>
 >(
@@ -174,7 +181,7 @@ export const useUsersControllerFindAll = <
     query?: UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindAll>>, TError, TData>
     request?: SecondParameter<typeof customInstance>
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getUsersControllerFindAllQueryOptions(params, options)
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
@@ -234,7 +241,8 @@ export type UsersControllerFindOneQueryError = ErrorType<
 /**
  * @summary Find User by ID
  */
-export const useUsersControllerFindOne = <
+
+export function useUsersControllerFindOne<
   TData = Awaited<ReturnType<typeof usersControllerFindOne>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>
 >(
@@ -243,7 +251,7 @@ export const useUsersControllerFindOne = <
     query?: UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindOne>>, TError, TData>
     request?: SecondParameter<typeof customInstance>
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getUsersControllerFindOneQueryOptions(id, options)
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
@@ -326,7 +334,12 @@ export const useUsersControllerUpdate = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof usersControllerUpdate>>,
+  TError,
+  { id: string; data: BodyType<UpdateUserDto> },
+  TContext
+> => {
   const mutationOptions = getUsersControllerUpdateMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -395,7 +408,12 @@ export const useUsersControllerRemove = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof usersControllerRemove>>,
+  TError,
+  { id: string },
+  TContext
+> => {
   const mutationOptions = getUsersControllerRemoveMutationOptions(options)
 
   return useMutation(mutationOptions)

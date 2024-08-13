@@ -12,7 +12,7 @@ import { HttpResponse, delay, http } from 'msw'
 import type { AppVersionStatusEntity } from '../../types'
 
 export const getSystemControllerCheckForAppUpdateResponseMock = (
-  overrideResponse: any = {}
+  overrideResponse: Partial<AppVersionStatusEntity> = {}
 ): AppVersionStatusEntity => ({
   appId: faker.word.sample(),
   currentVersionReleaseDate: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -23,20 +23,24 @@ export const getSystemControllerCheckForAppUpdateResponseMock = (
 })
 
 export const getSystemControllerCheckForAppUpdateMockHandler = (
-  overrideResponse?: AppVersionStatusEntity
+  overrideResponse?:
+    | AppVersionStatusEntity
+    | ((
+        info: Parameters<Parameters<typeof http.post>[1]>[0]
+      ) => Promise<AppVersionStatusEntity> | AppVersionStatusEntity)
 ) => {
-  return http.post('*/api/v1/system/app-updates/check', async () => {
+  return http.post('*/api/v1/system/app-updates/check', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getSystemControllerCheckForAppUpdateResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getSystemControllerCheckForAppUpdateResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }

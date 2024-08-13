@@ -12,7 +12,7 @@ import { HttpResponse, delay, http } from 'msw'
 import type { FileEntity } from '../../types'
 
 export const getFilesControllerUploadFileResponseMock = (
-  overrideResponse: any = {}
+  overrideResponse: Partial<FileEntity> = {}
 ): FileEntity => ({
   category: faker.helpers.arrayElement([faker.word.sample(), null]),
   createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -25,44 +25,52 @@ export const getFilesControllerUploadFileResponseMock = (
   ...overrideResponse,
 })
 
-export const getFilesControllerUploadFileMockHandler = (overrideResponse?: FileEntity) => {
-  return http.post('/api/v1/files/upload', async () => {
+export const getFilesControllerUploadFileMockHandler = (
+  overrideResponse?:
+    | FileEntity
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<FileEntity> | FileEntity)
+) => {
+  return http.post('*/api/v1/files/upload', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getFilesControllerUploadFileResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getFilesControllerUploadFileResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getFilesControllerDownloadMockHandler = () => {
-  return http.get('/api/v1/files/:fileName', async () => {
+export const getFilesControllerDownloadMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.get('*/api/v1/files/:fileName', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getFilesControllerDeleteFileMockHandler = () => {
-  return http.delete('/api/v1/files/:fileName', async () => {
+export const getFilesControllerDeleteFileMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.delete('*/api/v1/files/:fileName', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 export const getFilesMock = () => [

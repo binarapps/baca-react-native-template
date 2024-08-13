@@ -10,4 +10,4 @@
 /**
  * Details of any errors encountered during the health check
  */
-export type HealthEntityError = { [key: string]: any }
+export type HealthEntityError = { [key: string]: unknown }

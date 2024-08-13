@@ -11,35 +11,43 @@ import { HttpResponse, delay, http } from 'msw'
 
 import type { HealthEntity } from '../../types'
 
-export const getHealthControllerCheckResponseMock = (overrideResponse: any = {}): HealthEntity => ({
+export const getHealthControllerCheckResponseMock = (
+  overrideResponse: Partial<HealthEntity> = {}
+): HealthEntity => ({
   details: {
-    cache: { status: faker.word.sample(), ...overrideResponse },
-    db: { status: faker.word.sample(), ...overrideResponse },
-    domain: { status: faker.word.sample(), ...overrideResponse },
-    ...overrideResponse,
+    cache: { status: faker.word.sample() },
+    db: { status: faker.word.sample() },
+    domain: { status: faker.word.sample() },
   },
   error: {},
   info: {
-    cache: { status: faker.word.sample(), ...overrideResponse },
-    db: { status: faker.word.sample(), ...overrideResponse },
-    domain: { status: faker.word.sample(), ...overrideResponse },
-    ...overrideResponse,
+    cache: { status: faker.word.sample() },
+    db: { status: faker.word.sample() },
+    domain: { status: faker.word.sample() },
   },
   status: faker.word.sample(),
   ...overrideResponse,
 })
 
-export const getHealthControllerCheckMockHandler = (overrideResponse?: HealthEntity) => {
-  return http.get('/api/v1/health', async () => {
+export const getHealthControllerCheckMockHandler = (
+  overrideResponse?:
+    | HealthEntity
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0]
+      ) => Promise<HealthEntity> | HealthEntity)
+) => {
+  return http.get('*/api/v1/health', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getHealthControllerCheckResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getHealthControllerCheckResponseMock()
+      ),
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
