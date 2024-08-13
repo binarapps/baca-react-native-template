@@ -3,7 +3,7 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { useCallback, useMemo, useRef } from 'react'
 import { Keyboard, StyleSheet, Dimensions, Platform } from 'react-native'
 
-import { Checkbox } from './Checkbox'
+import { CheckboxButton } from './CheckboxButton'
 import { Icon } from './Icon'
 import { RadioButton } from './RadioButton'
 import { Text } from './Text'
@@ -66,11 +66,10 @@ const SelectItem = <T extends SelectKey>({
   }
 
   return (
-    <Checkbox
+    <CheckboxButton
       onChange={onItemSelect}
-      checkboxText={item.labelInDropdown ?? item.label}
-      value={selected}
-      isChecked={selected}
+      label={item.labelInDropdown ?? item.label}
+      isSelected={selected}
       size="md"
       pb={4}
     />
@@ -81,8 +80,8 @@ export const Select = <T extends SelectKey>({
   placeholder,
   disabled: dropdownDisabled = false,
   items,
-  value,
-  setValue,
+  selectedItems: value,
+  onSelectItem: setValue,
   label,
   maxSelectedItems = 1,
   onOpen,
@@ -171,7 +170,7 @@ export const Select = <T extends SelectKey>({
             styles.bottomSheetContentFlatList,
             { paddingBottom: flatListPaddingBottom },
           ]}
-          data={[...items, ...items]}
+          data={items}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
           getItemLayout={getItemLayout}
