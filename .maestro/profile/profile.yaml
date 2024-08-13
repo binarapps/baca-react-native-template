@@ -2,6 +2,9 @@ appId: ${APP_ID}
 tags:
   - profile
 ---
+- tapOn:
+    id: 'bottom_tab_button:profile'
+
 - assertVisible: 'Upload'
 - tapOn: 'Upload'
 - assertVisible: 'Photos'
