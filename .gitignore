@@ -48,3 +48,6 @@ env.json
 # baca-cli build
 scripts/cli/build/
 scripts/cli/temp/
+
+# maestro
+./e2e-debug-output
