@@ -27,7 +27,6 @@ export const RadioGroup = <T extends string>({
             isError={isError}
             isSelected={item.value === selectedItem}
             onChange={() => onSelectItem(item.value)}
-            pb={2}
             label={item.label}
             size={size}
           />
@@ -37,7 +36,7 @@ export const RadioGroup = <T extends string>({
   )
 
   return (
-    <Box width="100%" mb={2}>
+    <Box width="100%" gap={2} mb={2}>
       <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
       {renderRadioButtons}
       <FormErrorMessage errorMessage={errorMessage} />
