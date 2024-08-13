@@ -1,4 +1,6 @@
-appId: host.exp.Exponent
+appId: ${APP_ID}
+tags:
+  - example
 ---
 - assertVisible: 'Go to push notifications helpers'
 - tapOn: 'Go to push notifications helpers'

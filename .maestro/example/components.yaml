@@ -1,4 +1,6 @@
-appId: host.exp.Exponent
+appId: ${APP_ID}
+tags:
+  - example
 ---
 - assertVisible: 'Go to Components'
 - tapOn:
