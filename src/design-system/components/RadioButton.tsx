@@ -3,7 +3,7 @@ import { forwardRef, useCallback, useMemo } from 'react'
 import { Box } from './Box'
 import { Text } from './Text'
 import { Touchable, TouchableRef } from './Touchables'
-import { RadioButtonProps } from './types'
+import { RadioProps } from './types'
 
 const radioSizes = {
   sm: {
@@ -14,7 +14,7 @@ const radioSizes = {
   },
 } as const
 
-export const RadioButton = forwardRef<TouchableRef, RadioButtonProps>(
+export const RadioButton = forwardRef<TouchableRef, RadioProps>(
   ({ isSelected, isDisabled, isError, onChange, label, size = 'md', pb }, ref) => {
     const checkboxSize = useMemo(() => radioSizes[size], [size])
 

@@ -1,17 +1,10 @@
+import { Field } from '@baca/components/molecules'
 import { useCallback } from '@baca/hooks'
 import { Controller, ControllerProps, get } from 'react-hook-form'
 
-import type { ControlledCheckboxProps } from './types'
-import { Field } from '../../molecules'
+import { ControlledCheckboxProps } from './types'
 
-export const Checkbox: React.FC<ControlledCheckboxProps> = ({
-  name,
-  control,
-  errors,
-  isRequired,
-  rules,
-  ...props
-}) => {
+export const Checkbox = ({ control, name, rules, errors, ...props }: ControlledCheckboxProps) => {
   const errorMessage = get(errors, name)?.message
 
   const renderCheckbox = useCallback(
@@ -19,16 +12,14 @@ export const Checkbox: React.FC<ControlledCheckboxProps> = ({
       <Field>
         <Field.Checkbox
           {...props}
-          name={field.name}
-          value={field.value}
+          onChange={field.onChange}
           errorMessage={errorMessage}
-          onChange={(newValue) => field.onChange(newValue)}
-          isError={!!errorMessage}
-          isRequired={isRequired}
+          {...(typeof field.value === 'boolean' && { isSelected: field.value })}
         />
       </Field>
     ),
-    [errorMessage, isRequired, props]
+    [errorMessage, props]
   )
+
   return <Controller name={name} control={control} rules={rules} render={renderCheckbox} />
 }

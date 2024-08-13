@@ -9,8 +9,7 @@
       "distribution": "store",
       "ios": {
         "autoIncrement": "buildNumber"
-      },
-      "node": "18.15.0"
+      }
     },
     "staging": {
       "android": {

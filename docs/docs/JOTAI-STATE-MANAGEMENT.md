@@ -2,7 +2,7 @@
 id: jotai
 slug: /jotai
 title: State management - jotai
-sidebar_position: 4
+sidebar_position: 5
 tags:
   - Jotai
   - State management
