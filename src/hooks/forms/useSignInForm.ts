@@ -1,5 +1,6 @@
 import { useAuthControllerLogin } from '@baca/api/query/auth/auth'
 import { AuthEmailLoginDto } from '@baca/api/types'
+import { isProduction } from '@baca/constants'
 import { assignPushToken, setToken } from '@baca/services'
 import { isSignedInAtom } from '@baca/store/auth'
 import { handleFormError, hapticImpact } from '@baca/utils'
@@ -15,12 +16,18 @@ type UseSignInFormProps = {
   setIsSignInButtonsDisabled?: Dispatch<SetStateAction<boolean>>
 }
 
-const defaultValues: SignInFormValues = {
-  // TODO: Reset this values when building production app
-  email: 'mateusz.rostkowski+baca@binarapps.com',
-  password: 'Test1234,',
-  confirm: false,
-}
+const defaultValues: SignInFormValues = isProduction
+  ? {
+      email: '',
+      password: '',
+      confirm: false,
+    }
+  : {
+      // TODO: Reset this values when building production app
+      email: 'mateusz.rostkowski+baca@binarapps.com',
+      password: 'Test1234,',
+      confirm: false,
+    }
 
 export const useSignInForm = ({ setIsSignInButtonsDisabled }: UseSignInFormProps) => {
   const setIsSignedIn = useSetAtom(isSignedInAtom)
