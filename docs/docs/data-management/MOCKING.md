@@ -22,12 +22,22 @@ Mocks are automatically generated with orval script - you can check [docs here](
 
 ## Enabling mocks
 
+You have two types of enabling mocks in the app
+
+1. Start server and set mock on start
+
+```
+IS_MOCK=true yarn start
+```
+
+2. Enable mock manually
+
 Go to `App.tsx` and change `ENABLE_MOCKED_SERVER` variable from false to true
 
 ```tsx title="/App.tsx"
 // FIXME: moking not working on mobile app - follow this discussion https://github.com/mswjs/msw/issues/2026
 // error-line
-const ENABLE_MOCKED_SERVER = false
+const ENABLE_MOCKED_SERVER = isMock
 // success-line
 const ENABLE_MOCKED_SERVER = true
 
