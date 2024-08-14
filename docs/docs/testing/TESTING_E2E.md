@@ -31,3 +31,4 @@ yarn install-maestro
 Problem:
 
 - Maestro tests are not running on clean app, that means if you were logged before we should logout user, fortunatelly we have solved making maestro e2e test: `logout-when-needed.yaml`
+- Maestro tests for baca are build for expo go, that means we have to start server and build app before running tests. If you will not do that tests will not pass, because server is starting for ~1min and tests are runing instantly (the best option whould be to wait with tests, but for some reason maestro wait don't work properly)
