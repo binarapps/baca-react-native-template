@@ -8,6 +8,7 @@ import {
   NEW_PULL_REQUEST_TEMPLATE_PATH,
   PULL_REQUEST_TEMPLATE_PATH,
   APP_JSON_PATH,
+  README_TEMPLATE_PATH,
 } from '../constants'
 import { logger, addAfter } from '../utils'
 
@@ -116,10 +117,12 @@ const questionsObject: QuestionsObject = {
  * @param organizationOwner - The owner of the organization.
  */
 const replaceReadme = ({ appName, organizationOwner }: SetupProjectProps) => {
-  let contents = fs.readFileSync(README_PATH, 'utf-8')
+  let contents = fs.readFileSync(README_TEMPLATE_PATH, 'utf-8')
 
   contents = contents.replaceAll('_NAME_', appName)
   contents = contents.replaceAll('_OWNER_', organizationOwner)
+
+  console.log()
 
   fs.writeFileSync(README_PATH, contents)
 }

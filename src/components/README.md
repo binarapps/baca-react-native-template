@@ -227,7 +227,7 @@ _type_: `string` | `undefined`
 import { Field } from '@baca/components'
 
 const MyComponent: React.FC = () => (
-  <Field.Checkbox isRequired autoCapitalize="none" label="Confirm" />
+  <Field.CheckboxGroup isRequired autoCapitalize="none" label="Confirm" />
 )
 
 export default MyComponent
@@ -353,7 +353,7 @@ const MyComponent: React.FC = () => {
   })
 
   return (
-    <ControlledField.Checkbox
+    <ControlledField.CheckboxGroup
       control={control}
       errors={errors}
       label="Confirm"

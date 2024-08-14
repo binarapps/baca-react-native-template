@@ -1,4 +1,15 @@
-import { CheckboxProps, FormLabelProps, InputProps, SelectProps } from '@baca/design-system'
+import {
+  CheckboxProps,
+  FormLabelProps,
+  InputProps,
+  SelectProps,
+  TouchableRef,
+} from '@baca/design-system'
+import { LegacyRef } from 'react'
+
+// -----------------------
+// -------- INPUT --------
+// -----------------------
 
 export type FieldInputProps = InputProps &
   FormLabelProps & {
@@ -8,18 +19,9 @@ export type FieldInputProps = InputProps &
     onFocus?: () => void
   }
 
-export type FieldRadioProps = FormLabelProps & {
-  radioOptions?: string[]
-  errorMessage?: string
-  isInvalid?: boolean
-  isDisabled?: boolean
-  name: string
-  onChange: (val: string) => void
-  label?: string
-  isError?: boolean
-  value?: string | number
-  size?: 'sm' | 'md'
-}
+// -----------------------
+// ------- SELECT --------
+// -----------------------
 
 export type FieldSelectProps<T> = SelectProps<T> &
   FormLabelProps & {
@@ -29,11 +31,62 @@ export type FieldSelectProps<T> = SelectProps<T> &
     isInvalid?: boolean
   }
 
-export type FieldCheckboxProps = CheckboxProps &
-  FormLabelProps & {
-    checkboxes?: string[]
+// -----------------------
+// -------- RADIO --------
+// -----------------------
+
+export type RadioGroupItemProps<T> = {
+  label: string
+  value: T
+}
+
+export type RadioGroupProps<T> = FormLabelProps & {
+  // Items logic
+  items?: RadioGroupItemProps<T>[]
+  onSelectItem: (val: T) => void
+  selectedItem?: string | number
+
+  // UI logic
+  errorMessage?: string
+  isInvalid?: boolean
+  isDisabled?: boolean
+  name?: string
+  radioRef?: LegacyRef<TouchableRef>
+  label?: string
+  isError?: boolean
+  size?: 'sm' | 'md'
+}
+
+// -----------------------
+// --- CHECKBOX GROUP ----
+// -----------------------
+
+export type CheckboxItemProps<T> = {
+  label: string
+  value: T
+}
+
+export type FieldCheckboxGroupProps<T> = FormLabelProps & {
+  // Items logic
+  items: CheckboxItemProps<T>[]
+  onSelectItem: (val: T[]) => void
+  selectedItems?: T[]
+
+  // UI logic
+  errorMessage?: string
+  isInvalid?: boolean
+  isDisabled?: boolean
+  name: string
+  label?: string
+  isError?: boolean
+  size?: 'sm' | 'md'
+}
+
+// -----------------------
+// ------ CHECKBOX -------
+// -----------------------
+
+export type FieldCheckboxProps = FormLabelProps &
+  CheckboxProps & {
     errorMessage?: string
-    isInvalid?: boolean
-    isDisabled?: boolean
-    name: string
   }

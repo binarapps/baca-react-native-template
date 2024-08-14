@@ -2,13 +2,13 @@
   "expo": {
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 20,
+      "versionCode": 21,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "20",
+      "buildNumber": "21",
       "config": {
         "usesNonExemptEncryption": false
       },
@@ -30,7 +30,7 @@
       "fallbackToCacheTimeout": 0
     },
     "userInterfaceStyle": "automatic",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "plugins": [
       "@react-native-google-signin/google-signin",
       "expo-asset",

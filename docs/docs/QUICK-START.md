@@ -1,29 +1,30 @@
 ---
-id: bootstrap
-slug: /bootstrap/create-new-app
-title: Create new app
-sidebar_position: 1
+id: quick-start
+slug: /quick-start
+title: Quick start
+sidebar_position: 2
 tags:
   - Bootstrap
   - Create new app
+  - Quick start
   - Getting started
   - Project structure
-description: Bootstrap project structure, that is needed to start development your new project
+description: Fastly start developing with this template
 ---
 
 import Details from '@site/src/components/Details'
 
-# BOOTSTRAP - start development 🕐
+# QUICK START
 
-Bootstrap project structure, that is needed to start development
+:::warning
+If this is not your first time using BACA we are strongly recommend going through [bootstrap docs](/docs/bootstrap/create-new-app).
+:::
 
 ## **What you need to do, to start development**
 
 ---
 
 ### Step 1. Setup repository
-
-We recommend to clone this repository and initialize it as your own repository. This will help you to get updates from this repository. Optionally you can check other options to setup repository.
 
 1. Clone this repository to your local machine
 
@@ -41,61 +42,19 @@ git branch -M main
 git push -u origin main
 ```
 
-> Removing git history **(not recommended)**
->
-> - do it only if you don't want to keep history of commits - maybe client doesn't want this
-> - when you will get rid of git history it could be hard to apply changes made in the starter file
->
-> ```bash
-> rm -r .git
-> git init
-> git commit -m "chore: initialize project"
-> ```
-
-<Details title="Other options to setup repository">
-1. Init using this command (be aware that sometimes this template can't be updated on npm, in that case, clone this repository and reinitialize repository for yourself - check third type of setup)
-
-```bash
-npx create-expo-app --template=@binarapps/baca-react-native-template name_of_your_app
-```
-
-2. Use this as template repo on GitHub
-   ![Github Repository Template](../../static/img/github-repository-template.png)
-
-</Details>
-
 ---
 
 ### Step 2. Login / register to expo
 
-If you have expo account → go login with it
-
-If you do not have expo account → register on your company email. In terminal type:
-
-```bash
-eas register
-```
-
-You will be redirected to expo registration page. If something is not right please make sure you have eas cli installed
-
-```bash
-npm install -g eas-cli
-
-```
+> Skip this step if you are already logged in
 
 Login to expo account on your local machine.
 
-1. login to expo cli from your project dir terminal. In terminal type:
-
 ```bash
 eas login
-```
 
-2. put your username and password to your account register in step 3.
+## veify if you are correctly logged
 
-3. Check if you are correctly log in to your expo account. In terminal type:
-
-```bash
 eas whoami
 ```
 
@@ -107,7 +66,7 @@ eas whoami
 
 2. Select the proper organization you are working for from a dropdown:
 
-   ![Select organization](../../static/img/expo_select.jpg)
+   ![Select organization](../static/img/expo_select.jpg)
 
    Ideally, it will be an organization created by the client (especially for production builds), to easily pass access after the end of development.
 
@@ -115,11 +74,11 @@ eas whoami
 
    - From the sidebar menu click **All projects** button:
 
-     ![All projects](../../static/img/expo_all.png)
+     ![All projects](../static/img/expo_all.png)
 
    - On the page with the list of projects click **+New Project** button:
 
-     ![New project](../../static/img/expo_new.png)
+     ![New project](../static/img/expo_new.png)
 
    - Apply **display name** and **slug** of your project.
 
@@ -127,7 +86,9 @@ eas whoami
 
      Slug is the name that will link your Expo application with your code.
 
-     ![Project create](../../static/img/expo_create.png)
+     ![Project create](../static/img/expo_create.png)
+
+---
 
 ### Step 4.Sync project with code.
 
@@ -156,3 +117,14 @@ Please verify all changes made with the script
 ---
 
 ### Step 5. Make environment variables setup - [tutorial](/docs/doppler-config)
+
+---
+
+## Next steps:
+
+Congrats, if you have completed all of this 5 steps, you can start development, after first iteration of development you can:
+
+1. [Prepare app for testing](/docs/bootstrap/testing)
+2. [Deploy your app](/docs/deploy/intro)
+   1. [iOS](/docs/deploy/ios)
+   2. [android](/docs/deploy/android)
