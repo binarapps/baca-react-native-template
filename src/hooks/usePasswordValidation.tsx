@@ -38,8 +38,12 @@ export const usePasswordValidation = () => {
         ? 'utility.error.500'
         : 'utility.success.500'
 
+      const testID = `change_password:${suggestion}:${
+        !showValidationState ? 'disabled' : isError ? 'error' : 'success'
+      }`
+
       return (
-        <Row alignItems="center" key={suggestion} mb={2} w="full">
+        <Row alignItems="center" key={suggestion} mb={2} w="full" testID={testID}>
           <Box bg={iconColor} borderRadius={10} mr={2}>
             <Icon name={iconName} color="Base.white" size={20} />
           </Box>

@@ -78,7 +78,6 @@ exports[`Button renders correctly 1`] = `
           "textTransform": "none",
         }
       }
-      testID="baseText"
       textAlign="center"
     >
       Button

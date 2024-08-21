@@ -64,13 +64,14 @@ export type HealthControllerCheckQueryError = ErrorType<ErrorEntity | void>
 /**
  * @summary Check Health
  */
-export const useHealthControllerCheck = <
+
+export function useHealthControllerCheck<
   TData = Awaited<ReturnType<typeof healthControllerCheck>>,
   TError = ErrorType<ErrorEntity | void>
 >(options?: {
   query?: UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
   request?: SecondParameter<typeof customInstance>
-}): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getHealthControllerCheckQueryOptions(options)
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }

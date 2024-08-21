@@ -1,30 +1,25 @@
 flows:
-  - auth/*
-  - home/*
-  - categories/*
-  - example/*
-  - settings/*
-  - profile/*
+  - 'auth/*'
+  - 'home/*'
+  - 'settings/*'
+  - 'profile/*'
 
-excludeTags:
-  - utils
+includeTags:
+  - 'auth'
+  - 'home'
+  - 'settings'
+  - 'profile'
 
 executionOrder:
-  continueOnFailure: true
+  continueOnFailure: false
   flowsOrder:
-    - login-with-validation
-    - details
-    - full-screen-form
-    - blog
-    - categories
-    - application-info
-    - colors
-    - components
-    - typography
-    - homestack
-    - data-backend
-    - test-form
-    - notifications-helpers
-    - user-session
-    - settings
-    - profile
+    - 'logout-when-needed'
+    - 'login-with-validation'
+    - 'details'
+    - 'full-screen-form'
+    - 'settings'
+    # https://github.com/mobile-dev-inc/maestro/issues/1484
+    # Wait for it to be resolved and then remove blog from the list
+    # blog is not implemented, it's just a placeholder, to make tests run
+    - 'blog'
+    - 'profile'

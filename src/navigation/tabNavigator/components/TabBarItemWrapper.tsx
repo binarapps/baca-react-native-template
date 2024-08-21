@@ -12,6 +12,7 @@ export function TabBarItemWrapper({
   onPress,
   params,
   style,
+  testID,
 }: {
   children?: (
     props: PressableStateCallbackType & { hovered: boolean; focused: boolean }
@@ -21,12 +22,13 @@ export function TabBarItemWrapper({
   onPress?: () => void
   params?: Record<string, string>
   style?: ViewStyle
+  testID?: string
 }) {
   const focused = useIsTabSelected(id)
 
   if (onPress) {
     return (
-      <Pressable hitSlop={5} onPress={onPress}>
+      <Pressable hitSlop={5} onPress={onPress} testID={testID}>
         {(props) => children?.({ ...props, focused })}
       </Pressable>
     )
@@ -34,14 +36,16 @@ export function TabBarItemWrapper({
 
   if (name.startsWith('/') || name.startsWith('.')) {
     return (
-      <Link href={{ pathname: name, params }} asChild style={style}>
+      <Link href={{ pathname: name, params }} asChild style={style} testID={testID}>
         <Pressable hitSlop={5}>{(props) => children?.({ ...props, focused })}</Pressable>
       </Link>
     )
   }
   return (
     <TabbedNavigator.Link name={id} asChild style={style}>
-      <Pressable hitSlop={5}>{(props) => children?.({ ...props, focused })}</Pressable>
+      <Pressable hitSlop={5} testID={testID}>
+        {(props) => children?.({ ...props, focused })}
+      </Pressable>
     </TabbedNavigator.Link>
   )
 }

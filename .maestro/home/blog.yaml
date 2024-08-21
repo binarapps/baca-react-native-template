@@ -1,6 +1,0 @@
-appId: host.exp.Exponent
----
-- assertVisible: 'Open blog'
-- tapOn: 'Open blog'
-- assertVisible: ''
-- tapOn: ''

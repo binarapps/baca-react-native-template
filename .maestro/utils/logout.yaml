@@ -1,0 +1,15 @@
+appId: ${APP_ID}
+tags:
+  - util
+---
+- tapOn:
+    id: 'bottom_tab_button:settings'
+
+- extendedWaitUntil:
+    visible:
+      id: 'settings:logout'
+    timeout: 1000
+- tapOn:
+    id: 'settings:logout'
+- assertVisible:
+    id: 'sign_in:title'

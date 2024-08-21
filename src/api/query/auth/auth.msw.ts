@@ -11,7 +11,9 @@ import { HttpResponse, delay, http } from 'msw'
 
 import type { AuthEntity, RefreshEntity, UserEntity } from '../../types'
 
-export const getAuthControllerLoginResponseMock = (overrideResponse: any = {}): AuthEntity => ({
+export const getAuthControllerLoginResponseMock = (
+  overrideResponse: Partial<AuthEntity> = {}
+): AuthEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
   tokenExpires: faker.number.int({ min: undefined, max: undefined }),
@@ -24,7 +26,6 @@ export const getAuthControllerLoginResponseMock = (overrideResponse: any = {}): 
         termsAccepted: faker.datatype.boolean(),
         termsVersion: faker.word.sample(),
         updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-        ...overrideResponse,
       },
       undefined,
     ]),
@@ -37,23 +38,19 @@ export const getAuthControllerLoginResponseMock = (overrideResponse: any = {}): 
     locale: faker.word.sample(),
     provider: faker.word.sample(),
     role: {
-      id: faker.number.int({ min: undefined, max: undefined }),
+      id: faker.helpers.arrayElement([1, 2] as const),
       name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-      ...overrideResponse,
     },
     socialId: faker.word.sample(),
-    status: {
-      id: faker.number.int({ min: undefined, max: undefined }),
-      name: faker.word.sample(),
-      ...overrideResponse,
-    },
+    status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
     updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-    ...overrideResponse,
   },
   ...overrideResponse,
 })
 
-export const getAuthControllerRegisterResponseMock = (overrideResponse: any = {}): UserEntity => ({
+export const getAuthControllerRegisterResponseMock = (
+  overrideResponse: Partial<UserEntity> = {}
+): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
       createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -62,7 +59,6 @@ export const getAuthControllerRegisterResponseMock = (overrideResponse: any = {}
       termsAccepted: faker.datatype.boolean(),
       termsVersion: faker.word.sample(),
       updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-      ...overrideResponse,
     },
     undefined,
   ]),
@@ -75,21 +71,18 @@ export const getAuthControllerRegisterResponseMock = (overrideResponse: any = {}
   locale: faker.word.sample(),
   provider: faker.word.sample(),
   role: {
-    id: faker.number.int({ min: undefined, max: undefined }),
+    id: faker.helpers.arrayElement([1, 2] as const),
     name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-    ...overrideResponse,
   },
   socialId: faker.word.sample(),
-  status: {
-    id: faker.number.int({ min: undefined, max: undefined }),
-    name: faker.word.sample(),
-    ...overrideResponse,
-  },
+  status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
   updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
   ...overrideResponse,
 })
 
-export const getAuthControllerMeResponseMock = (overrideResponse: any = {}): UserEntity => ({
+export const getAuthControllerMeResponseMock = (
+  overrideResponse: Partial<UserEntity> = {}
+): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
       createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -98,7 +91,6 @@ export const getAuthControllerMeResponseMock = (overrideResponse: any = {}): Use
       termsAccepted: faker.datatype.boolean(),
       termsVersion: faker.word.sample(),
       updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-      ...overrideResponse,
     },
     undefined,
   ]),
@@ -111,22 +103,17 @@ export const getAuthControllerMeResponseMock = (overrideResponse: any = {}): Use
   locale: faker.word.sample(),
   provider: faker.word.sample(),
   role: {
-    id: faker.number.int({ min: undefined, max: undefined }),
+    id: faker.helpers.arrayElement([1, 2] as const),
     name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-    ...overrideResponse,
   },
   socialId: faker.word.sample(),
-  status: {
-    id: faker.number.int({ min: undefined, max: undefined }),
-    name: faker.word.sample(),
-    ...overrideResponse,
-  },
+  status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
   updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
   ...overrideResponse,
 })
 
 export const getAuthControllerRefreshResponseMock = (
-  overrideResponse: any = {}
+  overrideResponse: Partial<RefreshEntity> = {}
 ): RefreshEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
@@ -134,183 +121,229 @@ export const getAuthControllerRefreshResponseMock = (
   ...overrideResponse,
 })
 
-export const getAuthControllerLoginMockHandler = (overrideResponse?: AuthEntity) => {
-  return http.post('/api/v1/auth/email/login', async () => {
+export const getAuthControllerLoginMockHandler = (
+  overrideResponse?:
+    | AuthEntity
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<AuthEntity> | AuthEntity)
+) => {
+  return http.post('*/api/v1/auth/email/login', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getAuthControllerLoginResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getAuthControllerLoginResponseMock()
+      ),
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getAuthControllerRegisterMockHandler = (overrideResponse?: UserEntity) => {
-  return http.post('/api/v1/auth/email/register', async () => {
+export const getAuthControllerRegisterMockHandler = (
+  overrideResponse?:
+    | UserEntity
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<UserEntity> | UserEntity)
+) => {
+  return http.post('*/api/v1/auth/email/register', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getAuthControllerRegisterResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getAuthControllerRegisterResponseMock()
+      ),
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getAuthControllerConfirmEmailMockHandler = () => {
-  return http.post('/api/v1/auth/email/confirm', async () => {
+export const getAuthControllerConfirmEmailMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.post('*/api/v1/auth/email/confirm', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getAuthControllerResendVerificationEmailMockHandler = () => {
-  return http.post('/api/v1/auth/email/resend', async () => {
+export const getAuthControllerResendVerificationEmailMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.post('*/api/v1/auth/email/resend', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getAuthControllerForgotPasswordMockHandler = () => {
-  return http.post('/api/v1/auth/forgot/password', async () => {
+export const getAuthControllerForgotPasswordMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.post('*/api/v1/auth/forgot/password', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getAuthControllerResetPasswordMockHandler = () => {
-  return http.post('/api/v1/auth/reset/password', async () => {
+export const getAuthControllerResetPasswordMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.post('*/api/v1/auth/reset/password', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getAuthControllerEmailChangeMockHandler = () => {
-  return http.post('/api/v1/auth/email/change', async () => {
+export const getAuthControllerEmailChangeMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.post('*/api/v1/auth/email/change', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getAuthControllerConfirmEmailChangeMockHandler = () => {
-  return http.post('/api/v1/auth/email/change-confirm', async () => {
+export const getAuthControllerConfirmEmailChangeMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.post('*/api/v1/auth/email/change-confirm', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getAuthControllerMeMockHandler = (overrideResponse?: UserEntity) => {
-  return http.get('/api/v1/auth/me', async () => {
+export const getAuthControllerMeMockHandler = (
+  overrideResponse?:
+    | UserEntity
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<UserEntity> | UserEntity)
+) => {
+  return http.get('*/api/v1/auth/me', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getAuthControllerMeResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getAuthControllerMeResponseMock()
+      ),
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getAuthControllerUpdateMockHandler = () => {
-  return http.patch('/api/v1/auth/me', async () => {
+export const getAuthControllerUpdateMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.patch>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.patch('*/api/v1/auth/me', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getAuthControllerDeleteMockHandler = () => {
-  return http.delete('/api/v1/auth/me', async () => {
+export const getAuthControllerDeleteMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.delete('*/api/v1/auth/me', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getAuthControllerRefreshMockHandler = (overrideResponse?: RefreshEntity) => {
-  return http.post('/api/v1/auth/refresh', async () => {
+export const getAuthControllerRefreshMockHandler = (
+  overrideResponse?:
+    | RefreshEntity
+    | ((
+        info: Parameters<Parameters<typeof http.post>[1]>[0]
+      ) => Promise<RefreshEntity> | RefreshEntity)
+) => {
+  return http.post('*/api/v1/auth/refresh', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getAuthControllerRefreshResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getAuthControllerRefreshResponseMock()
+      ),
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getAuthControllerLogoutMockHandler = () => {
-  return http.post('/api/v1/auth/logout', async () => {
+export const getAuthControllerLogoutMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.post('*/api/v1/auth/logout', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 
-export const getAuthControllerLogoutAllMockHandler = () => {
-  return http.post('/api/v1/auth/logout/all', async () => {
+export const getAuthControllerLogoutAllMockHandler = (
+  overrideResponse?:
+    | unknown
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<unknown> | unknown)
+) => {
+  return http.post('*/api/v1/auth/logout/all', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 200 })
   })
 }
 export const getAuthMock = () => [

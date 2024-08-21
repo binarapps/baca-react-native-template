@@ -204,15 +204,7 @@ const RawText = memo(
         ]
       )
 
-      return (
-        <BaseText
-          ref={ref}
-          testID="baseText"
-          numberOfLines={noOfLines}
-          {...props}
-          style={textStyle}
-        />
-      )
+      return <BaseText ref={ref} numberOfLines={noOfLines} {...props} style={textStyle} />
     }
   )
 )

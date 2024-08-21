@@ -12,6 +12,7 @@ import type {
   QueryFunction,
   QueryKey,
   UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
@@ -100,7 +101,12 @@ export const useFilesControllerUploadFile = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof filesControllerUploadFile>>,
+  TError,
+  { data: BodyType<FilesControllerUploadFileBody> },
+  TContext
+> => {
   const mutationOptions = getFilesControllerUploadFileMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -157,7 +163,8 @@ export type FilesControllerDownloadQueryError = ErrorType<void>
 /**
  * @summary Download File
  */
-export const useFilesControllerDownload = <
+
+export function useFilesControllerDownload<
   TData = Awaited<ReturnType<typeof filesControllerDownload>>,
   TError = ErrorType<void>
 >(
@@ -166,7 +173,7 @@ export const useFilesControllerDownload = <
     query?: UseQueryOptions<Awaited<ReturnType<typeof filesControllerDownload>>, TError, TData>
     request?: SecondParameter<typeof customInstance>
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getFilesControllerDownloadQueryOptions(fileName, options)
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
@@ -238,7 +245,12 @@ export const useFilesControllerDeleteFile = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof filesControllerDeleteFile>>,
+  TError,
+  { fileName: string },
+  TContext
+> => {
   const mutationOptions = getFilesControllerDeleteFileMutationOptions(options)
 
   return useMutation(mutationOptions)

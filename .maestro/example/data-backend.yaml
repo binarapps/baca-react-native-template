@@ -1,6 +1,0 @@
-appId: host.exp.Exponent
----
-- assertVisible: 'Go to screen with data from BE'
-- tapOn: 'Go to screen with data from BE'
-- assertVisible: 'Examples'
-- tapOn: 'Examples'

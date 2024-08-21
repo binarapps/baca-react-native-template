@@ -7,7 +7,7 @@
  * OpenAPI spec version: 1.0
  */
 import { useMutation } from '@tanstack/react-query'
-import type { MutationFunction, UseMutationOptions } from '@tanstack/react-query'
+import type { MutationFunction, UseMutationOptions, UseMutationResult } from '@tanstack/react-query'
 
 import { customInstance } from '../../axios/custom-instance'
 import type { ErrorType, BodyType } from '../../axios/custom-instance'
@@ -86,7 +86,12 @@ export const useSystemControllerCheckForAppUpdate = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof systemControllerCheckForAppUpdate>>,
+  TError,
+  { data: BodyType<CheckUpdateDto> },
+  TContext
+> => {
   const mutationOptions = getSystemControllerCheckForAppUpdateMutationOptions(options)
 
   return useMutation(mutationOptions)

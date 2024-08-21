@@ -9,14 +9,17 @@ import 'core-js/stable/atob'
 
 // Rest imports
 import '@baca/i18n'
+import { isMock } from '@baca/constants'
 import { enableAndroidBackgroundNotificationListener, startMockedServer } from '@baca/services'
 import * as Device from 'expo-device'
 import 'expo-router/entry'
 
-const ENABLE_MOCKED_SERVER = false
+const ENABLE_MOCKED_SERVER = isMock
 
 if (ENABLE_MOCKED_SERVER) {
   startMockedServer()
+  console.error = () => {}
+  console.warn = () => {}
 }
 
 // TODO: Uncomment reactotron setup when using

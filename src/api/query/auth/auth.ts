@@ -12,6 +12,7 @@ import type {
   QueryFunction,
   QueryKey,
   UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
@@ -128,7 +129,12 @@ export const useAuthControllerLogin = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerLogin>>,
+  TError,
+  { data: BodyType<AuthEmailLoginDto> },
+  TContext
+> => {
   const mutationOptions = getAuthControllerLoginMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -205,7 +211,12 @@ export const useAuthControllerRegister = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerRegister>>,
+  TError,
+  { data: BodyType<AuthRegisterLoginDto> },
+  TContext
+> => {
   const mutationOptions = getAuthControllerRegisterMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -282,7 +293,12 @@ export const useAuthControllerConfirmEmail = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerConfirmEmail>>,
+  TError,
+  { data: BodyType<AuthConfirmEmailDto> },
+  TContext
+> => {
   const mutationOptions = getAuthControllerConfirmEmailMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -364,7 +380,12 @@ export const useAuthControllerResendVerificationEmail = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerResendVerificationEmail>>,
+  TError,
+  { data: BodyType<AuthResendVerificationEmailDto> },
+  TContext
+> => {
   const mutationOptions = getAuthControllerResendVerificationEmailMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -445,7 +466,12 @@ export const useAuthControllerForgotPassword = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerForgotPassword>>,
+  TError,
+  { data: BodyType<AuthForgotPasswordDto> },
+  TContext
+> => {
   const mutationOptions = getAuthControllerForgotPasswordMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -526,7 +552,12 @@ export const useAuthControllerResetPassword = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerResetPassword>>,
+  TError,
+  { data: BodyType<AuthResetPasswordDto> },
+  TContext
+> => {
   const mutationOptions = getAuthControllerResetPasswordMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -607,7 +638,12 @@ export const useAuthControllerEmailChange = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerEmailChange>>,
+  TError,
+  { data: BodyType<AuthEmailChangeDto> },
+  TContext
+> => {
   const mutationOptions = getAuthControllerEmailChangeMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -684,7 +720,12 @@ export const useAuthControllerConfirmEmailChange = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
+  TError,
+  { data: BodyType<AuthConfirmEmailChangeDto> },
+  TContext
+> => {
   const mutationOptions = getAuthControllerConfirmEmailChangeMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -731,13 +772,14 @@ export type AuthControllerMeQueryError = ErrorType<ErrorUnauthorizedEntity | Err
 /**
  * @summary Get Current User
  */
-export const useAuthControllerMe = <
+
+export function useAuthControllerMe<
   TData = Awaited<ReturnType<typeof authControllerMe>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>
 >(options?: {
   query?: UseQueryOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>
   request?: SecondParameter<typeof customInstance>
-}): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getAuthControllerMeQueryOptions(options)
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
@@ -819,7 +861,12 @@ export const useAuthControllerUpdate = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerUpdate>>,
+  TError,
+  { data: BodyType<AuthUpdateDto> },
+  TContext
+> => {
   const mutationOptions = getAuthControllerUpdateMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -883,7 +930,7 @@ export const useAuthControllerDelete = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<Awaited<ReturnType<typeof authControllerDelete>>, TError, void, TContext> => {
   const mutationOptions = getAuthControllerDeleteMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -947,7 +994,12 @@ export const useAuthControllerRefresh = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerRefresh>>,
+  TError,
+  void,
+  TContext
+> => {
   const mutationOptions = getAuthControllerRefreshMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -1011,7 +1063,7 @@ export const useAuthControllerLogout = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<Awaited<ReturnType<typeof authControllerLogout>>, TError, void, TContext> => {
   const mutationOptions = getAuthControllerLogoutMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -1075,7 +1127,12 @@ export const useAuthControllerLogoutAll = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authControllerLogoutAll>>,
+  TError,
+  void,
+  TContext
+> => {
   const mutationOptions = getAuthControllerLogoutAllMutationOptions(options)
 
   return useMutation(mutationOptions)
