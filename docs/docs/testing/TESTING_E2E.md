@@ -1,6 +1,6 @@
 ---
-id: jotai
-slug: /jotai
+id: e2e
+slug: /testing/e2e
 title: Testy E2E - maestro
 sidebar_position: 4
 tags:
