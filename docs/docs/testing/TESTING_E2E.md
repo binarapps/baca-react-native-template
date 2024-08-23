@@ -1,224 +1,224 @@
 ---
 id: e2e
 slug: /testing/e2e
-title: Testy E2E - maestro
+title: E2E Tests - Maestro
 sidebar_position: 4
 tags:
   - E2E
-  - Testy E2E
-  - Testowanie
+  - E2E Tests
+  - Testing
   - Maestro
-description: Testy E2E z maestro
+description: E2E Testing with Maestro
 ---
 
-# Testy E2E z maestro
+# E2E Testing with Maestro
 
-## 1. Struktura Dokumentu
+## 1. Document Structure
 
-Ten dokument jest ustrukturyzowany w celu zapewnienia kompleksowego przewodnika po konfiguracji i wykonywaniu testów end-to-end (E2E) przy użyciu Maestro w projekcie BACA. Główne sekcje obejmują:
+This document is structured to provide a comprehensive guide on setting up and executing end-to-end (E2E) tests using Maestro in the BACA project. The main sections include:
 
-- Instalację Maestro
-- Proces konfiguracji
-- Wykonywanie testów
-- Wyjaśnienie plików YAML
-- Rozwiązywanie typowych problemów
-- Korzyści i ograniczenia podejścia do testów E2E
-- Najlepsze praktyki
+- Installing Maestro
+- Configuration process
+- Running tests
+- Explanation of YAML files
+- Troubleshooting common issues
+- Benefits and limitations of the E2E testing approach
+- Best practices
 
-Ta dokumentacja jest zaprojektowana tak, aby była zrozumiała i przydatna zarówno dla nowych, jak i doświadczonych programistów, projektantów UI/UX, testerów oraz innych członków zespołu w projekcie. Każda sekcja zawiera szczegółowe informacje i praktyczne przykłady, aby ułatwić wdrożenie i wykonywanie testów E2E w kontekście BACA.
+This documentation is designed to be understandable and useful for both new and experienced developers, UI/UX designers, testers, and other team members involved in the project. Each section contains detailed information and practical examples to facilitate the implementation and execution of E2E tests within the context of BACA.
 
-## 2. Proces Konfiguracji i Instalacji
+## 2. Configuration and Installation Process
 
-### Instalacja Maestro
+### Installing Maestro
 
-Aby zainstalować Maestro, wykonaj następujące kroki:
+To install Maestro, follow these steps:
 
-1. Upewnij się, że masz zainstalowane Node.js w swoim systemie.
+1. Ensure that Node.js is installed on your system.
 
-2. Otwórz terminal w katalogu głównym projektu.
+2. Open a terminal in the project’s root directory.
 
-3. Wykonaj następujące polecenie:
+3. Run the following command:
 
    ```bash
    yarn install-maestro
    ```
 
-   To polecenie to niestandardowy skrypt npm, który wykonuje:
+   This command is a custom npm script that executes:
 
    ```bash
    curl -Ls 'https://get.maestro.mobile.dev' | bash
    ```
 
-   Skrypt automatycznie pobiera i instaluje Maestro w twoim systemie.
+   The script automatically downloads and installs Maestro on your system.
 
-4. Zweryfikuj instalację, wykonując:
+4. Verify the installation by running:
    ```bash
    maestro --version
    ```
-   Powinieneś zobaczyć numer wersji Maestro, jeśli instalacja zakończyła się sukcesem.
+   You should see the Maestro version if the installation was successful.
 
-### Konfiguracja Środowiska
+### Environment Setup
 
-1. Konfiguracja Expo:
+1. Expo Setup:
 
    - https://docs.expo.dev/get-started/set-up-your-environment/
 
-2. Konfiguracja Projektu:
+2. Project Setup:
 
-   - Upewnij się, że wszystkie zależności projektu są zainstalowane:
+   - Ensure that all project dependencies are installed:
 
      ```bash
      yarn install
      ```
 
-3. Konfiguracja Serwera Mock:
+3. Mock Server Configuration:
 
-   - Sprawdź, czy zmienna środowiskowa `ENABLED_MOCKED_SERVER` jest poprawnie skonfigurowana w pliku `.env`.
+   - Check that the `ENABLED_MOCKED_SERVER` environment variable is correctly configured in the `.env` file.
 
-4. Konfiguracja Maestro Studio (opcjonalne, ale zalecane):
-   - Maestro Studio zapewnia wizualny interfejs do tworzenia i debugowania testów E2E.
+4. Maestro Studio Configuration (optional but recommended):
+   - Maestro Studio provides a visual interface for creating and debugging E2E tests.
 
-## 3. Wykonywanie Testów
+## 3. Running Tests
 
-### Wykonywanie Wszystkich Testów
+### Running All Tests
 
-Aby wykonać wszystkie testy E2E dla Baca, wykonaj następujące kroki:
+To run all E2E tests for Baca, follow these steps:
 
-1. Uruchom serwer mock:
+1. Start the mock server:
 
    ```bash
    yarn start:e2e
    ```
 
-   Kluczowe jest, aby serwer mock był włączony (ENABLED_MOCKED_SERVER) przed uruchomieniem testów.
+   It’s crucial that the mock server is enabled (ENABLED_MOCKED_SERVER) before running the tests.
 
-2. W innym terminalu uruchom Maestro Studio dla wizualnego doświadczenia testów (opcjonalne):
+2. In another terminal, start Maestro Studio for a visual testing experience (optional):
 
    ```bash
    maestro studio
    ```
 
-3. W nowym terminalu wykonaj wszystkie testy za pomocą następującego polecenia:
+3. In a new terminal, execute all tests using the following command:
 
    ```bash
    yarn test:e2e
    ```
 
-### Wykonywanie Pojedynczych Testów
+### Running Individual Tests
 
-Aby wykonać pojedynczy test, użyj następującego formatu polecenia:
+To run a single test, use the following command format:
 
 ```bash
-maestro test <ścieżka-do-pliku-yaml> -e APP_ID=host.exp.Exponent --debug-output=./e2e-debug-output
+maestro test <path-to-yaml-file> -e APP_ID=host.exp.Exponent --debug-output=./e2e-debug-output
 ```
 
-Zastąp `<ścieżka-do-pliku-yaml>` konkretną ścieżką do testu, który chcesz wykonać. Na przykład:
+Replace `<path-to-yaml-file>` with the specific path to the test you want to run. For example:
 
-- Aby wykonać test logowania:
+- To run the login test:
   ```bash
   maestro test .maestro/auth/login-with-validation.yaml -e APP_ID=host.exp.Exponent --debug-output=./e2e-debug-output
   ```
-- Aby wykonać test formularza pełnoekranowego:
+- To run the full-screen form test:
   ```bash
   maestro test .maestro/home/full-screen-form.yaml -e APP_ID=host.exp.Exponent --debug-output=./e2e-debug-output
   ```
 
-Upewnij się, że jesteś w katalogu głównym projektu podczas wykonywania tych poleceń.
+Ensure you are in the project’s root directory when executing these commands.
 
-## 4. Wyjaśnienie Plików YAML
+## 4. YAML File Explanation
 
-Każdy plik YAML w katalogu `.maestro` reprezentuje konkretny zestaw testów E2E. Oto wyjaśnienie funkcji każdego pliku:
+Each YAML file in the .maestro directory represents a specific set of E2E tests. Here’s an explanation of each file’s function:
 
 ### logout-when-needed.yaml
 
-Odpowiada za wylogowanie użytkownika, jeśli jest to konieczne przed wykonaniem innych testów. Obejmuje:
+Handles logging out the user if needed before running other tests. Includes:
 
-- Zatrzymanie i ponowne uruchomienie aplikacji.
-- Nawigację do ekranu logowania.
-- Wykonanie przepływu wylogowania, jeśli użytkownik jest uwierzytelniony.
+- Stopping and restarting the app.
+- Navigating to the login screen.
+- Performing the logout flow if the user is authenticated.
 
 ### login-with-validation.yaml
 
-Zawiera testy procesu logowania, w tym walidacje wejścia. Testy obejmują:
+Contains tests for the login process, including input validation. Tests include:
 
-- Weryfikację widoczności elementów ekranu logowania.
-- Testy walidacji adresu e-mail i hasła.
-- Weryfikację udanego procesu logowania.
+- Verifying the visibility of login screen elements.
+- Testing email and password validation.
+- Verifying the successful login process.
 
 ### details.yaml
 
-Testuje funkcjonalność ekranu szczegółów, w tym:
+Tests the functionality of the details screen, including:
 
-- Nawigację do ekranu szczegółów.
-- Interakcję z konkretnymi elementami interfejsu użytkownika.
+- Navigating to the details screen.
+- Interacting with specific UI elements.
 
 ### full-screen-form.yaml
 
-Testuje formularz pełnoekranowy, wykonując takie działania jak:
+Tests the full-screen form by performing actions such as:
 
-- Wypełnianie formularza.
-- Nawigację przez różne sekcje formularza.
-- Wysyłanie formularza i weryfikację wyniku.
+- Filling out the form.
+- Navigating through different sections of the form.
+- Submitting the form and verifying the outcome.
 
 ### settings.yaml
 
-Testuje funkcjonalność ekranu ustawień, w tym:
+Tests the functionality of the settings screen, including:
 
-- Zmianę motywu aplikacji (jasny, ciemny, systemowy).
+- Changing the app’s theme (light, dark, system).
 
 ### logout.yaml
 
-Zawiera test procesu wylogowania użytkownika. Obejmuje:
+Contains tests for the user logout process. Includes:
 
-- Wylogowanie użytkownika.
-- Weryfikację powrotu do ekranu logowania po wylogowaniu.
+- Logging out the user.
+- Verifying the return to the login screen after logout.
 
 ### config.yaml
 
-Konfiguruje globalne wykonanie testów, w tym:
+Configures the global execution of tests, including:
 
-- Kolejność wykonywania przepływów testowych.
-- Włączenie konkretnych tagów dla testów.
-- Konfigurację kontynuacji lub zatrzymania w przypadku niepowodzenia.
+- The order of test flow execution.
+- Enabling specific tags for tests.
+- Configuring whether to continue or stop on failure.
 
-## 5. Rozwiązania Typowych Problemów
+## 5. Troubleshooting Common Issues
 
-- **Problem z trwałą sesją:** Plik logout-when-needed.yaml odpowiada za automatyczne wylogowanie, jeśli ekran główny jest widoczny, unikając problemów z poprzednimi sesjami.
-- **Niepowodzenia w walidacjach logowania:** Plik login-with-validation.yaml został zmodyfikowany, aby zawierać dodatkowe weryfikacje. Upewnij się, że ID elementów interfejsu zgadzają się z tymi określonymi w pliku YAML.
-- **Problemy z językiem:** Aby uniknąć problemów z wyborem tekstu przy zmianie języka, zaimplementowano identyfikatory (testID) zamiast tekstu dla elementów interfejsu. Na przykład, użyj `testID='sign_in:submit_button'` zamiast wybierania po tekście.
-- **Synchronizacja z serwerem:** Serwer mock zapewnia szybsze i bardziej niezawodne wykonanie testów, eliminując błędy wynikające z braku synchronizacji między startem serwera a natychmiastowym uruchomieniem testów.
-- **Problemy z koordynatami ekranu:** W full-screen-form.yaml używane są konkretne koordynaty dla niektórych interakcji. Upewnij się, że używasz tego samego symulatora lub urządzenia, aby zachować spójność.
+- **Persistent session issue:** The logout-when-needed.yaml file automatically logs out if the home screen is visible, avoiding issues with previous sessions.
+- **Login validation failures:** The login-with-validation.yaml file has been modified to include additional checks. Ensure that UI element IDs match those specified in the YAML file.
+- **Language issues** To avoid issues with text selection when switching languages, identifiers (testID) are used instead of text for UI elements. For example, use `testID='sign_in:submit_button'` instead of selecting by text.
+- **Server synchronization** The mock server provides faster and more reliable test execution, eliminating errors due to lack of synchronization between the server startup and immediate test execution.
+- **Screen coordinate issues:** Specific coordinates are used for some interactions in full-screen-form.yaml. Ensure you use the same simulator or device to maintain consistency.
 
-## 6. Korzyści i Ograniczenia
+## 6. Benefits and Limitations
 
-### Korzyści
+### Benefits
 
-- **Wczesne wykrywanie błędów:** Pozwala identyfikować problemy na ekranach, które nie zostały bezpośrednio zmodyfikowane, zapobiegając regresjom.
-- **Automatyzacja:** Możliwość uruchamiania testów w tle podczas wykonywania innych zadań programistycznych.
-- **Zapobieganie błędom:** Pomaga wykryć problemy przed commitowaniem, co poprawia jakość kodu. Na przykład, podczas refaktoryzacji formularza testowego, ukrycie komunikatów o błędach może spowodować, że widoczny będzie tylko czerwony prostokąt zamiast wiadomości o błędzie. Ponowne uruchomienie testów może ujawnić problemy z wielokrotnym użyciem komponentu, co narzędzie pomaga zidentyfikować, zwiększając niezawodność kodu.
-- **Żywa dokumentacja:** Testy E2E służą jako forma dokumentacji, która jest aktualizowana wraz ze zmianami w aplikacji.
-- **Kompatybilność z Expo Go:** Maestro działa z normalnymi aplikacjami już zbudowanymi na urządzeniu. Oznacza to, że możemy pominąć powolne kompilacje natywne, używając Expo Go z `yarn start:e2e`.
-- **Skalowalność:** Zdolność Maestro do obsługi dużych zestawów testów bez znaczącego spadku wydajności.
+- **Early bug detection** Helps identify issues on screens that haven’t been directly modified, preventing regressions.
+- **Automation:** Allows running tests in the background while performing other development tasks.
+- **Error prevention:** Helps catch issues before committing, improving code quality. For instance, when refactoring the test form, hiding error messages may result in a red rectangle instead of an error message. Re-running tests can reveal issues with component reuse, which the tool helps identify, increasing code reliability.
+- **Living documentation** E2E tests serve as a form of documentation that is updated alongside changes in the application.
+- **Expo Go Compatibility:** Maestro works with regular apps already built on the device. This means we can skip slow native builds by using Expo Go with `yarn start:e2e`.
+- **Scalability:** Maestro’s ability to handle large test suites without significant performance degradation.
 
-### Ograniczenia
+### Limitations
 
-- **Czas rozwoju:** Tworzenie i utrzymywanie testów E2E zwiększa początkowy czas rozwoju.
-- **Kruchość:** Testy oparte na UI mogą być wrażliwe na zmiany w interfejsie, wymagając częstych aktualizacji.
-- **Problemy z lokalizacją:** Mogą pojawić się trudności z wyborem tekstu przy zmianie języka aplikacji.
-- **Ograniczona symulacja:** Niektóre funkcjonalności, takie jak zapisywanie danych profilu, mogą nie działać poprawnie z serwerem mock, ograniczając zakres testów.
-- **Ograniczenia w funkcjonalnościach zaawansowanych:** W przeciwieństwie do innych frameworków (np. Detox), Maestro może nie obsługiwać niektórych zaawansowanych funkcji, takich jak manipulacja urządzeniami fizycznymi lub integracja z zewnętrznymi API w celu uzyskania bardziej realistycznych symulacji.
+- **Development time:** Creating and maintaining E2E tests increases initial development time.
+- **Fragility:** UI-based tests can be sensitive to interface changes, requiring frequent updates.
+- **Localization issues:** There may be difficulties selecting text when changing the application’s language.
+- **Limited simulation:** Some functionalities, such as saving profile data, may not work correctly with the mock server, limiting the scope of tests.
+- **Advanced features limitations:** Unlike other frameworks (e.g., Detox), Maestro may not support some advanced features like physical device manipulation or integration with external APIs for more realistic simulations.
 
-## 7. Najlepsze Praktyki
+## 7. Best Practices
 
-1. **Regularna konserwacja:** Regularnie aktualizuj testy E2E, aby odzwierciedlały zmiany w aplikacji.
-2. **Używanie unikalnych ID:** Stosuj unikalne testID dla elementów interfejsu, aby uczynić testy bardziej odpornymi.
-3. **Testy atomowe:** Projektuj testy, które są niezależne od siebie, aby ułatwić debugowanie.
-4. **Kontrola wersji:** Dołącz pliki YAML Maestro do kontroli wersji wraz z kodem aplikacji.
-5. **Dokumentacja:** Utrzymuj tę dokumentację na bieżąco z wszelkimi zmianami w procesie testowania lub konfiguracji.
+1. **Regular maintenance:** Regularly update E2E tests to reflect changes in the application.
+2. **Use unique IDs:** Use unique testIDs for UI elements to make tests more resilient.
+3. **Atomic tests:** Design tests to be independent of each other for easier debugging.
+4. **Version control:** Include Maestro YAML files in version control alongside application code.
+5. **Documentation:** Keep this documentation up to date with any changes in the testing process or configuration.
 
-### Dodatkowe Uwagi
+### Additional Notes
 
-- Pracujemy nad poprawą walidacji na ekranach takich jak ProfileScreen.
-- Planujemy wdrożyć więcej przypadków testowych dla funkcjonalności takich jak rejestracja (Sign up) i walidacja haseł.
+- We are working on improving validation on screens such as ProfileScreen.
+- We plan to implement more test cases for functionalities like Sign up and password validation.
 
-Aby uzyskać więcej informacji na temat Maestro i jego wykorzystania w testach E2E, zapoznaj się z oficjalną dokumentacją Maestro.
+For more information on Maestro and its usage in E2E testing, refer to the official Maestro documentation.
