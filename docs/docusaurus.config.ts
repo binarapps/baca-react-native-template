@@ -4,7 +4,7 @@ import { themes as prismThemes } from 'prism-react-renderer'
 
 const repoLink = 'https://github.com/binarapps/baca-react-native-template'
 const docsLink = '/docs/overview'
-const demoLink = 'https://binarapps.online/sign-in'
+const demoLink = 'https://baca.binar.app/sign-in'
 
 const config: Config = {
   title: 'BACA - react native starter',
