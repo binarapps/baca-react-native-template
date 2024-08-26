@@ -27,7 +27,7 @@ export const APP_CONFIG = {
 } as const
 // APP_CONFIG_END
 
-const universalLinks = ['https://baca-six.vercel.app', 'https://binarapps.online']
+const universalLinks = ['https://baca-six.vercel.app', 'https://baca.binar.app']
 
 /***
  *    ██████  ██    ██ ███    ██  █████  ███    ███ ██  ██████

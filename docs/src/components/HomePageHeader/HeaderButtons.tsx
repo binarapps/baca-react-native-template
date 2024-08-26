@@ -17,7 +17,7 @@ export default function HeaderButtons() {
       </Link>
       <Link
         className={clsx('button button--secondary button--lg', styles.button, styles.buttonTryIt)}
-        to="https://binarapps.online/sign-in"
+        to="https://baca.binar.app/sign-in"
       >
         Try it
       </Link>
