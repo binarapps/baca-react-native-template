@@ -12,7 +12,7 @@ import { HttpResponse, delay, http } from 'msw'
 import type { AuthEntity } from '../../types'
 
 export const getAuthGoogleControllerLoginResponseMock = (
-  overrideResponse: any = {}
+  overrideResponse: Partial<AuthEntity> = {}
 ): AuthEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
@@ -26,7 +26,6 @@ export const getAuthGoogleControllerLoginResponseMock = (
         termsAccepted: faker.datatype.boolean(),
         termsVersion: faker.word.sample(),
         updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-        ...overrideResponse,
       },
       undefined,
     ]),
@@ -39,24 +38,18 @@ export const getAuthGoogleControllerLoginResponseMock = (
     locale: faker.word.sample(),
     provider: faker.word.sample(),
     role: {
-      id: faker.number.int({ min: undefined, max: undefined }),
+      id: faker.helpers.arrayElement([1, 2] as const),
       name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-      ...overrideResponse,
     },
     socialId: faker.word.sample(),
-    status: {
-      id: faker.number.int({ min: undefined, max: undefined }),
-      name: faker.word.sample(),
-      ...overrideResponse,
-    },
+    status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
     updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-    ...overrideResponse,
   },
   ...overrideResponse,
 })
 
 export const getAuthFacebookControllerLoginResponseMock = (
-  overrideResponse: any = {}
+  overrideResponse: Partial<AuthEntity> = {}
 ): AuthEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
@@ -70,7 +63,6 @@ export const getAuthFacebookControllerLoginResponseMock = (
         termsAccepted: faker.datatype.boolean(),
         termsVersion: faker.word.sample(),
         updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-        ...overrideResponse,
       },
       undefined,
     ]),
@@ -83,24 +75,18 @@ export const getAuthFacebookControllerLoginResponseMock = (
     locale: faker.word.sample(),
     provider: faker.word.sample(),
     role: {
-      id: faker.number.int({ min: undefined, max: undefined }),
+      id: faker.helpers.arrayElement([1, 2] as const),
       name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-      ...overrideResponse,
     },
     socialId: faker.word.sample(),
-    status: {
-      id: faker.number.int({ min: undefined, max: undefined }),
-      name: faker.word.sample(),
-      ...overrideResponse,
-    },
+    status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
     updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-    ...overrideResponse,
   },
   ...overrideResponse,
 })
 
 export const getAuthAppleControllerLoginResponseMock = (
-  overrideResponse: any = {}
+  overrideResponse: Partial<AuthEntity> = {}
 ): AuthEntity => ({
   accessToken: faker.word.sample(),
   refreshToken: faker.word.sample(),
@@ -114,7 +100,6 @@ export const getAuthAppleControllerLoginResponseMock = (
         termsAccepted: faker.datatype.boolean(),
         termsVersion: faker.word.sample(),
         updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-        ...overrideResponse,
       },
       undefined,
     ]),
@@ -127,69 +112,75 @@ export const getAuthAppleControllerLoginResponseMock = (
     locale: faker.word.sample(),
     provider: faker.word.sample(),
     role: {
-      id: faker.number.int({ min: undefined, max: undefined }),
+      id: faker.helpers.arrayElement([1, 2] as const),
       name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-      ...overrideResponse,
     },
     socialId: faker.word.sample(),
-    status: {
-      id: faker.number.int({ min: undefined, max: undefined }),
-      name: faker.word.sample(),
-      ...overrideResponse,
-    },
+    status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
     updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-    ...overrideResponse,
   },
   ...overrideResponse,
 })
 
-export const getAuthGoogleControllerLoginMockHandler = (overrideResponse?: AuthEntity) => {
-  return http.post('/api/v1/auth/google/login', async () => {
+export const getAuthGoogleControllerLoginMockHandler = (
+  overrideResponse?:
+    | AuthEntity
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<AuthEntity> | AuthEntity)
+) => {
+  return http.post('*/api/v1/auth/google/login', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getAuthGoogleControllerLoginResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getAuthGoogleControllerLoginResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getAuthFacebookControllerLoginMockHandler = (overrideResponse?: AuthEntity) => {
-  return http.post('/api/v1/auth/facebook/login', async () => {
+export const getAuthFacebookControllerLoginMockHandler = (
+  overrideResponse?:
+    | AuthEntity
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<AuthEntity> | AuthEntity)
+) => {
+  return http.post('*/api/v1/auth/facebook/login', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getAuthFacebookControllerLoginResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getAuthFacebookControllerLoginResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getAuthAppleControllerLoginMockHandler = (overrideResponse?: AuthEntity) => {
-  return http.post('/api/v1/auth/apple/login', async () => {
+export const getAuthAppleControllerLoginMockHandler = (
+  overrideResponse?:
+    | AuthEntity
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<AuthEntity> | AuthEntity)
+) => {
+  return http.post('*/api/v1/auth/apple/login', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getAuthAppleControllerLoginResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getAuthAppleControllerLoginResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }

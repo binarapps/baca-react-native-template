@@ -1,0 +1,11 @@
+appId: ${APP_ID}
+tags:
+  - auth
+---
+- stopApp
+- openLink: exp://127.0.0.1:8081/--/sign-in
+- runFlow:
+    when:
+      visible:
+        id: 'home_screen:title'
+    file: ../utils/logout.yaml

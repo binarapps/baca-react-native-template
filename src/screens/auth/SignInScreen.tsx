@@ -48,9 +48,16 @@ export const SignInScreen = (): JSX.Element => {
         <Spacer y={isWeb ? 4 : 8} />
         <CompanyLogo height={50} type="binar" />
         <Spacer y={8} />
-        <Display.SmSemibold>{t('sign_in_screen.welcome_back')}</Display.SmSemibold>
+        <Display.SmSemibold testID="sign_in:title">
+          {t('sign_in_screen.welcome_back')}
+        </Display.SmSemibold>
         <Spacer y={3} />
-        <Text.MdRegular color="text.tertiary" textAlign="center" lineHeight="lg">
+        <Text.MdRegular
+          testID="sign_in:sub_title"
+          color="text.tertiary"
+          textAlign="center"
+          lineHeight="lg"
+        >
           {t('sign_in_screen.welcome_back_enter_details')}
         </Text.MdRegular>
         <Spacer y={8} />
@@ -71,7 +78,7 @@ export const SignInScreen = (): JSX.Element => {
               message: t('form.validation.invalid_email_format'),
             },
           }}
-          testID="emailInput"
+          testID="sign_in:email_input"
         />
         <ControlledField.Input
           {...{ control, errors }}
@@ -85,7 +92,7 @@ export const SignInScreen = (): JSX.Element => {
           rules={{
             required: t('form.validation.required'),
           }}
-          testID="passwordInput"
+          testID="sign_in:password_input"
           type="password"
         />
         <Row alignItems="center" mb={2} mt={8} w="full" justifyContent="space-between">
@@ -93,9 +100,12 @@ export const SignInScreen = (): JSX.Element => {
             {...{ control, errors }}
             label={t('form.checkbox.remember_me')}
             name="confirm"
-            testID="confirmCheckbox"
+            testID="sign_in:confirm_checkbox"
           />
-          <Button.LinkColor onPress={navigateToForgotPassword}>
+          <Button.LinkColor
+            testID="sign_in:forgot_password_button"
+            onPress={navigateToForgotPassword}
+          >
             {t('sign_in_screen.forgot_password')}
           </Button.LinkColor>
         </Row>
@@ -104,7 +114,7 @@ export const SignInScreen = (): JSX.Element => {
           loading={isSubmitting}
           my={4}
           onPress={submit}
-          testID="signInButton"
+          testID="sign_in:submit_button"
           w="full"
         >
           {t('sign_in_screen.sign_in')}
@@ -117,7 +127,7 @@ export const SignInScreen = (): JSX.Element => {
           <Text.SmRegular color="text.tertiary">
             {t('sign_in_screen.do_not_have_an_account')}
           </Text.SmRegular>
-          <Button.LinkColor onPress={navigateToSignUp} size="sm">
+          <Button.LinkColor testID="sign_in:sign_up_button" onPress={navigateToSignUp} size="sm">
             {t('sign_in_screen.sign_up')}
           </Button.LinkColor>
         </Row>

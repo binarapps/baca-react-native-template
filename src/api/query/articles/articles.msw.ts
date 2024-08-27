@@ -12,13 +12,12 @@ import { HttpResponse, delay, http } from 'msw'
 import type { ArticleEntity } from '../../types'
 
 export const getArticlesControllerCreateResponseMock = (
-  overrideResponse: any = {}
+  overrideResponse: Partial<ArticleEntity> = {}
 ): ArticleEntity => ({
   author: {
     email: faker.word.sample(),
     firstName: faker.word.sample(),
     lastName: faker.word.sample(),
-    ...overrideResponse,
   },
   authorId: faker.helpers.arrayElement([
     faker.helpers.arrayElement([faker.word.sample(), null]),
@@ -38,15 +37,12 @@ export const getArticlesControllerCreateResponseMock = (
   ...overrideResponse,
 })
 
-export const getArticlesControllerFindAllResponseMock = (
-  overrideResponse: any = {}
-): ArticleEntity[] =>
+export const getArticlesControllerFindAllResponseMock = (): ArticleEntity[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     author: {
       email: faker.word.sample(),
       firstName: faker.word.sample(),
       lastName: faker.word.sample(),
-      ...overrideResponse,
     },
     authorId: faker.helpers.arrayElement([
       faker.helpers.arrayElement([faker.word.sample(), null]),
@@ -63,18 +59,14 @@ export const getArticlesControllerFindAllResponseMock = (
     published: faker.datatype.boolean(),
     title: faker.word.sample(),
     updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-    ...overrideResponse,
   }))
 
-export const getArticlesControllerFindDraftsResponseMock = (
-  overrideResponse: any = {}
-): ArticleEntity[] =>
+export const getArticlesControllerFindDraftsResponseMock = (): ArticleEntity[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     author: {
       email: faker.word.sample(),
       firstName: faker.word.sample(),
       lastName: faker.word.sample(),
-      ...overrideResponse,
     },
     authorId: faker.helpers.arrayElement([
       faker.helpers.arrayElement([faker.word.sample(), null]),
@@ -91,17 +83,15 @@ export const getArticlesControllerFindDraftsResponseMock = (
     published: faker.datatype.boolean(),
     title: faker.word.sample(),
     updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-    ...overrideResponse,
   }))
 
 export const getArticlesControllerFindOneResponseMock = (
-  overrideResponse: any = {}
+  overrideResponse: Partial<ArticleEntity> = {}
 ): ArticleEntity => ({
   author: {
     email: faker.word.sample(),
     firstName: faker.word.sample(),
     lastName: faker.word.sample(),
-    ...overrideResponse,
   },
   authorId: faker.helpers.arrayElement([
     faker.helpers.arrayElement([faker.word.sample(), null]),
@@ -122,13 +112,12 @@ export const getArticlesControllerFindOneResponseMock = (
 })
 
 export const getArticlesControllerUpdateResponseMock = (
-  overrideResponse: any = {}
+  overrideResponse: Partial<ArticleEntity> = {}
 ): ArticleEntity => ({
   author: {
     email: faker.word.sample(),
     firstName: faker.word.sample(),
     lastName: faker.word.sample(),
-    ...overrideResponse,
   },
   authorId: faker.helpers.arrayElement([
     faker.helpers.arrayElement([faker.word.sample(), null]),
@@ -148,100 +137,132 @@ export const getArticlesControllerUpdateResponseMock = (
   ...overrideResponse,
 })
 
-export const getArticlesControllerCreateMockHandler = (overrideResponse?: ArticleEntity) => {
-  return http.post('/api/v1/articles', async () => {
+export const getArticlesControllerCreateMockHandler = (
+  overrideResponse?:
+    | ArticleEntity
+    | ((
+        info: Parameters<Parameters<typeof http.post>[1]>[0]
+      ) => Promise<ArticleEntity> | ArticleEntity)
+) => {
+  return http.post('*/api/v1/articles', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getArticlesControllerCreateResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getArticlesControllerCreateResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getArticlesControllerFindAllMockHandler = (overrideResponse?: ArticleEntity[]) => {
-  return http.get('/api/v1/articles', async () => {
+export const getArticlesControllerFindAllMockHandler = (
+  overrideResponse?:
+    | ArticleEntity[]
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0]
+      ) => Promise<ArticleEntity[]> | ArticleEntity[])
+) => {
+  return http.get('*/api/v1/articles', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getArticlesControllerFindAllResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getArticlesControllerFindAllResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getArticlesControllerFindDraftsMockHandler = (overrideResponse?: ArticleEntity[]) => {
-  return http.get('/api/v1/articles/drafts', async () => {
+export const getArticlesControllerFindDraftsMockHandler = (
+  overrideResponse?:
+    | ArticleEntity[]
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0]
+      ) => Promise<ArticleEntity[]> | ArticleEntity[])
+) => {
+  return http.get('*/api/v1/articles/drafts', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getArticlesControllerFindDraftsResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getArticlesControllerFindDraftsResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getArticlesControllerFindOneMockHandler = (overrideResponse?: ArticleEntity) => {
-  return http.get('/api/v1/articles/:id', async () => {
+export const getArticlesControllerFindOneMockHandler = (
+  overrideResponse?:
+    | ArticleEntity
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0]
+      ) => Promise<ArticleEntity> | ArticleEntity)
+) => {
+  return http.get('*/api/v1/articles/:id', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getArticlesControllerFindOneResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getArticlesControllerFindOneResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getArticlesControllerUpdateMockHandler = (overrideResponse?: ArticleEntity) => {
-  return http.patch('/api/v1/articles/:id', async () => {
+export const getArticlesControllerUpdateMockHandler = (
+  overrideResponse?:
+    | ArticleEntity
+    | ((
+        info: Parameters<Parameters<typeof http.patch>[1]>[0]
+      ) => Promise<ArticleEntity> | ArticleEntity)
+) => {
+  return http.patch('*/api/v1/articles/:id', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
       JSON.stringify(
-        overrideResponse ? overrideResponse : getArticlesControllerUpdateResponseMock()
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getArticlesControllerUpdateResponseMock()
       ),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getArticlesControllerRemoveMockHandler = () => {
-  return http.delete('/api/v1/articles/:id', async () => {
+export const getArticlesControllerRemoveMockHandler = (
+  overrideResponse?:
+    | void
+    | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<void> | void)
+) => {
+  return http.delete('*/api/v1/articles/:id', async (info) => {
     await delay(1000)
-    return new HttpResponse(null, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (typeof overrideResponse === 'function') {
+      await overrideResponse(info)
+    }
+    return new HttpResponse(null, { status: 204 })
   })
 }
 export const getArticlesMock = () => [

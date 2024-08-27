@@ -7,7 +7,7 @@ import {
   BottomSheetView,
 } from '@gorhom/bottom-sheet'
 import { useCallback } from 'react'
-import { Dimensions } from 'react-native'
+import { Dimensions, Platform } from 'react-native'
 
 import { BottomSheetHeader } from './BottomSheetHeader'
 import { BottomSheetScrollView } from './BottomSheetScrollables'
@@ -45,6 +45,11 @@ export const BottomSheet = ({
       snapPoints={[screenHeight - top - 24]}
       backdropComponent={renderBackdrop}
       enableDynamicSizing
+      accessible={Platform.select({
+        // setting it to false on Android seems to cause issues with TalkBack instead
+        // https://github.com/mobile-dev-inc/maestro/issues/1493
+        ios: false,
+      })}
       backgroundStyle={{
         // eslint-disable-next-line react-native/no-inline-styles
         backgroundColor: colors.bg.primary,

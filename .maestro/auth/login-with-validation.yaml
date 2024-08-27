@@ -1,0 +1,55 @@
+appId: ${APP_ID}
+tags:
+  - auth
+---
+# Check if the login screen is visible
+- assertVisible:
+    id: 'sign_in:title'
+- assertVisible:
+    id: 'sign_in:sub_title'
+- assertVisible:
+    id: 'sign_in:email_input:label'
+
+# Check if empty email input is invalid
+- tapOn:
+    id: 'sign_in:submit_button'
+- assertVisible:
+    id: 'sign_in:email_input:error_message'
+- assertVisible:
+    id: 'sign_in:password_input:error_message'
+
+# Check if invalid email input and empty password is invalid
+- tapOn:
+    id: 'sign_in:email_input:input'
+- inputText: 'invalid-email'
+- hideKeyboard
+- tapOn:
+    id: 'sign_in:submit_button'
+- assertVisible:
+    id: 'sign_in:email_input:error_message'
+- assertVisible:
+    id: 'sign_in:password_input:error_message'
+
+# Check if valid email input and empty password is invalid
+- tapOn:
+    id: 'sign_in:email_input:input'
+- eraseText
+- inputText: 'email@test.com'
+- hideKeyboard
+- tapOn:
+    id: 'sign_in:submit_button'
+- assertVisible:
+    id: 'sign_in:password_input:error_message'
+
+# Check if valid email input and password is valid
+- tapOn:
+    id: 'sign_in:password_input:input'
+- eraseText
+- inputText: 'password'
+- hideKeyboard
+- tapOn:
+    id: 'sign_in:submit_button'
+
+# Check if login is successful
+- assertVisible:
+    id: 'home_screen:title'

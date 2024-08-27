@@ -8,7 +8,10 @@
  */
 
 export interface FileEntity {
-  /** Category of the file */
+  /**
+   * Category of the file
+   * @nullable
+   */
   category: string | null
   /** Creation date of the file */
   createdAt: string

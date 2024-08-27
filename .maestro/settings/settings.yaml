@@ -1,0 +1,14 @@
+appId: ${APP_ID}
+tags:
+  - settings
+---
+- tapOn:
+    id: 'bottom_tab_button:settings'
+
+# TODO: Check if after changing the theme it really changes
+- assertVisible: 'light'
+- tapOn: 'light'
+- assertVisible: 'dark'
+- tapOn: 'dark'
+- assertVisible: 'system'
+- tapOn: 'system'

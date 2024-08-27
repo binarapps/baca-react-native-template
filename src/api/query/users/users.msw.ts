@@ -11,7 +11,9 @@ import { HttpResponse, delay, http } from 'msw'
 
 import type { UserEntity } from '../../types'
 
-export const getUsersControllerCreateResponseMock = (overrideResponse: any = {}): UserEntity => ({
+export const getUsersControllerCreateResponseMock = (
+  overrideResponse: Partial<UserEntity> = {}
+): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
       createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -20,7 +22,6 @@ export const getUsersControllerCreateResponseMock = (overrideResponse: any = {})
       termsAccepted: faker.datatype.boolean(),
       termsVersion: faker.word.sample(),
       updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-      ...overrideResponse,
     },
     undefined,
   ]),
@@ -33,21 +34,16 @@ export const getUsersControllerCreateResponseMock = (overrideResponse: any = {})
   locale: faker.word.sample(),
   provider: faker.word.sample(),
   role: {
-    id: faker.number.int({ min: undefined, max: undefined }),
+    id: faker.helpers.arrayElement([1, 2] as const),
     name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-    ...overrideResponse,
   },
   socialId: faker.word.sample(),
-  status: {
-    id: faker.number.int({ min: undefined, max: undefined }),
-    name: faker.word.sample(),
-    ...overrideResponse,
-  },
+  status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
   updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
   ...overrideResponse,
 })
 
-export const getUsersControllerFindAllResponseMock = (overrideResponse: any = {}): UserEntity[] =>
+export const getUsersControllerFindAllResponseMock = (): UserEntity[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     consent: faker.helpers.arrayElement([
       {
@@ -57,7 +53,6 @@ export const getUsersControllerFindAllResponseMock = (overrideResponse: any = {}
         termsAccepted: faker.datatype.boolean(),
         termsVersion: faker.word.sample(),
         updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-        ...overrideResponse,
       },
       undefined,
     ]),
@@ -70,21 +65,17 @@ export const getUsersControllerFindAllResponseMock = (overrideResponse: any = {}
     locale: faker.word.sample(),
     provider: faker.word.sample(),
     role: {
-      id: faker.number.int({ min: undefined, max: undefined }),
+      id: faker.helpers.arrayElement([1, 2] as const),
       name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-      ...overrideResponse,
     },
     socialId: faker.word.sample(),
-    status: {
-      id: faker.number.int({ min: undefined, max: undefined }),
-      name: faker.word.sample(),
-      ...overrideResponse,
-    },
+    status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
     updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-    ...overrideResponse,
   }))
 
-export const getUsersControllerFindOneResponseMock = (overrideResponse: any = {}): UserEntity => ({
+export const getUsersControllerFindOneResponseMock = (
+  overrideResponse: Partial<UserEntity> = {}
+): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
       createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -93,7 +84,6 @@ export const getUsersControllerFindOneResponseMock = (overrideResponse: any = {}
       termsAccepted: faker.datatype.boolean(),
       termsVersion: faker.word.sample(),
       updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-      ...overrideResponse,
     },
     undefined,
   ]),
@@ -106,21 +96,18 @@ export const getUsersControllerFindOneResponseMock = (overrideResponse: any = {}
   locale: faker.word.sample(),
   provider: faker.word.sample(),
   role: {
-    id: faker.number.int({ min: undefined, max: undefined }),
+    id: faker.helpers.arrayElement([1, 2] as const),
     name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-    ...overrideResponse,
   },
   socialId: faker.word.sample(),
-  status: {
-    id: faker.number.int({ min: undefined, max: undefined }),
-    name: faker.word.sample(),
-    ...overrideResponse,
-  },
+  status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
   updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
   ...overrideResponse,
 })
 
-export const getUsersControllerUpdateResponseMock = (overrideResponse: any = {}): UserEntity => ({
+export const getUsersControllerUpdateResponseMock = (
+  overrideResponse: Partial<UserEntity> = {}
+): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
       createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -129,7 +116,6 @@ export const getUsersControllerUpdateResponseMock = (overrideResponse: any = {})
       termsAccepted: faker.datatype.boolean(),
       termsVersion: faker.word.sample(),
       updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-      ...overrideResponse,
     },
     undefined,
   ]),
@@ -142,21 +128,18 @@ export const getUsersControllerUpdateResponseMock = (overrideResponse: any = {})
   locale: faker.word.sample(),
   provider: faker.word.sample(),
   role: {
-    id: faker.number.int({ min: undefined, max: undefined }),
+    id: faker.helpers.arrayElement([1, 2] as const),
     name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-    ...overrideResponse,
   },
   socialId: faker.word.sample(),
-  status: {
-    id: faker.number.int({ min: undefined, max: undefined }),
-    name: faker.word.sample(),
-    ...overrideResponse,
-  },
+  status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
   updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
   ...overrideResponse,
 })
 
-export const getUsersControllerRemoveResponseMock = (overrideResponse: any = {}): UserEntity => ({
+export const getUsersControllerRemoveResponseMock = (
+  overrideResponse: Partial<UserEntity> = {}
+): UserEntity => ({
   consent: faker.helpers.arrayElement([
     {
       createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -165,7 +148,6 @@ export const getUsersControllerRemoveResponseMock = (overrideResponse: any = {})
       termsAccepted: faker.datatype.boolean(),
       termsVersion: faker.word.sample(),
       updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
-      ...overrideResponse,
     },
     undefined,
   ]),
@@ -178,91 +160,118 @@ export const getUsersControllerRemoveResponseMock = (overrideResponse: any = {})
   locale: faker.word.sample(),
   provider: faker.word.sample(),
   role: {
-    id: faker.number.int({ min: undefined, max: undefined }),
+    id: faker.helpers.arrayElement([1, 2] as const),
     name: faker.helpers.arrayElement(['ADMIN', 'USER'] as const),
-    ...overrideResponse,
   },
   socialId: faker.word.sample(),
-  status: {
-    id: faker.number.int({ min: undefined, max: undefined }),
-    name: faker.word.sample(),
-    ...overrideResponse,
-  },
+  status: { id: faker.number.int({ min: undefined, max: undefined }), name: faker.word.sample() },
   updatedAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
   ...overrideResponse,
 })
 
-export const getUsersControllerCreateMockHandler = (overrideResponse?: UserEntity) => {
-  return http.post('/api/v1/users', async () => {
+export const getUsersControllerCreateMockHandler = (
+  overrideResponse?:
+    | UserEntity
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<UserEntity> | UserEntity)
+) => {
+  return http.post('*/api/v1/users', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerCreateResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getUsersControllerCreateResponseMock()
+      ),
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getUsersControllerFindAllMockHandler = (overrideResponse?: UserEntity[]) => {
-  return http.get('/api/v1/users', async () => {
+export const getUsersControllerFindAllMockHandler = (
+  overrideResponse?:
+    | UserEntity[]
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0]
+      ) => Promise<UserEntity[]> | UserEntity[])
+) => {
+  return http.get('*/api/v1/users', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerFindAllResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getUsersControllerFindAllResponseMock()
+      ),
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getUsersControllerFindOneMockHandler = (overrideResponse?: UserEntity) => {
-  return http.get('/api/v1/users/:id', async () => {
+export const getUsersControllerFindOneMockHandler = (
+  overrideResponse?:
+    | UserEntity
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<UserEntity> | UserEntity)
+) => {
+  return http.get('*/api/v1/users/:id', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerFindOneResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getUsersControllerFindOneResponseMock()
+      ),
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getUsersControllerUpdateMockHandler = (overrideResponse?: UserEntity) => {
-  return http.patch('/api/v1/users/:id', async () => {
+export const getUsersControllerUpdateMockHandler = (
+  overrideResponse?:
+    | UserEntity
+    | ((info: Parameters<Parameters<typeof http.patch>[1]>[0]) => Promise<UserEntity> | UserEntity)
+) => {
+  return http.patch('*/api/v1/users/:id', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerUpdateResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getUsersControllerUpdateResponseMock()
+      ),
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }
 
-export const getUsersControllerRemoveMockHandler = (overrideResponse?: UserEntity) => {
-  return http.delete('/api/v1/users/:id', async () => {
+export const getUsersControllerRemoveMockHandler = (
+  overrideResponse?:
+    | UserEntity
+    | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<UserEntity> | UserEntity)
+) => {
+  return http.delete('*/api/v1/users/:id', async (info) => {
     await delay(1000)
+
     return new HttpResponse(
-      JSON.stringify(overrideResponse ? overrideResponse : getUsersControllerRemoveResponseMock()),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === 'function'
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getUsersControllerRemoveResponseMock()
+      ),
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     )
   })
 }

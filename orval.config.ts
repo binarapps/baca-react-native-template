@@ -10,7 +10,6 @@ export default defineConfig({
       client: 'react-query',
       // solution for not working mocked data on mobile - it removes automatically added "*" to address url at the beginning
       mock: {
-        baseUrl: '',
         type: 'msw',
       },
       clean: true,

@@ -27,7 +27,13 @@ export function BottomBar({ visible }: { visible: boolean }) {
     >
       <View style={[jsStyles.nav, { borderTopColor: colors.border.secondary }]}>
         {bottomTabs.map((tab, i) => (
-          <TabBarItemWrapper key={i} name={tab.name} id={tab.id} params={tab.params}>
+          <TabBarItemWrapper
+            key={i}
+            name={tab.name}
+            id={tab.id}
+            params={tab.params}
+            testID={'bottom_tab_button:' + tab.name}
+          >
             {({ focused, pressed, hovered }) => (
               <Column
                 px={2}

@@ -12,6 +12,7 @@ import type {
   QueryFunction,
   QueryKey,
   UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
@@ -102,7 +103,12 @@ export const useArticlesControllerCreate = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof articlesControllerCreate>>,
+  TError,
+  { data: BodyType<CreateArticleDto> },
+  TContext
+> => {
   const mutationOptions = getArticlesControllerCreateMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -159,7 +165,8 @@ export type ArticlesControllerFindAllQueryError = ErrorType<ErrorServerEntity>
 /**
  * @summary Find All Articles
  */
-export const useArticlesControllerFindAll = <
+
+export function useArticlesControllerFindAll<
   TData = Awaited<ReturnType<typeof articlesControllerFindAll>>,
   TError = ErrorType<ErrorServerEntity>
 >(
@@ -168,7 +175,7 @@ export const useArticlesControllerFindAll = <
     query?: UseQueryOptions<Awaited<ReturnType<typeof articlesControllerFindAll>>, TError, TData>
     request?: SecondParameter<typeof customInstance>
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getArticlesControllerFindAllQueryOptions(params, options)
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
@@ -232,7 +239,8 @@ export type ArticlesControllerFindDraftsQueryError = ErrorType<ErrorServerEntity
 /**
  * @summary Find Draft Articles
  */
-export const useArticlesControllerFindDrafts = <
+
+export function useArticlesControllerFindDrafts<
   TData = Awaited<ReturnType<typeof articlesControllerFindDrafts>>,
   TError = ErrorType<ErrorServerEntity>
 >(
@@ -241,7 +249,7 @@ export const useArticlesControllerFindDrafts = <
     query?: UseQueryOptions<Awaited<ReturnType<typeof articlesControllerFindDrafts>>, TError, TData>
     request?: SecondParameter<typeof customInstance>
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getArticlesControllerFindDraftsQueryOptions(params, options)
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
@@ -303,7 +311,8 @@ export type ArticlesControllerFindOneQueryError = ErrorType<ErrorServerEntity>
 /**
  * @summary Find Article by ID
  */
-export const useArticlesControllerFindOne = <
+
+export function useArticlesControllerFindOne<
   TData = Awaited<ReturnType<typeof articlesControllerFindOne>>,
   TError = ErrorType<ErrorServerEntity>
 >(
@@ -312,7 +321,7 @@ export const useArticlesControllerFindOne = <
     query?: UseQueryOptions<Awaited<ReturnType<typeof articlesControllerFindOne>>, TError, TData>
     request?: SecondParameter<typeof customInstance>
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getArticlesControllerFindOneQueryOptions(id, options)
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
@@ -395,7 +404,12 @@ export const useArticlesControllerUpdate = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof articlesControllerUpdate>>,
+  TError,
+  { id: number; data: BodyType<UpdateArticleDto> },
+  TContext
+> => {
   const mutationOptions = getArticlesControllerUpdateMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -462,7 +476,12 @@ export const useArticlesControllerRemove = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof articlesControllerRemove>>,
+  TError,
+  { id: number },
+  TContext
+> => {
   const mutationOptions = getArticlesControllerRemoveMutationOptions(options)
 
   return useMutation(mutationOptions)

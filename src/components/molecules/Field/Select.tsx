@@ -7,7 +7,6 @@ import {
 } from '@baca/design-system/components'
 import { useMemo } from '@baca/hooks'
 import React from 'react'
-import { Pressable } from 'react-native'
 
 import type { FieldSelectProps } from './types'
 
@@ -55,12 +54,15 @@ export const Select = <T extends SelectKey>({
   )
 
   return (
-    <Box {...layoutProps} width="100%" mb={2}>
-      <Pressable>
-        <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
-        <CustomSelect label={label} {...props} />
-        <FormErrorMessage errorMessage={errorMessage} />
-      </Pressable>
+    <Box {...layoutProps} width="100%" mb={2} gap={1}>
+      <FormLabel
+        label={label}
+        isRequired={isRequired}
+        labelStyle={labelStyle}
+        onLabelPress={onOpen}
+      />
+      <CustomSelect label={label} {...props} />
+      <FormErrorMessage errorMessage={errorMessage} />
     </Box>
   )
 }

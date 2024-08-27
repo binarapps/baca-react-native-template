@@ -1,0 +1,36 @@
+appId: ${APP_ID}
+tags:
+  - profile
+---
+- tapOn:
+    id: 'bottom_tab_button:profile'
+# TODO: Properly implement the profile flow
+
+# CHANING USER DATA FLOW
+# Change first name
+# Change last name
+# Save data
+# Reload app
+# Check if the changes are saved
+
+# CHANGING PASSWORD FLOW
+# Input old password
+# Input new password
+
+# Input wrong new password
+# TODO: Finish the password flow
+# - tapOn:
+#     id: 'passwordInput:input'
+# - inputText: 'invalidpassword'
+# - assertVisible:
+#     id: 'change_password:min_8_chars:success'
+# - assertVisible:
+#     id: 'change_password:min_1_special_char:error'
+# - tapOn:
+#     id: 'passwordInput:input'
+# - inputText: 'invalidpassword!'
+# - hideKeyboard
+# - assertVisible:
+#     id: 'change_password:min_8_chars:success'
+# - assertVisible:
+#     id: 'change_password:min_1_special_char:success'

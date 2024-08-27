@@ -10,10 +10,12 @@ import type { AuthorPublicDto } from './authorPublicDto'
 
 export interface ArticleEntity {
   author: AuthorPublicDto
+  /** @nullable */
   authorId?: string | null
   body: string
   createdAt: string
   deletedAt: string
+  /** @nullable */
   description?: string | null
   id: number
   published: boolean

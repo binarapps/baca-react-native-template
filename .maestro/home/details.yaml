@@ -1,0 +1,16 @@
+appId: ${APP_ID}
+tags:
+  - home
+---
+- assertVisible:
+    id: 'home_screen:details'
+- tapOn:
+    id: 'home_screen:details'
+- extendedWaitUntil:
+    visible: 'Open BottomSheetModal'
+    timeout: 10000
+- tapOn: 'Open BottomSheetModal'
+- tapOn:
+    point: 50%,50%
+- assertVisible: 'Home'
+- tapOn: 'Home'

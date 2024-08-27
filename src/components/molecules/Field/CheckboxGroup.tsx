@@ -1,11 +1,5 @@
-import {
-  Box,
-  CheckboxButton,
-  FormErrorMessage,
-  FormLabel,
-  Spacer,
-} from '@baca/design-system/components'
-import { Fragment, useMemo } from 'react'
+import { Box, CheckboxButton, FormErrorMessage, FormLabel } from '@baca/design-system/components'
+import { useMemo } from 'react'
 
 import { FieldCheckboxGroupProps } from './types'
 
@@ -36,24 +30,21 @@ export const CheckboxGroup = <T extends string>({
       }
 
       return (
-        <Fragment key={index}>
-          <CheckboxButton
-            onChange={handleChange}
-            key={index}
-            label={item.label}
-            {...(Array.isArray(selectedItems) && {
-              isSelected: selectedItems?.includes(item.value),
-            })}
-            {...props}
-          />
-          <Spacer y={2} />
-        </Fragment>
+        <CheckboxButton
+          onChange={handleChange}
+          key={index}
+          label={item.label}
+          {...(Array.isArray(selectedItems) && {
+            isSelected: selectedItems?.includes(item.value),
+          })}
+          {...props}
+        />
       )
     })
   }, [items, selectedItems, props, onSelectItem])
 
   return (
-    <Box gap={1}>
+    <Box gap={2} mb={4}>
       <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
       {renderCheckboxes}
       <FormErrorMessage errorMessage={errorMessage} />

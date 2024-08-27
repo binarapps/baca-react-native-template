@@ -7,7 +7,7 @@
  * OpenAPI spec version: 1.0
  */
 import { useMutation } from '@tanstack/react-query'
-import type { MutationFunction, UseMutationOptions } from '@tanstack/react-query'
+import type { MutationFunction, UseMutationOptions, UseMutationResult } from '@tanstack/react-query'
 
 import { customInstance } from '../../axios/custom-instance'
 import type { ErrorType, BodyType } from '../../axios/custom-instance'
@@ -92,7 +92,12 @@ export const useAuthGoogleControllerLogin = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authGoogleControllerLogin>>,
+  TError,
+  { data: BodyType<AuthGoogleLoginDto> },
+  TContext
+> => {
   const mutationOptions = getAuthGoogleControllerLoginMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -167,7 +172,12 @@ export const useAuthFacebookControllerLogin = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authFacebookControllerLogin>>,
+  TError,
+  { data: BodyType<AuthFacebookLoginDto> },
+  TContext
+> => {
   const mutationOptions = getAuthFacebookControllerLoginMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -242,7 +252,12 @@ export const useAuthAppleControllerLogin = <
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}) => {
+}): UseMutationResult<
+  Awaited<ReturnType<typeof authAppleControllerLogin>>,
+  TError,
+  { data: BodyType<AuthAppleLoginDto> },
+  TContext
+> => {
   const mutationOptions = getAuthAppleControllerLoginMutationOptions(options)
 
   return useMutation(mutationOptions)
