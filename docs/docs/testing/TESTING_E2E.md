@@ -39,20 +39,20 @@ To install Maestro, follow these steps:
 
 3. Run the following command:
 
-   ```bash
+   ```
    yarn install-maestro
    ```
 
    This command is a custom npm script that executes:
 
-   ```bash
+   ```
    curl -Ls 'https://get.maestro.mobile.dev' | bash
    ```
 
    The script automatically downloads and installs Maestro on your system.
 
 4. Verify the installation by running:
-   ```bash
+   ```
    maestro --version
    ```
    You should see the Maestro version if the installation was successful.
@@ -61,13 +61,13 @@ To install Maestro, follow these steps:
 
 1. Expo Setup:
 
-   - https://docs.expo.dev/get-started/set-up-your-environment/
+   - [Expo Setup Guide](https://docs.expo.dev/get-started/set-up-your-environment/)
 
 2. Project Setup:
 
    - Ensure that all project dependencies are installed:
 
-     ```bash
+     ```
      yarn install
      ```
 
@@ -82,11 +82,11 @@ To install Maestro, follow these steps:
 
 ### Running All Tests
 
-To run all E2E tests for Baca, follow these steps:
+To run all E2E tests for BACA, follow these steps:
 
 1. Start the mock server:
 
-   ```bash
+   ```
    yarn start:e2e
    ```
 
@@ -94,13 +94,13 @@ To run all E2E tests for Baca, follow these steps:
 
 2. In another terminal, start Maestro Studio for a visual testing experience (optional):
 
-   ```bash
+   ```
    maestro studio
    ```
 
 3. In a new terminal, execute all tests using the following command:
 
-   ```bash
+   ```
    yarn test:e2e
    ```
 
@@ -108,18 +108,18 @@ To run all E2E tests for Baca, follow these steps:
 
 To run a single test, use the following command format:
 
-```bash
+```
 maestro test <path-to-yaml-file> -e APP_ID=host.exp.Exponent --debug-output=./e2e-debug-output
 ```
 
 Replace `<path-to-yaml-file>` with the specific path to the test you want to run. For example:
 
 - To run the login test:
-  ```bash
+  ```
   maestro test .maestro/auth/login-with-validation.yaml -e APP_ID=host.exp.Exponent --debug-output=./e2e-debug-output
   ```
 - To run the full-screen form test:
-  ```bash
+  ```
   maestro test .maestro/home/full-screen-form.yaml -e APP_ID=host.exp.Exponent --debug-output=./e2e-debug-output
   ```
 
@@ -185,18 +185,18 @@ Configures the global execution of tests, including:
 
 - **Persistent session issue:** The logout-when-needed.yaml file automatically logs out if the home screen is visible, avoiding issues with previous sessions.
 - **Login validation failures:** The login-with-validation.yaml file has been modified to include additional checks. Ensure that UI element IDs match those specified in the YAML file.
-- **Language issues** To avoid issues with text selection when switching languages, identifiers (testID) are used instead of text for UI elements. For example, use `testID='sign_in:submit_button'` instead of selecting by text.
-- **Server synchronization** The mock server provides faster and more reliable test execution, eliminating errors due to lack of synchronization between the server startup and immediate test execution.
+- **Language issues**: To avoid issues with text selection when switching languages, identifiers (testID) are used instead of text for UI elements. For example, use `testID='sign_in:submit_button'` instead of selecting by text.
+- **Server synchronization:** The mock server provides faster and more reliable test execution, eliminating errors due to lack of synchronization between the server startup and immediate test execution.
 - **Screen coordinate issues:** Specific coordinates are used for some interactions in full-screen-form.yaml. Ensure you use the same simulator or device to maintain consistency.
 
 ## 6. Benefits and Limitations
 
 ### Benefits
 
-- **Early bug detection** Helps identify issues on screens that haven’t been directly modified, preventing regressions.
+- **Early bug detection:** Helps identify issues on screens that haven’t been directly modified, preventing regressions.
 - **Automation:** Allows running tests in the background while performing other development tasks.
 - **Error prevention:** Helps catch issues before committing, improving code quality. For instance, when refactoring the test form, hiding error messages may result in a red rectangle instead of an error message. Re-running tests can reveal issues with component reuse, which the tool helps identify, increasing code reliability.
-- **Living documentation** E2E tests serve as a form of documentation that is updated alongside changes in the application.
+- **Living documentation:** E2E tests serve as a form of documentation that is updated alongside changes in the application.
 - **Expo Go Compatibility:** Maestro works with regular apps already built on the device. This means we can skip slow native builds by using Expo Go with `yarn start:e2e`.
 - **Scalability:** Maestro’s ability to handle large test suites without significant performance degradation.
 
