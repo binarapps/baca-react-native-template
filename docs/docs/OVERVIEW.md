@@ -7,42 +7,46 @@ tags:
   - Bootstrap
   - Getting started
   - Project structure
-description: Bootstrap project structure, that is needed to start development your new project
+description: Bootstrap project structure needed to start developing your new project
 ---
 
 # Overview
 
-**Welcome in BACA starter!**
+**Welcome to the BACA Starter!**
 
-It is specialy designed to make react native apps development much easier and much faster.
+This starter is specially designed to make React Native app development much easier and faster.
 
-## Why to use?
+## Why Use BACA Starter?
 
-There are a lot of project starters for react native, we have some good features that other starters usually don't have:
+While there are many project starters for React Native, BACA Starter offers unique features that set it apart:
 
-- Fully works with **EXPO GO**
-  - Good for start of the project, later you can switch to expo-dev-client
-- Fully works on **WEB**
-  - If you want to develop apps both on web and mobile this starter is good choice for you
-- **Code generators** (create new screen / create new component and others)
-- **Fully + Strong typed**
-- **App deployment documentation**
+- **Works seamlessly with EXPO GO**
+  - Ideal for project initiation; you can switch to expo-dev-client later.
+- **Supports WEB**
+  - Perfect for developing apps for both web and mobile platforms.
+- **Code Generators**
+  - Easily create new screens, components, and more.
+- **Fully Typed and Strongly Typed**
+  - Ensures robust code quality.
+- **Comprehensive App Deployment Documentation**
+  - Step-by-step guides to deploy your app efficiently.
 
-## How to start?
+## How to Start?
 
-1. Create new app - follow [this docs](/docs/bootstrap/create-new-app)
+1. **Create a New App** - Follow [this documentation](/docs/bootstrap/create-new-app)
 
-   - At this point you can start development
-   - When you will need to show app to testers or client go to next step
+   - Begin development immediately.
+   - When ready to share the app with testers or clients, proceed to the next step.
 
-2. Fill needed data to start deployment - follow [this docs](/docs/bootstrap/testing)
+2. **Prepare for Deployment** - Follow [this documentation](/docs/bootstrap/testing)
 
-   - This will make all required changes to the code base
+   - Fill in the required data for deployment.
+   - Make necessary changes to the codebase.
 
-3. Prepare deployment - follow [this docs](/docs/deploy/intro)
+3. **Deployment Preparation** - Follow [this documentation](/docs/deploy/intro)
 
-   - Thanks to this docs you will have possibility to automatically deploy app to testers and
+   - Automatically deploy the app to testers.
 
-4. Send app to review and publish it on app stores
+4. **Send for Review and Publish**
 
-   - We don't plan to make docs about that, but maybe in the future we will do that!
+   - While we don't currently provide documentation for app store publishing, it may be available in the future.
