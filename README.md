@@ -2,195 +2,190 @@
     <img src="assets/logo/logo-light.png" alt="Logo">
 </p>
 
-# BACA - react-native-template
+# BACA - React Native Template
 
 > **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
 >
-> This repository is part of whole ecosystem, and it only contains React Native code
+> This repository is part of a whole ecosystem, and it only contains React Native code.
 
 [![MIT License](https://img.shields.io/npm/l/@binarapps/baca-react-native-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![MIT License](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)
-[![MIT License](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)
-[![MIT License](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
+[![NPM Version](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)
+[![NPM Downloads](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)
+[![GitHub Stars](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)
+[![Runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
-## 🎉 Great React Native boilerplate
+## 🎉 Great React Native Boilerplate
 
-This is a template to be used with react native and expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included, so it's easier to start coding the app itself without all the necessary boilerplate setup.
+This is a template for React Native and Expo. It includes all the necessary components to start working with the Expo framework. It has the most popular packages included, making it easier to start coding the app itself without the usual boilerplate setup.
 
 ## 📖 [Documentation](https://baca-docs.vercel.app/docs/overview)
 
-Check out our [documentation page](https://baca-docs.vercel.app/docs/overview), it contains:
+Check out our [documentation page](https://baca-docs.vercel.app/docs/overview). It contains:
 
-- Bootstrapping project
-  - tutorial how to easy setup from scratch
-- Building app
-- Deploying app
-- Tutorials how to:
-  - manage environment variables
-  - use jotai as state management tool
-  - and many more other tutorials
+- Bootstrapping the project
+  - Tutorial on easy setup from scratch
+- Building the app
+- Deploying the app
+- Tutorials on:
+  - Managing environment variables
+  - Using Jotai as a state management tool
+  - And many more tutorials
 
-## 🏆 Why to use?
+## 🏆 Why Use BACA?
 
-There are a lot of project starters for react native, we have some good features that other starters usually don't have:
+While there are many project starters for React Native, we offer features that are often missing in other starters:
 
-- Fully works with **EXPO GO**
-  - Good for start of the project, later you can switch to expo-dev-client
-- Fully works on **WEB**
-  - If you want to develop apps both on web and mobile this starter is good choice for you
-- **Code generators** (create new screen / create new component and others)
-- **Fully + Strong typed**
-- **App deployment documentation**
+- **Works seamlessly with EXPO GO**
+  - Ideal for starting a project; switch to expo-dev-client later.
+- **Supports WEB**
+  - Perfect for developing apps for both web and mobile platforms.
+- **Code Generators**
+  - Easily create new screens, components, and more.
+- **Fully Typed**
+  - Ensures robust code quality.
+- **Comprehensive App Deployment Documentation**
 
-## 🔍 How it looks?
+## 🔍 How It Looks?
 
 - [Web demo app](https://baca-six.vercel.app)
 - [Video](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
-## 🚀 How to use?
+## 🚀 How to Use?
 
-We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](https://baca-docs.vercel.app/docs/overview)**
+We have prepared detailed documentation on how to run the project with this template - **[Bootstrap docs](https://baca-docs.vercel.app/docs/overview)**.
 
-It's great for production project, but if you want to just test it, you can follow the quick steps (on the bottom).
+It's great for production projects, but if you want to just test it, you can follow these quick steps:
 
-### 🏃‍♂️ Quick steps:
+### 🏃‍♂️ Quick Steps
 
-- `npx create-expo-app --template=@binarapps/baca-react-native-template name_of_your_app`
-- `cd name_of_your_app`
-- `yarn bootstrap` - the cli will ask you some questions about your app (you can fill all this data later)
+```
+npx create-expo-app --template=@binarapps/baca-react-native-template name_of_your_app
+cd name_of_your_app
+yarn bootstrap # The CLI will ask you some questions about your app (you can fill in this data later).
+```
 
-## 📦 What's inside?
+## 📦 What's Inside?
 
-[![MIT License](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)
-[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)
-[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)
+[![TypeScript](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)
+[![Expo Version](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)
+[![React Navigation](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)
 
-### Custom features
+### Custom Features
 
-- custom cli
-  - run `yarn baca` to see available options
-- generators:
+- **Custom CLI**
+  - Run `yarn baca` to see available options.
+- **Generators**
   - `yarn baca generate` | `yarn g`
-- support of multiple environments
-  - production, staging, qa
-- eas configuration
-  - update, build, submit
-- deployment docs
-  - https://baca-docs.vercel.app/docs/overview
-- verifying code on pull request - pipelines
-  - when creating pull request on github, there are tests, linters and types checks. If there will be some error you will be notified that something is wrong.
-- custom fonts
-  - wait to load fonts and all the assets
-- dark / light theme support
-  - color scheme detection (dark / light mode toggle)
-- navigation
-  <!-- - screen tracking hook
-  - state persistence on development mode -->
-  - prevent go back (to be used on forms for example)
-- auth flow ready for implementation details
-  - using expo-secure-store module to save user token
-  - right now it has fully working signIn/signOut logic based on baca backend
-- animations with `reanimated` and `moti`
+- **Support for Multiple Environments**
+  - Production, staging, QA
+- **EAS Configuration**
+  - Update, build, submit
+- **Deployment Documentation**
+  - [Deployment docs](https://baca-docs.vercel.app/docs/overview)
+- **Code Verification on Pull Requests**
+  - Tests, linters, and type checks on GitHub pull requests.
+- **Custom Fonts**
+  - Load fonts and all assets.
+- **Dark/Light Theme Support**
+  - Color scheme detection and toggle.
+- **Navigation**
+  - Prevent go back (useful for forms).
+- **Auth Flow Ready for Implementation**
+  - Uses expo-secure-store for user token storage.
+  - Fully functional signIn/signOut logic based on BACA backend.
+- **Animations with `reanimated` and `moti`**
 
 ### Libraries
 
-- TypeScript
-  - app is fully typed
-- [Expo v50](https://github.com/expo/expo)
-- [Expo router](https://docs.expo.dev/router/introduction/)
-- Prettier and eslint
-  - code formatting
-  - code checking
-- Babel-module-resolver
-  - unified imports
-- jest and @testing-library/react-native
-  - unit tests
-- i18next
-  - translations
-  - language detection
+- **TypeScript**
+  - Fully typed app.
+- **Expo v50**
+- **Expo Router**
+- **Prettier and Eslint**
+  - Code formatting and checking.
+- **Babel-Module-Resolver**
+  - Unified imports.
+- **Jest and @testing-library/react-native**
+  - Unit tests.
+- **i18next**
+  - Translations and language detection.
 - `@gorhom/bottom-sheet`
-- Expo-notifications
-  - You can read how to configure them [here](https://baca-docs.vercel.app/docs/expo-notifications)
-- Reactotron
-  - used for debugging
-- [Reanimated](https://github.com/software-mansion/react-native-reanimated)
-- Axios + React query
-  - Fetching data from backend
-- Jotai
-  - State management
+- **Expo-Notifications**
+  - [Configuration guide](https://baca-docs.vercel.app/docs/expo-notifications)
+- **Reactotron**
+  - Debugging.
+- **Reanimated**
+- **Axios + React Query**
+  - Data fetching.
+- **Jotai**
+  - State management.
 
-## 🔜 What is planned in the future?
+## 🔜 Future Plans
 
-- tutorial on how to use features
-  - navigation
-  - deepLinking
-  - auth flows
-  - components
-  - react query
-  - api calls
-  - state management tool
-- Add designs (figma) and redesign whole app
-- Updating expo versions (in future)
-- Deploy app to App Store and Play Store
-  - Create sample app and document the process of deployment
-- Improve mock server logic
-- add commit lint
-- libraries to add:
-  - [expo image](https://github.com/expo/expo/tree/main/packages/expo-image)
+- Tutorials on using features:
+  - Navigation, deep linking, auth flows, components.
+- Add possibility to easyli change backend service
+  - Right now our app is deeply connected to
+- Add designs (Figma) and redesign the app.
+- Update Expo versions.
+- Document deployment to App Store and Play Store.
+- Improve mock server logic.
+- Add commit lint.
+- Additional libraries:
+  - [expo-image](https://github.com/expo/expo/tree/main/packages/expo-image)
   - [FlashList](https://github.com/Shopify/flash-list)
   - [ZOD](https://github.com/colinhacks/zod)
 
-## 👏 How to contribute?
+## 👏 How to Contribute
 
 Contributions are always welcome!
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
-Please adhere to this project's `code of conduct`.
+Please adhere to this project's code of conduct.
 
-## 🤙 How to run locally?
+## 🤙 How to Run Locally
 
-Clone the project
+Clone the project:
 
-```bash
-  git clone https://github.com/binarapps/baca-react-native-template.git
+```
+git clone https://github.com/binarapps/baca-react-native-template.git
 ```
 
-Go to the project directory
+Go to the project directory:
 
-```bash
-  cd baca-react-native-template
+```
+cd baca-react-native-template
 ```
 
-Install dependencies
+Install dependencies:
 
-```bash
-  yarn
+```
+yarn
 ```
 
-Start the expo server
+Start the Expo server:
 
-```bash
-  yarn start
+```
+yarn start
 ```
 
 Environment variables instruction:
 
-1. Create empty file `scripts/doppler_variables.sh` and add this script to new created file.
+1. Create an empty file `scripts/doppler_variables.sh` and add this script to the newly created file.
 
-- run `yarn prepare:env_file` - this will copy template and place it in `scripts/doppler_variables.sh`
+- Run `yarn prepare:env_file` - This will copy the template and place it in `scripts/doppler_variables.sh`.
 
 2. Add correct values to variables (ask one of the developers for that), example:
 
-```bash
+```
 export DOPPLER_TOKEN_DEVELOPMENT=dp.st.alpha.XXXXxxxxXXXXxxxxXXXXxxxx
 ```
 
-Start the expo server
+Start the Expo server:
 
-```bash
-  yarn start
+```
+yarn start
 ```
 
 ## 📘 License
@@ -199,7 +194,7 @@ Start the expo server
 
 ## 📝 Feedback
 
-If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.com
+If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.com.
 
 ## 👨‍👩‍👧‍👦 Contributors
 
