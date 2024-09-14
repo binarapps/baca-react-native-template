@@ -83,8 +83,6 @@ Caption // TODO:
 Card
 Carousel
 Center - DONE
-CheckBox / Checkbox
-CheckBoxGroup / CheckboxGroup
 Chip
 CircularSlider
 CodeInput
@@ -192,9 +190,6 @@ Progress
 ProgressBar
 ProgressCircle
 ProgressSteps
-Radio
-RadioButton
-RadioGroup
 Range
 RangeSlider
 Rating
