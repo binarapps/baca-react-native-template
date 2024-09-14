@@ -8,11 +8,34 @@
 >
 > This repository is part of a whole ecosystem, and it only contains React Native code.
 
-[![MIT License](https://img.shields.io/npm/l/@binarapps/baca-react-native-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![NPM Version](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)
-[![NPM Downloads](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)
-[![GitHub Stars](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)
+[![MIT License](https://img.shields.io/npm/l/@binarapps/baca-react-native-template?style=flat-square)](https://github.com/binarapps/baca-react-native-template/blob/master/LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/@binarapps/baca-react-native-template?style=flat-square)](https://www.npmjs.com/package/@binarapps/baca-react-native-template)
+[![NPM Downloads](https://img.shields.io/npm/dt/@binarapps/baca-react-native-template?style=flat-square)](https://www.npmjs.com/package/@binarapps/baca-react-native-template)
+[![GitHub Stars](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)](https://github.com/binarapps/baca-react-native-template/stargazers)
 [![Runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
+
+## 📚 Table of Contents
+
+- [BACA - React Native Template](#baca---react-native-template)
+  - [📚 Table of Contents](#-table-of-contents)
+  - [🎉 Great React Native Boilerplate](#-great-react-native-boilerplate)
+  - [📖 Documentation](#-documentation)
+  - [🏆 Why Use BACA?](#-why-use-baca)
+  - [🔍 Preview](#-preview)
+  - [🚀 How to Use?](#-how-to-use)
+    - [🏃‍♂️ Quick Steps](#️-quick-steps)
+  - [🛠 Prerequisites](#-prerequisites)
+  - [📦 What's Inside?](#-whats-inside)
+    - [Libraries and Tools](#libraries-and-tools)
+  - [🔜 Future Plans](#-future-plans)
+  - [👏 How to Contribute](#-how-to-contribute)
+    - [Steps to Contribute](#steps-to-contribute)
+  - [🤙 How to Run Locally](#-how-to-run-locally)
+    - [Environment Variables Setup](#environment-variables-setup)
+  - [📘 License](#-license)
+  - [📝 Feedback](#-feedback)
+  - [👨‍👩‍👧‍👦 Contributors](#-contributors)
+  - [📦 Similar Packages](#-similar-packages)
 
 ## 🎉 Great React Native Boilerplate
 
@@ -37,7 +60,7 @@ While there are many project starters for React Native, we offer features that a
 
 - **Works seamlessly with EXPO GO**
   - Ideal for starting a project; switch to expo-dev-client later.
-- **Supports WEB**
+- **Supports Web**
   - Perfect for developing apps for both web and mobile platforms.
 - **Code Generators**
   - Easily create new screens, components, and more.
@@ -45,7 +68,7 @@ While there are many project starters for React Native, we offer features that a
   - Ensures robust code quality.
 - **Comprehensive App Deployment Documentation**
 
-## 🔍 How It Looks?
+## 🔍 Preview
 
 - [Web demo app](https://baca-six.vercel.app)
 - [Video](https://www.youtube.com/watch?v=NmTd5nXXTLI)
@@ -58,143 +81,114 @@ It's great for production projects, but if you want to just test it, you can fol
 
 ### 🏃‍♂️ Quick Steps
 
-```
+```bash
 npx create-expo-app --template=@binarapps/baca-react-native-template name_of_your_app
 cd name_of_your_app
-yarn bootstrap # The CLI will ask you some questions about your app (you can fill in this data later).
+yarn bootstrap
+
+# The CLI will ask you some questions about your app (you can fill in this data later).
+
 ```
+
+## 🛠 Prerequisites
+
+Ensure you have the following installed before you begin:
+
+- [Node.js](https://nodejs.org/en/) (v18+)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- [yarn](https://classic.yarnpkg.com/en/docs/install)
 
 ## 📦 What's Inside?
 
-[![TypeScript](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)
-[![Expo Version](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)
-[![React Navigation](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)
+[![TypeScript](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)](https://www.npmjs.com/package/@binarapps/baca-react-native-template)
+[![Expo Version](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/expo?style=flat-square)](https://github.com/binarapps/baca-react-native-template/blob/main/package.json)
+[![React Navigation](https://img.shields.io/github/package-json/dependency-version/binarapps/baca-react-native-template/@react-navigation/native?style=flat-square)](https://github.com/binarapps/baca-react-native-template/blob/main/package.json)
 
-### Custom Features
+### Libraries and Tools
 
-- **Custom CLI**
-  - Run `yarn baca` to see available options.
-- **Generators**
-  - `yarn baca generate` | `yarn g`
-- **Support for Multiple Environments**
-  - Production, staging, QA
-- **EAS Configuration**
-  - Update, build, submit
-- **Deployment Documentation**
-  - [Deployment docs](https://baca-docs.vercel.app/docs/overview)
-- **Code Verification on Pull Requests**
-  - Tests, linters, and type checks on GitHub pull requests.
-- **Custom Fonts**
-  - Load fonts and all assets.
-- **Dark/Light Theme Support**
-  - Color scheme detection and toggle.
-- **Navigation**
-  - Prevent go back (useful for forms).
-- **Auth Flow Ready for Implementation**
-  - Uses expo-secure-store for user token storage.
-  - Fully functional signIn/signOut logic based on BACA backend.
-- **Animations with `reanimated` and `moti`**
-
-### Libraries
-
-- **TypeScript**
-  - Fully typed app.
-- **Expo v50**
-- **Expo Router**
-- **Prettier and Eslint**
-  - Code formatting and checking.
-- **Babel-Module-Resolver**
-  - Unified imports.
-- **Jest and @testing-library/react-native**
-  - Unit tests.
-- **i18next**
-  - Translations and language detection.
-- `@gorhom/bottom-sheet`
-- **Expo-Notifications**
-  - [Configuration guide](https://baca-docs.vercel.app/docs/expo-notifications)
-- **Reactotron**
-  - Debugging.
-- **Reanimated**
-- **Axios + React Query**
-  - Data fetching.
-- **Jotai**
-  - State management.
+- **TypeScript**: Strictly typed code for enhanced development experience.
+- **Expo v50**: The latest Expo framework with modern React Native features.
+- **Prettier and Eslint**: Automatically format and lint your code.
+- **Babel-Module-Resolver**: Unified imports.
+- **Jest and @testing-library/react-native**: Unit tests for React Native components.
+- **i18next**: Simplifies internationalization and language support.
+- **Axios + React Query**: Optimized data fetching and state management.
+- **Jotai**: Minimalistic state management library.
+- **Reanimated & Moti**: Smooth animations.
+- **Reactotron**: Debugging and monitoring React Native apps.
+- **Expo-Notifications**: Ready-to-use push notification handling.
+- **Custom CLI**: `yarn baca` to access available options.
 
 ## 🔜 Future Plans
 
-- Tutorials on using features:
-  - Navigation, deep linking, auth flows, components.
-- Add possibility to easyli change backend service
-  - Right now our app is deeply connected to
-- Add designs (Figma) and redesign the app.
-- Update Expo versions.
-- Document deployment to App Store and Play Store.
+- Tutorials on using features like navigation, deep linking, theming and auth flows.
+- Add the ability to easily switch backend services.
+- Integrate Figma designs for a more cohesive UI/UX experience.
+- Regular updates to Expo versions.
+- Enhance documentation for App Store and Play Store deployment.
 - Improve mock server logic.
-- Add commit lint.
-- Additional libraries:
-  - [expo-image](https://github.com/expo/expo/tree/main/packages/expo-image)
-  - [FlashList](https://github.com/Shopify/flash-list)
-  - [ZOD](https://github.com/colinhacks/zod)
+- Add commit lint for consistent commits.
+- Add support for libraries like `expo-image`, `FlashList`, and `ZOD`.
 
 ## 👏 How to Contribute
 
 Contributions are always welcome!
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
+### Steps to Contribute
 
-Please adhere to this project's code of conduct.
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make your changes.
+4. Run tests (`yarn test`) to ensure everything works.
+5. Submit a pull request.
+
+Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more details on contributing.
 
 ## 🤙 How to Run Locally
 
 Clone the project:
 
-```
+```bash
 git clone https://github.com/binarapps/baca-react-native-template.git
 ```
 
 Go to the project directory:
 
-```
+```bash
 cd baca-react-native-template
 ```
 
 Install dependencies:
 
-```
+```bash
 yarn
 ```
 
 Start the Expo server:
 
-```
+```bash
 yarn start
 ```
 
-Environment variables instruction:
+### Environment Variables Setup
 
-1. Create an empty file `scripts/doppler_variables.sh` and add this script to the newly created file.
+1. Create an empty file `scripts/doppler_variables.sh` and add the following script:
 
-- Run `yarn prepare:env_file` - This will copy the template and place it in `scripts/doppler_variables.sh`.
-
-2. Add correct values to variables (ask one of the developers for that), example:
-
-```
+```bash
 export DOPPLER_TOKEN_DEVELOPMENT=dp.st.alpha.XXXXxxxxXXXXxxxxXXXXxxxx
 ```
 
-Start the Expo server:
+2. Run `yarn prepare:env_file` to generate the environment variables template.
 
-```
-yarn start
-```
+3. Add the correct values to `scripts/doppler_variables.sh` (ask a developer if needed).
 
 ## 📘 License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
 ## 📝 Feedback
 
-If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.com.
+If you have any feedback, please reach out to [Mateusz Rostkowski](mailto:mateusz.rostkowsky995@gmail.com).
 
 ## 👨‍👩‍👧‍👦 Contributors
 
@@ -211,14 +205,14 @@ If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.
 - [Weronika Grzeszczyk](https://github.com/vercia) - @vercia
 - [Mateusz Świerczyński](https://github.com/MatiSwierczynski) - @MatiSwierczynski
 
-## 📦 Similar packages
+## 📦 Similar Packages
 
-- Maintained
-  - https://github.com/obytes/react-native-template-obytes
-  - https://github.com/infinitered/ignite
-  - https://github.com/wataru-maeda/react-native-boilerplate
-- Outdated (not maintained anymore):
-  - https://github.com/kacgrzes/expo-typescript-template (our repo is fork of this one - we keep maintaining this)
-  - https://github.com/codingki/react-native-expo-template
-  - https://github.com/flatlogic/react-native-starter
-  - https://github.com/mcnamee/react-native-expo-starter-kit
+- Maintained:
+  - [react-native-template-obytes](https://github.com/obytes/react-native-template-obytes)
+  - [ignite](https://github.com/infinitered/ignite)
+  - [react-native-boilerplate](https://github.com/wataru-maeda/react-native-boilerplate)
+- Outdated:
+  - [expo-typescript-template](https://github.com/kacgrzes/expo-typescript-template)
+  - [react-native-expo-template](https://github.com/codingki/react-native-expo-template)
+  - [react-native-starter](https://github.com/flatlogic/react-native-starter)
+  - [react-native-expo-starter-kit](https://github.com/mcnamee/react-native-expo-starter-kit)
