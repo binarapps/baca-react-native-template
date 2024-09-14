@@ -36,6 +36,7 @@ type QuestionsObject = {
     type: string
     message: string
     initial: string
+    validation?: (value: string) => boolean | string
     simple?: boolean
     order: number
   }
@@ -47,6 +48,11 @@ type Question = {
   initial: string
   order: number
   name: string
+}
+
+const validatePackageName = (input: string): boolean | string => {
+  const isValid = /^[a-zA-Z][a-zA-Z0-9\._]+$/.test(input)
+  return isValid || 'Invalid package name format.'
 }
 
 const questionsObject: QuestionsObject = {
@@ -75,12 +81,14 @@ const questionsObject: QuestionsObject = {
     type: 'text',
     message: 'What is your bundle Id?',
     initial: APP_CONFIG.iosBundleIdentifier,
+    validation: validatePackageName,
     order: 4,
   },
   androidPackageName: {
     type: 'text',
     message: 'What is your android package name?',
     initial: APP_CONFIG.androidPackageName,
+    validation: validatePackageName,
     order: 5,
   },
   scheme: {
