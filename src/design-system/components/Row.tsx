@@ -7,3 +7,5 @@ export type RowProps = Omit<BoxProps, 'flexDirection'>
 export const Row = memo<RowProps>(
   forwardRef<View, RowProps>((props, ref) => <Box flexDirection="row" {...props} ref={ref} />)
 )
+
+export const XStack = Row
