@@ -103,3 +103,5 @@ export const CheckboxButton = ({
     </Box>
   )
 }
+
+CheckboxButton.displayName = 'CheckboxButton'
