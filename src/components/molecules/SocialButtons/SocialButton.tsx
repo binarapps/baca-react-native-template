@@ -75,3 +75,5 @@ export const SocialButton: FC<SocialButtonProps> = ({ type = 'google', ...rest }
     </Button>
   )
 }
+
+SocialButton.displayName = 'SocialButton'
