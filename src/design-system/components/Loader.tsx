@@ -55,3 +55,5 @@ export const Loader = ({ type, ...props }: LoaderType): JSX.Element => {
 
   return renderLoader
 }
+
+Loader.displayName = 'Loader'
