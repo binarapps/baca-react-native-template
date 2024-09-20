@@ -329,19 +329,42 @@ const Button = generateStyledComponent<ButtonProps, typeof Pressable>(
   RawButton
 ) as ButtonComposition
 
+Button.displayName = 'Button'
+
 const generateButtonVariant = (variant: ButtonVariant) =>
   forwardRef<View, ButtonProps>((props, ref) => <Button {...{ ...props, ref, variant }} />)
 
 Button.Primary = generateButtonVariant('Primary')
+Button.Primary.displayName = 'Button.Primary'
+
 Button.PrimaryDestructive = generateButtonVariant('PrimaryDestructive')
+Button.PrimaryDestructive.displayName = 'Button.PrimaryDestructive'
+
 Button.SecondaryColor = generateButtonVariant('SecondaryColor')
+Button.SecondaryColor.displayName = 'Button.SecondaryColor'
+
 Button.SecondaryGray = generateButtonVariant('SecondaryGray')
+Button.SecondaryGray.displayName = 'Button.SecondaryGray'
+
 Button.SecondaryDestructive = generateButtonVariant('SecondaryDestructive')
+Button.SecondaryDestructive.displayName = 'Button.SecondaryDestructive'
+
 Button.TertiaryColor = generateButtonVariant('TertiaryColor')
+Button.TertiaryColor.displayName = 'Button.TertiaryColor'
+
 Button.TertiaryGray = generateButtonVariant('TertiaryGray')
+Button.TertiaryGray.displayName = 'Button.TertiaryGray'
+
 Button.TertiaryDestructive = generateButtonVariant('TertiaryDestructive')
+Button.TertiaryDestructive.displayName = 'Button.TertiaryDestructive'
+
 Button.LinkColor = generateButtonVariant('LinkColor')
+Button.LinkColor.displayName = 'Button.LinkColor'
+
 Button.LinkGray = generateButtonVariant('LinkGray')
+Button.LinkGray.displayName = 'Button.LinkGray'
+
 Button.LinkDestructive = generateButtonVariant('LinkDestructive')
+Button.LinkDestructive.displayName = 'Button.LinkDestructive'
 
 export { Button }
