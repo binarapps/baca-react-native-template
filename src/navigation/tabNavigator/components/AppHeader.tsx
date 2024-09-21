@@ -1,7 +1,9 @@
 import { CompanyLogo } from '@baca/components'
+import { ThemeSwitcherButton } from '@baca/components/ThemeSwitcherButton'
 import { isWeb } from '@baca/constants'
+import { Box } from '@baca/design-system'
 import { useTheme } from '@baca/hooks'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export function AppHeader() {
@@ -13,14 +15,19 @@ export function AppHeader() {
   const height = 60 + top
 
   return (
-    <View
+    <Box
+      justifyContent="space-around"
       style={[
         { borderBottomColor: colors.border.secondary, height, paddingTop: top },
         jsStyles.appHeader,
       ]}
     >
+      <Box w="56px" h="24px" />
+      <Box flex={1} />
       <CompanyLogo height={60} width={150} />
-    </View>
+      <Box flex={1} />
+      <ThemeSwitcherButton />
+    </Box>
   )
 }
 
