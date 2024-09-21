@@ -88,6 +88,8 @@ const generateBgStyle = (
   if (color && (typeof bgOpacity === 'number' || typeof backgroundOpacity === 'number')) {
     return { backgroundColor: hex2rgba(color, (bgOpacity || backgroundOpacity) as number) }
   }
+
+  return { backgroundColor: bg }
 }
 
 const generateSizingStyle = ({
