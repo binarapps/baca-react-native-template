@@ -1,17 +1,15 @@
-import { Loader, Center } from '@baca/design-system/components'
-import { useCachedResources, useNavigationTheme } from '@baca/hooks'
+import { Loader, Center, Box } from '@baca/design-system/components'
+import { useCachedResources } from '@baca/hooks'
 import { useCheckForAppUpdate } from '@baca/hooks/useCheckForAppUpdate'
 import { isSignedInAtom } from '@baca/store/auth'
 import * as SplashScreen from 'expo-splash-screen'
 import { useAtomValue } from 'jotai'
 import { FC, PropsWithChildren, useCallback, useEffect, useState } from 'react'
-import { View, StyleSheet } from 'react-native'
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync()
 
 export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
-  const { navigationTheme } = useNavigationTheme()
   const isLoadingComplete = useCachedResources()
   const isSignedIn = useAtomValue(isSignedInAtom)
 
@@ -38,10 +36,7 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
   }, [isLoading])
 
   return (
-    <View
-      {...{ onLayout }}
-      style={[styles.container, { backgroundColor: navigationTheme.colors.background }]}
-    >
+    <Box {...{ onLayout }} flex={1}>
       {!isSplashHidden ? (
         <Center bg="bg.primary" flexGrow={1}>
           <Loader type="bubbles" />
@@ -49,12 +44,6 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
       ) : (
         children
       )}
-    </View>
+    </Box>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-})
