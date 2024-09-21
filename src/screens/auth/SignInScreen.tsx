@@ -6,6 +6,7 @@ import {
   SocialButtons,
   Version,
 } from '@baca/components'
+import { ThemeSwitcherButton } from '@baca/components/ThemeSwitcherButton'
 import { REGEX, isWeb } from '@baca/constants'
 import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
 import { useCallback, useSignInForm, useState, useTranslation } from '@baca/hooks'
@@ -31,20 +32,13 @@ export const SignInScreen = (): JSX.Element => {
 
   return (
     <FormWrapper keyboardAwareProps={{ contentContainerStyle: { maxWidth: 'auto' } }}>
-      {isWeb ? (
-        <Box mr={4}>
-          <Spacer y={4} />
-          <Box alignItems="flex-end" h={8} w="full">
-            <LanguagePicker isWeb pickerPlacement="bottomRight" />
-          </Box>
-        </Box>
-      ) : null}
+      <Box flexDirection="row" alignItems="center" w="full" p={4}>
+        <Box flex={1} />
+        <ThemeSwitcherButton />
+        <Spacer x={2} />
+        <LanguagePicker isWeb={isWeb} pickerPlacement="bottomRight" />
+      </Box>
       <Center alignSelf="center" maxWidth={360} w="full">
-        {!isWeb ? (
-          <Box alignItems="flex-end" h={8} w="full">
-            <LanguagePicker pickerPlacement="bottomRight" />
-          </Box>
-        ) : null}
         <Spacer y={isWeb ? 4 : 8} />
         <CompanyLogo height={50} type="binar" />
         <Spacer y={8} />
