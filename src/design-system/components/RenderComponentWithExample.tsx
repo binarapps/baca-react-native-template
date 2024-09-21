@@ -9,13 +9,13 @@ import { useWeb } from '@baca/hooks'
 import { showSuccessToast } from '@baca/utils'
 import * as Clipboard from 'expo-clipboard'
 
-const RenderExample = ({
-  Component,
-  ComponentWithProps,
-}: {
+type RenderExampleProps = {
   Component: React.FC<any> | React.ForwardRefExoticComponent<any> | string
   ComponentWithProps?: JSX.Element
-}) => {
+  propsToOmmit?: string[]
+}
+
+const RenderExample = ({ Component, ComponentWithProps, propsToOmmit }: RenderExampleProps) => {
   const componentName =
     typeof Component === 'string'
       ? Component
@@ -26,7 +26,19 @@ const RenderExample = ({
   // Function to generate props as string
   const generatePropsString = (props: Record<string, any>) => {
     return Object.entries(props)
-      .filter(([key]) => key !== 'children') // Exclude 'children' from props
+      .filter(([key]) => {
+        // Exclude 'children' from props
+        if (key === 'children') {
+          return false
+        }
+
+        if (propsToOmmit && !propsToOmmit.includes(key)) {
+          return false
+        }
+
+        return true
+      })
+
       .map(([key, value]) => {
         if (typeof value === 'string') {
           // Check if value is a code expression (e.g., starts with 't(')
@@ -85,20 +97,12 @@ const RenderExample = ({
   }
 
   return (
-    <Box
-      borderRadius={8}
-      borderColor="utility.gray.100"
-      borderWidth={1}
-      gap={2}
-      bg="Base.black"
-      minWidth={400}
-    >
+    <Box borderRadius={8} borderColor="utility.gray.100" borderWidth={1} minWidth={400}>
       <Row
         borderTopEndRadius={6}
         borderTopLeftRadius={6}
         justifyContent="space-between"
         alignItems="center"
-        mb={2}
         bg="utility.gray.100"
         p={2}
       >
@@ -108,31 +112,25 @@ const RenderExample = ({
           <Text.SmMedium onPress={handleCopyCode}>Copy Code</Text.SmMedium>
         </Touchable>
       </Row>
-      <Box px={4} pb={4}>
+      <Box bg="bg.primary" borderRadius={6} p={4}>
         <Text.SmMedium>{componentExample}</Text.SmMedium>
       </Box>
     </Box>
   )
 }
 
-export const RenderComponentWithExample = ({
-  Component,
-  ComponentWithProps,
-}: {
-  Component: React.FC<any> | React.ForwardRefExoticComponent<any> | string
-  ComponentWithProps?: JSX.Element
-}) => {
+export const RenderComponentWithExample = ({ ComponentWithProps, ...rest }: RenderExampleProps) => {
   const { shouldApplyMobileStyles } = useWeb()
 
   return (
-    <Row gap={2} width="100%">
+    <Row gap={2}>
       <Center p={4} bg="utility.gray.100" borderRadius={8}>
         {ComponentWithProps}
       </Center>
       <Box />
       {/* Show only on tablet and web */}
       {!shouldApplyMobileStyles && (
-        <RenderExample Component={Component} ComponentWithProps={ComponentWithProps} />
+        <RenderExample ComponentWithProps={ComponentWithProps} {...rest} />
       )}
     </Row>
   )
