@@ -14,7 +14,7 @@ export const getColorValue = ({ color, colors }: GetColorValueProps): string => 
 
   const colorToReturn = getPropertyByKeys(colors, keys)
 
-  return colorToReturn || color
+  return colorToReturn
 }
 
 interface NestedObject {
