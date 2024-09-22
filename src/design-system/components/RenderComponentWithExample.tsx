@@ -25,19 +25,21 @@ const RenderExample = ({ Component, ComponentWithProps, propsToOmmit }: RenderEx
 
   // Function to generate props as string
   const generatePropsString = (props: Record<string, any>) => {
-    return Object.entries(props)
-      .filter(([key]) => {
-        // Exclude 'children' from props
-        if (key === 'children') {
-          return false
-        }
+    const filteredProps = Object.entries(props).filter(([key]) => {
+      // Exclude 'children' from props
+      if (key === 'children') {
+        return false
+      }
 
-        if (propsToOmmit && !propsToOmmit.includes(key)) {
-          return false
-        }
+      // Exclude props that are not needed
+      if (propsToOmmit && propsToOmmit.includes(key)) {
+        return false
+      }
 
-        return true
-      })
+      return true
+    })
+
+    return filteredProps
 
       .map(([key, value]) => {
         if (typeof value === 'string') {
