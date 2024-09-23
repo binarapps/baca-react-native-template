@@ -1,4 +1,4 @@
-import { Button, ScrollView } from '@baca/design-system'
+import { Button, Display, ScrollView } from '@baca/design-system'
 import { useCallback, useTranslation, useScreenOptions } from '@baca/hooks'
 import { useRouter } from 'expo-router'
 
@@ -25,35 +25,25 @@ export const ExamplesScreen = () => {
   const goToHomeStackDetails = useCallback(() => push('/home/details'), [push])
 
   return (
-    <ScrollView p={4}>
-      <Button mb={2} onPress={goToApplicationInfo}>
-        {t('examples_screen.go_to_application_info')}
-      </Button>
-      <Button mb={2} onPress={goToColors}>
-        {t('examples_screen.go_to_colors')}
-      </Button>
-      <Button mb={2} onPress={goToComponents}>
-        {t('examples_screen.go_to_components')}
-      </Button>
-      <Button mb={2} onPress={goToTypography}>
-        {t('examples_screen.go_to_typography')}
-      </Button>
-      <Button mb={2} onPress={goToHomeStackDetails}>
+    <ScrollView p={4} gap={4}>
+      <Display.SmBold>App logic</Display.SmBold>
+      <Button onPress={goToApplicationInfo}>{t('examples_screen.go_to_application_info')}</Button>
+      <Button onPress={goToPushNotificationsHelpers}>Go to push notifications helpers</Button>
+      <Button onPress={goToUserSession}>{t('examples_screen.go_to_user_session')}</Button>
+
+      <Display.SmBold>UI Examples</Display.SmBold>
+      <Button onPress={goToColors}>{t('examples_screen.go_to_colors')}</Button>
+      <Button onPress={goToComponents}>{t('examples_screen.go_to_components')}</Button>
+      <Button onPress={goToTypography}>{t('examples_screen.go_to_typography')}</Button>
+
+      <Display.SmBold>Navigation</Display.SmBold>
+      <Button onPress={goToHomeStackDetails}>
         {t('examples_screen.go_to_home_stack_details')}
       </Button>
-      <Button mb={2} onPress={goToCityListScreen_EXAMPLE}>
+      <Button onPress={goToCityListScreen_EXAMPLE}>
         {t('examples_screen.go_to_screen_with_BEdata')}
       </Button>
-      <Button mb={2} onPress={goToTestForm}>
-        {t('examples_screen.go_to_screen_test_form')}
-      </Button>
-      {/* TODO: Add translations */}
-      <Button mb={2} onPress={goToPushNotificationsHelpers}>
-        Go to push notifications helpers
-      </Button>
-      <Button mb={2} onPress={goToUserSession}>
-        {t('examples_screen.go_to_user_session')}
-      </Button>
+      <Button onPress={goToTestForm}>{t('examples_screen.go_to_screen_test_form')}</Button>
     </ScrollView>
   )
 }
