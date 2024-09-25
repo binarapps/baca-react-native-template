@@ -43,3 +43,5 @@ export const RadioGroup = <T extends string>({
     </Box>
   )
 }
+
+RadioGroup.displayName = 'RadioGroup'

@@ -1,3 +1,4 @@
+import { useTheme } from '@baca/hooks'
 import { useBubblesLoader } from '@baca/hooks/loaders'
 import React from 'react'
 import Animated from 'react-native-reanimated'
@@ -9,12 +10,15 @@ export type BubblesLoaderType = {
   size?: number
 }
 
-const FullCircle = ({ size = 10, color = 'black' }: BubblesLoaderType): JSX.Element => (
+const FullCircle = ({ size = 10, color }: BubblesLoaderType): JSX.Element => (
   <Box style={{ backgroundColor: color, borderRadius: size / 2, width: size, height: size }} />
 )
 
-export const BubblesLoader = ({ size = 40, color = 'black' }: BubblesLoaderType): JSX.Element => {
+export const BubblesLoader = ({ size = 40, color }: BubblesLoaderType): JSX.Element => {
   const { animatedHeight, animatedRotate, animatedWidth } = useBubblesLoader()
+  const theme = useTheme()
+
+  const loaderColor = color || theme.colors.text.primary
 
   const containerStyle = {
     width: size,
@@ -37,12 +41,12 @@ export const BubblesLoader = ({ size = 40, color = 'black' }: BubblesLoaderType)
   return (
     <Animated.View style={[containerStyle, animatedRotate]}>
       <Animated.View style={[rowStyle, animatedWidth]}>
-        <FullCircle color={color} />
-        <FullCircle color={color} />
+        <FullCircle color={loaderColor} />
+        <FullCircle color={loaderColor} />
       </Animated.View>
       <Animated.View style={[absoluteStyle, animatedHeight]}>
-        <FullCircle color={color} />
-        <FullCircle color={color} />
+        <FullCircle color={loaderColor} />
+        <FullCircle color={loaderColor} />
       </Animated.View>
     </Animated.View>
   )

@@ -45,7 +45,7 @@ export const LandingScreen = () => {
   }, [screenWidth])
 
   const renderItem = (item: ImageSourcePropType, index: number) => (
-    <Box key={index} width={imageWidth} px={paddingBetweenImages} pb={paddingBetweenImages}>
+    <Box key={index} width={imageWidth} px={paddingBetweenImages}>
       <Box style={{ aspectRatio: 9 / 16 }} height="100%" borderRadius={16} bg="bg.active">
         <Image source={item} resizeMode="contain" style={styles.imageSize} />
       </Box>
@@ -59,7 +59,7 @@ export const LandingScreen = () => {
   return (
     <KeyboardAwareScrollView>
       <LandingHeader />
-      <Center bg="bg.brand.section" flex={1} px={4}>
+      <Center bg="bg.brand.section" flex={1} px={4} pb={8}>
         <Text.XxlBold fontSize={40} mt={20} color="text.white" textAlign="center">
           {t('home_screen.header_title')}
         </Text.XxlBold>

@@ -5,10 +5,9 @@ import {
   Box,
   Text,
   Button,
-  Center,
   ScrollView,
-  Display,
   CheckboxButton,
+  RenderComponentWithExample,
 } from '@baca/design-system'
 import { useBoolean, useCallback, useScreenOptions, useState, useTranslation } from '@baca/hooks'
 import { noop, showInformationToast } from '@baca/utils'
@@ -42,10 +41,15 @@ const TestCheckbox = () => {
   const [isChecked, setIsChecked] = useBoolean()
 
   return (
-    <CheckboxButton
-      onChange={setIsChecked.toggle}
-      isSelected={isChecked}
-      label={t('form.checkbox.remember_me')}
+    <RenderComponentWithExample
+      Component={CheckboxButton}
+      ComponentWithProps={
+        <CheckboxButton
+          onChange={setIsChecked.toggle}
+          isSelected={isChecked}
+          label={t('form.checkbox.remember_me')}
+        />
+      }
     />
   )
 }
@@ -61,13 +65,18 @@ const TextRadioButtons = () => {
   const [selectedRadio, setSelectedRadio] = useState<string | undefined>()
 
   return (
-    <RadioGroup
-      onSelectItem={setSelectedRadio}
-      selectedItem={selectedRadio}
-      isRequired
-      name="age"
-      items={agesMap}
-      label={t('test_form.age')}
+    <RenderComponentWithExample
+      Component={RadioGroup}
+      ComponentWithProps={
+        <RadioGroup
+          onSelectItem={setSelectedRadio}
+          selectedItem={selectedRadio}
+          isRequired
+          name="age"
+          items={agesMap}
+          label={t('test_form.age')}
+        />
+      }
     />
   )
 }
@@ -91,52 +100,143 @@ export const ComponentsScreen = (): JSX.Element => {
 
   return (
     <ScrollView flexGrow={1} p={4}>
-      <Button.Primary alignSelf="center" onPress={testNotification}>
-        {t('components_screen.test_notification')}
-      </Button.Primary>
-      <Box alignItems="center" gap={6} mt={8}>
+      <Box gap={6} mt={8}>
+        <Text.LgRegular>Toast:</Text.LgRegular>
+        <RenderComponentWithExample
+          Component={Button.Primary}
+          ComponentWithProps={
+            <Button.Primary alignSelf="center" onPress={testNotification}>
+              {t('components_screen.test_notification')}
+            </Button.Primary>
+          }
+        />
+
         <Text.LgRegular>{t('components_screen.button_variants.header')}:</Text.LgRegular>
-        <Button.Primary title={t('components_screen.button_variants.primary')} />
-        <Button.Primary
-          leftIconName="ancient-gate-fill"
-          rightIconName="alarm-fill"
-          title={t('components_screen.button_variants.with_icons')}
+        <RenderComponentWithExample
+          Component={Button.Primary}
+          ComponentWithProps={
+            <Button.Primary title={t('components_screen.button_variants.primary')} />
+          }
         />
-        <Button.PrimaryDestructive
-          title={t('components_screen.button_variants.primary_destructive')}
+
+        <RenderComponentWithExample
+          Component={Button.Primary}
+          ComponentWithProps={
+            <Button.Primary
+              leftIconName="ancient-gate-fill"
+              rightIconName="alarm-fill"
+              title={t('components_screen.button_variants.with_icons')}
+            />
+          }
         />
-        <Button.SecondaryColor title={t('components_screen.button_variants.secondary_color')} />
-        <Button.SecondaryGray title={t('components_screen.button_variants.secondary_gray')} />
-        <Button.SecondaryDestructive
-          title={t('components_screen.button_variants.secondary_destructive')}
+        <RenderComponentWithExample
+          Component={Button.PrimaryDestructive}
+          ComponentWithProps={
+            <Button.PrimaryDestructive
+              title={t('components_screen.button_variants.primary_destructive')}
+            />
+          }
         />
-        <Button.TertiaryColor title={t('components_screen.button_variants.tertiary_color')} />
-        <Button.TertiaryGray title={t('components_screen.button_variants.tertiary_gray')} />
-        <Button.TertiaryDestructive
-          title={t('components_screen.button_variants.tertiary_destructive')}
+        <RenderComponentWithExample
+          Component={Button.SecondaryColor}
+          ComponentWithProps={
+            <Button.SecondaryColor title={t('components_screen.button_variants.secondary_color')} />
+          }
         />
-        <Button.LinkColor title={t('components_screen.button_variants.link_color')} />
-        <Button.LinkGray title={t('components_screen.button_variants.link_gray')} />
-        <Button.LinkDestructive title={t('components_screen.button_variants.link_destructive')} />
-        <Button disabled>{t('components_screen.button_variants.disabled')}</Button>
-        <SocialButton onPress={noop} type="google" />
-        <SocialButton onPress={noop} type="facebook" />
-        <SocialButton onPress={noop} type="apple" />
+        <RenderComponentWithExample
+          Component={Button.SecondaryGray}
+          ComponentWithProps={
+            <Button.SecondaryGray title={t('components_screen.button_variants.secondary_gray')} />
+          }
+        />
+
+        <RenderComponentWithExample
+          Component={Button.SecondaryDestructive}
+          ComponentWithProps={
+            <Button.SecondaryDestructive
+              title={t('components_screen.button_variants.secondary_destructive')}
+            />
+          }
+        />
+        <RenderComponentWithExample
+          Component={Button.TertiaryColor}
+          ComponentWithProps={
+            <Button.TertiaryColor title={t('components_screen.button_variants.tertiary_color')} />
+          }
+        />
+
+        <RenderComponentWithExample
+          Component={Button.TertiaryGray}
+          ComponentWithProps={
+            <Button.TertiaryGray title={t('components_screen.button_variants.tertiary_gray')} />
+          }
+        />
+        <RenderComponentWithExample
+          Component={Button.TertiaryDestructive}
+          ComponentWithProps={
+            <Button.TertiaryDestructive
+              title={t('components_screen.button_variants.tertiary_destructive')}
+            />
+          }
+        />
+        <RenderComponentWithExample
+          Component={Button.LinkColor}
+          ComponentWithProps={
+            <Button.LinkColor title={t('components_screen.button_variants.link_color')} />
+          }
+        />
+        <RenderComponentWithExample
+          Component={Button.LinkGray}
+          ComponentWithProps={
+            <Button.LinkGray title={t('components_screen.button_variants.link_gray')} />
+          }
+        />
+        <RenderComponentWithExample
+          Component={Button.LinkDestructive}
+          ComponentWithProps={
+            <Button.LinkDestructive
+              title={t('components_screen.button_variants.link_destructive')}
+            />
+          }
+        />
+        <RenderComponentWithExample
+          Component="Button"
+          ComponentWithProps={
+            <Button disabled>{t('components_screen.button_variants.disabled')}</Button>
+          }
+        />
+        <RenderComponentWithExample
+          Component="Button"
+          ComponentWithProps={<Button loading size="lg" />}
+        />
+
+        <RenderComponentWithExample
+          Component={SocialButton}
+          ComponentWithProps={<SocialButton onPress={noop} type="google" />}
+        />
+        <RenderComponentWithExample
+          Component={SocialButton}
+          ComponentWithProps={<SocialButton onPress={noop} type="facebook" />}
+        />
+        <RenderComponentWithExample
+          Component={SocialButton}
+          ComponentWithProps={<SocialButton onPress={noop} type="apple" />}
+        />
+
         <Box w="full" gap={6}>
           <TestCheckbox />
           <TextRadioButtons />
         </Box>
-        <Button loading size="lg" />
+
         <Text.LgRegular>{t('components_screen.loader_variants.header')}</Text.LgRegular>
         {loaderVariants?.map((loader) => (
           <Box flex={1} gap={6} key={loader.type}>
-            <Text.SmRegular>{t(loader?.headerText)}</Text.SmRegular>
-            <Center>
-              <Loader type={loader?.type} />
-            </Center>
+            <RenderComponentWithExample
+              Component={Loader}
+              ComponentWithProps={<Loader type={loader?.type} />}
+            />
           </Box>
         ))}
-        <Display.LgBold>TEST</Display.LgBold>
       </Box>
     </ScrollView>
   )

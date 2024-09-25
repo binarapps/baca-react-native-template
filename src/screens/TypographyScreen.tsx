@@ -1,9 +1,36 @@
-import { useColorScheme } from '@baca/contexts'
-import { Column, Row, Box, Text, Display, DisplayVariant, TextVariant } from '@baca/design-system'
+import {
+  Box,
+  Text,
+  Display,
+  DisplayVariant,
+  TextVariant,
+  RenderComponentWithExample,
+  ScrollView,
+} from '@baca/design-system'
 import { useTranslation } from '@baca/hooks'
-import { ScrollView, Switch, Platform } from 'react-native'
 
-export const textVariants: TextVariant[] = [
+const generateTextVariantsToRender = <T extends string[]>(variants: T, component: React.FC) => {
+  const originalVariants = Object.keys(component).filter(
+    (key) => key !== '$$typeof' && key !== 'render'
+  )
+
+  // Step 1: Extract elements from array1 that are also in array2
+  const commonElements = variants.filter((element) => originalVariants.includes(element))
+
+  // Step 2: Extract elements from array2 that are not in array1
+  const remainingElements = originalVariants.filter((element) => !variants.includes(element))
+
+  // Step 3: Combine both parts to form the third array
+  const combinedArray = [...commonElements, ...remainingElements]
+
+  return combinedArray as T
+}
+
+export const textVariantsStrings: TextVariant[] = [
+  'XxlBold',
+  'XxlMedium',
+  'XxlRegular',
+  'XxlSemibold',
   'XlBold',
   'XlSemibold',
   'XlMedium',
@@ -26,7 +53,7 @@ export const textVariants: TextVariant[] = [
   'XsRegular',
 ] as const
 
-const displayTextVariants: DisplayVariant[] = [
+const displayTextVariantsStrings: DisplayVariant[] = [
   'XxlBold',
   'XxlSemibold',
   'XxlMedium',
@@ -52,56 +79,44 @@ const displayTextVariants: DisplayVariant[] = [
   'XsMedium',
   'XsRegular',
 ] as const
-const isWeb = Platform.OS === 'web'
+
+const textVariants = generateTextVariantsToRender(textVariantsStrings, Text)
+const displayTextVariants = generateTextVariantsToRender(displayTextVariantsStrings, Display)
 
 export const TypographyScreen = (): JSX.Element => {
   const { t } = useTranslation()
-  const { setColorSchemeSetting, colorScheme } = useColorScheme()
 
   return (
-    <ScrollView>
-      <Row>
-        <Column flex={1} alignItems="center" justifyContent="center">
-          <Row alignItems="center" flex={1}>
-            <Text>🌞</Text>
-            {/* 
-            Investigate the issue about using `useCallback` on `onChange`
-            https://github.com/adobe/react-spectrum/issues/2320
-          */}
-            <Box mx={4} my={8}>
-              <Switch
-                value={colorScheme === 'dark'}
-                {...(isWeb
-                  ? {
-                      onValueChange: () =>
-                        setColorSchemeSetting(colorScheme === 'dark' ? 'light' : 'dark'),
-                    }
-                  : {
-                      onChange: () =>
-                        setColorSchemeSetting(colorScheme === 'dark' ? 'light' : 'dark'),
-                    })}
-              />
-            </Box>
-            <Text>🌚</Text>
-          </Row>
-          <Text color="text.error.primary" variant="XlBold">
-            {t('typography_screen.display_font_size')}
-          </Text>
-          {displayTextVariants.map((variant) => (
-            <Display type="display" key={variant} p={8} variant={variant}>
-              Display - {variant}
-            </Display>
-          ))}
-          <Text color="text.error.primary" my={4} variant="XlBold">
-            {t('typography_screen.text_font_size')}
-          </Text>
-          {textVariants.map((variant) => (
-            <Text key={variant} p={8} variant={variant}>
-              Text - {variant}
-            </Text>
-          ))}
-        </Column>
-      </Row>
+    <ScrollView flexGrow={1} p={4}>
+      <Box gap={6}>
+        <Display.XxlBold color="text.error.primary" py={4}>
+          {t('typography_screen.display_font_size')}
+        </Display.XxlBold>
+        {displayTextVariants.map((variant) => (
+          <RenderComponentWithExample
+            key={variant}
+            Component={`Display.${variant}`}
+            propsToOmmit={['variant', 'type']}
+            ComponentWithProps={
+              <Display type="display" variant={variant}>
+                {'Display - ' + variant}
+              </Display>
+            }
+          />
+        ))}
+        <Display.XxlBold color="text.error.primary" py={4}>
+          {t('typography_screen.text_font_size')}
+        </Display.XxlBold>
+
+        {textVariants.map((variant) => (
+          <RenderComponentWithExample
+            key={variant}
+            Component={`Text.${variant}`}
+            propsToOmmit={['variant', 'type']}
+            ComponentWithProps={<Text variant={variant}>{'Text - ' + variant}</Text>}
+          />
+        ))}
+      </Box>
     </ScrollView>
   )
 }

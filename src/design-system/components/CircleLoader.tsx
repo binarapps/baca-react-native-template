@@ -1,3 +1,4 @@
+import { useTheme } from '@baca/hooks'
 import { useCircleLoader } from '@baca/hooks/loaders'
 import React from 'react'
 import Animated, {
@@ -102,9 +103,10 @@ const HalfCircle = ({
 export const CircleLoader = ({
   size = 32,
   thickness = 2,
-  color = 'black',
+  color,
 }: CircleLoaderType): JSX.Element => {
   const { animatedRotate, progress } = useCircleLoader()
+  const theme = useTheme()
 
   const fullCircleStyle = {
     width: size,
@@ -114,7 +116,7 @@ export const CircleLoader = ({
   } as const
 
   const circleStyleProps = {
-    color,
+    color: color || theme.colors.text.primary,
     size,
     thickness,
   }

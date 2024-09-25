@@ -7,3 +7,5 @@ import { generateStyledComponent } from '../utils/generateStyledComponent'
 export type BoxProps = StyledProps & ViewProps
 
 export const Box = memo(generateStyledComponent<BoxProps, View>(View))
+
+Box.displayName = 'Box'

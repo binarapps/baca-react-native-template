@@ -1,6 +1,7 @@
 import { Icon, Row, Text } from '@baca/design-system'
 import { IconNames } from '@baca/types'
-import { Platform, StyleSheet } from 'react-native'
+import { makeBigerOnHover } from '@baca/utils/webStyling'
+import { StyleSheet } from 'react-native'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
 import { useUniversalWidth } from '../hooks'
@@ -32,18 +33,7 @@ export function SideBarTabItem({
           p={2}
           gap={4}
           bg={hovered ? 'bg.tertiary' : undefined}
-          style={[
-            Platform.select({
-              web: {
-                transitionDuration: '200ms',
-                transitionProperty: ['background-color', 'box-shadow', 'transform'],
-                transitionTimingFunction: 'cubic-bezier(0.17, 0.17, 0, 1)',
-              },
-            }),
-            hovered && {
-              transform: [{ scale: 1.1 }],
-            },
-          ]}
+          style={makeBigerOnHover(hovered)}
         >
           <Icon color={getTabColor(focused)} name={focused ? iconFocused : icon} size={30} />
           {isLarge ? (
