@@ -1,0 +1,56 @@
+---
+id: setup-in-existing-project
+slug: /setup-in-existing-project
+title: Env variables - Setup in existing project
+sidebar_position: 3
+tags:
+  - Bootstrap
+  - Getting started
+  - Project structure
+  - Script
+  - Generators
+description: Env variables - Setup in existing project
+---
+
+import Details from '@site/src/components/Details'
+
+# Setup env variables in existing project 🌈
+
+## Place doppler tokens in configuration file
+
+1. Create empty file `scripts/doppler_variables.sh` and add this script to new created file.
+
+- run this command (this will copy template and place it in `scripts/doppler_variables.sh`)
+
+```bash
+yarn prepare:env_file
+```
+
+2. Add correct values to variables (ask one of the developers for that), example:
+
+```bash
+export DOPPLER_TOKEN_DEVELOPMENT=dp.st.alpha.XXXXxxxxXXXXxxxxXXXXxxxx
+```
+
+## Check if everything works correctly.
+
+In project dir terminal run:
+
+```bash
+yarn generate:env:(qa/staging/production)
+```
+
+Choose the proper app version depending on the environment for which you want to generate env file.
+
+<b>`.env`</b> file should be generated and consist of variables passed to Doppler, and some extra doppler
+variables as DOPPLER_CONFIG.
+
+CONGRATULATION !! 🥳🥳 You have configured the Doppler tool for your project!
+
+---
+
+Additionally you can start the expo server:
+
+```bash
+  yarn start
+```
