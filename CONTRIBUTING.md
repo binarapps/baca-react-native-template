@@ -37,7 +37,7 @@ We are using doppler to set environment variables, and because of that there cou
 
 1. Setup doppler variables
 
-- checkout this docs
+- checkout this [documentation](https://baca-docs.vercel.app/docs/setup-in-existing-project)
 
 2. Generate `.env` file
 
