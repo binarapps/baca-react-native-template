@@ -159,3 +159,48 @@ Replace this section witha a new UI lib instructions when this issue will be don
 ## Working with designer in your project
 
 -->
+
+## Deploy
+
+### First time
+
+When doing deploy for the first time please use this documentation prepared us
+
+- https://baca-docs.vercel.app/docs/deploy/intro
+
+### Next time
+
+When you will properly setup deployment for your project you should be able to just run one of this commands:
+
+1. QA
+
+   ```bash
+   # DEPLOY
+   yarn deploy:qa:ios
+   yarn build:qa:android
+
+   # UPDATE
+   yarn update:qa
+   ```
+
+2. Staging
+
+   ```bash
+   # DEPLOY
+   yarn deploy:staging:ios
+   yarn build:staging:android
+
+   # UPDATE
+   yarn update:staging
+   ```
+
+3. Production
+
+   ```bash
+   # DEPLOY
+   yarn deploy:production:ios
+   yarn build:production:android
+
+   # UPDATE
+   yarn update:production
+   ```
