@@ -1,24 +1,58 @@
-# Contributing
+# Contributing to BACA
 
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change.
+## Documentation
 
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+We include a `README.md` and `LICENSE` in the root of the folder. You should read all of them. The license is a standard MIT permissive license.
 
-## Pull Request Process
+## For contributors
 
-1. Ensure any install or build dependencies are removed before the end of the layer when making a
-   change.
-2. Update the README.md with details of changes to the interface, this includes new environment
-   variables, exposed ports, useful file locations and container parameters.
-3. Follow the steps in the Pull Request Template to provide the necessary information for the
-   reviewers to understand the changes.
-4. Once your pull request is approved by the reviewers, you may merge it. If you do not have permission to merge it, you may request the reviewer to merge it for you.
+We are using doppler to set environment variables, and because of that there could be two types of contributors:
 
-### Attribution
+1. External - doesn't work in binarapps
+2. Internal - work in binarapps
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at [http://contributor-covenant.org/version/1/4][version]
+### Contributing as external contributor
 
-[homepage]: http://contributor-covenant.org
-[version]: http://contributor-covenant.org/version/1/4/
+1. Create `.env` file in root folder
+2. Fill `.env` file like that:
+
+   ```.env
+   API_URL=https://api.baca.binar.app
+   ENVIRONMENT_NAME=qa
+   ```
+
+3. Install dependencies:
+
+   ```sh
+   yarn
+   ```
+
+4. Start development server
+
+   ```sh
+   yarn start
+   ```
+
+### Contributing as internal contributor
+
+1. Setup doppler variables
+
+- checkout this docs
+
+2. Generate `.env` file
+
+   ```sh
+   yarn generate:env:qa
+   ```
+
+3. Install dependencies:
+
+   ```sh
+   yarn
+   ```
+
+4. Start development server
+
+   ```sh
+   yarn start
+   ```
