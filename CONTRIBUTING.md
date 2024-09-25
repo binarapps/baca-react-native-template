@@ -56,3 +56,5 @@ We are using doppler to set environment variables, and because of that there cou
    ```sh
    yarn start
    ```
+
+<!-- TODO: Add informations about pull requests, merges and code review  -->
