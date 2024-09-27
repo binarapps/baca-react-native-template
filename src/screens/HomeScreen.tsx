@@ -1,7 +1,8 @@
-import { CompanyLogo } from '@baca/components'
-import { Button, Center, Text } from '@baca/design-system'
-import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
+
+import { CompanyLogo } from '@/components'
+import { Button, Center, Text } from '@/design-system'
+import { useCallback, useScreenOptions, useTranslation } from '@/hooks'
 
 export const HomeScreen = () => {
   const { t } = useTranslation()

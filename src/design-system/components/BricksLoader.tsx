@@ -1,6 +1,7 @@
-import { useBricksLoader } from '@baca/hooks/loaders'
 import React from 'react'
 import Animated from 'react-native-reanimated'
+
+import { useBricksLoader } from '@/hooks/loaders'
 
 export type BricksLoaderType = {
   color?: string

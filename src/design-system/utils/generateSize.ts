@@ -1,6 +1,7 @@
-import { SizingValue } from '@baca/design-system'
-import { scale, size } from '@baca/design-system/config'
 import { ViewStyle, DimensionValue, Animated } from 'react-native'
+
+import { SizingValue } from '@/design-system'
+import { scale, size } from '@/design-system/config'
 
 const isDimensionValue = (value?: DimensionValue) => {
   // Dimension accepts only `percentage` strings that can be converted to numbers

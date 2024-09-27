@@ -1,4 +1,3 @@
-import { Box, Button, Text } from '@baca/design-system'
 import { useCallback } from 'react'
 import {
   createNotifications,
@@ -6,6 +5,8 @@ import {
   useNotificationController,
 } from 'react-native-notificated'
 import { NotificationsType } from 'react-native-notificated/lib/typescript/types/config'
+
+import { Box, Button, Text } from '@/design-system'
 
 const notificationVariants: {
   [key in NotificationsType]: { bg: ColorNames; textColor: ColorNames }

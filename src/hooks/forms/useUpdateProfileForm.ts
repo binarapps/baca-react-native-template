@@ -1,10 +1,11 @@
-import { useAuthControllerUpdate, useAuthControllerMe } from '@baca/api/query/auth/auth'
-import { AuthUpdateDto } from '@baca/api/types'
-import { QueryKeys } from '@baca/enums'
-import { handleFormError, hapticImpact, showSuccessToast } from '@baca/utils'
 import { useMemo, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+
+import { useAuthControllerUpdate, useAuthControllerMe } from '@/api/query/auth/auth'
+import { AuthUpdateDto } from '@/api/types'
+import { QueryKeys } from '@/enums'
+import { handleFormError, hapticImpact, showSuccessToast } from '@/utils'
 
 export const useUpdateProfileForm = () => {
   const { data: userData } = useAuthControllerMe({ query: { queryKey: [QueryKeys.USER_DATA] } })

@@ -1,9 +1,10 @@
-import { useAuthControllerRegister } from '@baca/api/query/auth/auth'
-import { AuthRegisterLoginDto } from '@baca/api/types'
-import { handleFormError, hapticImpact, showSuccessToast } from '@baca/utils'
 import { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+
+import { useAuthControllerRegister } from '@/api/query/auth/auth'
+import { AuthRegisterLoginDto } from '@/api/types'
+import { handleFormError, hapticImpact, showSuccessToast } from '@/utils'
 
 type UseSignUpFormProps = {
   setIsSignUpButtonDisabled?: Dispatch<SetStateAction<boolean>>

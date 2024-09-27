@@ -1,5 +1,6 @@
-import { IconNames } from '@baca/types'
 import { useCallback, useState } from 'react'
+
+import { IconNames } from '@/types'
 
 export const useSecurePassword = (type?: 'text' | 'password') => {
   const isPasswordType = type === 'password'

@@ -1,8 +1,9 @@
-import { FontWeight, TextFontSize, TouchableProps, _appTheme } from '@baca/design-system'
-import { IconNames } from '@baca/types'
 import { DimensionValue, TextStyle, ViewStyle, TextInputProps } from 'react-native'
 
 import { BoxProps } from './Box'
+
+import { FontWeight, TextFontSize, TouchableProps, _appTheme } from '@/design-system'
+import { IconNames } from '@/types'
 
 // -----------------------
 // ---- DESIGN SYSTEM ----

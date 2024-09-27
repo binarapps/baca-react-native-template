@@ -4,9 +4,9 @@ import {
   ProfileEditImage,
   ProfileHeader,
   ProfilePasswordForm,
-} from '@baca/components'
-import { Box, ScrollView, Spacer } from '@baca/design-system'
-import { useTranslation, useScreenOptions } from '@baca/hooks'
+} from '@/components'
+import { Box, ScrollView, Spacer } from '@/design-system'
+import { useTranslation, useScreenOptions } from '@/hooks'
 
 export const ProfileScreen = () => {
   const { t } = useTranslation()

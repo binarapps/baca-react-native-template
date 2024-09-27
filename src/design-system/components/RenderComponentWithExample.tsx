@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Box } from '@baca/design-system/components/Box'
-import { Center } from '@baca/design-system/components/Center'
-import { Icon } from '@baca/design-system/components/Icon'
-import { Row } from '@baca/design-system/components/Row'
-import { Text } from '@baca/design-system/components/Text'
-import { Touchable } from '@baca/design-system/components/Touchables'
-import { useWeb } from '@baca/hooks'
-import { showSuccessToast } from '@baca/utils'
 import * as Clipboard from 'expo-clipboard'
+
+import { Box } from '@/design-system/components/Box'
+import { Center } from '@/design-system/components/Center'
+import { Icon } from '@/design-system/components/Icon'
+import { Row } from '@/design-system/components/Row'
+import { Text } from '@/design-system/components/Text'
+import { Touchable } from '@/design-system/components/Touchables'
+import { useWeb } from '@/hooks'
+import { showSuccessToast } from '@/utils'
 
 type RenderExampleProps = {
   Component: React.FC<any> | React.ForwardRefExoticComponent<any> | string

@@ -1,11 +1,12 @@
-import { Box, Button, Row } from '@baca/design-system'
-import { useCallback } from '@baca/hooks'
-import { useUpdatePasswordForm } from '@baca/hooks/forms'
-import { usePasswordValidation } from '@baca/hooks/usePasswordValidation'
 import { useTranslation } from 'react-i18next'
 import { Keyboard } from 'react-native'
 
 import { ProfileControlledInput } from './ProfileControlledInput'
+
+import { Box, Button, Row } from '@/design-system'
+import { useCallback } from '@/hooks'
+import { useUpdatePasswordForm } from '@/hooks/forms'
+import { usePasswordValidation } from '@/hooks/usePasswordValidation'
 
 export const ProfilePasswordForm = () => {
   const { t } = useTranslation()

@@ -1,18 +1,19 @@
-import { ASYNC_STORAGE_KEYS } from '@baca/constants'
-import {
-  NotificationContextProvider,
-  NotificationContextType,
-  ReceivedNotification,
-} from '@baca/contexts'
-import { useState, useMemo, useEffect, useAppStateActive } from '@baca/hooks'
-import { assignPushToken } from '@baca/services'
-import { store } from '@baca/store'
-import { isSignedInAtom } from '@baca/store/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Notifications from 'expo-notifications'
 import { useRootNavigationState, router } from 'expo-router'
 import { PropsWithChildren, FC, useCallback } from 'react'
 import { Alert, AlertButton } from 'react-native'
+
+import { ASYNC_STORAGE_KEYS } from '@/constants'
+import {
+  NotificationContextProvider,
+  NotificationContextType,
+  ReceivedNotification,
+} from '@/contexts'
+import { useState, useMemo, useEffect, useAppStateActive } from '@/hooks'
+import { assignPushToken } from '@/services'
+import { store } from '@/store'
+import { isSignedInAtom } from '@/store/auth'
 
 const deeplinkWhenNotificationReceived = async (
   notification: Notifications.Notification,

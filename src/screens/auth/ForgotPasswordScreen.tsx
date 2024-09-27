@@ -1,8 +1,9 @@
-import { CompanyLogo, ControlledField, FeaturedIcon, FormWrapper } from '@baca/components'
-import { REGEX } from '@baca/constants'
-import { Button, Center, Display, Spacer, Text } from '@baca/design-system'
-import { useForgotPasswordForm, useTranslation, useEffect } from '@baca/hooks'
 import { router, useLocalSearchParams } from 'expo-router'
+
+import { CompanyLogo, ControlledField, FeaturedIcon, FormWrapper } from '@/components'
+import { REGEX } from '@/constants'
+import { Button, Center, Display, Spacer, Text } from '@/design-system'
+import { useForgotPasswordForm, useTranslation, useEffect } from '@/hooks'
 
 export const ForgotPasswordScreen = () => {
   const { t } = useTranslation()

@@ -1,3 +1,3 @@
-import { SignInScreen } from '@baca/screens'
+import { SignInScreen } from '@/screens'
 
 export default SignInScreen

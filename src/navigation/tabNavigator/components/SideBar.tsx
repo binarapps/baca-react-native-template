@@ -1,6 +1,3 @@
-import { useSafeAreaInsets, useTheme, useTranslation } from '@baca/hooks'
-import { signOut } from '@baca/store/auth'
-import cssStyles from '@baca/styles'
 import { Platform, StyleSheet, View } from 'react-native'
 
 import { HeaderLogo } from './HeaderLogo'
@@ -8,6 +5,10 @@ import { SideBarTabItem } from './SideBarTabItem'
 import { useUniversalWidth } from '../hooks'
 import { upperSideTabs } from '../navigation-config'
 import { cns } from '../utils'
+
+import { useSafeAreaInsets, useTheme, useTranslation } from '@/hooks'
+import { signOut } from '@/store/auth'
+import cssStyles from '@/styles'
 
 const NAV_MEDIUM_WIDTH = 244
 

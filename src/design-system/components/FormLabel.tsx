@@ -1,10 +1,11 @@
-import { useTheme } from '@baca/hooks'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
 import { Text } from './Text'
 import { Touchable } from './Touchables'
 import { FormLabelProps } from './types'
+
+import { useTheme } from '@/hooks'
 
 export const FormLabel = ({
   label,

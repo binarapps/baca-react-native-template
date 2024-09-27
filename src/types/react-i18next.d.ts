@@ -1,5 +1,5 @@
 import 'react-i18next'
-import english from '@baca/i18n/translations/en.json'
+import english from '@/i18n/translations/en.json'
 
 type EN = typeof english
 

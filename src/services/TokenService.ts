@@ -1,9 +1,9 @@
-import { AuthControllerRefreshMutationResult } from '@baca/api/query/auth/auth'
-import { ASYNC_STORAGE_KEYS, ENV } from '@baca/constants'
-import { decodeAccessToken, secureStore, wait } from '@baca/utils'
-
 import { isRefreshingTokenAtom, logoutMessageShownAtom } from '../store/global'
 import { store } from '../store/store'
+
+import { AuthControllerRefreshMutationResult } from '@/api/query/auth/auth'
+import { ASYNC_STORAGE_KEYS, ENV } from '@/constants'
+import { decodeAccessToken, secureStore, wait } from '@/utils'
 
 const { USER_TOKEN } = ASYNC_STORAGE_KEYS
 

@@ -1,4 +1,3 @@
-import cssStyles from '@baca/styles'
 import { StyleSheet } from '@bacons/react-views'
 import React from 'react'
 import { Platform, View } from 'react-native'
@@ -7,6 +6,8 @@ import { AppHeader, BottomBar, SideBar } from './components'
 import { useUniversalWidth } from './hooks'
 import { TabbedNavigator } from './tab-slot'
 import { cns } from './utils'
+
+import cssStyles from '@/styles'
 
 export function ResponsiveNavigator() {
   const isRowLayout = useUniversalWidth(768)

@@ -1,6 +1,7 @@
-import { navigationRef } from '@baca/utils'
 import { NavigationContainerRefWithCurrent } from '@react-navigation/core'
 import { useCallback, useRef } from 'react'
+
+import { navigationRef } from '@/utils'
 
 type Callback = (currentRouteName: string) => Promise<void> | undefined
 

@@ -1,7 +1,8 @@
-import { CompanyLogo, FeaturedIcon, FormWrapper } from '@baca/components'
-import { Button, Center, Display, Spacer, Text } from '@baca/design-system'
-import { useTranslation } from '@baca/hooks'
 import { router } from 'expo-router'
+
+import { CompanyLogo, FeaturedIcon, FormWrapper } from '@/components'
+import { Button, Center, Display, Spacer, Text } from '@/design-system'
+import { useTranslation } from '@/hooks'
 
 const navigateToLogin = () => {
   router.replace('/sign-in')

@@ -1,8 +1,9 @@
-import { useAuthControllerForgotPassword } from '@baca/api/query/auth/auth'
-import { AuthForgotPasswordDto } from '@baca/api/types'
-import { handleFormError, hapticImpact } from '@baca/utils'
 import { router } from 'expo-router'
 import { useForm } from 'react-hook-form'
+
+import { useAuthControllerForgotPassword } from '@/api/query/auth/auth'
+import { AuthForgotPasswordDto } from '@/api/types'
+import { handleFormError, hapticImpact } from '@/utils'
 
 const defaultValues: AuthForgotPasswordDto = {
   email: '',

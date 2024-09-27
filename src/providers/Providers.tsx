@@ -1,9 +1,3 @@
-import { AppLoading } from '@baca/components'
-import { useAppStateActive } from '@baca/hooks'
-import { AuthLogic } from '@baca/logic/AuthLogic'
-import { queryClient } from '@baca/queryClient'
-import { store } from '@baca/store'
-import { checkForUpdates } from '@baca/utils'
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { PortalProvider } from '@gorhom/portal'
 import { QueryClientProvider } from '@tanstack/react-query'
@@ -16,6 +10,13 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { ColorSchemeProvider } from './ColorSchemeProvider'
 import { NotificationsProvider } from './NotificatedProvider'
 import { NotificationProvider as ExpoNotificationsProvider } from './NotificationProvider'
+
+import { AppLoading } from '@/components'
+import { useAppStateActive } from '@/hooks'
+import { AuthLogic } from '@/logic/AuthLogic'
+import { queryClient } from '@/queryClient'
+import { store } from '@/store'
+import { checkForUpdates } from '@/utils'
 
 export const Providers: FC<PropsWithChildren> = ({ children }) => {
   useAppStateActive(checkForUpdates, false)

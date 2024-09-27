@@ -1,12 +1,13 @@
-import { useAuthControllerLogin } from '@baca/api/query/auth/auth'
-import { AuthEmailLoginDto } from '@baca/api/types'
-import { isProduction } from '@baca/constants'
-import { assignPushToken, setToken } from '@baca/services'
-import { isSignedInAtom } from '@baca/store/auth'
-import { handleFormError, hapticImpact } from '@baca/utils'
 import { useSetAtom } from 'jotai'
 import { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
+
+import { useAuthControllerLogin } from '@/api/query/auth/auth'
+import { AuthEmailLoginDto } from '@/api/types'
+import { isProduction } from '@/constants'
+import { assignPushToken, setToken } from '@/services'
+import { isSignedInAtom } from '@/store/auth'
+import { handleFormError, hapticImpact } from '@/utils'
 
 type SignInFormValues = AuthEmailLoginDto & {
   confirm: boolean

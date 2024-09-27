@@ -1,5 +1,5 @@
-import { Box, Text } from '@baca/design-system'
-import { useTranslation } from '@baca/hooks'
+import { Box, Text } from '@/design-system'
+import { useTranslation } from '@/hooks'
 
 export const ProfileHeader = () => {
   const { t } = useTranslation()

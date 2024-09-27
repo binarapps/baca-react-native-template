@@ -1,3 +1,3 @@
-import { DetailsScreen } from '@baca/screens'
+import { DetailsScreen } from '@/screens'
 
 export default DetailsScreen

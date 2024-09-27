@@ -1,8 +1,9 @@
-import { REGEX } from '@baca/constants'
-import { Box, Icon, Row, Text } from '@baca/design-system'
-import { IconNames } from '@baca/types'
 import { useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { REGEX } from '@/constants'
+import { Box, Icon, Row, Text } from '@/design-system'
+import { IconNames } from '@/types'
 
 // make sure to add proper translations to path `form.validation.password_`
 const passwordSuggestionsList = ['min_8_chars', 'min_1_special_char'] as const

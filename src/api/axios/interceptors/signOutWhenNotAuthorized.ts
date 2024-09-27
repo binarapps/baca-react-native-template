@@ -1,14 +1,15 @@
+import { AxiosError } from 'axios'
+import { router } from 'expo-router'
+import i18n from 'i18next'
+
 import {
   isForceUpdateNeededAtom,
   isSignedInAtom,
   logoutMessageShownAtom,
   signOut,
   store,
-} from '@baca/store'
-import { alert } from '@baca/utils'
-import { AxiosError } from 'axios'
-import { router } from 'expo-router'
-import i18n from 'i18next'
+} from '@/store'
+import { alert } from '@/utils'
 
 export const signOutWhenNotAuthorized = async (error: AxiosError) => {
   const isSignedIn = store.get(isSignedInAtom)

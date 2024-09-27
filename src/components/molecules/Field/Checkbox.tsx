@@ -1,6 +1,6 @@
-import { CheckboxButton, Box, FormErrorMessage } from '@baca/design-system'
-
 import { FieldCheckboxProps } from './types'
+
+import { CheckboxButton, Box, FormErrorMessage } from '@/design-system'
 
 export const Checkbox = ({
   isRequired,

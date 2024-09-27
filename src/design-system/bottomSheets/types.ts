@@ -1,6 +1,7 @@
-import { IconNames } from '@baca/types'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { RefObject } from 'react'
+
+import { IconNames } from '@/types'
 
 export type BottomSheetIconConfigProps = {
   name: IconNames

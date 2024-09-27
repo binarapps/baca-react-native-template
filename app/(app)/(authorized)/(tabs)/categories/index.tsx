@@ -1,3 +1,3 @@
-import { CategoriesScreen } from '@baca/screens'
+import { CategoriesScreen } from '@/screens'
 
 export default CategoriesScreen

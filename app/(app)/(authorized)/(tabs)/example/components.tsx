@@ -1,3 +1,3 @@
-import { ComponentsScreen } from '@baca/screens'
+import { ComponentsScreen } from '@/screens'
 
 export default ComponentsScreen

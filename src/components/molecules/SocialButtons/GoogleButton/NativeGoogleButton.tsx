@@ -1,13 +1,14 @@
-import { useAuthGoogleControllerLogin } from '@baca/api/query/auth-social/auth-social'
-import { ENV, isExpoGo, isWeb } from '@baca/constants'
-import { useCallback, useEffect, useState } from '@baca/hooks'
-import { assignPushToken, setToken } from '@baca/services'
-import { isSignedInAtom, store } from '@baca/store'
-import { showErrorToast } from '@baca/utils'
 import { Dispatch, FC, SetStateAction } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { SocialButton } from '../SocialButton'
+
+import { useAuthGoogleControllerLogin } from '@/api/query/auth-social/auth-social'
+import { ENV, isExpoGo, isWeb } from '@/constants'
+import { useCallback, useEffect, useState } from '@/hooks'
+import { assignPushToken, setToken } from '@/services'
+import { isSignedInAtom, store } from '@/store'
+import { showErrorToast } from '@/utils'
 
 export type GoogleButtonProps = {
   isDisabled: boolean

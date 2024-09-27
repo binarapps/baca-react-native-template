@@ -1,7 +1,8 @@
-import { Box, CheckboxButton, FormErrorMessage, FormLabel } from '@baca/design-system/components'
 import { useMemo } from 'react'
 
 import { FieldCheckboxGroupProps } from './types'
+
+import { Box, CheckboxButton, FormErrorMessage, FormLabel } from '@/design-system/components'
 
 export const CheckboxGroup = <T extends string>({
   items,

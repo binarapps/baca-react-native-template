@@ -160,7 +160,7 @@ All the above properties are combined into a single type for ease of use. That m
 ## Example of use
 
 ```tsx
-import { Absolute } from '@baca/design-system'
+import { Absolute } from '@/design-system'
 
 const MyComponent: React.FC<React.PropsWithChildren> = ({ children }) => (
   <Absolute>{children}</Absolute>

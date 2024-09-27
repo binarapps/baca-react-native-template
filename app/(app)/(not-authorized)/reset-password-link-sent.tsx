@@ -1,2 +1,2 @@
-import { ResetPasswordLinkSentScreen } from '@baca/screens'
+import { ResetPasswordLinkSentScreen } from '@/screens'
 export default ResetPasswordLinkSentScreen

@@ -43,7 +43,7 @@ Get with hook
 
 ```tsx
 import { useAtomValue } from 'jotai'
-import { isSignedInAtom, userNameAtom } from '@baca/store/auth'
+import { isSignedInAtom, userNameAtom } from '@/store/auth'
 
 export const UserName = () => {
   // success-line
@@ -62,8 +62,8 @@ export const UserName = () => {
 Get outside of component
 
 ```tsx
-import { store } from '@baca/store'
-import { isSignedInAtom, userNameAtom } from '@baca/store/auth'
+import { store } from '@/store'
+import { isSignedInAtom, userNameAtom } from '@/store/auth'
 
 const getUserName = () => {
   // success-line
@@ -84,7 +84,7 @@ const getUserName = () => {
 Update with hook
 
 ```tsx
-import { isSignedInAtom } from '@baca/store/auth'
+import { isSignedInAtom } from '@/store/auth'
 
 const SignInButton = () => {
   // Optionbally you can use `useSetAtom()`
@@ -109,8 +109,8 @@ const SignInButton = () => {
 Update outside of component
 
 ```tsx
-import { store } from '@baca/store'
-import { isSignedInAtom } from '@baca/store/auth'
+import { store } from '@/store'
+import { isSignedInAtom } from '@/store/auth'
 
 const handleSignIn = () => {
   // Handle logic on backend

@@ -1,3 +1,3 @@
-import { HomeScreen } from '@baca/screens'
+import { HomeScreen } from '@/screens'
 
 export default HomeScreen

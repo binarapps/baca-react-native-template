@@ -1,11 +1,12 @@
+import { LegacyRef } from 'react'
+
 import {
   CheckboxProps,
   FormLabelProps,
   InputProps,
   SelectProps,
   TouchableRef,
-} from '@baca/design-system'
-import { LegacyRef } from 'react'
+} from '@/design-system'
 
 // -----------------------
 // -------- INPUT --------

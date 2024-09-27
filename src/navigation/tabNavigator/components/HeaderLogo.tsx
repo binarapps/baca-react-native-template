@@ -1,13 +1,14 @@
-import { CompanyLogo } from '@baca/components'
-import { useTheme } from '@baca/hooks'
-import cssStyles from '@baca/styles'
-import { makeBigerOnHover } from '@baca/utils/webStyling'
 import { Pressable } from '@bacons/react-views'
 import { Link } from 'expo-router'
 import { Platform, StyleSheet, View } from 'react-native'
 
 import { useUniversalWidth } from '../hooks'
 import { cns } from '../utils'
+
+import { CompanyLogo } from '@/components'
+import { useTheme } from '@/hooks'
+import cssStyles from '@/styles'
+import { makeBigerOnHover } from '@/utils/webStyling'
 
 export function HeaderLogo() {
   const { colors } = useTheme()

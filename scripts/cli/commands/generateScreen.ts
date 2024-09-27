@@ -80,7 +80,7 @@ const createRouteFile = (routeName: string, routePath: string) => {
   const screenName = `${routeName.charAt(0).toUpperCase() + routeName.slice(1)}Screen`
   fs.writeFileSync(
     `${routePath}/${routeName.toLowerCase()}.tsx`,
-    `import { ${screenName} } from '@baca/screens'
+    `import { ${screenName} } from '@/screens'
 
 export default ${screenName}
 `

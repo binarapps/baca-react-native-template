@@ -1,5 +1,7 @@
-import { SocialButton } from '@baca/components'
-import { RadioGroup } from '@baca/components/molecules/Field/RadioGroup'
+import * as Linking from 'expo-linking'
+
+import { SocialButton } from '@/components'
+import { RadioGroup } from '@/components/molecules/Field/RadioGroup'
 import {
   Loader,
   Box,
@@ -8,10 +10,9 @@ import {
   ScrollView,
   CheckboxButton,
   RenderComponentWithExample,
-} from '@baca/design-system'
-import { useBoolean, useCallback, useScreenOptions, useState, useTranslation } from '@baca/hooks'
-import { noop, showInformationToast } from '@baca/utils'
-import * as Linking from 'expo-linking'
+} from '@/design-system'
+import { useBoolean, useCallback, useScreenOptions, useState, useTranslation } from '@/hooks'
+import { noop, showInformationToast } from '@/utils'
 
 const loaderVariants = [
   {

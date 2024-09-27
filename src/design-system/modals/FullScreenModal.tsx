@@ -1,7 +1,8 @@
-import { Box } from '@baca/design-system/components/Box'
-import { useBoolean, useImperativeHandle } from '@baca/hooks'
 import { RefObject } from 'react'
 import { Modal, ModalProps } from 'react-native'
+
+import { Box } from '@/design-system/components/Box'
+import { useBoolean, useImperativeHandle } from '@/hooks'
 
 export type ModalMethods = {
   present: () => void

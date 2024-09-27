@@ -1,8 +1,9 @@
-import { useEffect } from '@baca/hooks'
-import { getToken } from '@baca/services'
-import { isSignedInAtom } from '@baca/store/auth'
 import { useSetAtom } from 'jotai'
 import { FC } from 'react'
+
+import { useEffect } from '@/hooks'
+import { getToken } from '@/services'
+import { isSignedInAtom } from '@/store/auth'
 
 export const AuthLogic: FC = () => {
   const setIsSignedIn = useSetAtom(isSignedInAtom)

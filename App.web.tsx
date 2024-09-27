@@ -6,8 +6,8 @@ import 'setimmediate'
 import 'react-native-reanimated'
 
 // Rest imports
-import '@baca/i18n'
-import { startMockedServer } from '@baca/services'
+import '@/i18n'
+import { startMockedServer } from '@/services'
 import 'expo-router/entry'
 
 const ENABLE_MOCKED_SERVER = false

@@ -1,14 +1,15 @@
+import React from 'react'
+
+import type { FieldSelectProps } from './types'
+
 import {
   Select as CustomSelect,
   Box,
   FormErrorMessage,
   FormLabel,
   SelectKey,
-} from '@baca/design-system/components'
-import { useMemo } from '@baca/hooks'
-import React from 'react'
-
-import type { FieldSelectProps } from './types'
+} from '@/design-system/components'
+import { useMemo } from '@/hooks'
 
 const layoutPropsKeys = [
   'm',

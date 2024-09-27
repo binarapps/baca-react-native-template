@@ -1,3 +1,3 @@
-import { ConfirmEmail } from '@baca/screens'
+import { ConfirmEmail } from '@/screens'
 
 export default ConfirmEmail

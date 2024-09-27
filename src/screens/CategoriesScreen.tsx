@@ -1,6 +1,6 @@
-import { CompanyLogo } from '@baca/components'
-import { Center, Text } from '@baca/design-system'
-import { useScreenOptions } from '@baca/hooks'
+import { CompanyLogo } from '@/components'
+import { Center, Text } from '@/design-system'
+import { useScreenOptions } from '@/hooks'
 
 export const CategoriesScreen = () => {
   useScreenOptions({

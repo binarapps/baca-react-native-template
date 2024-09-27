@@ -1,3 +1,3 @@
-import { ProfileScreen } from '@baca/screens'
+import { ProfileScreen } from '@/screens'
 
 export default ProfileScreen

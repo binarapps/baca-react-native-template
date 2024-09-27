@@ -1,9 +1,10 @@
-import { ControlledField, KeyboardAwareScrollView, TextArea } from '@baca/components'
-import { Button, Spacer, Text } from '@baca/design-system'
-import { useMemo, useScreenOptions, useTestForm, useTranslation } from '@baca/hooks'
 import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
+import { ControlledField, KeyboardAwareScrollView, TextArea } from '@/components'
+import { Button, Spacer, Text } from '@/design-system'
+import { useMemo, useScreenOptions, useTestForm, useTranslation } from '@/hooks'
 
 const mapItem = (item: string) => ({
   value: item,

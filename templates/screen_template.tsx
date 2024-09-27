@@ -1,5 +1,5 @@
-import { Center, Text } from '@baca/design-system'
-import { useTranslation } from '@baca/hooks'
+import { Center, Text } from '@/design-system'
+import { useTranslation } from '@/hooks'
 
 export const _NAME_ = (): JSX.Element => {
   const { t } = useTranslation()

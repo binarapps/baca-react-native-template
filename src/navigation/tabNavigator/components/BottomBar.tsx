@@ -1,12 +1,13 @@
-import { Column, Icon, Text } from '@baca/design-system'
-import { useTheme, useTranslation } from '@baca/hooks'
-import cssStyles from '@baca/styles'
 import { Platform, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
 import { bottomTabs, getTabColor } from '../navigation-config'
 import { cns } from '../utils'
+
+import { Column, Icon, Text } from '@/design-system'
+import { useTheme, useTranslation } from '@/hooks'
+import cssStyles from '@/styles'
 
 export function BottomBar({ visible }: { visible: boolean }) {
   const { colors } = useTheme()

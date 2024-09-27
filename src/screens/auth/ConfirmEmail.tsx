@@ -1,9 +1,10 @@
-import { useAuthControllerConfirmEmail } from '@baca/api/query/auth/auth'
-import { Button, Center, Loader, Spacer, Text } from '@baca/design-system'
-import { useTranslation } from '@baca/hooks'
-import { isSignedInAtom, signOut } from '@baca/store/auth'
 import { router, useLocalSearchParams } from 'expo-router'
 import { useEffect } from 'react'
+
+import { useAuthControllerConfirmEmail } from '@/api/query/auth/auth'
+import { Button, Center, Loader, Spacer, Text } from '@/design-system'
+import { useTranslation } from '@/hooks'
+import { isSignedInAtom, signOut } from '@/store/auth'
 
 const navigateToSignIn = () => router.replace('/sign-in')
 

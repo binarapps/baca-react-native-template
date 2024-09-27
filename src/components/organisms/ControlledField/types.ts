@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  FieldCheckboxGroupProps,
-  FieldInputProps,
-  RadioGroupProps,
-  FieldSelectProps,
-  FieldCheckboxProps,
-} from '@baca/components/molecules'
-import {
   Control,
   ControllerRenderProps,
   FieldErrors,
@@ -14,6 +7,14 @@ import {
   Path,
   RegisterOptions,
 } from 'react-hook-form'
+
+import {
+  FieldCheckboxGroupProps,
+  FieldInputProps,
+  RadioGroupProps,
+  FieldSelectProps,
+  FieldCheckboxProps,
+} from '@/components/molecules'
 
 // -----------------------
 // -------- INPUT --------

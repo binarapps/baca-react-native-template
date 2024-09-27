@@ -1,8 +1,9 @@
-import { darkBinarLogo, darkLogoSygnet, lightBinarLogo, lightLogoSygnet } from '@baca/constants'
-import { ColorSchemeName, useColorScheme } from '@baca/contexts'
 import { Image, ImageStyle, ImageProps } from 'expo-image'
 import { Link } from 'expo-router'
 import { Platform, StyleSheet } from 'react-native'
+
+import { darkBinarLogo, darkLogoSygnet, lightBinarLogo, lightLogoSygnet } from '@/constants'
+import { ColorSchemeName, useColorScheme } from '@/contexts'
 
 type LogoTypes = 'binarSygnet' | 'binar'
 

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { useTheme, useCallback } from '@baca/hooks'
 import { forwardRef, useImperativeHandle, useRef } from 'react'
 import {
   GestureResponderEvent,
@@ -14,6 +13,8 @@ import { useHover } from './useHover'
 import { useIsPressed } from './useIsPressed'
 import { generateStyledSystem } from '../../utils'
 import { StyledProps } from '../types'
+
+import { useTheme, useCallback } from '@/hooks'
 
 export type TouchableRef = {
   isHovered: boolean

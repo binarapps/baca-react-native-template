@@ -1,9 +1,10 @@
-import { googleIcon } from '@baca/constants'
-import { useColorScheme } from '@baca/contexts'
-import { Button, ButtonProps, Icon } from '@baca/design-system'
-import i18n from '@baca/i18n'
 import { Image, ImageStyle, ImageSource } from 'expo-image'
 import { FC, useCallback } from 'react'
+
+import { googleIcon } from '@/constants'
+import { useColorScheme } from '@/contexts'
+import { Button, ButtonProps, Icon } from '@/design-system'
+import i18n from '@/i18n'
 
 type SocialMediaType = 'apple' | 'facebook' | 'google'
 

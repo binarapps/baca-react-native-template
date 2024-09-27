@@ -6,8 +6,8 @@ import {
   Display,
   CheckboxButton,
   Spacer,
-} from '@baca/design-system'
-import { useBoolean, useScreenOptions, useTheme, useTranslation } from '@baca/hooks'
+} from '@/design-system'
+import { useBoolean, useScreenOptions, useTheme, useTranslation } from '@/hooks'
 
 const RecursiveColorList = ({
   data,

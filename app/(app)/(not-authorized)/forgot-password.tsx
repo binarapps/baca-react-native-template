@@ -1,3 +1,3 @@
-import { ForgotPasswordScreen } from '@baca/screens'
+import { ForgotPasswordScreen } from '@/screens'
 
 export default ForgotPasswordScreen

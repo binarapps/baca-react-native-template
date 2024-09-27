@@ -1,8 +1,9 @@
-import { useAuthControllerUpdate } from '@baca/api/query/auth/auth'
-import { AuthUpdateDto } from '@baca/api/types'
-import { handleFormError, hapticImpact, showSuccessToast } from '@baca/utils'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+
+import { useAuthControllerUpdate } from '@/api/query/auth/auth'
+import { AuthUpdateDto } from '@/api/types'
+import { handleFormError, hapticImpact, showSuccessToast } from '@/utils'
 
 const defaultValues: AuthUpdateDto = {
   oldPassword: '',

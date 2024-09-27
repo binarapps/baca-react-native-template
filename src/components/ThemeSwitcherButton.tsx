@@ -1,9 +1,10 @@
-import { useColorScheme } from '@baca/contexts'
-import { Icon } from '@baca/design-system'
-import { useTheme } from '@baca/hooks'
 import { MotiPressable } from 'moti/interactions'
 import { useCallback } from 'react'
 import { StyleSheet } from 'react-native'
+
+import { useColorScheme } from '@/contexts'
+import { Icon } from '@/design-system'
+import { useTheme } from '@/hooks'
 
 export const ThemeSwitcherButton = () => {
   const { setColorSchemeSetting, colorSchemeSetting } = useColorScheme()

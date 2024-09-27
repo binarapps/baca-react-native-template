@@ -1,5 +1,6 @@
-import { useColorScheme } from '@baca/contexts'
 import { StatusBar as ExpoStatusBar, StatusBarProps } from 'expo-status-bar'
+
+import { useColorScheme } from '@/contexts'
 
 export const StatusBar = (props: StatusBarProps): JSX.Element => {
   const { colorScheme } = useColorScheme()

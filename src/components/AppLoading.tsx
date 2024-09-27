@@ -1,10 +1,11 @@
-import { Loader, Center, Box } from '@baca/design-system/components'
-import { useCachedResources } from '@baca/hooks'
-import { useCheckForAppUpdate } from '@baca/hooks/useCheckForAppUpdate'
-import { isSignedInAtom } from '@baca/store/auth'
 import * as SplashScreen from 'expo-splash-screen'
 import { useAtomValue } from 'jotai'
 import { FC, PropsWithChildren, useCallback, useEffect, useState } from 'react'
+
+import { Loader, Center, Box } from '@/design-system/components'
+import { useCachedResources } from '@/hooks'
+import { useCheckForAppUpdate } from '@/hooks/useCheckForAppUpdate'
+import { isSignedInAtom } from '@/store/auth'
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync()

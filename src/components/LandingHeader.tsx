@@ -1,15 +1,16 @@
-import { lightBinarLogo, darkBinarLogo } from '@baca/constants'
-import { useColorScheme } from '@baca/contexts'
-import { Box, Button, Icon, Pressable, Row, Spacer, Touchable } from '@baca/design-system'
-import { useFullScreenModal } from '@baca/design-system/modals/useFullScreenModal'
-import { useCallback, useMemo, useTheme, useTranslation } from '@baca/hooks'
-import { useUniversalWidth } from '@baca/navigation/tabNavigator/hooks'
-import { isSignedInAtom } from '@baca/store/auth'
 import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
 import { useAtomValue } from 'jotai'
 import { StyleSheet, Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
+import { lightBinarLogo, darkBinarLogo } from '@/constants'
+import { useColorScheme } from '@/contexts'
+import { Box, Button, Icon, Pressable, Row, Spacer, Touchable } from '@/design-system'
+import { useFullScreenModal } from '@/design-system/modals/useFullScreenModal'
+import { useCallback, useMemo, useTheme, useTranslation } from '@/hooks'
+import { useUniversalWidth } from '@/navigation/tabNavigator/hooks'
+import { isSignedInAtom } from '@/store/auth'
 
 export function LandingHeader() {
   const { colorScheme } = useColorScheme()

@@ -1,9 +1,10 @@
-import { Box, Button, Text } from '@baca/design-system'
-import { usePreventGoBack, useSafeAreaInsets, useScreenOptions, useTranslation } from '@baca/hooks'
 // TODO: there are tons of more interesting methods there!
 import * as Application from 'expo-application'
 import { useRouter } from 'expo-router'
 import { ScrollView, StyleSheet } from 'react-native'
+
+import { Box, Button, Text } from '@/design-system'
+import { usePreventGoBack, useSafeAreaInsets, useScreenOptions, useTranslation } from '@/hooks'
 
 export const ApplicationInfoScreen = (): JSX.Element => {
   const { i18n, t } = useTranslation()

@@ -22,7 +22,7 @@ This guide provides a step-by-step approach to creating forms in the app using o
 - **Form Management**: We use `react-hook-form` for handling form state, validation, and submission.
 - **Custom Hooks**: The `useSignInForm` hook encapsulates form logic, including submission and error handling.
 - **Controlled Components**: Our `ControlledField` components are connected to the form control for seamless integration.
-- **Design System Components**: Utilize components from `@baca/design-system` and `@baca/components` for consistent styling.
+- **Design System Components**: Utilize components from `@/design-system` and `@/components` for consistent styling.
 
 ## Steps to Create a Form
 
@@ -80,7 +80,7 @@ export const useCustomForm = () => {
 In your screen or component file, use the custom hook and design system components to build the form UI.
 
 ```tsx
-import { ControlledField, Button, Spacer } from '@baca/design-system'
+import { ControlledField, Button, Spacer } from '@/design-system'
 import { useCustomForm } from './useCustomForm'
 
 export const SignInForm = () => {
@@ -199,7 +199,7 @@ Ensure that all form elements use components from our design system for consiste
 Here's an example of a complete form implementation:
 
 ```tsx
-import { ControlledField, Button, Spacer, Box } from '@baca/design-system'
+import { ControlledField, Button, Spacer, Box } from '@/design-system'
 import { useCustomForm } from './useCustomForm'
 
 export const ExampleForm = () => {

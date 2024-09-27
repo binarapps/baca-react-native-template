@@ -1,7 +1,7 @@
-import { theme } from '@baca/design-system'
-import { cleanup, render, fireEvent, act } from '@baca/utils/testUtils'
-
 import { Button } from './Button'
+
+import { theme } from '@/design-system'
+import { cleanup, render, fireEvent, act } from '@/utils/testUtils'
 
 const baseStyles = {
   alignItems: 'center',

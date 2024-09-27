@@ -1,5 +1,5 @@
-import { colorSchemesList } from '@baca/constants'
-import createGenericContext from '@baca/utils/createGenericContext'
+import { colorSchemesList } from '@/constants'
+import createGenericContext from '@/utils/createGenericContext'
 
 export type SettingColorSchemeName = (typeof colorSchemesList)[number]
 export type ColorSchemeName = Exclude<SettingColorSchemeName, 'system'>

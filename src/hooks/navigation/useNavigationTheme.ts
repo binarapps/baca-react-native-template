@@ -1,8 +1,9 @@
-import { useColorScheme } from '@baca/contexts'
-import { darkNavigationTheme, lightNavigationTheme } from '@baca/design-system/config'
 import { useMemo } from 'react'
 
 import { useTheme } from '../useTheme'
+
+import { useColorScheme } from '@/contexts'
+import { darkNavigationTheme, lightNavigationTheme } from '@/design-system/config'
 
 export const useNavigationTheme = () => {
   const { colorScheme } = useColorScheme()

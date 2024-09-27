@@ -1,12 +1,13 @@
-import { StatusBar } from '@baca/components'
-import { AbsoluteFullFill, Loader } from '@baca/design-system'
-import { useNavigationTheme } from '@baca/hooks'
-import { Providers } from '@baca/providers'
-import { registerForPushNotificationsAsync } from '@baca/services'
-import { isSignedInAtom } from '@baca/store/auth'
 import { ThemeProvider } from '@react-navigation/native'
 import { Slot } from 'expo-router'
 import { useAtomValue } from 'jotai'
+
+import { StatusBar } from '@/components'
+import { AbsoluteFullFill, Loader } from '@/design-system'
+import { useNavigationTheme } from '@/hooks'
+import { Providers } from '@/providers'
+import { registerForPushNotificationsAsync } from '@/services'
+import { isSignedInAtom } from '@/store/auth'
 
 import '../App'
 

@@ -1,7 +1,8 @@
-import createGenericContext from '@baca/utils/createGenericContext'
 import { PermissionStatus } from 'expo-modules-core'
 import * as Notifications from 'expo-notifications'
 import { Dispatch, SetStateAction } from 'react'
+
+import createGenericContext from '@/utils/createGenericContext'
 
 export type ReceivedNotification =
   | (Notifications.Notification & { context: { [key: string]: string } })

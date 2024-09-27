@@ -4,8 +4,8 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@baca/*": ["src/*"],
-      "@baca/assets": ["assets"]
+      "@/*": ["src/*"],
+      "@/assets": ["assets"]
     },
     "allowSyntheticDefaultImports": true,
     // sets types for project using src/types folder

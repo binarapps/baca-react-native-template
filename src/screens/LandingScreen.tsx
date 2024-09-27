@@ -1,11 +1,12 @@
-import { KeyboardAwareScrollView, LandingHeader } from '@baca/components'
-import { BACA_DOCS_URL } from '@baca/constants'
-import { Button, Center, Text, Box } from '@baca/design-system'
-import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
-import { draftImages } from '@baca/screens'
 import { useRouter } from 'expo-router'
 import { useState, useEffect, useMemo } from 'react'
 import { ImageSourcePropType, Linking, Image, Dimensions, StyleSheet } from 'react-native'
+
+import { KeyboardAwareScrollView, LandingHeader } from '@/components'
+import { BACA_DOCS_URL } from '@/constants'
+import { Button, Center, Text, Box } from '@/design-system'
+import { useCallback, useScreenOptions, useTranslation } from '@/hooks'
+import { draftImages } from '@/screens'
 
 export const LandingScreen = () => {
   const { t } = useTranslation()

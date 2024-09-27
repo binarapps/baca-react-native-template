@@ -1,12 +1,13 @@
 // custom-instance.ts
 
-import { ENV, SECOND_IN_MS } from '@baca/constants'
-import { getApiError, showErrorToast } from '@baca/utils'
 import Axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import i18n from 'i18next'
 import qs from 'qs'
 
 import { injectTokenToRequest, signOutWhenNotAuthorized } from './interceptors'
+
+import { ENV, SECOND_IN_MS } from '@/constants'
+import { getApiError, showErrorToast } from '@/utils'
 
 type ApiErrorType = {
   error: string

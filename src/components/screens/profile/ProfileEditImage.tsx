@@ -1,9 +1,10 @@
-import { Box, Text, Button, Row, themeColors } from '@baca/design-system'
 import { Image } from 'expo-image'
 import * as ImagePicker from 'expo-image-picker'
 import { t } from 'i18next'
 import { useState, useCallback } from 'react'
 import { StyleSheet } from 'react-native'
+
+import { Box, Text, Button, Row, themeColors } from '@/design-system'
 
 export const ProfileEditImage: React.FC = () => {
   const [image, setImage] = useState<string | null>(null)

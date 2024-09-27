@@ -1,5 +1,5 @@
-import { useScreenOptions } from '@baca/hooks'
-import { ResponsiveNavigator } from '@baca/navigation/tabNavigator/navigator'
+import { useScreenOptions } from '@/hooks'
+import { ResponsiveNavigator } from '@/navigation/tabNavigator/navigator'
 
 export const unstable_settings = {
   initialRouteName: 'home',

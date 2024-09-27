@@ -1,11 +1,12 @@
-import { HelperRenderJson, HelperSection } from '@baca/components'
-import { ENV, isExpoGo } from '@baca/constants'
-import { useNotificationContext } from '@baca/contexts'
-import { Text, Button, ScrollView } from '@baca/design-system'
-import { useCallback, useEffect, useState, useTranslation } from '@baca/hooks'
-import { wait } from '@baca/utils'
 import * as Clipboard from 'expo-clipboard'
 import * as Notifications from 'expo-notifications'
+
+import { HelperRenderJson, HelperSection } from '@/components'
+import { ENV, isExpoGo } from '@/constants'
+import { useNotificationContext } from '@/contexts'
+import { Text, Button, ScrollView } from '@/design-system'
+import { useCallback, useEffect, useState, useTranslation } from '@/hooks'
+import { wait } from '@/utils'
 
 export const PushNotificationsHelpersScreen = (): JSX.Element => {
   const { t } = useTranslation()

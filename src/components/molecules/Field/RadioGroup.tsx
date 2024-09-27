@@ -1,7 +1,8 @@
-import { FormErrorMessage, FormLabel, Box, RadioButton } from '@baca/design-system/components'
 import { useMemo } from 'react'
 
 import { RadioGroupProps } from './types'
+
+import { FormErrorMessage, FormLabel, Box, RadioButton } from '@/design-system/components'
 
 export const RadioGroup = <T extends string>({
   selectedItem,

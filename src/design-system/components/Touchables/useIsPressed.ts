@@ -1,4 +1,4 @@
-import { useState } from '@baca/hooks'
+import { useState } from '@/hooks'
 
 export const useIsPressed = () => {
   const [isPressed, setIsPressed] = useState(false)

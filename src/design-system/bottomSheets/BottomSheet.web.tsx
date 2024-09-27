@@ -1,11 +1,12 @@
-import { Modal } from '@baca/components/Modal'
-import { useBoolean } from '@baca/hooks'
 import { useCallback, useImperativeHandle } from 'react'
 import { ScrollView } from 'react-native'
 
 import { BottomSheetHeader } from './BottomSheetHeader'
 import { BottomSheetProps } from './types'
 import { Box } from '../components/Box'
+
+import { Modal } from '@/components/Modal'
+import { useBoolean } from '@/hooks'
 
 export const BottomSheetScrollView = ScrollView
 export const BottomSheet = ({

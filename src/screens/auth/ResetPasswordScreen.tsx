@@ -1,8 +1,9 @@
-import { CompanyLogo, ControlledField, FeaturedIcon, FormWrapper } from '@baca/components'
-import { Button, Center, Display, Spacer, Text } from '@baca/design-system'
-import { useEffect, useResetPasswordForm, useTranslation } from '@baca/hooks'
-import { usePasswordValidation } from '@baca/hooks/usePasswordValidation'
 import { router, useLocalSearchParams } from 'expo-router'
+
+import { CompanyLogo, ControlledField, FeaturedIcon, FormWrapper } from '@/components'
+import { Button, Center, Display, Spacer, Text } from '@/design-system'
+import { useEffect, useResetPasswordForm, useTranslation } from '@/hooks'
+import { usePasswordValidation } from '@/hooks/usePasswordValidation'
 
 const navigateToLogin = () => {
   router.replace('/sign-in')

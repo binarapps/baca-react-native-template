@@ -1,11 +1,11 @@
-import { Field, Version } from '@baca/components'
-import { colorSchemesList } from '@baca/constants'
-import { useColorScheme } from '@baca/contexts'
-import { Spacer, Button, ScrollView, Box } from '@baca/design-system'
-import { useCallback, useScreenOptions, useTranslation } from '@baca/hooks'
-import languages from '@baca/i18n/languages.json'
-import { signOut } from '@baca/store/auth'
-import { noop } from '@baca/utils'
+import { Field, Version } from '@/components'
+import { colorSchemesList } from '@/constants'
+import { useColorScheme } from '@/contexts'
+import { Spacer, Button, ScrollView, Box } from '@/design-system'
+import { useCallback, useScreenOptions, useTranslation } from '@/hooks'
+import languages from '@/i18n/languages.json'
+import { signOut } from '@/store/auth'
+import { noop } from '@/utils'
 
 export const LanguageSettings = (): JSX.Element => {
   const { i18n } = useTranslation()

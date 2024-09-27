@@ -1,4 +1,4 @@
-import { Box, Spacer, Text } from '@baca/design-system'
+import { Box, Spacer, Text } from '@/design-system'
 
 export const HelperSection = ({
   header = '',

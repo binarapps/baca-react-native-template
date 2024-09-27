@@ -1,10 +1,11 @@
-import { useArticlesControllerFindAll } from '@baca/api/query/articles/articles'
-import { ArticleEntity } from '@baca/api/types'
-import { Loader, Center, Text, Box, Spacer } from '@baca/design-system'
-import { useScreenOptions, useTranslation, useWindowDimensions } from '@baca/hooks'
 import { FlashList } from '@shopify/flash-list'
 import { useCallback } from 'react'
 import { Platform } from 'react-native'
+
+import { useArticlesControllerFindAll } from '@/api/query/articles/articles'
+import { ArticleEntity } from '@/api/types'
+import { Loader, Center, Text, Box, Spacer } from '@/design-system'
+import { useScreenOptions, useTranslation, useWindowDimensions } from '@/hooks'
 
 export const DataFromBeScreen_EXAMPLE = () => {
   const { t } = useTranslation()

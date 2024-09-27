@@ -1,4 +1,4 @@
-import { useState } from '@baca/hooks'
+import { useState } from '@/hooks'
 
 export const useHover = () => {
   const [isHovered, setHovered] = useState(false)

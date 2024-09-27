@@ -1,9 +1,10 @@
-import { useSystemControllerCheckForAppUpdate } from '@baca/api/query/system/system'
-import { APP_STORE_URL, PLAY_STORE_URL } from '@baca/constants/links'
-import { useTranslation } from '@baca/hooks'
 import * as Application from 'expo-application'
 import { useEffect, useState } from 'react'
 import { Platform, Alert, Linking } from 'react-native'
+
+import { useSystemControllerCheckForAppUpdate } from '@/api/query/system/system'
+import { APP_STORE_URL, PLAY_STORE_URL } from '@/constants/links'
+import { useTranslation } from '@/hooks'
 
 // FIXME: Remove '100.100.100' when you'll build real app
 // For now backend is using youtube app to check for updates

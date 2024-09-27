@@ -1,10 +1,11 @@
-import { useAuthAppleControllerLogin } from '@baca/api/query/auth-social/auth-social'
-import { assignPushToken, setToken } from '@baca/services'
-import { isSignedInAtom, store } from '@baca/store'
 import * as ExpoAppleAuthentication from 'expo-apple-authentication'
 import { Dispatch, FC, SetStateAction, useCallback, useEffect, useState } from 'react'
 
 import { SocialButton } from '../SocialButton'
+
+import { useAuthAppleControllerLogin } from '@/api/query/auth-social/auth-social'
+import { assignPushToken, setToken } from '@/services'
+import { isSignedInAtom, store } from '@/store'
 
 type AppleButtonProps = {
   isDisabled: boolean

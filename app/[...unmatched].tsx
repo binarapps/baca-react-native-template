@@ -1,3 +1,3 @@
-import { NotFoundScreen } from '@baca/screens'
+import { NotFoundScreen } from '@/screens'
 
 export default NotFoundScreen

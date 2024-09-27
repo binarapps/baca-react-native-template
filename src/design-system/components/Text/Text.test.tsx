@@ -1,7 +1,7 @@
-import { theme } from '@baca/design-system'
-import { cleanup, render } from '@baca/utils/testUtils'
-
 import { Display, Text } from './Text'
+
+import { theme } from '@/design-system'
+import { cleanup, render } from '@/utils/testUtils'
 
 afterEach(cleanup)
 

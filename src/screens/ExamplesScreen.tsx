@@ -1,6 +1,7 @@
-import { Button, Display, ScrollView } from '@baca/design-system'
-import { useCallback, useTranslation, useScreenOptions } from '@baca/hooks'
 import { useRouter } from 'expo-router'
+
+import { Button, Display, ScrollView } from '@/design-system'
+import { useCallback, useTranslation, useScreenOptions } from '@/hooks'
 
 export const ExamplesScreen = () => {
   const { push } = useRouter()

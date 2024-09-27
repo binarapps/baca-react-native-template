@@ -1,8 +1,9 @@
-import { useAuthControllerResetPassword } from '@baca/api/query/auth/auth'
-import { AuthResetPasswordDto } from '@baca/api/types'
-import { handleFormError, hapticImpact } from '@baca/utils'
 import { router } from 'expo-router'
 import { useForm } from 'react-hook-form'
+
+import { useAuthControllerResetPassword } from '@/api/query/auth/auth'
+import { AuthResetPasswordDto } from '@/api/types'
+import { handleFormError, hapticImpact } from '@/utils'
 
 type FormValuesType = AuthResetPasswordDto & { confirmPassword: string }
 

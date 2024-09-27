@@ -1,8 +1,9 @@
-import { useCallback } from '@baca/hooks'
 import { Controller, ControllerProps, get } from 'react-hook-form'
 
 import type { ControlledCheckboxGroupProps } from './types'
 import { Field } from '../../molecules'
+
+import { useCallback } from '@/hooks'
 
 export const CheckboxGroup = <T extends string>({
   name,

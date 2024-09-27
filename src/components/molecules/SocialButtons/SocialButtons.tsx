@@ -1,8 +1,9 @@
-import { Box } from '@baca/design-system'
 import { Dispatch, FC, SetStateAction } from 'react'
 
 import { AppleButton } from './AppleButton'
 import { GoogleButton } from './GoogleButton'
+
+import { Box } from '@/design-system'
 
 type SocialButtonsProps = {
   isDisabled: boolean

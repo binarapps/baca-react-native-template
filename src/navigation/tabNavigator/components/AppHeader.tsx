@@ -1,10 +1,11 @@
-import { CompanyLogo } from '@baca/components'
-import { ThemeSwitcherButton } from '@baca/components/ThemeSwitcherButton'
-import { isWeb } from '@baca/constants'
-import { Box } from '@baca/design-system'
-import { useTheme } from '@baca/hooks'
 import { StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
+import { CompanyLogo } from '@/components'
+import { ThemeSwitcherButton } from '@/components/ThemeSwitcherButton'
+import { isWeb } from '@/constants'
+import { Box } from '@/design-system'
+import { useTheme } from '@/hooks'
 
 export function AppHeader() {
   const { colors } = useTheme()

@@ -1,5 +1,5 @@
-import { Center, Text } from '@baca/design-system'
-import { useScreenOptions, useTranslation } from '@baca/hooks'
+import { Center, Text } from '@/design-system'
+import { useScreenOptions, useTranslation } from '@/hooks'
 
 export const NotFoundScreen = (): JSX.Element => {
   const { t } = useTranslation()

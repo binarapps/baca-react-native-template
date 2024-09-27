@@ -1,5 +1,3 @@
-import { useTheme } from '@baca/hooks'
-import { getColorValue, convertEmToNumber } from '@baca/utils'
 import { useMemo, memo, forwardRef, PropsWithoutRef, RefAttributes } from 'react'
 import { TextProps as BaseTextProps, Text as BaseText, TextStyle } from 'react-native'
 
@@ -15,6 +13,9 @@ import {
 } from '../../config'
 import { generateStyledComponent, generateStyleSheet } from '../../utils'
 import { StyledProps } from '../types'
+
+import { useTheme } from '@/hooks'
+import { getColorValue, convertEmToNumber } from '@/utils'
 
 type ConditionalTextProps =
   | {

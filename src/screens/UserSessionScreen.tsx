@@ -1,11 +1,12 @@
-import { useAuthControllerMe } from '@baca/api/query/auth/auth'
-import { HelperRenderJson, HelperSection } from '@baca/components'
-import { Button, ScrollView, Text } from '@baca/design-system'
-import { Token, getToken } from '@baca/services'
-import { isRefreshingTokenAtom } from '@baca/store'
-import { wait } from '@baca/utils'
 import { useAtomValue } from 'jotai'
 import { useCallback, useEffect, useState } from 'react'
+
+import { useAuthControllerMe } from '@/api/query/auth/auth'
+import { HelperRenderJson, HelperSection } from '@/components'
+import { Button, ScrollView, Text } from '@/design-system'
+import { Token, getToken } from '@/services'
+import { isRefreshingTokenAtom } from '@/store'
+import { wait } from '@/utils'
 
 export const UserSessionScreen = () => {
   const isRefreshing = useAtomValue(isRefreshingTokenAtom)

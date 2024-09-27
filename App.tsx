@@ -8,10 +8,11 @@ import 'react-native-reanimated'
 import 'core-js/stable/atob'
 
 // Rest imports
-import '@baca/i18n'
-import { isMock } from '@baca/constants'
-import { enableAndroidBackgroundNotificationListener, startMockedServer } from '@baca/services'
+import '@/i18n'
 import * as Device from 'expo-device'
+
+import { isMock } from '@/constants'
+import { enableAndroidBackgroundNotificationListener, startMockedServer } from '@/services'
 import 'expo-router/entry'
 
 const ENABLE_MOCKED_SERVER = isMock

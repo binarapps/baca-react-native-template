@@ -1,9 +1,10 @@
-import { useTheme } from '@baca/hooks'
-import { useBubblesLoader } from '@baca/hooks/loaders'
 import React from 'react'
 import Animated from 'react-native-reanimated'
 
 import { Box } from './Box'
+
+import { useTheme } from '@/hooks'
+import { useBubblesLoader } from '@/hooks/loaders'
 
 export type BubblesLoaderType = {
   color?: string

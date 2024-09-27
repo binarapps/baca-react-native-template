@@ -1,8 +1,8 @@
-import { useAuthControllerDelete } from '@baca/api/query/auth/auth'
-import { Button, Text, Spacer, Row, Box, useBottomSheet } from '@baca/design-system'
-import { useCallback, useTranslation } from '@baca/hooks'
-import { signOut } from '@baca/store/auth'
-import { showErrorToast } from '@baca/utils'
+import { useAuthControllerDelete } from '@/api/query/auth/auth'
+import { Button, Text, Spacer, Row, Box, useBottomSheet } from '@/design-system'
+import { useCallback, useTranslation } from '@/hooks'
+import { signOut } from '@/store/auth'
+import { showErrorToast } from '@/utils'
 
 export const ProfileDeleteAccountButton = () => {
   const { t } = useTranslation()

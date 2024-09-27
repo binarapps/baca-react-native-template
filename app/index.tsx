@@ -1,8 +1,9 @@
-import { LandingScreen } from '@baca/screens/LandingScreen'
-import { isSignedInAtom } from '@baca/store/auth'
 import { Redirect } from 'expo-router'
 import { useAtomValue } from 'jotai'
 import { Platform } from 'react-native'
+
+import { LandingScreen } from '@/screens/LandingScreen'
+import { isSignedInAtom } from '@/store/auth'
 
 export default function Root() {
   const isSignedIn = useAtomValue(isSignedInAtom)

@@ -1,10 +1,11 @@
-import { Box, Button, Spacer, Row } from '@baca/design-system'
-import { useUpdateProfileForm } from '@baca/hooks'
 import { useRouter } from 'expo-router'
 import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ProfileControlledInput } from './ProfileControlledInput'
+
+import { Box, Button, Spacer, Row } from '@/design-system'
+import { useUpdateProfileForm } from '@/hooks'
 
 export const ProfileDetailsForm = () => {
   const { t } = useTranslation()

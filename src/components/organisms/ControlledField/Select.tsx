@@ -1,9 +1,10 @@
-import { SelectKey } from '@baca/design-system'
 import { useCallback } from 'react'
 import { Controller, get, ControllerProps } from 'react-hook-form'
 
 import type { ControlledSelectProps } from './types'
 import { Field } from '../../molecules'
+
+import { SelectKey } from '@/design-system'
 
 export const Select = <T extends SelectKey>({
   control,

@@ -1,3 +1,3 @@
-import { UserSessionScreen } from '@baca/screens'
+import { UserSessionScreen } from '@/screens'
 
 export default UserSessionScreen

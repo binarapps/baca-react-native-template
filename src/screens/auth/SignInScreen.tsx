@@ -1,3 +1,5 @@
+import { useRouter } from 'expo-router'
+
 import {
   CompanyLogo,
   ControlledField,
@@ -5,12 +7,11 @@ import {
   LanguagePicker,
   SocialButtons,
   Version,
-} from '@baca/components'
-import { ThemeSwitcherButton } from '@baca/components/ThemeSwitcherButton'
-import { REGEX, isWeb } from '@baca/constants'
-import { Box, Button, Center, Display, Row, Spacer, Text } from '@baca/design-system'
-import { useCallback, useSignInForm, useState, useTranslation } from '@baca/hooks'
-import { useRouter } from 'expo-router'
+} from '@/components'
+import { ThemeSwitcherButton } from '@/components/ThemeSwitcherButton'
+import { REGEX, isWeb } from '@/constants'
+import { Box, Button, Center, Display, Row, Spacer, Text } from '@/design-system'
+import { useCallback, useSignInForm, useState, useTranslation } from '@/hooks'
 
 export const SignInScreen = (): JSX.Element => {
   const { push } = useRouter()

@@ -6,8 +6,8 @@ import {
   TextVariant,
   RenderComponentWithExample,
   ScrollView,
-} from '@baca/design-system'
-import { useTranslation } from '@baca/hooks'
+} from '@/design-system'
+import { useTranslation } from '@/hooks'
 
 const generateTextVariantsToRender = <T extends string[]>(variants: T, component: React.FC) => {
   const originalVariants = Object.keys(component).filter(

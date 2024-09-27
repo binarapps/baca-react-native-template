@@ -1,7 +1,8 @@
-import { ASYNC_STORAGE_KEYS } from '@baca/constants'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Localization from 'expo-localization'
 import { LanguageDetectorAsyncModule } from 'i18next'
+
+import { ASYNC_STORAGE_KEYS } from '@/constants'
 
 const { USER_LANGUAGE } = ASYNC_STORAGE_KEYS
 const languageDetector: LanguageDetectorAsyncModule = {

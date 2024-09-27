@@ -1,3 +1,3 @@
-import { TypographyScreen } from '@baca/screens'
+import { TypographyScreen } from '@/screens'
 
 export default TypographyScreen

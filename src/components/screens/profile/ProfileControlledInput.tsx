@@ -1,8 +1,8 @@
-import { ControlledField } from '@baca/components/organisms/ControlledField'
-import { isWeb } from '@baca/constants'
-import { Box, Text } from '@baca/design-system'
-import { useWeb } from '@baca/hooks'
-import { ProfileControlledInputProps } from '@baca/types'
+import { ControlledField } from '@/components/organisms/ControlledField'
+import { isWeb } from '@/constants'
+import { Box, Text } from '@/design-system'
+import { useWeb } from '@/hooks'
+import { ProfileControlledInputProps } from '@/types'
 
 export const ProfileControlledInput = ({
   label,

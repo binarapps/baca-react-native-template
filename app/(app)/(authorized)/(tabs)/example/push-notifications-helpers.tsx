@@ -1,3 +1,3 @@
-import { PushNotificationsHelpersScreen } from '@baca/screens'
+import { PushNotificationsHelpersScreen } from '@/screens'
 
 export default PushNotificationsHelpersScreen

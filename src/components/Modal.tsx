@@ -1,5 +1,3 @@
-import { useTheme } from '@baca/hooks'
-import { hex2rgba } from '@baca/utils'
 import {
   Modal as RNModal,
   ModalProps,
@@ -12,6 +10,9 @@ import {
 } from 'react-native'
 
 import { KeyboardAwareScrollView } from './KeyboardAwareScrollView'
+
+import { useTheme } from '@/hooks'
+import { hex2rgba } from '@/utils'
 
 type Props = {
   visible: boolean

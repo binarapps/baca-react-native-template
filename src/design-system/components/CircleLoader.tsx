@@ -1,5 +1,3 @@
-import { useTheme } from '@baca/hooks'
-import { useCircleLoader } from '@baca/hooks/loaders'
 import React from 'react'
 import Animated, {
   Extrapolate,
@@ -9,6 +7,9 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import { Box } from './Box'
+
+import { useTheme } from '@/hooks'
+import { useCircleLoader } from '@/hooks/loaders'
 
 type HalfCircleProps = {
   progress: SharedValue<number>
