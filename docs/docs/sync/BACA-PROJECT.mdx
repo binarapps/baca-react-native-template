@@ -14,11 +14,26 @@ description: Sync your project with baca
 
 import Details from '@site/src/components/Details'
 
-# Synchronize your project with BACA
+<Details title="Quick steps (do it when you've already done it before)">
+    1. Sync changes from BACA
+    ```bash
+    git fetch --all
+    git branch -D sync/baca
+    git checkout -b sync/baca
+    git merge baca/main --strategy-option ours
+    git push --set-upstream origin sync/baca --force
+    ```
 
-:::warning
-This was not tested, probably will not work as expected
-:::
+    2. Merge branches
+
+    ```bash
+    git checkout main
+    git merge origin/sync/baca
+    ```
+
+</Details>
+
+# Synchronize your project with BACA
 
 :::warning
 You need to have git history from BACA, to make this working.
@@ -41,6 +56,7 @@ git fetch --all
 ## Step 3. Sync changes
 
 ```bash
+git branch -D sync/baca
 git checkout -b sync/baca
 git merge baca/main --strategy-option ours
 git push --set-upstream origin sync/baca
