@@ -75,10 +75,13 @@ const RawText = memo(
     ) => {
       const theme = useTheme()
 
-      const { fontWeight: variantFontWeight, fontSize: variantFontSize } = useMemo(
-        () => (type === 'text' ? textVariants[variant as TextVariant] : displayVariants[variant]),
-        [type, variant]
-      )
+      const { fontWeight: variantFontWeight, fontSize: variantFontSize } = useMemo(() => {
+        if (type === 'text') {
+          return textVariants[variant] ?? {}
+        }
+
+        return displayVariants[variant] ?? {}
+      }, [type, variant])
 
       const fontFamily = useMemo(
         (): FontWeight => props.fontFamily || variantFontWeight,
