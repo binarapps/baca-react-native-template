@@ -8,14 +8,24 @@ import { isDevelopment } from '@/constants'
 
 let isAlertOpened = false
 
+const checkIfUpdateAvailable = async () => {
+  try {
+    if (!Updates.isEnabled) return { isAvailable: false }
+
+    const update = await Updates.checkForUpdateAsync()
+    return update
+  } catch {
+    return { isAvailable: false }
+  }
+}
+
 export const checkForUpdates = async (shouldReload?: boolean) => {
   if (isDevelopment) return
   try {
-    if (!Updates.isEnabled) return
-
-    const update = await Updates.checkForUpdateAsync()
+    const update = await checkIfUpdateAvailable()
 
     if (!update.isAvailable) return
+
     await Updates.fetchUpdateAsync()
 
     if (shouldReload) {
