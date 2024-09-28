@@ -1,7 +1,7 @@
 import { ViewStyle, DimensionValue, Animated } from 'react-native'
 
 import { SizingValue } from '@/design-system'
-import { scale, size } from '@/design-system/config'
+import { size } from '@/design-system/config'
 
 const isDimensionValue = (value?: DimensionValue) => {
   // Dimension accepts only `percentage` strings that can be converted to numbers
@@ -64,7 +64,7 @@ export const generateSize = (value?: SizingValue, key?: keyof ViewStyle): ViewSt
   }
 
   if (typeof value === 'string' && value.endsWith('px')) {
-    return { [key]: parseInt(value.split('px')[0], scale) }
+    return { [key]: parseInt(value.split('px')[0], 10) }
   }
 
   if (isDimensionValue(value as DimensionValue)) {
