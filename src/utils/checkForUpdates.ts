@@ -11,6 +11,8 @@ let isAlertOpened = false
 export const checkForUpdates = async (shouldReload?: boolean) => {
   if (isDevelopment) return
   try {
+    if (!Updates.isEnabled) return
+
     const update = await Updates.checkForUpdateAsync()
 
     if (!update.isAvailable) return
