@@ -14,6 +14,25 @@ description: Fastly start developing with this template
 
 import Details from '@site/src/components/Details'
 
+<Details title="Quick steps (do it for next time)">
+    1. Sync changes from BACA
+    ```bash
+    git fetch --all
+    git branch -D sync/baca
+    git checkout -b sync/baca
+    git merge baca/main
+    git push --set-upstream origin sync/baca --force
+    ```
+
+    2. Merge branches
+
+    ```bash
+    git checkout main
+    git merge origin/sync/baca
+    ```
+
+</Details>
+
 :::warning
 This was not tested, probably will not work as expected
 :::
@@ -41,9 +60,10 @@ git fetch --all
 ## Step 3. Sync changes
 
 ```bash
+git branch -D sync/baca
 git checkout -b sync/baca
 git merge baca/main
-git push --set-upstream origin sync/baca
+git push --set-upstream origin sync/baca --force
 ```
 
 ## Step 4. Merge branches
