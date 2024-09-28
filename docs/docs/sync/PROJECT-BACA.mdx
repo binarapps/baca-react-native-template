@@ -14,27 +14,10 @@ description: Fastly start developing with this template
 
 import Details from '@site/src/components/Details'
 
-<Details title="Quick steps (do it for next time)">
-    1. Sync changes from BACA
-    ```bash
-    git fetch --all
-    git branch -D sync/baca
-    git checkout -b sync/baca
-    git merge baca/main
-    git push --set-upstream origin sync/baca --force
-    ```
-
-    2. Merge branches
-
-    ```bash
-    git checkout main
-    git merge origin/sync/baca
-    ```
-
-</Details>
-
 :::warning
-This was not tested, probably will not work as expected
+This was not tested, probably will not work as expected.
+
+Please check this [tutoria](https://graphite.dev/guides/git-cherry-pick-other-repo) instead.
 :::
 
 # Synchronize your project with BACA
@@ -63,7 +46,7 @@ git fetch --all
 git branch -D sync/baca
 git checkout -b sync/baca
 git merge baca/main
-git push --set-upstream origin sync/baca --force
+git push --set-upstream baca sync/baca --force
 ```
 
 ## Step 4. Merge branches
