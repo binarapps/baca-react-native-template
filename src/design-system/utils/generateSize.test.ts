@@ -50,6 +50,6 @@ describe('generateSize', () => {
   })
 
   it('should allow px value on width', () => {
-    expect(generateSize('256px', 'height')).toEqual({ height: 598 })
+    expect(generateSize('256px', 'height')).toEqual({ height: 256 })
   })
 })
