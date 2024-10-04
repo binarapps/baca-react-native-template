@@ -4,6 +4,7 @@
 
 # BACA - React Native Template
 
+> [!Note]
 > **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
 >
 > This repository is part of a whole ecosystem, and it only contains React Native code.
