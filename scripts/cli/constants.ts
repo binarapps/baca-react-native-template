@@ -14,3 +14,15 @@ export const COMPONENT_TEMPLATE_PATH = 'templates/component_template.tsx'
 export const README_TEMPLATE_PATH = 'templates/readme_template.md'
 export const PULL_REQUEST_TEMPLATE_PATH = '.github/pull_request_template.md'
 export const NEW_PULL_REQUEST_TEMPLATE_PATH = 'templates/pull_request_template.md'
+
+// Files
+export const NEW_TAB_LAYOUT_FILE = `import { Stack } from 'expo-router'
+
+export const unstable_settings = {
+  initialRouteName: 'index',
+}
+
+export default function DynamicLayout() {
+  return <Stack />
+}
+`
