@@ -26,3 +26,8 @@ export default function DynamicLayout() {
   return <Stack />
 }
 `
+
+export const EXPO_ROUTER_FILE = (screenName: string) => `import { ${screenName} } from '@/screens'
+
+export default ${screenName}
+`

@@ -2,7 +2,12 @@ import { prompt } from 'enquirer'
 // eslint-disable-next-line import/order
 import fs from 'fs'
 
-import { APP_ROUTER_DIRECTORY, NEW_TAB_LAYOUT_FILE, SCREENS_DIRECTORY } from '../constants'
+import {
+  APP_ROUTER_DIRECTORY,
+  EXPO_ROUTER_FILE,
+  NEW_TAB_LAYOUT_FILE,
+  SCREENS_DIRECTORY,
+} from '../constants'
 import { getDirectoryNames, logger } from '../utils'
 import { toKebabCase } from '../utils/toKebabCase'
 
@@ -37,17 +42,14 @@ const selectPath = async (basePath: string): Promise<string> => {
     subDirectoryPrompt.unshift({ name: '.', value: '.' })
   }
 
-  const promptAnswer = await prompt({
+  const promptAnswer = await prompt<{ subValue: string }>({
     name: 'subValue',
     message: 'What screen type do you want to generate?',
     type: 'select',
     choices: subDirectoryPrompt,
   })
 
-  const subValue = subDirectoryPrompt.find(
-    // @ts-expect-error: subValue not found on promptAnswer
-    (promptValue) => promptValue.name === promptAnswer.subValue
-  )?.value
+  const subValue = promptAnswer.subValue
 
   // Return the result when user selects current directory
   if (subValue === '.') {
@@ -65,10 +67,22 @@ const selectPath = async (basePath: string): Promise<string> => {
  * @param routePath - The path where the route should be generated.
  * @throws Error if the route already exists in the specified path.
  */
-const validateRoute = (routeName: string, routePath: string) => {
-  const filePath = `${routePath}/${routeName}.tsx`
+const validateScreen = (routeName: string, routePath: string) => {
+  const filePath = `${routePath}/${toKebabCase(routeName)}.tsx`
   if (fs.existsSync(filePath)) {
-    logger.error(`Route ${routeName} already exists in ${routePath}`)
+    logger.error(`Screen: ${routeName} already exists in ${routePath}`)
+
+    throw new Error(`Screen: ${routeName} already exists in ${routePath}`)
+  }
+
+  if (!routeName) {
+    logger.error('Screen name is required')
+    throw new Error('Screen name is required')
+  }
+
+  if (!routePath) {
+    logger.error('Route path is required')
+    throw new Error('Route path is required')
   }
 }
 
@@ -76,16 +90,17 @@ const validateRoute = (routeName: string, routePath: string) => {
  * Creates a route file with the given route name and path.
  * @param {string} routeName - The name of the route.
  * @param {string} routePath - The path where the route file will be created.
+ * @param {boolean} isNewTab - A boolean indicating if the screen is a new tab.
  */
-const createRouteFile = (routeName: string, routePath: string) => {
+const createExpoRouterFile = (routeName: string, routePath: string, isNewTab: boolean) => {
   const screenName = `${routeName.charAt(0).toUpperCase() + routeName.slice(1)}Screen`
-  fs.writeFileSync(
-    `${routePath}/${routeName.toLowerCase()}.tsx`,
-    `import { ${screenName} } from '@/screens'
 
-export default ${screenName}
-`
-  )
+  if (isNewTab) {
+    fs.writeFileSync(`${routePath}/index.tsx`, EXPO_ROUTER_FILE(screenName))
+    fs.writeFileSync(`${routePath}/_layout.tsx`, NEW_TAB_LAYOUT_FILE)
+  } else {
+    fs.writeFileSync(`${routePath}/${toKebabCase(routeName)}.tsx`, EXPO_ROUTER_FILE(screenName))
+  }
 }
 
 /**
@@ -93,7 +108,7 @@ export default ${screenName}
  * @param screenName - The name of the screen.
  * @throws Error if the screen already exists.
  */
-const validateScreen = (screenName: string) => {
+const checkScreenExistence = (screenName: string) => {
   const filePath = `${SCREENS_DIRECTORY}/${screenName}.tsx`
   if (fs.existsSync(filePath)) {
     logger.error(`Screen ${screenName} already exists`)
@@ -103,36 +118,29 @@ const validateScreen = (screenName: string) => {
 /**
  * Creates a screen file with the given screen name.
  * @param {string} screenName - The name of the screen.
- * @param {boolean} isNewTab - A boolean indicating if the screen is a new tab.
  */
-const createScreenFile = (screenName: string, isNewTab: boolean) => {
+const createScreenFile = (screenName: string) => {
   const screenFromFile = fs.readFileSync('./templates/screen_template.tsx', 'utf8')
-  const screenContent = screenFromFile.replaceAll('_NAME_', screenName)
+  const screenContent = screenFromFile.replace(/_NAME_/g, screenName)
 
-  if (isNewTab) {
-    fs.writeFileSync(`${SCREENS_DIRECTORY}/index.tsx`, screenContent)
-    fs.writeFileSync(`${SCREENS_DIRECTORY}/_layout.tsx`, NEW_TAB_LAYOUT_FILE)
-  } else {
-    fs.writeFileSync(`${SCREENS_DIRECTORY}/${screenName}.tsx`, screenContent)
-  }
+  fs.writeFileSync(`${SCREENS_DIRECTORY}/${screenName}.tsx`, screenContent)
 }
 
 const addToScreensIndex = (screenName: string) => {
   const indexFilePath = `${SCREENS_DIRECTORY}/index.ts`
   const indexFile = fs.readFileSync(indexFilePath, 'utf8')
-  const newIndexFile = indexFile.padEnd(indexFile.length) + `export * from './${screenName}'\n`
+  const newIndexFile = indexFile + `export * from './${screenName}'\n`
 
   fs.writeFileSync(indexFilePath, newIndexFile)
 }
 
 const promptTabName = async () => {
-  const promptAnswer = await prompt({
+  const promptAnswer = await prompt<{ tabName: string }>({
     message: 'What is tab name?',
     name: 'tabName',
     type: 'input',
   })
 
-  // @ts-expect-error: generator not found on promptAnswer
   const tabName = toKebabCase(promptAnswer.tabName)
 
   if (!tabName) {
@@ -180,21 +188,24 @@ export const generateScreen = async () => {
     fs.mkdirSync(newTabPath)
   }
 
-  const promptAnswer = await prompt({
+  const promptAnswer = await prompt<{ screenName: string }>({
     message: 'What is your screen name?',
     name: 'screenName',
     type: 'input',
   })
 
-  // @ts-expect-error: generator not found on promptAnswer
-  const routeName = promptAnswer.screenName as string
+  const screenName = promptAnswer.screenName
 
-  validateRoute(routeName, routePath)
-  createRouteFile(routeName, routePath)
+  if (!screenName || typeof screenName !== 'string') {
+    return
+  }
 
-  const screenName = `${routeName.charAt(0).toUpperCase() + routeName.slice(1)}Screen`
-  validateScreen(screenName)
-  createScreenFile(screenName, isNewTab)
+  validateScreen(screenName, routePath)
+  createExpoRouterFile(screenName, routePath, isNewTab)
 
-  addToScreensIndex(screenName)
+  const screenFileName = `${screenName.charAt(0).toUpperCase() + screenName.slice(1)}Screen`
+  checkScreenExistence(screenFileName)
+  createScreenFile(screenFileName)
+
+  addToScreensIndex(screenFileName)
 }
