@@ -2,8 +2,9 @@ import { prompt } from 'enquirer'
 // eslint-disable-next-line import/order
 import fs from 'fs'
 
-import { APP_ROUTER_DIRECTORY, SCREENS_DIRECTORY } from '../constants'
+import { APP_ROUTER_DIRECTORY, NEW_TAB_LAYOUT_FILE, SCREENS_DIRECTORY } from '../constants'
 import { getDirectoryNames, logger } from '../utils'
+import { toKebabCase } from '../utils/toKebabCase'
 
 const addAfter = (content: string, searchText: string, textToAdd: string) => {
   return content.replace(searchText, searchText + textToAdd)
@@ -102,12 +103,18 @@ const validateScreen = (screenName: string) => {
 /**
  * Creates a screen file with the given screen name.
  * @param {string} screenName - The name of the screen.
+ * @param {boolean} isNewTab - A boolean indicating if the screen is a new tab.
  */
-const createScreenFile = (screenName: string) => {
+const createScreenFile = (screenName: string, isNewTab: boolean) => {
   const screenFromFile = fs.readFileSync('./templates/screen_template.tsx', 'utf8')
   const screenContent = screenFromFile.replaceAll('_NAME_', screenName)
 
-  fs.writeFileSync(`${SCREENS_DIRECTORY}/${screenName}.tsx`, screenContent)
+  if (isNewTab) {
+    fs.writeFileSync(`${SCREENS_DIRECTORY}/index.tsx`, screenContent)
+    fs.writeFileSync(`${SCREENS_DIRECTORY}/_layout.tsx`, NEW_TAB_LAYOUT_FILE)
+  } else {
+    fs.writeFileSync(`${SCREENS_DIRECTORY}/${screenName}.tsx`, screenContent)
+  }
 }
 
 const addToScreensIndex = (screenName: string) => {
@@ -126,11 +133,12 @@ const promptTabName = async () => {
   })
 
   // @ts-expect-error: generator not found on promptAnswer
-  const tabName = promptAnswer.tabName as string
+  const tabName = toKebabCase(promptAnswer.tabName)
 
   if (!tabName) {
     throw new Error('Tab name is required')
   }
+
   return tabName
 }
 
@@ -186,7 +194,7 @@ export const generateScreen = async () => {
 
   const screenName = `${routeName.charAt(0).toUpperCase() + routeName.slice(1)}Screen`
   validateScreen(screenName)
-  createScreenFile(screenName)
+  createScreenFile(screenName, isNewTab)
 
   addToScreensIndex(screenName)
 }
