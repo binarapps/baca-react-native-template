@@ -127,7 +127,7 @@ const addToScreensIndex = (screenName: string) => {
 
 const promptTabName = async () => {
   const promptAnswer = await prompt({
-    message: 'What is your screen name?',
+    message: 'What is tab name?',
     name: 'tabName',
     type: 'input',
   })
@@ -167,6 +167,19 @@ const createNewNavTab = (tabName: string) => {
  * Validates the screen name and path.
  */
 export const generateScreen = async () => {
+  let routePath = await selectPath(APP_ROUTER_DIRECTORY)
+
+  const isNewTab = routePath.includes('(tabs)') && routePath.includes('new-tab')
+  if (isNewTab) {
+    const tabName = await promptTabName()
+    createNewNavTab(tabName)
+
+    const newTabPath = routePath.replace('/new-tab', `/${tabName}`)
+    routePath = newTabPath
+
+    fs.mkdirSync(newTabPath)
+  }
+
   const promptAnswer = await prompt({
     message: 'What is your screen name?',
     name: 'screenName',
@@ -175,19 +188,6 @@ export const generateScreen = async () => {
 
   // @ts-expect-error: generator not found on promptAnswer
   const routeName = promptAnswer.screenName as string
-
-  let routePath = await selectPath(APP_ROUTER_DIRECTORY)
-
-  const isNewTab = routePath.includes('(tabs)') && routePath.includes('new-tab')
-  if (isNewTab) {
-    const tabName = promptTabName()
-    createNewNavTab(routeName)
-
-    const newTabPath = routePath.replace('/new-tab', `/${tabName}`)
-    routePath = newTabPath
-
-    fs.mkdirSync(newTabPath)
-  }
 
   validateRoute(routeName, routePath)
   createRouteFile(routeName, routePath)
