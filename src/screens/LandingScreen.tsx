@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView, LandingHeader } from '@/components'
 import { BACA_DOCS_URL } from '@/constants'
 import { Button, Center, Text, Box } from '@/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@/hooks'
-import { draftImages } from '@/screens'
+import { draftImages } from '~/assets/drafts/images'
 
 export const LandingScreen = () => {
   const { t } = useTranslation()
