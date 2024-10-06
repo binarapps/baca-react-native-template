@@ -231,7 +231,7 @@ export const generateScreen = async () => {
   validateExpoRouterScreen(screenName, routePath)
   createExpoRouterFile(screenName, routePath, isNewTab)
 
-  const screenFileNameWithOutSlash = screenName.slice(1)
+  const screenFileNameWithOutSlash = screenName.startsWith('/') ? screenName.slice(1) : screenName
   const screenFileName = `${pascalCase(screenFileNameWithOutSlash)}Screen`
   checkScreenExistence(screenFileName)
   createScreenFile(screenFileName)
