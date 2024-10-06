@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/order
-import * as changeCase from 'change-case'
 import { prompt } from 'enquirer'
 import fs from 'fs'
 
@@ -11,6 +9,7 @@ import {
   SCREENS_DIRECTORY,
 } from '../constants'
 import { getDirectoryNames, logger } from '../utils'
+import { kebabCase, capitalCase, pascalCase } from '../utils/change-case'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { Select } = require('enquirer')
@@ -71,8 +70,8 @@ const selectPath = async (basePath: string): Promise<string> => {
  * @param routePath - The path where the route should be generated.
  * @throws Error if the route already exists in the specified path.
  */
-const validateScreen = (routeName: string, routePath: string) => {
-  const fileName = changeCase.kebabCase(routeName)
+const validateExpoRouterScreen = (routeName: string, routePath: string) => {
+  const fileName = kebabCase(routeName)
   const filePath = `${routePath}/${fileName}.tsx`
   if (fs.existsSync(filePath)) {
     logger.error(`Screen: ${routeName} already exists in ${routePath}`)
@@ -104,7 +103,7 @@ const createExpoRouterFile = (routeName: string, routePath: string, isNewTab: bo
     fs.writeFileSync(`${routePath}/index.tsx`, EXPO_ROUTER_FILE(screenName))
     fs.writeFileSync(`${routePath}/_layout.tsx`, NEW_TAB_LAYOUT_FILE)
   } else {
-    const fileName = changeCase.kebabCase(routeName)
+    const fileName = kebabCase(routeName)
     fs.writeFileSync(`${routePath}/${fileName}.tsx`, EXPO_ROUTER_FILE(screenName))
   }
 }
@@ -147,7 +146,7 @@ const promptTabName = async () => {
     type: 'input',
   })
 
-  const tabName = changeCase.kebabCase(promptAnswer.tabName)
+  const tabName = kebabCase(promptAnswer.tabName)
 
   if (!tabName) {
     throw new Error('Tab name is required')
@@ -171,7 +170,7 @@ const createNewNavTab = (tabName: string) => {
     name: '${tabName}',
   },`
 
-  const newTabName = changeCase.capitalCase(tabName.charAt(0).toUpperCase() + tabName.slice(1))
+  const newTabName = capitalCase(tabName.charAt(0).toUpperCase() + tabName.slice(1))
 
   // update pl and en translations
   const polishTranslations = JSON.parse(
@@ -229,10 +228,11 @@ export const generateScreen = async () => {
     return
   }
 
-  validateScreen(screenName, routePath)
+  validateExpoRouterScreen(screenName, routePath)
   createExpoRouterFile(screenName, routePath, isNewTab)
 
-  const screenFileName = `${screenName.charAt(0).toUpperCase() + screenName.slice(1)}Screen`
+  const screenFileNameWithOutSlash = screenName.slice(1)
+  const screenFileName = `${pascalCase(screenFileNameWithOutSlash)}Screen`
   checkScreenExistence(screenFileName)
   createScreenFile(screenFileName)
 
