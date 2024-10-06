@@ -52,7 +52,6 @@ const selectPath = async (basePath: string): Promise<string> => {
   })
 
   const promptAnswer = await selectPrompt.run()
-  console.log('Answer:', promptAnswer)
 
   // Return the result when user selects current directory
   if (promptAnswer === '.') {
