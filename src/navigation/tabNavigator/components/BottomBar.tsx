@@ -52,10 +52,14 @@ export function BottomBar({ visible }: { visible: boolean }) {
               >
                 <Icon
                   name={focused ? tab.iconFocused : tab.icon}
-                  size={24}
+                  size={tab.displayedNameTx ? 24 : 40}
                   color={getTabColor(focused)}
                 />
-                <Text.XsMedium color={getTabColor(focused)}>{t(tab.displayedNameTx)}</Text.XsMedium>
+                {!!tab.displayedNameTx && (
+                  <Text.XsMedium color={getTabColor(focused)}>
+                    {t(tab.displayedNameTx)}
+                  </Text.XsMedium>
+                )}
               </Column>
             )}
           </TabBarItemWrapper>
