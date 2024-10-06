@@ -60,8 +60,6 @@ export const upperSideTabs: Tabs = [
   // },
 ]
 
-export const bottomSideTabs: Tabs = []
-
 export const bottomTabs: Tabs = [...upperSideTabs]
 
 export const tabsColors: {
