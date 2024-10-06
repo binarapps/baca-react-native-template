@@ -1,8 +1,10 @@
-import { prompt } from 'enquirer'
 // eslint-disable-next-line import/order
+import { prompt } from 'enquirer'
+
 import fs from 'fs'
 
 import {
+  TRANSLATIONS_DIRECTORY,
   APP_ROUTER_DIRECTORY,
   EXPO_ROUTER_FILE,
   NEW_TAB_LAYOUT_FILE,
@@ -10,6 +12,9 @@ import {
 } from '../constants'
 import { getDirectoryNames, logger } from '../utils'
 import { toKebabCase } from '../utils/toKebabCase'
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { Select } = require('enquirer')
 
 const addAfter = (content: string, searchText: string, textToAdd: string) => {
   return content.replace(searchText, searchText + textToAdd)
@@ -30,33 +35,33 @@ const selectPath = async (basePath: string): Promise<string> => {
   }
 
   const subDirectoryPrompt = subDirectories.map((directoryName) => ({
+    message: directoryName,
     name: directoryName,
-    value: directoryName,
   }))
 
   if (basePath.includes('tabs')) {
-    subDirectoryPrompt.unshift({ name: '_New Tab_', value: 'new-tab' })
+    subDirectoryPrompt.unshift({ message: '_New Tab_', name: 'new-tab' })
   }
 
   if (basePath !== APP_ROUTER_DIRECTORY) {
-    subDirectoryPrompt.unshift({ name: '.', value: '.' })
+    subDirectoryPrompt.unshift({ message: '.', name: '.' })
   }
 
-  const promptAnswer = await prompt<{ subValue: string }>({
+  const selectPrompt = new Select({
     name: 'subValue',
     message: 'What screen type do you want to generate?',
-    type: 'select',
     choices: subDirectoryPrompt,
   })
 
-  const subValue = promptAnswer.subValue
+  const promptAnswer = await selectPrompt.run()
+  console.log('Answer:', promptAnswer)
 
   // Return the result when user selects current directory
-  if (subValue === '.') {
+  if (promptAnswer === '.') {
     return basePath
   }
-  // Recursively execute path selection when subValue is not the current directory
-  const subResult = await selectPath(`${basePath}/${subValue}`)
+  // Recursively execute path selection when promptAnswer is not the current directory
+  const subResult = await selectPath(`${basePath}/${promptAnswer}`)
 
   return subResult
 }
@@ -158,12 +163,30 @@ const createNewNavTab = (tabName: string) => {
 
   const tabContent = `
   {
-    displayedName: '${tabName.charAt(0).toUpperCase() + tabName.slice(1)}',
+    displayedNameTx: 'bottom_tabs.${tabName}',
     icon: 'zzz-line', // CONFIG: Add your icon name here
     iconFocused: 'zzz-fill', // CONFIG: Add your icon name here
     id: '${tabName}',
     name: '${tabName}',
   },`
+
+  const newTabName = tabName.charAt(0).toUpperCase() + tabName.slice(1)
+
+  // update pl and en translations
+  const polishTranslations = JSON.parse(
+    fs.readFileSync(`${TRANSLATIONS_DIRECTORY}/pl.json`, 'utf8')
+  )
+  polishTranslations.bottom_tabs[tabName] = newTabName
+  fs.writeFileSync(`${TRANSLATIONS_DIRECTORY}/pl.json`, JSON.stringify(polishTranslations, null, 2))
+
+  const englishTranslations = JSON.parse(
+    fs.readFileSync(`${TRANSLATIONS_DIRECTORY}/en.json`, 'utf8')
+  )
+  englishTranslations.bottom_tabs[tabName] = newTabName
+  fs.writeFileSync(
+    `${TRANSLATIONS_DIRECTORY}/en.json`,
+    JSON.stringify(englishTranslations, null, 2)
+  )
 
   const newContent = addAfter(navigationConfigFile, '// UPPER SIDE TABS', tabContent)
   fs.writeFileSync('./src/navigation/tabNavigator/navigation-config.ts', newContent)
@@ -177,12 +200,17 @@ const createNewNavTab = (tabName: string) => {
 export const generateScreen = async () => {
   let routePath = await selectPath(APP_ROUTER_DIRECTORY)
 
-  const isNewTab = routePath.includes('(tabs)') && routePath.includes('new-tab')
+  const isNewTab =
+    routePath.includes('(tabs)') &&
+    // For some reason
+    (routePath.includes('new-tab') || routePath.includes('_New Tab_'))
   if (isNewTab) {
     const tabName = await promptTabName()
     createNewNavTab(tabName)
 
-    const newTabPath = routePath.replace('/new-tab', `/${tabName}`)
+    const newTabPath = routePath
+      .replace('/new-tab', `/${tabName}`)
+      .replace('/_New Tab_', `/${tabName}`)
     routePath = newTabPath
 
     fs.mkdirSync(newTabPath)
