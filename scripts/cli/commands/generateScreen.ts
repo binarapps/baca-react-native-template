@@ -11,7 +11,20 @@ import {
 import { getDirectoryNames, logger } from '../utils'
 import { kebabCase, capitalCase, pascalCase } from '../utils/change-case'
 
+/**
+ * Adds a specified text after the first occurrence of the search text in the given content.
+ * Throws an error if the search text is not found.
+ *
+ * @param {string} content - The content where text will be added.
+ * @param {string} searchText - The text to search for in the content.
+ * @param {string} textToAdd - The text to add after the search text.
+ * @returns {string} - Updated content with the added text.
+ * @throws {Error} - Throws error if searchText is not found.
+ */
 const addAfter = (content: string, searchText: string, textToAdd: string) => {
+  if (!content.includes(searchText)) {
+    throw new Error(`The searchText '${searchText}' was not found in the content.`)
+  }
   return content.replace(searchText, searchText + textToAdd)
 }
 
@@ -132,6 +145,11 @@ const createScreenFile = (screenName: string) => {
   fs.writeFileSync(`${SCREENS_DIRECTORY}/${screenName}.tsx`, screenContent)
 }
 
+/**
+ * Adds the specified screen to the screens index file.
+ *
+ * @param {string} screenName - The name of the screen to add to the index.
+ */
 const addToScreensIndex = (screenName: string) => {
   const indexFilePath = `${SCREENS_DIRECTORY}/index.ts`
   const indexFile = fs.readFileSync(indexFilePath, 'utf8')
@@ -140,6 +158,13 @@ const addToScreensIndex = (screenName: string) => {
   fs.writeFileSync(indexFilePath, newIndexFile)
 }
 
+/**
+ * Prompts the user to enter a tab name and returns the kebab-case version of the name.
+ * Throws an error if the tab name is not provided.
+ *
+ * @returns {Promise<string>} - The tab name in kebab-case.
+ * @throws {Error} - Throws error if tab name is not provided.
+ */
 const promptTabName = async () => {
   const promptAnswer = await prompt<{ tabName: string }>({
     message: 'What is tab name?',
@@ -156,6 +181,11 @@ const promptTabName = async () => {
   return tabName
 }
 
+/**
+ * Creates a new navigation tab with the given tab name, updates translations, and adds the tab configuration.
+ *
+ * @param {string} tabName - The name of the tab to create.
+ */
 const createNewNavTab = (tabName: string) => {
   const navigationConfigFile = fs.readFileSync(
     './src/navigation/tabNavigator/navigation-config.ts',
