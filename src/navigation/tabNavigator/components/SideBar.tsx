@@ -6,7 +6,7 @@ import { useUniversalWidth } from '../hooks'
 import { upperSideTabs } from '../navigation-config'
 import { cns } from '../utils'
 
-import { useSafeAreaInsets, useTheme, useTranslation } from '@/hooks'
+import { useSafeAreaInsets, useTheme } from '@/hooks'
 import { signOut } from '@/store/auth'
 import cssStyles from '@/styles'
 
@@ -14,7 +14,6 @@ const NAV_MEDIUM_WIDTH = 244
 
 export function SideBar({ visible }: { visible: boolean }) {
   const { colors } = useTheme()
-  const { t } = useTranslation()
   const { top } = useSafeAreaInsets()
   const isLarge = useUniversalWidth(1264)
 
@@ -74,9 +73,7 @@ export function SideBar({ visible }: { visible: boolean }) {
 
           <View style={jsStyles.sidebarTabs}>
             {upperSideTabs.map((tab) => (
-              <SideBarTabItem key={tab.name} {...tab}>
-                {t(tab.displayedNameTx)}
-              </SideBarTabItem>
+              <SideBarTabItem key={tab.name} {...tab} />
             ))}
           </View>
           <View>
