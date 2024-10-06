@@ -1,8 +1,12 @@
 import { Center, Text } from '@/design-system'
-import { useTranslation } from '@/hooks'
+import { useScreenOptions, useTranslation } from '@/hooks'
 
 export const _NAME_ = (): JSX.Element => {
   const { t } = useTranslation()
+
+  useScreenOptions({
+    title: '_NAME_',
+  })
 
   return (
     <Center flex={1}>
