@@ -2,7 +2,7 @@ import { I18nKeys, IconNames } from '@/types'
 
 type Tab = {
   // This will be passed to translations object and translated in the app
-  displayedNameTx: I18nKeys
+  displayedNameTx?: I18nKeys
   icon: IconNames
   iconFocused: IconNames
   id: string
