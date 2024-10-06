@@ -91,13 +91,17 @@ const validateExpoRouterScreen = (routeName: string, routePath: string) => {
 
 /**
  * Creates a route file with the given route name and path.
- * @param {string} routeName - The name of the route.
+ * @param {string} routeName - The name of the expo route.
  * @param {string} routePath - The path where the route file will be created.
  * @param {boolean} isNewTab - A boolean indicating if the screen is a new tab.
+ * @param {string} screenName - The name of the screen name.
  */
-const createExpoRouterFile = (routeName: string, routePath: string, isNewTab: boolean) => {
-  const screenName = `${routeName.charAt(0).toUpperCase() + routeName.slice(1)}Screen`
-
+const createExpoRouterFile = (
+  routeName: string,
+  routePath: string,
+  isNewTab: boolean,
+  screenName: string
+) => {
   if (isNewTab) {
     fs.writeFileSync(`${routePath}/index.tsx`, EXPO_ROUTER_FILE(screenName))
     fs.writeFileSync(`${routePath}/_layout.tsx`, NEW_TAB_LAYOUT_FILE)
@@ -227,11 +231,12 @@ export const generateScreen = async () => {
     return
   }
 
-  validateExpoRouterScreen(screenName, routePath)
-  createExpoRouterFile(screenName, routePath, isNewTab)
-
   const screenFileNameWithOutSlash = screenName.startsWith('/') ? screenName.slice(1) : screenName
   const screenFileName = `${pascalCase(screenFileNameWithOutSlash)}Screen`
+
+  validateExpoRouterScreen(screenName, routePath)
+  createExpoRouterFile(screenName, routePath, isNewTab, screenFileName)
+
   checkScreenExistence(screenFileName)
   createScreenFile(screenFileName)
 
