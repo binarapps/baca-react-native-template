@@ -62,7 +62,7 @@ export const upperSideTabs: Tabs = [
 
 export const bottomTabs: Tabs = [...upperSideTabs]
 
-export const tabsColors: {
+const tabsColors: {
   color: ColorNames
   colorFocused: ColorNames
 } = {
