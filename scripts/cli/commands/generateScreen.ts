@@ -11,9 +11,6 @@ import {
 import { getDirectoryNames, logger } from '../utils'
 import { kebabCase, capitalCase, pascalCase } from '../utils/change-case'
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { Select } = require('enquirer')
-
 const addAfter = (content: string, searchText: string, textToAdd: string) => {
   return content.replace(searchText, searchText + textToAdd)
 }
@@ -45,13 +42,14 @@ const selectPath = async (basePath: string): Promise<string> => {
     subDirectoryPrompt.unshift({ message: '.', name: '.' })
   }
 
-  const selectPrompt = new Select({
+  const selectPrompt = await prompt<{ subValue: string }>({
     name: 'subValue',
     message: 'What screen type do you want to generate?',
     choices: subDirectoryPrompt,
+    type: 'select',
   })
 
-  const promptAnswer = await selectPrompt.run()
+  const promptAnswer = selectPrompt.subValue
 
   // Return the result when user selects current directory
   if (promptAnswer === '.') {
