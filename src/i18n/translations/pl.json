@@ -238,7 +238,10 @@
   "settings_screen": {
     "current_theme": "Current theme: {{theme}}",
     "selected": " - wybrano",
-    "sign_out": "Wyloguj!"
+    "sign_out": "Wyloguj!",
+    "list_heading": "Ustawienia",
+    "color_scheme_picker_label": "Wybierz schemat kolorów",
+    "language_picker_label": "Wybierz język"
   },
   "profile_screen": {
     "are_you_sure": "Jesteś pewny/a?",

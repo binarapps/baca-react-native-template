@@ -239,7 +239,10 @@
     "copy_push_token": "Copy push token",
     "current_theme": "Current theme: {{theme}}",
     "selected": " - selected",
-    "sign_out": "Sign out!"
+    "sign_out": "Sign out!",
+    "list_heading": "Settings",
+    "color_scheme_picker_label": "Pick app color scheme",
+    "language_picker_label": "Pick app language"
   },
   "profile_screen": {
     "are_you_sure": "Are you sure?",
