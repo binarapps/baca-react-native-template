@@ -42,6 +42,7 @@ const ListItemContent = ({
 }
 
 export const LanguageSettings = (): JSX.Element => {
+  const { t } = useTranslation()
   const { i18n } = useTranslation()
 
   const language = i18n?.language?.slice?.(0, 2).toUpperCase() as keyof typeof languages
@@ -64,16 +65,21 @@ export const LanguageSettings = (): JSX.Element => {
       maxSelectedItems={1}
       items={languagesToRender}
       selectedItems={[language]}
-      label="Wybierz język"
+      label={t('settings_screen.language_picker_label')}
     >
       {(props) => (
-        <ListItemContent label="Wybierz język" iconName="global-line" value={props.value} />
+        <ListItemContent
+          label={t('settings_screen.language_picker_label')}
+          iconName="global-line"
+          value={props.value}
+        />
       )}
     </Field.Select>
   )
 }
 
 const ColorSchemeSettings = () => {
+  const { t } = useTranslation()
   const { setColorSchemeSetting, colorSchemeSetting } = useColorScheme()
 
   const handleColorSchemeSettingChange = useCallback(
@@ -94,12 +100,12 @@ const ColorSchemeSettings = () => {
       maxSelectedItems={1}
       items={colorSchemesListToRender}
       selectedItems={[colorSchemeSetting]}
-      label="Wybierz schemat kolorów"
+      label={t('settings_screen.color_scheme_picker_label')}
       mb="0px"
     >
       {(props) => (
         <ListItemContent
-          label="Wybierz schemat kolorów"
+          label={t('settings_screen.color_scheme_picker_label')}
           iconName="palette-line"
           showBorder
           value={props.value}
@@ -121,7 +127,7 @@ export const SettingsScreen = (): JSX.Element => {
       <Box flexGrow={1} px={4}>
         <Box bg="bg.tertiary" px={4} borderRadius={12}>
           <Text.SmMedium mt={4} mb={2}>
-            Settings
+            {t('settings_screen.list_heading')}
           </Text.SmMedium>
           <ColorSchemeSettings />
           <LanguageSettings />
