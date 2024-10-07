@@ -1,11 +1,45 @@
 import { Field, Version } from '@/components'
 import { colorSchemesList } from '@/constants'
 import { useColorScheme } from '@/contexts'
-import { Spacer, Button, ScrollView, Box } from '@/design-system'
+import { Spacer, Button, ScrollView, Box, Row, Icon, Text } from '@/design-system'
 import { useCallback, useScreenOptions, useTranslation } from '@/hooks'
 import languages from '@/i18n/languages.json'
 import { signOut } from '@/store/auth'
+import { IconNames } from '@/types'
 import { noop } from '@/utils'
+
+const ListItemContent = ({
+  label,
+  value,
+  iconName,
+  showBorder,
+}: {
+  label: string
+  value: string
+  iconName: IconNames
+  showBorder?: boolean
+}) => {
+  return (
+    <Row alignItems="center" gap={2}>
+      <Box p={1} bg="bg.brand.solid" borderRadius={99}>
+        <Icon name={iconName} size={20} color="text.white" />
+      </Box>
+      <Row
+        py={4}
+        alignItems="center"
+        flex={1}
+        borderBottomWidth={showBorder ? 1 : 0}
+        borderColor="bg.quaternary"
+        gap={2}
+      >
+        <Text.SmBold>{label}</Text.SmBold>
+        <Box flex={1} />
+        <Text.SmMedium>{value}</Text.SmMedium>
+        <Icon name="arrow-right-s-line" size={24} />
+      </Row>
+    </Row>
+  )
+}
 
 export const LanguageSettings = (): JSX.Element => {
   const { i18n } = useTranslation()
@@ -18,20 +52,24 @@ export const LanguageSettings = (): JSX.Element => {
   }))
 
   const handleItemPress = useCallback(
-    (lng: string) => {
-      i18n.changeLanguage(lng.toLowerCase())
+    (lng: string[]) => {
+      i18n.changeLanguage(lng[0].toLowerCase())
     },
     [i18n]
   )
 
   return (
-    <Field.RadioGroup
+    <Field.Select
       onSelectItem={handleItemPress}
+      maxSelectedItems={1}
       items={languagesToRender}
+      selectedItems={[language]}
       label="Wybierz język"
-      size="md"
-      selectedItem={language}
-    />
+    >
+      {(props) => (
+        <ListItemContent label="Wybierz język" iconName="global-line" value={props.value} />
+      )}
+    </Field.Select>
   )
 }
 
@@ -39,8 +77,8 @@ const ColorSchemeSettings = () => {
   const { setColorSchemeSetting, colorSchemeSetting } = useColorScheme()
 
   const handleColorSchemeSettingChange = useCallback(
-    (scheme: typeof colorSchemeSetting) => {
-      setColorSchemeSetting(scheme)
+    (scheme: (typeof colorSchemeSetting)[]) => {
+      setColorSchemeSetting(scheme[0])
     },
     [setColorSchemeSetting]
   )
@@ -51,13 +89,23 @@ const ColorSchemeSettings = () => {
   }))
 
   return (
-    <Field.RadioGroup
+    <Field.Select
       onSelectItem={handleColorSchemeSettingChange}
+      maxSelectedItems={1}
       items={colorSchemesListToRender}
+      selectedItems={[colorSchemeSetting]}
       label="Wybierz schemat kolorów"
-      size="md"
-      selectedItem={colorSchemeSetting}
-    />
+      mb="0px"
+    >
+      {(props) => (
+        <ListItemContent
+          label="Wybierz schemat kolorów"
+          iconName="palette-line"
+          showBorder
+          value={props.value}
+        />
+      )}
+    </Field.Select>
   )
 }
 
@@ -71,11 +119,13 @@ export const SettingsScreen = (): JSX.Element => {
   return (
     <ScrollView flexGrow={1} mt={4}>
       <Box flexGrow={1} px={4}>
-        <ColorSchemeSettings />
-
-        <Spacer y={6} />
-
-        <LanguageSettings />
+        <Box bg="bg.tertiary" px={4} borderRadius={12}>
+          <Text.SmMedium mt={4} mb={2}>
+            Settings
+          </Text.SmMedium>
+          <ColorSchemeSettings />
+          <LanguageSettings />
+        </Box>
 
         <Box flexGrow={1} />
 
