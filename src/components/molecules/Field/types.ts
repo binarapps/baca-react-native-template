@@ -5,6 +5,7 @@ import {
   FormLabelProps,
   InputProps,
   SelectProps,
+  StyledProps,
   TouchableRef,
 } from '@/design-system'
 
@@ -30,7 +31,7 @@ export type FieldSelectProps<T> = SelectProps<T> &
     errorMessage?: string
     errorIcon?: JSX.Element
     isInvalid?: boolean
-  }
+  } & StyledProps
 
 // -----------------------
 // -------- RADIO --------
