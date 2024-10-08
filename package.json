@@ -72,6 +72,7 @@
     "start:production": "yarn generate:env:production && IS_DEV=1 IS_EXPO_GO=1 expo start -c -g",
     "start:staging": "yarn generate:env:staging && IS_DEV=1 IS_EXPO_GO=1 expo start -c -g",
     "start": "cross-env IS_DEV=1 IS_EXPO_GO=1 expo start -c -g",
+    "start:no-dev": "cross-env IS_DEV=1 IS_EXPO_GO=1 expo start --no-dev --minify -c -g",
     "start:qa": "yarn generate:env:qa && cross-env IS_DEV=1 IS_EXPO_GO=1 expo start -c -g",
     "start:e2e": "yarn generate:env:qa && cross-env IS_MOCK=1 IS_DEV=1 IS_EXPO_GO=1 npx expo start -c -g --no-dev --minify",
     "test:debug": "jest -o --watch --coverage=false",
