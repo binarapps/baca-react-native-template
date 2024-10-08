@@ -224,6 +224,10 @@ export type SelectProps<T> = {
   onSelectItem: (newValue: T[]) => void
   selectedItems: T[]
 
+  children?:
+    | React.ReactNode
+    | ((props: { value: string; isError: boolean }) => React.ReactNode)
+    | undefined
   placeholder?: string
   label?: string
   disabled?: boolean
