@@ -30,10 +30,29 @@ const addAfter = (content: string, searchText: string, textToAdd: string) => {
 
 /**
  * Recursively prompts the user to select a subdirectory and calls itself with the selected subdirectory path.
+ * Tracks the visited paths to prevent infinite loops and limits recursion depth to prevent stack overflow.
  *
  * @param basePath - The path of the current directory.
+ * @param visitedPaths - A set to track visited directories and avoid cycles.
+ * @param depth - The current depth of the recursion to enforce a limit.
+ * @param maxDepth - The maximum allowed depth for recursion.
+ * @returns {Promise<string>} - The selected path.
  */
-const selectPath = async (basePath: string): Promise<string> => {
+const selectPath = async (
+  basePath: string,
+  visitedPaths = new Set<string>(),
+  depth = 0,
+  maxDepth = 10
+): Promise<string> => {
+  if (depth > maxDepth) {
+    throw new Error('Maximum recursion depth exceeded')
+  }
+
+  if (visitedPaths.has(basePath)) {
+    throw new Error('Cycle detected in directory structure')
+  }
+
+  visitedPaths.add(basePath)
   const subDirectories = getDirectoryNames(basePath)
   const hasSubDirectories = subDirectories.length > 0
 
@@ -69,9 +88,32 @@ const selectPath = async (basePath: string): Promise<string> => {
     return basePath
   }
   // Recursively execute path selection when promptAnswer is not the current directory
-  const subResult = await selectPath(`${basePath}/${promptAnswer}`)
+  const subResult = await selectPath(
+    `${basePath}/${promptAnswer}`,
+    visitedPaths,
+    depth + 1,
+    maxDepth
+  )
 
   return subResult
+}
+
+/**
+ * Validates if a route with the given name already exists in the specified path.
+ * Checks for route name and route path validity.
+ *
+ * @param {string} routeName - The name of the route.
+ * @param {string} routePath - The path where the route should be generated.
+ * @throws {Error} - Throws an error if the route already exists or if the route name/path is missing.
+ */
+const validateRouteDetails = (routeName: string, routePath: string) => {
+  if (!routeName) {
+    throw new Error('Screen name is required')
+  }
+
+  if (!routePath) {
+    throw new Error('Route path is required')
+  }
 }
 
 /**
@@ -81,22 +123,11 @@ const selectPath = async (basePath: string): Promise<string> => {
  * @throws Error if the route already exists in the specified path.
  */
 const validateExpoRouterScreen = (routeName: string, routePath: string) => {
+  validateRouteDetails(routeName, routePath)
   const fileName = kebabCase(routeName)
   const filePath = `${routePath}/${fileName}.tsx`
   if (fs.existsSync(filePath)) {
-    logger.error(`Screen: ${routeName} already exists in ${routePath}`)
-
     throw new Error(`Screen: ${routeName} already exists in ${routePath}`)
-  }
-
-  if (!routeName) {
-    logger.error('Screen name is required')
-    throw new Error('Screen name is required')
-  }
-
-  if (!routePath) {
-    logger.error('Route path is required')
-    throw new Error('Route path is required')
   }
 }
 
@@ -153,7 +184,10 @@ const createScreenFile = (screenName: string) => {
 const addToScreensIndex = (screenName: string) => {
   const indexFilePath = `${SCREENS_DIRECTORY}/index.ts`
   const indexFile = fs.readFileSync(indexFilePath, 'utf8')
-  const newIndexFile = indexFile + `export * from './${screenName}'\n`
+  const newIndexFile =
+    indexFile +
+    `export * from './${screenName}'
+`
 
   fs.writeFileSync(indexFilePath, newIndexFile)
 }
@@ -182,6 +216,25 @@ const promptTabName = async () => {
 }
 
 /**
+ * Updates the translations for the given tab name in both 'pl' and 'en' translation files.
+ *
+ * @param {string} tabName - The name of the tab to be updated in translations.
+ * @param {string} newTabName - The formatted tab name to be used in translations.
+ */
+const updateTranslations = (tabName: string, newTabName: string) => {
+  const polishTranslationsPath = `${TRANSLATIONS_DIRECTORY}/pl.json`
+  const englishTranslationsPath = `${TRANSLATIONS_DIRECTORY}/en.json`
+
+  const polishTranslations = JSON.parse(fs.readFileSync(polishTranslationsPath, 'utf8'))
+  polishTranslations.bottom_tabs[tabName] = newTabName
+  fs.writeFileSync(polishTranslationsPath, JSON.stringify(polishTranslations, null, 2))
+
+  const englishTranslations = JSON.parse(fs.readFileSync(englishTranslationsPath, 'utf8'))
+  englishTranslations.bottom_tabs[tabName] = newTabName
+  fs.writeFileSync(englishTranslationsPath, JSON.stringify(englishTranslations, null, 2))
+}
+
+/**
  * Creates a new navigation tab with the given tab name, updates translations, and adds the tab configuration.
  *
  * @param {string} tabName - The name of the tab to create.
@@ -203,50 +256,19 @@ const createNewNavTab = (tabName: string) => {
 
   const newTabName = capitalCase(tabName.charAt(0).toUpperCase() + tabName.slice(1))
 
-  // update pl and en translations
-  const polishTranslations = JSON.parse(
-    fs.readFileSync(`${TRANSLATIONS_DIRECTORY}/pl.json`, 'utf8')
-  )
-  polishTranslations.bottom_tabs[tabName] = newTabName
-  fs.writeFileSync(`${TRANSLATIONS_DIRECTORY}/pl.json`, JSON.stringify(polishTranslations, null, 2))
-
-  const englishTranslations = JSON.parse(
-    fs.readFileSync(`${TRANSLATIONS_DIRECTORY}/en.json`, 'utf8')
-  )
-  englishTranslations.bottom_tabs[tabName] = newTabName
-  fs.writeFileSync(
-    `${TRANSLATIONS_DIRECTORY}/en.json`,
-    JSON.stringify(englishTranslations, null, 2)
-  )
+  // Update translations for both 'pl' and 'en'
+  updateTranslations(tabName, newTabName)
 
   const newContent = addAfter(navigationConfigFile, '// UPPER SIDE TABS', tabContent)
   fs.writeFileSync('./src/navigation/tabNavigator/navigation-config.ts', newContent)
 }
 
 /**
- * Generates a screen based on user input.
- * Prompts the user to enter a screen name and selects a screen path.
- * Validates the screen name and path.
+ * Prompts the user to enter a screen name and returns it in PascalCase.
+ *
+ * @returns {Promise<string>} - The PascalCase screen name.
  */
-export const generateScreen = async () => {
-  let routePath = await selectPath(APP_ROUTER_DIRECTORY)
-
-  const isNewTab =
-    routePath.includes('(tabs)') &&
-    // For some reason
-    (routePath.includes('new-tab') || routePath.includes('_New Tab_'))
-  if (isNewTab) {
-    const tabName = await promptTabName()
-    createNewNavTab(tabName)
-
-    const newTabPath = routePath
-      .replace('/new-tab', `/${tabName}`)
-      .replace('/_New Tab_', `/${tabName}`)
-    routePath = newTabPath
-
-    fs.mkdirSync(newTabPath)
-  }
-
+const promptScreenName = async (): Promise<string> => {
   const promptAnswer = await prompt<{ screenName: string }>({
     message: 'What is your screen name?',
     name: 'screenName',
@@ -256,17 +278,78 @@ export const generateScreen = async () => {
   const screenName = promptAnswer.screenName
 
   if (!screenName || typeof screenName !== 'string') {
-    return
+    throw new Error('Screen name is required')
   }
 
-  const screenFileNameWithOutSlash = screenName.startsWith('/') ? screenName.slice(1) : screenName
-  const screenFileName = `${pascalCase(screenFileNameWithOutSlash)}Screen`
+  return screenName
+}
 
-  validateExpoRouterScreen(screenName, routePath)
-  createExpoRouterFile(screenName, routePath, isNewTab, screenFileName)
+/**
+ * Handles the creation of a new tab.
+ *
+ * @param {string} routePath - The path of the route.
+ * @returns {Promise<string>} - The new tab path after creation.
+ */
+const handleNewTabCreation = async (routePath: string): Promise<string> => {
+  const tabName = await promptTabName()
+  createNewNavTab(tabName)
 
-  checkScreenExistence(screenFileName)
-  createScreenFile(screenFileName)
+  const newTabPath = routePath
+    .replace('/new-tab', `/${tabName}`)
+    .replace('/_New Tab_', `/${tabName}`)
 
-  addToScreensIndex(screenFileName)
+  fs.mkdirSync(newTabPath)
+  return newTabPath
+}
+
+/**
+ * Generates a screen based on user input.
+ * Prompts the user to enter a screen name and selects a screen path.
+ * Validates the screen name and path.
+ */
+export const generateScreen = async () => {
+  try {
+    let routePath = await selectPath(APP_ROUTER_DIRECTORY)
+
+    const isNewTab =
+      routePath.includes('(tabs)') &&
+      (routePath.includes('new-tab') || routePath.includes('_New Tab_'))
+
+    if (isNewTab) {
+      routePath = await handleNewTabCreation(routePath)
+    }
+
+    const screenName = await promptScreenName()
+
+    const screenFileNameWithOutSlash = screenName.startsWith('/') ? screenName.slice(1) : screenName
+    const screenFileName = pascalCase(screenFileNameWithOutSlash) + 'Screen'
+
+    validateExpoRouterScreen(screenName, routePath)
+    createExpoRouterFile(screenName, routePath, isNewTab, screenFileName)
+
+    checkScreenExistence(screenFileName)
+    createScreenFile(screenFileName)
+
+    addToScreensIndex(screenFileName)
+
+    logger.success(`Screen: ${screenFileName} generated successfully`)
+
+    if (isNewTab) {
+      logger.info(`New tab created at
+    ${routePath}
+
+Please open ./src/navigation/tabNavigator/navigation-config.ts and change icons for the new tab
+`)
+    }
+
+    logger.info(`New screen created at
+    ${SCREENS_DIRECTORY}/${screenFileName}.tsx
+
+    Please open the file and add your content
+`)
+  } catch (error) {
+    if (error instanceof Error) {
+      logger.error(error.message)
+    }
+  }
 }
