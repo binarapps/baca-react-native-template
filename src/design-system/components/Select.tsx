@@ -87,6 +87,7 @@ export const Select = <T extends SelectKey>({
   maxSelectedItems = 1,
   onOpen,
   isError = false,
+  children,
 }: SelectProps<T>) => {
   const ref = useRef<BottomSheetModal>(null)
   const { colors } = useTheme()
@@ -147,9 +148,17 @@ export const Select = <T extends SelectKey>({
 
   const flatListPaddingBottom = Platform.OS === 'web' ? 0 : 24 + bottom
 
-  return (
-    <>
-      <Touchable disabled={dropdownDisabled} onPress={showDropdown} justifyContent="center">
+  const renderSelectAction = useMemo(() => {
+    if (typeof children === 'function') {
+      return children({ value: valueToShow, isError })
+    }
+
+    if (children) {
+      return children
+    }
+
+    return (
+      <>
         <Text
           numberOfLines={1}
           style={[
@@ -163,6 +172,14 @@ export const Select = <T extends SelectKey>({
           {valueToShow}
         </Text>
         <Icon color={inputColor} size={22} name="arrow-down-s-line" style={styles.icon} />
+      </>
+    )
+  }, [children, colors.border.primary, colors.text.error.primary, inputColor, isError, valueToShow])
+
+  return (
+    <>
+      <Touchable disabled={dropdownDisabled} onPress={showDropdown} justifyContent="center">
+        {renderSelectAction}
       </Touchable>
       <BottomSheet title={label} bottomSheetRef={ref}>
         <BottomSheetFlatList
