@@ -15,6 +15,7 @@ export const ExamplesScreen = () => {
   const goToColors = useCallback(() => push('/example/colors'), [push])
   const goToComponents = useCallback(() => push('/example/components'), [push])
   const goToTypography = useCallback(() => push('/example/typography'), [push])
+  const goToStylesBenchmark = useCallback(() => push('/example/style-benchmark'), [push])
   const goToCityListScreen_EXAMPLE = useCallback(() => push('/example/data-from-be'), [push])
   const goToTestForm = useCallback(() => push('/example/test-form'), [push])
   const goToPushNotificationsHelpers = useCallback(
@@ -36,6 +37,7 @@ export const ExamplesScreen = () => {
       <Button onPress={goToColors}>{t('examples_screen.go_to_colors')}</Button>
       <Button onPress={goToComponents}>{t('examples_screen.go_to_components')}</Button>
       <Button onPress={goToTypography}>{t('examples_screen.go_to_typography')}</Button>
+      <Button onPress={goToStylesBenchmark}>{t('examples_screen.go_to_style_benchmark')}</Button>
 
       <Display.SmBold>Navigation</Display.SmBold>
       <Button onPress={goToHomeStackDetails}>

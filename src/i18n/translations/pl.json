@@ -197,6 +197,7 @@
     "go_to_screen_with_BEdata": "Idź do widoku z danymi z backend-u",
     "go_to_settings": "Idź do Ustawień",
     "go_to_typography": "Idź do Typografii",
+    "go_to_style_benchmark": "Idź do benchmarku stylowania",
     "go_to_user_session": "Idź do sesji użytkowania",
     "header": "To jest przykładowy widok"
   },

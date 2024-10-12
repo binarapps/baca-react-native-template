@@ -197,6 +197,7 @@
     "go_to_screen_with_BEdata": "Go to screen with data from BE",
     "go_to_settings": "Go to Settings",
     "go_to_typography": "Go to Typography",
+    "go_to_style_benchmark": "Go to Style Benchmark",
     "go_to_user_session": "Go to user session",
     "header": "This is Example screen"
   },
