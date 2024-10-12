@@ -54,8 +54,12 @@ export const Select = <T extends SelectKey>({
     [props]
   )
 
+  if (props.children) {
+    return <CustomSelect label={label} {...props} />
+  }
+
   return (
-    <Box {...layoutProps} width="100%" mb={2} gap={1}>
+    <Box width="100%" mb={2} gap={1} {...layoutProps}>
       <FormLabel
         label={label}
         isRequired={isRequired}
