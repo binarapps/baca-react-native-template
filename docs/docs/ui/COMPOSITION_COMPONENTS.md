@@ -2,7 +2,7 @@
 id: composition-components
 slug: /composition-components
 title: Composition components
-sidebar_position: 5
+sidebar_position: 1
 tags:
   - UI
   - Box
