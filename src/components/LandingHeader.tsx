@@ -1,10 +1,11 @@
-import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
 import { useAtomValue } from 'jotai'
 import { StyleSheet, Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-import { lightBinarLogo, darkBinarLogo } from '@/constants'
+import { CompanyLogo } from './CompanyLogo'
+import { ThemeSwitcherButton } from './ThemeSwitcherButton'
+
 import { useColorScheme } from '@/contexts'
 import { Box, Button, Icon, Pressable, Row, Spacer, Touchable } from '@/design-system'
 import { useFullScreenModal } from '@/design-system/modals/useFullScreenModal'
@@ -37,11 +38,7 @@ export function LandingHeader() {
         <Icon name="arrow-left-line" size={20} />
       </Pressable>
     ) : (
-      <Image
-        contentFit="scale-down"
-        source={colorScheme === 'light' ? lightBinarLogo : darkBinarLogo}
-        style={jsStyles.logoWide}
-      />
+      <CompanyLogo height={60} width={150} />
     )
   }, [back, canGoBack, colorScheme])
 
@@ -58,6 +55,7 @@ export function LandingHeader() {
         <Touchable onPress={closeFullScreenModal}>
           <Icon name="close-line" size={24} color="text.brand.primary" />
         </Touchable>
+        <Box />
       </View>
       <Box flex={1} />
       <Box p={4} w="full">
@@ -70,7 +68,7 @@ export function LandingHeader() {
 
   const renderRightMenu = useMemo(() => {
     if (isSignedIn) {
-      return <Box />
+      return <ThemeSwitcherButton />
     }
 
     if (isDesktop) {
@@ -79,6 +77,7 @@ export function LandingHeader() {
           <Button onPress={navigateToLogin}>{t('landing_screen.login_cta')}</Button>
           <Spacer x="4" />
           <Button onPress={navigateToSignUp}>{t('landing_screen.sign_up')}</Button>
+          <ThemeSwitcherButton />
         </Row>
       )
     }
@@ -117,5 +116,4 @@ const jsStyles = StyleSheet.create({
     width: '100%',
     zIndex: 10,
   },
-  logoWide: { height: 60, width: 150 },
 })
