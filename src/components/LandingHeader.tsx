@@ -77,6 +77,7 @@ export function LandingHeader() {
           <Button onPress={navigateToLogin}>{t('landing_screen.login_cta')}</Button>
           <Spacer x="4" />
           <Button onPress={navigateToSignUp}>{t('landing_screen.sign_up')}</Button>
+          <Spacer x="4" />
           <ThemeSwitcherButton />
         </Row>
       )
