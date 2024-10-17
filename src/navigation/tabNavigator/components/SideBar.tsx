@@ -65,7 +65,15 @@ export function SideBar({ visible }: { visible: boolean }) {
                     alignItems: 'center',
                   } as const),
               ],
-              web: [cns(cssStyles.sideBarHeader)],
+              web: [
+                {
+                  alignItems: 'stretch',
+                } as const,
+                isLarge &&
+                  ({
+                    paddingHorizontal: 4,
+                  } as const),
+              ],
             }),
           ]}
         >
@@ -115,6 +123,7 @@ const jsStyles = StyleSheet.create({
     flex: 1,
     height: '100%',
     justifyContent: 'space-between',
+    width: '100%',
   },
 
   sidebarTabs: { flex: 1, gap: 4 },
