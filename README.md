@@ -4,8 +4,7 @@
 
 # BACA - React Native Template
 
-> [!Note]
-> **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
+> [!Note] > **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
 >
 > This repository is part of a whole ecosystem, and it only contains React Native code.
 
@@ -130,6 +129,13 @@ Ensure you have the following installed before you begin:
 - Improve mock server logic.
 - Add commit lint for consistent commits.
 - Add support for libraries like `expo-image`, `FlashList`, and `ZOD`.
+- Todos
+  - Home screen
+    - Add scripts - `yarn g` / `yarn b`
+    - Add link to docs
+    - Add link to examples
+  - Settings screen redesign
+  - finish ui docs
 
 ## 👏 How to Contribute
 
