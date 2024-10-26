@@ -2,7 +2,7 @@
 id: forms
 slug: /forms
 title: Forms
-sidebar_position: 2
+sidebar_position: 4
 tags:
   - Forms
   - Components
