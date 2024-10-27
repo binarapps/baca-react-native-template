@@ -32,13 +32,6 @@ $ui-sidebar: 244px;
   }
 }
 
-.smallVisible {
-  display: flex;
-  @media (min-width: $size-xs) {
-    display: none;
-  }
-}
-
 .largeVisible {
   display: none;
   @media (min-width: $size-xs) {

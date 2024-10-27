@@ -3,27 +3,25 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TabBarItemWrapper } from './TabBarItemWrapper'
 import { bottomTabs, getTabColor } from '../navigation-config'
-import { cns } from '../utils'
 
 import { Column, Icon, Text } from '@/design-system'
 import { useTheme, useTranslation } from '@/hooks'
-import cssStyles from '@/styles'
 
 export function BottomBar({ visible }: { visible: boolean }) {
   const { colors } = useTheme()
   const { t } = useTranslation()
+  const { bottom } = useSafeAreaInsets()
+
+  if (!visible) {
+    return null
+  }
+
   return (
     <View
       style={[
         {
-          paddingBottom: useSafeAreaInsets().bottom,
+          paddingBottom: bottom,
         },
-        Platform.select({
-          default: {
-            display: visible ? 'flex' : 'none',
-          },
-          web: cns(cssStyles.smallVisible),
-        }),
       ]}
     >
       <View style={[jsStyles.nav, { borderTopColor: colors.border.secondary }]}>
