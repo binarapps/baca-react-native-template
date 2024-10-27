@@ -6,12 +6,6 @@ $ui-sidebar: 244px;
   outline: none;
 }
 
-.container {
-  flex-direction: column;
-  @media (min-width: $size-xs) {
-    flex-direction: row;
-  }
-}
 // Header Logo
 .headerContainer {
   padding-top: 0px;
