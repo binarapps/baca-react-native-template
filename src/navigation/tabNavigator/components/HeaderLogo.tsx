@@ -3,11 +3,9 @@ import { Link } from 'expo-router'
 import { Platform, StyleSheet, View } from 'react-native'
 
 import { useUniversalWidth } from '../hooks'
-import { cns } from '../utils'
 
 import { CompanyLogo } from '@/components'
 import { useTheme } from '@/hooks'
-import cssStyles from '@/styles'
 import { makeBigerOnHover } from '@/utils/webStyling'
 
 export function HeaderLogo() {
@@ -28,10 +26,7 @@ export function HeaderLogo() {
             ]}
           >
             <View
-              style={Platform.select({
-                default: jsStyles.headerContainer,
-                web: cns(cssStyles.headerContainer),
-              })}
+              style={isLargeHorizontal ? jsStyles.headerContainerBig : jsStyles.headerContainer}
             >
               <CompanyLogo
                 asImage
@@ -62,6 +57,9 @@ export function HeaderLogo() {
 const jsStyles = StyleSheet.create({
   headerContainer: {
     paddingTop: 0,
+  },
+  headerContainerBig: {
+    paddingTop: 8,
   },
   headerLink: {
     alignItems: 'center',

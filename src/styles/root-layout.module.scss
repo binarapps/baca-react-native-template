@@ -6,14 +6,6 @@ $ui-sidebar: 244px;
   outline: none;
 }
 
-// Header Logo
-.headerContainer {
-  padding-top: 0px;
-  @media (min-width: $size-l) {
-    padding: 8px;
-  }
-}
-
 .headerLogo {
   @media (min-width: $size-xs) and (max-width: $size-l) {
     padding-top: 0px;
