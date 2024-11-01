@@ -7,6 +7,10 @@ import { useCachedResources } from '@/hooks'
 import { useCheckForAppUpdate } from '@/hooks/useCheckForAppUpdate'
 import { isSignedInAtom } from '@/store/auth'
 
+// Extract timeout values to constants
+const SPLASH_HIDE_DELAY = 150
+const SPLASH_TRANSITION_DELAY = 0
+
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync()
 
@@ -34,8 +38,8 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
     const hideSplashScreen = () => {
       setTimeout(async () => {
         await SplashScreen.hideAsync()
-        setTimeout(() => setIsSplashHidden(true), 0)
-      }, 150)
+        setTimeout(() => setIsSplashHidden(true), SPLASH_TRANSITION_DELAY)
+      }, SPLASH_HIDE_DELAY)
     }
     if (!isLoading) {
       hideSplashScreen()
