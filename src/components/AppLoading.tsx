@@ -10,6 +10,12 @@ import { isSignedInAtom } from '@/store/auth'
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync()
 
+/**
+ * AppLoading handles the application's initial loading state,
+ * including splash screen, resource caching, and auth state.
+ * @param {PropsWithChildren} props - React children components
+ * @returns {ReactElement}
+ */
 export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
   const isLoadingComplete = useCachedResources()
   const isSignedIn = useAtomValue(isSignedInAtom)
