@@ -39,6 +39,7 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
       await wait(1)
       setIsSplashHidden(true)
     }
+
     if (!isLoading) {
       hideSplashScreen()
     }
