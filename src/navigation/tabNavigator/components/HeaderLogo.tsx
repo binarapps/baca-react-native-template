@@ -60,10 +60,11 @@ const jsStyles = StyleSheet.create({
   },
   headerContainerBig: {
     paddingTop: 8,
+    padding: 8,
   },
   headerLink: {
     alignItems: 'center',
-    paddingBottom: 24,
+    paddingBottom: 16,
   },
   headerLogo: {
     alignItems: 'center',
