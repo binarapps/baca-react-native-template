@@ -1,14 +1,12 @@
-import { Platform, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import { HeaderLogo } from './HeaderLogo'
 import { SideBarTabItem } from './SideBarTabItem'
 import { useUniversalWidth } from '../hooks'
 import { upperSideTabs } from '../navigation-config'
-import { cns } from '../utils'
 
 import { useSafeAreaInsets, useTheme } from '@/hooks'
 import { signOut } from '@/store/auth'
-import cssStyles from '@/styles'
 
 const NAV_MEDIUM_WIDTH = 244
 
@@ -21,20 +19,14 @@ export function SideBar({ visible }: { visible: boolean }) {
     <View
       style={[
         jsStyles.sideBar,
-        ...Platform.select({
-          default: [
-            !visible &&
-              ({
-                display: 'none',
-              } as const),
-            isLarge &&
-              ({
-                minWidth: NAV_MEDIUM_WIDTH,
-              } as const),
-          ],
-
-          web: [cns(cssStyles.largeVisible, cssStyles.sideBar)],
-        }),
+        !visible &&
+          ({
+            display: 'none',
+          } as const),
+        isLarge &&
+          ({
+            minWidth: NAV_MEDIUM_WIDTH,
+          } as const),
       ]}
     >
       <View
@@ -42,39 +34,21 @@ export function SideBar({ visible }: { visible: boolean }) {
           jsStyles.sidebarInner,
           { paddingTop: top + 8 },
           { borderRightColor: colors.border.secondary },
-          ...Platform.select({
-            default: [
-              isLarge &&
-                ({
-                  width: NAV_MEDIUM_WIDTH,
-                  minWidth: NAV_MEDIUM_WIDTH,
-                  alignItems: 'flex-start',
-                } as const),
-            ],
-            web: [cns(cssStyles.sideBarInner)],
-          }),
+          isLarge &&
+            ({
+              width: NAV_MEDIUM_WIDTH,
+              minWidth: NAV_MEDIUM_WIDTH,
+              alignItems: 'flex-start',
+            } as const),
         ]}
       >
         <View
           style={[
             jsStyles.sidebarInner2,
-            ...Platform.select({
-              default: [
-                !isLarge &&
-                  ({
-                    alignItems: 'center',
-                  } as const),
-              ],
-              web: [
-                {
-                  alignItems: 'stretch',
-                } as const,
-                isLarge &&
-                  ({
-                    paddingHorizontal: 4,
-                  } as const),
-              ],
-            }),
+            !isLarge &&
+              ({
+                alignItems: 'center',
+              } as const),
           ]}
         >
           <HeaderLogo />
