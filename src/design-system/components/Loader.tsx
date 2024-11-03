@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native'
 
 import { BricksLoader, BricksLoaderType } from './BricksLoader'
@@ -38,22 +38,27 @@ type LoaderType =
       size?: string | number
     }
 
-export const Loader = ({ type, ...props }: LoaderType): JSX.Element => {
-  const renderLoader = useMemo((): JSX.Element => {
-    if (type === 'circle') {
-      return <CircleLoader {...(props as CircleLoaderType)} />
-    } else if (type === 'bubbles') {
-      return <BubblesLoader {...(props as BubblesLoaderType)} />
-    } else if (type === 'bricks') {
-      return <BricksLoader {...(props as BricksLoaderType)} />
-    } else if (type === 'disk') {
-      return <DiskLoader {...(props as DiskLoaderType)} />
-    } else {
-      return <ActivityIndicator {...(props as ActivityIndicatorProps)} />
-    }
-  }, [type, props])
+export const Loader = memo(
+  ({ type, ...props }: LoaderType): JSX.Element => {
+    const renderLoader = useMemo((): JSX.Element => {
+      if (type === 'circle') {
+        return <CircleLoader {...(props as CircleLoaderType)} />
+      } else if (type === 'bubbles') {
+        return <BubblesLoader {...(props as BubblesLoaderType)} />
+      } else if (type === 'bricks') {
+        return <BricksLoader {...(props as BricksLoaderType)} />
+      } else if (type === 'disk') {
+        return <DiskLoader {...(props as DiskLoaderType)} />
+      } else {
+        return <ActivityIndicator {...(props as ActivityIndicatorProps)} />
+      }
+    }, [type, props])
 
-  return renderLoader
-}
+    return renderLoader
+  },
+  (prevProps, nextProps) => {
+    return prevProps.type === nextProps.type && prevProps.size === nextProps.size
+  }
+)
 
 Loader.displayName = 'Loader'
