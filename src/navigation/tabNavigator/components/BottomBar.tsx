@@ -26,41 +26,47 @@ export function BottomBar({ visible }: { visible: boolean }) {
     >
       <View style={[jsStyles.nav, { borderTopColor: colors.border.secondary }]}>
         {bottomTabs.map((tab, i) => (
-          <TabBarItemWrapper
+          <View
+            style={{
+              width: `${100 / bottomTabs.length}%`,
+            }}
             key={i}
-            name={tab.name}
-            id={tab.id}
-            params={tab.params}
-            testID={'bottom_tab_button:' + tab.name}
           >
-            {({ focused, pressed, hovered }) => (
-              <Column
-                px={2}
-                alignItems="center"
-                style={[
-                  pressed && jsStyles.tabIconPressed,
-                  Platform.select({
-                    web: {
-                      transitionDuration: '200ms',
-                      transform: [{ scale: hovered ? 1.1 : pressed ? 0.9 : 1 }],
-                    },
-                  }),
-                ]}
-                gap={2}
-              >
-                <Icon
-                  name={focused ? tab.iconFocused : tab.icon}
-                  size={tab.displayedNameTx ? 24 : 40}
-                  color={getTabColor(focused)}
-                />
-                {!!tab.displayedNameTx && (
-                  <Text.XsMedium color={getTabColor(focused)}>
-                    {t(tab.displayedNameTx)}
-                  </Text.XsMedium>
-                )}
-              </Column>
-            )}
-          </TabBarItemWrapper>
+            <TabBarItemWrapper
+              key={i}
+              name={tab.name}
+              id={tab.id}
+              params={tab.params}
+              testID={'bottom_tab_button:' + tab.name}
+            >
+              {({ focused, pressed, hovered }) => (
+                <Column
+                  alignItems="center"
+                  style={[
+                    pressed && jsStyles.tabIconPressed,
+                    Platform.select({
+                      web: {
+                        transitionDuration: '200ms',
+                        transform: [{ scale: hovered ? 1.1 : pressed ? 0.9 : 1 }],
+                      },
+                    }),
+                  ]}
+                  gap={2}
+                >
+                  <Icon
+                    name={focused ? tab.iconFocused : tab.icon}
+                    size={tab.displayedNameTx ? 24 : 40}
+                    color={getTabColor(focused)}
+                  />
+                  {!!tab.displayedNameTx && (
+                    <Text.XsMedium color={getTabColor(focused)}>
+                      {t(tab.displayedNameTx)}
+                    </Text.XsMedium>
+                  )}
+                </Column>
+              )}
+            </TabBarItemWrapper>
+          </View>
         ))}
       </View>
     </View>
