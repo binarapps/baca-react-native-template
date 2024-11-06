@@ -1,7 +1,6 @@
 import {
   Modal as RNModal,
   ModalProps,
-  SafeAreaView,
   TouchableWithoutFeedback,
   View,
   ViewStyle,
@@ -41,19 +40,20 @@ export const Modal = ({
       onRequestClose={onRequestClose}
       {...rest}
     >
-      <TouchableWithoutFeedback onPress={onRequestClose}>
-        <SafeAreaView style={[styles.modal, additionalWrapperStyle]}>
-          <ScrollableComponent
-            style={styles.scroll}
-            contentContainerStyle={[
-              styles.scrollContent,
-              { background: hex2rgba(colors.bg.overlay, 0.5) },
-            ]}
-            showsVerticalScrollIndicator={false}
-          >
-            <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>
-          </ScrollableComponent>
-        </SafeAreaView>
+      <TouchableWithoutFeedback
+        onPress={onRequestClose}
+        style={[styles.modal, additionalWrapperStyle]}
+      >
+        <ScrollableComponent
+          style={styles.scroll}
+          contentContainerStyle={[
+            styles.scrollContent,
+            { backgroundColor: hex2rgba(colors.bg.overlay, 0.5) },
+          ]}
+          showsVerticalScrollIndicator={false}
+        >
+          <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>
+        </ScrollableComponent>
       </TouchableWithoutFeedback>
     </RNModal>
   )
