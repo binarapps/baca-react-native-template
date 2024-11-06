@@ -2,7 +2,7 @@
   "label": "Sync your project with BACA",
   "position": 10,
   "collapsible": true,
-  "collapsed": false,
+  "collapsed": true,
   "link": {
     "type": "generated-index",
     "description": "Sync your project with BACA"

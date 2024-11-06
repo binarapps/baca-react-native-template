@@ -2,7 +2,7 @@
   "label": "Start development",
   "position": 3,
   "collapsible": true,
-  "collapsed": false,
+  "collapsed": true,
   "link": {
     "type": "generated-index",
     "description": "Documentation for the development of the project"
