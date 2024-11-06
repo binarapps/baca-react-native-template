@@ -55,7 +55,7 @@ const RawText = memo(
       {
         bold,
         capitalize,
-        color,
+        color = 'text.primary',
         italic,
         letterSpacing,
         lineHeight,
