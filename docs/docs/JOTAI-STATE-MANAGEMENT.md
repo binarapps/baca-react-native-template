@@ -1,14 +1,14 @@
 ---
-id: jotai
-slug: /jotai
-title: State management - jotai
+id: state-management
+slug: /state-management
+title: State management
 sidebar_position: 5
 tags:
   - Jotai
   - State management
   - React
   - React Native
-description: State management - jotai -
+description: State management - jotai
 ---
 
 # State management - Jotai
