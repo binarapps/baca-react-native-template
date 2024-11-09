@@ -255,6 +255,10 @@
     "your_photo": "Twoje zdjęcie"
   },
   "sign_in_screen": {
+    "alert": {
+      "title": "Użyj poniższych danych logowania (tryb deweloperski)",
+      "description": "mateusz.rostkowski+baca@binarapps.com\nTest1234,"
+    },
     "do_not_have_an_account": "Nie masz konta?",
     "forgot_password": "Nie pamiętam hasła",
     "sign_in_by_apple": "Zaloguj się przez Apple",
