@@ -1,4 +1,5 @@
 export * from './Absolute'
+export * from './AlertBox'
 export * from './Box'
 export * from './BoxWithShadow'
 export * from './Button'
