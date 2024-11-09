@@ -10,7 +10,7 @@ import {
 } from '@/components'
 import { ThemeSwitcherButton } from '@/components/ThemeSwitcherButton'
 import { REGEX, isWeb } from '@/constants'
-import { Box, Button, Center, Display, Row, Spacer, Text } from '@/design-system'
+import { Box, Button, Center, Display, Row, Spacer, Text, AlertBox } from '@/design-system'
 import { useCallback, useSignInForm, useState, useTranslation } from '@/hooks'
 
 export const SignInScreen = (): JSX.Element => {
@@ -118,7 +118,8 @@ export const SignInScreen = (): JSX.Element => {
           isDisabled={isSignInButtonDisabled}
           setIsDisabled={setIsSignInButtonsDisabled}
         />
-        <Row alignItems="center" mt={8}>
+        <Box flex={1} py={4} />
+        <Row alignItems="center">
           <Text.SmRegular color="text.tertiary">
             {t('sign_in_screen.do_not_have_an_account')}
           </Text.SmRegular>
@@ -126,6 +127,12 @@ export const SignInScreen = (): JSX.Element => {
             {t('sign_in_screen.sign_up')}
           </Button.LinkColor>
         </Row>
+        <Box flex={1} py={4} />
+        <AlertBox
+          status="info"
+          title={t('sign_in_screen.alert.title')}
+          description={t('sign_in_screen.alert.description')}
+        />
       </Center>
       <Box alignItems="center" flexGrow={1} justifyContent="flex-end">
         <Version onPress={navigateToAppInfo} />
