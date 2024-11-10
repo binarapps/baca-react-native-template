@@ -55,7 +55,6 @@ export function LandingHeader() {
         <Touchable onPress={closeFullScreenModal}>
           <Icon name="close-line" size={24} color="text.brand.primary" />
         </Touchable>
-        <Box />
       </View>
       <Box flex={1} />
       <Box p={4} w="full">
