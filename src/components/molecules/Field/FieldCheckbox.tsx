@@ -2,7 +2,7 @@ import { FieldCheckboxProps } from './types'
 
 import { CheckboxButton, Box, FormErrorMessage } from '@/design-system'
 
-export const Checkbox = ({
+export const FieldCheckbox = ({
   isRequired,
   labelStyle,
   isDisabled,
