@@ -5,7 +5,7 @@ import { Field } from '../../molecules'
 
 import { useCallback } from '@/hooks'
 
-export const RadioGroup = <T extends string>({
+export const ControlledRadioGroup = <T extends string>({
   name,
   control,
   errors,
