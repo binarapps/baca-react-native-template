@@ -1,4 +1,4 @@
-import { ControlledField } from '@/components/organisms/ControlledField'
+import { ControlledField } from '@/components'
 import { isWeb } from '@/constants'
 import { Box, Text } from '@/design-system'
 import { useWeb } from '@/hooks'
