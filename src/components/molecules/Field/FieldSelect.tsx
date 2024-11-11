@@ -2,17 +2,11 @@ import React from 'react'
 
 import type { FieldSelectProps } from './types'
 
-import {
-  Select as CustomSelect,
-  Box,
-  FormErrorMessage,
-  FormLabel,
-  SelectKey,
-} from '@/design-system/components'
+import { Select, Box, FormErrorMessage, FormLabel, SelectKey } from '@/design-system/components'
 import { getLayoutProps } from '@/design-system/utils/getLayoutProps'
 import { useMemo } from '@/hooks'
 
-export const Select = <T extends SelectKey>({
+export const FieldSelect = <T extends SelectKey>({
   isRequired,
   isInvalid,
   label,
@@ -25,7 +19,7 @@ export const Select = <T extends SelectKey>({
   const { layoutProps } = useMemo(() => getLayoutProps(props), [props])
 
   if (props.children) {
-    return <CustomSelect label={label} {...props} />
+    return <Select label={label} {...props} />
   }
 
   return (
@@ -36,7 +30,7 @@ export const Select = <T extends SelectKey>({
         labelStyle={labelStyle}
         onLabelPress={onOpen}
       />
-      <CustomSelect label={label} {...props} />
+      <Select label={label} {...props} />
       <FormErrorMessage errorMessage={errorMessage} />
     </Box>
   )
