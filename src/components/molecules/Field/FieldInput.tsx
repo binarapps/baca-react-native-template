@@ -6,7 +6,7 @@ import type { FieldInputProps } from './types'
 import { FormErrorMessage, FormLabel, Input as BaseInput, Box } from '@/design-system/components'
 import { getLayoutProps } from '@/design-system/utils/getLayoutProps'
 
-export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
+export const FieldInput = forwardRef<Partial<TextInput>, FieldInputProps>(
   (
     {
       errorMessage,
