@@ -5,7 +5,7 @@ import { Field } from '../../molecules'
 
 import { useCallback } from '@/hooks'
 
-export const CheckboxGroup = <T extends string>({
+export const ControlledCheckboxGroup = <T extends string>({
   name,
   control,
   errors,
