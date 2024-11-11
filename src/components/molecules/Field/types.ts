@@ -42,7 +42,7 @@ export type RadioGroupItemProps<T> = {
   value: T
 }
 
-export type RadioGroupProps<T> = FormLabelProps & {
+export type FieldRadioGroupProps<T> = FormLabelProps & {
   // Items logic
   items?: RadioGroupItemProps<T>[]
   onSelectItem: (val: T) => void

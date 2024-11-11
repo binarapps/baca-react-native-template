@@ -3,14 +3,14 @@ import React, { PropsWithChildren } from 'react'
 import { FieldCheckbox } from './FieldCheckbox'
 import { FieldCheckboxGroup } from './FieldCheckboxGroup'
 import { FieldInput } from './FieldInput'
-import { RadioGroup } from './RadioGroup'
+import { FieldRadioGroup } from './FieldRadioGroup'
 import { Select } from './Select'
 
 type FieldComposition = React.FC<PropsWithChildren> & {
   Input: typeof FieldInput
   CheckboxGroup: typeof FieldCheckboxGroup
   Checkbox: typeof FieldCheckbox
-  RadioGroup: typeof RadioGroup
+  RadioGroup: typeof FieldRadioGroup
   Select: typeof Select
 }
 
@@ -21,7 +21,7 @@ const Field: FieldComposition = ({ children }) => {
 Field.Input = FieldInput
 Field.CheckboxGroup = FieldCheckboxGroup
 Field.Checkbox = FieldCheckbox
-Field.RadioGroup = RadioGroup
+Field.RadioGroup = FieldRadioGroup
 Field.Select = Select
 
 export { Field }

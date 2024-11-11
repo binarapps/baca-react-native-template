@@ -1,7 +1,7 @@
 import * as Linking from 'expo-linking'
 
 import { SocialButton } from '@/components'
-import { RadioGroup } from '@/components/molecules/Field/RadioGroup'
+import { FieldRadioGroup } from '@/components/molecules/Field/FieldRadioGroup'
 import {
   Loader,
   Box,
@@ -67,9 +67,9 @@ const TextRadioButtons = () => {
 
   return (
     <RenderComponentWithExample
-      Component={RadioGroup}
+      Component={FieldRadioGroup}
       ComponentWithProps={
-        <RadioGroup
+        <FieldRadioGroup
           onSelectItem={setSelectedRadio}
           selectedItem={selectedRadio}
           isRequired

@@ -11,7 +11,7 @@ import {
 import {
   FieldCheckboxGroupProps,
   FieldInputProps,
-  RadioGroupProps,
+  FieldRadioGroupProps,
   FieldSelectProps,
   FieldCheckboxProps,
 } from '@/components/molecules'
@@ -57,7 +57,10 @@ export type ControlledSelectProps<T> = Omit<
 // -------- RADIO --------
 // -----------------------
 
-export type ControlledRadioProps<T> = Omit<RadioGroupProps<T>, 'selectedItem' | 'onSelectItem'> & {
+export type ControlledRadioProps<T> = Omit<
+  FieldRadioGroupProps<T>,
+  'selectedItem' | 'onSelectItem'
+> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/

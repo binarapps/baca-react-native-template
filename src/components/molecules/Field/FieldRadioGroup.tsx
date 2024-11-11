@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 
-import { RadioGroupProps } from './types'
+import { FieldRadioGroupProps } from './types'
 
 import { FormErrorMessage, FormLabel, Box, RadioButton } from '@/design-system/components'
 
-export const RadioGroup = <T extends string>({
+export const FieldRadioGroup = <T extends string>({
   selectedItem,
   items,
   onSelectItem,
@@ -16,7 +16,7 @@ export const RadioGroup = <T extends string>({
   labelStyle,
   isDisabled,
   radioRef,
-}: RadioGroupProps<T>) => {
+}: FieldRadioGroupProps<T>) => {
   const renderRadioButtons = useMemo(
     () =>
       items?.map((item, index) => {
@@ -45,4 +45,4 @@ export const RadioGroup = <T extends string>({
   )
 }
 
-RadioGroup.displayName = 'RadioGroup'
+FieldRadioGroup.displayName = 'RadioGroup'
