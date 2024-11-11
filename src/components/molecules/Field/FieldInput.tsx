@@ -3,7 +3,7 @@ import { NativeSyntheticEvent, TextInput, TextInputFocusEventData } from 'react-
 
 import type { FieldInputProps } from './types'
 
-import { FormErrorMessage, FormLabel, Input as BaseInput, Box } from '@/design-system/components'
+import { FormErrorMessage, FormLabel, Input, Box } from '@/design-system/components'
 import { getLayoutProps } from '@/design-system/utils/getLayoutProps'
 
 export const FieldInput = forwardRef<Partial<TextInput>, FieldInputProps>(
@@ -56,7 +56,7 @@ export const FieldInput = forwardRef<Partial<TextInput>, FieldInputProps>(
           testID={testID + ':label'}
           onLabelPress={handleFocus}
         />
-        <BaseInput
+        <Input
           isInvalid={isInvalid || Boolean(errorMessage)}
           {...inputProps}
           ref={_inputRef}
