@@ -6,7 +6,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
-import { Menu, MenuProps } from './organisms/Menu'
+import { Menu, MenuProps } from './organisms'
 
 import { theme } from '@/design-system'
 import { Icon, Row, Text } from '@/design-system/components'
