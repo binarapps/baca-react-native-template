@@ -4,33 +4,7 @@ import { NativeSyntheticEvent, TextInput, TextInputFocusEventData } from 'react-
 import type { FieldInputProps } from './types'
 
 import { FormErrorMessage, FormLabel, Input as BaseInput, Box } from '@/design-system/components'
-
-const layoutPropsKeys = [
-  'm',
-  'margin',
-  'mt',
-  'marginTop',
-  'mr',
-  'marginRight',
-  'mb',
-  'marginBottom',
-  'ml',
-  'marginLeft',
-  'mx',
-  'my',
-  'p',
-  'padding',
-  'pt',
-  'paddingTop',
-  'pr',
-  'paddingRight',
-  'pb',
-  'paddingBottom',
-  'pl',
-  'paddingLeft',
-  'px',
-  'py',
-]
+import { getLayoutProps } from '@/design-system/utils/getLayoutProps'
 
 export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
   (
@@ -50,16 +24,7 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
   ) => {
     const _inputRef = useRef<TextInput>(null)
 
-    const layoutProps = useMemo(
-      () =>
-        Object.fromEntries(Object.entries(props).filter(([key]) => layoutPropsKeys.includes(key))),
-      [props]
-    )
-    const inputProps = useMemo(
-      () =>
-        Object.fromEntries(Object.entries(props).filter(([key]) => !layoutPropsKeys.includes(key))),
-      [props]
-    )
+    const { layoutProps, restProps: inputProps } = useMemo(() => getLayoutProps(props), [props])
 
     const handleFocus = useCallback(() => {
       onFocus?.()
