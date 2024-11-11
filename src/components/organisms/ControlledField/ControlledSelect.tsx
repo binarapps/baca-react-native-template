@@ -6,7 +6,7 @@ import { Field } from '../../molecules'
 
 import { SelectKey } from '@/design-system'
 
-export const Select = <T extends SelectKey>({
+export const ControlledSelect = <T extends SelectKey>({
   control,
   name,
   errors,
