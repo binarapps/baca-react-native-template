@@ -9,34 +9,8 @@ import {
   FormLabel,
   SelectKey,
 } from '@/design-system/components'
+import { getLayoutProps } from '@/design-system/utils/getLayoutProps'
 import { useMemo } from '@/hooks'
-
-const layoutPropsKeys = [
-  'm',
-  'margin',
-  'mt',
-  'marginTop',
-  'mr',
-  'marginRight',
-  'mb',
-  'marginBottom',
-  'ml',
-  'marginLeft',
-  'mx',
-  'my',
-  'p',
-  'padding',
-  'pt',
-  'paddingTop',
-  'pr',
-  'paddingRight',
-  'pb',
-  'paddingBottom',
-  'pl',
-  'paddingLeft',
-  'px',
-  'py',
-]
 
 export const Select = <T extends SelectKey>({
   isRequired,
@@ -48,11 +22,7 @@ export const Select = <T extends SelectKey>({
   labelStyle,
   ...props
 }: FieldSelectProps<T>) => {
-  const layoutProps = useMemo(
-    () =>
-      Object.fromEntries(Object.entries(props).filter(([key]) => layoutPropsKeys.includes(key))),
-    [props]
-  )
+  const { layoutProps } = useMemo(() => getLayoutProps(props), [props])
 
   if (props.children) {
     return <CustomSelect label={label} {...props} />
