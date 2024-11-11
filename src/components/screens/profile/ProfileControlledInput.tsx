@@ -1,4 +1,5 @@
-import { ControlledField } from '@/components'
+// It's imported this way to avoid circular dependencies
+import { ControlledField } from '@/components/organisms/ControlledField/ControlledField'
 import { isWeb } from '@/constants'
 import { Box, Text } from '@/design-system'
 import { useWeb } from '@/hooks'
