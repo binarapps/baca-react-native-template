@@ -4,7 +4,7 @@ import { Controller, get } from 'react-hook-form'
 import type { ControlledInputProps, RenderInputProps } from './types'
 import { Field } from '../../molecules'
 
-export const Input = ({
+export const ControlledInput = ({
   control,
   name,
   errors,
