@@ -15,6 +15,7 @@ import type { InputProps } from './types'
 import { fontTextSize, fontWeights } from '../config'
 import { generateStyleSheet, generateStyledSystem } from '../utils'
 
+import { getLayoutProps } from '@/design-system/utils/getLayoutProps'
 import {
   useSecurePassword,
   useRef,
@@ -25,33 +26,6 @@ import {
   useMemo,
 } from '@/hooks'
 import { convertEmToNumber, getColorValue } from '@/utils'
-
-const layoutPropsKeys = [
-  'm',
-  'margin',
-  'mt',
-  'marginTop',
-  'mr',
-  'marginRight',
-  'mb',
-  'marginBottom',
-  'ml',
-  'marginLeft',
-  'mx',
-  'my',
-  'p',
-  'padding',
-  'pt',
-  'paddingTop',
-  'pr',
-  'paddingRight',
-  'pb',
-  'paddingBottom',
-  'pl',
-  'paddingLeft',
-  'px',
-  'py',
-]
 
 const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
   const { colors, fonts, lineHeights } = useTheme()
@@ -181,16 +155,7 @@ export const Input = forwardRef<TextInput, InputProps>(
     const _inputRef = useRef<TextInput>(null)
     const { securePassword, toggleSecurePassword, iconName } = useSecurePassword(props.type)
 
-    const layoutProps = useMemo(
-      () =>
-        Object.fromEntries(Object.entries(props).filter(([key]) => layoutPropsKeys.includes(key))),
-      [props]
-    )
-    const inputProps = useMemo(
-      () =>
-        Object.fromEntries(Object.entries(props).filter(([key]) => !layoutPropsKeys.includes(key))),
-      [props]
-    )
+    const { layoutProps, restProps: inputProps } = useMemo(() => getLayoutProps(props), [props])
 
     const handleFocus = useCallback(
       (e?: NativeSyntheticEvent<TextInputFocusEventData>) => {
