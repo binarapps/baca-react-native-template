@@ -1,2 +1,2 @@
 export * from './ControlledField/ControlledField'
-export * from './Menu'
+export * from './Menu/Menu'
