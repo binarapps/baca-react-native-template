@@ -4,7 +4,7 @@ import { FieldCheckboxGroupProps } from './types'
 
 import { Box, CheckboxButton, FormErrorMessage, FormLabel } from '@/design-system/components'
 
-export const CheckboxGroup = <T extends string>({
+export const FieldCheckboxGroup = <T extends string>({
   items,
   onSelectItem,
   isInvalid,
