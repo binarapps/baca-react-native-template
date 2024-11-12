@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
-import { Controller, FieldValues, get } from 'react-hook-form'
+import { Controller, ControllerProps, FieldValues, get } from 'react-hook-form'
 
-import type { ControlledInputProps, RenderInputProps } from './types'
+import type { ControlledInputProps } from './types'
 import { Field } from '../../molecules'
 
 export const ControlledInput = <TFieldValues extends FieldValues = FieldValues>({
@@ -15,7 +15,9 @@ export const ControlledInput = <TFieldValues extends FieldValues = FieldValues>(
   const errorMessage = get(errors, name)?.message
 
   const renderInput = useCallback(
-    ({ field: { onChange, name, ref, ...fieldProps } }: RenderInputProps) => (
+    ({
+      field: { onChange, name, ref, ...fieldProps },
+    }: Parameters<ControllerProps['render']>[0]) => (
       <Field.Input
         {...props}
         {...fieldProps}

@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  Control,
-  ControllerRenderProps,
-  FieldErrors,
-  FieldValues,
-  Path,
-  RegisterOptions,
-} from 'react-hook-form'
+import { Control, FieldErrors, FieldValues, Path, RegisterOptions } from 'react-hook-form'
 
 import {
   FieldCheckboxGroupProps,
@@ -36,10 +29,6 @@ export type ControlledInputProps<TFieldValues extends FieldValues = FieldValues>
   'ref'
 > &
   ControlledFieldProps<TFieldValues>
-
-export interface RenderInputProps {
-  field: ControllerRenderProps<FieldValues, string>
-}
 
 // -----------------------
 // ------- SELECT --------
