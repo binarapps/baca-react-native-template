@@ -96,13 +96,16 @@ export type ControlledCheckboxGroupProps<T, TFieldValues extends FieldValues = F
 // ------ CHECKBOX -------
 // -----------------------
 
-export type ControlledCheckboxProps = Omit<FieldCheckboxProps, 'onChange' | 'isChecked'> & {
+export type ControlledCheckboxProps<TFieldValues extends FieldValues = FieldValues> = Omit<
+  FieldCheckboxProps,
+  'onChange' | 'isChecked'
+> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
   // - https://react-hook-form.com/ts#Control
-  name: Path<any>
-  control: Control<any>
-  errors?: FieldErrors<any>
+  name: Path<TFieldValues>
+  control: Control<TFieldValues>
+  errors?: FieldErrors<TFieldValues>
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
 }
