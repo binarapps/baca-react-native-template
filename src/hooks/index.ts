@@ -2,7 +2,6 @@
 // Hooks from external packages
 export {
   useBottomSheet,
-  useBottomSheetDynamicSnapPoints,
   useBottomSheetInternal,
   useBottomSheetModal,
   useBottomSheetSpringConfigs,
