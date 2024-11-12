@@ -1,18 +1,21 @@
-import { Controller, get, ControllerProps } from 'react-hook-form'
+import { Controller, get, ControllerProps, FieldValues } from 'react-hook-form'
 
 import type { ControlledRadioProps } from './types'
 import { Field } from '../../molecules'
 
 import { useCallback } from '@/hooks'
 
-export const ControlledRadioGroup = <T extends string>({
+export const ControlledRadioGroup = <
+  T extends string,
+  TFieldValues extends FieldValues = FieldValues
+>({
   name,
   control,
   errors,
   isRequired,
   rules,
   ...props
-}: ControlledRadioProps<T>) => {
+}: ControlledRadioProps<T, TFieldValues>) => {
   const errorMessage = get(errors, name)?.message
 
   const renderRadio = useCallback(
@@ -33,5 +36,13 @@ export const ControlledRadioGroup = <T extends string>({
     [errorMessage, props, isRequired]
   )
 
-  return <Controller name={name} control={control} rules={rules} render={renderRadio} />
+  return (
+    <Controller
+      name={name}
+      // @ts-expect-error: For some reason, the type of render is not being inferred correctly
+      control={control}
+      rules={rules}
+      render={renderRadio}
+    />
+  )
 }

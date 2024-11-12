@@ -60,7 +60,7 @@ export type ControlledSelectProps<T, TFieldValues extends FieldValues = FieldVal
 // -------- RADIO --------
 // -----------------------
 
-export type ControlledRadioProps<T> = Omit<
+export type ControlledRadioProps<T, TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldRadioGroupProps<T>,
   'selectedItem' | 'onSelectItem'
 > & {
@@ -68,9 +68,9 @@ export type ControlledRadioProps<T> = Omit<
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
   // - https://react-hook-form.com/ts#Control
-  name: Path<any>
-  control: Control<any>
-  errors?: FieldErrors<any>
+  name: Path<TFieldValues>
+  control: Control<TFieldValues>
+  errors?: FieldErrors<TFieldValues>
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
 }
 
