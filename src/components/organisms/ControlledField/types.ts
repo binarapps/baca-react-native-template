@@ -42,7 +42,7 @@ export interface RenderInputProps {
 // ------- SELECT --------
 // -----------------------
 
-export type ControlledSelectProps<T> = Omit<
+export type ControlledSelectProps<T, TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldSelectProps<T>,
   'selectedItems' | 'onSelectItem'
 > & {
@@ -50,9 +50,9 @@ export type ControlledSelectProps<T> = Omit<
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
   // - https://react-hook-form.com/ts#Control
-  name: Path<any>
-  control: Control<any>
-  errors: FieldErrors<any>
+  name: Path<TFieldValues>
+  control: Control<TFieldValues>
+  errors: FieldErrors<TFieldValues>
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
 }
 

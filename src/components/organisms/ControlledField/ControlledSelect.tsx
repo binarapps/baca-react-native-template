@@ -1,19 +1,22 @@
 import { useCallback } from 'react'
-import { Controller, get, ControllerProps } from 'react-hook-form'
+import { Controller, get, ControllerProps, FieldValues } from 'react-hook-form'
 
 import type { ControlledSelectProps } from './types'
 import { Field } from '../../molecules'
 
 import { SelectKey } from '@/design-system'
 
-export const ControlledSelect = <T extends SelectKey>({
+export const ControlledSelect = <
+  T extends SelectKey,
+  TFieldValues extends FieldValues = FieldValues
+>({
   control,
   name,
   errors,
   rules,
   isRequired,
   ...props
-}: ControlledSelectProps<T>) => {
+}: ControlledSelectProps<T, TFieldValues>) => {
   const errorMessage = get(errors, name)?.message
 
   const renderSelect = useCallback(
@@ -41,5 +44,13 @@ export const ControlledSelect = <T extends SelectKey>({
     [errorMessage, props, isRequired]
   )
 
-  return <Controller name={name} control={control} rules={rules} render={renderSelect} />
+  return (
+    <Controller
+      name={name}
+      // @ts-expect-error: For some reason, the type of render is not being inferred correctly
+      control={control}
+      rules={rules}
+      render={renderSelect}
+    />
+  )
 }
