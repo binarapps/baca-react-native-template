@@ -1,17 +1,17 @@
 import { useCallback } from 'react'
-import { Controller, get } from 'react-hook-form'
+import { Controller, FieldValues, get } from 'react-hook-form'
 
 import type { ControlledInputProps, RenderInputProps } from './types'
 import { Field } from '../../molecules'
 
-export const ControlledInput = ({
+export const ControlledInput = <TFieldValues extends FieldValues = FieldValues>({
   control,
   name,
   errors,
   rules,
   children,
   ...props
-}: ControlledInputProps) => {
+}: ControlledInputProps<TFieldValues>) => {
   const errorMessage = get(errors, name)?.message
 
   const renderInput = useCallback(
@@ -27,5 +27,13 @@ export const ControlledInput = ({
     [errorMessage, props]
   )
 
-  return <Controller name={name} control={control} rules={rules} render={renderInput} />
+  return (
+    <Controller
+      name={name}
+      // @ts-expect-error: For some reason, the type of render is not being inferred correctly
+      control={control}
+      rules={rules}
+      render={renderInput}
+    />
+  )
 }

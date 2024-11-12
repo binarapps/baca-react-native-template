@@ -20,14 +20,17 @@ import {
 // -------- INPUT --------
 // -----------------------
 
-export type ControlledInputProps = Omit<FieldInputProps, 'ref'> & {
+export type ControlledInputProps<TFieldValues extends FieldValues = FieldValues> = Omit<
+  FieldInputProps,
+  'ref'
+> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
   // - https://react-hook-form.com/ts#Control
-  name: Path<any>
-  control: Control<any>
-  errors: FieldErrors<any>
+  name: Path<TFieldValues>
+  control: Control<TFieldValues>
+  errors: FieldErrors<TFieldValues>
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
 }
 
