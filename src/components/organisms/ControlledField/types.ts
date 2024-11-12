@@ -24,10 +24,6 @@ export type ControlledInputProps<TFieldValues extends FieldValues = FieldValues>
   FieldInputProps,
   'ref'
 > & {
-  // TODO: Think how to change this to proper type
-  // Could be helpful when solving
-  // - https://fettblog.eu/typescript-react-generic-forward-refs/
-  // - https://react-hook-form.com/ts#Control
   name: Path<TFieldValues>
   control: Control<TFieldValues>
   errors: FieldErrors<TFieldValues>
@@ -46,10 +42,6 @@ export type ControlledSelectProps<T, TFieldValues extends FieldValues = FieldVal
   FieldSelectProps<T>,
   'selectedItems' | 'onSelectItem'
 > & {
-  // TODO: Think how to change this to proper type
-  // Could be helpful when solving
-  // - https://fettblog.eu/typescript-react-generic-forward-refs/
-  // - https://react-hook-form.com/ts#Control
   name: Path<TFieldValues>
   control: Control<TFieldValues>
   errors: FieldErrors<TFieldValues>
@@ -64,10 +56,6 @@ export type ControlledRadioProps<T, TFieldValues extends FieldValues = FieldValu
   FieldRadioGroupProps<T>,
   'selectedItem' | 'onSelectItem'
 > & {
-  // TODO: Think how to change this to proper type
-  // Could be helpful when solving
-  // - https://fettblog.eu/typescript-react-generic-forward-refs/
-  // - https://react-hook-form.com/ts#Control
   name: Path<TFieldValues>
   control: Control<TFieldValues>
   errors?: FieldErrors<TFieldValues>
@@ -82,10 +70,6 @@ export type ControlledCheckboxGroupProps<T, TFieldValues extends FieldValues = F
   FieldCheckboxGroupProps<T>,
   'onSelectItem' | 'selectedItems' | 'errorMessage'
 > & {
-  // TODO: Think how to change this to proper type
-  // Could be helpful when solving
-  // - https://fettblog.eu/typescript-react-generic-forward-refs/
-  // - https://react-hook-form.com/ts#Control
   name: Path<TFieldValues>
   control: Control<TFieldValues>
   errors?: FieldErrors<TFieldValues>
@@ -100,10 +84,6 @@ export type ControlledCheckboxProps<TFieldValues extends FieldValues = FieldValu
   FieldCheckboxProps,
   'onChange' | 'isChecked'
 > & {
-  // TODO: Think how to change this to proper type
-  // Could be helpful when solving
-  // - https://fettblog.eu/typescript-react-generic-forward-refs/
-  // - https://react-hook-form.com/ts#Control
   name: Path<TFieldValues>
   control: Control<TFieldValues>
   errors?: FieldErrors<TFieldValues>
