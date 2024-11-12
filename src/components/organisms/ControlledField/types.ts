@@ -17,18 +17,25 @@ import {
 } from '@/components/molecules'
 
 // -----------------------
+// ---- HELPER TYPES -----
+// -----------------------
+
+type ControlledFieldProps<TFieldValues extends FieldValues = FieldValues> = {
+  name: Path<TFieldValues>
+  control: Control<TFieldValues>
+  errors: FieldErrors<TFieldValues>
+  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
+}
+
+// -----------------------
 // -------- INPUT --------
 // -----------------------
 
 export type ControlledInputProps<TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldInputProps,
   'ref'
-> & {
-  name: Path<TFieldValues>
-  control: Control<TFieldValues>
-  errors: FieldErrors<TFieldValues>
-  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
-}
+> &
+  ControlledFieldProps<TFieldValues>
 
 export interface RenderInputProps {
   field: ControllerRenderProps<FieldValues, string>
@@ -41,12 +48,8 @@ export interface RenderInputProps {
 export type ControlledSelectProps<T, TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldSelectProps<T>,
   'selectedItems' | 'onSelectItem'
-> & {
-  name: Path<TFieldValues>
-  control: Control<TFieldValues>
-  errors: FieldErrors<TFieldValues>
-  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
-}
+> &
+  ControlledFieldProps<TFieldValues>
 
 // -----------------------
 // -------- RADIO --------
@@ -55,12 +58,8 @@ export type ControlledSelectProps<T, TFieldValues extends FieldValues = FieldVal
 export type ControlledRadioProps<T, TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldRadioGroupProps<T>,
   'selectedItem' | 'onSelectItem'
-> & {
-  name: Path<TFieldValues>
-  control: Control<TFieldValues>
-  errors?: FieldErrors<TFieldValues>
-  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
-}
+> &
+  ControlledFieldProps<TFieldValues>
 
 // -----------------------
 // --- CHECKBOX GROUP ----
@@ -69,12 +68,8 @@ export type ControlledRadioProps<T, TFieldValues extends FieldValues = FieldValu
 export type ControlledCheckboxGroupProps<T, TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldCheckboxGroupProps<T>,
   'onSelectItem' | 'selectedItems' | 'errorMessage'
-> & {
-  name: Path<TFieldValues>
-  control: Control<TFieldValues>
-  errors?: FieldErrors<TFieldValues>
-  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
-}
+> &
+  ControlledFieldProps<TFieldValues>
 
 // -----------------------
 // ------ CHECKBOX -------
@@ -83,9 +78,5 @@ export type ControlledCheckboxGroupProps<T, TFieldValues extends FieldValues = F
 export type ControlledCheckboxProps<TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldCheckboxProps,
   'onChange' | 'isChecked'
-> & {
-  name: Path<TFieldValues>
-  control: Control<TFieldValues>
-  errors?: FieldErrors<TFieldValues>
-  rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
-}
+> &
+  ControlledFieldProps<TFieldValues>
