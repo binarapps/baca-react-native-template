@@ -78,7 +78,7 @@ export type ControlledRadioProps<T, TFieldValues extends FieldValues = FieldValu
 // --- CHECKBOX GROUP ----
 // -----------------------
 
-export type ControlledCheckboxGroupProps<T> = Omit<
+export type ControlledCheckboxGroupProps<T, TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldCheckboxGroupProps<T>,
   'onSelectItem' | 'selectedItems' | 'errorMessage'
 > & {
@@ -86,9 +86,9 @@ export type ControlledCheckboxGroupProps<T> = Omit<
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
   // - https://react-hook-form.com/ts#Control
-  name: Path<any>
-  control: Control<any>
-  errors?: FieldErrors<any>
+  name: Path<TFieldValues>
+  control: Control<TFieldValues>
+  errors?: FieldErrors<TFieldValues>
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
 }
 

@@ -1,11 +1,14 @@
-import { Controller, ControllerProps, get } from 'react-hook-form'
+import { Controller, ControllerProps, FieldValues, get } from 'react-hook-form'
 
 import type { ControlledCheckboxGroupProps } from './types'
 import { Field } from '../../molecules'
 
 import { useCallback } from '@/hooks'
 
-export const ControlledCheckboxGroup = <T extends string>({
+export const ControlledCheckboxGroup = <
+  T extends string,
+  TFieldValues extends FieldValues = FieldValues
+>({
   name,
   control,
   errors,
@@ -13,7 +16,7 @@ export const ControlledCheckboxGroup = <T extends string>({
   rules,
   items,
   ...props
-}: ControlledCheckboxGroupProps<T>) => {
+}: ControlledCheckboxGroupProps<T, TFieldValues>) => {
   const errorMessage = get(errors, name)?.message
 
   const renderCheckbox = useCallback(
@@ -33,5 +36,13 @@ export const ControlledCheckboxGroup = <T extends string>({
     ),
     [errorMessage, isRequired, items, props]
   )
-  return <Controller name={name} control={control} rules={rules} render={renderCheckbox} />
+  return (
+    <Controller
+      name={name}
+      // @ts-expect-error: For some reason, the type of render is not being inferred correctly
+      control={control}
+      rules={rules}
+      render={renderCheckbox}
+    />
+  )
 }
