@@ -4,7 +4,7 @@
 
 # BACA - React Native Template
 
-> [!Note] > **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
+> **BACA** - **B**INAR **A**PPS **C**ORE **A**PPLICATION
 >
 > This repository is part of a whole ecosystem, and it only contains React Native code.
 
@@ -16,26 +16,24 @@
 
 ## 📚 Table of Contents
 
-- [BACA - React Native Template](#baca---react-native-template)
-  - [📚 Table of Contents](#-table-of-contents)
-  - [🎉 Great React Native Boilerplate](#-great-react-native-boilerplate)
-  - [📖 Documentation](#-documentation)
-  - [🏆 Why Use BACA?](#-why-use-baca)
-  - [🔍 Preview](#-preview)
-  - [🚀 How to Use?](#-how-to-use)
+- [🎉 Great React Native Boilerplate](#-great-react-native-boilerplate)
+- [📖 Documentation](#-documentation)
+- [🏆 Why Use BACA?](#-why-use-baca)
+- [🔍 Preview](#-preview)
+- [🚀 How to Use?](#-how-to-use)
     - [🏃‍♂️ Quick Steps](#️-quick-steps)
-  - [🛠 Prerequisites](#-prerequisites)
-  - [📦 What's Inside?](#-whats-inside)
-    - [Libraries and Tools](#libraries-and-tools)
-  - [🔜 Future Plans](#-future-plans)
-  - [👏 How to Contribute](#-how-to-contribute)
+- [🛠 Prerequisites](#-prerequisites)
+- [📦 What's Inside?](#-whats-inside)
+- [Libraries and Tools](#libraries-and-tools)
+- [🔜 Future Plans](#-future-plans)
+- [👏 How to Contribute](#-how-to-contribute)
     - [Steps to Contribute](#steps-to-contribute)
-  - [🤙 How to Run Locally](#-how-to-run-locally)
+- [🤙 How to Run Locally](#-how-to-run-locally)
     - [Environment Variables Setup](#environment-variables-setup)
-  - [📘 License](#-license)
-  - [📝 Feedback](#-feedback)
-  - [👨‍👩‍👧‍👦 Contributors](#-contributors)
-  - [📦 Similar Packages](#-similar-packages)
+- [📘 License](#-license)
+- [📝 Feedback](#-feedback)
+- [👨‍👩‍👧‍👦 Contributors](#-contributors)
+- [📦 Similar Packages](#-similar-packages)
 
 ## 🎉 Great React Native Boilerplate
 
