@@ -96,6 +96,8 @@ Ensure you have the following installed before you begin:
 - [Expo CLI](https://docs.expo.dev/get-started/installation/)
 - [yarn](https://classic.yarnpkg.com/en/docs/install)
 
+Ideally it would be good to have finished [React Native Environment setup](https://reactnative.dev/docs/set-up-your-environment), check how to do it [here](https://reactnative.dev/docs/set-up-your-environment)
+
 ## 📦 What's Inside?
 
 [![TypeScript](https://img.shields.io/npm/types/@binarapps/baca-react-native-template?style=flat-square)](https://www.npmjs.com/package/@binarapps/baca-react-native-template)
