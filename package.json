@@ -144,7 +144,7 @@
     "expo-updates": "~0.25.27",
     "expo-web-browser": "~13.0.3",
     "i18next": "^23.7.20",
-    "jotai": "^2.8.1",
+    "jotai": "^2.10.4",
     "jwt-decode": "^4.0.0",
     "moti": "^0.25.3",
     "react": "18.2.0",
