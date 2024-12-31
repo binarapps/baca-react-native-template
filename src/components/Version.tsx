@@ -21,7 +21,7 @@ export const Version = ({ onPress }: { onPress: () => void }) => {
 
   return (
     <Pressable onPress={handleShortPress} onLongPress={onPress} delayLongPress={1000}>
-      <Text opacity={40} textAlign="center">
+      <Text opacity={0.4} textAlign="center">
         {version}
       </Text>
       <Spacer y="1" />
