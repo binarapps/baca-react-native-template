@@ -1,5 +1,6 @@
 {
   "expo": {
+    "newArchEnabled": true,
     "android": {
       "jsEngine": "hermes",
       "versionCode": 22,
