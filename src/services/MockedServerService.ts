@@ -25,3 +25,5 @@
 
 //   server.listen({ onUnhandledRequest: 'bypass' })
 // }
+
+export const startMockedServer = (): void => {}
