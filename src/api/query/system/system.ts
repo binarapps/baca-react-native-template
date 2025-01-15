@@ -23,7 +23,8 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
 
 export const systemControllerCheckForAppUpdate = (
   checkUpdateDto: BodyType<CheckUpdateDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<AppVersionStatusEntity>(
     {
@@ -31,29 +32,26 @@ export const systemControllerCheckForAppUpdate = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: checkUpdateDto,
+      signal,
     },
     options
   )
 }
 
 export const getSystemControllerCheckForAppUpdateMutationOptions = <
+  TData = Awaited<ReturnType<typeof systemControllerCheckForAppUpdate>>,
   TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof systemControllerCheckForAppUpdate>>,
-    TError,
-    { data: BodyType<CheckUpdateDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<CheckUpdateDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof systemControllerCheckForAppUpdate>>,
-  TError,
-  { data: BodyType<CheckUpdateDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['systemControllerCheckForAppUpdate']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof systemControllerCheckForAppUpdate>>,
@@ -64,7 +62,12 @@ export const getSystemControllerCheckForAppUpdateMutationOptions = <
     return systemControllerCheckForAppUpdate(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<CheckUpdateDto> },
+    TContext
+  >
 }
 
 export type SystemControllerCheckForAppUpdateMutationResult = NonNullable<
@@ -76,22 +79,13 @@ export type SystemControllerCheckForAppUpdateMutationError = ErrorType<
 >
 
 export const useSystemControllerCheckForAppUpdate = <
+  TData = Awaited<ReturnType<typeof systemControllerCheckForAppUpdate>>,
   TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof systemControllerCheckForAppUpdate>>,
-    TError,
-    { data: BodyType<CheckUpdateDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<CheckUpdateDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof systemControllerCheckForAppUpdate>>,
-  TError,
-  { data: BodyType<CheckUpdateDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<CheckUpdateDto> }, TContext> => {
   const mutationOptions = getSystemControllerCheckForAppUpdateMutationOptions(options)
 
   return useMutation(mutationOptions)

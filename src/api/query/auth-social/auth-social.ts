@@ -28,7 +28,8 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
  */
 export const authGoogleControllerLogin = (
   authGoogleLoginDto: BodyType<AuthGoogleLoginDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<AuthEntity>(
     {
@@ -36,29 +37,26 @@ export const authGoogleControllerLogin = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authGoogleLoginDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthGoogleControllerLoginMutationOptions = <
+  TData = Awaited<ReturnType<typeof authGoogleControllerLogin>>,
   TError = ErrorType<ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authGoogleControllerLogin>>,
-    TError,
-    { data: BodyType<AuthGoogleLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthGoogleLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authGoogleControllerLogin>>,
-  TError,
-  { data: BodyType<AuthGoogleLoginDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authGoogleControllerLogin']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authGoogleControllerLogin>>,
@@ -69,7 +67,12 @@ export const getAuthGoogleControllerLoginMutationOptions = <
     return authGoogleControllerLogin(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthGoogleLoginDto> },
+    TContext
+  >
 }
 
 export type AuthGoogleControllerLoginMutationResult = NonNullable<
@@ -82,22 +85,13 @@ export type AuthGoogleControllerLoginMutationError = ErrorType<ErrorEntity | Err
  * @summary Login with Google
  */
 export const useAuthGoogleControllerLogin = <
+  TData = Awaited<ReturnType<typeof authGoogleControllerLogin>>,
   TError = ErrorType<ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authGoogleControllerLogin>>,
-    TError,
-    { data: BodyType<AuthGoogleLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthGoogleLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authGoogleControllerLogin>>,
-  TError,
-  { data: BodyType<AuthGoogleLoginDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthGoogleLoginDto> }, TContext> => {
   const mutationOptions = getAuthGoogleControllerLoginMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -108,7 +102,8 @@ export const useAuthGoogleControllerLogin = <
  */
 export const authFacebookControllerLogin = (
   authFacebookLoginDto: BodyType<AuthFacebookLoginDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<AuthEntity>(
     {
@@ -116,29 +111,26 @@ export const authFacebookControllerLogin = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authFacebookLoginDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthFacebookControllerLoginMutationOptions = <
+  TData = Awaited<ReturnType<typeof authFacebookControllerLogin>>,
   TError = ErrorType<ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authFacebookControllerLogin>>,
-    TError,
-    { data: BodyType<AuthFacebookLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthFacebookLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authFacebookControllerLogin>>,
-  TError,
-  { data: BodyType<AuthFacebookLoginDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authFacebookControllerLogin']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authFacebookControllerLogin>>,
@@ -149,7 +141,12 @@ export const getAuthFacebookControllerLoginMutationOptions = <
     return authFacebookControllerLogin(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthFacebookLoginDto> },
+    TContext
+  >
 }
 
 export type AuthFacebookControllerLoginMutationResult = NonNullable<
@@ -162,22 +159,13 @@ export type AuthFacebookControllerLoginMutationError = ErrorType<ErrorEntity | E
  * @summary Login with Facebook
  */
 export const useAuthFacebookControllerLogin = <
+  TData = Awaited<ReturnType<typeof authFacebookControllerLogin>>,
   TError = ErrorType<ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authFacebookControllerLogin>>,
-    TError,
-    { data: BodyType<AuthFacebookLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthFacebookLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authFacebookControllerLogin>>,
-  TError,
-  { data: BodyType<AuthFacebookLoginDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthFacebookLoginDto> }, TContext> => {
   const mutationOptions = getAuthFacebookControllerLoginMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -188,7 +176,8 @@ export const useAuthFacebookControllerLogin = <
  */
 export const authAppleControllerLogin = (
   authAppleLoginDto: BodyType<AuthAppleLoginDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<AuthEntity>(
     {
@@ -196,29 +185,26 @@ export const authAppleControllerLogin = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authAppleLoginDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthAppleControllerLoginMutationOptions = <
+  TData = Awaited<ReturnType<typeof authAppleControllerLogin>>,
   TError = ErrorType<ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authAppleControllerLogin>>,
-    TError,
-    { data: BodyType<AuthAppleLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthAppleLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authAppleControllerLogin>>,
-  TError,
-  { data: BodyType<AuthAppleLoginDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authAppleControllerLogin']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authAppleControllerLogin>>,
@@ -229,7 +215,12 @@ export const getAuthAppleControllerLoginMutationOptions = <
     return authAppleControllerLogin(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthAppleLoginDto> },
+    TContext
+  >
 }
 
 export type AuthAppleControllerLoginMutationResult = NonNullable<
@@ -242,22 +233,13 @@ export type AuthAppleControllerLoginMutationError = ErrorType<ErrorEntity | Erro
  * @summary Login with Apple
  */
 export const useAuthAppleControllerLogin = <
+  TData = Awaited<ReturnType<typeof authAppleControllerLogin>>,
   TError = ErrorType<ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authAppleControllerLogin>>,
-    TError,
-    { data: BodyType<AuthAppleLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthAppleLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authAppleControllerLogin>>,
-  TError,
-  { data: BodyType<AuthAppleLoginDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthAppleLoginDto> }, TContext> => {
   const mutationOptions = getAuthAppleControllerLoginMutationOptions(options)
 
   return useMutation(mutationOptions)

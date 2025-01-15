@@ -8,9 +8,13 @@
  */
 import { useMutation, useQuery } from '@tanstack/react-query'
 import type {
+  DataTag,
+  DefinedInitialDataOptions,
+  DefinedUseQueryResult,
   MutationFunction,
   QueryFunction,
   QueryKey,
+  UndefinedInitialDataOptions,
   UseMutationOptions,
   UseMutationResult,
   UseQueryOptions,
@@ -38,7 +42,8 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
  */
 export const usersControllerCreate = (
   createUserDto: BodyType<CreateUserDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<UserEntity>(
     {
@@ -46,31 +51,28 @@ export const usersControllerCreate = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: createUserDto,
+      signal,
     },
     options
   )
 }
 
 export const getUsersControllerCreateMutationOptions = <
+  TData = Awaited<ReturnType<typeof usersControllerCreate>>,
   TError = ErrorType<
     ErrorUnauthorizedEntity | ErrorEntity | ErrorValidationEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof usersControllerCreate>>,
-    TError,
-    { data: BodyType<CreateUserDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<CreateUserDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof usersControllerCreate>>,
-  TError,
-  { data: BodyType<CreateUserDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['usersControllerCreate']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof usersControllerCreate>>,
@@ -81,7 +83,12 @@ export const getUsersControllerCreateMutationOptions = <
     return usersControllerCreate(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<CreateUserDto> },
+    TContext
+  >
 }
 
 export type UsersControllerCreateMutationResult = NonNullable<
@@ -96,24 +103,15 @@ export type UsersControllerCreateMutationError = ErrorType<
  * @summary Create User
  */
 export const useUsersControllerCreate = <
+  TData = Awaited<ReturnType<typeof usersControllerCreate>>,
   TError = ErrorType<
     ErrorUnauthorizedEntity | ErrorEntity | ErrorValidationEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof usersControllerCreate>>,
-    TError,
-    { data: BodyType<CreateUserDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<CreateUserDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof usersControllerCreate>>,
-  TError,
-  { data: BodyType<CreateUserDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<CreateUserDto> }, TContext> => {
   const mutationOptions = getUsersControllerCreateMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -139,11 +137,13 @@ export const getUsersControllerFindAllQueryKey = (params: UsersControllerFindAll
 
 export const getUsersControllerFindAllQueryOptions = <
   TData = Awaited<ReturnType<typeof usersControllerFindAll>>,
-  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
 >(
   params: UsersControllerFindAllParams,
   options?: {
-    query?: UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindAll>>, TError, TData>
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindAll>>, TError, TData>
+    >
     request?: SecondParameter<typeof customInstance>
   }
 ) => {
@@ -158,7 +158,7 @@ export const getUsersControllerFindAllQueryOptions = <
     Awaited<ReturnType<typeof usersControllerFindAll>>,
     TError,
     TData
-  > & { queryKey: QueryKey }
+  > & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
 export type UsersControllerFindAllQueryResult = NonNullable<
@@ -168,23 +168,79 @@ export type UsersControllerFindAllQueryError = ErrorType<
   ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity
 >
 
+export function useUsersControllerFindAll<
+  TData = Awaited<ReturnType<typeof usersControllerFindAll>>,
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
+>(
+  params: UsersControllerFindAllParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindAll>>, TError, TData>
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof usersControllerFindAll>>,
+          TError,
+          TData
+        >,
+        'initialData'
+      >
+    request?: SecondParameter<typeof customInstance>
+  }
+): DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useUsersControllerFindAll<
+  TData = Awaited<ReturnType<typeof usersControllerFindAll>>,
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
+>(
+  params: UsersControllerFindAllParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindAll>>, TError, TData>
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof usersControllerFindAll>>,
+          TError,
+          TData
+        >,
+        'initialData'
+      >
+    request?: SecondParameter<typeof customInstance>
+  }
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useUsersControllerFindAll<
+  TData = Awaited<ReturnType<typeof usersControllerFindAll>>,
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
+>(
+  params: UsersControllerFindAllParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindAll>>, TError, TData>
+    >
+    request?: SecondParameter<typeof customInstance>
+  }
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary Find All Users
  */
 
 export function useUsersControllerFindAll<
   TData = Awaited<ReturnType<typeof usersControllerFindAll>>,
-  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
 >(
   params: UsersControllerFindAllParams,
   options?: {
-    query?: UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindAll>>, TError, TData>
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindAll>>, TError, TData>
+    >
     request?: SecondParameter<typeof customInstance>
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
   const queryOptions = getUsersControllerFindAllQueryOptions(params, options)
 
-  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: DataTag<QueryKey, TData, TError>
+  }
 
   query.queryKey = queryOptions.queryKey
 
@@ -209,11 +265,13 @@ export const getUsersControllerFindOneQueryKey = (id: string) => {
 
 export const getUsersControllerFindOneQueryOptions = <
   TData = Awaited<ReturnType<typeof usersControllerFindOne>>,
-  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
 >(
   id: string,
   options?: {
-    query?: UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindOne>>, TError, TData>
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindOne>>, TError, TData>
+    >
     request?: SecondParameter<typeof customInstance>
   }
 ) => {
@@ -228,7 +286,7 @@ export const getUsersControllerFindOneQueryOptions = <
     Awaited<ReturnType<typeof usersControllerFindOne>>,
     TError,
     TData
-  > & { queryKey: QueryKey }
+  > & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
 export type UsersControllerFindOneQueryResult = NonNullable<
@@ -238,23 +296,79 @@ export type UsersControllerFindOneQueryError = ErrorType<
   ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity
 >
 
+export function useUsersControllerFindOne<
+  TData = Awaited<ReturnType<typeof usersControllerFindOne>>,
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
+>(
+  id: string,
+  options: {
+    query: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindOne>>, TError, TData>
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof usersControllerFindOne>>,
+          TError,
+          TData
+        >,
+        'initialData'
+      >
+    request?: SecondParameter<typeof customInstance>
+  }
+): DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useUsersControllerFindOne<
+  TData = Awaited<ReturnType<typeof usersControllerFindOne>>,
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
+>(
+  id: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindOne>>, TError, TData>
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof usersControllerFindOne>>,
+          TError,
+          TData
+        >,
+        'initialData'
+      >
+    request?: SecondParameter<typeof customInstance>
+  }
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useUsersControllerFindOne<
+  TData = Awaited<ReturnType<typeof usersControllerFindOne>>,
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
+>(
+  id: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindOne>>, TError, TData>
+    >
+    request?: SecondParameter<typeof customInstance>
+  }
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary Find User by ID
  */
 
 export function useUsersControllerFindOne<
   TData = Awaited<ReturnType<typeof usersControllerFindOne>>,
-  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
 >(
   id: string,
   options?: {
-    query?: UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindOne>>, TError, TData>
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindOne>>, TError, TData>
+    >
     request?: SecondParameter<typeof customInstance>
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
   const queryOptions = getUsersControllerFindOneQueryOptions(id, options)
 
-  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: DataTag<QueryKey, TData, TError>
+  }
 
   query.queryKey = queryOptions.queryKey
 
@@ -282,23 +396,24 @@ export const usersControllerUpdate = (
 }
 
 export const getUsersControllerUpdateMutationOptions = <
+  TData = Awaited<ReturnType<typeof usersControllerUpdate>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof usersControllerUpdate>>,
+    TData,
     TError,
     { id: string; data: BodyType<UpdateUserDto> },
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof usersControllerUpdate>>,
-  TError,
-  { id: string; data: BodyType<UpdateUserDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['usersControllerUpdate']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof usersControllerUpdate>>,
@@ -309,7 +424,12 @@ export const getUsersControllerUpdateMutationOptions = <
     return usersControllerUpdate(id, data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { id: string; data: BodyType<UpdateUserDto> },
+    TContext
+  >
 }
 
 export type UsersControllerUpdateMutationResult = NonNullable<
@@ -324,22 +444,18 @@ export type UsersControllerUpdateMutationError = ErrorType<
  * @summary Update User
  */
 export const useUsersControllerUpdate = <
+  TData = Awaited<ReturnType<typeof usersControllerUpdate>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof usersControllerUpdate>>,
+    TData,
     TError,
     { id: string; data: BodyType<UpdateUserDto> },
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof usersControllerUpdate>>,
-  TError,
-  { id: string; data: BodyType<UpdateUserDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { id: string; data: BodyType<UpdateUserDto> }, TContext> => {
   const mutationOptions = getUsersControllerUpdateMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -356,23 +472,19 @@ export const usersControllerRemove = (
 }
 
 export const getUsersControllerRemoveMutationOptions = <
+  TData = Awaited<ReturnType<typeof usersControllerRemove>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof usersControllerRemove>>,
-    TError,
-    { id: string },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { id: string }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof usersControllerRemove>>,
-  TError,
-  { id: string },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['usersControllerRemove']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof usersControllerRemove>>,
@@ -383,7 +495,12 @@ export const getUsersControllerRemoveMutationOptions = <
     return usersControllerRemove(id, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { id: string },
+    TContext
+  >
 }
 
 export type UsersControllerRemoveMutationResult = NonNullable<
@@ -398,22 +515,13 @@ export type UsersControllerRemoveMutationError = ErrorType<
  * @summary Remove User
  */
 export const useUsersControllerRemove = <
+  TData = Awaited<ReturnType<typeof usersControllerRemove>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof usersControllerRemove>>,
-    TError,
-    { id: string },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { id: string }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof usersControllerRemove>>,
-  TError,
-  { id: string },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { id: string }, TContext> => {
   const mutationOptions = getUsersControllerRemoveMutationOptions(options)
 
   return useMutation(mutationOptions)
