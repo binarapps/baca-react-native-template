@@ -1,4 +1,3 @@
-import { isError } from '@tanstack/react-query'
 import { useState } from 'react'
 import { FieldPath, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -73,7 +72,7 @@ export const useTestForm = () => {
       console.log(data)
     } catch (e) {
       console.log(e)
-      if (isError(e)) {
+      if (e instanceof Error) {
         setError(e.message)
       } else {
         setError(t('errors.something_went_wrong'))
