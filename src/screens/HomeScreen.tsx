@@ -18,7 +18,7 @@ export const HomeScreen = () => {
   }, [])
 
   const goToPushNotificationsHelpers = useCallback(
-    () => router.push('/example/push-notifications-helpers'),
+    () => router.push('/example/push-notifications-helpers', { withAnchor: true }),
     []
   )
 
