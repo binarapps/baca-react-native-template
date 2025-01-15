@@ -188,8 +188,9 @@ export const Input = forwardRef<TextInput, InputProps>(
     )
 
     return (
-      <BoxWithShadow {...{ isFocused, isInvalid }}>
+      <BoxWithShadow {...{ isFocused, isInvalid, collapsable: false }}>
         <Box
+          collapsable={false}
           alignItems="center"
           borderColor={
             isDisabled
