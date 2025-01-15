@@ -217,10 +217,15 @@
     "typescript": "~5.3.3",
     "xmlhttprequest": "^1.8.0"
   },
+  "resolutions": {
+    "string-width": "4.2.3",
+    "wrap-ansi": "^7.0.0"
+  },
   "browser": {
     "crypto": false
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "./node_modules/.bin/eslint src --fix"
-  }
+  },
+  "packageManager": "yarn@3.6.1"
 }
