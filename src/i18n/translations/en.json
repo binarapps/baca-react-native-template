@@ -216,6 +216,7 @@
   },
   "landing_screen": {
     "go_to_blog": "Open blog",
+    "go_to_push_notifications_helpers": "Open push notifications helpers",
     "go_to_form": "Open full screen form",
     "login_cta": "Log in",
     "sign_up": "Sign up"

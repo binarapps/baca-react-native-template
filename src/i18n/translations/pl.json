@@ -216,6 +216,7 @@
   },
   "landing_screen": {
     "go_to_blog": "Otwórz blog",
+    "go_to_push_notifications_helpers": "Otwórz pomocnik powiadomień push",
     "go_to_form": "Otwórz pełno ekranowy formularz full",
     "login_cta": "Zaloguj się",
     "sign_up": "Zarejestruj się"
