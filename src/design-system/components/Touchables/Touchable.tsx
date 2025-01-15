@@ -6,6 +6,7 @@ import {
   TargetedEvent,
   TouchableOpacity,
   TouchableOpacityProps,
+  View,
 } from 'react-native'
 
 import { useFocus } from './useFocus'
@@ -20,14 +21,14 @@ export type TouchableRef = {
   isHovered: boolean
   isPressed: boolean
   isFocused: boolean
-} & Partial<TouchableOpacity>
+} & Partial<View>
 export type TouchableProps = StyledProps &
   Omit<TouchableOpacityProps, 'children'> & {
     children?: React.ReactNode | ((props: TouchableRef) => React.ReactNode)
   }
 
 export const Touchable = forwardRef<TouchableRef, TouchableProps>(({ children, ...props }, ref) => {
-  const _touchableRef = useRef<TouchableOpacity>(null)
+  const _touchableRef = useRef<View>(null)
   const { isHovered, hoverProps } = useHover()
   const { isPressed, pressableProps } = useIsPressed()
   const { isFocused, focusProps } = useFocus()
