@@ -33,9 +33,7 @@ const defaultValues: SignInFormValues = isDevelopment
 export const useSignInForm = ({ setIsSignInButtonsDisabled }: UseSignInFormProps) => {
   const setIsSignedIn = useSetAtom(isSignedInAtom)
 
-  const { mutate: loginMutate, isPending: isSubmitting } = useAuthControllerLogin<{
-    message: string
-  }>()
+  const { mutate: loginMutate, isPending: isSubmitting } = useAuthControllerLogin()
 
   const {
     control,
