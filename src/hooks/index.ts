@@ -39,7 +39,6 @@ export { useWindowDimensions } from 'react-native'
 export { useNotificationController, useNotifications } from 'react-native-notificated'
 export { useSafeAreaFrame, useSafeAreaInsets } from 'react-native-safe-area-context'
 export {
-  useHydrate,
   useInfiniteQuery,
   useIsFetching,
   useIsMutating,
