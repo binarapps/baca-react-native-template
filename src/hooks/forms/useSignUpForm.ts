@@ -22,7 +22,7 @@ const defaultValues: AuthRegisterLoginDto = {
 }
 
 export const useSignUpForm = ({ setIsSignUpButtonDisabled }: UseSignUpFormProps) => {
-  const { mutate: signUpMutation, isLoading } = useAuthControllerRegister()
+  const { mutate: signUpMutation, isPending } = useAuthControllerRegister()
   const { t } = useTranslation()
 
   const {
@@ -65,7 +65,7 @@ export const useSignUpForm = ({ setIsSignUpButtonDisabled }: UseSignUpFormProps)
   return {
     control,
     errors,
-    isSubmitting: isLoading,
+    isSubmitting: isPending,
     register: handleSubmit(onSubmit),
     setFocus,
   }

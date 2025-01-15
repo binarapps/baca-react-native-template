@@ -10,7 +10,7 @@ import { handleFormError, hapticImpact, showSuccessToast } from '@/utils'
 export const useUpdateProfileForm = () => {
   const { data: userData } = useAuthControllerMe({ query: { queryKey: [QueryKeys.USER_DATA] } })
   const { t } = useTranslation()
-  const { mutate: updateUserMutation, isLoading } = useAuthControllerUpdate()
+  const { mutate: updateUserMutation, isPending } = useAuthControllerUpdate()
 
   const defaultValues: AuthUpdateDto = useMemo(
     () => ({
@@ -61,7 +61,7 @@ export const useUpdateProfileForm = () => {
   return {
     control,
     errors,
-    isSubmitting: isLoading,
+    isSubmitting: isPending,
     setFocus,
     submit: handleSubmit(onSubmit),
   }

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 
 import { useAuthControllerLogin } from '@/api/query/auth/auth'
 import { AuthEmailLoginDto } from '@/api/types'
-import { isProduction } from '@/constants'
+import { isDevelopment } from '@/constants'
 import { assignPushToken, setToken } from '@/services'
 import { isSignedInAtom } from '@/store/auth'
 import { handleFormError, hapticImpact } from '@/utils'
@@ -17,7 +17,7 @@ type UseSignInFormProps = {
   setIsSignInButtonsDisabled?: Dispatch<SetStateAction<boolean>>
 }
 
-const defaultValues: SignInFormValues = isProduction
+const defaultValues: SignInFormValues = isDevelopment
   ? {
       email: '',
       password: '',
@@ -33,7 +33,7 @@ const defaultValues: SignInFormValues = isProduction
 export const useSignInForm = ({ setIsSignInButtonsDisabled }: UseSignInFormProps) => {
   const setIsSignedIn = useSetAtom(isSignedInAtom)
 
-  const { mutate: loginMutate, isLoading: isSubmitting } = useAuthControllerLogin<{
+  const { mutate: loginMutate, isPending: isSubmitting } = useAuthControllerLogin<{
     message: string
   }>()
 

@@ -14,7 +14,7 @@ export const ConfirmEmail = () => {
 
   const {
     isError,
-    isLoading,
+    isPending,
     isSuccess,
     mutate: confirmEmailMutation,
   } = useAuthControllerConfirmEmail()
@@ -36,7 +36,7 @@ export const ConfirmEmail = () => {
 
   return (
     <Center flexGrow={1}>
-      {isLoading && (
+      {isPending && (
         <Center gap={6}>
           <Loader type="bubbles" />
           <Text>{t('confirm_email_screen.verification_in_progress')}</Text>

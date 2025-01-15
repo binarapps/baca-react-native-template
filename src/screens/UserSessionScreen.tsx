@@ -10,8 +10,10 @@ import { wait } from '@/utils'
 
 export const UserSessionScreen = () => {
   const isRefreshing = useAtomValue(isRefreshingTokenAtom)
-  const { data, refetch, isInitialLoading, isRefetching } = useAuthControllerMe({
-    query: { enabled: false },
+  const { data, refetch, isPending, isRefetching } = useAuthControllerMe({
+    query: {
+      enabled: false,
+    },
   })
 
   const [token, setToken] = useState<Token | null>(null)
@@ -39,7 +41,7 @@ export const UserSessionScreen = () => {
     <ScrollView flexGrow={1} p={4}>
       <HelperSection header="User data">
         <Text.MdMedium>Is fetching user data:</Text.MdMedium>
-        <HelperRenderJson>{isInitialLoading || isRefetching}</HelperRenderJson>
+        <HelperRenderJson>{isPending || isRefetching}</HelperRenderJson>
         <Text.MdMedium>User data:</Text.MdMedium>
         <HelperRenderJson>{data}</HelperRenderJson>
         <Button loading={isRefetching} onPress={fetchUser} title="Refetch user" />

@@ -14,7 +14,7 @@ const defaultValues: FormValuesType = {
 }
 
 export const useResetPasswordForm = () => {
-  const { mutate: resetPasswordMutate, isLoading: isSubmitting } = useAuthControllerResetPassword()
+  const { mutate: resetPasswordMutate, isPending: isSubmitting } = useAuthControllerResetPassword()
 
   const {
     control,

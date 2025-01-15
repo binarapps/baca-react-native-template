@@ -10,7 +10,7 @@ const defaultValues: AuthForgotPasswordDto = {
 }
 
 export const useForgotPasswordForm = ({ onSuccess }: { onSuccess?: () => void }) => {
-  const { mutate: forgotPasswordMutate, isLoading: isSubmitting } =
+  const { mutate: forgotPasswordMutate, isPending: isSubmitting } =
     useAuthControllerForgotPassword()
 
   const {
