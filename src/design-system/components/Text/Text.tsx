@@ -158,10 +158,10 @@ const RawText = memo(
             capitalize || textTransform === 'capitalize'
               ? 'capitalize'
               : lowercase || textTransform === 'lowercase'
-              ? 'lowercase'
-              : uppercase || textTransform === 'uppercase'
-              ? 'uppercase'
-              : 'none',
+                ? 'lowercase'
+                : uppercase || textTransform === 'uppercase'
+                  ? 'uppercase'
+                  : 'none',
         }),
         [capitalize, lowercase, uppercase, textTransform]
       )
@@ -172,8 +172,8 @@ const RawText = memo(
             underline || textDecoration === 'underline'
               ? 'underline'
               : strikeThrough || textDecoration === 'line-through'
-              ? 'line-through'
-              : undefined,
+                ? 'line-through'
+                : undefined,
         }),
         [underline, strikeThrough, textDecoration]
       )

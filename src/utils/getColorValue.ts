@@ -22,7 +22,6 @@ interface NestedObject {
 }
 
 function getPropertyByKeys<T extends NestedObject>(obj: T, keys: string[]): string {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //  @ts-expect-error, hopefully the following will return color as string
   return keys.reduce((acc, key) => acc && acc[key], obj)
 }

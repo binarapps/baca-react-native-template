@@ -195,8 +195,8 @@ const RawButton = memo(
                 web: pressed
                   ? { ...defaultStyles, ...pressedStyles }
                   : isHovered
-                  ? hoveredStyles
-                  : defaultStyles,
+                    ? hoveredStyles
+                    : defaultStyles,
               }),
             },
             disabled && disabledStyles,

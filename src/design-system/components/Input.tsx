@@ -63,10 +63,10 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
         props.capitalize || props.textTransform === 'capitalize'
           ? 'capitalize'
           : props.lowercase || props.textTransform === 'lowercase'
-          ? 'lowercase'
-          : props.uppercase || props.textTransform === 'uppercase'
-          ? 'uppercase'
-          : 'none',
+            ? 'lowercase'
+            : props.uppercase || props.textTransform === 'uppercase'
+              ? 'uppercase'
+              : 'none',
     }),
     [props.capitalize, props.lowercase, props.uppercase, props.textTransform]
   )
@@ -77,8 +77,8 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
         props.underline || props.textDecoration === 'underline'
           ? 'underline'
           : props.strikeThrough || props.textDecoration === 'line-through'
-          ? 'line-through'
-          : undefined,
+            ? 'line-through'
+            : undefined,
     }),
     [props.underline, props.strikeThrough, props.textDecoration]
   )
@@ -183,7 +183,7 @@ export const Input = forwardRef<TextInput, InputProps>(
           focus: () => handleFocus(),
           blur: () => handleBlur(),
           ..._inputRef.current,
-        } as unknown as TextInput),
+        }) as unknown as TextInput,
       [handleBlur, handleFocus]
     )
 
@@ -196,10 +196,10 @@ export const Input = forwardRef<TextInput, InputProps>(
             isDisabled
               ? 'border.disabled'
               : isInvalid
-              ? 'border.error'
-              : isFocused
-              ? 'border.brand'
-              : 'border.primary'
+                ? 'border.error'
+                : isFocused
+                  ? 'border.brand'
+                  : 'border.primary'
           }
           bg={isDisabled ? 'bg.disabled_subtle' : 'bg.primary'}
           borderRadius={8}

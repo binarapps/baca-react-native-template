@@ -52,11 +52,9 @@ export const BottomSheet = ({
         ios: false,
       })}
       backgroundStyle={{
-        // eslint-disable-next-line react-native/no-inline-styles
         backgroundColor: colors.bg.primary,
       }}
       handleIndicatorStyle={{
-        // eslint-disable-next-line react-native/no-inline-styles
         backgroundColor: colors.alpha.black[100],
       }}
     >
