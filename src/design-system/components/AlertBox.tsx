@@ -41,14 +41,20 @@ export const AlertBox: FC<AlertProps> = ({ status = 'info', title, description, 
     >
       <Row gap={3} alignItems="flex-start">
         <Icon name={statusToIcon[status]} size={20} color={`${statusToColor[status]}.700`} />
-        <Box flex={1}>
+        <Box>
           {title && (
-            <Text.MdSemibold color={`${statusToColor[status]}.700`} mb={description ? 1 : 0}>
+            <Text.MdSemibold
+              selectable={true}
+              color={`${statusToColor[status]}.700`}
+              mb={description ? 1 : 0}
+            >
               {title}
             </Text.MdSemibold>
           )}
           {description && (
-            <Text.SmRegular color={`${statusToColor[status]}.500`}>{description}</Text.SmRegular>
+            <Text.SmRegular selectable={true} color={`${statusToColor[status]}.500`}>
+              {description}
+            </Text.SmRegular>
           )}
           {children}
         </Box>
