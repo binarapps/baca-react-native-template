@@ -1,8 +1,8 @@
-diff --git a/node_modules/react-native-reanimated/src/reanimated2/animation/util.ts b/node_modules/react-native-reanimated/src/reanimated2/animation/util.ts
-index cf96941..04a5810 100644
---- a/node_modules/react-native-reanimated/src/reanimated2/animation/util.ts
-+++ b/node_modules/react-native-reanimated/src/reanimated2/animation/util.ts
-@@ -121,13 +121,9 @@ export function getReduceMotionFromConfig(config?: ReduceMotion) {
+diff --git a/node_modules/react-native-reanimated/src/animation/util.ts b/node_modules/react-native-reanimated/src/animation/util.ts
+index 39e4c5a..c0de247 100644
+--- a/node_modules/react-native-reanimated/src/animation/util.ts
++++ b/node_modules/react-native-reanimated/src/animation/util.ts
+@@ -125,13 +125,9 @@ export function getReduceMotionFromConfig(config?: ReduceMotion) {
   */
  export function getReduceMotionForAnimation(config?: ReduceMotion) {
    'worklet';
@@ -11,7 +11,7 @@ index cf96941..04a5810 100644
 -  if (!config) {
 -    return undefined;
 -  }
- 
+   
 -  return getReduceMotionFromConfig(config);
 +  // we must always return false here in order to prevent bottomsheets from crash on devices with 'reduce motion/animation' setting turned on
 +  return false;
