@@ -10,7 +10,17 @@ import {
 } from '@/components'
 import { ThemeSwitcherButton } from '@/components/ThemeSwitcherButton'
 import { REGEX, isWeb } from '@/constants'
-import { Box, Button, Center, Display, Row, Spacer, Text, AlertBox } from '@/design-system'
+import {
+  Box,
+  Button,
+  Center,
+  Display,
+  Row,
+  Spacer,
+  Text,
+  AlertBox,
+  Touchable,
+} from '@/design-system'
 import { useCallback, useSignInForm, useState, useTranslation } from '@/hooks'
 
 export const SignInScreen = (): JSX.Element => {
@@ -19,9 +29,10 @@ export const SignInScreen = (): JSX.Element => {
 
   const [isSignInButtonDisabled, setIsSignInButtonsDisabled] = useState<boolean>(false)
 
-  const { control, errors, submit, getValues, isSubmitting, setFocus } = useSignInForm({
-    setIsSignInButtonsDisabled,
-  })
+  const { control, errors, submit, getValues, isSubmitting, setFocus, resetFormToFilledValues } =
+    useSignInForm({
+      setIsSignInButtonsDisabled,
+    })
 
   const navigateToSignUp = useCallback(() => push('/sign-up'), [push])
   const navigateToAppInfo = useCallback(() => push('/application-info'), [push])
@@ -128,11 +139,14 @@ export const SignInScreen = (): JSX.Element => {
           </Button.LinkColor>
         </Row>
         <Box flex={1} py={4} />
-        <AlertBox
-          status="info"
-          title={t('sign_in_screen.alert.title')}
-          description={t('sign_in_screen.alert.description')}
-        />
+        <Touchable onPress={resetFormToFilledValues}>
+          <AlertBox
+            status="info"
+            title={t('sign_in_screen.alert.title')}
+            description={t('sign_in_screen.alert.description')}
+          />
+        </Touchable>
+        <Box py={4} />
       </Center>
       <Box alignItems="center" flexGrow={1} justifyContent="flex-end">
         <Version onPress={navigateToAppInfo} />
