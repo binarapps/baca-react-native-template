@@ -258,7 +258,7 @@
   "sign_in_screen": {
     "alert": {
       "title": "Użyj poniższych danych logowania (tryb deweloperski)",
-      "description": "mateusz.rostkowski+baca@binarapps.com\nTest1234,"
+      "description": "mateusz.rostkowski+baca@binarapps.com\nTest1234,\n\nNaciśnij alert by ustawić wartości"
     },
     "do_not_have_an_account": "Nie masz konta?",
     "forgot_password": "Nie pamiętam hasła",
