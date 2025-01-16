@@ -22,11 +22,6 @@
     "orientation": "portrait",
     "owner": "binarapps",
     "slug": "expo-typescript-template",
-    "splash": {
-      "backgroundColor": "#ffffff",
-      "image": "./assets/splash.png",
-      "resizeMode": "cover"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -46,6 +41,18 @@
           "ios": {
             "useFrameworks": "static"
           }
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/splash-light.png",
+          "dark": {
+            "image": "./assets/splash-dark.png",
+            "backgroundColor": "#0D1320"
+          },
+          "imageWidth": 200
         }
       ]
     ],
