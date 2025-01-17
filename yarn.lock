@@ -1333,7 +1333,7 @@ __metadata:
     react-native: "npm:0.76.6"
     react-native-gesture-handler: "npm:~2.20.2"
     react-native-keyboard-aware-scroll-view: "npm:^0.9.5"
-    react-native-notificated: "npm:^0.0.1-beta.2"
+    react-native-notificated: "npm:^0.1.7"
     react-native-pager-view: "npm:6.5.1"
     react-native-reanimated: "npm:~3.16.1"
     react-native-safe-area-context: "npm:4.12.0"
@@ -13296,15 +13296,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-notificated@npm:^0.0.1-beta.2":
-  version: 0.0.1-beta.2
-  resolution: "react-native-notificated@npm:0.0.1-beta.2"
+"react-native-notificated@npm:^0.1.7":
+  version: 0.1.7
+  resolution: "react-native-notificated@npm:0.1.7"
   peerDependencies:
     react: "*"
     react-native: "*"
-    react-native-gesture-handler: ^1.10.3
-    react-native-reanimated: ^2.2.4
-  checksum: 10/fd6173ed1c6f4ace35ce40c3f9105ff53577abeb23762334a66853bcf24f5771d9846a53e08446887a1951b59e3e3061447edf34cfedd6fcb51cab3f06cac253
+    react-native-gesture-handler: ^2.9.0
+    react-native-reanimated: ^2.14.4 || ^3.0.0
+  checksum: 10/ab17985f9749ecbf95d9ee4b2a8529093074c50883c7d311ae79485c8fa98f4df5dd40bf874a530d4ec80a1bff3ddf15d75eec672ed23a9db12771c2a3e51dfe
   languageName: node
   linkType: hard
 
