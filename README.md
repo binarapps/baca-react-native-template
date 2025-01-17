@@ -21,15 +21,15 @@
 - [🏆 Why Use BACA?](#-why-use-baca)
 - [🔍 Preview](#-preview)
 - [🚀 How to Use?](#-how-to-use)
-    - [🏃‍♂️ Quick Steps](#️-quick-steps)
+  - [🏃‍♂️ Quick Steps](#️-quick-steps)
 - [🛠 Prerequisites](#-prerequisites)
 - [📦 What's Inside?](#-whats-inside)
 - [Libraries and Tools](#libraries-and-tools)
 - [🔜 Future Plans](#-future-plans)
 - [👏 How to Contribute](#-how-to-contribute)
-    - [Steps to Contribute](#steps-to-contribute)
+  - [Steps to Contribute](#steps-to-contribute)
 - [🤙 How to Run Locally](#-how-to-run-locally)
-    - [Environment Variables Setup](#environment-variables-setup)
+  - [Environment Variables Setup](#environment-variables-setup)
 - [📘 License](#-license)
 - [📝 Feedback](#-feedback)
 - [👨‍👩‍👧‍👦 Contributors](#-contributors)
@@ -65,6 +65,8 @@ While there are many project starters for React Native, we offer features that a
 - **Fully Typed**
   - Ensures robust code quality.
 - **Comprehensive App Deployment Documentation**
+- **New architecture**
+  - Works on new architecture of react native
 
 ## 🔍 Preview
 
@@ -107,7 +109,7 @@ Ideally it would be good to have finished [React Native Environment setup](https
 ### Libraries and Tools
 
 - **TypeScript**: Strictly typed code for enhanced development experience.
-- **Expo v50**: The latest Expo framework with modern React Native features.
+- **Expo v52**: The latest Expo framework with modern React Native features.
 - **Prettier and Eslint**: Automatically format and lint your code.
 - **Babel-Module-Resolver**: Unified imports.
 - **Jest and @testing-library/react-native**: Unit tests for React Native components.
