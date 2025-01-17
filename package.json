@@ -227,5 +227,5 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "./node_modules/.bin/eslint src --fix"
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@4.6.0"
 }
