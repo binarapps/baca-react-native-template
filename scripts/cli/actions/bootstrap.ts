@@ -196,6 +196,7 @@ const changePackageJson = ({ appName, organizationOwner }: SetupProjectProps) =>
   packageJson.version = '1.0.0'
 
   delete packageJson.repository
+  delete packageJson.homepage
   delete packageJson.bugs
   delete packageJson.keywords
 

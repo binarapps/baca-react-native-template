@@ -14,6 +14,7 @@
     "prettier"
   ],
   "main": "expo-router/entry",
+  "homepage": "https://baca-docs.vercel.app",
   "repository": {
     "type": "git",
     "url": "https://github.com/binarapps/baca-react-native-template.git"
