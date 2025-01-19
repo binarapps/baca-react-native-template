@@ -22,7 +22,8 @@ i18n
     // v4 is not available on android
     // check this link - https://www.i18next.com/misc/json-format#i-18-next-json-v4
     // to see the differences between v4 and v3.
-    compatibilityJSON: 'v3',
+    // FIXME: Veryfy if this is still needed
+    compatibilityJSON: 'v4',
     resources,
     fallbackLng: 'en',
     react: {

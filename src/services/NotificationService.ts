@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Device from 'expo-device'
-import { Subscription } from 'expo-modules-core'
 import * as Notifications from 'expo-notifications'
 import { Platform } from 'react-native'
 
@@ -115,7 +114,7 @@ export const removePushToken = async () => {
 }
 
 // Android notifications helpers
-let notificationListener: Subscription | null = null
+let notificationListener: Notifications.EventSubscription | null = null
 
 const notificationStack: Notifications.Notification[] = []
 

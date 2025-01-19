@@ -1,6 +1,6 @@
 import { Pressable } from '@bacons/react-views'
 import { Link } from 'expo-router'
-import { PressableStateCallbackType, ViewStyle } from 'react-native'
+import { PressableStateCallbackType, TextStyle } from 'react-native'
 
 import { useIsTabSelected } from '../hooks'
 import { TabbedNavigator } from '../tab-slot'
@@ -21,7 +21,7 @@ export function TabBarItemWrapper({
   name: string
   onPress?: () => void
   params?: Record<string, string>
-  style?: ViewStyle
+  style?: TextStyle
   testID?: string
 }) {
   const focused = useIsTabSelected(id)

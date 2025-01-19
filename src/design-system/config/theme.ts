@@ -375,6 +375,12 @@ export const lightNavigationTheme: Theme = {
     primary: themeColors.lightMode.utility.purple[500],
   },
   dark: false,
+  fonts: {
+    bold: { fontFamily: fonts.Bold, fontWeight: '600' },
+    heavy: { fontFamily: fonts.Bold, fontWeight: '700' },
+    medium: { fontFamily: fonts.Medium, fontWeight: '500' },
+    regular: { fontFamily: fonts.Regular, fontWeight: '400' },
+  },
 }
 
 export const darkNavigationTheme: Theme = {
@@ -387,6 +393,12 @@ export const darkNavigationTheme: Theme = {
     primary: themeColors.darkMode.utility.purple[500],
   },
   dark: true,
+  fonts: {
+    bold: { fontFamily: fonts.Bold, fontWeight: '600' },
+    heavy: { fontFamily: fonts.Bold, fontWeight: '700' },
+    medium: { fontFamily: fonts.Medium, fontWeight: '500' },
+    regular: { fontFamily: fonts.Regular, fontWeight: '400' },
+  },
 }
 
 export const navigationTheme = {

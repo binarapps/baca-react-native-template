@@ -14,11 +14,21 @@ web-build/
 
 # macOS
 .DS_Store
+dist/
 
 # yarn
-yarn-error.log
+yarn-debug.log*
+yarn-error.log*
 
-dist/
+# Yarn 3.x
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
 
 # project files
 

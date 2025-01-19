@@ -1,6 +1,0 @@
-node_modules/
-.eslintrc.js
-babel.config.js
-webpack.config.js
-docs
-scripts/cli/build/

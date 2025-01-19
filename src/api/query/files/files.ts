@@ -8,9 +8,13 @@
  */
 import { useMutation, useQuery } from '@tanstack/react-query'
 import type {
+  DataTag,
+  DefinedInitialDataOptions,
+  DefinedUseQueryResult,
   MutationFunction,
   QueryFunction,
   QueryKey,
+  UndefinedInitialDataOptions,
   UseMutationOptions,
   UseMutationResult,
   UseQueryOptions,
@@ -29,7 +33,8 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
  */
 export const filesControllerUploadFile = (
   filesControllerUploadFileBody: BodyType<FilesControllerUploadFileBody>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   const formData = new FormData()
   if (filesControllerUploadFileBody.file !== undefined) {
@@ -45,29 +50,31 @@ export const filesControllerUploadFile = (
       method: 'POST',
       headers: { 'Content-Type': 'multipart/form-data' },
       data: formData,
+      signal,
     },
     options
   )
 }
 
 export const getFilesControllerUploadFileMutationOptions = <
+  TData = Awaited<ReturnType<typeof filesControllerUploadFile>>,
   TError = ErrorType<void>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof filesControllerUploadFile>>,
+    TData,
     TError,
     { data: BodyType<FilesControllerUploadFileBody> },
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof filesControllerUploadFile>>,
-  TError,
-  { data: BodyType<FilesControllerUploadFileBody> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['filesControllerUploadFile']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof filesControllerUploadFile>>,
@@ -78,7 +85,12 @@ export const getFilesControllerUploadFileMutationOptions = <
     return filesControllerUploadFile(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<FilesControllerUploadFileBody> },
+    TContext
+  >
 }
 
 export type FilesControllerUploadFileMutationResult = NonNullable<
@@ -91,18 +103,19 @@ export type FilesControllerUploadFileMutationError = ErrorType<void>
  * @summary Upload File
  */
 export const useFilesControllerUploadFile = <
+  TData = Awaited<ReturnType<typeof filesControllerUploadFile>>,
   TError = ErrorType<void>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof filesControllerUploadFile>>,
+    TData,
     TError,
     { data: BodyType<FilesControllerUploadFileBody> },
     TContext
   >
   request?: SecondParameter<typeof customInstance>
 }): UseMutationResult<
-  Awaited<ReturnType<typeof filesControllerUploadFile>>,
+  TData,
   TError,
   { data: BodyType<FilesControllerUploadFileBody> },
   TContext
@@ -132,11 +145,13 @@ export const getFilesControllerDownloadQueryKey = (fileName: string) => {
 
 export const getFilesControllerDownloadQueryOptions = <
   TData = Awaited<ReturnType<typeof filesControllerDownload>>,
-  TError = ErrorType<void>
+  TError = ErrorType<void>,
 >(
   fileName: string,
   options?: {
-    query?: UseQueryOptions<Awaited<ReturnType<typeof filesControllerDownload>>, TError, TData>
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof filesControllerDownload>>, TError, TData>
+    >
     request?: SecondParameter<typeof customInstance>
   }
 ) => {
@@ -152,7 +167,7 @@ export const getFilesControllerDownloadQueryOptions = <
     Awaited<ReturnType<typeof filesControllerDownload>>,
     TError,
     TData
-  > & { queryKey: QueryKey }
+  > & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
 export type FilesControllerDownloadQueryResult = NonNullable<
@@ -160,23 +175,79 @@ export type FilesControllerDownloadQueryResult = NonNullable<
 >
 export type FilesControllerDownloadQueryError = ErrorType<void>
 
+export function useFilesControllerDownload<
+  TData = Awaited<ReturnType<typeof filesControllerDownload>>,
+  TError = ErrorType<void>,
+>(
+  fileName: string,
+  options: {
+    query: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof filesControllerDownload>>, TError, TData>
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof filesControllerDownload>>,
+          TError,
+          TData
+        >,
+        'initialData'
+      >
+    request?: SecondParameter<typeof customInstance>
+  }
+): DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useFilesControllerDownload<
+  TData = Awaited<ReturnType<typeof filesControllerDownload>>,
+  TError = ErrorType<void>,
+>(
+  fileName: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof filesControllerDownload>>, TError, TData>
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof filesControllerDownload>>,
+          TError,
+          TData
+        >,
+        'initialData'
+      >
+    request?: SecondParameter<typeof customInstance>
+  }
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useFilesControllerDownload<
+  TData = Awaited<ReturnType<typeof filesControllerDownload>>,
+  TError = ErrorType<void>,
+>(
+  fileName: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof filesControllerDownload>>, TError, TData>
+    >
+    request?: SecondParameter<typeof customInstance>
+  }
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary Download File
  */
 
 export function useFilesControllerDownload<
   TData = Awaited<ReturnType<typeof filesControllerDownload>>,
-  TError = ErrorType<void>
+  TError = ErrorType<void>,
 >(
   fileName: string,
   options?: {
-    query?: UseQueryOptions<Awaited<ReturnType<typeof filesControllerDownload>>, TError, TData>
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof filesControllerDownload>>, TError, TData>
+    >
     request?: SecondParameter<typeof customInstance>
   }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
   const queryOptions = getFilesControllerDownloadQueryOptions(fileName, options)
 
-  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: DataTag<QueryKey, TData, TError>
+  }
 
   query.queryKey = queryOptions.queryKey
 
@@ -195,23 +266,19 @@ export const filesControllerDeleteFile = (
 }
 
 export const getFilesControllerDeleteFileMutationOptions = <
+  TData = Awaited<ReturnType<typeof filesControllerDeleteFile>>,
   TError = ErrorType<void>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof filesControllerDeleteFile>>,
-    TError,
-    { fileName: string },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { fileName: string }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof filesControllerDeleteFile>>,
-  TError,
-  { fileName: string },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['filesControllerDeleteFile']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof filesControllerDeleteFile>>,
@@ -222,7 +289,12 @@ export const getFilesControllerDeleteFileMutationOptions = <
     return filesControllerDeleteFile(fileName, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { fileName: string },
+    TContext
+  >
 }
 
 export type FilesControllerDeleteFileMutationResult = NonNullable<
@@ -235,22 +307,13 @@ export type FilesControllerDeleteFileMutationError = ErrorType<void>
  * @summary Delete File
  */
 export const useFilesControllerDeleteFile = <
+  TData = Awaited<ReturnType<typeof filesControllerDeleteFile>>,
   TError = ErrorType<void>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof filesControllerDeleteFile>>,
-    TError,
-    { fileName: string },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { fileName: string }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof filesControllerDeleteFile>>,
-  TError,
-  { fileName: string },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { fileName: string }, TContext> => {
   const mutationOptions = getFilesControllerDeleteFileMutationOptions(options)
 
   return useMutation(mutationOptions)

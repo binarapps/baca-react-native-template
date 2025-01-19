@@ -6,7 +6,7 @@ import { showErrorToast } from '@/utils'
 
 export const ProfileDeleteAccountButton = () => {
   const { t } = useTranslation()
-  const { mutateAsync: removeUserAccount, isLoading } = useAuthControllerDelete()
+  const { mutateAsync: removeUserAccount, isPending } = useAuthControllerDelete()
 
   const { bottomSheetComponentRenderFunction, closeBottomSheet, presentBottomSheet } =
     useBottomSheet({
@@ -43,7 +43,7 @@ export const ProfileDeleteAccountButton = () => {
           variant="PrimaryDestructive"
           flex={1}
           borderRadius={8}
-          loading={isLoading}
+          loading={isPending}
         >
           {t('profile_screen.remove_account')}
         </Button>

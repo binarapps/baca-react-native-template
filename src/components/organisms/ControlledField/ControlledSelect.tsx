@@ -8,7 +8,7 @@ import { SelectKey } from '@/design-system'
 
 export const ControlledSelect = <
   T extends SelectKey,
-  TFieldValues extends FieldValues = FieldValues
+  TFieldValues extends FieldValues = FieldValues,
 >({
   control,
   name,

@@ -1,14 +1,15 @@
 {
   "expo": {
+    "newArchEnabled": true,
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 22,
+      "versionCode": 27,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "22",
+      "buildNumber": "27",
       "config": {
         "usesNonExemptEncryption": false
       },
@@ -21,16 +22,11 @@
     "orientation": "portrait",
     "owner": "binarapps",
     "slug": "expo-typescript-template",
-    "splash": {
-      "backgroundColor": "#ffffff",
-      "image": "./assets/splash.png",
-      "resizeMode": "cover"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "userInterfaceStyle": "automatic",
-    "version": "2.5.0",
+    "version": "2.6.1",
     "plugins": [
       "@react-native-google-signin/google-signin",
       "expo-asset",
@@ -45,6 +41,18 @@
           "ios": {
             "useFrameworks": "static"
           }
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/splash-light.png",
+          "dark": {
+            "image": "./assets/splash-dark.png",
+            "backgroundColor": "#0D1320"
+          },
+          "imageWidth": 200
         }
       ]
     ],

@@ -38,9 +38,15 @@ export const generateStyledComponent = <P extends StyledProps, R>(
     const { colors } = useTheme()
 
     const style = generateStyledSystem(props, colors)
-    return React.createElement(component, {
-      ...props,
-      ref,
-      [styleProp]: [style, (props as Record<StylePropKeys, unknown>)[styleProp]],
-    })
+
+    return React.createElement(
+      component,
+      // FIXME: We should find some way to type this properly
+      // @ts-expect-error: types of props are not matching
+      {
+        ...props,
+        ref,
+        [styleProp]: [style, (props as unknown as Record<StylePropKeys, unknown>)[styleProp]],
+      }
+    )
   })

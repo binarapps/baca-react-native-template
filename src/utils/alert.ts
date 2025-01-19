@@ -1,6 +1,5 @@
 import { Alert, Platform } from 'react-native'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AlertType = typeof Alert.alert
 const alertPolyfill: AlertType = (title, description, buttons) => {
   const result = window.confirm([title, description].filter(Boolean).join('\n'))

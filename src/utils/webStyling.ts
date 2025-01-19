@@ -5,7 +5,7 @@ export const makeBigerOnHover = (hovered: boolean): StyleProp<ViewStyle> => {
     Platform.select({
       web: {
         transitionDuration: '200ms',
-        transitionProperty: ['background-color', 'box-shadow', 'transform'],
+        transitionProperty: 'background-color, box-shadow, transform',
         transitionTimingFunction: 'cubic-bezier(0.17, 0.17, 0, 1)',
       },
     }),

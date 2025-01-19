@@ -216,6 +216,7 @@
   },
   "landing_screen": {
     "go_to_blog": "Open blog",
+    "go_to_push_notifications_helpers": "Open push notifications helpers",
     "go_to_form": "Open full screen form",
     "login_cta": "Log in",
     "sign_up": "Sign up"
@@ -258,7 +259,7 @@
   "sign_in_screen": {
     "alert": {
       "title": "Use the following credentials to sign in (dev mode)",
-      "description": "mateusz.rostkowski+baca@binarapps.com\nTest1234,"
+      "description": "mateusz.rostkowski+baca@binarapps.com\nTest1234,\n\nPress alert to set them in the form"
     },
     "do_not_have_an_account": "Don't have an account?",
     "forgot_password": "Forgot password",

@@ -1,4 +1,3 @@
-import * as Application from 'expo-application'
 import { useEffect, useState } from 'react'
 import { Platform, Alert, Linking } from 'react-native'
 
@@ -9,7 +8,12 @@ import { useTranslation } from '@/hooks'
 // FIXME: Remove '100.100.100' when you'll build real app
 // For now backend is using youtube app to check for updates
 // In real app this should be replaced with real version
-const currentVersion = '100.100.100' || Application.nativeApplicationVersion || 'unknown'
+
+const currentVersion = '100.100.100'
+
+// import * as Application from 'expo-application'
+// const currentVersion = Application.nativeApplicationVersion || 'unknown'
+
 const { OS } = Platform
 
 export const useCheckForAppUpdate = () => {

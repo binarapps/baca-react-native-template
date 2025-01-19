@@ -12,7 +12,7 @@ const defaultValues: AuthUpdateDto = {
 
 export const useUpdatePasswordForm = () => {
   const { t } = useTranslation()
-  const { mutate: updatePasswordMutation, isLoading } = useAuthControllerUpdate()
+  const { mutate: updatePasswordMutation, isPending } = useAuthControllerUpdate()
 
   const {
     control,
@@ -50,7 +50,7 @@ export const useUpdatePasswordForm = () => {
   return {
     control,
     errors,
-    isSubmitting: isLoading,
+    isSubmitting: isPending,
     setFocus,
     submit: handleSubmit(onSubmit),
   }

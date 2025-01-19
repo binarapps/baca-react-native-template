@@ -36,8 +36,8 @@ export const usePasswordValidation = () => {
       const iconColor: ColorNames = !showValidationState
         ? 'fg.disabled'
         : isError
-        ? 'utility.error.500'
-        : 'utility.success.500'
+          ? 'utility.error.500'
+          : 'utility.success.500'
 
       const testID = `change_password:${suggestion}:${
         !showValidationState ? 'disabled' : isError ? 'error' : 'success'

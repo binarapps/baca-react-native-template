@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { NativeModules } from 'react-native'
 import Reactotron from 'reactotron-react-native'
 
 /**
@@ -10,16 +9,9 @@ import Reactotron from 'reactotron-react-native'
  * See: https://github.com/infinitered/reactotron/blob/master/docs/quick-start-react-native.md#configure-reactotron-with-your-project
  */
 
-let scriptHostname
-if (__DEV__) {
-  const scriptURL = NativeModules.SourceCode.scriptURL
-  scriptHostname = scriptURL.split('://')[1].split(':')[0]
-}
-
 Reactotron?.setAsyncStorageHandler?.(AsyncStorage)
   .configure({
     name: 'Reactotron In Expo demo',
-    host: scriptHostname,
   })
   .useReactNative({
     asyncStorage: false,

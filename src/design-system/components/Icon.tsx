@@ -1,6 +1,6 @@
 import { createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconJson from 'assets/icomoon/selection.json'
-import { StyleProp, ViewStyle } from 'react-native'
+import { StyleProp, TextStyle } from 'react-native'
 
 import { useTheme } from '@/hooks'
 import { IconNames } from '@/types'
@@ -10,7 +10,7 @@ export type IconProps = {
   color?: ColorNames
   name: IconNames
   size: number
-  style?: StyleProp<ViewStyle>
+  style?: StyleProp<TextStyle>
 }
 
 const IconFont = createIconSetFromIcoMoon(iconJson, 'IcoMoon', 'icomoon.ttf')

@@ -16,6 +16,12 @@ export const HomeScreen = () => {
       params: { user: 'example@example.com' },
     })
   }, [])
+
+  const goToPushNotificationsHelpers = useCallback(
+    () => router.push('/example/push-notifications-helpers', { withAnchor: true }),
+    []
+  )
+
   const navigateToBlog = useCallback(() => {
     router.navigate('/blog')
   }, [])
@@ -40,6 +46,10 @@ export const HomeScreen = () => {
       </Button>
       <Button mt={4} onPress={navigateToBlog} testID="home_screen:blog">
         {t('landing_screen.go_to_blog')}
+      </Button>
+
+      <Button mt={4} onPress={goToPushNotificationsHelpers} testID="home_screen:blog">
+        {t('landing_screen.go_to_push_notifications_helpers')}
       </Button>
     </Center>
   )

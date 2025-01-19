@@ -28,7 +28,6 @@ export const Providers: FC<PropsWithChildren> = ({ children }) => {
           <SafeAreaProvider>
             <Provider store={store}>
               <ExpoNotificationsProvider>
-                {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
                 <NotificationsProvider>
                   <QueryClientProvider client={queryClient}>
                     <AppLoading>

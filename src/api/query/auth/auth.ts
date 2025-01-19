@@ -8,9 +8,13 @@
  */
 import { useMutation, useQuery } from '@tanstack/react-query'
 import type {
+  DataTag,
+  DefinedInitialDataOptions,
+  DefinedUseQueryResult,
   MutationFunction,
   QueryFunction,
   QueryKey,
+  UndefinedInitialDataOptions,
   UseMutationOptions,
   UseMutationResult,
   UseQueryOptions,
@@ -47,7 +51,8 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1]
  */
 export const authControllerLogin = (
   authEmailLoginDto: BodyType<AuthEmailLoginDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<AuthEntity>(
     {
@@ -55,12 +60,14 @@ export const authControllerLogin = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authEmailLoginDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthControllerLoginMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerLogin>>,
   TError = ErrorType<
     | ErrorUnauthorizedEntity
     | ErrorEntity
@@ -68,22 +75,17 @@ export const getAuthControllerLoginMutationOptions = <
     | ErrorTooManyRequestsEntity
     | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerLogin>>,
-    TError,
-    { data: BodyType<AuthEmailLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthEmailLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerLogin>>,
-  TError,
-  { data: BodyType<AuthEmailLoginDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerLogin']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerLogin>>,
@@ -94,7 +96,12 @@ export const getAuthControllerLoginMutationOptions = <
     return authControllerLogin(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthEmailLoginDto> },
+    TContext
+  >
 }
 
 export type AuthControllerLoginMutationResult = NonNullable<
@@ -113,6 +120,7 @@ export type AuthControllerLoginMutationError = ErrorType<
  * @summary User Login
  */
 export const useAuthControllerLogin = <
+  TData = Awaited<ReturnType<typeof authControllerLogin>>,
   TError = ErrorType<
     | ErrorUnauthorizedEntity
     | ErrorEntity
@@ -120,21 +128,11 @@ export const useAuthControllerLogin = <
     | ErrorTooManyRequestsEntity
     | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerLogin>>,
-    TError,
-    { data: BodyType<AuthEmailLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthEmailLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerLogin>>,
-  TError,
-  { data: BodyType<AuthEmailLoginDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthEmailLoginDto> }, TContext> => {
   const mutationOptions = getAuthControllerLoginMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -145,7 +143,8 @@ export const useAuthControllerLogin = <
  */
 export const authControllerRegister = (
   authRegisterLoginDto: BodyType<AuthRegisterLoginDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<UserEntity>(
     {
@@ -153,29 +152,26 @@ export const authControllerRegister = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authRegisterLoginDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthControllerRegisterMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerRegister>>,
   TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerRegister>>,
-    TError,
-    { data: BodyType<AuthRegisterLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthRegisterLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerRegister>>,
-  TError,
-  { data: BodyType<AuthRegisterLoginDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerRegister']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerRegister>>,
@@ -186,7 +182,12 @@ export const getAuthControllerRegisterMutationOptions = <
     return authControllerRegister(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthRegisterLoginDto> },
+    TContext
+  >
 }
 
 export type AuthControllerRegisterMutationResult = NonNullable<
@@ -201,22 +202,13 @@ export type AuthControllerRegisterMutationError = ErrorType<
  * @summary User Registration
  */
 export const useAuthControllerRegister = <
+  TData = Awaited<ReturnType<typeof authControllerRegister>>,
   TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerRegister>>,
-    TError,
-    { data: BodyType<AuthRegisterLoginDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthRegisterLoginDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerRegister>>,
-  TError,
-  { data: BodyType<AuthRegisterLoginDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthRegisterLoginDto> }, TContext> => {
   const mutationOptions = getAuthControllerRegisterMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -227,7 +219,8 @@ export const useAuthControllerRegister = <
  */
 export const authControllerConfirmEmail = (
   authConfirmEmailDto: BodyType<AuthConfirmEmailDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<unknown>(
     {
@@ -235,29 +228,26 @@ export const authControllerConfirmEmail = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authConfirmEmailDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthControllerConfirmEmailMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerConfirmEmail>>,
   TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerConfirmEmail>>,
-    TError,
-    { data: BodyType<AuthConfirmEmailDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthConfirmEmailDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerConfirmEmail>>,
-  TError,
-  { data: BodyType<AuthConfirmEmailDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerConfirmEmail']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerConfirmEmail>>,
@@ -268,7 +258,12 @@ export const getAuthControllerConfirmEmailMutationOptions = <
     return authControllerConfirmEmail(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthConfirmEmailDto> },
+    TContext
+  >
 }
 
 export type AuthControllerConfirmEmailMutationResult = NonNullable<
@@ -283,22 +278,13 @@ export type AuthControllerConfirmEmailMutationError = ErrorType<
  * @summary Confirm Email
  */
 export const useAuthControllerConfirmEmail = <
+  TData = Awaited<ReturnType<typeof authControllerConfirmEmail>>,
   TError = ErrorType<void | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerConfirmEmail>>,
-    TError,
-    { data: BodyType<AuthConfirmEmailDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthConfirmEmailDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerConfirmEmail>>,
-  TError,
-  { data: BodyType<AuthConfirmEmailDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthConfirmEmailDto> }, TContext> => {
   const mutationOptions = getAuthControllerConfirmEmailMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -309,7 +295,8 @@ export const useAuthControllerConfirmEmail = <
  */
 export const authControllerResendVerificationEmail = (
   authResendVerificationEmailDto: BodyType<AuthResendVerificationEmailDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<unknown>(
     {
@@ -317,31 +304,33 @@ export const authControllerResendVerificationEmail = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authResendVerificationEmailDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthControllerResendVerificationEmailMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerResendVerificationEmail>>,
   TError = ErrorType<
     ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerResendVerificationEmail>>,
+    TData,
     TError,
     { data: BodyType<AuthResendVerificationEmailDto> },
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerResendVerificationEmail>>,
-  TError,
-  { data: BodyType<AuthResendVerificationEmailDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerResendVerificationEmail']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerResendVerificationEmail>>,
@@ -352,7 +341,12 @@ export const getAuthControllerResendVerificationEmailMutationOptions = <
     return authControllerResendVerificationEmail(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthResendVerificationEmailDto> },
+    TContext
+  >
 }
 
 export type AuthControllerResendVerificationEmailMutationResult = NonNullable<
@@ -368,20 +362,21 @@ export type AuthControllerResendVerificationEmailMutationError = ErrorType<
  * @summary Resend Verification Email
  */
 export const useAuthControllerResendVerificationEmail = <
+  TData = Awaited<ReturnType<typeof authControllerResendVerificationEmail>>,
   TError = ErrorType<
     ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerResendVerificationEmail>>,
+    TData,
     TError,
     { data: BodyType<AuthResendVerificationEmailDto> },
     TContext
   >
   request?: SecondParameter<typeof customInstance>
 }): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerResendVerificationEmail>>,
+  TData,
   TError,
   { data: BodyType<AuthResendVerificationEmailDto> },
   TContext
@@ -396,7 +391,8 @@ export const useAuthControllerResendVerificationEmail = <
  */
 export const authControllerForgotPassword = (
   authForgotPasswordDto: BodyType<AuthForgotPasswordDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<unknown>(
     {
@@ -404,31 +400,28 @@ export const authControllerForgotPassword = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authForgotPasswordDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthControllerForgotPasswordMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerForgotPassword>>,
   TError = ErrorType<
     ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerForgotPassword>>,
-    TError,
-    { data: BodyType<AuthForgotPasswordDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthForgotPasswordDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerForgotPassword>>,
-  TError,
-  { data: BodyType<AuthForgotPasswordDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerForgotPassword']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerForgotPassword>>,
@@ -439,7 +432,12 @@ export const getAuthControllerForgotPasswordMutationOptions = <
     return authControllerForgotPassword(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthForgotPasswordDto> },
+    TContext
+  >
 }
 
 export type AuthControllerForgotPasswordMutationResult = NonNullable<
@@ -454,24 +452,15 @@ export type AuthControllerForgotPasswordMutationError = ErrorType<
  * @summary Forgot Password
  */
 export const useAuthControllerForgotPassword = <
+  TData = Awaited<ReturnType<typeof authControllerForgotPassword>>,
   TError = ErrorType<
     ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerForgotPassword>>,
-    TError,
-    { data: BodyType<AuthForgotPasswordDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthForgotPasswordDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerForgotPassword>>,
-  TError,
-  { data: BodyType<AuthForgotPasswordDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthForgotPasswordDto> }, TContext> => {
   const mutationOptions = getAuthControllerForgotPasswordMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -482,7 +471,8 @@ export const useAuthControllerForgotPassword = <
  */
 export const authControllerResetPassword = (
   authResetPasswordDto: BodyType<AuthResetPasswordDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<unknown>(
     {
@@ -490,31 +480,28 @@ export const authControllerResetPassword = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authResetPasswordDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthControllerResetPasswordMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerResetPassword>>,
   TError = ErrorType<
     ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerResetPassword>>,
-    TError,
-    { data: BodyType<AuthResetPasswordDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthResetPasswordDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerResetPassword>>,
-  TError,
-  { data: BodyType<AuthResetPasswordDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerResetPassword']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerResetPassword>>,
@@ -525,7 +512,12 @@ export const getAuthControllerResetPasswordMutationOptions = <
     return authControllerResetPassword(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthResetPasswordDto> },
+    TContext
+  >
 }
 
 export type AuthControllerResetPasswordMutationResult = NonNullable<
@@ -540,24 +532,15 @@ export type AuthControllerResetPasswordMutationError = ErrorType<
  * @summary Reset Password
  */
 export const useAuthControllerResetPassword = <
+  TData = Awaited<ReturnType<typeof authControllerResetPassword>>,
   TError = ErrorType<
     ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerResetPassword>>,
-    TError,
-    { data: BodyType<AuthResetPasswordDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthResetPasswordDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerResetPassword>>,
-  TError,
-  { data: BodyType<AuthResetPasswordDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthResetPasswordDto> }, TContext> => {
   const mutationOptions = getAuthControllerResetPasswordMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -568,7 +551,8 @@ export const useAuthControllerResetPassword = <
  */
 export const authControllerEmailChange = (
   authEmailChangeDto: BodyType<AuthEmailChangeDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<unknown>(
     {
@@ -576,31 +560,28 @@ export const authControllerEmailChange = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authEmailChangeDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthControllerEmailChangeMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerEmailChange>>,
   TError = ErrorType<
     ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerEmailChange>>,
-    TError,
-    { data: BodyType<AuthEmailChangeDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthEmailChangeDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerEmailChange>>,
-  TError,
-  { data: BodyType<AuthEmailChangeDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerEmailChange']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerEmailChange>>,
@@ -611,7 +592,12 @@ export const getAuthControllerEmailChangeMutationOptions = <
     return authControllerEmailChange(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthEmailChangeDto> },
+    TContext
+  >
 }
 
 export type AuthControllerEmailChangeMutationResult = NonNullable<
@@ -626,24 +612,15 @@ export type AuthControllerEmailChangeMutationError = ErrorType<
  * @summary Initialize Email Change
  */
 export const useAuthControllerEmailChange = <
+  TData = Awaited<ReturnType<typeof authControllerEmailChange>>,
   TError = ErrorType<
     ErrorEntity | ErrorValidationEntity | ErrorTooManyRequestsEntity | ErrorServerEntity
   >,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerEmailChange>>,
-    TError,
-    { data: BodyType<AuthEmailChangeDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthEmailChangeDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerEmailChange>>,
-  TError,
-  { data: BodyType<AuthEmailChangeDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthEmailChangeDto> }, TContext> => {
   const mutationOptions = getAuthControllerEmailChangeMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -654,7 +631,8 @@ export const useAuthControllerEmailChange = <
  */
 export const authControllerConfirmEmailChange = (
   authConfirmEmailChangeDto: BodyType<AuthConfirmEmailChangeDto>,
-  options?: SecondParameter<typeof customInstance>
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
 ) => {
   return customInstance<unknown>(
     {
@@ -662,29 +640,31 @@ export const authControllerConfirmEmailChange = (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: authConfirmEmailChangeDto,
+      signal,
     },
     options
   )
 }
 
 export const getAuthControllerConfirmEmailChangeMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
   TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
+    TData,
     TError,
     { data: BodyType<AuthConfirmEmailChangeDto> },
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
-  TError,
-  { data: BodyType<AuthConfirmEmailChangeDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerConfirmEmailChange']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
@@ -695,7 +675,12 @@ export const getAuthControllerConfirmEmailChangeMutationOptions = <
     return authControllerConfirmEmailChange(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthConfirmEmailChangeDto> },
+    TContext
+  >
 }
 
 export type AuthControllerConfirmEmailChangeMutationResult = NonNullable<
@@ -710,22 +695,18 @@ export type AuthControllerConfirmEmailChangeMutationError = ErrorType<
  * @summary Confirm Email Change
  */
 export const useAuthControllerConfirmEmailChange = <
+  TData = Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
   TError = ErrorType<ErrorEntity | ErrorTooManyRequestsEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
+    TData,
     TError,
     { data: BodyType<AuthConfirmEmailChangeDto> },
     TContext
   >
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerConfirmEmailChange>>,
-  TError,
-  { data: BodyType<AuthConfirmEmailChangeDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthConfirmEmailChangeDto> }, TContext> => {
   const mutationOptions = getAuthControllerConfirmEmailChangeMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -747,9 +728,9 @@ export const getAuthControllerMeQueryKey = () => {
 
 export const getAuthControllerMeQueryOptions = <
   TData = Awaited<ReturnType<typeof authControllerMe>>,
-  TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
 >(options?: {
-  query?: UseQueryOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>>
   request?: SecondParameter<typeof customInstance>
 }) => {
   const { query: queryOptions, request: requestOptions } = options ?? {}
@@ -763,26 +744,57 @@ export const getAuthControllerMeQueryOptions = <
     Awaited<ReturnType<typeof authControllerMe>>,
     TError,
     TData
-  > & { queryKey: QueryKey }
+  > & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
 export type AuthControllerMeQueryResult = NonNullable<Awaited<ReturnType<typeof authControllerMe>>>
 export type AuthControllerMeQueryError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>
 
+export function useAuthControllerMe<
+  TData = Awaited<ReturnType<typeof authControllerMe>>,
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
+>(options: {
+  query: Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>> &
+    Pick<
+      DefinedInitialDataOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>,
+      'initialData'
+    >
+  request?: SecondParameter<typeof customInstance>
+}): DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useAuthControllerMe<
+  TData = Awaited<ReturnType<typeof authControllerMe>>,
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
+>(options?: {
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>> &
+    Pick<
+      UndefinedInitialDataOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>,
+      'initialData'
+    >
+  request?: SecondParameter<typeof customInstance>
+}): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useAuthControllerMe<
+  TData = Awaited<ReturnType<typeof authControllerMe>>,
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
+>(options?: {
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>>
+  request?: SecondParameter<typeof customInstance>
+}): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary Get Current User
  */
 
 export function useAuthControllerMe<
   TData = Awaited<ReturnType<typeof authControllerMe>>,
-  TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>
+  TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
 >(options?: {
-  query?: UseQueryOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerMe>>, TError, TData>>
   request?: SecondParameter<typeof customInstance>
-}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+}): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
   const queryOptions = getAuthControllerMeQueryOptions(options)
 
-  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: DataTag<QueryKey, TData, TError>
+  }
 
   query.queryKey = queryOptions.queryKey
 
@@ -809,23 +821,19 @@ export const authControllerUpdate = (
 }
 
 export const getAuthControllerUpdateMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerUpdate>>,
   TError = ErrorType<ErrorUnauthorizedEntity | void | ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerUpdate>>,
-    TError,
-    { data: BodyType<AuthUpdateDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthUpdateDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerUpdate>>,
-  TError,
-  { data: BodyType<AuthUpdateDto> },
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerUpdate']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerUpdate>>,
@@ -836,7 +844,12 @@ export const getAuthControllerUpdateMutationOptions = <
     return authControllerUpdate(data, requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    TData,
+    TError,
+    { data: BodyType<AuthUpdateDto> },
+    TContext
+  >
 }
 
 export type AuthControllerUpdateMutationResult = NonNullable<
@@ -851,22 +864,13 @@ export type AuthControllerUpdateMutationError = ErrorType<
  * @summary Update Current User
  */
 export const useAuthControllerUpdate = <
+  TData = Awaited<ReturnType<typeof authControllerUpdate>>,
   TError = ErrorType<ErrorUnauthorizedEntity | void | ErrorEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerUpdate>>,
-    TError,
-    { data: BodyType<AuthUpdateDto> },
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, { data: BodyType<AuthUpdateDto> }, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerUpdate>>,
-  TError,
-  { data: BodyType<AuthUpdateDto> },
-  TContext
-> => {
+}): UseMutationResult<TData, TError, { data: BodyType<AuthUpdateDto> }, TContext> => {
   const mutationOptions = getAuthControllerUpdateMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -880,23 +884,19 @@ export const authControllerDelete = (options?: SecondParameter<typeof customInst
 }
 
 export const getAuthControllerDeleteMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerDelete>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerDelete>>,
-    TError,
-    void,
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, void, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerDelete>>,
-  TError,
-  void,
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerDelete']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerDelete>>,
@@ -905,7 +905,7 @@ export const getAuthControllerDeleteMutationOptions = <
     return authControllerDelete(requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<TData, TError, void, TContext>
 }
 
 export type AuthControllerDeleteMutationResult = NonNullable<
@@ -920,17 +920,13 @@ export type AuthControllerDeleteMutationError = ErrorType<
  * @summary Delete Current User
  */
 export const useAuthControllerDelete = <
+  TData = Awaited<ReturnType<typeof authControllerDelete>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerDelete>>,
-    TError,
-    void,
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, void, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<Awaited<ReturnType<typeof authControllerDelete>>, TError, void, TContext> => {
+}): UseMutationResult<TData, TError, void, TContext> => {
   const mutationOptions = getAuthControllerDeleteMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -939,28 +935,30 @@ export const useAuthControllerDelete = <
  * Refreshes the access token using the refresh token
  * @summary Refresh Access Token
  */
-export const authControllerRefresh = (options?: SecondParameter<typeof customInstance>) => {
-  return customInstance<RefreshEntity>({ url: `/api/v1/auth/refresh`, method: 'POST' }, options)
+export const authControllerRefresh = (
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
+) => {
+  return customInstance<RefreshEntity>(
+    { url: `/api/v1/auth/refresh`, method: 'POST', signal },
+    options
+  )
 }
 
 export const getAuthControllerRefreshMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerRefresh>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerRefresh>>,
-    TError,
-    void,
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, void, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerRefresh>>,
-  TError,
-  void,
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerRefresh']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerRefresh>>,
@@ -969,7 +967,7 @@ export const getAuthControllerRefreshMutationOptions = <
     return authControllerRefresh(requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<TData, TError, void, TContext>
 }
 
 export type AuthControllerRefreshMutationResult = NonNullable<
@@ -984,22 +982,13 @@ export type AuthControllerRefreshMutationError = ErrorType<
  * @summary Refresh Access Token
  */
 export const useAuthControllerRefresh = <
+  TData = Awaited<ReturnType<typeof authControllerRefresh>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerRefresh>>,
-    TError,
-    void,
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, void, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerRefresh>>,
-  TError,
-  void,
-  TContext
-> => {
+}): UseMutationResult<TData, TError, void, TContext> => {
   const mutationOptions = getAuthControllerRefreshMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -1008,28 +997,27 @@ export const useAuthControllerRefresh = <
  * Logs the user out of the system
  * @summary Logout
  */
-export const authControllerLogout = (options?: SecondParameter<typeof customInstance>) => {
-  return customInstance<unknown>({ url: `/api/v1/auth/logout`, method: 'POST' }, options)
+export const authControllerLogout = (
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
+) => {
+  return customInstance<unknown>({ url: `/api/v1/auth/logout`, method: 'POST', signal }, options)
 }
 
 export const getAuthControllerLogoutMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerLogout>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerLogout>>,
-    TError,
-    void,
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, void, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerLogout>>,
-  TError,
-  void,
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerLogout']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerLogout>>,
@@ -1038,7 +1026,7 @@ export const getAuthControllerLogoutMutationOptions = <
     return authControllerLogout(requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<TData, TError, void, TContext>
 }
 
 export type AuthControllerLogoutMutationResult = NonNullable<
@@ -1053,17 +1041,13 @@ export type AuthControllerLogoutMutationError = ErrorType<
  * @summary Logout
  */
 export const useAuthControllerLogout = <
+  TData = Awaited<ReturnType<typeof authControllerLogout>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerLogout>>,
-    TError,
-    void,
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, void, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<Awaited<ReturnType<typeof authControllerLogout>>, TError, void, TContext> => {
+}): UseMutationResult<TData, TError, void, TContext> => {
   const mutationOptions = getAuthControllerLogoutMutationOptions(options)
 
   return useMutation(mutationOptions)
@@ -1072,28 +1056,30 @@ export const useAuthControllerLogout = <
  * Logs the user out of all active sessions to enhance security in case of unauthorized access or when changing sensitive account information like passwords
  * @summary Logout all sessions
  */
-export const authControllerLogoutAll = (options?: SecondParameter<typeof customInstance>) => {
-  return customInstance<unknown>({ url: `/api/v1/auth/logout/all`, method: 'POST' }, options)
+export const authControllerLogoutAll = (
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal
+) => {
+  return customInstance<unknown>(
+    { url: `/api/v1/auth/logout/all`, method: 'POST', signal },
+    options
+  )
 }
 
 export const getAuthControllerLogoutAllMutationOptions = <
+  TData = Awaited<ReturnType<typeof authControllerLogoutAll>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerLogoutAll>>,
-    TError,
-    void,
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, void, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof authControllerLogoutAll>>,
-  TError,
-  void,
-  TContext
-> => {
-  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+}) => {
+  const mutationKey = ['authControllerLogoutAll']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof authControllerLogoutAll>>,
@@ -1102,7 +1088,7 @@ export const getAuthControllerLogoutAllMutationOptions = <
     return authControllerLogoutAll(requestOptions)
   }
 
-  return { mutationFn, ...mutationOptions }
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<TData, TError, void, TContext>
 }
 
 export type AuthControllerLogoutAllMutationResult = NonNullable<
@@ -1117,22 +1103,13 @@ export type AuthControllerLogoutAllMutationError = ErrorType<
  * @summary Logout all sessions
  */
 export const useAuthControllerLogoutAll = <
+  TData = Awaited<ReturnType<typeof authControllerLogoutAll>>,
   TError = ErrorType<ErrorUnauthorizedEntity | ErrorServerEntity>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof authControllerLogoutAll>>,
-    TError,
-    void,
-    TContext
-  >
+  mutation?: UseMutationOptions<TData, TError, void, TContext>
   request?: SecondParameter<typeof customInstance>
-}): UseMutationResult<
-  Awaited<ReturnType<typeof authControllerLogoutAll>>,
-  TError,
-  void,
-  TContext
-> => {
+}): UseMutationResult<TData, TError, void, TContext> => {
   const mutationOptions = getAuthControllerLogoutAllMutationOptions(options)
 
   return useMutation(mutationOptions)

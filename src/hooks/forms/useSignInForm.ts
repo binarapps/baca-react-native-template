@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 
 import { useAuthControllerLogin } from '@/api/query/auth/auth'
 import { AuthEmailLoginDto } from '@/api/types'
-import { isProduction } from '@/constants'
 import { assignPushToken, setToken } from '@/services'
 import { isSignedInAtom } from '@/store/auth'
 import { handleFormError, hapticImpact } from '@/utils'
@@ -17,30 +16,29 @@ type UseSignInFormProps = {
   setIsSignInButtonsDisabled?: Dispatch<SetStateAction<boolean>>
 }
 
-const defaultValues: SignInFormValues = isProduction
-  ? {
-      email: '',
-      password: '',
-      confirm: false,
-    }
-  : {
-      // TODO: Reset this values when building production app
-      email: 'mateusz.rostkowski+baca@binarapps.com',
-      password: 'Test1234,',
-      confirm: false,
-    }
+const filledFormValues: SignInFormValues = {
+  // TODO: Reset this values when building production app
+  email: 'mateusz.rostkowski+baca@binarapps.com',
+  password: 'Test1234,',
+  confirm: false,
+}
+
+const defaultValues: SignInFormValues = {
+  email: '',
+  password: '',
+  confirm: false,
+}
 
 export const useSignInForm = ({ setIsSignInButtonsDisabled }: UseSignInFormProps) => {
   const setIsSignedIn = useSetAtom(isSignedInAtom)
 
-  const { mutate: loginMutate, isLoading: isSubmitting } = useAuthControllerLogin<{
-    message: string
-  }>()
+  const { mutate: loginMutate, isPending: isSubmitting } = useAuthControllerLogin()
 
   const {
     control,
     formState: { errors },
     getValues,
+    reset,
     handleSubmit,
     setError: setFormError,
     setFocus,
@@ -48,6 +46,10 @@ export const useSignInForm = ({ setIsSignInButtonsDisabled }: UseSignInFormProps
     mode: 'onTouched',
     defaultValues,
   })
+
+  const resetFormToFilledValues = () => {
+    reset(filledFormValues)
+  }
 
   const onSubmit = async (data: SignInFormValues) => {
     setIsSignInButtonsDisabled?.(true)
@@ -90,6 +92,7 @@ export const useSignInForm = ({ setIsSignInButtonsDisabled }: UseSignInFormProps
     getValues,
     isSubmitting,
     setFocus,
+    resetFormToFilledValues,
     submit: handleSubmit(onSubmit),
   }
 }

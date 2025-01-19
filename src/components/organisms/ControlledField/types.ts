@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Control, FieldErrors, FieldValues, Path, RegisterOptions } from 'react-hook-form'
 
 import {

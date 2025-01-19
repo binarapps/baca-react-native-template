@@ -8,8 +8,12 @@
  */
 import { useQuery } from '@tanstack/react-query'
 import type {
+  DataTag,
+  DefinedInitialDataOptions,
+  DefinedUseQueryResult,
   QueryFunction,
   QueryKey,
+  UndefinedInitialDataOptions,
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query'
@@ -37,9 +41,9 @@ export const getHealthControllerCheckQueryKey = () => {
 
 export const getHealthControllerCheckQueryOptions = <
   TData = Awaited<ReturnType<typeof healthControllerCheck>>,
-  TError = ErrorType<ErrorEntity | void>
+  TError = ErrorType<ErrorEntity | void>,
 >(options?: {
-  query?: UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>>
   request?: SecondParameter<typeof customInstance>
 }) => {
   const { query: queryOptions, request: requestOptions } = options ?? {}
@@ -53,7 +57,7 @@ export const getHealthControllerCheckQueryOptions = <
     Awaited<ReturnType<typeof healthControllerCheck>>,
     TError,
     TData
-  > & { queryKey: QueryKey }
+  > & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
 export type HealthControllerCheckQueryResult = NonNullable<
@@ -61,20 +65,55 @@ export type HealthControllerCheckQueryResult = NonNullable<
 >
 export type HealthControllerCheckQueryError = ErrorType<ErrorEntity | void>
 
+export function useHealthControllerCheck<
+  TData = Awaited<ReturnType<typeof healthControllerCheck>>,
+  TError = ErrorType<ErrorEntity | void>,
+>(options: {
+  query: Partial<
+    UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
+  > &
+    Pick<
+      DefinedInitialDataOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>,
+      'initialData'
+    >
+  request?: SecondParameter<typeof customInstance>
+}): DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useHealthControllerCheck<
+  TData = Awaited<ReturnType<typeof healthControllerCheck>>,
+  TError = ErrorType<ErrorEntity | void>,
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
+  > &
+    Pick<
+      UndefinedInitialDataOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>,
+      'initialData'
+    >
+  request?: SecondParameter<typeof customInstance>
+}): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useHealthControllerCheck<
+  TData = Awaited<ReturnType<typeof healthControllerCheck>>,
+  TError = ErrorType<ErrorEntity | void>,
+>(options?: {
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>>
+  request?: SecondParameter<typeof customInstance>
+}): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary Check Health
  */
 
 export function useHealthControllerCheck<
   TData = Awaited<ReturnType<typeof healthControllerCheck>>,
-  TError = ErrorType<ErrorEntity | void>
+  TError = ErrorType<ErrorEntity | void>,
 >(options?: {
-  query?: UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>>
   request?: SecondParameter<typeof customInstance>
-}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+}): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
   const queryOptions = getHealthControllerCheckQueryOptions(options)
 
-  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: DataTag<QueryKey, TData, TError>
+  }
 
   query.queryKey = queryOptions.queryKey
 

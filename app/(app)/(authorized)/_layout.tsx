@@ -14,5 +14,5 @@ export default function AuthorizedLayout() {
     return <Redirect href="/sign-in" />
   }
 
-  return <Stack screenOptions={{ headerBackTitleVisible: false }} />
+  return <Stack screenOptions={{ headerBackButtonDisplayMode: 'minimal' }} />
 }

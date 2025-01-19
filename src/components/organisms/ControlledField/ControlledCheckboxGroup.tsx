@@ -7,7 +7,7 @@ import { useCallback } from '@/hooks'
 
 export const ControlledCheckboxGroup = <
   T extends string,
-  TFieldValues extends FieldValues = FieldValues
+  TFieldValues extends FieldValues = FieldValues,
 >({
   name,
   control,
