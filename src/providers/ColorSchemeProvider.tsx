@@ -1,4 +1,5 @@
 import { useAsyncStorage } from '@react-native-async-storage/async-storage'
+import { setStatusBarStyle } from 'expo-status-bar'
 import { FC, PropsWithChildren, useEffect } from 'react'
 import { useColorScheme as useRNColorScheme } from 'react-native'
 
@@ -22,6 +23,15 @@ export const ColorSchemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const colorScheme =
     (colorSchemeSetting === 'system' ? systemColorScheme : colorSchemeSetting) || defaultColorScheme
+
+  useEffect(() => {
+    // setting the status bar style based on the color scheme
+    setStatusBarStyle(colorScheme === 'dark' ? 'light' : 'dark', true)
+  }, [
+    colorScheme,
+    // THis is added here to make sure that the status bar style is updated when the system color scheme changes
+    systemColorScheme,
+  ])
 
   useEffect(() => {
     const getInitialColorScheme = async () => {
