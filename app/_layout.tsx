@@ -2,7 +2,6 @@ import { ThemeProvider } from '@react-navigation/native'
 import { Slot } from 'expo-router'
 import { useAtomValue } from 'jotai'
 
-import { StatusBar } from '@/components'
 import { AbsoluteFullFill, Loader } from '@/design-system'
 import { useNavigationTheme } from '@/hooks'
 import { Providers } from '@/providers'
@@ -39,7 +38,6 @@ const Layout = () => {
 export default function RootLayout() {
   return (
     <Providers>
-      <StatusBar />
       <Layout />
     </Providers>
   )
