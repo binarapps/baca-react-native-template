@@ -164,6 +164,7 @@
     "react-native-svg": "15.8.0",
     "react-native-web": "~0.19.6",
     "reactotron-react-native": "^5.1.7",
+    "rn-emoji-keyboard": "^1.7.0",
     "sass": "^1.77.2",
     "setimmediate": "^1.0.5",
     "use-debounce": "^9.0.4"
