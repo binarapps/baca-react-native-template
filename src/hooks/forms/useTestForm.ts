@@ -18,6 +18,7 @@ const defaultValues: TestFormValues = {
   age: '',
   education: '',
   interests: [],
+  icon: '',
 }
 
 export const useTestForm = () => {
@@ -52,6 +53,7 @@ export const useTestForm = () => {
     music: { required: t('test_form.errors.music') },
     interests: { required: t('test_form.errors.interests') },
     sex: { required: t('test_form.errors.sex') },
+    icon: { required: t('test_form.errors.icon') },
   }
 
   const {
