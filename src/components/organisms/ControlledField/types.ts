@@ -6,6 +6,7 @@ import {
   FieldRadioGroupProps,
   FieldSelectProps,
   FieldCheckboxProps,
+  FieldEmojiPickerProps,
 } from '@/components/molecules'
 
 // -----------------------
@@ -66,5 +67,15 @@ export type ControlledCheckboxGroupProps<T, TFieldValues extends FieldValues = F
 export type ControlledCheckboxProps<TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldCheckboxProps,
   'onChange' | 'isChecked'
+> &
+  ControlledFieldProps<TFieldValues>
+
+// -----------------------
+// ----- EMOJI PICKER ----
+// -----------------------
+
+export type ControlledEmojiPickerProps<TFieldValues extends FieldValues = FieldValues> = Omit<
+  FieldEmojiPickerProps,
+  'ref' | 'onChangeEmoji' | 'emoji'
 > &
   ControlledFieldProps<TFieldValues>
