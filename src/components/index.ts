@@ -10,7 +10,6 @@ export * from './KeyboardAwareScrollView'
 export * from './LandingHeader'
 export * from './LanguagePicker'
 export * from './Modal'
-export * from './StatusBar'
 export * from './Version'
 
 export * from './screens/profile/ProfileControlledInput'
