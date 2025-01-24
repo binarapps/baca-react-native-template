@@ -51,6 +51,7 @@ export const EmojiPicker = forwardRef<EmojiPickerRef, EmojiPickerProps>(
             </Row>
           </Touchable>
         </BoxWithShadow>
+        {/* FIXME: Emoji picker is not looking nice on web and bigger screens, we need to do something with that */}
         <EmojiKeyboard
           open={isOpen}
           onClose={setIsOpen.off}
