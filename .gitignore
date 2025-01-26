@@ -20,7 +20,7 @@ dist/
 yarn-debug.log*
 yarn-error.log*
 
-# Yarn 3.x
+# Yarn 4.x
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
