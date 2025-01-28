@@ -1,6 +1,6 @@
 import { Portal } from '@gorhom/portal'
 import React, { NamedExoticComponent, PropsWithChildren, memo, useEffect } from 'react'
-import { View, Modal, Dimensions, Platform } from 'react-native'
+import { View, Dimensions, Platform } from 'react-native'
 
 import { MenuItem } from '../../molecules/MenuItem'
 
@@ -39,6 +39,9 @@ type MenuComposition = NamedExoticComponent<MenuProps> & {
   Item: typeof MenuItem
 }
 
+const screenWidth = Dimensions.get('window').width
+const screenHeight = Dimensions.get('window').height
+
 const Menu = memo<MenuProps>(
   ({
     trigger,
@@ -51,7 +54,6 @@ const Menu = memo<MenuProps>(
   }) => {
     const { colorScheme } = useColorScheme()
     const { shadows } = useTheme()
-    const _modalRef = useRef<Modal>(null)
     const _triggerContainer = useRef<View>(null)
     const [triggerPosition, setTriggerPosition] = useState<TriggerPosition>(null)
     const [isOpen, setOpen] = useState(props.isOpen || false)
@@ -123,18 +125,18 @@ const Menu = memo<MenuProps>(
           {trigger(triggerTouchableProps, { isOpen })}
         </View>
         <Portal>
-          <Modal
-            ref={_modalRef}
-            animationType="fade"
-            transparent
-            visible={isOpen}
-            onRequestClose={handleClose}
-          >
+          {isOpen && (
             <Pressable
+              position="absolute"
+              width={screenWidth}
+              height={screenHeight}
+              left={0}
+              right={0}
+              top={0}
+              bottom={0}
               onPress={handleClose}
-              flex={1}
               bg={colorScheme === 'light' ? 'Base.black' : 'Base.white'}
-              bgOpacity={0.2}
+              bgOpacity={0.5}
             >
               {triggerPosition && (
                 <Box
@@ -167,7 +169,7 @@ const Menu = memo<MenuProps>(
                 </Box>
               )}
             </Pressable>
-          </Modal>
+          )}
         </Portal>
       </>
     )
