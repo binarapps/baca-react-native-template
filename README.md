@@ -20,7 +20,7 @@
   - Detailed guides on bootstrapping, building, and deploying your app.
 - **[Demo](https://baca-six.vercel.app)**:
   - Check out the live web demo of the template.
-- **[Video](https://www.youtube.com/watch?v=NmTd5nXXTLI)**
+- **[Video](https://youtu.be/Wt6Q1bOXIVQ)**
   - See quick preview on how it looks
 - **[Examples](https://github.com/binarapps/baca-react-native-template/examples)**:
   - Explore example implementations and use cases.
