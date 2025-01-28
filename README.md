@@ -18,7 +18,7 @@
 
 - **[Documentation](https://baca-docs.vercel.app/docs/overview)**:
   - Detailed guides on bootstrapping, building, and deploying your app.
-- **[Demo](https://baca-six.vercel.app)**:
+- **[Demo](https://baca.binar.app)**:
   - Check out the live web demo of the template.
 - **[Video](https://youtu.be/Wt6Q1bOXIVQ)**
   - See quick preview on how it looks
