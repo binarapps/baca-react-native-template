@@ -41,7 +41,7 @@ export const ResetPasswordLinkSentScreen = () => {
         <Text.MdRegular color="text.tertiary" textAlign="center" lineHeight="lg">
           {t('reset_password_link_sent_screen.we_sent_link')}
         </Text.MdRegular>
-        <Text.MdMedium>{email}</Text.MdMedium>
+        <Text.MdMedium textAlign="center">{email}</Text.MdMedium>
         <Spacer y={8} />
         <Button size="lg" w="full">
           {t('reset_password_link_sent_screen.open_email_app')}
