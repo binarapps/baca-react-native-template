@@ -22,7 +22,7 @@
   - Check out the live web demo of the template.
 - **[Video](https://youtu.be/Wt6Q1bOXIVQ)**
   - See quick preview on how it looks
-- **[Examples](https://github.com/binarapps/baca-react-native-template/examples)**:
+- **[Examples](https://github.com/binarapps/baca-react-native-template/pulls?q=label%3Aexample)**:
   - Explore example implementations and use cases.
 - **[BinarApps Company](https://binarapps.com)**:
   - Learn more about the team behind BACA.
