@@ -1245,6 +1245,7 @@ __metadata:
     "@expo/vector-icons": "npm:^14.0.3"
     "@faker-js/faker": "npm:^8.4.1"
     "@gorhom/bottom-sheet": "npm:^5.0.6"
+    "@gorhom/portal": "npm:^1.0.14"
     "@motify/interactions": "npm:^0.17.1"
     "@motify/skeleton": "npm:^0.18.0"
     "@react-native-async-storage/async-storage": "npm:1.23.1"
@@ -2101,7 +2102,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gorhom/portal@npm:1.0.14":
+"@gorhom/portal@npm:1.0.14, @gorhom/portal@npm:^1.0.14":
   version: 1.0.14
   resolution: "@gorhom/portal@npm:1.0.14"
   dependencies:
