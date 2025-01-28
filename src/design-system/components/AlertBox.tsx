@@ -32,33 +32,33 @@ const statusToColor = {
 
 export const AlertBox: FC<AlertProps> = ({ status = 'info', title, description, children }) => {
   return (
-    <Box
+    <Row
       bg={`${statusToColor[status]}.50`}
       borderRadius={8}
       borderWidth={1}
       borderColor={`${statusToColor[status]}.100`}
       p={4}
+      gap={3}
+      alignItems="flex-start"
     >
-      <Row gap={3} alignItems="flex-start">
-        <Icon name={statusToIcon[status]} size={20} color={`${statusToColor[status]}.700`} />
-        <Box>
-          {title && (
-            <Text.MdSemibold
-              selectable={true}
-              color={`${statusToColor[status]}.700`}
-              mb={description ? 1 : 0}
-            >
-              {title}
-            </Text.MdSemibold>
-          )}
-          {description && (
-            <Text.SmRegular selectable={true} color={`${statusToColor[status]}.500`}>
-              {description}
-            </Text.SmRegular>
-          )}
-          {children}
-        </Box>
-      </Row>
-    </Box>
+      <Icon name={statusToIcon[status]} size={20} color={`${statusToColor[status]}.700`} />
+      <Box flexShrink={1}>
+        {title && (
+          <Text.MdSemibold
+            selectable={true}
+            color={`${statusToColor[status]}.700`}
+            mb={description ? 1 : 0}
+          >
+            {title}
+          </Text.MdSemibold>
+        )}
+        {description && (
+          <Text.SmRegular selectable={true} color={`${statusToColor[status]}.500`}>
+            {description}
+          </Text.SmRegular>
+        )}
+        {children}
+      </Box>
+    </Row>
   )
 }
