@@ -8,6 +8,9 @@ import { getColorValue } from '@/utils'
 
 export type IconProps = {
   color?: ColorNames
+  /**
+   * You can search for icons here:  https://remixicon.com/
+   */
   name: IconNames
   size: number
   style?: StyleProp<TextStyle>
