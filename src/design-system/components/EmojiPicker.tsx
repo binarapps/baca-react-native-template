@@ -1,7 +1,9 @@
-import { forwardRef, useImperativeHandle } from 'react'
+import { forwardRef, useCallback, useImperativeHandle } from 'react'
+import { StyleSheet } from 'react-native'
 import EmojiKeyboard from 'rn-emoji-keyboard'
 
 import { BoxWithShadow } from './BoxWithShadow'
+import { Icon } from './Icon'
 import { Row } from './Row'
 import { Text } from './Text'
 import { Touchable } from './Touchables'
@@ -14,6 +16,14 @@ export const EmojiPicker = forwardRef<EmojiPickerRef, EmojiPickerProps>(
   ({ emoji, onChangeEmoji, placeholder, isDisabled, isInvalid, ...props }, ref) => {
     const [isOpen, setIsOpen] = useBoolean(false)
     const { colors } = useTheme()
+
+    const clearEmoji = useCallback(() => {
+      onChangeEmoji({
+        emoji: '',
+        name: '',
+        slug: '',
+      })
+    }, [onChangeEmoji])
 
     useImperativeHandle(
       ref,
@@ -31,7 +41,6 @@ export const EmojiPicker = forwardRef<EmojiPickerRef, EmojiPickerProps>(
             onPress={setIsOpen.on}
             width="100%"
             minW={48}
-            pr={2}
             disabled={isDisabled}
             alignItems="center"
             borderColor={
@@ -44,10 +53,25 @@ export const EmojiPicker = forwardRef<EmojiPickerRef, EmojiPickerProps>(
             overflow="hidden"
             {...props}
           >
-            <Row alignItems="center" gap={2} px={2} py={2}>
-              <Text.MdRegular color={emoji ? 'text.primary' : 'text.placeholder'}>
+            <Row
+              alignItems="center"
+              gap={2}
+              px={2}
+              py={2}
+              justifyContent="space-between"
+              width={'100%'}
+            >
+              <Text.MdRegular
+                style={styles.input}
+                color={emoji ? 'text.primary' : 'text.placeholder'}
+              >
                 {emoji?.emoji || placeholder}
               </Text.MdRegular>
+              {emoji?.emoji ? (
+                <Touchable right={0} onPress={clearEmoji}>
+                  <Icon name="close-line" color="text.primary" size={18} />
+                </Touchable>
+              ) : null}
             </Row>
           </Touchable>
         </BoxWithShadow>
@@ -83,3 +107,9 @@ export const EmojiPicker = forwardRef<EmojiPickerRef, EmojiPickerProps>(
     )
   }
 )
+
+const styles = StyleSheet.create({
+  input: {
+    fontFamily: 'system',
+  },
+})
