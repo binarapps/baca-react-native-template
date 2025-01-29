@@ -80,7 +80,10 @@ export const PushNotificationsHelpersScreen = (): JSX.Element => {
 
     await Notifications.scheduleNotificationAsync({
       content,
-      trigger: trigger10Seconds,
+      trigger: {
+        date: trigger10Seconds,
+        type: Notifications.SchedulableTriggerInputTypes.DATE,
+      },
     })
 
     await wait(200)
