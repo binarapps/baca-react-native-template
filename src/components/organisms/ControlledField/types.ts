@@ -6,6 +6,7 @@ import {
   FieldRadioGroupProps,
   FieldSelectProps,
   FieldCheckboxProps,
+  FieldSliderProps,
 } from '@/components/molecules'
 
 // -----------------------
@@ -66,5 +67,15 @@ export type ControlledCheckboxGroupProps<T, TFieldValues extends FieldValues = F
 export type ControlledCheckboxProps<TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldCheckboxProps,
   'onChange' | 'isChecked'
+> &
+  ControlledFieldProps<TFieldValues>
+
+// -----------------------
+// ----- SLIDER ------
+// -----------------------
+
+export type ControlledSliderProps<TFieldValues extends FieldValues = FieldValues> = Omit<
+  FieldSliderProps,
+  'onChangeValue' | 'value'
 > &
   ControlledFieldProps<TFieldValues>
