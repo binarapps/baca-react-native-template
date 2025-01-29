@@ -62,8 +62,8 @@ export const EmojiPicker = forwardRef<EmojiPickerRef, EmojiPickerProps>(
               width={'100%'}
             >
               <Text.MdRegular
-                style={styles.input}
-                color={emoji ? 'text.primary' : 'text.placeholder'}
+                style={emoji?.emoji ? styles.input : undefined}
+                color={emoji?.emoji ? 'text.primary' : 'text.placeholder'}
               >
                 {emoji?.emoji || placeholder}
               </Text.MdRegular>
