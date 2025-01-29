@@ -34,12 +34,14 @@ export const ResetPasswordLinkSentScreen = () => {
         <Spacer y={8} />
         <FeaturedIcon iconName="message-3-line" size="xl" />
         <Spacer y={6} />
-        <Display.SmSemibold>{t('reset_password_link_sent_screen.check_email')}</Display.SmSemibold>
+        <Display.SmSemibold textAlign="center" px={4}>
+          {t('reset_password_link_sent_screen.check_email')}
+        </Display.SmSemibold>
         <Spacer y={3} />
         <Text.MdRegular color="text.tertiary" textAlign="center" lineHeight="lg">
           {t('reset_password_link_sent_screen.we_sent_link')}
         </Text.MdRegular>
-        <Text.MdMedium>{email}</Text.MdMedium>
+        <Text.MdMedium textAlign="center">{email}</Text.MdMedium>
         <Spacer y={8} />
         <Button size="lg" w="full">
           {t('reset_password_link_sent_screen.open_email_app')}

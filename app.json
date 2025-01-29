@@ -3,13 +3,13 @@
     "newArchEnabled": true,
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 27,
+      "versionCode": 28,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "27",
+      "buildNumber": "28",
       "config": {
         "usesNonExemptEncryption": false
       },
@@ -26,7 +26,7 @@
       "fallbackToCacheTimeout": 0
     },
     "userInterfaceStyle": "automatic",
-    "version": "2.6.1",
+    "version": "2.6.2",
     "plugins": [
       "@react-native-google-signin/google-signin",
       "expo-asset",

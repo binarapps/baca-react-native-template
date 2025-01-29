@@ -14,6 +14,19 @@
 [![GitHub Stars](https://img.shields.io/github/stars/binarapps/baca-react-native-template?style=flat-square)](https://github.com/binarapps/baca-react-native-template/stargazers)
 [![Runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
+## 🔗 Quick Links
+
+- **[Documentation](https://baca-docs.vercel.app/docs/overview)**:
+  - Detailed guides on bootstrapping, building, and deploying your app.
+- **[Demo](https://baca.binar.app)**:
+  - Check out the live web demo of the template.
+- **[Video](https://youtu.be/Wt6Q1bOXIVQ)**
+  - See quick preview on how it looks
+- **[Examples](https://github.com/binarapps/baca-react-native-template/pulls?q=label%3Aexample)**:
+  - Explore example implementations and use cases.
+- **[BinarApps Company](https://binarapps.com)**:
+  - Learn more about the team behind BACA.
+
 ## 📚 Table of Contents
 
 - [🎉 Great React Native Boilerplate](#-great-react-native-boilerplate)
@@ -24,7 +37,7 @@
   - [🏃‍♂️ Quick Steps](#️-quick-steps)
 - [🛠 Prerequisites](#-prerequisites)
 - [📦 What's Inside?](#-whats-inside)
-- [Libraries and Tools](#libraries-and-tools)
+  - [Libraries and Tools](#libraries-and-tools)
 - [🔜 Future Plans](#-future-plans)
 - [👏 How to Contribute](#-how-to-contribute)
   - [Steps to Contribute](#steps-to-contribute)
@@ -54,7 +67,7 @@ Check out our [documentation page](https://baca-docs.vercel.app/docs/overview). 
 
 ## 🏆 Why Use BACA?
 
-While there are many project starters for React Native, we offer features that are often missing in other starters:
+BACA is designed to save you time and effort by providing a robust, production-ready template for React Native and Expo. Here's why you should choose BACA:
 
 - **Works seamlessly with EXPO GO**
   - Ideal for starting a project; switch to expo-dev-client later.
@@ -67,11 +80,6 @@ While there are many project starters for React Native, we offer features that a
 - **Comprehensive App Deployment Documentation**
 - **New architecture**
   - Works on new architecture of react native
-
-## 🔍 Preview
-
-- [Web demo app](https://baca-six.vercel.app)
-- [Video](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
 ## 🚀 How to Use?
 

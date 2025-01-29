@@ -78,7 +78,7 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   },
   androidPackageName: {
     production: `${APP_CONFIG.androidPackageName}`,
-    staging: `${APP_CONFIG.androidPackageName}.stg`,
+    staging: `${APP_CONFIG.androidPackageName}.staging`,
     qa: `${APP_CONFIG.androidPackageName}.qa`,
   },
   appIcon: {
@@ -98,7 +98,7 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   },
   iosBundleIdentifier: {
     production: `${APP_CONFIG.iosBundleIdentifier}`,
-    staging: `${APP_CONFIG.iosBundleIdentifier}.stg`,
+    staging: `${APP_CONFIG.iosBundleIdentifier}.staging`,
     qa: `${APP_CONFIG.iosBundleIdentifier}.qa`,
   },
   scheme: {
