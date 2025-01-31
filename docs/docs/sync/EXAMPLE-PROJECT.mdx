@@ -24,8 +24,8 @@ import Details from '@site/src/components/Details'
     git fetch --all
     git branch -D sync/example-slider
     git checkout -b sync/example-slider
-    git merge baca/feat/slider --strategy-option ours
-    git push --set-upstream origin sync/baca --force
+    git merge baca/feat/slider
+    git push --set-upstream origin sync/example-slider --force
     ```
 
     2. Merge branches
@@ -70,9 +70,9 @@ For example `feat/slider`
 ```bash
 git branch -D sync/example-slider
 git checkout -b sync/example-slider
-git merge baca/feat/slider --strategy-option ours
+git merge baca/feat/slider
 # resolve conflicts if needed
-git push --set-upstream origin sync/baca
+git push --set-upstream origin sync/example-slider --force
 ```
 
 ## Step 6. Merge branches

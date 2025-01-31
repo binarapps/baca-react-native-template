@@ -22,7 +22,7 @@ import Details from '@site/src/components/Details'
     git fetch --all
     git branch -D sync/baca
     git checkout -b sync/baca
-    git merge baca/main --strategy-option ours
+    git merge baca/main
     git push --set-upstream origin sync/baca --force
     ```
 
@@ -58,7 +58,7 @@ git fetch --all
 ```bash
 git branch -D sync/baca
 git checkout -b sync/baca
-git merge baca/main --strategy-option ours
+git merge baca/main
 # resolve conflicts if needed
 git push --set-upstream origin sync/baca
 ```
