@@ -1,8 +1,8 @@
 ---
 id: sync-project-with-baca
 slug: /sync/project-baca
-title: PROJECT ← BACA
-sidebar_position: 2
+title: BACA → PROJECT
+sidebar_position: 1
 tags:
   - Bootstrap
   - Create new app
@@ -13,6 +13,8 @@ description: Sync your project with baca
 ---
 
 import Details from '@site/src/components/Details'
+
+# Synchronize your project with BACA
 
 <Details title="Quick steps (do it when you've already done it before)">
     1. Sync changes from BACA
@@ -32,8 +34,6 @@ import Details from '@site/src/components/Details'
     ```
 
 </Details>
-
-# Synchronize your project with BACA
 
 :::warning
 You need to have git history from BACA, to make this working.
@@ -59,6 +59,7 @@ git fetch --all
 git branch -D sync/baca
 git checkout -b sync/baca
 git merge baca/main --strategy-option ours
+# resolve conflicts if needed
 git push --set-upstream origin sync/baca
 ```
 
