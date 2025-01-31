@@ -1,0 +1,88 @@
+---
+id: sync-example-with-baca
+slug: /sync/example-baca
+title: EXAMPLE → PROJECT
+sidebar_position: 3
+tags:
+  - Bootstrap
+  - Example
+  - Examples
+  - Create new app
+  - Quick start
+  - Getting started
+  - Project structure
+description: Sync your project with baca
+---
+
+import Details from '@site/src/components/Details'
+
+# Synchronize your project with EXAMPLE
+
+<Details title="Quick steps (do it when you've already done it before)">
+    1. Sync changes from BACA
+    ```bash
+    git fetch --all
+    git branch -D sync/example-slider
+    git checkout -b sync/example-slider
+    git merge baca/feat/slider --strategy-option ours
+    git push --set-upstream origin sync/baca --force
+    ```
+
+    2. Merge branches
+
+    ```bash
+    git checkout main
+    git merge origin/sync/baca
+    ```
+
+</Details>
+
+This template have couple of great examples that you can find [here](https://github.com/binarapps/baca-react-native-template/pulls?q=is%3Apr+is%3Aopen+label%3Aexample)
+
+:::warning
+You need to have git history from BACA, to make this working.
+:::
+
+## Step 1. Add baca git remote
+
+```bash
+git remote add baca git@github.com:binarapps/baca-react-native-template.git
+```
+
+## Step 2. Fetch changes from all remotes
+
+This will fetch baca remote
+
+```bash
+git fetch --all
+```
+
+## Step 3. Find example that you want to add
+
+List of examples can be found [here](https://github.com/binarapps/baca-react-native-template/pulls?q=is%3Apr+is%3Aopen+label%3Aexample)
+
+## Step 4. Get branch name of example
+
+For example `feat/slider`
+
+## Step 5. Sync changes
+
+```bash
+git branch -D sync/example-slider
+git checkout -b sync/example-slider
+git merge baca/feat/slider --strategy-option ours
+# resolve conflicts if needed
+git push --set-upstream origin sync/baca
+```
+
+## Step 6. Merge branches
+
+You have two ways to do that:
+
+1. Create pull request
+2. Merge branch locally:
+
+```bash
+git checkout main
+git merge origin/sync/baca
+```
