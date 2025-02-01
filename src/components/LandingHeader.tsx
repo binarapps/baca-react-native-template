@@ -1,3 +1,4 @@
+import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 import { useRouter } from 'expo-router'
 import { useAtomValue } from 'jotai'
 import { StyleSheet, Platform, View } from 'react-native'
@@ -7,13 +8,15 @@ import { CompanyLogo } from './CompanyLogo'
 import { ThemeSwitcherButton } from './ThemeSwitcherButton'
 
 import { useColorScheme } from '@/contexts'
-import { Box, Button, Icon, Pressable, Row, Spacer, Touchable } from '@/design-system'
+import { Box, Button, Icon, Pressable, Row, Spacer, Text, Touchable } from '@/design-system'
 import { useFullScreenModal } from '@/design-system/modals/useFullScreenModal'
 import { useCallback, useMemo, useTheme, useTranslation } from '@/hooks'
 import { useUniversalWidth } from '@/navigation/tabNavigator/hooks'
 import { isSignedInAtom } from '@/store/auth'
 
-export function LandingHeader() {
+export function LandingHeader({ options }: Partial<NativeStackHeaderProps>) {
+  const { title } = options ?? {}
+
   const { colorScheme } = useColorScheme()
   const { colors } = useTheme()
   const { top } = useSafeAreaInsets()
@@ -99,6 +102,11 @@ export function LandingHeader() {
         ]}
       >
         {renderLeftMenu}
+        {title && (
+          <Box flex={1} justifyContent="center" alignItems="center">
+            <Text>{title}</Text>
+          </Box>
+        )}
         {renderRightMenu}
       </View>
       {fullScreenModal}
