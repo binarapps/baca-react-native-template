@@ -14,5 +14,14 @@ export default function AuthorizedLayout() {
     return <Redirect href="/sign-in" />
   }
 
-  return <Stack screenOptions={{ headerBackButtonDisplayMode: 'minimal' }} />
+  return (
+    <Stack screenOptions={{ headerBackButtonDisplayMode: 'minimal' }}>
+      <Stack.Screen
+        name="big-form"
+        options={{
+          presentation: 'modal',
+        }}
+      />
+    </Stack>
+  )
 }
