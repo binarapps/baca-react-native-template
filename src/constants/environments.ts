@@ -11,3 +11,5 @@ export const isProduction = !isDevelopment || process.env.NODE_ENV === 'producti
 export const isMock = !!ENV.IS_MOCK
 
 export const isWeb = Platform.OS === 'web'
+export const isIOS = Platform.OS === 'ios'
+export const isAndroid = Platform.OS === 'ios'
