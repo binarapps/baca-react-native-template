@@ -4,13 +4,15 @@ import {
   BottomSheetBackdropProps,
   BottomSheetView,
 } from '@gorhom/bottom-sheet'
-import { useCallback } from 'react'
+import { ComponentType, ReactNode, useCallback } from 'react'
 import { Dimensions, Platform } from 'react-native'
+import { FullWindowOverlay } from 'react-native-screens'
 
 import { BottomSheetHeader } from './BottomSheetHeader'
 import { BottomSheetScrollView } from './BottomSheetScrollables'
 import { BottomSheetProps } from './types'
 
+import { isIOS } from '@/constants'
 import { Box } from '@/design-system/components/Box'
 import { useSafeAreaInsets, useTheme } from '@/hooks'
 
@@ -40,11 +42,19 @@ export const BottomSheet = ({
     []
   )
 
+  // Fixes this issue: https://github.com/gorhom/react-native-bottom-sheet/issues/1644#issuecomment-1833263804
+  const renderContainerComponent: ComponentType<{ children?: ReactNode }> = useCallback(
+    ({ children }) => <FullWindowOverlay>{children}</FullWindowOverlay>,
+    []
+  )
+
   return (
     <BottomSheetModal
       ref={bottomSheetRef}
       snapPoints={[screenHeight - top - 24]}
       backdropComponent={renderBackdrop}
+      stackBehavior="push"
+      containerComponent={isIOS ? renderContainerComponent : undefined}
       enableDynamicSizing
       accessible={Platform.select({
         // setting it to false on Android seems to cause issues with TalkBack instead
