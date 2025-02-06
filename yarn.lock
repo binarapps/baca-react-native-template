@@ -1341,7 +1341,7 @@ __metadata:
     react-native-safe-area-context: "npm:4.12.0"
     react-native-screens: "npm:~4.4.0"
     react-native-svg: "npm:15.8.0"
-    react-native-ui-datepicker: "npm:^2.0.11"
+    react-native-ui-datepicker: "npm:2.0.4"
     react-native-url-polyfill: "npm:^2.0.0"
     react-native-web: "npm:~0.19.6"
     react-test-renderer: "npm:^18.3.1"
@@ -13326,17 +13326,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-ui-datepicker@npm:^2.0.11":
-  version: 2.0.11
-  resolution: "react-native-ui-datepicker@npm:2.0.11"
+"react-native-ui-datepicker@npm:2.0.4":
+  version: 2.0.4
+  resolution: "react-native-ui-datepicker@npm:2.0.4"
   dependencies:
     dayjs: "npm:^1.11.13"
     lodash: "npm:^4.17.21"
+    react-native-wheely: "npm:^0.6.0"
   peerDependencies:
     react: "*"
     react-native: "*"
-    react-native-web: "*"
-  checksum: 10/4374f45cc29111f8f253d5b2061af29726d88f1ba7eebba32db5736193de4bcb190d248f8bf773d44cfe41cebaf4bf6f0eae1a334c3387c1c915521e6587af44
+  checksum: 10/39da674809a855713cf97edfb2da1bfea24b9e7ea1ab76facc76fac6679efb69b94cb78f5f42589131408c1887981f273c4f4a0e7a925891571d1ef8274c0a1b
   languageName: node
   linkType: hard
 
@@ -13367,6 +13367,13 @@ __metadata:
     react: ^18.0.0
     react-dom: ^18.0.0
   checksum: 10/65e0660fb37c1f7e3864a7b506acdd3bbf249de516166775cbf2f371bc28f6e965bc01cbd214bfe820c1a933aee58b6fb29298ccd0dc5f412f147a57e7126dd9
+  languageName: node
+  linkType: hard
+
+"react-native-wheely@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "react-native-wheely@npm:0.6.0"
+  checksum: 10/c945e78f262f739da233f4348963c9fde976ec1a7cb2fd557e273db4d57dfa65e1e1b42f444d42158b940184ceb8c2fcd985001df57d9aedc238aec1ca4ba13c
   languageName: node
   linkType: hard
 
