@@ -121,6 +121,15 @@ export const TestFormScreen = (): JSX.Element => {
         placeholder={t('test_form.phone_placeholder')}
         rules={VALIDATION.phone}
       />
+      <ControlledField.DatePicker
+        {...{ control, errors }}
+        isRequired
+        label={t('test_form.birth_date')}
+        mt={2}
+        name="birthDate"
+        placeholder={t('test_form.birth_date_placeholder')}
+        rules={VALIDATION.birthDate}
+      />
       <ControlledField.Input
         {...{ control, errors }}
         enterKeyHint="next"

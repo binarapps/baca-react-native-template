@@ -5,6 +5,7 @@ export type TestFormValues = {
   phone: string
   postalCode: string
   city: string
+  birthDate: string
   sex: string
   music: string[]
   comment: string
