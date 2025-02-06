@@ -7,6 +7,7 @@ import {
   SelectProps,
   StyledProps,
   TouchableRef,
+  SliderProps,
 } from '@/design-system'
 
 // -----------------------
@@ -91,4 +92,14 @@ export type FieldCheckboxGroupProps<T> = FormLabelProps & {
 export type FieldCheckboxProps = FormLabelProps &
   CheckboxProps & {
     errorMessage?: string
+  }
+
+// -----------------------
+// ----- SLIDER ------
+// -----------------------
+
+export type FieldSliderProps = FormLabelProps &
+  SliderProps & {
+    errorMessage?: string
+    onChangeValue: (value: number) => void
   }

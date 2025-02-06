@@ -10,6 +10,7 @@ const defaultValues: TestFormValues = {
   email: '',
   city: '',
   phone: '',
+  points: 0,
   postalCode: '',
   sex: '',
   music: [],
@@ -69,6 +70,7 @@ export const useTestForm = () => {
     try {
       setIsSubmitting(true)
       setError('')
+      alert('selected points: ' + data.points)
       console.log(data)
     } catch (e) {
       console.log(e)
