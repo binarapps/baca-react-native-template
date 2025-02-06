@@ -104,7 +104,7 @@ export function LandingHeader({ options }: Partial<NativeStackHeaderProps>) {
         {renderLeftMenu}
         {title && (
           <Box flex={1} justifyContent="center" alignItems="center">
-            <Text>{title}</Text>
+            <Text.MdBold>{title}</Text.MdBold>
           </Box>
         )}
         {renderRightMenu}
