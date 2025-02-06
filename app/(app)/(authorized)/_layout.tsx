@@ -1,4 +1,5 @@
 import { Redirect, Stack } from 'expo-router'
+import i18next from 'i18next'
 import { useAtomValue } from 'jotai'
 
 import { isSignedInAtom } from '@/store/auth'
@@ -20,6 +21,7 @@ export default function AuthorizedLayout() {
         name="big-form"
         options={{
           presentation: 'modal',
+          title: i18next.t('navigation.screen_titles.test_form'),
         }}
       />
     </Stack>
