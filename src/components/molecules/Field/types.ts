@@ -7,6 +7,7 @@ import {
   SelectProps,
   StyledProps,
   TouchableRef,
+  DatePickerProps,
 } from '@/design-system'
 
 // -----------------------
@@ -90,5 +91,14 @@ export type FieldCheckboxGroupProps<T> = FormLabelProps & {
 
 export type FieldCheckboxProps = FormLabelProps &
   CheckboxProps & {
+    errorMessage?: string
+  }
+
+// -----------------------
+// ----- DATEPICKER ------
+// -----------------------
+
+export type FieldDatePickerProps = FormLabelProps &
+  DatePickerProps & {
     errorMessage?: string
   }

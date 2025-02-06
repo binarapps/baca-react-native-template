@@ -288,6 +288,8 @@
     "dancing": "Taniec",
     "education": "Wykształcenie",
     "email_placeholder": "E-mail",
+    "birth_date": "Data urodzenia",
+    "birth_date_placeholder": "Data urodzenia",
     "errors": {
       "age": "Wiek jest wymagany",
       "city": "Miasto jest wymagane",
@@ -296,6 +298,7 @@
       "interests": "Zaznacz przynajmniej 1 zainteresowanie",
       "music": "Zaznacz przynajmniej 1 rodzaj muzyki",
       "name": "Imie jest wymagane",
+      "birth_date": "Data urodzenia jest wymagana",
       "phone_format": "Numer telefonu musi być w formacie 000-000-000",
       "phone": "Number telefonu jest wymagany",
       "postalCode_format": "Kod pocztowy musi być w formacie 00-000",
