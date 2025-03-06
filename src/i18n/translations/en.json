@@ -289,6 +289,8 @@
     "dancing": "Dancing",
     "education": "Education",
     "email_placeholder": "E-mail",
+    "birth_date": "Birth date",
+    "birth_date_placeholder": "Birth date",
     "errors": {
       "age": "Age is required",
       "city": "City is required",
@@ -301,6 +303,7 @@
       "phone": "Phone is required",
       "postalCode_format": "Postal code must be in form 00-000",
       "postalCode": "Postal code is required",
+      "birth_date": "Birth date is required",
       "sex": "Sex is is required",
       "shoeSize": "Shoe size is required",
       "surname": "Surname is required"

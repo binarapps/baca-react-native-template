@@ -6,6 +6,7 @@ import {
   FieldRadioGroupProps,
   FieldSelectProps,
   FieldCheckboxProps,
+  FieldDatePickerProps,
 } from '@/components/molecules'
 
 // -----------------------
@@ -66,5 +67,15 @@ export type ControlledCheckboxGroupProps<T, TFieldValues extends FieldValues = F
 export type ControlledCheckboxProps<TFieldValues extends FieldValues = FieldValues> = Omit<
   FieldCheckboxProps,
   'onChange' | 'isChecked'
+> &
+  ControlledFieldProps<TFieldValues>
+
+// -----------------------
+// ----- DATEPICKER ------
+// -----------------------
+
+export type ControlledDatePickerProps<TFieldValues extends FieldValues = FieldValues> = Omit<
+  FieldDatePickerProps,
+  'onChangeDate' | 'date'
 > &
   ControlledFieldProps<TFieldValues>

@@ -9,6 +9,7 @@ const defaultValues: TestFormValues = {
   surname: '',
   email: '',
   city: '',
+  birthDate: '',
   phone: '',
   postalCode: '',
   sex: '',
@@ -52,6 +53,7 @@ export const useTestForm = () => {
     music: { required: t('test_form.errors.music') },
     interests: { required: t('test_form.errors.interests') },
     sex: { required: t('test_form.errors.sex') },
+    birthDate: { required: t('test_form.errors.birth_date') },
   }
 
   const {

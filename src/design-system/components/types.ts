@@ -269,3 +269,22 @@ export type CheckboxProps = TouchableProps & {
   size?: 'sm' | 'md'
   pb?: SizingValue
 }
+
+// -----------------------
+// ----- DATEPICKER ------
+// -----------------------
+
+export type DatePickerRef = { focus: () => void; blur: () => void }
+
+export type DatePickerProps = TouchableProps & {
+  // Logic
+  onChangeDate: (newValue?: Date) => void
+  date?: Date
+
+  // UI
+  placeholder?: string
+  isDisabled?: boolean
+  isInvalid?: boolean
+  rightElement?: JSX.Element
+  leftElement?: JSX.Element
+}
