@@ -269,3 +269,22 @@ export type CheckboxProps = TouchableProps & {
   size?: 'sm' | 'md'
   pb?: SizingValue
 }
+
+// -----------------------
+// ----- SLIDER ------
+// -----------------------
+
+export type SliderRef = { focus: () => void; blur: () => void }
+
+export type SliderProps = BoxProps & {
+  // Logic
+  onChangeValue: (newValue: number) => void
+  value?: number
+
+  // UI
+  isDisabled?: boolean
+  isInvalid?: boolean
+  minimumValue?: number
+  maximumValue?: number
+  step?: number
+}

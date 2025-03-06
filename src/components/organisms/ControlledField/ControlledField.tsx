@@ -5,6 +5,7 @@ import { ControlledCheckboxGroup } from './ControlledCheckboxGroup'
 import { ControlledInput } from './ControlledInput'
 import { ControlledRadioGroup } from './ControlledRadioGroup'
 import { ControlledSelect } from './ControlledSelect'
+import { ControlledSlider } from './ControlledSlider'
 
 type ControlledFieldComposition = React.FC<PropsWithChildren> & {
   Input: typeof ControlledInput
@@ -12,6 +13,7 @@ type ControlledFieldComposition = React.FC<PropsWithChildren> & {
   RadioGroup: typeof ControlledRadioGroup
   Checkbox: typeof ControlledCheckbox
   Select: typeof ControlledSelect
+  Slider: typeof ControlledSlider
 }
 
 const ControlledField: ControlledFieldComposition = ({ children }) => {
@@ -23,6 +25,7 @@ ControlledField.CheckboxGroup = ControlledCheckboxGroup
 ControlledField.Checkbox = ControlledCheckbox
 ControlledField.RadioGroup = ControlledRadioGroup
 ControlledField.Select = ControlledSelect
+ControlledField.Slider = ControlledSlider
 
 export { ControlledField }
 export * from './types'

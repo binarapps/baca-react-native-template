@@ -3,6 +3,7 @@ export type TestFormValues = {
   surname: string
   email: string
   phone: string
+  points: number
   postalCode: string
   city: string
   sex: string

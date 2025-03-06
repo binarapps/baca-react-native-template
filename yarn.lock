@@ -1250,6 +1250,7 @@ __metadata:
     "@motify/skeleton": "npm:^0.18.0"
     "@react-native-async-storage/async-storage": "npm:1.23.1"
     "@react-native-community/netinfo": "npm:11.4.1"
+    "@react-native-community/slider": "npm:^4.5.5"
     "@react-native-google-signin/google-signin": "npm:^13.1.0"
     "@react-navigation/bottom-tabs": "npm:^7.2.0"
     "@react-navigation/native": "npm:^7.0.14"
@@ -3133,6 +3134,13 @@ __metadata:
   peerDependencies:
     react-native: ">=0.59"
   checksum: 10/47f0d61072ca04a545784daaa44a5b1927eb788a3521dce5462184855733485c3b58c52d2a9b790b5c784e806fb342c83bc14e348cc7e55263b63d31e1862f9d
+  languageName: node
+  linkType: hard
+
+"@react-native-community/slider@npm:^4.5.5":
+  version: 4.5.5
+  resolution: "@react-native-community/slider@npm:4.5.5"
+  checksum: 10/8c49f7e0b7d7c37b91c936805106e88ee31011dc210d5c237c07e35d330870536b560b48e6212195fffc2e2706b16c31715b6cebbb2cc33127702bff9850f134
   languageName: node
   linkType: hard
 

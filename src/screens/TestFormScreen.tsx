@@ -192,6 +192,16 @@ export const TestFormScreen = (): JSX.Element => {
         name="interests"
         rules={VALIDATION.interests}
       />
+      <ControlledField.Slider
+        {...{ control, errors }}
+        isRequired
+        minimumValue={0}
+        maximumValue={20}
+        step={0.5}
+        label={t('test_form.points')}
+        mt={2}
+        name="points"
+      />
       <Text fontWeight="bold" py={2}>
         {t('test_form.additional_comment')}
       </Text>
