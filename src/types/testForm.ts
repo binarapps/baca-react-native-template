@@ -12,4 +12,5 @@ export type TestFormValues = {
   age: string
   education: string
   interests: string[]
+  icon: string
 }

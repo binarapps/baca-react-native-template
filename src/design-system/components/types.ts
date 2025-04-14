@@ -269,3 +269,28 @@ export type CheckboxProps = TouchableProps & {
   size?: 'sm' | 'md'
   pb?: SizingValue
 }
+
+// -----------------------
+// ----- EMOJI PICKER ----
+// -----------------------
+
+export type EmojiPickerRef = { focus: () => void; blur: () => void }
+
+export type EmojiPickerProps = TouchableProps & {
+  // Logic
+  onChangeEmoji: (newValue: EmojiType) => void
+  emoji?: EmojiType
+
+  // UI
+  placeholder?: string
+  isDisabled?: boolean
+  isInvalid?: boolean
+  rightElement?: JSX.Element
+  leftElement?: JSX.Element
+}
+
+type EmojiType = {
+  emoji: string
+  name: string
+  slug: string
+}

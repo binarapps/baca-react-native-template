@@ -184,6 +184,14 @@ export const TestFormScreen = (): JSX.Element => {
         name="music"
         rules={VALIDATION.music}
       />
+      <ControlledField.EmojiPicker
+        {...{ control, errors }}
+        isRequired
+        label={t('test_form.icon')}
+        placeholder={t('test_form.icon')}
+        name="icon"
+        rules={VALIDATION.icon}
+      />
       <ControlledField.CheckboxGroup
         {...{ control, errors }}
         items={interests}

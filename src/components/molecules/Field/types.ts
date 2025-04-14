@@ -7,6 +7,7 @@ import {
   SelectProps,
   StyledProps,
   TouchableRef,
+  EmojiPickerProps,
 } from '@/design-system'
 
 // -----------------------
@@ -90,5 +91,14 @@ export type FieldCheckboxGroupProps<T> = FormLabelProps & {
 
 export type FieldCheckboxProps = FormLabelProps &
   CheckboxProps & {
+    errorMessage?: string
+  }
+
+// -----------------------
+// ----- EMOJI PICKER ----
+// -----------------------
+
+export type FieldEmojiPickerProps = FormLabelProps &
+  EmojiPickerProps & {
     errorMessage?: string
   }
