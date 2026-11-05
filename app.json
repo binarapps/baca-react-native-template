@@ -3,7 +3,7 @@
     "newArchEnabled": true,
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 34,
+      "versionCode": 35,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
@@ -28,7 +28,7 @@
       "fallbackToCacheTimeout": 0
     },
     "userInterfaceStyle": "automatic",
-    "version": "2.6.3",
+    "version": "2.6.4",
     "plugins": [
       "@react-native-google-signin/google-signin",
       "expo-asset",
@@ -40,9 +40,6 @@
       [
         "expo-build-properties",
         {
-          "android": {
-            "targetSdkVersion": 35
-          },
           "ios": {
             "useFrameworks": "static"
           }
@@ -59,7 +56,8 @@
           },
           "imageWidth": 200
         }
-      ]
+      ],
+      "expo-web-browser"
     ],
     "web": {
       "output": "single",

@@ -18,7 +18,7 @@ type ScreenTrackerReturn = {
 
 // TODO: make this work on expo router
 export const useScreenTracker = (callback = defaultCallback): ScreenTrackerReturn => {
-  const routeNameRef = useRef<string>()
+  const routeNameRef = useRef<string | undefined>(undefined)
 
   const onReady = useCallback(() => {
     routeNameRef.current = navigationRef?.getCurrentRoute()?.name

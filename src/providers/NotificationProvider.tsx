@@ -140,7 +140,7 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
     })
 
     return () => {
-      Notifications.removeNotificationSubscription(notificationReceived)
+      notificationReceived.remove()
     }
   }, [])
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { withAppBuildGradle } = require('@expo/config-plugins')
+const { withAppBuildGradle } = require('expo/config-plugins')
 const fs = require('fs')
 
 module.exports = function withDebugKeystore(mainConfig, props) {

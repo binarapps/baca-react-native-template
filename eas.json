@@ -7,6 +7,9 @@
       },
       "channel": "production",
       "distribution": "store",
+      "env": {
+        "ENVIRONMENT_NAME": "production"
+      },
       "ios": {
         "autoIncrement": "buildNumber"
       }
