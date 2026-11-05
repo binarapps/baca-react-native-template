@@ -18,9 +18,9 @@ dotenv.config()
 
 // APP_CONFIG_START
 export const APP_CONFIG = {
-  androidPackageName: 'com.binarapps.baca', // CONFIG: Add your android package name here
+  androidPackageName: 'com.broderson.baca', // CONFIG: Add your android package name here
   appName: 'BACA', // CONFIG: Add your app name here
-  easProjectId: 'ac562c27-4a4e-4532-869f-fe6f9447bee6', // CONFIG: Add your eas project ID here
+  easProjectId: '84f01f75-161e-4757-9a01-0a40c8337753', // CONFIG: Add your eas project ID here
   iosBundleIdentifier: 'com.binarapps.baca', // CONFIG: Add your ios bundle identifier here
   scheme: 'baca', // CONFIG: Add your url scheme to link to your app
   adaptiveIconBackgroundColor: '#2E7AF0CC', // CONFIG: Add your android adaptive icon background color here
@@ -180,7 +180,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
       bundleIdentifier: EAS_ENV_CONFIG.iosBundleIdentifier[ENVIRONMENT_NAME],
     },
     name: EAS_ENV_CONFIG.appName[ENVIRONMENT_NAME],
-    owner: config.owner || 'binarapps',
+    owner: config.owner || 'broderson',
     runtimeVersion,
     plugins,
     scheme: EAS_ENV_CONFIG.scheme[ENVIRONMENT_NAME],

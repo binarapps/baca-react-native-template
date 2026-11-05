@@ -3,13 +3,15 @@
     "newArchEnabled": true,
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 28,
+      "versionCode": 34,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "buildNumber": "28",
+      "buildNumber": "29",
       "config": {
         "usesNonExemptEncryption": false
       },
@@ -21,12 +23,12 @@
     "name": "BACA",
     "orientation": "portrait",
     "owner": "binarapps",
-    "slug": "expo-typescript-template",
+    "slug": "baca-ddxjls",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "userInterfaceStyle": "automatic",
-    "version": "2.6.2",
+    "version": "2.6.3",
     "plugins": [
       "@react-native-google-signin/google-signin",
       "expo-asset",
@@ -38,6 +40,9 @@
       [
         "expo-build-properties",
         {
+          "android": {
+            "targetSdkVersion": 35
+          },
           "ios": {
             "useFrameworks": "static"
           }
