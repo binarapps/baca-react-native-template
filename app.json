@@ -3,7 +3,7 @@
     "newArchEnabled": true,
     "android": {
       "jsEngine": "hermes",
-      "versionCode": 35,
+      "versionCode": 36,
       "softwareKeyboardLayoutMode": "pan",
       "googleServicesFile": "./google-services.json"
     },
